@@ -1,0 +1,75 @@
+<?php
+    $is_admin = $this->session->userdata('admin');
+?>
+<ul id="popular_posts">
+
+    <li>
+
+        <ul class="popular_posts_content">
+
+            <?php 
+             for($i=0;$i<=3;$i++){
+                    $row = $pop[$i];                               
+                    $id = $row['ID'];
+                    $link = $row['Link'];
+                    $title = $row['Title'];
+                    $CountView = $row['CountView'];
+                    $countcomment = $row['CountComment'];
+                    $author = $row['FirstName'];                                                  
+                ?>
+                <li>
+                    <?php if($is_admin):?>                                
+                        <img src="<?php echo base_url().'assets/uploads/image/'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
+
+                        <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>" class="title"><?php echo $title?></a>
+                        <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> comments</a>
+                        <?php else:?>
+                        <img src="<?php echo base_url().'assets/uploads/image/'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
+
+                        <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>" class="title"><?php echo $title?></a>
+                        <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> comments</a>
+                        <?php endif;?>
+                </li>
+                <?php }?>
+            <!-- /.popular_posts_content li -->                                   
+        </ul>
+        <!-- /.popular_posts_content -->
+
+    </li>
+    <!-- /.popular_posts li - popular posts slider item -->
+
+    <li>
+
+        <ul class="popular_posts_content">            
+            <?php 
+             for($i=4;$i<=7;$i++){
+                    $row = $pop[$i];                               
+                    $id = $row['ID'];
+                    $link = $row['Link'];
+                    $title = $row['Title'];
+                    $CountView = $row['CountView'];
+                    $countcomment = $row['CountComment'];
+                    $author = $row['FirstName'];                               
+                ?>
+                <li>
+                    <?php if($is_admin):?>                                
+                        <img src="<?php echo base_url().'assets/uploads/image/'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
+
+                        <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>" class="title"><?php echo $title?></a>
+                        <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> comments</a>
+                        <?php else:?>
+                        <img src="<?php echo base_url().'assets/uploads/image/'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
+
+                        <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>" class="title"><?php echo $title?></a>
+                        <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> comments</a>
+                        <?php endif;?>
+                </li>
+                <?php }?>
+            <!-- /.popular_posts_content li -->
+        </ul>
+        <!-- /.popular_posts_content -->
+
+    </li>
+    <!-- /.popular_posts li - popular posts slider item -->
+
+                        </ul>
