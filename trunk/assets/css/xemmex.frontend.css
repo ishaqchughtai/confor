@@ -1,0 +1,29 @@
+.lang_selector {
+	margin-right:10px;
+	float:left;
+}
+
+.flag-en {
+	background:url(flag/en.png) center no-repeat;	
+	width:22px;
+	height:11px;
+	padding:4px 3px 2px 3px;
+	display:block;
+	float:left;
+}
+
+.flag-ca {
+	background:url(flag/ca.png) center no-repeat;	
+	width:22px;
+	height:11px;
+	padding:4px 3px 2px 3px;
+	display:block;
+	float:left;
+}
+
+.video_item {
+	float:left;
+	width:175px;
+	padding:10px;
+}
+
