@@ -5,10 +5,9 @@
 					$id = $row['ID'];
 					$speaker = $row['Name'];
 					$date = date("F jS Y", strtotime($row['Date']));
-					$final_date=date("F jS Y", strtotime($date));
 					$title = $row['Title'];
 					$subject = $row['Subject'];
-					$keyword = $row['Keywords'];
+					$keyword = explode(" ", $row['Keywords']);
 					$description = $row['Description'];
 					$status = $row['Status'];
 					?>
@@ -21,7 +20,11 @@
 					    //$date = "%F %j%S %Y";
 						//$time = time();
 					?>
-					<h5>By <?php echo $speaker?> in : <a href="#"><?php echo $keyword?></a> // <?php echo $date;?></h5>
+					<h5>By <?php echo $speaker?> in : 
+					<?php for($i=0;$i<count($keyword);$i++){?>
+          <a href="#"><?php echo $keyword[$i]?></a>,
+          <?php ;}?> // 
+		  			<?php echo $date;?></h5>
 					<p> <?php echo _substr($description,200)?></p>
 					
 					<a href="<?php echo site_url('event/event_content/'.$id)?>" class="read_more">Continue Reading</a>
@@ -57,15 +60,11 @@
 				<!-- /.content_item -->
 				<!-- /.content_item -->
 <ul id="pagination">
-				
-					<li class="selected"><a href="#">1</a></li>
-				
-					<li><a href="#">2</a></li>
-				
-					<li><a href="#">3</a></li>
-				
-					<li><a href="#">next</a></li>
-				
+					<li>
+                    
+					<?php echo $pagination?>
+                    
+                    </li>
 			  </ul>
 				<!-- /#pagination -->
 
