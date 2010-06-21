@@ -25,28 +25,16 @@
       return $query->result_array();
     }
 
-    function count_record()
+    function count_record($date)
     {
-      $this->db->select('
-      tblevent.ID,
-      tblspeaker.Name,
-      tblevent.`Date`,
-      tblevent.Title,
-      tblevent.Subject,
-      tblevent.Keywords,
-      tblevent.Description,
-      tblevent.Status
-      ');
       $this->db->from('tblevent');
-      $this->db->join('tblspeaker','tblevent.Speaker = tblspeaker.ID');
       $this->db->where(array('Date'=>$date));
-      $this->db->get();
       $query = $this->db->count_all_results();
       return $query;
     }
-    
-     
-    function get_event_by_date($date)
+
+
+    function get_event_by_date($date,$per_page,$offset)
     {
       $this->db->select('
       tblevent.ID,
@@ -61,7 +49,7 @@
       $this->db->from('tblevent');
       $this->db->join('tblspeaker','tblevent.Speaker = tblspeaker.ID');
       $this->db->where(array('Date'=>$date));
-      //$this->db->limit($num,$offset);
+      $this->db->limit($per_page,$offset);
       $query = $this->db->get();
       $events=FALSE;
       foreach ($query->result_array() as $row_event)
@@ -102,7 +90,7 @@
       $this->db->select('
       tblevent.ID,
       tblspeaker.Name,
-	  tblevent.Speaker,
+      tblevent.Speaker,
       tblevent.`Date`,
       tblevent.Title,
       tblevent.Subject,
@@ -139,19 +127,19 @@
         return FALSE;    
       }
     }    
-	
-	//get_data_to_form_speaker
+
+    //get_data_to_form_speaker
     function get_data_to_form($id)
     {
       $query = $this->db->get_where('tblevent',array('ID'=>$id));
       return $query->result();
     }
-	
-	
-	//get_data_to_form_admin
-	function get_data_to_form_admin($id)
-	{
-	  $this->db->select('
+
+
+    //get_data_to_form_admin
+    function get_data_to_form_admin($id)
+    {
+      $this->db->select('
       tblevent.ID,
       tblspeaker.Name,
       tblspeaker.Email,
@@ -167,16 +155,16 @@
       $this->db->where(array('tblevent.ID'=>$id));
       $query = $this->db->get();
       return $query->result();
-	}
+    }
 
     //Edit event of speaker
     function edit($id,$title,$subject,$keywords,$description)
     {
       $data = array(
-		  'Title'=>$title,                                          
-		  'Subject'=>$subject,
-		  'Keywords'=>$keywords,
-		  'Description'=>$description
+      'Title'=>$title,                                          
+      'Subject'=>$subject,
+      'Keywords'=>$keywords,
+      'Description'=>$description
       );
       $this->db->update('tblevent',$data,array('ID'=>$id));
     }
@@ -185,7 +173,7 @@
     function edit_event($id,$speaker_id,$title,$subject,$keywords,$description,$status)
     {
       $data = array(
-	  'Speaker'=>$speaker_id,
+      'Speaker'=>$speaker_id,
       'Title'=>$title,                                          
       'Subject'=>$subject,
       'Keywords'=>$keywords,
