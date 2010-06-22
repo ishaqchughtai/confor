@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: confor
 Target Host: localhost
 Target Database: confor
-Date: 22/06/2010 10:58:26 SA
+Date: 22/06/2010 6:46:37 CH
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -179,6 +179,17 @@ CREATE TABLE `channels` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Table structure for email_templates
+-- ----------------------------
+CREATE TABLE `email_templates` (
+  `id` int(5) NOT NULL auto_increment,
+  `name` varchar(200) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `body` text,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
 -- Table structure for geo_countries
 -- ----------------------------
 CREATE TABLE `geo_countries` (
@@ -351,6 +362,19 @@ CREATE TABLE `members_settings` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Table structure for memberships
+-- ----------------------------
+CREATE TABLE `memberships` (
+  `id` int(11) NOT NULL auto_increment,
+  `title` varchar(255) NOT NULL,
+  `desc` text NOT NULL,
+  `free` tinyint(1) NOT NULL default '0',
+  `public` tinyint(1) NOT NULL default '1',
+  `status` tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
 -- Table structure for mod_session
 -- ----------------------------
 CREATE TABLE `mod_session` (
@@ -435,6 +459,21 @@ CREATE TABLE `payment_gateway` (
 ) ENGINE=MyISAM AUTO_INCREMENT=334456778 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Table structure for payments
+-- ----------------------------
+CREATE TABLE `payments` (
+  `id` int(11) NOT NULL auto_increment,
+  `txn_id` varchar(100) default NULL,
+  `membership_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `rate_id` int(11) NOT NULL,
+  `rate_amount` varchar(255) NOT NULL,
+  `date` datetime NOT NULL,
+  `status` int(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
 -- Table structure for playlist_videos
 -- ----------------------------
 CREATE TABLE `playlist_videos` (
@@ -504,6 +543,21 @@ CREATE TABLE `profiles` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Table structure for rates
+-- ----------------------------
+CREATE TABLE `rates` (
+  `id` int(11) NOT NULL auto_increment,
+  `membership_id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `desc` text NOT NULL,
+  `amount` varchar(255) NOT NULL,
+  `term` bigint(255) NOT NULL,
+  `term_c` varchar(1) NOT NULL,
+  `automatic` tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
 -- Table structure for reports
 -- ----------------------------
 CREATE TABLE `reports` (
@@ -525,6 +579,27 @@ CREATE TABLE `sessiondata` (
   `saved` bigint(20) unsigned NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for settings
+-- ----------------------------
+CREATE TABLE `settings` (
+  `site_name` varchar(100) NOT NULL,
+  `site_slogan` varchar(100) NOT NULL,
+  `site_url` varchar(100) NOT NULL,
+  `keywords` text NOT NULL,
+  `desc` text NOT NULL,
+  `site_email` varchar(100) NOT NULL,
+  `paypal_id` varchar(100) NOT NULL,
+  `sandbox` tinyint(1) NOT NULL,
+  `reg_verify` tinyint(1) NOT NULL default '0',
+  `reg_allowed` tinyint(1) NOT NULL default '1',
+  `user_limit` varchar(5) NOT NULL default '0',
+  `currency` varchar(3) NOT NULL,
+  `cur_symbol` varchar(5) NOT NULL,
+  `captcha` tinyint(1) NOT NULL default '1',
+  `version` varchar(5) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for social_bookmarking_engines
@@ -609,6 +684,15 @@ CREATE TABLE `tblblog` (
 ) ENGINE=MyISAM AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
+-- Table structure for tblcategory
+-- ----------------------------
+CREATE TABLE `tblcategory` (
+  `ID` int(10) unsigned NOT NULL auto_increment,
+  `Name` varchar(70) NOT NULL,
+  PRIMARY KEY  (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
 -- Table structure for tblcomment
 -- ----------------------------
 CREATE TABLE `tblcomment` (
@@ -622,7 +706,7 @@ CREATE TABLE `tblcomment` (
   `Status` tinyint(1) NOT NULL,
   PRIMARY KEY  (`ID`),
   KEY `FK_tblcomment_tblblog` (`Blog`)
-) ENGINE=MyISAM AUTO_INCREMENT=75 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=76 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for tblevent
@@ -665,7 +749,7 @@ CREATE TABLE `tblremember_me` (
   `random_string` varchar(128) default NULL,
   `origin_time` int(11) NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for tblspeaker
@@ -720,7 +804,7 @@ CREATE TABLE `tblticket` (
   `Is_answered` tinyint(1) default NULL,
   PRIMARY KEY  (`ID`),
   KEY `FK_tblticket_tblspeaker` (`Speaker`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for tblvideoconference
@@ -754,6 +838,54 @@ CREATE TABLE `tips` (
   `theme` varchar(50) NOT NULL,
   UNIQUE KEY `page` (`page`,`theme`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for users
+-- ----------------------------
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL auto_increment,
+  `membership_id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `first_name` varchar(50) default NULL,
+  `company_name` varchar(100) default NULL,
+  `country` varchar(50) default NULL,
+  `password` varchar(255) NOT NULL,
+  `cookie_id` varchar(100) NOT NULL default '0',
+  `token` varchar(100) NOT NULL default '0',
+  `register_date` datetime NOT NULL,
+  `last_ip` varchar(255) NOT NULL,
+  `last_access` datetime NOT NULL,
+  `notify` tinyint(1) NOT NULL,
+  `status` tinyint(1) NOT NULL default '0',
+  `userlevel` tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Table structure for users_copy
+-- ----------------------------
+CREATE TABLE `users_copy` (
+  `id` int(11) NOT NULL auto_increment,
+  `membership_id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `first_name` varchar(50) default NULL,
+  `company_name` varchar(100) default NULL,
+  `country` varchar(50) default NULL,
+  `password` varchar(255) NOT NULL,
+  `cookie_id` varchar(100) NOT NULL default '0',
+  `token` varchar(100) NOT NULL default '0',
+  `register_date` datetime NOT NULL,
+  `last_ip` varchar(255) NOT NULL,
+  `last_access` datetime NOT NULL,
+  `notify` tinyint(1) NOT NULL,
+  `status` tinyint(1) NOT NULL default '0',
+  `userlevel` tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for verification
@@ -889,7 +1021,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- ----------------------------
 -- Records 
 -- ----------------------------
-INSERT INTO `admin_session` VALUES ('6d4aed9ea11aa722aa780832711babad', '1277174451');
+INSERT INTO `admin_session` VALUES ('482932f4c78636f89f4fe3c14489f725', '1277195290');
 INSERT INTO `associations` VALUES ('auth', 'account', 'auth_member', 'default');
 INSERT INTO `associations` VALUES ('auth', 'billing', 'auth_member', 'default');
 INSERT INTO `associations` VALUES ('auth', 'channels', 'auth_member', 'default');
@@ -1317,6 +1449,12 @@ INSERT INTO `associations` VALUES ('task', 'videos_respond', 'videos|vidinfo', '
 INSERT INTO `associations` VALUES ('task', 'videos_upload_complete', 'videos|vidinfo', 'default');
 INSERT INTO `associations` VALUES ('task', 'videos_view', 'videos|video_view', 'default');
 INSERT INTO `channels` VALUES ('100000', '1', 'admin', '', '1', '1', '1', '', 'grey', '', 'box_featured,box_subscriptions,box_bulletins,box_videos,box_favorites,box_friends,box_comments', '', '', '', '0');
+INSERT INTO `email_templates` VALUES ('1', 'Registration Email', 'Please verify your email', 'Welcome [USERNAME]! Thanks for registering.\r\n---------------------------------------------------\r\n\r\nHello,\r\n\r\nYou\'re now a member of [SITE_NAME].\r\n\r\nHere are your login details. Please keep them in a safe place:\r\n\r\nUsername: [USERNAME]\r\nPassword: [PASSWORD]\r\n\r\n---------------------------------------------------\r\n\r\nThe administrator of this site has requested all new accounts\r\nto be activated by the users who created them thus your account\r\nis currently inactive. To activate your account,\r\nplease visit this link:\r\n[LINK]\r\n\r\nThanks,\r\n[SITE_NAME] Team\r\n[URL]');
+INSERT INTO `email_templates` VALUES ('2', 'Forgot Password Email', 'Password Reset', 'New password reset from [SITE_NAME]!\r\n---------------------------------------------------------------------------------------------------------\r\n\r\nHello, [USERNAME]\r\n\r\nIt seems that you or someone requested a new password for you.\r\n\r\nWe have generated a new password, as requested:\r\n\r\nYour new password: [PASSWORD]\r\n\r\n\r\nTo use the new password you need to activate it. To do this click the link provided below and login with your new password.\r\n[LINK]\r\n\r\nYou can change your password after you sign in.\r\n\r\nThanks,\r\n[SITE_NAME] Team\r\n[URL]\r\n\r\n---------------------------------------------------------------------------------------------------------\r\nPassword requested from IP: [IP]');
+INSERT INTO `email_templates` VALUES ('3', 'Welcome Mail From Admin', 'You have been registered', 'Welcome [NAME]! Thanks for registering.\r\n---------------------------------------------------------------------------------------------------------\r\n\r\nHello,\r\n\r\nYou\'re now a member of [SITE_NAME].\r\n\r\nHere are your login details. Please keep them in a safe place:\r\n\r\nUsername: [USERNAME]\r\nPassword: [PASSWORD]\r\n\r\n\r\n---------------------------------------------------------------------------------------------------------\r\nThanks,\r\n[SITE_NAME] Team\r\n[URL]');
+INSERT INTO `email_templates` VALUES ('4', 'Default Newsletter', 'Newsletter', 'Hello,\r\n[USERNAME]\r\nYou are receiving this email as a part of your newsletter subscription\r\n\r\n---------------------------------------------------------------------------------------------------------\r\n\r\nHere goes your newsletter content\r\n\r\n---------------------------------------------------------------------------------------------------------\r\n\r\nThanks,\r\n[SITE_NAME] Team\r\n[URL]\r\n---------------------------------------------------------------------------------------------------------\r\nTo stop receiving future newsletters please login into your account\r\nand uncheck newsletter subscription box.');
+INSERT INTO `email_templates` VALUES ('5', 'Transaction Completed', 'Payment from payPal', 'Hello, Admin\r\n\r\nYou have received new PayPal payment following:\r\n\r\n---------------------------------------------------------------------------------------------------------\r\n\r\nUsername: [USERNAME]\r\nItem: [ITEMNAME]\r\nPrice: [PRICE]\r\n\r\nStatus: [STATUS] \r\n\r\n---------------------------------------------------------------------------------------------------------\r\nYou can view this transaction from [URL]');
+INSERT INTO `email_templates` VALUES ('6', 'Transaction Suspicious', 'Suspicious Transaction', 'Hello, Admin\r\n----------------------------------------------------------\r\nThe following transaction has been disabled due to suspicious activity:\r\n\r\nBuyer: [USERNAME]\r\nItem: [ITEM]\r\nPrice: [PRICE]\r\nStatus: [STATUS]\r\n\r\n----------------------------------------------------------\r\nPlease verify this transaction is correct. If it is, please activate it in the transaction section of your site\'s \r\nadministration control panel. If not, it appears that someone tried to fraudulently obtain products from your site.');
 INSERT INTO `geo_countries` VALUES ('1', 'Antarctica');
 INSERT INTO `geo_countries` VALUES ('2', 'Argentina');
 INSERT INTO `geo_countries` VALUES ('3', 'Falkland Islands');
@@ -1568,9 +1706,22 @@ INSERT INTO `javascripts` VALUES ('videos_view', '', '<script src=\"::URL::/js/A
 INSERT INTO `javascripts` VALUES ('', '', '', 'default');
 INSERT INTO `members` VALUES ('100000', '', 'admin', 'ac48ec59d616758e95e63b08a1689240', 'Nguyen', 'Hai Dang', '1', '0', '0', '0', 'a', '0');
 INSERT INTO `members_settings` VALUES ('100000', '0', '0', '0', '0', '1');
+INSERT INTO `memberships` VALUES ('1', 'Bronzes free', 'Bronzes free', '1', '1', '1');
+INSERT INTO `memberships` VALUES ('2', 'Super Membership', 'This is super membership', '1', '1', '1');
+INSERT INTO `memberships` VALUES ('3', 'Silver', 'Silver', '1', '1', '1');
+INSERT INTO `memberships` VALUES ('4', 'Bronze', 'Bronze', '1', '1', '1');
+INSERT INTO `memberships` VALUES ('5', 'Gold', 'Gold', '0', '1', '1');
 INSERT INTO `network` VALUES ('100000', ',', '0', '0');
-INSERT INTO `profiles` VALUES ('100000', '1277174436', '1277174690', '1277174436', '1277174820', '90', 'Ha Noi', '', '', '1', '416250059', '', '0', '', '', '0', '', '', '', '', '', '', '', '1');
+INSERT INTO `payments` VALUES ('1', null, '2', '1', '2', '0.99', '2010-03-02 12:10:14', '1');
+INSERT INTO `profiles` VALUES ('100000', '1277174436', '1277174690', '1277188865', '1277188865', '90', 'Ha Noi', '', '', '1', '416250059', '', '0', '', '', '0', '', '', '', '', '', '', '', '1');
+INSERT INTO `rates` VALUES ('1', '2', 'Weekly', 'Weekly access to protected areas', '0.99', '1', 'W', '1');
+INSERT INTO `rates` VALUES ('2', '2', 'Monthly', 'Monthly access to protected areas', '1.99', '1', 'M', '1');
+INSERT INTO `rates` VALUES ('3', '2', 'Yearly', 'Yearly access to protected areas', '10.99', '1', 'Y', '1');
+INSERT INTO `rates` VALUES ('4', '3', 'Full', 'Unlimited access to protected areas', '19.99', '1', 'Y', '1');
+INSERT INTO `rates` VALUES ('10', '5', 'monthly', 'monthly gold', '50', '30', 'D', '1');
+INSERT INTO `rates` VALUES ('11', '4', 'year', 'year bronzes', '500', '1', 'Y', '1');
 INSERT INTO `sessiondata` VALUES ('1', '100000', 'a%3A17%3A%7Bs%3A11%3A%22response_to%22%3Bs%3A0%3A%22%22%3Bs%3A5%3A%22title%22%3Bs%3A3%3A%22abc%22%3Bs%3A11%3A%22description%22%3Bs%3A4%3A%22xxxx%22%3Bs%3A8%3A%22category%22%3Bs%3A2%3A%2215%22%3Bs%3A4%3A%22tags%22%3Bs%3A4%3A%22aaaa%22%3Bs%3A4%3A%22date%22%3Bi%3A1230742859%3Bs%3A8%3A%22location%22%3Bs%3A2%3A%22ad%22%3Bs%3A7%3A%22country%22%3Bs%3A3%3A%22223%22%3Bs%3A9%3A%22broadcast%22%3Bs%3A1%3A%220%22%3Bs%3A8%3A%22comments%22%3Bs%3A1%3A%221%22%3Bs%3A14%3A%22comment_voting%22%3Bs%3A1%3A%221%22%3Bs%3A9%3A%22responses%22%3Bs%3A1%3A%221%22%3Bs%3A7%3A%22ratings%22%3Bs%3A1%3A%221%22%3Bs%3A9%3A%22embedding%22%3Bs%3A1%3A%221%22%3Bs%3A8%3A%22err_page%22%3Bs%3A6%3A%22videos%22%3Bs%3A11%3A%22err_section%22%3Bs%3A14%3A%22upload_general%22%3Bs%3A6%3A%22source%22%3Bs%3A6%3A%22upload%22%3B%7D', '1277174767');
+INSERT INTO `settings` VALUES ('Your Site Name', 'Your Site Name Slogan', 'http://localhost/project/confor/pay', 'site keywords,separated,by,coma', 'Meta Description', 'yoursite@email.com', 'paypal@youremail.com', '1', '1', '1', '0', 'USD', '$', '1', 'v.1.0');
 INSERT INTO `social_bookmarking_engines` VALUES ('1', 'Favorites', 'sbAddtoFavorites(\'|link|\',\'|title|\')', 'star.png', '1');
 INSERT INTO `social_bookmarking_engines` VALUES ('2', 'Del.icio.us', 'http://del.icio.us/post?url=|link|;title=|title|', 'delicious.png', '1');
 INSERT INTO `social_bookmarking_engines` VALUES ('3', 'Digg', 'http://digg.com/submit?phase=2&url=|link|&title=|title|', 'digg.png', '1');
@@ -1614,16 +1765,23 @@ INSERT INTO `tblblog` VALUES ('31', '2010-06-15', '8', 'blog dem 15', 'new blog'
 INSERT INTO `tblblog` VALUES ('27', '2010-06-15', '8', 'blog toi 15', 'hekeka', 'asda', '<p>asdasd</p>', 'post_3.jpg', '0', '0');
 INSERT INTO `tblblog` VALUES ('28', '2010-06-15', '8', 'mkmmkkkkkkk', 'asdasdasd', 'asda', '<p>ghcvhc</p>', 'post_3.jpg', '0', '0');
 INSERT INTO `tblblog` VALUES ('29', '2010-06-15', '8', 'tessssssss', 'asdasdasd', 'asda', '<p>asdasd</p>', 'port_4.jpg', '0', '0');
-INSERT INTO `tblblog` VALUES ('44', '2010-06-16', '8', 'blog dem 15 1', 'asdasdasd', 'asd asdas asda asda', '<p>asdasdasd</p>', 'port_4.jpg', '4', '0');
+INSERT INTO `tblblog` VALUES ('44', '2010-06-22', '8', 'blog dem 15 1', 'asdasdasd', 'asd asdas asda asda', '<p>abc <span style=\"font-size: xx-large;\"><span style=\"font-family: Comic Sans MS;\">def </span></span></p>', 'port_4.jpg', '6', '0');
 INSERT INTO `tblblog` VALUES ('42', '2010-06-16', '8', 'blog chieu 16 1511', 'asdasd', 'asd asdas asda', '<p>asdasd</p>', 'google_maps.jpg', '8', '0');
-INSERT INTO `tblblog` VALUES ('46', '2010-06-17', '8', 'nguoi viet', 'xxx', 'yyy', '<p><span style=\"font-size: xx-large;\"><span style=\"font-family: Arial;\"><span style=\"color: rgb(153, 204, 0);\">oap.</span></span></span> ac.</p>', 'pet.JPG', '72', '1');
+INSERT INTO `tblblog` VALUES ('46', '2010-06-17', '8', 'nguoi viet', 'xxx', 'yyy', '<p><span style=\"font-size: xx-large;\"><span style=\"font-family: Arial;\"><span style=\"color: rgb(153, 204, 0);\">oap.</span></span></span> ac.</p>', 'pet.JPG', '87', '3');
+INSERT INTO `tblcategory` VALUES ('1', 'Actuality');
+INSERT INTO `tblcategory` VALUES ('2', 'Technology');
+INSERT INTO `tblcategory` VALUES ('3', 'Interview');
+INSERT INTO `tblcategory` VALUES ('4', 'Design');
+INSERT INTO `tblcategory` VALUES ('5', 'Mobile');
+INSERT INTO `tblcategory` VALUES ('6', 'Movies');
 INSERT INTO `tblcomment` VALUES ('67', '11111111111111111', '8', '2010-06-16 04:06:52', 'xemmex new', 'http://asdasdasd.com', 'huunam09@gmail.com', '1');
 INSERT INTO `tblcomment` VALUES ('66', 'ádasdasd', '8', '2010-06-16 02:06:41', 'admin', 'http://google.com', 'se7max@gmail.com', '1');
 INSERT INTO `tblcomment` VALUES ('68', 'asdasd', '17', '2010-06-16 05:06:05', 'xemmex new', 'http://asdasdasd.com', 'huunam09@gmail.com', '1');
 INSERT INTO `tblcomment` VALUES ('69', 'oh my god', '8', '2010-06-17 04:06:30', 'Dang', 'www.abc', 'yugi3000@gmail.com', '1');
 INSERT INTO `tblcomment` VALUES ('70', 'oh my god', '8', '2010-06-17 04:06:04', 'Dang', 'www.abc', 'yugi3000@gmail.com', '0');
 INSERT INTO `tblcomment` VALUES ('73', 'xxxxxxx', '46', '2010-06-17 06:06:15', 'toiotoi', 'oh oh', 'yugi3000@gmail.com', '1');
-INSERT INTO `tblcomment` VALUES ('74', 'bbbbb', '46', '2010-06-17 06:06:14', 'meomeo', 'xsafsafaf', 'yugi3000@gmail.com', '0');
+INSERT INTO `tblcomment` VALUES ('74', 'bbbbb', '46', '2010-06-17 06:06:14', 'meomeo', 'xsafsafaf', 'yugi3000@gmail.com', '1');
+INSERT INTO `tblcomment` VALUES ('75', 'sasdfasfasfasf', '46', '2010-06-22 05:06:34', 'meomeo', 'dfsaf', 'yugi3000@gmail.com', '1');
 INSERT INTO `tblevent` VALUES ('1', '2010-06-12', 'abc', 'haha', 'acbd', 'sdfr sfs fsa fasf', '1', '1');
 INSERT INTO `tblevent` VALUES ('2', '2010-06-12', 'skjfh askfjh afkj shadfkj as', 'sdkj fhska fhskj dfskja dfh', 'hsdh', 's dkfhskdj fhakjs fhkjs dfhkjas hdfkja skhfj askjf hkjash fkj shkjf hksjahfakjsfh kajh fkajfh kjfh kj fhkjasfh kjsahf ksjhfskajfh', '2', '1');
 INSERT INTO `tblevent` VALUES ('3', '2010-06-12', 'adjsk dkjs dsk sklfa slkf slkfjl', 'kldsjfasklf jaskldfjlasjflas ', 'skjd', 'kdslfjasf jaslkf jalk f', '1', '0');
@@ -1645,7 +1803,6 @@ INSERT INTO `tblfeedback` VALUES ('13', '2010-06-21 03:06:48', 'admin tra loi 12
 INSERT INTO `tblfeedback` VALUES ('14', '2010-06-21 03:06:30', 'admin tra loi', 'asdasdasdasdasdasdas', '2', '8');
 INSERT INTO `tblfeedback` VALUES ('15', '2010-06-21 03:06:29', 'admin tra loi 12', 'asdasd', '15', '8');
 INSERT INTO `tblfeedback` VALUES ('16', '2010-06-22 11:06:14', 'meo dien', 'cdl fdlf  sld dsl fsf sdoi a', '18', '8');
-INSERT INTO `tblremember_me` VALUES ('9', 'abc@gmail.com', 'c0d0a32c405c68cb538e3891a3e3bce98887f012', 'vQAVYQxkNAnQIov3hgGYGsOVoqX1mVi3mBq3lfkQ56amqXFyLpVg7pyoBYSJ1ZimEPL9SoKrJjbkUsSLOYa1uZcDgRqq6UNBETELe7rUW36B1nIXS3GDmoJbjl4G5CRk', '1277175538');
 INSERT INTO `tblspeaker` VALUES ('1', 'Phong', 'Nguyen ', 'XEMMEX', 'abc@gmail.com', '1', 'fr', 'e10adc3949ba59abbe56e057f20f883e', 'bbb cccc dddd', '2', '0');
 INSERT INTO `tblspeaker` VALUES ('2', 'abcxxx', 'Meo meo', 'xemmex', 'def@gmail.com', '1', 'en', 'e10adc3949ba59abbe56e057f20f883e', 'adf  asdf sdf', '2', null);
 INSERT INTO `tblspeaker` VALUES ('3', '', 'adsafsfa', 'llllm', 'abc11@gmail.com', '1', 'en', 'e10adc3949ba59abbe56e057f20f883e', 'afaf', '1', null);
@@ -1692,13 +1849,14 @@ INSERT INTO `tblticket` VALUES ('13', '2010-06-19 00:00:00', 'hoi caiaaaa', '3',
 INSERT INTO `tblticket` VALUES ('15', '2010-06-21 02:06:43', 'ticket 21', '1', 'hoi ciasad ', '2', '1');
 INSERT INTO `tblticket` VALUES ('16', '2010-06-21 02:06:44', 'test', '0', 'asdadsasdasd', '2', '0');
 INSERT INTO `tblticket` VALUES ('18', '2010-06-22 11:06:26', 'Hoi admin ti', '2', 'what we kr l f dlf adslf', '1', '1');
-INSERT INTO `tblvideoconference` VALUES ('1', '2010-06-11 14:26:58', 'Bullshit', 'Bullshit', 'a', 'Fusce quam magna, viverra nec tincidunt nec, congue id quam. Suspendisse id porttitor nibh. Aliquam a lectus a nisi bibendum aliquet. Duis vulputate enim volutpat lorem rutrum facilisis accumsan massa gravida. Curabitur convallis dolor ac enim porttitor ac dignissim erat fermentum. Sed lacinia odio quis felis dapibus gravida? Nulla hendrerit urna et orci tincidunt aliquet. Class aptent taciti sociosqu ad litora torquent per conubi', '20', '1', '0', 'The Elephant Song - Cool Tunes for Kids by Eric Herman.flv', '10', '1', 'The Elephant Song - Cool Tunes for Kids by Eric Herman.jpg', '1');
+INSERT INTO `tblticket` VALUES ('19', '2010-06-22 05:06:30', 'meo meo meo hoi ti', '1', 'asdoi oi con meo', '1', '0');
+INSERT INTO `tblvideoconference` VALUES ('1', '2010-06-11 14:26:58', 'Bullshit', 'Bullshit', 'a', 'Fusce quam magna, viverra nec tincidunt nec, congue id quam. Suspendisse id porttitor nibh. Aliquam a lectus a nisi bibendum aliquet. Duis vulputate enim volutpat lorem rutrum facilisis accumsan massa gravida. Curabitur convallis dolor ac enim porttitor ac dignissim erat fermentum. Sed lacinia odio quis felis dapibus gravida? Nulla hendrerit urna et orci tincidunt aliquet. Class aptent taciti sociosqu ad litora torquent per conubi', '22', '1', '0', 'The Elephant Song - Cool Tunes for Kids by Eric Herman.flv', '10', '1', 'The Elephant Song - Cool Tunes for Kids by Eric Herman.jpg', '1');
 INSERT INTO `tblvideoconference` VALUES ('2', '2010-06-11 14:30:42', 'Go to hell', 'What the hell', 'a b', 'san massa gravida. Curabitur convallis dolor ac enim porttitor ac dignissim erat fermentum. Sed lacinia odio quis felis dapibus gravida? Nulla hendrerit urna et orci tincidunt aliquet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed id nibh in risus rhoncus mattis. Morb', '12', '0', '1', 'fashion_promo.flv', '20', '2', 'fashion_promo.jpg', '2');
 INSERT INTO `tblvideoconference` VALUES ('3', '2010-06-16 09:05:51', 'YouTube - Funny Commercial', 'YouTube - Funny Commercial', 'a b c', 'YouTube - Funny Commercial', '2', '1', '0', 'YouTube - Funny Commercial(1).flv', '1', '3', 'YouTube - Funny Commercial.jpg', '1');
 INSERT INTO `tblvideoconference` VALUES ('4', '2010-06-16 09:08:18', 'best, funniest commercial video', 'best, funniest commercial video', 'a b c d', 'ra nec tincidunt nec, congue id quam. Suspendisse id porttitor nibh. Aliquam a lectus a nisi bibendum aliquet. Duis vulputate enim volutpat lorem rutrum facilisis accumsan massa gravida. Curabitur convallis dolor ac enim porttitor ac dignissim erat fermentum. Sed lacinia odio quis felis dapibus gravida? Nulla he', '2', '1', '0', 'best, funniest commercial video.flv', '3', '3', 'best, funniest commercial video.jpg', '2');
 INSERT INTO `tblvideoconference` VALUES ('5', '2010-06-16 09:10:40', 'funny Commercial', 'funny Commercial', 'a b c d e', 'funny Commercial', '2', '1', '0', 'funny Commercial.flv', '4', '4', 'funny Commercial.jpg', '1');
 INSERT INTO `tblvideoconference` VALUES ('6', '2010-06-16 09:11:37', 'without brains', 'without brains', 'a b c d e f', 'ra nec tincidunt nec, congue id quam. Suspendisse id porttitor nibh. Aliquam a lectus a nisi bibendum aliquet. Duis vulputate enim volutpat lorem rutrum facilisis accumsan massa gravida. Curabitur convallis dolor ac enim porttitor ac dignissim erat fermentum. Sed lacinia odio quis felis dapibus gravida? Nulla he', '2', '1', '0', 'without brains.flv', '5', '5', 'without brains.jpg', '2');
-INSERT INTO `tblvideoconference` VALUES ('7', '2010-06-16 09:13:16', 'Binh minh diu em', 'Binh minh diu em', 'a b c d e f g', 'Binh minh diu em', '36', '1', '0', 'Binh minh diu em.flv', '6', '6', 'Binh minh diu em.jpg', '3');
+INSERT INTO `tblvideoconference` VALUES ('7', '2010-06-16 09:13:16', 'Binh minh diu em', 'Binh minh diu em', 'a b c d e f g', 'Binh minh diu em', '37', '1', '0', 'Binh minh diu em.flv', '6', '6', 'Binh minh diu em.jpg', '3');
 INSERT INTO `tblvideoconference` VALUES ('8', '2010-06-16 16:38:08', 'Cay sao giay', 'Cay sao giay', 'a b c d e f g h', 'Cay sao giay.flv', '27', '1', '0', 'Cay sao giay.flv', '5', '3', 'Cay sao giay.jpg', null);
 INSERT INTO `tips` VALUES ('join_verification', 'You may receive your verification email to your junk mailbox.', 'default');
 INSERT INTO `tips` VALUES ('upgrade', 'Upgrade your account to get full access to all categories and videos on this site!', 'default');
@@ -1706,5 +1864,7 @@ INSERT INTO `tips` VALUES ('videos_upload', 'Do not upload any TV shows, music v
 INSERT INTO `tips` VALUES ('videos_upload_complete', 'It may take up to several minutes before your video will be converted and published.', 'default');
 INSERT INTO `tips` VALUES ('videos_upload_general', 'Uploads usually take 1-5 minutes per MB on a high-speed connection, and converting your video takes a few minutes.<br /><br /><strong>Your video is limited to ;module;videos;maxtime; minutes and ;module;videos;maxsize; MB.</strong>', 'default');
 INSERT INTO `tips` VALUES ('', '', 'default');
+INSERT INTO `users` VALUES ('1', '1', 'admin', 'admin@emailaddress.com', 'Webmaster', null, null, null, '21232f297a57a5a743894a0e4a801fc3', '0aea3a54307e553f35f7c5ca358b0b3b', '0', '2010-03-03 15:08:38', '127.0.0.1', '2010-06-22 16:09:34', '1', '1', '9');
+INSERT INTO `users_copy` VALUES ('1', '1', 'admin', 'admin@emailaddress.com', 'Webmaster', null, null, null, '21232f297a57a5a743894a0e4a801fc3', '2caf514cf33dd0472169a4e46ece3569', '0', '2010-03-03 15:08:38', '127.0.0.1', '2010-06-22 00:54:51', '1', '1', '9');
 INSERT INTO `video_convert` VALUES ('100000', '87/0b/c7/870bc725b8e76c7', '.mp4', '1277174807');
 INSERT INTO `videos` VALUES ('100000', '100000', 'abc', 'xxxx', '15', '|aaaa|', '1230742859', '223', 'ad', '0', '1', '1', '1', '1', '1', '87/0b/c7/870bc725b8e76c7', '', '0', '0', '0', '1277174807', '0', '0', '0', '0', '0');
