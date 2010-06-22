@@ -6,7 +6,7 @@
       <h5>Search through all posts</h5>
       <div class="sidebar_item" id="search">
         <form action="<?php echo site_url('blog/search')?>" method="post">
-          <input name="search_field" type="text" class="search_field">
+          <input name="search_field_blog" type="text" class="search_field">
           <input name="search_field" type="submit" class="search_submit" value="">
         </form>
         <!-- #search form -->

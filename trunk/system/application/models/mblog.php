@@ -190,7 +190,7 @@ class Mblog extends Model{
         $this->db->delete('tblcomment',array('Blog'=>$id));
         return TRUE;        
     }
-    function search_blog($offset,$num)
+    function search_blog($num,$offset,$Keywords)
     {
         try
         {
@@ -207,13 +207,13 @@ class Mblog extends Model{
             tbladmin.Name");
             $this->db->from('tblblog');
             $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
-            $this->db->like('Keywords',$this->input->post('search_field'),'both') ;                    
+            $this->db->like('Keywords',$Keywords,'both') ;                    
             $this->db->order_by("tblblog.Date", "desc");
             $this->db->limit($num,$offset);
-            $query = $this->db->get();
-            if($query)
+            $query_search = $this->db->get();
+            if($query_search)
             {
-                return $query;
+                return $query_search;
 
             }
             return 0;            
@@ -222,6 +222,13 @@ class Mblog extends Model{
         {
             return 0;
         }
+    }
+    function count_record($Keywords)
+    {
+      $this->db->from('tblblog');
+      $this->db->where(array('Keywords'=>$Keywords));
+      $query = $this->db->count_all_results();
+      return $query;
     }
     function add_comment($Comment,$Blog,$Date,$Author,$Website,$Email,$Status,$CountComment)
     {        
