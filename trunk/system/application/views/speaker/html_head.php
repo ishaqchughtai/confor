@@ -5,8 +5,9 @@
 <!-- head -->
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="shortcut icon" href="<?php echo get_path('favicon.ico','img');?>" />
 	<!-- Title of page -->
-	<title>confor.ca user backend (speaker) test</title>
+	<title><?php echo isset($page_title)?$page_title:'Confor.ca';?></title>	
 	<script>
 		XEMMEX = {
 			baseUrl: '<?php echo site_url("/")?>'		
