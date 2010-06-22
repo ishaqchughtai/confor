@@ -1,12 +1,7 @@
             <div class="">
 
                 <h3><?php echo __("CON_video_list")?></h3>
-                    <ul class="link_conttrol">
-                        <li><a href="<?php echo site_url('admin/list_video_conference')?>">Video conference List</a></li>
-                        <li><a href="<?php echo site_url('admin/new_video_conference')?>">New video conference</a></li>
-                    </ul>
-
-				
+				<?php $this->load->view("admin/admin_menu_video");?>				
                 <p>&nbsp;	</p>
                 <h3><?php echo __("CON_list_view")?></h3>
 <label>Category</label>
