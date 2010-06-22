@@ -283,11 +283,11 @@ if ( ! function_exists('__'))
 
 if ( ! function_exists('get_random_top_adv'))
 {
-	function get_random_top_adv($category=FALSE)
+	function get_random_top_adv($category=FALSE, $limit=3)
 	{
 		$CI =& get_instance();
 		$CI->load->model('Madvertisement');
-		$items = $CI->Madvertisement->get_random_by_category($category, 3);
+		$items = $CI->Madvertisement->get_random_by_category($category, $limit);
 		return $items->result_array();
 		//....
 	}
