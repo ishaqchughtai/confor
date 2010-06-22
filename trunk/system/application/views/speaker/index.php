@@ -4,14 +4,11 @@
 			
 				<h3><?php echo lang('CON_profile');?></h3>
 				
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta nibh metus. Aliquam eget tellus vulputate nibh feugiat dictum nec nec tellus. Nullam vel turpis sit amet erat cursus hendrerit in ut odio. Quisque aliquam, leo a ultricies pulvinar, mi erat ullamcorper quam, sit amet ornare erat lacus non nisl. Proin facilisis tempor lobortis. Sed magna eros, aliquam euismod fringilla quis, mattis et nisi.</p>
-				
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta nibh metus. Aliquam eget tellus vulputate nibh feugiat dictum nec nec tellus. Nullam vel turpis sit amet erat cursus hendrerit in ut odio. Quisque aliquam, leo a ultricies pulvinar, mi erat ullamcorper quam, sit amet ornare erat lacus non nisl. Proin facilisis tempor lobortis. Sed magna eros, aliquam euismod fringilla quis, mattis et nisi.</p>
-				
-				<a href="<?php echo site_url('speaker/edit_profile')?>">Edit profile</a>
-				<br />
-				<a href="<?php echo site_url('speaker/change_password')?>">Change password</a>
-				
+				<ul class="link_conttrol">
+					<li><a href="<?php echo site_url('speaker/edit_profile')?>">Edit profile</a></li>
+					<li><a href="<?php echo site_url('speaker/change_password')?>">Change password</a></li>
+				</ul>				
+							
 			</div>
 			<!-- /.x2 - represents a half windows size div -->
 			

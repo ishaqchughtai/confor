@@ -309,6 +309,11 @@
 			// $this->_data['header'] = $header;
 			// $this->_data['side_bar'] = $side_bar;
 			
+			$this->_data['path'][] = array(
+				'name' => __("CON_video_list"),
+				'link' => site_url("admin/list_video_conference")
+			);				
+			
             $this->_data['query'] = $this->Madmin->get_all_video_conference();
             $this->_load_view('admin/video_conference_list'); 
         }

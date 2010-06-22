@@ -20,12 +20,6 @@
 		<?php endfor;?>			
 	</div>
 
-	<div class="right">
-
-		<a href="#" class="rss">Subscribe to RSS</a>
-
-	</div>
-
 </div>
 </div>
 <!-- /#header_info -->
