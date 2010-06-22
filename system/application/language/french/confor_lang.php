@@ -85,9 +85,11 @@ $lang['CON_no_permissions'] = 'You don\'t have the credentials to access this ar
 //------------------------------------------------------------------
 //COMMON
 //------------------------------------------------------------------
-$lang['CON_user_list'] = 'Danh sach cac user';
-$lang['CON_user_add'] = 'Them user';
-$lang['CON_user_edit'] = 'Cap nhat user';
+$lang['CON_user_list'] = '(fr)List users';
+$lang['CON_user_add'] = '(fr)Add new user';
+$lang['CON_user_edit'] = '(fr)Edit user';
+$lang['CON_control_panel'] = '(fr)Control Panel';
+$lang['CON_list_view'] = '(fr)List view';
 //------------------------------------------------------------------
 //SPEAKER
 //------------------------------------------------------------------
@@ -136,7 +138,17 @@ $lang['CON_admin_login'] = 'Dang nhap admin';
 $lang['CON_admin_list_all'] = 'Danh sach admin';
 $lang['CON_admin_add'] = 'Them admin';
 $lang['CON_admin_edit'] = 'Sua admin';
-
-
+//------------------------------------------------------------------
+//ADVERTISE
+//------------------------------------------------------------------
+$lang['CON_adv_list'] = '(fr)List all advertises';
+$lang['CON_adv_add'] = '(fr)Add advertise';
+$lang['CON_adv_edit'] = '(fr)Edit advertise';
+//------------------------------------------------------------------
+//VIDEO
+//------------------------------------------------------------------
+$lang['CON_video_list'] = '(fr)List video';
+$lang['CON_video_add'] = '(fr)Add video conference';
+$lang['CON_video_edit'] = '(fr)Edit video conference';
 /* End of file confor_lang.php */
 /* Location: ./system/application/language/french/confor_lang.php */

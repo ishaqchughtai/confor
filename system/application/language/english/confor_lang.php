@@ -86,6 +86,8 @@ $lang['CON_no_permissions'] = 'You don\'t have the credentials to access this ar
 $lang['CON_user_list'] = 'List users';
 $lang['CON_user_add'] = 'Add user';
 $lang['CON_user_edit'] = 'Edit user';
+$lang['CON_control_panel'] = 'Control Panel';
+$lang['CON_list_view'] = 'List view';
 //------------------------------------------------------------------
 //SPEAKER
 //------------------------------------------------------------------
@@ -138,6 +140,13 @@ $lang['CON_admin_edit'] = 'Edit admin';
 $lang['CON_adv_list'] = 'List all advertises';
 $lang['CON_adv_add'] = 'Add advertise';
 $lang['CON_adv_edit'] = 'Edit advertise';
+//------------------------------------------------------------------
+//VIDEO
+//------------------------------------------------------------------
+$lang['CON_video_list'] = 'List video';
+$lang['CON_video_add'] = 'Add video conference';
+$lang['CON_video_edit'] = 'Edit video conference';
+
 
 /* End of file confor_lang.php */
 /* Location: ./system/application/language/english/confor_lang.php */
