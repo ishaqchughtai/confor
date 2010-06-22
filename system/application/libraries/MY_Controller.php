@@ -54,7 +54,11 @@ class Frontend_controller extends MY_controller {
 	function _before_render() {
 		$side_bar['page'] = "home/sidebar";		
 		$side_bar['popular_video'] = $this->Mhome->get_popular_video();
-		$side_bar['recent_video'] = $this->Mhome->get_recent_video();					
+		$side_bar['recent_video'] = $this->Mhome->get_recent_video();		
+    //$side_bar['$count_video'] = $this->Mhome->count_record_archives();
+    $side_bar['categories'] = $this->Mhome->get_category();
+    $side_bar['dates'] = $this->Mhome->get_dates(); 
+    $side_bar['top_speaker'] = $this->Mhome->get_top_speaker();    
 		$this->_data['side_bar'] = $side_bar;		
 	}
 
