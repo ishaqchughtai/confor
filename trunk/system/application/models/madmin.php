@@ -84,7 +84,7 @@
             $query=$this->db->get('tblvideoconference');
             return $query->result_array();
         }
-        function get_video_conference_by_id()
+        function get_video_conference_by_id($id)
         {
             $query = $this->db->get_where('tblvideoconference',array('ID'=>$id)); 
             return $query;
