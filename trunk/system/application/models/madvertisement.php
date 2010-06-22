@@ -89,29 +89,16 @@
 
 
     //count record
-    function count_record()
+    function count_record($keyword)
     {
-        $this->db->select('
-        tbladvertisement.ID,
-        tbladvertisement.DateBeginning,
-        tbladvertisement.DateExpiry,
-        tbladvertisement.AdvertiserName,
-        tbladvertisement.AdvertiserEmail,
-        tbladvertisement.URL,
-        tbladvertisement.TextTips,
-        tbladvertisement.ImageLink
-        ');
         $this->db->from('tbladvertisement');
-        $this->db->like('AdvertiserName',$this->input->post('search_field'),'both');
-        $this->db->get();
+        $this->db->like('AdvertiserName',$keyword,'both');
         $query = $this->db->count_all_results();
         return $query;
     }
     // search advertisement
-    function search_advertisement()
+    function search($keyword,$per_page,$offset)
     {
-      try
-      {
         $this->db->select('
         tbladvertisement.ID,
         tbladvertisement.DateBeginning,
@@ -123,19 +110,16 @@
         tbladvertisement.ImageLink
         ');
         $this->db->from('tbladvertisement');
-        $this->db->like('AdvertiserName',$this->input->post('search_field'),'both');
+        $this->db->like('AdvertiserName',$keyword,'both');
+        $this->db->limit($per_page,$offset);
         $query = $this->db->get();
-        if($query)
-        {
-          return $query;
-
-        }
-        return 0;    
+        $adv=FALSE; 
+      foreach ($query->result_array() as $row_adv)
+      {                    
+        $adv[] = $row_adv;
       }
-      catch(Exception $e)
-      {
-        return 0;
-      }
+      $query->free_result();  
+      return $adv;
     }
     
     // Check email

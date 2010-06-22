@@ -1,8 +1,8 @@
     
-	<?php if(isset($error)):?>
-      <p class="not_warning "><span class="img"></span><?php echo $error;?><span class="close"></span></p>
+	<?php if(!$adv):?>
+      <p class="not_warning "><span class="img"></span>There are no results for your search.<span class="close"></span></p>
       <?php else:?>
-	<?php foreach($query as $row) {
+	<?php foreach($adv as $row) {
                                 $id = $row['ID'];
                                 $date_beginning = date("F jS Y", strtotime($row['DateBeginning']));
                                 $date_expiry = date("F jS Y", strtotime($row['DateExpiry']));
@@ -28,6 +28,7 @@
     </div>
     <?php }?>
 	<?php endif?>
-	<ul id="pagination">      
+	<ul id="pagination">
+    	<?php echo $pagination?>      
     </ul>    	
    

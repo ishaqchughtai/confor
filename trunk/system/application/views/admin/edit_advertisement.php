@@ -1,3 +1,18 @@
+<script type="text/javascript">
+	$(function() {
+		$("#datepicker").datepicker({
+				dateFormat: 'yy/mm/dd',
+				onSelect: function(dateText, inst) {   
+					 //$('#datepicker').val(dateText);
+					 gogo = dateText;
+					 //alert(gogo);
+				}				
+			}
+		);
+		$("#format").change(function() { 
+		$('#datepicker').datepicker('option', {dateFormat: $(this).val()}); });
+	});
+	</script>
 <?php
  foreach($query as $row)
 {
@@ -21,7 +36,7 @@
 						<p>
 						
 							<label for="date_expiry">Date Expiry:</label>
-							<input name="date_expiry" class="medium" id="date_expiry" value="<?php echo $dateExpiry?>" />
+							<input name="date_expiry" class="medium" id="datepicker" value="<?php echo $dateExpiry?>" />
 							<?php echo form_error('date_expiry')?>
 						
 						</p>

@@ -1,6 +1,11 @@
-<?php	
-	//echo $var1.'/'.$var2.'/'.$side_bar['var3'];
-?>
+<script type="text/javascript">
+function search_click (){
+ keyword = $('#keyword').val();
+ gogo = XEMMEX.baseUrl + "event/search_event/" + keyword + "/5";
+ window.location = gogo;
+ return false;
+}
+</script>
 </div>
 			<div id="right">
 			
@@ -8,10 +13,10 @@
 				<h5>Search through all events</h5>
 				
 			  <div class="sidebar_item" id="search">
-					<?php echo form_open('event/search')?>
+					<?php echo form_open('event/search_event')?>
 					
-						<input name="search_field" type="text" class="search_field">
-				        <input name="btnsubmit" type="submit" class="search_submit" value="" />
+						<input name="search_field" type="text" class="search_field" id="keyword">
+				        <input name="btnsubmit" type="submit" class="search_submit" value="" onclick="return search_click();" />
 					<?php echo form_close()?>
 					<!-- #search form -->
 				
@@ -28,31 +33,29 @@
 				  <ul id="ctabs">
 				    <li>
 				      <ul class="ctabs_content">
-				        <li><a href="#">Actuality</a></li>
-				        <li><a href="#">Technology</a></li>
-				        <li><a href="#">Interview</a></li>
-				        <li><a href="#">Design</a></li>
-				        <li><a href="#">Mobile</a></li>
-				        <li><a href="#">Movies</a></li>
+				        <?php foreach($categories as $row):?>
+				        <li><a href="<?php echo site_url('category/get_category/'.$row['ID'])?>"><?php echo $row['Name']?></a></li>
+                        <?php endforeach?>
 			          </ul>
 				      <!-- /.ctabs_content -->
 			        </li>
 				    <!-- /#ctabs item -->
 				    <li>
 				      <ul class="ctabs_content">
-				        <li><a href="#">March 2010 (8)</a></li>
-				        <li><a href="#">February 2010 (3)</a></li>
-				        <li><a href="#">January 2010 (14)</a></li>
-				        <li><a href="#">December 2009 (17)</a></li>
-				        <li><a href="#">November 2009 (22)</a></li>
+				        <?php foreach($dates as $row):?>
+				        <li>
+                        <a href="<?php echo site_url('video/archives/'.date("m", strtotime($row['month_yy'])).'/'.date("Y", strtotime($row['month_yy'])))?>"><?php echo $row['month_yy'];?>(8)</a>
+                        </li>
+                      <?php endforeach?>
 			          </ul>
 				      <!-- /.ctabs_content -->
 			        </li>
 				    <!-- /#ctabs item -->
 				    <li>
 				      <ul class="ctabs_content">
-				        <li><a href="#">Robert Piche?</a></li>
-				        <li><a href="#">Hubert Reeves</a></li>
+				        <?php foreach($top_speaker as $row):?>
+				        <li><a href="<?php echo site_url('video/speaker').'/'.$row['Speaker']?>"><?php echo $row['Name']?></a></li>
+                      <?php endforeach?>
 			          </ul>
 				      <!-- /.ctabs_content -->
 			        </li>
@@ -159,13 +162,13 @@
               
               
 				<div class="sidebar_item">
-					<h3>E?vènements</h3>
+					<h3>E?vènements</h3>
 					<div id="datepicker"></div>
                     <ul>
-                    	<li><a href="a">E?vènement 1</a></li>
-                        <li><a href="b">E?vènement 2</a></li>
-                        <li><a href="c">E?vènement 3</a></li>
-                        <li><a href="d">E?vènement 4</a></li>
+                    	<li><a href="a">E?vènement 1</a></li>
+                        <li><a href="b">E?vènement 2</a></li>
+                        <li><a href="c">E?vènement 3</a></li>
+                        <li><a href="d">E?vènement 4</a></li>
                     </ul>
 					
 				</div>
