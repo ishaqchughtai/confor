@@ -18,7 +18,7 @@
                                 $countcomment = $row['CountComment'];      
                             ?>
       <div class="content_item">
-        <?php if($is_admin):?>
+        <?php if($this->session->userdata('admin')==TRUE):?>
         <h3><a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>"><?php echo $title ?></a></h3>
         <h5>By <?php echo $author ?> in :
           <?php for($i=0;$i<count($key);$i++){?>

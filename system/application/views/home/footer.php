@@ -1,4 +1,6 @@
-<?php $this->load->view($side_bar['page'], $side_bar);?> 
+<?php $this->load->view($side_bar['page'], $side_bar);
+    $ramdomvideo = get_random_top_video($category);
+?> 
 	<div id="footer" style="width:100%">
 	
 		<div id="footer_wrapper">
@@ -72,23 +74,12 @@
 				<div id="footer_column_4">
 				
 					<h6>Randomly selected videos</h6>
-					
-					<a href="<?php echo base_url();?>assets/post_1.jpg" class="lightbox"><img src="<?php echo base_url();?>assets/flickr1.gif" width="81" height="52" alt="flickr"></a>
-					
-					<a href="<?php echo base_url();?>assets/post_1.jpg" class="lightbox"><img src="<?php echo base_url();?>assets/flickr2.gif" width="81" height="52" alt="flickr"></a>
-					
-					<a href="<?php echo base_url();?>assets/post_1.jpg" class="lightbox"><img src="<?php echo base_url();?>assets/flickr3.gif" width="81" height="52" alt="flickr"></a>
-					
-					<a href="<?php echo base_url();?>assets/post_1.jpg" class="lightbox"><img src="<?php echo base_url();?>assets/flickr4.gif" width="81" height="52" alt="flickr"></a>
-					
-					<a href="<?php echo base_url();?>assets/post_1.jpg" class="lightbox"><img src="<?php echo base_url();?>assets/flickr2.gif" width="81" height="52" alt="flickr"></a>
-					
-					<a href="<?php echo base_url();?>assets/post_1.jpg" class="lightbox"><img src="<?php echo base_url();?>assets/flickr4.gif" width="81" height="52" alt="flickr"></a>
-					
-					<a href="<?php echo base_url();?>assets/post_1.jpg" class="lightbox"><img src="<?php echo base_url();?>assets/flickr1.gif" width="81" height="52" alt="flickr"></a>
-					
-					<a href="<?php echo base_url();?>assets/post_1.jpg" class="lightbox"><img src="<?php echo base_url();?>assets/flickr3.gif" width="81" height="52" alt="flickr"></a>
-				
+				<?php for($i=0; $i<count($ramdomvideo); $i++):?>
+                <a href="<?php echo site_url('home/play/'.$ramdomvideo[$i]['ID'])?>">
+                <img src="<?php echo base_url().'thumbs/'.$ramdomvideo[$i]['ImagesLink']?>" width="81" height="52" alt="flickr">
+                </a>                            
+                <!-- /.content .top_box_block -->
+            <?php endfor;?>
 				</div>
 				<!-- /#footer_column_4 -->
 				

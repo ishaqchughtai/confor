@@ -4,8 +4,8 @@
 <a href="<?php echo site_url('ticket/open_tickets')?>">Open Tickets <?php echo '('.$query_count_record_open.')'?></a> // <a href="<?php echo site_url('ticket/closed_tickets')?>">Closed Tickets <?php echo '('.$query_count_record_closed.')'?></a>           
     </div>
 </div>
-<?php                     
-    foreach($open_tickets as $row){                               
+ <?php                     
+    foreach($closed_tickets as $row){                               
         $id = $row['ID'];
         $title = $row['Title'];
         $text = $row['Message'];                               

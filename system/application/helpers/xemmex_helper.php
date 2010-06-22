@@ -292,6 +292,17 @@ if ( ! function_exists('get_random_top_adv'))
 		//....
 	}
 }
+if ( ! function_exists('get_random_top_video'))
+{
+    function get_random_top_video($category=FALSE)
+    {
+        $CI =& get_instance();
+        $CI->load->model('Mhome');
+        $items = $CI->Mhome->get_random_by_video($category, 8);
+        return $items->result_array();
+        //....
+    }
+}
 
 /* End of file xemmex_helper.php */ 
 /* Location: ./system/application/helpers/xemmex_helper.php */ 

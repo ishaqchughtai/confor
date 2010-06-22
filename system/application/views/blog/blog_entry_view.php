@@ -50,7 +50,7 @@
       <!-- /.content_item -->
 	  
       <div id="comments" class="content_item">
-        <h3><?php echo $countcommenttemp?> commentaires pour "<a href="#">Laissez votre avatar nous parler</a>"</h3>
+        <h3><?php echo $countcommenttemp?> commentaires pour "<a href="#"><?php echo $titletemp?></a>"</h3>
         <!-- Content -->
         <?php foreach($query_show_comment as $row){                               
                                 $id = $row['ID'];
@@ -58,9 +58,8 @@
                                 $author = $row['Author'];
                                 $date = $row['Date'];
                                 $final_date=date("F jS Y", strtotime($date));
-                                $final_time=date("h:i a",strtotime($date))      
-        ?>
-		
+                                $final_time=date("h:i a",strtotime($date));      
+        ?>		
         <ol>
           <li> <img src="<?php echo base_url().'assets/uploads/image/'.$linktemp?>" alt="XemmeX" width="80" height="80"  class="comment_image" />
             <!-- Author Image -->
@@ -76,8 +75,8 @@
               <br />
               <br />
               <!-- BreakLine -->
-              <?php echo $comment?> 
-			 </p>
+              <?php echo $comment?>
+              </p> <p style="color: white;"><?php echo $date?></p>
             <!-- Content -->
           </li>
           <!-- /#comments ol li -->

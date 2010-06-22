@@ -1,11 +1,11 @@
 <!-- /.content_item -->
 <div id="header_info">
     <div class="left">
-<a href="<?php echo site_url('ticket/open_tickets')?>">Open Tickets <?php echo '('.$query_count_record_open.')'?></a> // <a href="<?php echo site_url('ticket/closed_tickets')?>">Closed Tickets <?php echo '('.$query_count_record_closed.')'?></a>           
+<a href="<?php echo site_url('ticket/open_tickets_speaker')?>">Open Tickets <?php echo '('.$query_count_record_open_speaker.')'?></a> // <a href="<?php echo site_url('ticket/closed_tickets_speaker')?>">Closed Tickets <?php echo '('.$query_count_record_closed_speaker.')'?></a>           
     </div>
 </div>
 <?php                     
-    foreach($open_tickets as $row){                               
+    foreach($open_tickets_speaker as $row){                               
         $id = $row['ID'];
         $title = $row['Title'];
         $text = $row['Message'];                               
@@ -37,12 +37,12 @@
         }      
     ?>
     <div class="content_item">
-        <h3><a href="<?php echo site_url('ticket/ticket_content/'.$id); ?>"><?php echo $title ?><img src="<?php echo $Answer?>" alt=""></img></a></h3>
+        <h3><a href="<?php echo site_url('ticket/ticket_content_speaker/'.$id); ?>"><?php echo $title ?><img src="<?php echo $Answer?>" alt=""></img></a></h3>
         <h5>By <?php echo $author ?> // Date :<?php echo  $final_date?> // Status :<?php echo $Status_text?>
         </h5>
         <?php echo $text?><br/>
         <br/>
-    <a href="<?php echo site_url('ticket/ticket_content/'.$id); ?>" class="read_more">Continue Reading</a> </div>
+    <a href="<?php echo site_url('ticket/ticket_content_speaker/'.$id); ?>" class="read_more">Continue Reading</a> </div>
     <?php }?>
 <!-- /.content_item -->
 <ul id="pagination">
