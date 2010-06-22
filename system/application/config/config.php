@@ -36,7 +36,7 @@ $config['index_page'] = "index.php";
 |    e.g. /fckeditor/ or /system/plugins/fckeditor/  etc...
 |
 */
-$config['fckeditor_basepath']    = "/confor/system/plugins/fckeditor/";
+$config['fckeditor_basepath']    = "/confor/system/application/plugins/fckeditor/";
 
 /*
 |--------------------------------------------------------------------------
