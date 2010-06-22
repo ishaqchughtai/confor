@@ -18,27 +18,18 @@
 										
 			  </div>
 				<!-- /.content_item -->
-              <div class="x3_2">
-
-                    <div class="x3" style="border-color:#FFF; border:thick;">
-                    <img src="<?php echo base_url();?>assets/bolck_285x285.png" />
-					Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellen eu, pretium quis, sem.</div>
-                    
-                  <div class="x3 no_margin" style="border-color:#FFF; border:thick;">
-                    <img src="<?php echo base_url();?>assets/bolck_285x285.png" />
-                    Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</div>
-                    
-                </div>
                 
-              <div class="x3_2">
-
-                    <div class="x3" style="border-color:#FFF; border:thick;">
-                    <img src="<?php echo base_url();?>assets/bolck_285x285.png" />
-					Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellen eu, pretium quis, sem.</div>
-                    
-                  <div class="x3 no_margin" style="border-color:#FFF; border:thick;">
-                    <img src="<?php echo base_url();?>assets/bolck_285x285.png" />
-                    Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.</div>
-                    
+                <?php 
+	$advs = get_random_top_adv($category,4);
+	//print_r($ar);
+	$attr = array('width'=>'89', 'height'=>'75', 'class'=>'icon');
+?>
+		<div class="x3_2">			
+			<?php for($i=0; $i<count($advs); $i++):?>							
+				<div class="x3<?php if(($i+1)%2==0) echo ' no_margin_r';?>" style="border-color:#FFF; border:thick;">
+		        	<a href="<?php echo $advs[$i]['URL']?>"><img src="<?php echo base_url().'assets/uploads/adv/'.$advs[$i]['ImageLink']?>" width="285" height="285" class="icon"></a> 
+                    <p><?php echo $advs[$i]['TextTips']?></p>
                 </div>
-			
+				<!-- /.content .top_box_block -->
+			<?php endfor;?>
+		</div>

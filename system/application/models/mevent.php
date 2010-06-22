@@ -25,7 +25,7 @@
       return $query->result_array();
     }
 
-    function count_record($date)
+    function count_record_by_date($date)
     {
       $this->db->from('tblevent');
       $this->db->where(array('Date'=>$date));
@@ -58,32 +58,8 @@
       }
       $query->free_result();  
       return $events;
-      //return $query->result();
     }
 
-    //function get_event_by_title($title)
-    //        {
-    //            $this->db->select('
-    //            tblevent.ID,
-    //            tblspeaker.Name,
-    //            tblevent.`Date`,
-    //            tblevent.Title,
-    //            tblevent.Subject,
-    //            tblevent.Keywords,
-    //            tblevent.Description
-    //            ');
-    //            $this->db->from('tblevent');
-    //            $this->db->join('tblspeaker','tblevent.Speaker = tblspeaker.ID');
-    //            $this->db->where(array('Title'=>$titles));
-    //            $query = $this->db->get();
-    //            foreach ($query->result_array() as $row_event)
-    //            {                    
-    //                $titles[] = $row_event;
-    //            }
-    //            $query->free_result();  
-    //            return $titles;
-    //            return $query->result();
-    //        }
 
     function get_event_by_id($id)
     {
@@ -188,36 +164,41 @@
       $this->db->delete('tblevent',array('ID'=>$id));
     }
 
-    function search_event()
+    function count_record_by_keywords($keywords)
     {
-      try
-      {
-        $this->db->select('
-        tblevent.ID,
-        tblspeaker.Name,
-        tblevent.`Date`,
-        tblevent.Title,
-        tblevent.Subject,
-        tblevent.Keywords,
-        tblevent.Description
-        ');
-        $this->db->from('tblevent');
-        $this->db->join('tblspeaker','tblevent.Speaker = tblspeaker.ID');
-        $this->db->like('title',$this->input->post('search_field'),'both') ;
-        $query = $this->db->get();
-        if($query)
-        {
-          return $query;
+      $this->db->from('tblevent');
+      $this->db->like('Keywords', $keywords);
+      $query = $this->db->count_all_results();
+      return $query;
+    }
 
-        }
-        return 0;    
+
+    function search_event($keywords,$per_page,$offset)
+    {
+      //try
+      //      {
+      $this->db->select('
+      tblevent.ID,
+      tblspeaker.Name,
+      tblevent.`Date`,
+      tblevent.Title,
+      tblevent.Subject,
+      tblevent.Keywords,
+      tblevent.Description
+      ');
+      $this->db->from('tblevent');
+      $this->db->join('tblspeaker','tblevent.Speaker = tblspeaker.ID');
+      $this->db->like('title',$keywords,'both') ;
+      $this->db->limit($per_page,$offset);
+
+      $query = $this->db->get();
+      $events=FALSE; 
+      foreach ($query->result_array() as $row_event)
+      {                    
+        $events[] = $row_event;
       }
-      catch(Exception $e)
-      {
-        return 0;
-      }
+      $query->free_result();  
+      return $events;
     }
   }
 ?>
-
-

@@ -22,7 +22,8 @@
 					?>
 					<h5>By <?php echo $speaker?> in : 
 					<?php for($i=0;$i<count($keyword);$i++){?>
-          <a href="#"><?php echo $keyword[$i]?></a>,
+          <a href="#"><?php echo $keyword[$i]?></a>
+          <?php if ($i<count($keyword)-1) echo ','?>
           <?php ;}?> // 
 		  			<?php echo $date;?></h5>
 					<p> <?php echo _substr($description,200)?></p>

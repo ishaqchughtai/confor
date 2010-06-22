@@ -1,6 +1,4 @@
-<?php	
-	//echo $var1.'/'.$var2.'/'.$side_bar['var3'];
-?>
+<?php $page = 5;?>
 </div>
 			<div id="right">
 			
@@ -20,6 +18,8 @@
 				</div>
 				<!-- /.sidebar_item #search -->
                 
+                
+                
 				<div class="sidebar_item">
 				  <ul id="tabs">
 				    <li>Categories</li>
@@ -27,34 +27,36 @@
 				    <li>Speakers</li>
 			      </ul>
 				  <!-- /#tabs -->
+                  
+                  
 				  <ul id="ctabs">
 				    <li>
 				      <ul class="ctabs_content">
-				        <li><a href="#">Actuality</a></li>
-				        <li><a href="#">Technology</a></li>
-				        <li><a href="#">Interview</a></li>
-				        <li><a href="#">Design</a></li>
-				        <li><a href="#">Mobile</a></li>
-				        <li><a href="#">Movies</a></li>
+                      <?php foreach($categories as $row):?>
+				        <li><a href="<?php echo site_url('category/get_category/'.$row['ID']).'/'.$page?>"><?php echo $row['Name']?></a></li>
+                        <?php endforeach?>
 			          </ul>
 				      <!-- /.ctabs_content -->
 			        </li>
 				    <!-- /#ctabs item -->
 				    <li>
 				      <ul class="ctabs_content">
-				        <li><a href="#">March 2010 (8)</a></li>
-				        <li><a href="#">February 2010 (3)</a></li>
-				        <li><a href="#">January 2010 (14)</a></li>
-				        <li><a href="#">December 2009 (17)</a></li>
-				        <li><a href="#">November 2009 (22)</a></li>
+                      <?php foreach($dates as $row):?>
+				        <li>
+                        <a href="<?php echo site_url('video/archives/'.date("m", strtotime($row['month_yy'])).'/'.date("Y", strtotime($row['month_yy'])).'/'.$page)?>"><?php echo $row['month_yy'];?>
+                        
+                        </a>
+                        </li>
+                      <?php endforeach?>
 			          </ul>
 				      <!-- /.ctabs_content -->
 			        </li>
 				    <!-- /#ctabs item -->
 				    <li>
 				      <ul class="ctabs_content">
-				        <li><a href="#">Robert Piche?</a></li>
-				        <li><a href="#">Hubert Reeves</a></li>
+                      <?php foreach($top_speaker as $row):?>
+				        <li><a href="<?php echo site_url('video/speaker').'/'.$row['Speaker'].'/'.$page?>"><?php echo $row['Name']?></a></li>
+                      <?php endforeach?>
 			          </ul>
 				      <!-- /.ctabs_content -->
 			        </li>
@@ -164,10 +166,10 @@
 					<h3><?php echo __("CON_event")?></h3>
 					<div id="datepicker"></div>
                     <ul>
-                    	<li><a href="a">E?vènement 1</a></li>
-                        <li><a href="b">E?vènement 2</a></li>
-                        <li><a href="c">E?vènement 3</a></li>
-                        <li><a href="d">E?vènement 4</a></li>
+                    	<li><a href="a">E?vènement 1</a></li>
+                        <li><a href="b">E?vènement 2</a></li>
+                        <li><a href="c">E?vènement 3</a></li>
+                        <li><a href="d">E?vènement 4</a></li>
                     </ul>
 					
 				</div>
