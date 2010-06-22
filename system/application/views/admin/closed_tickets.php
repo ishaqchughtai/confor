@@ -37,12 +37,12 @@
         }      
     ?>
     <div class="content_item">
-        <h3><a href="<?php echo site_url('ticket/ticket_content/'.$id); ?>"><?php echo $title ?><img src="<?php echo $Answer?>" alt=""></img></a></h3>
+        <h3><a href="<?php echo site_url('ticket/ticket_content_closed/'.$id); ?>"><?php echo $title ?><img src="<?php echo $Answer?>" alt=""></img></a></h3>
         <h5>By <?php echo $author ?> // Date :<?php echo  $final_date?> // Status :<?php echo $Status_text?>
         </h5>
         <?php echo $text?><br/>
         <br/>
-    <a href="<?php echo site_url('ticket/ticket_content/'.$id); ?>" class="read_more">Continue Reading</a> </div>
+    <a href="<?php echo site_url('ticket/ticket_content_closed/'.$id); ?>" class="read_more">Continue Reading</a> </div>
     <?php }?>
 <!-- /.content_item -->
 <ul id="pagination">
