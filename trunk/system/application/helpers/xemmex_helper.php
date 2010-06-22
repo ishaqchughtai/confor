@@ -283,15 +283,57 @@ if ( ! function_exists('__'))
 
 if ( ! function_exists('get_random_top_adv'))
 {
-	function get_random_top_adv($category=FALSE, $limit=3)
+	function get_random_top_adv($category=FALSE)
 	{
 		$CI =& get_instance();
 		$CI->load->model('Madvertisement');
-		$items = $CI->Madvertisement->get_random_by_category($category, $limit);
+		$items = $CI->Madvertisement->get_random_by_category($category, 3);
 		return $items->result_array();
 		//....
 	}
 }
+if ( ! function_exists('get_random_top_video'))
+{
+    function get_random_top_video($category=FALSE)
+    {
+        $CI =& get_instance();
+        $CI->load->model('Mhome');
+        $items = $CI->Mhome->get_random_by_video($category, 8);
+        return $items->result_array();
+        //....
+    }
+}
+
+if ( ! function_exists('xm_generateRandStr'))
+{
+	function xm_generateRandStr($length)
+	{
+		$randstr = "";
+		for ($i = 0; $i < $length; $i++) 
+		{
+			$randnum = mt_rand(0, 61);
+			if ($randnum < 10) 
+			{
+			  $randstr .= chr($randnum + 48);
+			} elseif ($randnum < 36) 
+			{
+			  $randstr .= chr($randnum + 55);
+			} else 
+			{
+			  $randstr .= chr($randnum + 61);
+			}
+		}
+		return $randstr;
+	}
+}
+
+if ( ! function_exists('xm_generateRandID'))
+{
+	function xm_generateRandID()
+    {
+        return md5($this->xm_generateRandStr(16));
+    }
+}	 
 
 /* End of file xemmex_helper.php */ 
 /* Location: ./system/application/helpers/xemmex_helper.php */ 
