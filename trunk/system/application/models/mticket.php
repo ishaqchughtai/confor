@@ -89,7 +89,7 @@
             $this->db->where('tblticket.ID',$id);
             $this->db->join('tblspeaker','tblticket.Speaker=tblspeaker.ID');
             $query = $this->db->get();
-            return $query->result_array();
+            return $query->result_array();  
         }
         function show_feedback_by_id_ticket($id)
         {
