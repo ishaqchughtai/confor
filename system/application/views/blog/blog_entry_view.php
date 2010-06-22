@@ -76,7 +76,7 @@
               <br />
               <!-- BreakLine -->
               <?php echo $comment?>
-              </p> <p style="color: white;"><?php echo $date?></p>
+              </p> <p style="width:10px">&nbsp;</p>
             <!-- Content -->
           </li>
           <!-- /#comments ol li -->

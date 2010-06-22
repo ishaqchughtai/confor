@@ -41,9 +41,11 @@
 			
 			<div class="x3 no_margin">
 			
-				<h3>One third width column</h3>
-				
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta nibh metus. Aliquam eget tellus vulputate nibh feugiat dictum nec nec tellus. Nullam vel turpis sit amet erat cursus hendrerit in ut odio. Quisque aliquam, leo a ultricies pulvinar, mi erat ullamcorper quam, sit amet ornare erat lacus non nisl. Proin facilisis tempor lobortis. Sed magna eros, aliquam euismod fringilla quis, mattis et nisi.</p>
+				<h3>Tickets</h3>				
+				<ul class="link_conttrol">
+					<li><a href="<?php echo site_url('ticket')?>">List tickets</a></li>
+					<li><a href="<?php echo site_url('ticket/send_ticket_by_speaker')?>">Add new ticket</a></li>
+				</ul>	
 			
 			</div>
 			<!-- /.x3 - represents a third windows size div -->		

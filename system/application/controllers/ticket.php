@@ -1,8 +1,8 @@
 <?php
-    class Ticket extends Frontend_controller {
+    class Ticket extends Speaker_controller {
         function Ticket()
         {
-            parent::Frontend_controller();
+            parent::Speaker_controller();
             $this->_container = 'container';        
             $this->load->model('Mticket');        
             $this->load->helper('date');     
