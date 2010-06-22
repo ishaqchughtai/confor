@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://huunam09.game-server.cc/confor/";
+$config['base_url']	= "http://localhost/confor/";
 
 /*
 |--------------------------------------------------------------------------

@@ -4,10 +4,7 @@
               <div class="x2">
 
                     <h3>Add new video</h3>
-                    <ul class="link_conttrol">
-                        <li><a href="<?php echo site_url('admin/list_video_conference')?>">Video conference List</a></li>
-                        <li><a href="<?php echo site_url('admin/new_video_conference')?>">New video conference</a></li>
-                    </ul>
+					<?php $this->load->view("admin/admin_menu_video");?>
                     <p>&nbsp;	</p>
                     <h3>Add video conference </h3> 
 					  <?php echo form_open('admin/add_new_video_conference/');?>
