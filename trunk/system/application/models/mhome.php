@@ -103,5 +103,14 @@
       $query = $this->db->get();
       return $query->result_array();
     }
+	
+	function get_random_by_video($category, $limit) 
+	{
+		$this->db->from('tblvideoconference');
+		//$this->db->where('category', $category);
+		$this->db->order_by("RAND()");
+		$this->db->limit($limit);
+		return $this->db->get();
+	}	
   }
 ?>
