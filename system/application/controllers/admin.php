@@ -303,16 +303,14 @@
         /*Video Conference*/
         function list_video_conference()
         {
-            if($this->session->userdata('admin')==FALSE)
-            {
-                redirect(site_url("admin"));
-            }
-            else
-            {
-                $this->_data['query'] = $this->Madmin->get_all_video_conference();
-                $this->_load_view('admin/video_conference_list');
-            }
-
+			is_admin();
+			// $header['page'] = "admin/header";
+			// $side_bar['page'] = "admin/sidebar";
+			// $this->_data['header'] = $header;
+			// $this->_data['side_bar'] = $side_bar;
+			
+            $this->_data['query'] = $this->Madmin->get_all_video_conference();
+            $this->_load_view('admin/video_conference_list'); 
         }
         function new_video_conference()
         {
@@ -322,21 +320,21 @@
 		
         function edit_video_conference($id)
         {
-            if($this->session->userdata('admin')=="")
-            {                                                
-                redirect(site_url("admin"));
-            }
-            else
-            {
-                $this->_data['query']=$this->Madmin->get_video_conference_by_id($id);
-                if($this->input->post('Submit')){
-                    
-                }
-                else
-                {
-                    $this->_load_view('admin/edit_video_conference');
-                }
-            }    
+			is_admin();
+			// $header['page'] = "admin/header_panel";
+			// $side_bar['page'] = "admin/sidebar_empty";
+			// $this->_data['header'] = $header;
+			// $this->_data['side_bar'] = $side_bar;
+		
+			$this->_data['query']=$this->Madmin->get_video_conference_by_id($id);
+			if($this->input->post('Submit')){
+				
+			}
+			else
+			{
+				$this->_load_view('admin/edit_video_conference');
+			}
+
         }
     }
 ?>

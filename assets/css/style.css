@@ -1681,3 +1681,19 @@ input.checkbox {
 		width: 12px;
 		
 	}
+
+table {
+ background-color: #efefef;
+}
+
+th {
+ background-color: #eee;
+ font-weight: bold;
+ padding: 6px;
+ text-align: left;
+}
+
+td {
+ background-color: #fff;
+ padding: 6px;
+}	
