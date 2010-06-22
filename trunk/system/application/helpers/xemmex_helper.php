@@ -267,6 +267,7 @@ if (! function_exists('_substr'))
 	}
 }
 
+// this function for get text by key in currently language
 if ( ! function_exists('__'))
 {
 	function __($line, $id = '')
