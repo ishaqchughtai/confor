@@ -304,5 +304,36 @@ if ( ! function_exists('get_random_top_video'))
     }
 }
 
+if ( ! function_exists('xm_generateRandStr'))
+{
+	function xm_generateRandStr($length)
+	{
+		$randstr = "";
+		for ($i = 0; $i < $length; $i++) 
+		{
+			$randnum = mt_rand(0, 61);
+			if ($randnum < 10) 
+			{
+			  $randstr .= chr($randnum + 48);
+			} elseif ($randnum < 36) 
+			{
+			  $randstr .= chr($randnum + 55);
+			} else 
+			{
+			  $randstr .= chr($randnum + 61);
+			}
+		}
+		return $randstr;
+	}
+}
+
+if ( ! function_exists('xm_generateRandID'))
+{
+	function xm_generateRandID()
+    {
+        return md5($this->xm_generateRandStr(16));
+    }
+}	 
+
 /* End of file xemmex_helper.php */ 
 /* Location: ./system/application/helpers/xemmex_helper.php */ 

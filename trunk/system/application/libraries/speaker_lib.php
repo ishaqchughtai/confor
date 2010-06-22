@@ -8,8 +8,7 @@
  * @author		Nguyen Hai Dang - XEMMEX developer
  */
 class Speaker_lib 
-{ 
-	private $lg='';
+{ 	
 	var $redirect_login = '/home/login';
 	
 	function Speaker_lib()
@@ -18,7 +17,6 @@ class Speaker_lib
 		$this->CI->load->model('MSpeaker');
 		$this->CI->load->model('Remember_me');
 		$this->CI->load->helper('cookie');		
-		$this->lg = xemmex_language();
 	}
 
 	// --------------------------------------------------------------------
@@ -33,6 +31,7 @@ class Speaker_lib
 	{
 		if ($this->CI->session->userdata('speaker_id')) 
 		{
+			$fields = array('','','','');
 			$speaker_data = array
 			(
 				'speaker_id' => $this->CI->session->userdata('speaker_id'),
