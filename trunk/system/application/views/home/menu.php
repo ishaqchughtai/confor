@@ -3,11 +3,12 @@
 	<ul>
 		<li><a href="<?php echo site_url("") ?>"><?php echo __("CON_home")?></a>
 			<ul>
-				<li><a href="<?php echo site_url("home/about") ?>"><?php echo __("CON_about")?></a>
+				<li><a href="<?php echo site_url("Accessories/show_element/about") ?>" ><?php echo __("CON_about")?></a>
 					<ul>
-						<li><a href="<?php echo site_url("home/howto") ?>"><?php echo __("CON_howto")?></a></li>
+                        <li><a href="<?php echo site_url("Accessories/show_element/how") ?>" ><?php echo __("CON_howto")?></a></li>
+						<li><a href="<?php echo site_url("Accessories/show_element/rules") ?>" ><?php echo __("CON_howto")?></a></li>
 					
-						<li><a href="<?php echo site_url("home/rules") ?>"><?php echo __("CON_rules")?></a></li>
+						<li><a href="<?php echo site_url("Accessories/show_element/rules") ?>" ><?php echo __("CON_rules")?></a></li>
 					</ul>
 				</li>
 				<li><a href="<?php echo site_url("home/contact")?>"><?php echo __("CON_contact")?></a></li>	
@@ -16,7 +17,7 @@
 		
 		<li><a href="<?php echo site_url("home/video") ?>"><?php echo __("CON_conference_office")?></a></li>
 			
-		<li><a href="<?php echo site_url("/") ?>"><?php echo __("CON_training")?></a></li>
+		<li><a href="<?php echo site_url("Accessories/show_element/training") ?>"><?php echo __("CON_training")?></a></li>
 	
 		<li><a href="<?php echo site_url("blog") ?>"><?php echo __("CON_blog")?></a></li>
 		
