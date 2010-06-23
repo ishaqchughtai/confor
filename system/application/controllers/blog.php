@@ -329,7 +329,6 @@ class Blog extends Frontend_controller {
             if($this->form_validation->run()==FALSE)
             {
                 $this->get_blog($id);
-                //redirect('blog/get_blog/'.$id);
             }else
             {
                 $Author=$this->session->userdata('id');
@@ -444,6 +443,4 @@ class Blog extends Frontend_controller {
             redirect('blog/blog_content_admin'.'/'.$authortemp.'/'.$titletemp);
         }
     }        
-
-
 }
