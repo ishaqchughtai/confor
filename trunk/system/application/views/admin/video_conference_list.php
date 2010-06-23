@@ -1,5 +1,5 @@
             <div class="">
-
+<form action="" method="post" enctype="multipart/form-data" class="global" name="video">
                 <h3><?php echo __("CON_video_list")?></h3>
 				<?php $this->load->view("admin/admin_menu_video");?>				
                 <p>&nbsp;	</p>
@@ -8,10 +8,14 @@
 <select id="category" name="video_category" style="width:200px">
 <option value="0" selected="selected" >(all)</option>
 <?php foreach($category as $cat):?>
-  <option value="<?php echo $cat['ID'];?>"><?php echo $cat['Category'];?></option>
+  <option value="<?php echo $cat['ID'];?>"><?php echo $cat['Name'];?></option>
 <?php endforeach ?>  
-</select>				
-
+</select>
+<input name="btnsubmit" type="submit" class="submit" value="Show" /> 				
+</form>       <ul id="pagination">
+        <li><?php echo $pagination?></li>
+      </ul><p>
+  
 <table border="0" cellpadding="0" cellspacing="1" style="width:100%">
  <tr>
 	<th width="65">Action</th>	
@@ -31,10 +35,11 @@
 	<td><?php echo $row['viewed']?></td>
 	
  </tr>
+
 <?php endforeach ?>
 </table>
+<p/>
 
-<?php //echo $paginate; ?>
 
                 <div class="divider"></div>
 

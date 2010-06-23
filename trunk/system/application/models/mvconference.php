@@ -6,7 +6,17 @@
         }
         function get_top_viewed_video()
         {
-            $query=$this->db->query("SELECT tblvideoconference.vid_id,tblvideoconference.title,tblvideoconference.description,tblvideoconference.viewed,tblvideoconference.vhash,tblspeaker.Name,tblspeaker.FirstName FROM tblvideoconference ,tblspeaker WHERE tblvideoconference.Speaker =  tblspeaker.vid_id order by tblvideoconference.viewed DESC LIMIT 1");
+            $query=$this->db->query("SELECT 
+            tblvideoconference.vid_id,
+            tblvideoconference.title,
+            tblvideoconference.description,
+            tblvideoconference.viewed,
+            tblvideoconference.vhash,
+            tblspeaker.Name,
+            tblspeaker.FirstName 
+            FROM tblvideoconference ,tblspeaker 
+            WHERE tblvideoconference.Speaker =  tblspeaker.vid_id 
+            order by tblvideoconference.viewed DESC LIMIT 1");
             return $query;
         }
         function search_conference($keyword_to_search)
@@ -16,7 +26,17 @@
         }
         function get_video_by_id($id)
         {
-            $query=$this->db->query('Select ID,Title,Subject,Keywords,Description,VideoLink,Speaker,ImagesLink from tblvideoconference Where ID= '.$id);
+            $query=$this->db->query('Select
+            ID,
+            Title,
+            Subject,
+            Keywords,
+            Description,
+            VideoLink,
+            Speaker,
+            ImagesLink 
+            from tblvideoconference
+            Where ID= '.$id);
             return $query;
         }
 
@@ -54,9 +74,60 @@
             $query=$this->db->query('Select viewed from tblvideoconference Where vid_id= '.$id);
             return $query;
         }
-        function get_all_video_conference(){
-            $query=$this->db->query('SELECT videos.vid_id,videos.mem_id,videos.title,videos.description,videos.category,videos.tags,videos.`date`,videos.vhash,videos.approved,videos.viewed,tblspeaker.ID,tblspeaker.Name,tblspeaker.FirstName FROM tblspeaker ,videos WHERE videos.mem_id =  tblspeaker.ID');
+        function get_all_video_conference($num,$offset)
+        {
+            $this->db->select('
+            videos.vid_id,
+            videos.mem_id,
+            videos.title,
+            videos.description,
+            videos.category,
+            videos.tags,
+            videos.`date`,
+            videos.vhash,
+            videos.approved,
+            videos.viewed,
+            tblspeaker.ID,
+            tblspeaker.Name,
+            tblspeaker.FirstName');
+            $this->db->from('videos');
+            $this->db->join('tblspeaker','videos.mem_id = tblspeaker.ID'); 
+            $this->db->order_by("videos.`date`", "desc"); 
+            $this->db->limit($offset,$num);
+            $query = $this->db->get();
             return $query->result_array();
+        }
+        function get_video_conference_by_category($Category,$offset,$num)
+        {
+            $this->db->select("
+            tblspeaker.`Name` as SpeakerName,
+            tblspeaker.FirstName,
+            tblspeaker.CompanyName,
+            videos.vid_id,
+            videos.mem_id,
+            videos.title,
+            videos.description,
+            videos.category,
+            videos.tags,
+            videos.date,
+            videos.vhash,
+            videos.approved,
+            videos.viewed,
+            tblcategory.`Name`");
+            $this->db->from('videos');
+            $this->db->join('tblspeaker','videos.mem_id = tblspeaker.ID');
+            $this->db->join('tblcategory','videos.category = tblcategory.ID');
+            $this->db->where('videos.category',$Category);
+            $this->db->order_by("videos.`date`", "desc");
+            $this->db->limit($num,$offset); 
+            $query = $this->db->get();
+            return $query->result_array();    
+        }
+        function count_video_Category($Category) 
+        {
+            $this->db->from('videos');
+            $this->db->where('videos.category',$Category); 
+            return $this->db->count_all_results();
         }
         function get_video_conference_by_id($id)
         {
@@ -65,8 +136,8 @@
         }
         function get_category()
         {
-            $this->db->select('ID,Category');
-            $query = $this->db->get('Category');
+            $this->db->select('ID,Name');
+            $query = $this->db->get('tblcategory');
             return $query->result_array();
         }
         function add_new_video($data)
