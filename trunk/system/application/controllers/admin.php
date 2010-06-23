@@ -1,18 +1,19 @@
 <?php
-/**
- * Speaker_lib Class
- *
- * @package		Confor
- * @subpackage	Controller
- * @category	Admin
- * @author		Dao Van Quyet - XEMMEX developer
- */
+    /**
+    * Speaker_lib Class
+    *
+    * @package		Confor
+    * @subpackage	Controller
+    * @category	Admin
+    * @author		Dao Van Quyet - XEMMEX developer
+    */
     class Admin extends Admin_controller
     {
         /*The constructor*/
         function Admin(){
             parent::Admin_controller();
-            $this->load->model('Madmin');            
+            $this->load->model('Madmin');
+            $this->load->model('Mvconference');            
             $this->load->library('validation');                        
             $this->load->helper('date'); 
         }                       
@@ -20,17 +21,17 @@
         {   
             if($this->session->userdata('admin')==TRUE)
             {
-				$this->_data['path'][] = array(
-					'name' => __("CON_control_panel"),
-					'link' => site_url("admin")
-				);								
+                $this->_data['path'][] = array(
+                'name' => __("CON_control_panel"),
+                'link' => site_url("admin")
+                );								
                 $this->_load_view('admin/index_admin'); 
             }
             else
             {
                 // $this->_data['error']  =  ''; 				
                 // $this->_load_view('admin/admin_login'); 
-				redirect(site_url("admin/login"));
+                redirect(site_url("admin/login"));
             } 
         }
         /*Login*/
@@ -39,14 +40,14 @@
             $this->_data['error']  =  '';
             if($this->session->userdata('admin')==TRUE)
             {
-				redirect(site_url("admin"));                		
+                redirect(site_url("admin"));                		
             }
             else
             {	
-				$this->_data['path'][] = array(
-					'name' => __("CON_admin_login"),
-					'link' => site_url("admin/login")
-				);			
+                $this->_data['path'][] = array(
+                'name' => __("CON_admin_login"),
+                'link' => site_url("admin/login")
+                );			
                 $rules['admin_email']='required|valid_email|xss_clean';
                 $rules['admin_pass']='required';
                 $this->validation->set_rules($rules);
@@ -75,7 +76,7 @@
                                 $this->session->set_userdata('admin',$admin_email);
                                 $this->session->set_userdata('right',$admin_right);
                                 $this->session->set_userdata('id',$id);                                 
-								redirect(site_url("admin"));
+                                redirect(site_url("admin"));
                             }
                             else
                             {
@@ -100,7 +101,7 @@
         function logout()
         {
             $this->session->sess_destroy();            
-			redirect('/');
+            redirect('/');
             //$config['sess_expiration'] = -1;
         }
         /*For administrator*/
@@ -112,10 +113,10 @@
             }
             else
             {
-				$this->_data['path'][] = array(
-					'name' => __("CON_admin_list_all"),
-					'link' => site_url("admin/list_admin")
-				);				
+                $this->_data['path'][] = array(
+                'name' => __("CON_admin_list_all"),
+                'link' => site_url("admin/list_admin")
+                );				
                 $this->_data['query']=$this->Madmin->get_admins();
                 $this->_load_view('admin/admin_list');
             }
@@ -128,10 +129,10 @@
             }
             else
             {
-				$this->_data['path'][] = array(
-					'name' => __("CON_admin_add"),
-					'link' => site_url("admin/add_new_admin")
-				);					
+                $this->_data['path'][] = array(
+                'name' => __("CON_admin_add"),
+                'link' => site_url("admin/add_new_admin")
+                );					
                 $this->_data['error'] = ""; 
                 $this->form_validation->set_rules('txtName','Name','required');
                 $this->form_validation->set_rules('txtFirstName','First Name','required');
@@ -181,10 +182,10 @@
             }
             else
             {   
-				$this->_data['path'][] = array(
-					'name' => __("CON_admin_edit"),
-					'link' => '#'
-				);					
+                $this->_data['path'][] = array(
+                'name' => __("CON_admin_edit"),
+                'link' => '#'
+                );					
                 $data['error'] = ""; 
                 $this->form_validation->set_rules('txtName','Name','required');
                 $this->form_validation->set_rules('txtFirstName','First Name','required');
@@ -225,10 +226,10 @@
             }
             else
             {		
-				$this->_data['path'][] = array(
-					'name' => __("CON_user_edit"),
-					'link' => '#'
-				);				
+                $this->_data['path'][] = array(
+                'name' => __("CON_user_edit"),
+                'link' => '#'
+                );				
                 $this->_data['error'] = ""; 
                 $this->form_validation->set_rules('txtName','Name','required');
                 $this->form_validation->set_rules('txtCompanyName','Company Name','required');
@@ -280,10 +281,10 @@
             }
             else
             {
-				$this->_data['path'][] = array(
-					'name' => __("CON_user_list"),
-					'link' => site_url("admin/list_user")
-				);				
+                $this->_data['path'][] = array(
+                'name' => __("CON_user_list"),
+                'link' => site_url("admin/list_user")
+                );				
                 $this->_data['query']=$this->Madmin->get_user();
                 $this->_load_view('admin/user_list');
             }
@@ -303,43 +304,123 @@
         /*Video Conference*/
         function list_video_conference()
         {
-			is_admin();
-			// $header['page'] = "admin/header";
-			// $side_bar['page'] = "admin/sidebar";
-			// $this->_data['header'] = $header;
-			// $this->_data['side_bar'] = $side_bar;
-			
-			$this->_data['path'][] = array(
-				'name' => __("CON_video_list"),
-				'link' => site_url("admin/list_video_conference")
-			);				
-			
-            $this->_data['query'] = $this->Madmin->get_all_video_conference();
+            is_admin();
+            // $header['page'] = "admin/header";
+            // $side_bar['page'] = "admin/sidebar";
+            // $this->_data['header'] = $header;
+            // $this->_data['side_bar'] = $side_bar;
+
+            $this->_data['path'][] = array(
+            'name' => __("CON_video_list"),
+            'link' => site_url("admin/list_video_conference")
+            );				
+
+            $this->_data['query'] = $this->Mvconference->get_all_video_conference();
+            $this->_data['category'] = $this->Mvconference->get_category();
             $this->_load_view('admin/video_conference_list'); 
         }
         function new_video_conference()
         {
-            $this->_data['error']='';
-            $this->_load_view('admin/new_video_conference');
-        }
-		
-        function edit_video_conference($id)
-        {
-			is_admin();
-			// $header['page'] = "admin/header_panel";
-			// $side_bar['page'] = "admin/sidebar_empty";
-			// $this->_data['header'] = $header;
-			// $this->_data['side_bar'] = $side_bar;
-		
-			$this->_data['query']=$this->Madmin->get_video_conference_by_id($id);
-			if($this->input->post('Submit')){
-				
-			}
-			else
-			{
-				$this->_load_view('admin/edit_video_conference');
-			}
+            if($this->session->userdata('admin')==FALSE)
+            {
+                redirect(site_url("admin"));
+            }
+            else
+            {
+                //$this->form_validation->set_rules('speaker_email','Email','required|valid_email|xss_clean');
+                $this->form_validation->set_rules('title','Title','required');
+                $this->form_validation->set_rules('description','Description','required'); 
+                $this->form_validation->set_rules('category','Category','required');
+                $this->form_validation->set_rules('keywords','Keywords','required');
+                $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
+                $this->_data['query']=$this->Mvconference->get_category();
+                if($this->input->post('submit'))
+                {
+                    if($this->form_validation->run()==FALSE)
+                    {
+                        echo 'form failed';
+                        $this->_data['error'] = "Can not update !";
+                        $this->_load_view('admin/new_video_conference');   
+                    }
+                    else
+                    {
+                        $config['upload_path'] = './videos/';
+                        $config['allowed_types'] = 'flv|gif|jpg|png';
+                        $config['max_size']    = '20480';
+
+                        $this->load->library('upload', $config);
+
+                        if ( ! $this->upload->do_upload())
+                        {
+                            echo 'can not update';
+                            $error = array('error' => $this->upload->display_errors());
+                            $this->_load_view('admin/new_video_conference', $error);
+                        }    
+                        else
+                        {
+                            $data_upload = $this->upload->data();
+                            $dateupload= NOW();
+                            $data = array(
+                            'mem_id'=>$this->input->post('speaker_id'),
+                            'title'=>$this->input->post('title'),
+                            'description'=>$this->input->post('description'),
+                            'category'=>$this->input->post('category'),
+                            'tags'=>$this->input->post('keywords'),
+                            'Date'=>$dateupload,
+                            'vhash'=>$data_upload['file_name'],
+                            'approved'=>1,
+                            'viewed'=>0
+                            );
+                            if(!$data_upload)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                $this->Mvconference->add_new_video($data);
+                                $this->list_video_conference();
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    $this->_load_view('admin/new_video_conference');
+                }
+            }
 
         }
+
+        function edit_video_conference($id)
+        {
+            if($this->session->userdata('admin')==FALSE)
+            {                                                
+                redirect(site_url("admin"));
+            }
+            else
+            {
+                $this->form_validation->set_rules('title','Title','required');
+                $this->form_validation->set_rules('subject','Subject','required');
+                $this->form_validation->set_rules('keywords','Keywords','required');
+                $this->form_validation->set_rules('description','Description','required'); 
+                $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
+                $this->_data['query']=$this->Mvconference->get_video_conference_by_id($id);
+                if($this->input->post('submit')){
+                    if($this->form_validation->run()==FALSE)
+                    {
+                        $this->_load_view('admin/edit_video_conference');
+                    }
+                    else
+                    {
+                        echo 'form ok';
+                    }
+                }
+                else
+                {
+                    $this->_load_view('admin/edit_video_conference');
+                }
+            }    
+        }
+
     }
 ?>

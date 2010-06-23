@@ -6,10 +6,10 @@
                 <h3><?php echo __("CON_list_view")?></h3>
 <label>Category</label>
 <select id="category" name="video_category" style="width:200px">
-  <option value="0" selected="selected" >(all)</option>
-  <option value="1">Action</option>
-  <option value="2">Animation</option>
-  <option value="3">Comedy</option>
+<option value="0" selected="selected" >(all)</option>
+<?php foreach($category as $cat):?>
+  <option value="<?php echo $cat['ID'];?>"><?php echo $cat['Category'];?></option>
+<?php endforeach ?>  
 </select>				
 
 <table border="0" cellpadding="0" cellspacing="1" style="width:100%">
@@ -23,15 +23,15 @@
 </tr>
 <?php foreach ($query as $row):?>
  <tr>
-	<td>&nbsp;<a href="<?php echo site_url('admin/edit_video_conference/'.$row['ID'])?>">Edit</a>&nbsp;|&nbsp;<a href="<?php echo site_url('admin/delete_video_conference/'.$row['ID'])?>">Del</a>&nbsp;</td>
+	<td>&nbsp;<a href="<?php echo site_url('admin/edit_video_conference/'.$row['vid_id'])?>">Edit</a>&nbsp;|&nbsp;<a href="<?php echo site_url('admin/delete_video_conference/'.$row['vid_id'])?>">Del</a>&nbsp;</td>
 	<td><?php echo img('flickr1.gif');?></td>
-	<td><?php echo $row['Date']?></td>
-	<td><?php echo $row['Title']?></td>
-	<td><?php echo $row['Subject']?></td>	
-	<td><?php echo $row['Viewed']?></td>
+	<td><?php echo $row['date']?></td>
+	<td><?php echo $row['title']?></td>
+	<td><?php echo $row['category']?></td>	
+	<td><?php echo $row['viewed']?></td>
 	
  </tr>
-<?php endforeach?>
+<?php endforeach ?>
 </table>
 
 <?php //echo $paginate; ?>
