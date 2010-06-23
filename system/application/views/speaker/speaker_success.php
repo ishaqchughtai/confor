@@ -1,1 +1,0 @@
-<p class="not_success"><span class="img"></span>Your profile has been saved!<span class="close"></span></p>
