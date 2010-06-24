@@ -75,8 +75,8 @@
 				
 					<h6>Randomly selected videos</h6>
 				<?php for($i=0; $i<count($ramdomvideo); $i++):?>
-                <a href="<?php echo site_url('home/play/'.$ramdomvideo[$i]['ID'])?>">
-                <img src="<?php echo base_url().'thumbs/'.$ramdomvideo[$i]['ImagesLink']?>" width="81" height="52" alt="flickr">
+                <a href="<?php echo site_url('home/play/'.$ramdomvideo[$i]['vid_id'])?>">
+                <img src="<?php echo base_url().'thumbs/'.$ramdomvideo[$i]['shash']?>" width="81" height="52" alt="flickr">
                 </a>                            
                 <!-- /.content .top_box_block -->
             <?php endfor;?>

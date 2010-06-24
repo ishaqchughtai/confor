@@ -4,10 +4,10 @@
                 if($video_path->num_rows()>0)
                 {
                     $row = $video_path->row();
-                   $top_view_video = $row->VideoLink;
-                   $video_title=$row->Title;
+                   $top_view_video = $row->vhash;
+                   $video_title=$row->title;
                    $speaker=$row->FirstName.' '.$row->Name;
-                   $description=$row->Description;
+                   $description=$row->description;
                 }
               ?>		
 					<h3><a href="blog_entry.html"><?php echo __("CON_top_video")?></a></h3>

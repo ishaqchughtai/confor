@@ -6,30 +6,44 @@
     }
     function get_top_viewed_video()
     {
-      $query=$this->db->query("SELECT tblvideoconference.ID,tblvideoconference.Title,tblvideoconference.Description,tblvideoconference.Viewed,tblvideoconference.VideoLink,tblspeaker.Name,tblspeaker.FirstName FROM tblvideoconference ,tblspeaker WHERE tblvideoconference.Speaker =  tblspeaker.ID order by tblvideoconference.Viewed DESC LIMIT 1");
+      $query=$this->db->query("SELECT 
+      videos.vid_id,
+      videos.title,
+      videos.description,
+      videos.viewed,
+      videos.vhash,
+      tblspeaker.Name,
+      tblspeaker.FirstName 
+      FROM videos ,tblspeaker 
+      WHERE videos.mem_id =  tblspeaker.ID 
+      order by videos.viewed DESC LIMIT 1");
       return $query;
     }
     function search_conference($keyword_to_search)
     {
-      $query=$this->db->query('Select ID,Title,Subject,Keywords,Description,VideoLink,Speaker,ImagesLink from tblvideoconference Where Title LIKE '."'%".$keyword_to_search."%'");
+      $query=$this->db->query('Select 
+      vid_id,title,tags,description,vhash,mem_id,shash 
+      from videos Where title LIKE '."'%".$keyword_to_search."%'");
       return $query->result_array();
     }
     function get_video_by_id($id)
     {
-      $query=$this->db->query('Select ID,Title,Subject,Keywords,Description,VideoLink,Speaker,ImagesLink from tblvideoconference Where ID= '.$id);
+      $query=$this->db->query('Select 
+      vid_id,title,tags,description,vhash,mem_id,shash
+      from videos Where vid_id= '.$id);
       return $query;
     }
 
     function count_video_search($keyword) 
     {
-      $this->db->like('Title', $keyword);
-      $this->db->from('tblvideoconference');
+      $this->db->like('title', $keyword);
+      $this->db->from('videos');
       return $this->db->count_all_results();
     }
 
     function search_paging($keyword, $num, $offset) {
-      $this->db->like('Title', $keyword);
-      $this->db->from('tblvideoconference');         
+      $this->db->like('title', $keyword);
+      $this->db->from('videos');         
       $this->db->limit($num, $offset);
       $query=$this->db->get();
       return $query->result_array();
@@ -38,22 +52,22 @@
 
     function get_popular_video()
     {
-      $query=$this->db->query("SELECT * FROM tblvideoconference order by viewed DESC LIMIT 8");
+      $query=$this->db->query("SELECT * FROM videos order by viewed DESC LIMIT 8");
       return $query->result_array();
     }
     function get_recent_video()
     {
-      $query=$this->db->query("SELECT * FROM tblvideoconference order by Date DESC LIMIT 4");
+      $query=$this->db->query("SELECT * FROM videos order by Date DESC LIMIT 4");
       return $query->result_array();
     }
     function update_view_time($id,$viewed)
     {
-      $data = array('Viewed'=>$viewed);
-      $this->db->update('tblvideoconference',$data,array('ID'=>$id));
+      $data = array('viewed'=>$viewed);
+      $this->db->update('videos',$data,array('vid_id'=>$id));
     }
     function get_view_by_id($id)
     {
-      $query=$this->db->query('Select Viewed from tblvideoconference Where ID= '.$id);
+      $query=$this->db->query('Select viewed from videos Where vid_id= '.$id);
       return $query;
     }
 
@@ -76,15 +90,25 @@
 
     function get_dates()
     {
-      $dates=$this->db->query("SELECT DISTINCT DATE_FORMAT(Date,'%M %Y') as month_yy
+      $dates = $this->db->query("SELECT DISTINCT DATE_FORMAT(Date,'%M %Y') as month_yy
       FROM tblvideoconference order by date_format(Date,'%Y %M') desc");
       return $dates->result_array();
     }
 
+    function get_count_by_month($date)
+    {
+      $date = 
+      $this->db->where('MONTH(date)',$date);
+      $this->db->from('tblvideoconference');
+      return $this->db->count_all_results(); 
+    }
+    
+    
     function count_record_archives()
     {
-      $this->db->query("SELECT DISTINCT DATE_FORMAT(Date,'%M %Y') as month_yy
-      FROM tblvideoconference where DATE_FORMAT(Date,'%M %Y') = month_yy order by date_format(Date,'%Y %M') desc");
+
+      $this->db->query("SELECT DISTINCT DATE_FORMAT(Date,'%M %Y'),count(ID) as total
+      FROM tblvideoconference where ");
       $count_video = $this->db->count_all_results();
       return $count_video;
     }
@@ -103,14 +127,14 @@
       $query = $this->db->get();
       return $query->result_array();
     }
-	
-	function get_random_by_video($category, $limit) 
-	{
-		$this->db->from('tblvideoconference');
-		//$this->db->where('category', $category);
-		$this->db->order_by("RAND()");
-		$this->db->limit($limit);
-		return $this->db->get();
-	}	
+
+    function get_random_by_video($category, $limit) 
+    {
+      $this->db->from('videos');
+      //$this->db->where('category', $category);
+      $this->db->order_by("RAND()");
+      $this->db->limit($limit);
+      return $this->db->get();
+    }	
   }
 ?>

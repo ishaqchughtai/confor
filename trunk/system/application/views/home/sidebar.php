@@ -1,4 +1,5 @@
 <?php $page = 5;?>
+<?//php echo $count_video?>
 </div>
 			<div id="right">
 			
@@ -79,9 +80,9 @@
 							    <?php foreach($popular_video as $row):?>
 								<li>
 								
-									<a href="<?php echo site_url('home/play').'/'.$row['ID']?>"><img src="<?php echo base_url().'thumbs/'.$row['ImagesLink'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['ID']?>" class="title"><?php echo $row['Title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['ID']?>">VIEW</a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>">VIEW</a>
 								
 								</li>
                                 <?php
@@ -107,9 +108,9 @@
                                 <?php if($count>3){?>
                                 <li>
 								
-									<a href="<?php echo site_url('home/play').'/'.$row['ID']?>"><img src="<?php echo base_url().'thumbs/'.$row['ImagesLink'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['ID']?>" class="title"><?php echo $row['Title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['ID']?>">VIEW</a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>">VIEW</a>
 								
 								</li>
                                 <?php }?>
@@ -151,9 +152,9 @@
 							    <?php foreach($recent_video as $rows):?>
 								<li>
 								
-									<a href="<?php echo site_url('home/play').'/'.$rows['ID']?>"><img src="<?php echo base_url().'thumbs/'.$rows['ImagesLink']?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
-									<a href="<?php echo site_url('home/play').'/'.$rows['ID']?>" class="title"><?php echo $rows['Title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$rows['ID']?>">VIEW</a>
+									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
+									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>" class="title"><?php echo $rows['title']?></a>
+									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>">VIEW</a>
 								
 								</li><br /><br />
                                 <?php endforeach?>

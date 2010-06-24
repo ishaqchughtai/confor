@@ -4,8 +4,8 @@
               if($video_url->num_rows()>0)
               {
                   $row=$video_url->row();
-                  $video_link=$row->VideoLink;
-                  $video_title=$row->Title;
+                  $video_link=$row->vhash;
+                  $video_title=$row->title;
               }
               ?>
               <h3><?php echo $video_title?></h3>

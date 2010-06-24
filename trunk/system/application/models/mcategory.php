@@ -11,9 +11,9 @@
     function count_record($id)
     {
       $this->db->from('tblcategory');
-      $this->db->join('tblvideoconference','tblcategory.ID = tblvideoconference.Category');
-      $this->db->join('tblspeaker','tblvideoconference.Speaker = tblspeaker.ID');
-      $this->db->where(array('tblvideoconference.Category'=>$id));
+      $this->db->join('videos','tblcategory.ID = videos.category');
+      $this->db->join('tblspeaker','videos.mem_id = tblspeaker.ID');
+      $this->db->where(array('videos.category'=>$id));
       $query = $this->db->count_all_results();
       return $query;
     }
@@ -22,26 +22,22 @@
     function get_video_by_category($id,$per_page,$offset)
     {
       $this->db->select('
-      tblvideoconference.`ID`,
-      tblvideoconference.`Date`,
-      tblvideoconference.Title,
-      tblvideoconference.Subject,
-      tblvideoconference.Keywords,
-      tblvideoconference.Description,
-      tblvideoconference.Viewed,
-      tblvideoconference.Upload, 
-      tblvideoconference.Recording,
-      tblvideoconference.VideoLink,
-      tblvideoconference.Ticket,
-      tblvideoconference.ImagesLink,
-      tblvideoconference.Category,
+      videos.vid_id,
+      videos.date,
+      videos.title,
+      videos.tags,
+      videos.description,
+      videos.viewed,
+      videos.vhash,
+      videos.shash,
+      videos.category,
       tblcategory.Name,
       tblspeaker.Name as speaker_name
       ');
       $this->db->from('tblcategory');
-      $this->db->join('tblvideoconference','tblcategory.ID = tblvideoconference.Category');
-      $this->db->join('tblspeaker','tblvideoconference.Speaker = tblspeaker.ID');
-      $this->db->where(array('tblvideoconference.Category'=>$id));
+      $this->db->join('videos','tblcategory.ID = videos.category');
+      $this->db->join('tblspeaker','videos.mem_id = tblspeaker.ID');
+      $this->db->where(array('videos.category'=>$id));
       $this->db->limit($per_page,$offset);
       $video_cate = $this->db->get();
       return $video_cate->result_array();
