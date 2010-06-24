@@ -2,10 +2,13 @@
 
 class Home extends Frontend_controller {
 
-    function Home()
-    {
-        parent::Frontend_controller();
-    }
+
+  function Home()
+  {
+    parent::Frontend_controller();
+    $this->load->helper('date');
+  }
+
 
     function index()
     {

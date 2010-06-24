@@ -90,8 +90,8 @@
 
     function get_dates()
     {
-      $dates = $this->db->query("SELECT DISTINCT DATE_FORMAT(Date,'%M %Y') as month_yy
-      FROM tblvideoconference order by date_format(Date,'%Y %M') desc");
+      $dates = $this->db->query("SELECT DISTINCT Date as month_yy
+      FROM videos order by Date desc");
       return $dates->result_array();
     }
 
@@ -107,7 +107,7 @@
     function count_record_archives()
     {
 
-      $this->db->query("SELECT DISTINCT DATE_FORMAT(Date,'%M %Y'),count(ID) as total
+      $this->db->query("SELECT DISTINCT Date,count(ID) as total
       FROM tblvideoconference where ");
       $count_video = $this->db->count_all_results();
       return $count_video;
