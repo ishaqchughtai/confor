@@ -1,0 +1,32 @@
+- khi login user speaker nho luu cookie cho 2 bien $_COOKIE['MSM_COOKIE']=username
+$_COOKIE['MSM_COOKIE_ID'] = userid
+define("COOKIE_EXPIRE", 60 * 60 * 24 * 60); //60 days by default
+  define("COOKIE_PATH", "/"); //Avaible in whole domain
+
+--------------------------------------
+Cach luu password va token
+$token = $this->generateRandID();
+$pass = md5($pass);
+function generateRandID()
+      {
+          return md5($this->generateRandStr(16));
+      }
+
+
+
+function generateRandStr($length)
+      {
+          $randstr = "";
+          for ($i = 0; $i < $length; $i++) {
+              $randnum = mt_rand(0, 61);
+              if ($randnum < 10) {
+                  $randstr .= chr($randnum + 48);
+              } elseif ($randnum < 36) {
+                  $randstr .= chr($randnum + 55);
+              } else {
+                  $randstr .= chr($randnum + 61);
+              }
+          }
+          return $randstr;
+      }
+

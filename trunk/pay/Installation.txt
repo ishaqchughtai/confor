@@ -1,0 +1,61 @@
+
+        INSTALLATION INSTRUCTIONS
+------------------------------------------------------------------------
+[STEP 1] 
+Start by extracting the zip file which you downloaded from our website.
+------------------------------------------------------------------------
+[STEP 2]
+Upload the Membership Subscription Manager folder to your web server 
+( you may rename this folder or upload its contents to 
+wwwroot / public_html if you wish!
+
+        [STEP 2 FAQ]
+        Q. Can I rename "msm_1_x"
+        A. Yes but you should do it now, before installation.
+------------------------------------------------------------------------
+[STEP 3]
+Create a MySQL database on your server.
+
+        [STEP 4 FAQ]
+        Q. How do I create a MySQL database? 
+        A. Creating a MySQL Database will vary from server to server.
+	Your hosting control panel should have a MySQL databases area, 
+    where you will be able to create a database, database user, and database password.
+
+------------------------------------------------------------------------
+[STEP 4]
+Open up config.php file located in /includes/ directory,
+and change the four constants as show below:
+
+	  define('DB_SERVER', "localhost"); Usualy localhost
+	  define('DB_USER', "root"); Your database username created in step above
+	  define('DB_PASS', "root"); Your database password created in step above
+	  define('DB_DATABASE', "dbname"); Your database name created in step above
+
+
+------------------------------------------------------------------------
+[STEP 5]
+Open your hosting control panel CPanel/H-Sphere etc.. and using
+PhpMyAdmin or any other program execute sql.sql file
+
+This will create all the nececery database tables.
+------------------------------------------------------------------------
+[STEP 6]
+Point tour browser to your installfolder/admin directory, and login with
+Username: admin
+Password: admin
+
+Once logged in You will also need to change your admin password, and configure paypal email.
+Also this script requires for you to have PayPal Businnes or Premier account to be able to receive payments.
+
+------------------------------------------------------------------------
+[STEP 7]
+You can now delete queries.sql file from your server
+------------------------------------------------------------------------
+
+        INSTALLATION COMPLETE
+
+------------------------------------------------------------------------
+[Integration]
+Open up example.php page, and read explanation how to.
+------------------------------------------------------------------------
