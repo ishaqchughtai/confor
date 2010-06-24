@@ -19,17 +19,17 @@ $lang['CON_user_email_label'] = 'Email';
 $lang['CON_user_autologin_label'] = 'Nhớ đăng nhập lần sau';
 $lang['CON_user_country_label'] = 'Quốc gia';
 
-$lang['CON_login_label'] = 'Đăng nhập';
-$lang['CON_logout_label'] = 'Đăng xuất';
+$lang['CON_login_label'] = '�?ăng nhập';
+$lang['CON_logout_label'] = '�?ăng xuất';
 
-$lang['CON_cancel_label'] = 'Hủy bỏ';
-$lang['CON_agree_label'] = 'Đồng ý';
+$lang['CON_cancel_label'] = 'Hủy b�?';
+$lang['CON_agree_label'] = '�?ồng ý';
 $lang['CON_continue_label'] = 'Tiếp tục';
 $lang['CON_donotagree_label'] = 'Tôi không đồng ý';
 $lang['CON_forgotten_password_label'] = 'Quên mật khẩu';
-$lang['CON_register_label'] = 'Đăng ký';
-$lang['CON_registration_label'] = 'Đăng ký tài khoản';
-$lang['CON_change_password_label'] = 'Đổi mật khẩu';
+$lang['CON_register_label'] = '�?ăng ký';
+$lang['CON_registration_label'] = '�?ăng ký tài khoản';
+$lang['CON_change_password_label'] = '�?ổi mật khẩu';
 
 
 $lang['CON_citation_message'] = 'Cảm ơn!';
@@ -54,7 +54,7 @@ $lang['CON_invalid_password_message'] = 'Sai mật khẩu';
 $lang['CON_username_first_password_message'] = 'Please enter your username first and then type your password';
 $lang['CON_banned_user_message'] = 'Go away man!';
 $lang['CON_login_message'] = 'Bạn đã đăng nhập thành công';
-$lang['CON_logout_message'] = 'Bạn đã thoát khỏi hệ thống';
+$lang['CON_logout_message'] = 'Bạn đã thoát kh�?i hệ thống';
 $lang['CON_length_validation_message'] = 'must be between %s and %s characters in length.';
 $lang['CON_allowed_characters_validation_message'] = 'Only alpha characters, digits, underline or dash characters allowed.';
 $lang['CON_invalid_validation_message'] = 'Dữ liệu %s sai: ';
@@ -115,6 +115,7 @@ $lang['CON_setting'] = 'Cau hinh';
 $lang['CON_contact'] = 'Lien he';
 $lang['CON_about'] = 'Gioi thieu';
 $lang['CON_howto'] = 'Cach su dung';
+$lang['CON_rules'] = 'Cac quy tac';
 $lang['CON_video'] = 'Video';
 $lang['CON_event'] = 'Su kien';
 $lang['CON_login'] = 'Dang nhap';
