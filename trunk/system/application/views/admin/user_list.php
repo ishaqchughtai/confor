@@ -1,16 +1,7 @@
         <div id="content">
 
             <div class="">
-
-                <h3>Profile administrator</h3>
-                <ul>
-                        <li><a href="<?php echo site_url('admin/list_admin')?>">Administrator List</a></li>
-                        <li><a href="<?php echo site_url('admin/add_new_admin')?>">New administrator</a></li>
-                        <li><a href="<?php echo site_url('admin/list_user')?>">User List</a></li>
-                        <li><a href="<?php echo site_url('admin/list_video_conference')?>">Video conference List</a></li>
-                        <li><a href="<?php echo site_url('admin/new_video_conference')?>">New video conference</a></li>
-                    </ul>
-                <p>&nbsp;	</p>
+                <h3>User List</h3>
                 <p>&nbsp;</p>
                 <table border="1" width="1000">
                     <tr align="left">

@@ -1,15 +1,6 @@
             <div id="content">
 
                 <div class="x2">
-
-                    <h3>Profile administrator</h3>
-                    <ul>
-                        <li><a href="<?php echo site_url('admin/list_admin')?>">Administrator List</a></li>
-                        <li><a href="<?php echo site_url('admin/add_new_admin')?>">New administrator</a></li>
-                        <li><a href="<?php echo site_url('admin/list_user')?>">User List</a></li>
-                        <li><a href="<?php echo site_url('admin/list_video_conference')?>">Video conference List</a></li>
-                        <li><a href="<?php echo site_url('admin/new_video_conference')?>">New video conference</a></li>
-                    </ul>
                     <?php 
                         foreach($query as $row)
                         {
@@ -23,7 +14,7 @@
                             $subscription=$row['Subscription'];     
                             $suspend=$row['Suspend'];
                     }?>
-                    <h3>User List</h3> 
+                    <h3>MODIFY SPEAKER</h3> 
                     <?php echo form_open('admin/modify_user/'.$id); ?>
                         <label for="name">Name:</label>
                         <input class="medium" name="txtName" id="name" value="<?php echo $name?>" /><?php echo form_error("txtName"); ?>
