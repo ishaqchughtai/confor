@@ -34,7 +34,7 @@
         </p>
 
         <p>                    
-            <input name="" type="submit" class="submit" value="Submit" />
+            <input name="" type="submit" class="submit" value="Submit"onclick="return confirm('Do you really wish to update?')" />
             <input name="" type="reset" class="reset" value="Reset" />                        
         </p>
 

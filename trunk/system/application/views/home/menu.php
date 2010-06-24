@@ -6,8 +6,7 @@
 				<li><a href="<?php echo site_url("Accessories/show_element/about") ?>" ><?php echo __("CON_about")?></a>
 					<ul>
                         <li><a href="<?php echo site_url("Accessories/show_element/how") ?>" ><?php echo __("CON_howto")?></a></li>
-						<li><a href="<?php echo site_url("Accessories/show_element/rules") ?>" ><?php echo __("CON_howto")?></a></li>
-					
+
 						<li><a href="<?php echo site_url("Accessories/show_element/rules") ?>" ><?php echo __("CON_rules")?></a></li>
 					</ul>
 				</li>

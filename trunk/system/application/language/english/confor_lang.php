@@ -113,6 +113,7 @@ $lang['CON_setting'] = 'Setting';
 $lang['CON_contact'] = 'Contact';
 $lang['CON_about'] = 'About us';
 $lang['CON_howto'] = 'How to use';
+$lang['CON_rules'] = 'The rules';
 $lang['CON_video'] = 'Video';
 $lang['CON_event'] = 'Event';
 $lang['CON_login'] = 'Login';

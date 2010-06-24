@@ -400,9 +400,9 @@
                     }
                     else
                     {
-                        $config['upload_path'] = './videos/';
-                        $config['allowed_types'] = 'flv|gif|jpg|png';
-                        $config['max_size']    = '20480';
+                        $config['upload_path'] = './videos/';//thu muc chu file upload
+                        $config['allowed_types'] = 'flv|gif|jpg|png';//dinh dang cho file
+                        $config['max_size']    = '20480'; //dung luong
 
                         $this->load->library('upload', $config);
 
@@ -413,7 +413,10 @@
                         }    
                         else
                         {
-                            $data_upload = $this->upload->data();
+                            $data_upload = $this->upload->data();  //upload len host
+                            
+                            
+                            //lay du lieu tu form insert vao db
                             $dateupload= NOW();
                             $data = array(
                             'mem_id'=>$this->input->post('speaker'),
