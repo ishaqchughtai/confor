@@ -39,15 +39,14 @@
             Where ID= '.$id);
             return $query;
         }
-
         function count_video_search($keyword) 
         {
             $this->db->like('Keywords', $keyword);
             $this->db->from('tblvideoconference');
             return $this->db->count_all_results();
         }
-
-        function search_paging($keyword, $num, $offset) {
+        function search_paging($keyword, $num, $offset) 
+        {
             $this->db->like('Keywords', $keyword);
             $this->db->from('tblvideoconference');         
             $this->db->limit($num, $offset);
@@ -93,11 +92,11 @@
             $this->db->from('videos');
             $this->db->join('tblspeaker','videos.mem_id = tblspeaker.ID'); 
             $this->db->order_by("videos.`date`", "desc"); 
-            $this->db->limit($offset,$num);
+            $this->db->limit($num,$offset);
             $query = $this->db->get();
             return $query->result_array();
         }
-        function get_video_conference_by_category($Category,$offset,$num)
+        function get_video_conference_by_category($Category,$num,$offset)
         {
             $this->db->select("
             tblspeaker.`Name` as SpeakerName,

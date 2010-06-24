@@ -19,7 +19,7 @@
 <div class="x2">
   <h3>Conferences Control</h3>
   <ul class="link_conttrol">
-    <li><a class="icon_list" href="<?php echo site_url('admin/list_video_conference')?>">Video conference List</a></li>
+    <li><a class="icon_list" href="<?php echo site_url('admin/list_video_conference/0/3')?>">Video conference List</a></li>
     <li><a class="icon_add" href="<?php echo site_url('admin/new_video_conference')?>">New video conference</a></li>
   </ul>
 </div>
@@ -35,7 +35,10 @@
 <div class="divider"></div>
 <div class="x2">
   <h3>Ticket Control</h3>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta nibh metus. Aliquam eget tellus vulputate nibh feugiat dictum nec nec tellus. Nullam vel turpis sit amet erat cursus hendrerit in ut odio. Quisque aliquam, leo a ultricies pulvinar, mi erat ullamcorper quam, sit amet ornare erat lacus non nisl. Proin facilisis tempor lobortis. Sed magna eros, aliquam euismod fringilla quis, mattis et nisi.</p>
+  <ul class="link_conttrol">
+    <li><a class="icon_list" href="<?php echo site_url('ticket/open_tickets')?>">Ticket Open List</a></li>
+    <li><a class="icon_list" href="<?php echo site_url('ticket/closed_tickets')?>">Ticket Closed List</a></li>
+  </ul>
 </div>
 <div class="x2 no_margin">
   <h3>Shop Control </h3>
