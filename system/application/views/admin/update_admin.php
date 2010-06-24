@@ -1,17 +1,19 @@
             <div id="content">
 
                 <div class="x2">
-
-                    <h3>Profile administrator</h3>
-                    <ul>
-                        <li><a href="<?php echo site_url('admin/list_admin')?>">Administrator List</a></li>
-                        <li><a href="<?php echo site_url('admin/add_new_admin')?>">New administrator</a></li>
-                        <li><a href="<?php echo site_url('admin/list_user')?>">User List</a></li>
-                        <li><a href="<?php echo site_url('admin/list_video_conference')?>">Video conference List</a></li>
-                        <li><a href="<?php echo site_url('admin/new_video_conference')?>">New video conference</a></li>
-                    </ul>
-                    <p>&nbsp;	</p>
-                    <p>&nbsp;</p>
+<?php 
+        $admin_id=$this->session->userdata('admin_id');
+        $admin_right=(int)$this->session->userdata('right');  
+    ?>
+    <h3>Administrator Panel</h3>
+    <ul class="link_conttrol">
+        <?php if($admin_right==1){?>
+            <li><a class="icon_list" href="<?php echo site_url('admin/list_admin');?>">Administrator List</a></li>
+            <li><a class="icon_add" href="<?php echo site_url('admin/add_new_admin');?>">New administrator</a></li>
+            <?php }?>
+        <li><a class="icon_add" href="<?php echo site_url('admin/edit_profile/'.$admin_id);?>">Edit Profile</a></li>
+    </ul>
+    <p>&nbsp;</p>
                     <?php 
                         foreach($query as $row)
                         {
