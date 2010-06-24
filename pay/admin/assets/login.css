@@ -1,0 +1,25 @@
+body { background-color: #31363E; font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.4em; margin: 0px; padding: 0px; }
+form { margin: 0px; padding: 0px; }
+label { display: block; height: 25px; font-size: 13px; line-height: 25px; font-weight: 600; }
+.button{ border:2px solid #1A1A1A; color:#fff; cursor:pointer; background-color: #0567ad; background-image: url(../images/btn-blue.png); background-repeat: repeat-x; background-position: top; font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; font-weight: bold; padding-top: 2px; padding-right: 8px; padding-bottom: 2px; padding-left: 8px; }
+.button:hover, .button:focus, .button:active { color:#fff; border-color:#272727; background-color: #2a2a2a; background-image: url(../images/btn-dark.png)}
+.inputbox { font-family: Arial, Helvetica, sans-serif; margin: 0px; padding: 5px; font-size: 13px; border: 1px solid #CCC; }
+#loginbox { background-color: #22252A; width: 400px; margin-top: 150px; margin-right: auto; margin-left: auto; }
+#loginbox h1 { text-align: center; color: #EFEFEF; font-size: 28px; font-weight: lighter; margin: 0px; padding: 0px; height: 50px; line-height: 50px; }
+#loginbox .body { background-color: #EEE; padding: 10px; margin: 5px; }
+#loginbox .formbox { background-color: #FFF; padding: 20px; margin-top: 10px; margin-right: -10px; margin-left: -10px; }
+#footer { padding-top: 10px; text-align: center; font-size: 12px; }
+
+/* == Messages == */
+.msgs{ padding-top: 10px; padding-bottom: 5px; width: 400px; margin-right: auto; margin-left: auto; }
+.msgAlert { background-image: url(../images/alert-bg.png); background-repeat: repeat-x; background-position: top; background-color: #F3F8AE; border: 1px solid #D0DC43; color: #85664E; padding: 5px;  -moz-border-radius: 5px; -khtml-border-radius: 5px; -webkit-border-radius: 5px;}
+.msgAlert span { background-image: url(../images/alert-ico.png); }
+.msgInfo { background-image: url(../images/info-bg.png); background-repeat: repeat-x; background-position: top; background-color: #C7E8FF; border: 1px solid #9FD1F5; color: #3158BB; padding: 5px;  -moz-border-radius: 5px; -khtml-border-radius: 5px; -webkit-border-radius: 5px;}
+.msgInfo span { background-image: url(../images/info-ico.png); }
+.msgError { background-image: url(../images/error-bg.png); background-repeat: repeat-x; background-position: top; background-color: #FACCCC; color: #8D0D0D; border: 1px solid #F3ABAB; padding: 5px;  -moz-border-radius: 5px; -khtml-border-radius: 5px; -webkit-border-radius: 5px;}
+.msgError span { background-image: url(../images/error-ico.png); }
+.msgOk { background-color: #D5EEBE; background-image: url(../images/ok-bg.png); background-repeat: repeat-x; background-position: top; border: 1px solid #A6D877; padding: 5px; color: #336801;  -moz-border-radius: 5px; -khtml-border-radius: 5px; -webkit-border-radius: 5px;}
+.msgOk span { background-image: url(../images/ok-ico.png); }
+.msgError span, .msgOk span, .msgAlert span, .msgInfo span { background-repeat: no-repeat; background-position: 5px center; display:inline-block; padding-right: 10px; padding-left: 30px; font-weight: bold; }
+.msgError .error li { background-image: url(../images/required.png); background-repeat: no-repeat; background-position: left center; padding-left: 15px; margin-left: 15px; }
+#tooltip { border:3px solid #E2E9E8; background-color:#88979B; font-family: Verdana, Arial, Helvetica, sans-serif; font-size:11px; padding:3px; color: #E2E9E8; }
