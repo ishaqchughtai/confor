@@ -12,8 +12,9 @@
 						<p>
 						<input id="speaker_id" type="hidden" name="speaker" value="0"/>
 						<label for="title">Speaker:</label>
-						<input id="speaker_email" class="short" type="text" value=""/>
-						</p>
+						<input id="speaker_email" name="speaker_email" class="short" type="text" value=""/>
+						<?php echo form_error('speaker_email')?>
+                        </p>
 						
 						<p>
                         <label for="title">Title:</label>
@@ -33,7 +34,6 @@
                             <?php endforeach;?>
                         </select>
                         <a href="#">Category Management</a>
-                        <?php echo form_error('category')?>
                     </p>
                     <p>
                         <label for="keywords">Keywords:</label>
@@ -43,7 +43,7 @@
                     <p>
                         <label for="video">Video:</label>
                         <input type="file" name="userfile" size="20" />
-                        <?php echo form_error('video')?>
+                        <b style="color: red"><?php echo $error ;?></b>
                     </p>
                     <p>
                         <input name="submit" type="submit" class="submit" value="ADD" />

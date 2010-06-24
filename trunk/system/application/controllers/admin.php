@@ -361,7 +361,7 @@
             }
             else
             {
-                //$this->form_validation->set_rules('speaker_email','Email','required|valid_email|xss_clean');
+                $this->form_validation->set_rules('speaker_email','Email','required|valid_email|xss_clean');
                 $this->form_validation->set_rules('title','Title','required');
                 $this->form_validation->set_rules('description','Description','required'); 
                 $this->form_validation->set_rules('category','Category','required');
@@ -386,8 +386,7 @@
 
                         if ( ! $this->upload->do_upload())
                         {
-                            echo 'can not update';
-                            $error = array('error' => $this->upload->display_errors());
+                            $error = $this->upload->display_errors();
                             $this->_load_view('admin/new_video_conference', $error);
                         }    
                         else
@@ -395,7 +394,7 @@
                             $data_upload = $this->upload->data();
                             $dateupload= NOW();
                             $data = array(
-                            'mem_id'=>$this->input->post('speaker_id'),
+                            'mem_id'=>$this->input->post('speaker'),
                             'title'=>$this->input->post('title'),
                             'description'=>$this->input->post('description'),
                             'category'=>$this->input->post('category'),
@@ -434,19 +433,51 @@
             else
             {
                 $this->form_validation->set_rules('title','Title','required');
-                $this->form_validation->set_rules('subject','Subject','required');
                 $this->form_validation->set_rules('keywords','Keywords','required');
                 $this->form_validation->set_rules('description','Description','required'); 
                 $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
                 $this->_data['query']=$this->Mvconference->get_video_conference_by_id($id);
+                $this->_data['category']=$this->Mvconference->get_category();
+                $this->_data['error'] ="";
                 if($this->input->post('submit')){
                     if($this->form_validation->run()==FALSE)
                     {
+                        //echo 'form failed';
                         $this->_load_view('admin/edit_video_conference');
                     }
                     else
                     {
-                        echo 'form ok';
+                        $config['upload_path'] = './videos/';
+                        $config['allowed_types'] = 'flv|gif|jpg|png';
+                        $config['max_size']    = '20480';
+                        $this->load->library('upload', $config);
+
+                        if ( ! $this->upload->do_upload())
+                        {
+                            $this->_data['error'] = $this->upload->display_errors();
+                            $this->_load_view('admin/edit_video_conference');
+                        }    
+                        else
+                        {
+                            $data_upload = $this->upload->data();
+                            $data = array(
+                            'title'=>$this->input->post('title'),
+                            'description'=>$this->input->post('description'),
+                            'category'=>$this->input->post('category'),
+                            'tags'=>$this->input->post('keywords'),
+                            'vhash'=>$data_upload['file_name'],
+                            'approved'=>$this->input->post('approved'),
+                            );
+                            if(!$data_upload)
+                            {
+                                return;
+                            }
+                            else
+                            {
+                                $this->Mvconference->update_conference($data,$id);
+                                redirect('admin/list_video_conference');
+                            }
+                        }
                     }
                 }
                 else
