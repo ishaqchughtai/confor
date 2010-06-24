@@ -1,21 +1,29 @@
-<div id="content">
-			
-			<div class="x2">
-			
-				<h3><?php echo lang('CON_profile');?></h3>
-				
+<div id="content">			
+			<div class="x3">			
+				<h3><?php echo lang('CON_profile');?></h3>				
 				<ul class="link_conttrol">
 					<li><a href="<?php echo site_url('speaker/edit_profile')?>">Edit profile</a></li>
 					<li><a href="<?php echo site_url('speaker/change_password')?>">Change password</a></li>
-				</ul>				
-							
+					<li><a href="<?php echo base_url().'pay'?>">Subcriptions</a></li>
+				</ul>											
 			</div>
 			<!-- /.x2 - represents a half windows size div -->
 			
-			<div class="x2 no_margin">			
-				<h3>Your video</h3>				
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta nibh metus. Aliquam eget tellus vulputate nibh feugiat dictum nec nec tellus. Nullam vel turpis sit amet erat cursus hendrerit in ut odio. Quisque aliquam, leo a ultricies pulvinar, mi erat ullamcorper quam, sit amet ornare erat lacus non nisl. Proin facilisis tempor lobortis. Sed magna eros, aliquam euismod fringilla quis, mattis et nisi.</p>					
+			<div class="x3">			
+				<h3>Your video</h3>								
+				<ul class="link_conttrol">
+					<li><a href="<?php echo site_url('speaker/your_video')?>">Your video</a></li>
+					<li><a href="<?php echo site_url('speaker/add_video')?>">Add new video</a></li>
+				</ul>					
 			</div>
+			
+			<div class="x3 no_margin">			
+				<h3>Tickets</h3>				
+				<ul class="link_conttrol">
+					<li><a href="<?php echo site_url('ticket')?>">List tickets</a></li>
+					<li><a href="<?php echo site_url('ticket/send_ticket_by_speaker')?>">Add new ticket</a></li>
+				</ul>					
+			</div>			
 			<!-- /.x2 - represents a half windows size div -->
 			
 			<!--                  -->
@@ -28,24 +36,27 @@
 			<!-- /.divider -->
 			
 			<div class="x3">			
-				<h3>Your events</h3>				
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta nibh metus. Aliquam eget tellus vulputate nibh feugiat dictum nec nec tellus. Nullam vel turpis sit amet erat cursus hendrerit in ut odio. Quisque aliquam, leo a ultricies pulvinar, mi erat ullamcorper quam, sit amet ornare erat lacus non nisl. Proin facilisis tempor lobortis. Sed magna eros, aliquam euismod fringilla quis, mattis et nisi.</p>
+				<h3>Your events</h3>								
+				<ul class="link_conttrol">
+					<li><a href="<?php echo site_url('event/event_content/'.get_user_id())?>">List Events</a></li>
+					<li><a href="<?php echo site_url('event/add')?>">Add new event</a></li>
+				</ul>	
 			</div>
 			<!-- /.x3 - represents a third windows size div -->
 			
-			<div class="x3">			
-				<h3>Your advertisement</h3>				
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta nibh metus. Aliquam eget tellus vulputate nibh feugiat dictum nec nec tellus. Nullam vel turpis sit amet erat cursus hendrerit in ut odio. Quisque aliquam, leo a ultricies pulvinar, mi erat ullamcorper quam, sit amet ornare erat lacus non nisl. Proin facilisis tempor lobortis. Sed magna eros, aliquam euismod fringilla quis, mattis et nisi.</p>				
+			<div class="x3">	
+				<h3>Tickets</h3>				
+				<ul class="link_conttrol">
+					<li><a href="<?php echo site_url('ticket')?>">List tickets</a></li>
+					<li><a href="<?php echo site_url('ticket/send_ticket_by_speaker')?>">Add new ticket</a></li>
+				</ul>				
 			</div>
 			<!-- /.x3 - represents a third windows size div -->
 			
 			<div class="x3 no_margin">
 			
-				<h3>Tickets</h3>				
-				<ul class="link_conttrol">
-					<li><a href="<?php echo site_url('ticket')?>">List tickets</a></li>
-					<li><a href="<?php echo site_url('ticket/send_ticket_by_speaker')?>">Add new ticket</a></li>
-				</ul>	
+				<h3>Your advertisement</h3>				
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta nibh metus. Aliquam eget tellus vulputate nibh feugiat dictum nec nec tellus. Nullam vel turpis sit amet erat cursus hendrerit in ut odio. Quisque aliquam, leo a ultricies pulvinar, mi erat ullamcorper quam, sit amet ornare erat lacus non nisl. Proin facilisis tempor lobortis. Sed magna eros, aliquam euismod fringilla quis, mattis et nisi.</p>				
 			
 			</div>
 			<!-- /.x3 - represents a third windows size div -->		

@@ -15,7 +15,7 @@
 
 // ------------------------------------------------------------------------
 
-if (! function_exists('check_language'))
+if (! function_exists('xemmex_language'))
 {
 	function xemmex_language($lg = FALSE)	
 	{
@@ -24,7 +24,7 @@ if (! function_exists('check_language'))
 		$lang_array = array(
 			'en' => 'english',
 			'fr' => 'french',
-			'vi' => 'vietnam'
+			'ca' => 'canada'
 		);
 		
 		if ($lg == FALSE) 
@@ -61,6 +61,22 @@ if (! function_exists('check_language'))
 			}
 		}
 		return $lang;
+	}
+}
+
+// ------------------------------------------------------------------------
+// this function for get text by key in currently language
+if ( ! function_exists('__'))
+{
+	function __($line, $id = '')
+	{
+		$CI =& get_instance();
+		$line = $CI->lang->line($line);
+		if ($id != '')
+		{
+			$line = '<label for="'.$id.'">'.$line."</label>";
+		}
+		return $line;
 	}
 }
 
@@ -179,7 +195,8 @@ function form_fckeditor($data = '', $value = '', $extra = '')
     }
 }
 
-function is_admin($go_after_login=TRUE) {
+function is_admin($go_after_login=TRUE) 
+{
 	$CI =& get_instance();
 	if ($CI->session->userdata('admin')) 
 	{
@@ -192,7 +209,7 @@ function is_admin($go_after_login=TRUE) {
 			'right' => $CI->session->userdata('right')
 		);
 		return $admin_data;
-	} 		
+	}
 	if ($go_after_login==TRUE)
 	{
 		redirect('/');
@@ -200,48 +217,22 @@ function is_admin($go_after_login=TRUE) {
 	return FALSE;	
 }
 
-function is_speaker($go_after_login=TRUE) {
+function is_speaker($go_after_login=TRUE) 
+{
 	$CI =& get_instance();
-	
-	if ($CI->session->userdata('speaker_id')) 
-	{
-		$speaker_data = array
-		(
-			'speaker_id' => $CI->session->userdata('speaker_id'),
-			'speaker_email' => $CI->session->userdata('speaker_email'),
-			'speaker_name' => $CI->session->userdata('speaker_name'),
-			'lang' => $CI->session->userdata('lang'),			
-			'speaker_subcription_name' => $CI->session->userdata('speaker_subcription_name'),
-			'speaker_subscription_expiration' => $CI->session->userdata('speaker_subscription_expiration')
-		);			
-		return $speaker_data;
-	} 
-	else 
-	{
-		$email = $CI->Remember_me->check_remember_me();
-		if ($email)
-		{
-			$query = $CI->MSpeaker->get_by_email($email);
-			if ($query->num_rows() == 1) 
-			{
-				$row = $query->row();
-				$speaker_data['speaker_id'] = $row->ID;
-				$speaker_data['speaker_email'] = $row->Email;
-				$speaker_data['speaker_name'] = $row->Name;
-				$speaker_data['speaker_subcription_name'] = $row->TypeName;
-				$speaker_data['speaker_expire'] = $row->SubscriptionExpiration;
-				$speaker_data['lang'] = $row->Language;				
-				$CI->session->set_userdata($speaker_data);
-				return $speaker_data;												
-			} 
-		}
-	}		 	
-	
-	if ($go_after_login==TRUE)
-	{
-		redirect('/');
-	}
-	return FALSE;
+	return $CI->user_lib->is_speaker($go_after_login);	
+}
+
+function get_user_id() 
+{
+	$CI =& get_instance();
+	return $CI->session->userdata('speaker_id');
+}
+
+function get_user_field($field) 
+{
+	$CI =& get_instance();
+	return $CI->session->userdata($field);
 }
 
 if (! function_exists('_substr'))
@@ -264,21 +255,6 @@ if (! function_exists('_substr'))
 		}
 	   
 		return $sub . (($len < strlen($str)) ? ' [...]' : '');
-	}
-}
-
-// this function for get text by key in currently language
-if ( ! function_exists('__'))
-{
-	function __($line, $id = '')
-	{
-		$CI =& get_instance();
-		$line = $CI->lang->line($line);
-		if ($id != '')
-		{
-			$line = '<label for="'.$id.'">'.$line."</label>";
-		}
-		return $line;
 	}
 }
 
@@ -332,9 +308,66 @@ if ( ! function_exists('xm_generateRandID'))
 {
 	function xm_generateRandID()
     {
-        return md5($this->xm_generateRandStr(16));
+        return md5(xm_generateRandStr(16));
     }
-}	 
+}
 
+
+if ( ! function_exists('url_title'))
+{
+	function url_title($str)
+	{
+		$trans = array(' ' => '-', '-' => '--');
+		echo strtr($str,$trans);
+	}
+}
+
+if ( ! function_exists('rev_url_title'))
+{
+	function rev_url_title($str)
+	{
+		$trans = array('-' => ' ', '--' => '-');
+		echo strtr($str,$trans);
+	}	 
+}
+
+if ( ! function_exists('dropdown_data'))
+{
+	function dropdown_data($setting)
+	{
+		$CI =& get_instance();
+		if (! array_key_exists('order',$setting))
+		{
+			$CI->db->order_by($setting['value_field'],'asc');
+		}
+		else
+		{
+			$CI->db->order_by($setting['order']);
+		}
+		$query = $CI->db->get($setting['table_name']);		
+		$options = array();
+		foreach ($query->result() as $row)
+		{
+			$options[$row->$setting['key_field']] = $row->$setting['value_field'];
+		}
+		return $options;
+	}	 
+}
+
+// if ( ! function_exists('sanitize'))
+// {
+	// function sanitize($string, $trim = false)
+	// {
+	  // $string = filter_var($string, FILTER_SANITIZE_STRING);
+	  // $string = trim($string);
+	  // $string = stripslashes($string);
+	  // $string = strip_tags($string);
+	  // $string = str_replace(array('‘', '’', '“', '”'), array("'", "'", '"', '"'), $string);
+	  // if ($trim)
+		  // $string = substr($string, 0, $trim);
+	  
+	  // return $string;
+	// }
+// }
 /* End of file xemmex_helper.php */ 
 /* Location: ./system/application/helpers/xemmex_helper.php */ 

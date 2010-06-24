@@ -19,8 +19,10 @@
 $config['login_expiration'] = 3600;		// 20 minutes
 $config['remember_me_life'] = 7257600;	// 12 weeks
 
-$config['spk_password_rule'] = 'trim|required|min_length[5]|max_length[12]|xss_clean';
+$config['spk_password_rule'] = 'trim|required|min_length[3]|max_length[12]|xss_clean';
 $config['spk_email_rule'] = 'trim|required|valid_email|xss_clean';
+$config['spk_user_rule'] = 'trim|required|min_length[3]|max_length[12]|xss_clean';
+
 
 
 ?>

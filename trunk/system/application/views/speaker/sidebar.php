@@ -1,8 +1,8 @@
 </div>
 			<div id="right">
 			
-				<h3>SPEAKER SIDEBAR</h3>
-				<h5>Lorem ipsum dolor sit amet</h5>
+				<h3>MEMBERSHIP</h3>
+				<h5>Your subcriptions</h5>
 				
 			  <div class="sidebar_item">
 				

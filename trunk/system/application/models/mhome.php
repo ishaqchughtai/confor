@@ -136,5 +136,25 @@
       $this->db->limit($limit);
       return $this->db->get();
     }	
+	
+	function is_correct_captcha($str)
+	{
+		// First, delete old captchas
+		$expiration = time()-7200; // Two hour limit		
+		$this->db->where('captcha_time < ', $expiration);
+		$this->db->delete('captcha'); 
+		
+		// Then see if a captcha exists:
+		$sql = "SELECT COUNT(*) AS count FROM captcha WHERE word = ? AND ip_address = ? AND captcha_time > ?";
+		$binds = array($_POST['captcha'], $this->input->ip_address(), $expiration);
+		$query = $this->db->query($sql, $binds);
+		$row = $query->row();
+		if ($row->count == 0)
+		{
+			return false;
+		}	
+		return true;
+	}
+	
   }
 ?>

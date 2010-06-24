@@ -21,6 +21,11 @@ class MY_controller extends Controller {
     $this->_data['load_page'] = $path;
     $this->load->view($this->_container, $this->_data);
   }
+  
+  function message()
+  {
+	$this->_load_view('message');
+  }
 
   function _before_render() {
   }

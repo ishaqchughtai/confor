@@ -30,7 +30,7 @@
 		<li><a href="<?php echo site_url("speaker") ?>"><?php echo __("CON_setting")?></a></li>
 		<li><a href="<?php echo site_url("speaker/logout") ?>"><?php echo __("CON_logout")?></a></li>		
 		<?php else: ?>
-		<li id="login_link"><a href="">Register</a></li>		
+		<li><a href="<?php echo site_url("home/register") ?>">Register</a></li>		
 		<li id="login_link"><a href="#login_wrapper">Log in</a></li>	
 		<?php $this->load->view("home/login");?>
 		<?php endif ?>
