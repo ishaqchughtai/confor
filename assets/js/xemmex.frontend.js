@@ -20,7 +20,7 @@ function loginSubmit() {
 	var username = $('#login_username').val();
 	var password = $('#login_password').val();		
 	var is_cookie = $('#is_cookie').attr('checked');
-	var param = {'email':username, 'password':password, 'is_cookie':is_cookie};
+	var param = {'username':username, 'password':password, 'is_cookie':is_cookie};
 	is_cookie = (is_cookie==true)?1:0;
 	//alert(is_cookie);
 	$.post(XEMMEX.baseUrl + "speaker/do_login", param, function(data){

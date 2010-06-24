@@ -39,7 +39,7 @@
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('session', 'language', 'pagination', 'form_validation');
+$autoload['libraries'] = array('session', 'language', 'pagination', 'form_validation', 'user_lib');
 
 /*
 | -------------------------------------------------------------------
@@ -50,7 +50,7 @@ $autoload['libraries'] = array('session', 'language', 'pagination', 'form_valida
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('xemmex', 'form', 'url', 'language', 'file', 'cookie');
+$autoload['helper'] = array('xemmex', 'form', 'url', 'language', 'file', 'cookie', 'security');
 
 /*
 | -------------------------------------------------------------------

@@ -10,15 +10,15 @@
             
                 <div class="login_block">
                 
-                    <label for="login_username">Email:</label>
+                    <label for="login_username"><?php echo __("CON_user_name_label")?></label>
                     <input type="text" id="login_username" name="username" />
                 
                 </div>
             
                 <div class="login_block">
                 
-                    <label for="login_password"><?php echo lang('CON_user_password_label');?></label>
-                    <input type="password" id="login_password" name="pass" />
+                    <label for="login_password"><?php echo __("CON_user_password_label");?></label>
+                    <input type="password" id="login_password" name="password" />
                 
                 </div>
             
@@ -32,7 +32,7 @@
                 
                     <span class="left"><input id="is_cookie" name="is_cookie" type="checkbox" class="checkbox" /> Remember me</span>
                 
-                    <a href="#" class="right"><?php echo $this->lang->line('CON_forgotten_password_label');?></a>
+                    <a href="#" class="right"><?php echo __("CON_forgotten_password_label");?></a>
                     
                 </p>
                 <div id="message_holder">                

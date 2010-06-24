@@ -165,9 +165,7 @@
               $this->username = $_SESSION['username'] = "Guest";
               $this->userlevel = 0;
 			  redirect_to("../");
-          }
-          
-
+          }          
       }
       
       /**

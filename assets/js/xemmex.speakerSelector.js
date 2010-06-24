@@ -1,3 +1,12 @@
+/**
+ * Speaker selector
+ *
+ * @package		Confor
+ * @subpackage	Javascript
+ * @category	Speaker
+ * @author		Nguyen Hai Dang - XEMMEX developer
+ */
+
 	XEMMEX.Speaker = {};
 	XEMMEX.Speaker.basePagingUrl = XEMMEX.baseUrl + 'speaker/do_paging/';
 	XEMMEX.Speaker.numPerPage = 10;
@@ -56,7 +65,7 @@
 						s4 = '</div>';					
 						for ( var i in data.speakers )
 						{												
-							s2 = '<span>'+data.speakers[i]['Email']+'</span>';
+							s2 = '<span>'+data.speakers[i]['username']+' ('+data.speakers[i]['name']+') </span>';
 							s3 = '<input type="hidden" value="'+data.speakers[i]['ID']+'"/>';
 							s += s1 + s2 + s3 + s4;						
 						}																

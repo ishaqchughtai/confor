@@ -18,7 +18,7 @@ class Home extends Frontend_controller {
         $this->_data['header']['page'] = '/home/home_header';	
         $this->_load_view('home/index');
     }
-
+  
     function contact()
     {
         //$this->_data['path'] = 'contact';		
@@ -29,27 +29,71 @@ class Home extends Frontend_controller {
         $this->_load_view('home/contact');
     }
 
-    function login() 
-    {
-        $this->_data['path'][] = array(
-        'name' => __("CON_login"),
-        'link' => site_url("home/login")
-        );	
-        $this->load->library('speaker_lib'); 
-        $this->speaker_lib->login();
-    }
+  function login() 
+  {
+    $this->_data['path'][] = array(
+    'name' => __("CON_login"),
+    'link' => site_url("home/login")
+    );	
+    //$this->load->library('speaker_lib'); 
+    //$this->speaker_lib->login();
+	$this->user_lib->login();
+  }
 
-    function admin_login() 
-    {
-        $this->_data['path'][] = array(
-        'name' => __("CON_login"),
-        'link' => site_url("home/login")
-        );	
-        $this->load->library('speaker_lib'); 
-        $this->speaker_lib->login();
-    }	
+  function register() 
+  {
+    $this->_data['path'][] = array(
+    'name' => 'Register',
+    'link' => site_url("home/register")
+    );	
+    //$this->load->library('speaker_lib'); 
+    //$this->speaker_lib->login();		
+	$this->user_lib->register();
+  }    
+  
+	function is_username_exists($username)
+	{
+		if ( $this->MUser->is_username_exists($username))
+		{
+			$this->form_validation->set_message('is_username_exists', 'The %s already exists');
+			return FALSE;
+		}
+		return TRUE;
+	}
+	
+	function is_email_exists($email)
+	{
+		if ( $this->MUser->is_email_exists($email))
+		{
+			$this->form_validation->set_message('is_email_exists', 'The %s already exists');
+			return FALSE;
+		}
+		return TRUE;
+	}	  
+	
+	function is_correct_captcha($captcha)
+	{
+		if (! $this->Mhome->is_correct_captcha($captcha))
+		{
+			$this->form_validation->set_message('is_correct_captcha', 'Invalid code');
+			return FALSE;
+		}
+		return TRUE;		
+	}	 	
 
-    function search()
+  // function admin_login() 
+  // {
+    // $this->_data['path'][] = array(
+    // 'name' => __("CON_login"),
+    // 'link' => site_url("home/login")
+    // );	
+    // $this->load->library('speaker_lib'); 
+    // $this->speaker_lib->login();
+  // }	
+
+  function search()
+  {
+    if($this->input->post('search'))
     {
         if($this->input->post('search'))
         {
@@ -86,6 +130,7 @@ class Home extends Frontend_controller {
             $this->_load_view('home/search');   
         }
     }
+	}
 
 
     function search_paging($keywords_to_search, $num_per_page) 
@@ -113,6 +158,7 @@ class Home extends Frontend_controller {
         $this->_data['keyword'] = $keywords_to_search;
         $this->_load_view('home/search'); 
     }	
+	
     function play($id)
     {
         $id=(double)$id;
