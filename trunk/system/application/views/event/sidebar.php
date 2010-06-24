@@ -44,7 +44,7 @@ function search_click (){
 				      <ul class="ctabs_content">
 				        <?php foreach($dates as $row):?>
 				        <li>
-                        <a href="<?php echo site_url('video/archives/'.date("m", strtotime($row['month_yy'])).'/'.date("Y", strtotime($row['month_yy'])))?>"><?php echo $row['month_yy'];?>(8)</a>
+                        <a href="<?php echo site_url('video/archives/'.date("m", mdate($row['month_yy'])).'/'.date("Y", mdate($row['month_yy'])))?>"><?php echo mdate('%F %Y',$row['month_yy']);?></a>
                         </li>
                       <?php endforeach?>
 			          </ul>
@@ -78,9 +78,9 @@ function search_click (){
 							    <?php foreach($popular_video as $row):?>
 								<li>
 								
-									<a href="<?php echo site_url('home/play').'/'.$row['ID']?>"><img src="<?php echo base_url().'thumbs/'.$row['ImagesLink'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['ID']?>" class="title"><?php echo $row['Title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['ID']?>">VIEW</a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>">VIEW</a>
 								
 								</li>
                                 <?php
@@ -106,9 +106,9 @@ function search_click (){
                                 <?php if($count>3){?>
                                 <li>
 								
-									<a href="<?php echo site_url('home/play').'/'.$row['ID']?>"><img src="<?php echo base_url().'thumbs/'.$row['ImagesLink'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['ID']?>" class="title"><?php echo $row['Title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['ID']?>">VIEW</a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>">VIEW</a>
 								
 								</li>
                                 <?php }?>
@@ -150,9 +150,9 @@ function search_click (){
 							    <?php foreach($recent_video as $rows):?>
 								<li>
 								
-									<a href="<?php echo site_url('home/play').'/'.$rows['ID']?>"><img src="<?php echo base_url().'thumbs/'.$rows['ImagesLink']?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
-									<a href="<?php echo site_url('home/play').'/'.$rows['ID']?>" class="title"><?php echo $rows['Title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$rows['ID']?>">VIEW</a>
+									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
+									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>" class="title"><?php echo $rows['title']?></a>
+									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>">VIEW</a>
 								
 								</li><br /><br />
                                 <?php endforeach?>
