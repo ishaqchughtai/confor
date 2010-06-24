@@ -11,8 +11,8 @@
     //count record get video by speaker
     function count_record_speaker($speaker)
     {
-      $this->db->from('tblvideoconference');
-      $this->db->where('Speaker', $speaker);
+      $this->db->from('videos');
+      $this->db->where('mem_id', $speaker);
       $query = $this->db->count_all_results();
       return $query;
     }
@@ -22,26 +22,22 @@
     {
       $this->db->select('
       tblspeaker.Name,
-      tblvideoconference.ID,
-      tblvideoconference.`Date`,
-      tblvideoconference.Title,
-      tblvideoconference.Subject,
-      tblvideoconference.Keywords,
-      tblvideoconference.Description,
-      tblvideoconference.Viewed,
-      tblvideoconference.Upload,
-      tblvideoconference.Recording,
-      tblvideoconference.VideoLink,
-      tblvideoconference.Ticket,
-      tblvideoconference.Speaker,
+      videos.vid_id,
+      videos.date,
+      videos.title,
+      videos.tags,
+      videos.description,
+      videos.viewed,
+      videos.vhash,
+      videos.mem_id,
       tblspeaker.Name as speaker_name,
-      tblvideoconference.ImagesLink,
-      tblvideoconference.Category
+      videos.shash,
+      videos.category
 
       ');
-      $this->db->from('tblvideoconference');
-      $this->db->join('tblspeaker','tblvideoconference.Speaker = tblspeaker.ID');
-      $this->db->where(array('speaker'=>$speaker));
+      $this->db->from('videos');
+      $this->db->join('tblspeaker','videos.mem_id = tblspeaker.ID');
+      $this->db->where(array('mem_id'=>$speaker));
       $this->db->order_by('Viewed','desc');
       $this->db->limit($per_page,$offset);
       $video_speaker = $this->db->get();

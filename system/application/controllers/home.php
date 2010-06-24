@@ -119,7 +119,7 @@ class Home extends Frontend_controller {
     {
       $row=$query->row();
     }
-    $last_viewed=$row->Viewed;
+    $last_viewed=$row->viewed;
     $viewed=$last_viewed+1;
     $this->Mhome->update_view_time($id,$viewed);
     $this->_load_view('home/play_video');
