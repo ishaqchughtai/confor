@@ -75,7 +75,7 @@
                                 $this->session->set_userdata('admin_name',$admin_name);
                                 $this->session->set_userdata('admin',$admin_email);
                                 $this->session->set_userdata('right',$admin_right);
-                                $this->session->set_userdata('id',$id);                                 
+                                $this->session->set_userdata('admin_id',$id);                                 
                                 redirect(site_url("admin"));
                             }
                             else
@@ -215,6 +215,42 @@
                 {
                     $this->_load_view('admin/update_admin');
                 }
+            }
+        }
+        function edit_profile($id)
+        {
+            $this->_data['path'][] = array(
+            'name' => __("CON_admin_edit"),
+            'link' => '#'
+            );                    
+            $data['error'] = ""; 
+            $this->form_validation->set_rules('txtName','Name','required');
+            $this->form_validation->set_rules('txtFirstName','First Name','required');
+            $this->form_validation->set_rules('txtEmail','Email','required|valid_email|xss_clean');
+            $this->form_validation->set_rules('txtpayPayAccount','Paypal Account','required');
+            $this->_data['query']=$this->Madmin->get_admin_by_id($id);
+            if($this->input->post('Submit'))
+            {
+                if($this->form_validation->run()==FALSE)
+                {
+                    $this->_data['error'] = "Can not update !";
+                    $this->_load_view('admin/update_admin');
+                }
+                else
+                {
+                    $data = array(
+                    'Name'=>$this->input->post('txtName'),
+                    'FirstName'=>$this->input->post('txtFirstName'),
+                    'Email'=>$this->input->post('txtEmail'),
+                    'PayPalAccount'=>$this->input->post('txtpayPayAccount'),
+                    );
+                    $this->Madmin->update_admin($id,$data);
+                    redirect(site_url("admin"));  
+                }
+            }
+            else
+            {
+                $this->_load_view('admin/update_admin');
             }
         }
         /*Speaker information managed by administrator*/
