@@ -304,54 +304,40 @@
         /*Video Conference*/
         function list_video_conference()
         {
-            is_admin();
+            is_admin();            
             $this->_data['path'][] = array(
             'name' => __("CON_video_list"),
             'link' => site_url("admin/list_video_conference")
-            );
-            $config['base_url'] = base_url().'index.php/admin/list_video_conference/';
+            );   
+
+            $category = $this->uri->segment(3);
+            $num_per_page = $this->uri->segment(4);
+            $page_offset = $this->uri->segment(5);           
+
+            $config['base_url'] = base_url().'index.php/admin/list_video_conference/'.$category.'/'.$num_per_page.'/';
+            $config['uri_segment'] = 5;
             $config['per_page']='3';
-            $config['full_tag_open'] = '<li>';        
+            $config['full_tag_open'] = '<li >';        
             $config['full_tag_close'] = '</li>'; 
             $config['next_link'] = 'Next >';
             $config['prev_link'] = '< Previous';
             $config['last_link'] = 'Last >>';
             $config['first_link'] = '<< First';
 
-            // $header['page'] = "admin/header";
-            // $side_bar['page'] = "admin/sidebar";
-            // $this->_data['header'] = $header;
-            // $this->_data['side_bar'] = $side_bar;
-            if($this->input->post('btnsubmit'))
-            {               
-                $Category=$this->input->post('video_category');
-                if($Category == 0)
-                {
-                    $config['total_rows'] = $this->db->count_all('videos'); 
-                    $this->pagination->initialize($config);
-                    $this->_data['query'] = $this->Mvconference->get_all_video_conference($this->uri->segment(3),$config['per_page']);
-                    $this->_data['category'] = $this->Mvconference->get_category();
-                    $this->_data['pagination'] = $this->pagination->create_links();
-                    $this->_load_view('admin/video_conference_list');                   
-                }else
-                {
-                    $config['total_rows'] = $this->Mvconference->count_video_Category($Category);
-                    $this->pagination->initialize($config);
-                    $this->_data['query'] = $this->Mvconference->get_video_conference_by_category($Category,$this->uri->segment(3),$config['per_page']);
-                    $this->_data['category'] = $this->Mvconference->get_category();
-                    $this->_data['pagination'] = $this->pagination->create_links();
-                    $this->_load_view('admin/video_conference_list');                
-                }
-
-            }else
+            if($category == 0)
             {
                 $config['total_rows'] = $this->db->count_all('videos'); 
-                $this->pagination->initialize($config);
-                $this->_data['query'] = $this->Mvconference->get_all_video_conference($this->uri->segment(3),$config['per_page']);
-                $this->_data['category'] = $this->Mvconference->get_category();
-                $this->_data['pagination'] = $this->pagination->create_links();
-                $this->_load_view('admin/video_conference_list');
+                $this->_data['query'] = $this->Mvconference->get_all_video_conference($num_per_page,$page_offset);                  
             }
+            else
+            {
+                $config['total_rows'] = $this->Mvconference->count_video_Category($category);
+                $this->_data['query'] = $this->Mvconference->get_video_conference_by_category($category,$num_per_page,$page_offset);
+            }   
+            $this->pagination->initialize($config);  
+            $this->_data['category'] = $this->Mvconference->get_category();
+            $this->_data['pagination'] = $this->pagination->create_links();
+            $this->_load_view('admin/video_conference_list'); 
         }
         function new_video_conference()
         {
