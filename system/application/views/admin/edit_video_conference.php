@@ -17,7 +17,7 @@
                             $discription=$row->description;
                         }
                     ?>
-                    <h3> Video conference update </h3> 
+                    <h3> Video conference update </h3>
                     <?php echo form_open_multipart('admin/edit_video_conference/'.$id);?> 
                     <p>
                         <label for="title">Title:</label>
@@ -25,10 +25,12 @@
                         <?php echo form_error('title')?>
                     </p>
                     <p>
-                        <label for="subject">Subject:</label>
-
-                        <input type="text" class="medium" name="subject" id="subject" value="<?php echo $subject ?>" />
-                        <?php echo form_error('subject')?>
+                        <label for="category">Category:</label>
+                        <select class="medium" name="category">
+                            <?php foreach($category as $row):?>
+                            <option value="<?php echo $row['ID']?>"><?php echo $row['Name']?></option>
+                            <?php endforeach;?>
+                        </select>
                     </p>
 
                     <p>
@@ -48,14 +50,15 @@
                         <label for="name">Approved:</label>
                     </p>
                     <select name="approved" class="short">
-                        <option selected="selected">Yes</option>
-                        <option>No</option>
+                        <option value="1" selected="selected">Yes</option>
+                        <option value="0">No</option>
                     </select>
                     <p>
-                        <label for="label">Video:</label>
-                        <input type="file" class="long" name="video" id="file" /></p>
+                        <label for="video">Video:</label>
+                        <input type="file" name="userfile" size="20" />
+                        <b style="color: red"><?php echo $error ;?></b>
+                    </p>
                     <p>
-
                         <label for="name"></label><input type="submit" name="submit" class="submit" value="Update" />
                     </p>
 

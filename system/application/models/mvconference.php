@@ -144,6 +144,10 @@
         {
             $this->db->insert('videos', $data);
         }
+        function update_conference($data,$id)
+        {
+            $this->db->update('videos',$data,array('vid_id'=>$id)); 
+        }
 
     }
 ?>
