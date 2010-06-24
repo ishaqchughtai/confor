@@ -1,5 +1,5 @@
 body { font-family: "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; line-height: 1.5em; background-color: #E5EBEE; color: #333; margin: 0px; padding: 0px; height: 100%; }
-a { color: #419EE0; text-decoration: underline; outline:none }
+a { color: #6C3; text-decoration: underline; outline:none }
 a:hover{ text-decoration: none; color: #3A3F43; }
 h1, h2, h3, h4, form, ul, li, input, textarea { margin: 0px; padding: 0px; }
 ul, li { list-style-type: none; }
@@ -20,7 +20,7 @@ a.button,a.button-alt{ text-decoration: none; }
 
 #content { background-color: #FFF; padding-top: 20px; padding-right: 30px; padding-bottom: 20px; padding-left: 30px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: #888E91; }
 #content h1 { font-size: 28px; line-height: 28px; margin-bottom: 10px; font-weight: lighter; font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;}
-#content h1 span { color: #419EE0; }
+#content h1 span { color: #6C3; }
 #content p.info { background-image: url(../images/info.png); background-repeat: no-repeat; background-position: 5px 5px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 25px; background-color: #687177; color: #fff; -moz-border-radius: 5px; -khtml-border-radius: 5px; -webkit-border-radius: 5px; }
 
 #content table.box{ width: 100%; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; background-color: #FFF; }
@@ -52,3 +52,13 @@ a.button,a.button-alt{ text-decoration: none; }
 
 /*Footer */
 #footer{ padding: 8px; text-align: center; }
+
+.logo a {
+	text-decoration:none;
+}
+.title_green {
+	color: #6C3;
+}
+.title_white {
+	color: #fff;
+}

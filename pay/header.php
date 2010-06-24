@@ -19,8 +19,11 @@ var IMGURL = "<?php echo ADMINURL; ?>/images";
 <!-- Start Header-->
 <div id="header">
 <div class="wrap">
-  <div class="logo"><?php echo $setup->set['site_name'];?> - [<?php echo $setup->set['site_slogan'];?>]</div>
+  <div class="logo"><a href="../"><span class="title_green">Confor.</span><span class="title_white">ca</span></a> - [Video conference]</div>
   <strong>Welcome <?php echo $session->username;?></strong> 
-  <?php if($session->logged_in):?> <strong>~ <a href="index.php?do=profile">Edit Profile</a></strong><?php endif;?></div>
+  <?php if($session->logged_in):?> 
+  <strong>~ <a href="index.php?do=profile">Edit Profile</a></strong>
+  <?php endif;?>
+  </div>
 </div>
 <!-- End Header-->
