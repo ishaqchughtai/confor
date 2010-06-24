@@ -29,7 +29,7 @@
                         <label for="category">Category:</label>
                         <select class="medium" name="category">
                             <?php foreach($query as $row):?>
-                            <option value="<?php echo $row['ID']?>"><?php echo $row['Category']?></option>
+                            <option value="<?php echo $row['ID']?>"><?php echo $row['Name']?></option>
                             <?php endforeach;?>
                         </select>
                         <a href="#">Category Management</a>
