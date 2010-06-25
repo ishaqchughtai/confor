@@ -20,15 +20,15 @@
             </tr>
             <?php foreach($query as $row):?>
                 <tr>
-                    <td><?php echo $row['Name']?></td>
-                    <td><?php echo $row['CompanyName']?></td>
-                    <td><?php echo $row['Email']?></td>
-                    <td><?php echo $row['Country']?></td>
-                    <td><?php echo $row['Description']?></td>
-                    <td><?php echo $row['Subscription']?></td>
-                    <td><?php if((int)$row['Suspend']=='1'){echo 'suspended';}else{echo 'activate';} ?></td>
-                    <td><a href="<?php echo site_url("admin/modify_user/".$row['ID'])?>">Modify</a></td>
-                    <td width="45"><a href="<?php echo site_url("/admin/delete_user/".$row['ID'])?>" onclick="return confirm('Are you sure want to delete?');">Delete</a></td>
+                    <td><?php echo $row['username']?></td>
+                    <td><?php echo $row['company_name']?></td>
+                    <td><?php echo $row['email']?></td>
+                    <td><?php echo $row['country']?></td>
+                    <td><?php echo $row['description']?></td>
+                    <td><?php echo $row['userlevel']?></td>
+                    <td><?php if((int)$row['status']=='0'){echo 'suspended';}else{echo 'activate';} ?></td>
+                    <td><a href="<?php echo site_url("admin/modify_user/".$row['id'])?>">Modify</a></td>
+                    <td width="45"><a href="<?php echo site_url("/admin/delete_user/".$row['id'])?>" onclick="return confirm('Are you sure want to delete?');">Delete</a></td>
                 </tr>
                 <?php endforeach;?>
         </table>

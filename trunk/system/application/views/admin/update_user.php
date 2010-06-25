@@ -4,15 +4,15 @@
                     <?php 
                         foreach($query as $row)
                         {
-                            $id = $row['ID'];
-                            $name=$row['Name'];
-                            $company=$row['CompanyName'];
-                            $email=$row['Email'];
-                            $country=$row['Country'];
-                            $password=$row['Password'];
-                            $description=$row['Description'];
-                            $subscription=$row['Subscription'];     
-                            $suspend=$row['Suspend'];
+                            $id = $row['id'];
+                            $name=$row['name'];
+                            $company=$row['company_name'];
+                            $email=$row['email'];
+                            $country=$row['country'];
+                            $password=$row['password'];
+                            $description=$row['description'];
+                            $subscription=$row['userlevel'];     
+                            $suspend=$row['status'];
                     }?>
                     <h3>MODIFY SPEAKER</h3> 
                     <?php echo form_open('admin/modify_user/'.$id); ?>
@@ -26,8 +26,6 @@
                         <input class="medium" name="txtCountry" id="country" value="<?php echo $country?>" /><?php echo form_error("txtCountry"); ?>
                         <label for="Description">Description:</label>
                         <input class="medium" name="txtDescription" id="description" value="<?php echo $description?>" /><?php echo form_error("txtDescription"); ?>
-                        <label for="Subcription">Type of Subcription:</label>
-                        <input class="medium" name="txtSubcription" id="subcription" value="<?php echo $subscription?>" /><?php echo form_error("txtSubcription"); ?>
                         <?php if((int)$suspend==0){?>
                             <label>(Active,</label> 
                             <input name="radiobutton" type="radio" value="0" class="checkbox" checked="<?php echo 'checked';?>"/>
