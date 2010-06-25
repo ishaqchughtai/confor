@@ -54,7 +54,7 @@ function search_click (){
 				    <li>
 				      <ul class="ctabs_content">
 				        <?php foreach($top_speaker as $row):?>
-				        <li><a href="<?php echo site_url('video/speaker').'/'.$row['Speaker']?>"><?php echo $row['Name']?></a></li>
+				        <li><a href="<?php echo site_url('video/speaker').'/'.$row['mem_id']?>"><?php echo $row['first_name'].' '.$row['name']?></a></li>
                       <?php endforeach?>
 			          </ul>
 				      <!-- /.ctabs_content -->

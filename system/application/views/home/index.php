@@ -6,7 +6,7 @@
                     $row = $video_path->row();
                    $top_view_video = $row->vhash;
                    $video_title=$row->title;
-                   $speaker=$row->FirstName.' '.$row->Name;
+                   $speaker=$row->first_name.' '.$row->name;
                    $description=$row->description;
                 }
               ?>		

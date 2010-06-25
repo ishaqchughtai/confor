@@ -12,10 +12,10 @@
       videos.description,
       videos.viewed,
       videos.vhash,
-      tblspeaker.Name,
-      tblspeaker.FirstName 
-      FROM videos ,tblspeaker 
-      WHERE videos.mem_id =  tblspeaker.ID 
+      users.name,
+      users.first_name
+      FROM videos ,users 
+      WHERE videos.mem_id = users.id 
       order by videos.viewed DESC LIMIT 1");
       return $query;
     }
@@ -77,17 +77,6 @@
       return $query->result_array();
     }
 
-    function get_date()
-    {
-      $this->db->select('
-      tblvideoconference.`Date`,
-      ');
-      $this->db->from('tblvideoconference');
-      $this->db->order_by('Date','desc');
-      $query = $this->db->get();
-      return $query->result_array();
-    }
-
     function get_dates()
     {
       $dates = $this->db->query("SELECT DISTINCT Date as month_yy
@@ -102,8 +91,8 @@
       $this->db->from('tblvideoconference');
       return $this->db->count_all_results(); 
     }
-    
-    
+
+
     function count_record_archives()
     {
 
@@ -115,16 +104,21 @@
 
     function get_top_speaker()
     {
-      $this->db->select('
-      tblvideoconference.Speaker,
-      tblvideoconference.Viewed,
-      tblspeaker.Name
-      ');
-      $this->db->from('tblvideoconference');
-      $this->db->join('tblspeaker','tblvideoconference.Speaker = tblspeaker.ID');
-      $this->db->order_by('Viewed','desc');
-      $this->db->limit(5);
-      $query = $this->db->get();
+      $query = $this->db->query("SELECT
+      Max(videos.viewed) AS max_viewed,
+      videos.mem_id,
+      users.name,
+      users.first_name
+      FROM
+      videos, users
+      WHERE
+      videos.mem_id =  users.ID
+      GROUP BY
+      users.Name
+      ORDER BY
+      videos.viewed DESC
+      LIMIT 5
+      ");
       return $query->result_array();
     }
 
@@ -136,25 +130,25 @@
       $this->db->limit($limit);
       return $this->db->get();
     }	
-	
-	function is_correct_captcha($str)
-	{
-		// First, delete old captchas
-		$expiration = time()-7200; // Two hour limit		
-		$this->db->where('captcha_time < ', $expiration);
-		$this->db->delete('captcha'); 
-		
-		// Then see if a captcha exists:
-		$sql = "SELECT COUNT(*) AS count FROM captcha WHERE word = ? AND ip_address = ? AND captcha_time > ?";
-		$binds = array($_POST['captcha'], $this->input->ip_address(), $expiration);
-		$query = $this->db->query($sql, $binds);
-		$row = $query->row();
-		if ($row->count == 0)
-		{
-			return false;
-		}	
-		return true;
-	}
-	
+
+    function is_correct_captcha($str)
+    {
+      // First, delete old captchas
+      $expiration = time()-7200; // Two hour limit		
+      $this->db->where('captcha_time < ', $expiration);
+      $this->db->delete('captcha'); 
+
+      // Then see if a captcha exists:
+      $sql = "SELECT COUNT(*) AS count FROM captcha WHERE word = ? AND ip_address = ? AND captcha_time > ?";
+      $binds = array($_POST['captcha'], $this->input->ip_address(), $expiration);
+      $query = $this->db->query($sql, $binds);
+      $row = $query->row();
+      if ($row->count == 0)
+      {
+        return false;
+      }	
+      return true;
+    }
+
   }
 ?>

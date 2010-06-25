@@ -3,17 +3,23 @@
 				<?php foreach($query as $row)
    				{
 					$id = $row['ID'];
-					$speaker = $row['Name'];
-					$date = $row['Date'];
+					$speaker = $row['first_name'].' '.$row['name'];
+					$date = date("F jS Y", strtotime($row['Date']));
 					$title = $row['Title'];
 					$subject = $row['Subject'];
-					$keyword = $row['Keywords'];
+					$keyword = explode(" ", $row['Keywords']);
 					$description = $row['Description'];
 					?>
 					<div class="content_item">
 				
 					<h3><?php echo $title?></h3>
-					<h5>By <?php echo $speaker?> in : <a href="#"><?php echo $keyword?></a> // <?php echo $date;?></h5>
+					<h5>By <?php echo $speaker?> in : 
+                    <?php for($i=0;$i<count($keyword);$i++){?>
+                      <a href="#"><?php echo $keyword[$i]?></a>
+                      <?php if ($i<count($keyword)-1) echo ','?>
+                      <?php ;}?>
+                    
+                     // <?php echo $date;?></h5>
 					<p> <?php echo $description?></p>
 					
 				</div>

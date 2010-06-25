@@ -31,7 +31,11 @@ class Event extends Frontend_controller {
     $date = $this->uri->segment(3);
     $per_page = $this->uri->segment(4);
     $offset = $this->uri->segment(5);
-
+    
+    $this->_data['path'][] = array(
+    'name' => "Event",
+    'link' => site_url("event/show_event/".$date)
+    );
 
     $config['uri_segment'] = 5;
     $config['base_url'] = base_url().'index.php/event/show_event/'.$date.'/'.$per_page;
@@ -55,9 +59,18 @@ class Event extends Frontend_controller {
 
   //Content's event of user
   function event_content($id) 
-  {
-    $this->_data['query'] = $this->MEvent->get_event_by_id($id);
-    $this->_load_view('event/event_content');
+  { 
+    $id = (double)$id;
+    if(is_nan($id)==FALSE && $id > 0)
+    {
+      $this->_data['query'] = $this->MEvent->get_event_by_id($id);
+      $this->_load_view('event/event_content');  
+    }
+    else
+    {
+      redirect(base_url());
+    }
+
   }
 
   //Add New Event of speaker
@@ -72,7 +85,7 @@ class Event extends Frontend_controller {
       $this->form_validation->set_rules('subject','Subject','trim|required|max_length[50]');
       $this->form_validation->set_rules('keywords','Keywords','trim|required|callback_keyword_check');
       $this->form_validation->set_rules('description','Description','trim|required|max_length[500]');
-      $this->form_validation->set_error_delimiters('<p class="not_error short"><span class="img"></span>','<span class="close"></span></p>');
+      $this->form_validation->set_error_delimiters('<p class="not_error long"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
         $this->_load_view('event/add_event');
@@ -123,7 +136,7 @@ class Event extends Frontend_controller {
       $this->form_validation->set_rules('subject','Subject','trim|required|max_length[50]');
       $this->form_validation->set_rules('keywords','Keywords','trim|required|callback_keyword_check');
       $this->form_validation->set_rules('description','Description','trim|required|max_length[500]');
-      $this->form_validation->set_error_delimiters('<p class="not_error short"><span class="img"></span>','<span class="close"></span></p>');
+      $this->form_validation->set_error_delimiters('<p class="not_error long"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
         $this->get_event($author, $id);
@@ -226,7 +239,7 @@ class Event extends Frontend_controller {
       $this->form_validation->set_rules('subject','Subject','trim|required|max_length[50]');
       $this->form_validation->set_rules('keywords','Keywords','trim|required|callback_keyword_check');
       $this->form_validation->set_rules('description','Description','trim|required|max_length[500]');
-      $this->form_validation->set_error_delimiters('<p class="not_error short"><span class="img"></span>','<span class="close"></span></p>');
+      $this->form_validation->set_error_delimiters('<p class="not_error long"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
         $this->get_event_admin($id);
@@ -267,7 +280,7 @@ class Event extends Frontend_controller {
       $this->form_validation->set_rules('subject','Subject','trim|required|max_length[50]');
       $this->form_validation->set_rules('keywords','Keywords','trim|required|callback_keyword_check');
       $this->form_validation->set_rules('description','Description','trim|required|max_length[500]');
-      $this->form_validation->set_error_delimiters('<p class="not_error short"><span class="img"></span>','<span class="close"></span></p>');
+      $this->form_validation->set_error_delimiters('<p class="not_error long"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
         $this->_load_view('admin/add_event_admin');

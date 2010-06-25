@@ -55,7 +55,7 @@ class Advertisement extends Admin_controller {
       $this->form_validation->set_rules('url','URL','prep_url|required');
       $this->form_validation->set_rules('text_tips','Text Tips','trim|required|max_length[50]');
       $this->form_validation->set_rules('image_link','Image Link','trim|required');
-      $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+      $this->form_validation->set_error_delimiters('<p class="not_error long"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
         $this->_load_view('admin/add_advertisement');
@@ -98,7 +98,7 @@ class Advertisement extends Admin_controller {
       $this->form_validation->set_rules('url','URL','valid_url');
       $this->form_validation->set_rules('text_tips','Text Tips','trim|required|max_length[50]');
       $this->form_validation->set_rules('image_link','Image Link','trim|required');
-      $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+      $this->form_validation->set_error_delimiters('<p class="not_error long"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
         $this->get_advertisement($id);
