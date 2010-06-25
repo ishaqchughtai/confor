@@ -43,13 +43,14 @@
                 $SpeakerID= $speaker_data["speaker_id"];
                 if($this->Mticket->add_ticket_by_speaker($Date,$Status,$Title,$Message,$Is_answered,$SpeakerID)==TRUE)
                 {
+                    $this->_data['error']="Send Ticket success";
                     $this->_load_view('home/ticket');
                 }   
             }            
         }        
         function send_ticket_by_admin($Ticket)
         {				            
-            $admin_data = is_admin();
+            is_admin();
             $this->form_validation->set_rules('title','Title','required');
             $this->form_validation->set_rules('message','Message','required');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
@@ -63,7 +64,7 @@
                 $Date=mdate($datestring,$time);
                 $Title=$this->input->post('title');
                 $Message=$this->input->post('message');
-                $Admin =$admin_data['id'];
+                $Admin =$this->session->userdata('admin_id');
                 $Is_answered=1;
                 if($this->Mticket->add_ticket_by_admin($Date,$Title,$Message,$Ticket,$Admin)==TRUE)
                 {

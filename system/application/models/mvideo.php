@@ -60,7 +60,7 @@
       $this->db->select("
       MONTH(Date) as month,
       YEAR(Date) as year,
-      tblspeaker.Name,
+      users.Name,
       tblvideoconference.ID,
       tblvideoconference.`Date`,
       tblvideoconference.Title,
@@ -72,12 +72,12 @@
       tblvideoconference.Recording,
       tblvideoconference.VideoLink,
       tblvideoconference.Ticket,
-      tblspeaker.Name as speaker_name,
+      users.Name as speaker_name,
       tblvideoconference.ImagesLink,
       tblvideoconference.Category
       ");
       $this->db->from('tblvideoconference');
-      $this->db->join('tblspeaker','tblvideoconference.Speaker = tblspeaker.ID');
+      $this->db->join('users','tblvideoconference.Speaker = users.ID');
       $this->db->where(array('MONTH(Date)'=>$month,'YEAR(Date)'=>$year));
       $this->db->order_by('Viewed','desc');
       $this->db->limit($per_page,$offset);
