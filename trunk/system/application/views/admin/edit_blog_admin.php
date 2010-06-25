@@ -67,6 +67,11 @@
                                         echo form_input($data);
                                         echo form_error('txtKeywords');?>
           </p>
+           <p>
+           <?php echo form_error('about');?>
+            <label for="">About The Author:</label><br />
+            <textarea rows="8" id="about" cols="" name="about" value="<?php if(isset($_POST['about'])){ echo $_POST['about'] ;}?>" ></textarea>
+          </p>
           <p>
             <label for="Body">Body:</label>
             <br />
