@@ -12,12 +12,7 @@
         <li><a class="icon_add" href="<?php echo site_url('admin/edit_profile/'.$admin_id);?>">Edit Profile</a></li>
     </ul>
     <p>&nbsp;</p>
-    <table width="759" border="1">
-    <tr>
-                <ul id="pagination">
-                    <li><?php echo $pagination?></li>
-                </ul>
-            </tr>
+    <table width="820" border="1">
         <tr align="left">
             <th width="92">Name</th>   
             <th width="112">First Name</th>
@@ -37,6 +32,9 @@
             </tr>
             <?php endforeach; ?>
     </table>
+    <ul id="pagination">
+                <li><?php echo $pagination?></li>
+            </ul>
 
     <!-- /.x2 - represents a half windows size div -->
     <!-- /.x2 - represents a half windows size div -->

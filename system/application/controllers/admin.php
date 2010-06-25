@@ -125,12 +125,12 @@
                 $page_offset = $this->uri->segment(4);
                 if($page_offset=='') 
                 {
-                    $page_offset=1;
+                    $page_offset=0;
                 }
 
                 $config['base_url'] = base_url().'index.php/admin/list_admin/'.$num_per_page.'/';
                 $config['uri_segment'] = 4;
-                $config['per_page']='2';
+                $config['per_page']='10';
                 $config['full_tag_open'] = '<li >';        
                 $config['full_tag_close'] = '</li>'; 
                 $config['next_link'] = 'Next >';
@@ -217,8 +217,9 @@
                 $this->form_validation->set_rules('txtName','Name','required');
                 $this->form_validation->set_rules('txtFirstName','First Name','required');
                 $this->form_validation->set_rules('txtEmail','Email','required|valid_email|xss_clean');
-                $this->form_validation->set_rules('txtpayPayAccount','Paypal Account','required');
+                $this->form_validation->set_rules('txtpayPayAccount','Paypal Account','required|valid_email|xss_clean');
                 $this->_data['query']=$this->Madmin->get_admin_by_id($id);
+                $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
                 if($this->input->post('Submit'))
                 {
                     if($this->form_validation->run()==FALSE)
@@ -254,8 +255,9 @@
             $this->form_validation->set_rules('txtName','Name','required');
             $this->form_validation->set_rules('txtFirstName','First Name','required');
             $this->form_validation->set_rules('txtEmail','Email','required|valid_email|xss_clean');
-            $this->form_validation->set_rules('txtpayPayAccount','Paypal Account','required');
+            $this->form_validation->set_rules('txtpayPayAccount','Paypal Account','required|valid_email|xss_clean');
             $this->_data['query']=$this->Madmin->get_admin_by_id($id);
+            $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
             if($this->input->post('Submit'))
             {
                 if($this->form_validation->run()==FALSE)
@@ -301,11 +303,11 @@
                 $this->form_validation->set_rules('txtDescription','Description','trim|required');
                 $this->form_validation->set_rules('txtSubcription','Description','trim|required');
                 $this->_data['query']=$this->Madmin->get_user_id($id);
+                $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
                 if($this->input->post('submit'))
                 {    
                     if($this->form_validation->run()==FALSE)
                     {
-                        //$data['error'] = "Can not update !";
                         $this->_load_view('admin/update_user');
                     }
                     else
@@ -344,7 +346,7 @@
             $page_offset = $this->uri->segment(4);
             if($page_offset=='') 
             {
-                $page_offset=1;
+                $page_offset=0;
             }
 
 
