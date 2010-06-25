@@ -118,12 +118,12 @@
                 'link' => site_url("admin/list_admin")
                 );
                 $num_per_page = $this->uri->segment(3);
-                if(is_nan((double)$num_per_page)==0)
+                if($num_per_page=='')
                 {
                     $num_per_page=10;
                 }
                 $page_offset = $this->uri->segment(4);
-                if(is_nan((double)$page_offset)==0) 
+                if($page_offset=='') 
                 {
                     $page_offset=0;
                 }
@@ -400,11 +400,11 @@
             $config['prev_link'] = '< Previous';
             $config['last_link'] = 'Last >>';
             $config['first_link'] = '<< First';	
-			$config['uri_segment'] = 5;
+            $config['uri_segment'] = 5;
             $config['per_page']='3';
             // $config['cur_tag_open'] = '<li class="selected">';
             // $config['cur_tag_close'] = '</li>'; 
-			
+
             if($category == 0)
             {
                 $config['total_rows'] = $this->db->count_all('videos'); 
@@ -419,8 +419,8 @@
             $this->_data['video_categories'] = $this->Mvconference->get_category();
             $this->_data['pagination'] = $this->pagination->create_links();
             $this->_data['video_cate'] = $category;
-			$this->_load_view('admin/video_conference_list'); 
-			
+            $this->_load_view('admin/video_conference_list'); 
+
         }
         function new_video_conference()
         {
