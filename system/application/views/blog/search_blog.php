@@ -22,7 +22,7 @@
         <h3><a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>"><?php echo $title ?></a></h3>
         <h5>By <?php echo $author ?> in :
           <?php for($i=0;$i<count($key);$i++){?>
-          <a href="#"><?php echo $key[$i]?></a>,
+          <a href="<?php echo site_url('blog/search_keyword').'/'.$key[$i]?>"><?php echo $key[$i]?></a>,
           <?php ;}?>
           // <?php echo $final_date ?></h5>
         <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title)?>#comments" class="comments_balloon"><?php echo $countcomment ?></a>
