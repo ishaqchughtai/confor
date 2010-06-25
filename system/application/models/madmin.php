@@ -68,29 +68,29 @@
             }
         }
         /*Speaker*/
-        function get_user()
-        {
-            $query=$this->db->get('tblspeaker');
-            return $query->result_array();
-        }
+        //function get_user()
+       // {
+//            $query=$this->db->get('tblspeaker');
+//            return $query->result_array();
+//        }
         function delete_user($id)
         {
             $this->db->where('ID', $id);
-            $this->db->delete('tblspeaker'); 
+            $this->db->delete('users'); 
         }
         function get_user_id($id)
         {
-            $query = $this->db->get_where('tblspeaker',array('ID'=>$id)); 
+            $query = $this->db->get_where('users',array('ID'=>$id)); 
             return $query->result_array();
         }
         function update_user($id,$data)
         {
-            $this->db->update('tblspeaker',$data,array('ID'=>$id)); 
+            $this->db->update('users',$data,array('ID'=>$id)); 
         }
         function get_all_speaker($num,$offset)
         {
             $this->db->select();
-            $this->db->from('tblspeaker');
+            $this->db->from('users');
             $this->db->limit($num,$offset);
             $query = $this->db->get();
             return $query->result_array();

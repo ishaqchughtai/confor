@@ -301,7 +301,6 @@
                 $this->form_validation->set_rules('txtEmail','Email','required|valid_email');
                 $this->form_validation->set_rules('txtCountry','Country','required');
                 $this->form_validation->set_rules('txtDescription','Description','trim|required');
-                $this->form_validation->set_rules('txtSubcription','Description','trim|required');
                 $this->_data['query']=$this->Madmin->get_user_id($id);
                 $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
                 if($this->input->post('submit'))
@@ -318,13 +317,12 @@
                             $suspension=1;
                         }
                         $data = array(
-                        'Name'=>$this->input->post('txtName'),
-                        'CompanyName'=>$this->input->post('txtCompanyName'),
-                        'Email' =>$this->input->post('txtEmail'),
-                        'Country' =>$this->input->post('txtCountry'),   
-                        'Description' =>$this->input->post('txtDescription'),
-                        'Subscription' =>$this->input->post('txtSubcription'),
-                        'Suspend' =>$suspension
+                        'name'=>$this->input->post('txtName'),
+                        'company_name'=>$this->input->post('txtCompanyName'),
+                        'email' =>$this->input->post('txtEmail'),
+                        'country' =>$this->input->post('txtCountry'),   
+                        'description' =>$this->input->post('txtDescription'),
+                        'status' =>$suspension
                         );
                         $this->Madmin->update_user($id,$data);
                         redirect('admin/list_user');  
@@ -360,7 +358,7 @@
             $config['last_link'] = 'Last >>';
             $config['first_link'] = '<< First';
 
-            $config['total_rows'] = $this->db->count_all('tblspeaker'); 
+            $config['total_rows'] = $this->db->count_all('users'); 
             $this->_data['query'] = $this->Madmin->get_all_speaker($num_per_page,$page_offset);
 
             $this->pagination->initialize($config);  
