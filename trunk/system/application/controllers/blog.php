@@ -244,10 +244,10 @@ class Blog extends Frontend_controller {
         {                    
             if($this->input->post('btnsubmit'))
             {
-                $this->form_validation->set_rules('txtTitle','Title','trim|required|callback_title_check');
-                $this->form_validation->set_rules('txtSubject','Subject','trim|required');
+                $this->form_validation->set_rules('txtTitle','Title','trim|required|callback_title_check|max_length[50]');
+                $this->form_validation->set_rules('txtSubject','Subject','trim|required|max_length[50]');
                 $this->form_validation->set_rules('txtKeywords','Keywords','trim|required|callback_keyword_check');
-                $this->form_validation->set_rules('txtBody','Body','required');
+                $this->form_validation->set_rules('txtBody','Body','required|max_length[500]');
                 $this->form_validation->set_rules('txtLink','Link','required');
                 $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
 
@@ -258,7 +258,7 @@ class Blog extends Frontend_controller {
                 $Date=mdate($datestring,$time);
                 $Title=$this->input->post('txtTitle');
                 $Title=strip_quotes($Title);
-                                                          
+
                 $Subject=$this->input->post('txtSubject');
                 $Keywords=$this->input->post('txtKeywords');
                 $Text=$this->input->post('txtBody');
@@ -323,10 +323,10 @@ class Blog extends Frontend_controller {
         }
         else
         {                    
-            $this->form_validation->set_rules('txtTitle','Title','trim|required');
-            $this->form_validation->set_rules('txtSubject','Subject','trim|required');
+            $this->form_validation->set_rules('txtTitle','Title','trim|required|max_length[50]');
+            $this->form_validation->set_rules('txtSubject','Subject','trim|required|max_length[50]');
             $this->form_validation->set_rules('txtKeywords','Keywords','trim|required|callback_keyword_check');
-            $this->form_validation->set_rules('txtBody','Text','required');
+            $this->form_validation->set_rules('txtBody','Text','required|max_length[500]');
             $this->form_validation->set_rules('txtLink','Link','required');
             $this->form_validation->set_rules('about','About','required');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
@@ -416,7 +416,36 @@ class Blog extends Frontend_controller {
         }
 
     }	
+    function search_keyword($Keywords)
+    {
+            $config['base_url'] = base_url().'index.php/blog/search/';
+            $config['total_rows'] = $this->Mblog->count_record($Keywords);
+            $config['per_page']='3';
 
+            $config['full_tag_open'] = '<li>';
+            $config['full_tag_close'] = '</li>'; 
+            $config['next_link'] = 'Next >';
+            $config['prev_link'] = '< Previous';
+            $config['last_link'] = 'Last >>';
+            $config['first_link'] = '<< First';
+
+            $this->pagination->initialize($config);
+            $query_search = $this->Mblog->search_blog($config['per_page'],$this->uri->segment(3),$Keywords);
+
+            if($query_search->num_rows()>0)
+            {
+                $this->_data['pagination'] = $this->pagination->create_links(); 
+                $this->_data['query'] =  $query_search->result_array();
+                $this->_load_view('blog/search_blog');                             
+
+            }
+            else
+            {
+                $this->_data['error']='There are no results for your search.';
+                $this->_data['query_most_blog_post'] = $this->Mblog->get_most_blog_post();
+                $this->_load_view('blog/search_blog');
+            } 
+    }
     //edit comment
     function edit_comment($titletemp,$id,$idblog,$countcommenttemp,$authortemp)
     {            
