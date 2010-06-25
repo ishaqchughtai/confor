@@ -122,7 +122,7 @@
       $this->db->select('
       tblevent.ID,
       users.name,
-      users.Email,
+      users.email,
       tblevent.`Date`,
       tblevent.Title,
       tblevent.Subject,

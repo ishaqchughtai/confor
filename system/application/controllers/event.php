@@ -31,7 +31,7 @@ class Event extends Frontend_controller {
     $date = $this->uri->segment(3);
     $per_page = $this->uri->segment(4);
     $offset = $this->uri->segment(5);
-    
+
     $this->_data['path'][] = array(
     'name' => "Event",
     'link' => site_url("event/show_event/".$date)
@@ -192,6 +192,11 @@ class Event extends Frontend_controller {
   {
     if (is_admin())      
     {
+      $this->_data['path'][] = array(
+      'name' => "Event",
+      'link' => site_url("event/event_list/")
+      );
+
       $config['base_url'] = base_url().'index.php/event/event_list/';
       $config['total_rows'] = $this->db->count_all('tblevent');
       $config['per_page']='5';
@@ -214,7 +219,12 @@ class Event extends Frontend_controller {
   function event_content_admin($id) 
   {
     if (is_admin()) 
-    {         
+    { 
+    $this->_data['path'][] = array(
+      'name' => "Event",
+      'link' => site_url("event/event_list/")
+      ); 
+              
       $this->_data['query'] = $this->MEvent->get_event_by_id($id);
       $this->_load_view('admin/event_content_admin');
     }

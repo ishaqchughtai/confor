@@ -6,7 +6,7 @@
 		foreach($query as $row)
 		{
 			$id = $row->ID;
-			$email = $row->Email;
+			$email = $row->email;
 			$date =  $row->Date;
 			$title = $row->Title;
 			$subject = $row->Subject;
@@ -83,8 +83,6 @@
 								<option value="1">OK</option>
 								<option value="0">No No</option>
 							</select>
-							<?php echo form_error('description');?>
-						
 						</p>
 						
 						
