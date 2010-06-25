@@ -28,10 +28,18 @@
         {
             $this->db->insert('tbladmin', $data);
         } 
-        function get_admins()
+        function get_all_admin($num,$offset)
+        {
+            $this->db->select();
+            $this->db->from('tbladmin');
+            $this->db->limit($num,$offset);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+        function count_admin()
         {
             $query=$this->db->get('tbladmin');
-            return $query->result_array();   
+            return $this->db->count_all_results();
         }
         function get_admin_by_id($id)
         {
@@ -78,11 +86,6 @@
         function update_user($id,$data)
         {
             $this->db->update('tblspeaker',$data,array('ID'=>$id)); 
-        }
-        function count_speaker()
-        {
-            $query=$this->db->get('tblspeaker');
-            return $this->db->count_all_results();
         }
         function get_all_speaker($num,$offset)
         {
