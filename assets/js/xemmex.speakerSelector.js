@@ -66,7 +66,7 @@
 						for ( var i in data.speakers )
 						{												
 							s2 = '<span>'+data.speakers[i]['username']+' ('+data.speakers[i]['name']+') </span>';
-							s3 = '<input type="hidden" value="'+data.speakers[i]['ID']+'"/>';
+							s3 = '<input type="hidden" value="'+data.speakers[i]['id']+'"/>';
 							s += s1 + s2 + s3 + s4;						
 						}																
 						$(".speaker_item").each(function(i){
