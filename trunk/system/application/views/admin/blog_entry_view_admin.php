@@ -50,7 +50,7 @@
 
                 ?>
                 <p><a href="#" class="author_link"><?php echo $author?></a> has written <?php echo $written?> articles for Confor.ca.</p>
-                <?php echo $about?> </div>
+            <?php echo $about?> </div>
             <?php }?>
     </div>
     <?php }?>
@@ -85,7 +85,7 @@
                         <br />
                         <br />
                         <!-- BreakLine -->
-                    <?php echo $comment?> 
+                        <?php echo $comment?> 
                     </p>
                     <!-- Content -->
                     <?php if($status==0){?>
@@ -122,10 +122,24 @@
             <input type="text" class="short" id="url" name="url" value="<?php if(isset($_POST['url'])){ echo $_POST['url'] ;}?>"/>
         <?php echo form_error('url'); ?> </p>
         <p>
-       
+
             <label for="msg">Message*:</label>
-            <textarea rows="8" id="msg" cols="" name="msg" value="<?php if(isset($_POST['msg'])){ echo $_POST['msg'] ;}?>" ></textarea>
-        <?php echo form_error('msg'); ?> </p>
+            <?php
+                if ( ! isset($_POST['msg']))
+                {
+                    $something = FALSE;
+                }
+                else
+                {
+                    $something = $_POST['msg'];
+                }
+                $data = array('name' => 'msg',
+                'id' => 'msg',
+                'width' => '600',
+                'height' => '400',
+                'value'=>$something);
+                echo form_textarea($data);
+                 echo form_error('msg'); ?> </p>
         <p> <label>* Please keep your comments clean. Max 400 chars. </label>  </p> 
         <p>
             <input type="submit" class="submit" value="Submit" name="submit" />

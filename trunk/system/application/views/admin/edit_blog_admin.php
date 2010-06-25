@@ -8,7 +8,9 @@
                                         $subject = $row->Subject;
                                         $keywords = $row->Keywords;
                                         $text = $row->Text;
-                                        $CountView = $row->CountView;}
+                                        $CountView = $row->CountView;
+                                        $about = $row->About;
+                                    }
                                 ?>
         <form action="<?php echo site_url('blog/edit_blog_submit').'/'.$id?>" method="post" enctype="multipart/form-data" class="global" name="blog">
           <p>
@@ -58,7 +60,7 @@
                                         echo form_error('txtSubject');?>
           </p>
           <p>
-            <label for="keywords">Keywords:</label>
+            <label for="keywords">Keywords:</label><br /><label>*Keywords Max 4 words and are separated by spaces. </label> 
             <?php
                                         $data = array('name' => 'txtKeywords',
                                         'id' => 'txtKeywords',
@@ -66,11 +68,19 @@
                                         'value'=>$keywords);                                         
                                         echo form_input($data);
                                         echo form_error('txtKeywords');?>
+                                        
           </p>
            <p>
            <?php echo form_error('about');?>
             <label for="">About The Author:</label><br />
-            <textarea rows="8" id="about" cols="" name="about" value="<?php if(isset($_POST['about'])){ echo $_POST['about'] ;}?>" ></textarea>
+            <?php
+                                        $data = array('name' => 'about',
+                                        'id' => 'about',
+                                        'width' => '600',
+                                        'height' => '400',
+                                        'value'=>$about);
+                                        echo form_textarea($data);
+?>
           </p>
           <p>
             <label for="Body">Body:</label>
