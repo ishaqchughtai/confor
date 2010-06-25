@@ -346,6 +346,10 @@ if ( ! function_exists('dropdown_data'))
 		}
 		$query = $CI->db->get($setting['table_name']);		
 		$options = array();
+		if (isset($setting['init_data']))
+		{
+			$options[$setting['init_data']['key']] = $setting['init_data']['name'];
+		}
 		foreach ($query->result() as $row)
 		{
 			$options[$row->$setting['key_field']] = $row->$setting['value_field'];
