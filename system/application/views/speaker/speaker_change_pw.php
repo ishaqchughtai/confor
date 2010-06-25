@@ -25,7 +25,7 @@
 			<legend>Change your password</legend>			
 			<?php if(isset($error)):?>
 				<p class="not_error medium"><span class="img"></span><?php echo $error;?><span class="close"></span></p>			
-			<?endif;?>
+			<?php endif;?>
 			<div class="input text"><label>Old password</label>
 				<?=form_input($oldPasswordInput);?>
 			</div>			

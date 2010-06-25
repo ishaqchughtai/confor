@@ -4,7 +4,7 @@ $(function(){
 		inline: true,				
 		dateFormat: 'yy-mm-dd',
 		onSelect: function(dateText, inst) {																				
-			gogo = XEMMEX.baseUrl + "event/show_event/" + dateText;
+			gogo = XEMMEX.baseUrl + "event/show_event/" + dateText + "/5";
 			//alert(gogo);
 			window.location = gogo;
 		}

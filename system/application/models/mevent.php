@@ -183,6 +183,7 @@
       //      {
       $this->db->select('
       tblevent.ID,
+      users.first_name,
       users.name,
       tblevent.`Date`,
       tblevent.Title,

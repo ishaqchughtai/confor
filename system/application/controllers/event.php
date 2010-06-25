@@ -325,7 +325,7 @@ class Event extends Frontend_controller {
     $keywords = $this->uri->segment(3);
     $per_page = $this->uri->segment(4);
     $offset = $this->uri->segment(5);
-
+    
 
     $config['uri_segment'] = 5;
     $config['base_url'] = base_url().'index.php/event/search_event/'.$keywords.'/'.$per_page;
