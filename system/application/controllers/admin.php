@@ -420,10 +420,10 @@
                         }    
                         else
                         {
-                            $data_upload = $this->upload->data();  //upload len host
+                            $data_upload = $this->upload->data();  //upload file
 
 
-                            //lay du lieu tu form insert vao db
+                            //fetch data from form
                             $dateupload= NOW();
                             $data = array(
                             'mem_id'=>$this->input->post('speaker'),
