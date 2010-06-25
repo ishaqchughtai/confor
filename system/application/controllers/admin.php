@@ -300,7 +300,6 @@
                         $this->Madmin->update_user($id,$data);
                         redirect('admin/list_user');  
                     }
-
                 }
                 else
                 {
@@ -308,15 +307,23 @@
                 }
             }   
         }
-
         function list_user()
         {
             $num_per_page = $this->uri->segment(3);
-            $page_offset = $this->uri->segment(4);           
+            if($num_per_page=='')
+            {
+                $num_per_page=10;
+            }
+            $page_offset = $this->uri->segment(4);
+            if($page_offset=='') 
+            {
+                $page_offset=1;
+            }
+                       
 
             $config['base_url'] = base_url().'index.php/admin/list_user/'.$num_per_page.'/';
             $config['uri_segment'] = 4;
-            $config['per_page']='3';
+            $config['per_page']='10';
             $config['full_tag_open'] = '<li >';        
             $config['full_tag_close'] = '</li>'; 
             $config['next_link'] = 'Next >';
