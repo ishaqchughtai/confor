@@ -79,6 +79,19 @@
         {
             $this->db->update('tblspeaker',$data,array('ID'=>$id)); 
         }
+        function count_speaker()
+        {
+            $query=$this->db->get('tblspeaker');
+            return $this->db->count_all_results();
+        }
+        function get_all_speaker($num,$offset)
+        {
+            $this->db->select();
+            $this->db->from('tblspeaker');
+            $this->db->limit($num,$offset);
+            $query = $this->db->get();
+            return $query->result_array();
+        }
         /*Video conference*/
         function get_all_video_conference(){
             $query=$this->db->get('tblvideoconference');

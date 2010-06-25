@@ -311,19 +311,26 @@
 
         function list_user()
         {
-            if($this->session->userdata('admin')==FALSE)
-            {
-                redirect(site_url("admin"));
-            }
-            else
-            {
-                $this->_data['path'][] = array(
-                'name' => __("CON_user_list"),
-                'link' => site_url("admin/list_user")
-                );				
-                $this->_data['query']=$this->Madmin->get_user();
-                $this->_load_view('admin/user_list');
-            }
+            $num_per_page = $this->uri->segment(3);
+            $page_offset = $this->uri->segment(4);           
+
+            $config['base_url'] = base_url().'index.php/admin/list_user/'.$num_per_page.'/';
+            $config['uri_segment'] = 4;
+            $config['per_page']='3';
+            $config['full_tag_open'] = '<li >';        
+            $config['full_tag_close'] = '</li>'; 
+            $config['next_link'] = 'Next >';
+            $config['prev_link'] = '< Previous';
+            $config['last_link'] = 'Last >>';
+            $config['first_link'] = '<< First';
+
+            $config['total_rows'] = $this->db->count_all('tblspeaker'); 
+            $this->_data['query'] = $this->Madmin->get_all_speaker($num_per_page,$page_offset);
+
+            $this->pagination->initialize($config);  
+            $this->_data['pagination'] = $this->pagination->create_links();
+            $this->_load_view('admin/user_list');
+
         }
         function delete_user($id)
         {
@@ -414,8 +421,8 @@
                         else
                         {
                             $data_upload = $this->upload->data();  //upload len host
-                            
-                            
+
+
                             //lay du lieu tu form insert vao db
                             $dateupload= NOW();
                             $data = array(
