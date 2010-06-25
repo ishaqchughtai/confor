@@ -19,6 +19,7 @@
             $authortemp = $author;
             $date = $row['Date'];
             $countcomment = $row['CountComment'] ;
+            $about = $row['About'];
             $countcommenttemp = $countcomment;      
         ?>
         <h3><a href="#"><?php echo $title ?></a></h3>
@@ -49,16 +50,10 @@
 
                 ?>
                 <p><a href="#" class="author_link"><?php echo $author?></a> has written <?php echo $written?> articles for Confor.ca.</p>
-                Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. </div>
+                <?php echo $about?> </div>
             <?php }?>
     </div>
     <?php }?>
-<!-- /.content_item -->
-<div class="content_item">
-    <h3>What would you like to do now?</h3>
-    <p>Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. </p>
-    <p> <a href="#" class="alignleft"><img src="assets/uploads/image/popular_1.gif" width="60" height="60" alt="Post" /></a> <a href="#" class="alignleft"><img src="assets/uploads/image/popular_2.gif" width="60" height="60" alt="Post" /></a> <a href="#" class="alignleft"><img src="assets/uploads/image/popular_3.gif" width="60" height="60" alt="Post" /></a> <a href="#" class="alignleft"><img src="assets/uploads/image/popular_4.gif" width="60" height="60" alt="Post" /></a> <a href="#" class="alignleft"><img src="assets/uploads/image/popular_1.gif" width="60" height="60" alt="Post" /></a> <a href="#" class="alignleft"><img src="assets/uploads/image/popular_2.gif" width="60" height="60" alt="Post" /></a> <a href="#" class="alignleft"><img src="assets/uploads/image/popular_3.gif" width="60" height="60" alt="Post" /></a> <a href="#" class="alignleft"><img src="assets/uploads/image/popular_4.gif" width="60" height="60" alt="Post" /></a> </p>
-</div>
 <!-- /.content_item -->
 <div id="comments" class="content_item">
     <h3><?php echo $countcommenttemp?> commentaires pour "<a href="#"><?php echo $titletemp?></a>"</h3>
@@ -127,9 +122,11 @@
             <input type="text" class="short" id="url" name="url" value="<?php if(isset($_POST['url'])){ echo $_POST['url'] ;}?>"/>
         <?php echo form_error('url'); ?> </p>
         <p>
+       
             <label for="msg">Message*:</label>
-            <textarea rows="8" id="msg" cols="" name="msg" value="<?php if(isset($_POST['msg'])){ echo $_POST['msg'] ;}?>"></textarea>
+            <textarea rows="8" id="msg" cols="" name="msg" value="<?php if(isset($_POST['msg'])){ echo $_POST['msg'] ;}?>" ></textarea>
         <?php echo form_error('msg'); ?> </p>
+        <p> <label>* Please keep your comments clean. Max 400 chars. </label>  </p> 
         <p>
             <input type="submit" class="submit" value="Submit" name="submit" />
         </p>

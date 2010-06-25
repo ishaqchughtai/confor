@@ -7,8 +7,9 @@
 
         <ul class="popular_posts_content">
 
-            <?php 
-             for($i=0;$i<=3;$i++){
+            <?php
+            $total = (count($pop)-1>3)?3:count($pop)-1;  
+             for($i=0;$i<=$total;$i++){
                     $row = $pop[$i];                               
                     $id = $row['ID'];
                     $link = $row['Link'];
@@ -41,8 +42,9 @@
     <li>
 
         <ul class="popular_posts_content">            
-            <?php 
-             for($i=4;$i<=7;$i++){
+            <?php
+            $total = (count($pop)-1>7)?7:count($pop)-1; 
+             for($i=4;$i<=$total;$i++){
                     $row = $pop[$i];                               
                     $id = $row['ID'];
                     $link = $row['Link'];

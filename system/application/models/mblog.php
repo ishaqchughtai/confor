@@ -35,7 +35,8 @@ class Mblog extends Model{
         tblblog.Text,
         tblblog.Link,
         tblblog.CountView,
-        tblblog.CountComment,          
+        tblblog.CountComment,
+        tblblog.About,          
         tbladmin.Name");
         $this->db->from('tblblog');
         $this->db->where('tblblog.Title',$title);
@@ -134,7 +135,7 @@ class Mblog extends Model{
         $query = $this->db->get();
         return $query->result_array();                   
     }
-    function edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$Link)         
+    function edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$Link,$about)         
     {
         $data = array(
         'Author'=>$Author,
@@ -143,11 +144,12 @@ class Mblog extends Model{
         'Subject'=>$Subject,
         'Keywords'=>$Keywords,
         'Text'=>$Text,
-        'Link'=>$Link       
+        'Link'=>$Link,
+        'About'=>$about       
         );
         $this->db->update('tblblog',$data,array('ID'=>$id));
     }
-    function add_blog($Author,$Date,$Title,$Subject,$Keywords,$Text,$Link)
+    function add_blog($Author,$Date,$Title,$Subject,$Keywords,$Text,$Link,$about)
     {
         $data = array(
         'Author'=>$Author,
@@ -158,7 +160,8 @@ class Mblog extends Model{
         'Text'=>$Text,
         'Link'=>$Link,
         'CountView'=>0,
-        'CountComment'=>0       
+        'CountComment'=>0,
+        'About'=>$about       
         );
         $this->db->insert('tblblog',$data);
         return TRUE; 

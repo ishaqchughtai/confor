@@ -39,6 +39,10 @@
                                     echo form_error('txtKeywords');?>
             <input name="txtKeywords" type="text" class="short" id="txtKeywords" value="<?php if(isset($_POST['txtKeywords'])){ echo $_POST['txtKeywords'] ;}?>"/>
           </p>
+                    <p>
+            <label for="">About The Author:</label><br />
+            <textarea rows="8" id="about" cols="" name="about" value="<?php if(isset($_POST['about'])){ echo $_POST['about'] ;}?>" ></textarea>
+          </p>
           <p>
             <label for="description">Body:</label><br />
             <?php

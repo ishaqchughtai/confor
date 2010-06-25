@@ -62,7 +62,7 @@ class Blog extends Frontend_controller {
     function blog_content($author,$title)
     {                 	
         $this->_data['path'][] = array(
-        'name' => 'Post',
+        'name' => $title,
         'link' => site_url("/blog/blog_content/".$author.'/'.$title)
         );
 
@@ -95,7 +95,7 @@ class Blog extends Frontend_controller {
         else
         {
             $this->_data['path'][] = array(
-            'name' => 'Post',
+            'name' => $title,
             'link' => site_url("/blog/blog_content/".$author.'/'.$title)
             );
             $this->blog_sidebar = 'most_view';    
@@ -124,7 +124,7 @@ class Blog extends Frontend_controller {
         $this->form_validation->set_rules('name','Name','trim|required');
         $this->form_validation->set_rules('email','Mail','trim|required|valid_email');
         $this->form_validation->set_rules('url','Site','trim');
-        $this->form_validation->set_rules('msg','Body','required');
+        $this->form_validation->set_rules('msg','Body','required|max_length[400]');
         $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
 
         $datestring = "%Y-%m-%d %h:%m:%s";
@@ -251,7 +251,7 @@ class Blog extends Frontend_controller {
                 $this->form_validation->set_rules('txtLink','Link','required');
                 $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
 
-                $Author=$this->session->userdata('id');
+                $Author=$this->session->userdata('admin_id');
                 $FirstName = $this->session->userdata('admin_name'); 
                 $datestring = "%Y-%m-%d";
                 $time = time();
@@ -261,6 +261,7 @@ class Blog extends Frontend_controller {
                 $Keywords=$this->input->post('txtKeywords');
                 $Text=$this->input->post('txtBody');
                 $Link=$this->input->post('txtLink');
+                $about=$this->input->post('about');
 
                 if($this->form_validation->run()==FALSE)
                 {
@@ -268,7 +269,7 @@ class Blog extends Frontend_controller {
                 }
                 else
                 {
-                    if($this->Mblog->add_blog($Author,$Date,$Title,$Subject,$Keywords,$Text,$Link)==TRUE)
+                    if($this->Mblog->add_blog($Author,$Date,$Title,$Subject,$Keywords,$Text,$Link,$about)==TRUE)
                     {
                         redirect('blog/blog_content_admin/'.$FirstName.'/'.$Title);  
                     }
@@ -291,7 +292,7 @@ class Blog extends Frontend_controller {
         {
             $config['upload_path'] = './assets/uploads/image/';
             $config['allowed_types'] = 'jpg';
-            $config['max_size']    = '100';
+            $config['max_size']    = '300';
             $config['max_width']  = '1024';
             $config['max_height']  = '768';
             $config['overwrite']  = 'TRUE';
@@ -325,13 +326,14 @@ class Blog extends Frontend_controller {
             $this->form_validation->set_rules('txtKeywords','Keywords','trim|required|callback_keyword_check');
             $this->form_validation->set_rules('txtBody','Text','required');
             $this->form_validation->set_rules('txtLink','Link','required');
+            $this->form_validation->set_rules('about','About','required');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
             if($this->form_validation->run()==FALSE)
             {
                 $this->get_blog($id);
             }else
             {
-                $Author=$this->session->userdata('id');
+                $Author=$this->session->userdata('admin_id');
                 $FirstName = $this->session->userdata('admin_name');
                 $datestring = "%Y-%m-%d";
                 $time = time();
@@ -341,8 +343,8 @@ class Blog extends Frontend_controller {
                 $Keywords=$this->input->post('txtKeywords');
                 $Text=$this->input->post('txtBody');
                 $Link=$this->input->post('txtLink');
-
-                $data = $this->Mblog->edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$Link);
+                $about=$this->input->post('about'); 
+                $data = $this->Mblog->edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$Link,$about);
                 redirect('blog/blog_content_admin/'.$FirstName.'/'.$Title);  
             }
         }
