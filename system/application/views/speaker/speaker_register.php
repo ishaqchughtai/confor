@@ -85,11 +85,11 @@
 			<?php echo form_error('username');?>
 			
 			<div class="input text"><label>Password(*)</label>
-				<?=form_input($password1Input);?>
+				<?php echo form_input($password1Input);?>
 			</div>			
 			<?php echo form_error('password'); ?>
 			<div class="input text"><label>Confirm password</label>
-				<?=form_input($password2Input);?>
+				<?php echo form_input($password2Input);?>
 			</div>			
 			<?php echo form_error('passconf'); ?>			
 			
