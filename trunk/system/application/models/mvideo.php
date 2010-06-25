@@ -21,7 +21,8 @@
     function get_video_by_speaker($speaker,$per_page,$offset)
     {
       $this->db->select('
-      tblspeaker.Name,
+      users.name,
+      users.first_name,
       videos.vid_id,
       videos.date,
       videos.title,
@@ -30,13 +31,11 @@
       videos.viewed,
       videos.vhash,
       videos.mem_id,
-      tblspeaker.Name as speaker_name,
       videos.shash,
       videos.category
-
       ');
       $this->db->from('videos');
-      $this->db->join('tblspeaker','videos.mem_id = tblspeaker.ID');
+      $this->db->join('users','videos.mem_id = users.id');
       $this->db->where(array('mem_id'=>$speaker));
       $this->db->order_by('Viewed','desc');
       $this->db->limit($per_page,$offset);
@@ -54,7 +53,7 @@
       $count_video = $this->db->count_all_results();
       return $count_video;
     }
-    
+                 
     //get video by archives
     function get_video_by_archives($month,$year,$per_page,$offset)
     {

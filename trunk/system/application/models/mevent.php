@@ -16,9 +16,11 @@
       tblevent.Subject,
       tblevent.Keywords,
       tblevent.Description,
-      tblspeaker.Name");
+      users.name,
+      users.first_name
+      ");
       $this->db->from('tblevent');
-      $this->db->join('tblspeaker','tblevent.Speaker = tblspeaker.ID');
+      $this->db->join('users','tblevent.Speaker = users.ID');
       $this->db->order_by("Date", "desc");
       $this->db->limit($offset,$num);
       $query = $this->db->get();
@@ -38,7 +40,8 @@
     {
       $this->db->select('
       tblevent.ID,
-      tblspeaker.Name,
+      users.name,
+      users.first_name,
       tblevent.`Date`,
       tblevent.Title,
       tblevent.Subject,
@@ -47,7 +50,7 @@
       tblevent.Status
       ');
       $this->db->from('tblevent');
-      $this->db->join('tblspeaker','tblevent.Speaker = tblspeaker.ID');
+      $this->db->join('users','tblevent.Speaker = users.id');
       $this->db->where(array('Date'=>$date));
       $this->db->limit($per_page,$offset);
       $query = $this->db->get();
@@ -65,7 +68,8 @@
     {
       $this->db->select('
       tblevent.ID,
-      tblspeaker.Name,
+      users.name,
+      users.first_name,
       tblevent.Speaker,
       tblevent.`Date`,
       tblevent.Title,
@@ -75,7 +79,7 @@
       tblevent.Status
       ');
       $this->db->from('tblevent');
-      $this->db->join('tblspeaker','tblevent.Speaker = tblspeaker.ID');
+      $this->db->join('users','tblevent.Speaker = users.id');
       $this->db->where(array('tblevent.ID'=>$id));
       $query = $this->db->get();
       return $query->result_array();    
@@ -117,8 +121,8 @@
     {
       $this->db->select('
       tblevent.ID,
-      tblspeaker.Name,
-      tblspeaker.Email,
+      users.name,
+      users.Email,
       tblevent.`Date`,
       tblevent.Title,
       tblevent.Subject,
@@ -127,7 +131,7 @@
       tblevent.Status
       ');
       $this->db->from('tblevent');
-      $this->db->join('tblspeaker','tblevent.Speaker = tblspeaker.ID');
+      $this->db->join('users','tblevent.Speaker = users.id');
       $this->db->where(array('tblevent.ID'=>$id));
       $query = $this->db->get();
       return $query->result();
@@ -171,7 +175,7 @@
       $query = $this->db->count_all_results();
       return $query;
     }
-
+    
 
     function search_event($keywords,$per_page,$offset)
     {
@@ -179,7 +183,7 @@
       //      {
       $this->db->select('
       tblevent.ID,
-      tblspeaker.Name,
+      users.name,
       tblevent.`Date`,
       tblevent.Title,
       tblevent.Subject,
@@ -187,7 +191,7 @@
       tblevent.Description
       ');
       $this->db->from('tblevent');
-      $this->db->join('tblspeaker','tblevent.Speaker = tblspeaker.ID');
+      $this->db->join('users','tblevent.Speaker = users.ID');
       $this->db->like('title',$keywords,'both') ;
       $this->db->limit($per_page,$offset);
 

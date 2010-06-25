@@ -74,9 +74,9 @@
 		<h2>REGISTER</h2>		
 		<?php echo form_open('home/register');?>
 		<fieldset class="login">
-			<legend>User informations</legend>		
+		  <legend></legend>		
 			<?php if(isset($error)):?>
-				<p class="not_error medium"><span class="img"></span><?php echo $error;?><span class="close"></span></p>			
+	    <p class="not_error medium"><span class="img"></span><?php echo $error;?><span class="close"></span></p>			
 			<?php endif;?>		
 
 			<div class="input text"><label><?php echo __("CON_user_name_label");?>(*)</label>		
