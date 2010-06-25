@@ -32,7 +32,7 @@
                 
                     <span class="left"><input id="is_cookie" name="is_cookie" type="checkbox" class="checkbox" /> Remember me</span>
                 
-                    <a href="#" class="right"><?php echo __("CON_forgotten_password_label");?></a>
+                    <a href="<?php echo site_url('forgot_password')?>" class="right"><?php echo __("CON_forgotten_password_label");?></a>
                     
                 </p>
                 <div id="message_holder">                
