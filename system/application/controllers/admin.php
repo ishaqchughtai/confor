@@ -116,9 +116,36 @@
                 $this->_data['path'][] = array(
                 'name' => __("CON_admin_list_all"),
                 'link' => site_url("admin/list_admin")
-                );				
-                $this->_data['query']=$this->Madmin->get_admins();
-                $this->_load_view('admin/admin_list');
+                );
+                $num_per_page = $this->uri->segment(3);
+                if($num_per_page=='')
+                {
+                    $num_per_page=10;
+                }
+                $page_offset = $this->uri->segment(4);
+                if($page_offset=='') 
+                {
+                    $page_offset=1;
+                }
+
+                $config['base_url'] = base_url().'index.php/admin/list_admin/'.$num_per_page.'/';
+                $config['uri_segment'] = 4;
+                $config['per_page']='2';
+                $config['full_tag_open'] = '<li >';        
+                $config['full_tag_close'] = '</li>'; 
+                $config['next_link'] = 'Next >';
+                $config['prev_link'] = '< Previous';
+                $config['last_link'] = 'Last >>';
+                $config['first_link'] = '<< First';
+
+                $config['total_rows'] = $this->db->count_all('tbladmin'); 
+                $this->_data['query'] = $this->Madmin->get_all_admin($num_per_page,$page_offset);
+
+                $this->pagination->initialize($config);  
+                $this->_data['pagination'] = $this->pagination->create_links();
+                $this->_load_view('admin/admin_list');				
+                //$this->_data['query']=$this->Madmin->get_admins();
+                //$this->_load_view('admin/admin_list');
             }
         }
         function add_new_admin()
@@ -319,7 +346,7 @@
             {
                 $page_offset=1;
             }
-                       
+
 
             $config['base_url'] = base_url().'index.php/admin/list_user/'.$num_per_page.'/';
             $config['uri_segment'] = 4;

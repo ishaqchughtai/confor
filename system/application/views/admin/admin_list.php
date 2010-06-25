@@ -13,6 +13,11 @@
     </ul>
     <p>&nbsp;</p>
     <table width="759" border="1">
+    <tr>
+                <ul id="pagination">
+                    <li><?php echo $pagination?></li>
+                </ul>
+            </tr>
         <tr align="left">
             <th width="92">Name</th>   
             <th width="112">First Name</th>
