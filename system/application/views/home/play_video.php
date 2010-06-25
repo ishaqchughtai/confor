@@ -12,3 +12,8 @@
 			  <p><a href="<?php echo base_url().'videos/'.$video_link?>" style="display:block;width:621px;height:344px;"id="player"></a></p>		
 					
 			  </div>
+
+<script language="JavaScript">
+	flowplayer("player", 
+    "<?php echo base_url();?>flowplayer/flowplayer-3.2.2.swf",{clip:{autoPlay: false,autoBuffering: true}});
+</script>			  

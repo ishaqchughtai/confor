@@ -123,7 +123,3 @@
 	<!-- /#copyright -->			
 </body>
 </html>
-<script language="JavaScript">
-	flowplayer("player", 
-    "<?php echo base_url();?>flowplayer/flowplayer-3.2.2.swf",{clip:{autoPlay: false,autoBuffering: true}});
-</script>
