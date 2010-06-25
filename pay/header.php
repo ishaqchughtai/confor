@@ -19,10 +19,10 @@ var IMGURL = "<?php echo ADMINURL; ?>/images";
 <!-- Start Header-->
 <div id="header">
 <div class="wrap">
-  <div class="logo"><a href="../"><span class="title_green">Confor.</span><span class="title_white">ca</span></a> - [Video conference]</div>
+  <div class="logo"><a href="../index.php/speaker"><span class="title_green">Confor.</span><span class="title_white">ca</span></a> - [Video conference]</div>
   <strong>Welcome <?php echo $session->username;?></strong> 
   <?php if($session->logged_in):?> 
-  <strong>~ <a href="index.php?do=profile">Edit Profile</a></strong>
+  <strong>~ <a href="../index.php/speaker/edit_profile">Edit Profile</a></strong>
   <?php endif;?>
   </div>
 </div>
