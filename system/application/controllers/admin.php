@@ -397,11 +397,11 @@
                 $this->form_validation->set_rules('keywords','Keywords','required');
                 $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
                 $this->_data['query']=$this->Mvconference->get_category();
+                $this->_data['error'] ='';
                 if($this->input->post('submit'))
                 {
                     if($this->form_validation->run()==FALSE)
                     {
-                        echo 'form failed';
                         $this->_data['error'] = "Can not update !";
                         $this->_load_view('admin/new_video_conference');   
                     }
