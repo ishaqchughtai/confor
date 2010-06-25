@@ -38,7 +38,7 @@ class Speaker extends Speaker_controller
 	}
 	
 	function get_paging_html() {		
-		$this->speaker_lib->paging_html();
+		$this->user_lib->paging_html();
 	}	
 		
 	function logout() {		
