@@ -1,3 +1,4 @@
+
 <div class="content_item">			
 <?php if($events):?>
 <?php foreach($events as $row)

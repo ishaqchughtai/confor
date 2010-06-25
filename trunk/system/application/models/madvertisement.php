@@ -89,15 +89,15 @@
 
 
     //count record
-    function count_record($keyword)
+    function count_record($keywords)
     {
         $this->db->from('tbladvertisement');
-        $this->db->like('AdvertiserName',$keyword,'both');
+        $this->db->like('AdvertiserName',$keywords,'both');
         $query = $this->db->count_all_results();
         return $query;
     }
     // search advertisement
-    function search($keyword,$per_page,$offset)
+    function search($keywords,$per_page,$offset)
     {
         $this->db->select('
         tbladvertisement.ID,
@@ -110,7 +110,7 @@
         tbladvertisement.ImageLink
         ');
         $this->db->from('tbladvertisement');
-        $this->db->like('AdvertiserName',$keyword,'both');
+        $this->db->like('AdvertiserName',$keywords,'both');
         $this->db->limit($per_page,$offset);
         $query = $this->db->get();
         $adv=FALSE; 

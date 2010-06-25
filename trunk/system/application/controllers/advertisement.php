@@ -161,17 +161,20 @@ class Advertisement extends Admin_controller {
   function search_advertisement()
   {
     $keywords = $this->input->post('search_field');
-
+    
     $keywords = $this->uri->segment(3);
     $per_page = $this->uri->segment(4);
     $offset = $this->uri->segment(5);
 
-
     $config['uri_segment'] = 5;
+    echo $keywords; 
     $config['base_url'] = base_url().'index.php/advertisement/search_advertisement/'.$keywords.'/'.$per_page;
+    
+    echo $config['base_url']; 
+    return;
     $config['total_rows'] = $this->MAdvertisement->count_record($keywords);
+    echo $config['total_rows']; 
     $config['per_page']=$per_page;
-
     $config['full_tag_open'] = "<li>";        
     $config['full_tag_close'] = '</li>'; 
     $config['next_link'] = 'Next >';

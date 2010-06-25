@@ -1,3 +1,18 @@
+<script type="text/javascript">
+	$(function() {
+		$("#datepicker").datepicker({
+				dateFormat: 'yy/mm/dd',
+				onSelect: function(dateText, inst) {   
+					 //$('#datepicker').val(dateText);
+					 gogo = dateText;
+					 //alert(gogo);
+				}				
+			}
+		);
+		$("#format").change(function() { 
+		$('#datepicker').datepicker('option', {dateFormat: $(this).val()}); });
+	});
+	</script>
 				<div class="content_item">
 				
 					<h3>Add New Advertisement </h3>

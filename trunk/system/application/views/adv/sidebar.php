@@ -1,12 +1,20 @@
+<script type="text/javascript">
+function search_click (){
+ keyword = $('#keyword').val();
+ gogo = XEMMEX.baseUrl + "advertisement/search_advertisement/" + keyword + "/5";
+ window.location = gogo;
+ return false;
+}
+</script>
 </div>
 			<div id="right">
 			
     <h3>Search</h3>
     <h5>Search through all advertisement</h5>
     <div class="sidebar_item" id="search">
-    <form action="<?php echo site_url('advertisement/search')?>" method="post">
-      <input name="search_field" type="text" class="search_field">
-      <input name="btnsearch" type="submit" class="search_submit" value="">
+    <form action="<?php echo site_url('advertisement/search_advertisement')?>" method="post">
+      <input id="keyword" name="search_field" type="text" class="search_field" >
+      <input name="btnsearch" type="submit" class="search_submit" value="" onclick="return search_click();">
     </form>
     <!-- #search form -->
   </div>
