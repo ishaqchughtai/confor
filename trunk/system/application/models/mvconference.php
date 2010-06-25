@@ -12,10 +12,10 @@
             tblvideoconference.description,
             tblvideoconference.viewed,
             tblvideoconference.vhash,
-            tblspeaker.Name,
-            tblspeaker.FirstName 
-            FROM tblvideoconference ,tblspeaker 
-            WHERE tblvideoconference.Speaker =  tblspeaker.vid_id 
+            users.Name,
+            users.first_name 
+            FROM tblvideoconference ,users 
+            WHERE tblvideoconference.Speaker =  users.vid_id 
             order by tblvideoconference.viewed DESC LIMIT 1");
             return $query;
         }
@@ -86,11 +86,11 @@
             videos.vhash,
             videos.approved,
             videos.viewed,
-            tblspeaker.ID,
-            tblspeaker.Name,
-            tblspeaker.FirstName');
+            users.ID,
+            users.Name,
+            users.first_name');
             $this->db->from('videos');
-            $this->db->join('tblspeaker','videos.mem_id = tblspeaker.ID'); 
+            $this->db->join('users','videos.mem_id = users.ID'); 
             $this->db->order_by("videos.`date`", "desc"); 
             $this->db->limit($num,$offset);
             $query = $this->db->get();
@@ -99,9 +99,9 @@
         function get_video_conference_by_category($Category,$num,$offset)
         {
             $this->db->select("
-            tblspeaker.`Name` as SpeakerName,
-            tblspeaker.FirstName,
-            tblspeaker.CompanyName,
+            users.`Name` as SpeakerName,
+            users.first_name,
+            users.company_name,
             videos.vid_id,
             videos.mem_id,
             videos.title,
@@ -114,7 +114,7 @@
             videos.viewed,
             tblcategory.`Name`");
             $this->db->from('videos');
-            $this->db->join('tblspeaker','videos.mem_id = tblspeaker.ID');
+            $this->db->join('users','videos.mem_id = users.ID');
             $this->db->join('tblcategory','videos.category = tblcategory.ID');
             $this->db->where('videos.category',$Category);
             $this->db->order_by("videos.`date`", "desc");

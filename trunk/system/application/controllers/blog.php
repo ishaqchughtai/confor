@@ -8,7 +8,7 @@ class Blog extends Frontend_controller {
         $this->_container = 'container';		
         $this->load->model('Mblog');		
         $this->load->helper('date');
-
+        $this->load->helper('string');
         $this->_data['adv']['category'] = 'blog';		
         $this->_data['path'][] = array(
         'name' => 'Blog',
@@ -256,7 +256,9 @@ class Blog extends Frontend_controller {
                 $datestring = "%Y-%m-%d";
                 $time = time();
                 $Date=mdate($datestring,$time);
-                $Title=$this->input->post('txtTitle');                                          
+                $Title=$this->input->post('txtTitle');
+                $Title=strip_quotes($Title);
+                                                          
                 $Subject=$this->input->post('txtSubject');
                 $Keywords=$this->input->post('txtKeywords');
                 $Text=$this->input->post('txtBody');
@@ -338,7 +340,8 @@ class Blog extends Frontend_controller {
                 $datestring = "%Y-%m-%d";
                 $time = time();
                 $Date=mdate($datestring,$time);
-                $Title=$this->input->post('txtTitle');                                          
+                $Title=$this->input->post('txtTitle');
+                $Title=quotes_to_entities($Title);                                          
                 $Subject=$this->input->post('txtSubject');
                 $Keywords=$this->input->post('txtKeywords');
                 $Text=$this->input->post('txtBody');

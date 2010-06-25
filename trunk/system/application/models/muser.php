@@ -96,23 +96,22 @@ class MUser extends Model
 	}
 	
 	function is_username_exists($username)
-	{				
-		$this->db->select("users.id");
-		$this->db->from('users');
-		$this->db->where('username', $username);            
-		$this->db->limit(1);	
-		$query = $this->db->get();
-		if ($query->num_rows()>0) 
-		{
-			return true;
-		}
-		else 
-		{
-			return false;
-		}								
-	}	
-		
-	
+    {                
+        $this->db->select("users.id");
+        $this->db->from('users');
+        $this->db->where('username', $username);            
+        $this->db->limit(1);    
+        $query = $this->db->get();
+        if ($query->num_rows()>0) 
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }                                
+    }	
+			
 	function confirm_user_cookie_id($username, $cookie_id) 
 	{				
 		$this->db->select("id,username,email,name,cookie_id,language,userlevel,membership_id");

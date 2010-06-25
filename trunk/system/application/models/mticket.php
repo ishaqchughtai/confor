@@ -38,11 +38,11 @@
             tblticket.Message,
             tblticket.Speaker,
             tblticket.Is_answered,
-            tblspeaker.`Name`,
-            tblspeaker.Email'
+            users.`Name`,
+            users.Email'
             );
             $this->db->from('tblticket');
-            $this->db->join('tblspeaker','tblticket.Speaker = tblspeaker.ID');
+            $this->db->join('users','tblticket.Speaker = users.ID');
             $this->db->where("tblticket.Is_answered", "0");
             $this->db->order_by("tblticket.Status", "desc");
             $this->db->order_by("tblticket.Date", "desc");            
@@ -60,11 +60,11 @@
             tblticket.Message,
             tblticket.Speaker,
             tblticket.Is_answered,
-            tblspeaker.`Name`,
-            tblspeaker.Email'
+            users.`Name`,
+            users.Email'
             );
             $this->db->from('tblticket');
-            $this->db->join('tblspeaker','tblticket.Speaker = tblspeaker.ID');
+            $this->db->join('users','tblticket.Speaker = users.ID');
             $this->db->where("tblticket.Is_answered", "1");
             $this->db->order_by("tblticket.Status", "desc");            
             $this->db->order_by("tblticket.Date", "desc");             
@@ -82,12 +82,12 @@
             tblticket.Message,
             tblticket.Speaker,
             tblticket.Is_answered,
-            tblspeaker.`Name`,
-            tblspeaker.Email'
+            users.`Name`,
+            users.Email'
             );
             $this->db->from('tblticket');
             $this->db->where('tblticket.ID',$id);
-            $this->db->join('tblspeaker','tblticket.Speaker=tblspeaker.ID');
+            $this->db->join('users','tblticket.Speaker=users.ID');
             $query = $this->db->get();
             return $query->result_array();  
         }
@@ -172,11 +172,11 @@
             tblticket.Message,
             tblticket.Speaker,
             tblticket.Is_answered,
-            tblspeaker.`Name`,
-            tblspeaker.Email'
+            users.`Name`,
+            users.Email'
             );
             $this->db->from('tblticket');
-            $this->db->join('tblspeaker','tblticket.Speaker = tblspeaker.ID');
+            $this->db->join('users','tblticket.Speaker = users.ID');
             $this->db->where("tblticket.Is_answered", "0");
             $this->db->where("tblticket.Speaker", $SpeakerID);            
             $this->db->order_by("tblticket.Status", "desc");
@@ -195,11 +195,11 @@
             tblticket.Message,
             tblticket.Speaker,
             tblticket.Is_answered,
-            tblspeaker.`Name`,
-            tblspeaker.Email'
+            users.`Name`,
+            users.Email'
             );
             $this->db->from('tblticket');
-            $this->db->join('tblspeaker','tblticket.Speaker = tblspeaker.ID');
+            $this->db->join('users','tblticket.Speaker = users.ID');
             $this->db->where("tblticket.Is_answered", "1");
             $this->db->where("tblticket.Speaker", $SpeakerID);
             $this->db->order_by("tblticket.Status", "desc");            
