@@ -2,7 +2,6 @@
 
     <div class="">
         <h3>User List</h3>
-        <p>&nbsp;</p>
         <table border="1" width="1000">
             <tr align="left">
                 <th width="88">First Name</th>
