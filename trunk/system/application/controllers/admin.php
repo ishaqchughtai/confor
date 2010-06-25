@@ -118,12 +118,12 @@
                 'link' => site_url("admin/list_admin")
                 );
                 $num_per_page = $this->uri->segment(3);
-                if($num_per_page=='')
+                if(is_nan((double)$num_per_page)==0)
                 {
                     $num_per_page=10;
                 }
                 $page_offset = $this->uri->segment(4);
-                if($page_offset=='') 
+                if(is_nan((double)$page_offset)==0) 
                 {
                     $page_offset=0;
                 }
