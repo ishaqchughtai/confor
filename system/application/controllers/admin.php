@@ -366,7 +366,7 @@
             $this->_load_view('admin/user_list');
 
         }
-        function delete_user($id)
+        function delete_user(int $id)
         {
             if($this->session->userdata('admin')==FALSE)
             {
