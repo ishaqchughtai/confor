@@ -4,6 +4,7 @@
             parent::Frontend_controller();
             $this->load->model('MUser');   
             $this->load->model('Mforgotpassword');   
+            $this->load->helper('date');
         }
         function index()
         {
@@ -25,8 +26,13 @@
                     if ( $this->MUser->is_email_exists($Email))
                     {
                         $temppass = random_string('alnum', 20);
-                        $temppass_sendmail = $temppass;
-                        if($this->Mforgotpassword->update_temp_pass($temppass,$Email)==TRUE)
+                        $datestring = "%Y-%m-%d";
+                        $time = time();
+                        $Date=mdate($datestring,$time);
+                        $Date = random_string('alnum', 30);
+                        $temppass1 = $temppass.$Date;
+                        $temppass1 = random_string('alnum', 50);
+                        if($this->Mforgotpassword->update_temp_pass($temppass1,$Email)==TRUE)
                         {
                             $this->_data['error'] = 'You need to check e-mail to retrieve your password';
                             $this->_load_view('speaker/form_forgot_password');    

@@ -9,6 +9,7 @@
 
         function index()
         {
+            $this->_data['page_title'] = 'Contact us';
             $this->_load_view('contact'); 		
         }
         function send_contact($mail_type='text', $from, $name_from, $to, $subject, $content)

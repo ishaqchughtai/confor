@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50141
 File Encoding         : 65001
 
-Date: 2010-06-25 11:33:14
+Date: 2010-06-26 14:13:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -622,7 +622,7 @@ CREATE TABLE `captcha` (
   `word` varchar(20) NOT NULL,
   PRIMARY KEY (`captcha_id`),
   KEY `word` (`word`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of captcha
@@ -631,6 +631,12 @@ INSERT INTO `captcha` VALUES ('32', '1277430995', '127.0.0.1', 'H8EWVQ');
 INSERT INTO `captcha` VALUES ('31', '1277430965', '127.0.0.1', 'WV1UE4');
 INSERT INTO `captcha` VALUES ('29', '1277430881', '127.0.0.1', '2JEOYA');
 INSERT INTO `captcha` VALUES ('30', '1277430922', '127.0.0.1', 'PL5XAE');
+INSERT INTO `captcha` VALUES ('33', '1277440603', '127.0.0.1', 'MI0ETE');
+INSERT INTO `captcha` VALUES ('34', '1277440638', '127.0.0.1', 'WONM94');
+INSERT INTO `captcha` VALUES ('35', '1277440908', '127.0.0.1', 'WIMIFQ');
+INSERT INTO `captcha` VALUES ('36', '1277474142', '127.0.0.1', 'ATCMXE');
+INSERT INTO `captcha` VALUES ('37', '1277521842', '127.0.0.1', 'XCYJJO');
+INSERT INTO `captcha` VALUES ('38', '1277521847', '127.0.0.1', 'ZWSSVI');
 
 -- ----------------------------
 -- Table structure for `channels`
@@ -1679,14 +1685,14 @@ CREATE TABLE `tblblog` (
   `CountComment` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `FK_tblblog_tbladmin` (`Author`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tblblog
 -- ----------------------------
-INSERT INTO `tblblog` VALUES ('2', '2010-06-25', '8', 'Le 3 novembre 2009,', 'Commandant Robert Piché', 'Ma rencontre avec un héros!', 'communication, la communication, confor', '<p>Nous sommes le vendredi 23 octobre 2009 et nous sommes au Mont-Temblant. J&rsquo;ai &eacute;t&eacute; invit&eacute;e comme conf&eacute;renci&egrave;re dans le cadre du Colloque 2009 du Regroupement des gestionnaires en approvisionnement des universit&eacute;s qu&eacute;b&eacute;coises (RGAUQ). Le titre du colloque &laquo; Un monde en turbulence : savoir anticiper et man&oelig;uvrer &raquo;. Le conf&eacute;rencier suivant sera nul autre que le<b>commandant Robert Pich&eacute;&nbsp;</b>et le sujet de sa conf&eacute;rence&nbsp;<b><i>&laquo; Quand l&rsquo;impossible devient r&eacute;alit&eacute;! &raquo;</i></b>! Je n&rsquo;aurais manqu&eacute; cette opportunit&eacute; pour tout l&rsquo;or du monde. J&rsquo;&eacute;tais assise dans la premi&egrave;re rang&eacute;e, en diagonale avec lui. Personne pour me bloquer la vue, je ne manquerai rien, il sera comme &laquo; tout &agrave; moi &raquo;.<br />\n<br />\nLe pr&eacute;sident commence sa pr&eacute;sentation. Nous sommes tous tr&egrave;s attentifs. Puis, soudain, plus de lumi&egrave;re; l&rsquo;obscurit&eacute; totale dans la salle et nous entendons une voix nous annoncer des probl&egrave;mes. C&rsquo;est la voix du commandant, il nous r&eacute;p&egrave;te le m&ecirc;me message que celui transmis aux passagers de l&rsquo;avion au moment o&ugrave; l&rsquo;obscurit&eacute; s&rsquo;est install&eacute;e.<br />\n<br />\nEnsuite, nous &eacute;coutons un reportage, le reportage de la phase finale de l&rsquo;incident du 24 ao&ucirc;t 2001. Le commandant Pich&eacute; pilote un avion en panne de moteurs &agrave; 39 000 pieds d&rsquo;altitude, la nuit, au milieu de l&rsquo;Atlantique. C&rsquo;est un Airbus A-330 d&rsquo;Air Transat dans lequel se trouvent 291 passagers et 13 membres d&rsquo;&eacute;quipage, le vol TS 236. Dans ce reportage, il y a une simulation du vol des derni&egrave;res minutes et de l&rsquo;atterrissage, des photos. Nous entendons &eacute;galement le t&eacute;moignage de quelques passagers. Beaucoup d&rsquo;&eacute;motion, beaucoup d&rsquo;&eacute;motion&hellip; Puis, les lumi&egrave;res s&rsquo;allument et on annonce &laquo; Mesdames et Messieurs, le commandant Robert Pich&eacute; &raquo;. Il entre, nous l&rsquo;applaudissons, mais aucun son ne sort de nos bouches, stup&eacute;faits, encore sous le choc!<br />\n<br />\nNon, il n&rsquo;est pas en uniforme, il est v&ecirc;tu simplement, mais avec go&ucirc;t. Il est &laquo; beau &raquo;, humble et &eacute;mu (comme nous tous d&rsquo;ailleurs). Il poss&egrave;de beaucoup de charisme. Lentement, il commence &agrave; parler et mentionne avoir vu/entendu le reportage au moins 300 fois. Il d&eacute;clare en &ecirc;tre toujours aussi &eacute;mu. Et il continue &agrave; nous entretenir : &laquo; 86 % des passagers ont peur de prendre l&rsquo;avion, qui fait partie de ce pourcentage? &raquo; Quelques-uns l&egrave;vent la main. Je me suis permise de faire une petite recherche et une &eacute;tude de L&eacute;ger Marketing effectu&eacute;e apr&egrave;s le 11 septembre 2001 nous apporte quelques pr&eacute;cisions : 33 % des passagers d&rsquo;un avion sont inconfortables, 10 % de la population ne prendra jamais l&rsquo;avion.</p>', 'post_1.jpg', '2', '0');
-INSERT INTO `tblblog` VALUES ('3', '2010-06-25', '8', 'US Treasury Secretary Timothy Geithner has told the BBC that the world \"cannot depend as much on the US as it did in the past\".', 'Geithner says US can \'no longer drive global growt', 'Timothy Geithner says the world \"cannot depend as ', 'Treasury Secretary Timothy Geithner', '<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">He said that other major economies would have to grow more for the global economy to prosper.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">He also played down any differences in policy between the US and Europe regarding deficit reduction.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">Mr Geithner was speaking in Washington ahead of G8 and G20 meetings this weekend in Toronto.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">He said all members of the group were &quot;focused on the challenge of [building] growth and confidence&quot;, and would be working to this end at the meetings.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">The Group of Eight and Group of 20 rich and developing nations are assembling on Friday for three days of talks on emerging from the worst financial crisis since the Great Depression.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">UK Prime Minister David Cameron, who has arrived in Canada along with other leaders, said in an article for the Globe And Mail newspaper: &quot;No-one can doubt the biggest promise we have to deliver: fixing the global economy.&quot;</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">&quot;I believe we must each start by setting out plans for getting our national finances under control,&quot; he added.</p>\n<p><span class=\"cross-head\" style=\"display: block; margin-top: 0.648em; margin-right: 0px; margin-bottom: 0.648em; margin-left: 0px; font-weight: 800; font-size: 1.083em; \">Common goals</span></p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">Many European governments have implemented severe austerity measures in recent weeks in order to cut debt levels.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">In a letter to G20 leaders last week, US President Barack Obama warned against cutting national debts too quickly as it would put economic recovery at risk.</p>', 'google_maps.jpg', '8', '0');
-INSERT INTO `tblblog` VALUES ('4', '2010-06-25', '8', 'We\'re in the very good position of being able to deliver relatively strong growth rates [compared] to what we\'re seeing in other major economies', 'But Mr Geithner said the US and Europe \"have much ', 'We all agree that we have to restore responsibilit', 'But he said that', '<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">But he said that the US and Europe would take &quot;different paths, at a different pace&quot; in order to reach the common goal.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">&quot;It\'s going to require different things as we have different strengths and weaknesses,&quot; he said.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">Mr Geithner said the US was not in a position to work out what were the best policies for European countries to pursue.</p>\n<p><span class=\"cross-head\" style=\"display: block; margin-top: 0.648em; margin-right: 0px; margin-bottom: 0.648em; margin-left: 0px; font-weight: 800; font-size: 1.083em; \">\'Strong growth\'</span></p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">The treasury secretary said the US had laid out &quot;very ambitious plans as well&quot; to cut its deficit.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">But he said the US was in a stronger position than many other economies to cut its debt levels.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">&quot;We\'re in the very good position of being able to deliver relatively strong growth rates [compared] to what we\'re seeing in other major economies,&quot; he said.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">Some commentators in Europe argue that austerity measures should only be introduced once strong growth has been secured in the wake of the global downturn.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">This was a more widely held position until the Greek debt crisis focused policymakers\' minds on cutting debt levels.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">The Greek crisis showed that governments with high levels of debt find it very difficult to borrow money from international investors, money that they need to service existing debts.</p>', 'post_3.jpg', '0', '0');
+INSERT INTO `tblblog` VALUES ('2', '2010-06-26', '8', 'test', 'Commandant Robert Piché', 'Ma rencontre avec un héros!', 'he, la communication, confor', '<p>Nous sommes le vendredi 23 octobre 2009 et nous sommes au Mont-Temblant. J&rsquo;ai ?t? invit?e comme conf?renci?re dans le cadre du Colloque 2009 du Regroupement des gestionnaires en approvisionnement des universit?s qu?b?coises (RGAUQ). Le titre du colloque ? Un monde en turbulence : savoir anticiper et man&oelig;uvrer ?. Le conf?rencier suivant sera nul autre que le<b>commandant?</b></p>', 'post_1.jpg', '25', '3');
+INSERT INTO `tblblog` VALUES ('4', '2010-06-25', '8', 'We\'re in the very good position of being able to deliver relatively strong growth rates [compared] to what we\'re seeing in other major economies', 'But Mr Geithner said the US and Europe have much ', 'We all agree that we have to restore responsibilit', 'But he said that', '<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">But he said that the US and Europe would take &quot;different paths, at a different pace&quot; in order to reach the common goal.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">&quot;It\'s going to require different things as we have different strengths and weaknesses,&quot; he said.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">Mr Geithner said the US was not in a position to work out what were the best policies for European countries to pursue.</p>\n<p><span class=\"cross-head\" style=\"display: block; margin-top: 0.648em; margin-right: 0px; margin-bottom: 0.648em; margin-left: 0px; font-weight: 800; font-size: 1.083em; \">\'Strong growth\'</span></p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">The treasury secretary said the US had laid out &quot;very ambitious plans as well&quot; to cut its deficit.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">But he said the US was in a stronger position than many other economies to cut its debt levels.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">&quot;We\'re in the very good position of being able to deliver relatively strong growth rates [compared] to what we\'re seeing in other major economies,&quot; he said.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">Some commentators in Europe argue that austerity measures should only be introduced once strong growth has been secured in the wake of the global downturn.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">This was a more widely held position until the Greek debt crisis focused policymakers\' minds on cutting debt levels.</p>\n<p style=\"padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; clear: left; margin-top: 0px; margin-right: 0px; margin-bottom: 0.708em; margin-left: 0px; font-size: 1.083em; \">The Greek crisis showed that governments with high levels of debt find it very difficult to borrow money from international investors, money that they need to service existing debts.</p>', 'post_3.jpg', '4', '0');
+INSERT INTO `tblblog` VALUES ('6', '2010-06-25', '8', 'admin', 'blog sang 18', 'kaka', 'kasd akdaksdk asda asdasd', '<p>&nbsp;admin</p>', 'port_1.jpg', '8', '0');
 
 -- ----------------------------
 -- Table structure for `tblcategory`
@@ -1723,12 +1729,14 @@ CREATE TABLE `tblcomment` (
   `Status` tinyint(1) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `FK_tblcomment_tblblog` (`Blog`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tblcomment
 -- ----------------------------
 INSERT INTO `tblcomment` VALUES ('1', 'Explication sur l’origine et la symbolique de la peur face à l’avion. Directives sur l’utilisation de ces détentes guidées', '2', '2010-06-25 11:06:57', 'admin', 'http://confor.ca', 'admin@confor.ca', '1');
+INSERT INTO `tblcomment` VALUES ('2', 'test thui mà', '2', '2010-06-26 12:06:34', 'huunam09', 'http://google.com', 'huunam09@yahoo.com.vn', '1');
+INSERT INTO `tblcomment` VALUES ('3', 'asdasdasd', '2', '2010-06-26 01:06:11', 'huunam09', 'http://google.com', 'se7max@gmail.com', '1');
 
 -- ----------------------------
 -- Table structure for `tblevent`
@@ -1739,7 +1747,7 @@ CREATE TABLE `tblevent` (
   `Date` date NOT NULL,
   `Title` varchar(50) NOT NULL,
   `Subject` varchar(50) NOT NULL,
-  `Keywords` char(4) NOT NULL,
+  `Keywords` varchar(50) NOT NULL,
   `Description` varchar(500) NOT NULL,
   `Speaker` int(11) NOT NULL,
   `Status` tinyint(4) NOT NULL,
@@ -1779,18 +1787,11 @@ CREATE TABLE `tblfeedback` (
   PRIMARY KEY (`ID`),
   KEY `FK_tblfeedback_tbladmin` (`Admin`),
   KEY `FK_tblfeedback_tblticket` (`Ticket`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tblfeedback
 -- ----------------------------
-INSERT INTO `tblfeedback` VALUES ('10', '2010-06-21 02:06:46', 'admin tra loi', 'asdasd', '2', '8');
-INSERT INTO `tblfeedback` VALUES ('11', '2010-06-21 02:06:11', 'admin tra loi 1', 'weqweqw', '2', '8');
-INSERT INTO `tblfeedback` VALUES ('12', '2010-06-21 03:06:24', 'admin tra loi 12', 'asdasdads', '2', '8');
-INSERT INTO `tblfeedback` VALUES ('13', '2010-06-21 03:06:48', 'admin tra loi 12', 'asdasdads', '2', '8');
-INSERT INTO `tblfeedback` VALUES ('14', '2010-06-21 03:06:30', 'admin tra loi', 'asdasdasdasdasdasdas', '2', '8');
-INSERT INTO `tblfeedback` VALUES ('15', '2010-06-21 03:06:29', 'admin tra loi 12', 'asdasd', '15', '8');
-INSERT INTO `tblfeedback` VALUES ('16', '2010-06-22 11:06:14', 'meo dien', 'cdl fdlf  sld dsl fsf sdoi a', '18', '8');
 
 -- ----------------------------
 -- Table structure for `tblremember_me`
@@ -1808,42 +1809,6 @@ CREATE TABLE `tblremember_me` (
 -- ----------------------------
 -- Records of tblremember_me
 -- ----------------------------
-
--- ----------------------------
--- Table structure for `tblspeaker`
--- ----------------------------
-DROP TABLE IF EXISTS `tblspeaker`;
-CREATE TABLE `tblspeaker` (
-  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `Name` varchar(50) NOT NULL,
-  `FirstName` varchar(50) NOT NULL,
-  `CompanyName` varchar(50) DEFAULT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Country` varchar(100) NOT NULL,
-  `Language` varchar(10) DEFAULT 'en',
-  `Password` varchar(50) NOT NULL,
-  `Description` text,
-  `Subscription` int(10) unsigned NOT NULL,
-  `Suspend` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `Subscription` (`Subscription`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Records of tblspeaker
--- ----------------------------
-INSERT INTO `tblspeaker` VALUES ('1', 'Phong', 'Nguyen ', 'XEMMEX', 'abc@gmail.com', '1', 'fr', 'e10adc3949ba59abbe56e057f20f883e', 'bbb cccc dddd', '2', '0');
-INSERT INTO `tblspeaker` VALUES ('2', 'abcxxx', 'Meo meo', 'xemmex', 'def@gmail.com', '1', 'en', '21232f297a57a5a743894a0e4a801fc3', 'adf  asdf sdf', '2', null);
-INSERT INTO `tblspeaker` VALUES ('3', '', 'adsafsfa', 'llllm', 'abc11@gmail.com', '1', 'en', 'e10adc3949ba59abbe56e057f20f883e', 'afaf', '1', null);
-INSERT INTO `tblspeaker` VALUES ('4', '', 'asaa dafsf', 'kkkk', 'abc10@gmail.com', '1', 'en', 'e10adc3949ba59abbe56e057f20f883e', 'asfaf', '1', null);
-INSERT INTO `tblspeaker` VALUES ('5', '', 'aabb ccdd', 'yyy', 'abc9@gmail.com', '1', 'en', 'e10adc3949ba59abbe56e057f20f883e', 'asfa', '1', null);
-INSERT INTO `tblspeaker` VALUES ('6', '', 'eee fff ggg', 'hhhh', 'abc8@gmail.com', '1', 'en', 'e10adc3949ba59abbe56e057f20f883e', 'as', '1', null);
-INSERT INTO `tblspeaker` VALUES ('7', 'daica', 'gg  adaf', 'gggg', 'abc7@gmail.com', '1', 'en', 'e10adc3949ba59abbe56e057f20f883e', 'a', '1', null);
-INSERT INTO `tblspeaker` VALUES ('8', '', 'sda asadfasf', 'ffff', 'abc6@gmail.com', '1', 'en', 'e10adc3949ba59abbe56e057f20f883e', 'fa', '1', null);
-INSERT INTO `tblspeaker` VALUES ('9', '', 'adfadf', 'eeee', 'abc5@gmail.com', '1', 'en', 'e10adc3949ba59abbe56e057f20f883e', 'a', '1', null);
-INSERT INTO `tblspeaker` VALUES ('10', '', 'adfa  afff', 'dddd', 'abc4@gmail.com', '1', 'en', 'e10adc3949ba59abbe56e057f20f883e', 'a', '1', null);
-INSERT INTO `tblspeaker` VALUES ('11', '', 'adf saaaa', 'cccc', 'abc3@gmail.com', '1', 'en', 'e10adc3949ba59abbe56e057f20f883e', 'fd', '1', null);
-INSERT INTO `tblspeaker` VALUES ('12', '', 'bbdddsaf', 'bbbb', 'abc2@gmail.com', '1', 'en', 'e10adc3949ba59abbe56e057f20f883e', 'fdff', '1', null);
 
 -- ----------------------------
 -- Table structure for `tblsubscription`
@@ -1907,29 +1872,13 @@ CREATE TABLE `tblticket` (
   `Speaker` int(11) DEFAULT NULL,
   `Is_answered` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`ID`),
-  KEY `FK_tblticket_tblspeaker` (`Speaker`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+  KEY `FK_tblticket_users` (`Speaker`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of tblticket
 -- ----------------------------
-INSERT INTO `tblticket` VALUES ('1', '2010-06-18 00:00:00', 'admin', '0', 'as', '2', '1');
-INSERT INTO `tblticket` VALUES ('2', '2010-06-18 00:00:00', 'asdas', '0', 'asas', '2', '1');
-INSERT INTO `tblticket` VALUES ('3', '2010-06-18 00:00:00', 'asdas', '0', '', '2', '0');
-INSERT INTO `tblticket` VALUES ('4', '2010-06-18 00:00:00', 'asdasd', '0', '', '3', '0');
-INSERT INTO `tblticket` VALUES ('5', '2010-06-18 00:00:00', 'admin', '0', '', '2', '0');
-INSERT INTO `tblticket` VALUES ('6', '2010-06-18 00:00:00', 'admin', '0', 'asdasd\nasdasdasd', '2', '0');
-INSERT INTO `tblticket` VALUES ('7', '2010-06-18 00:00:00', 'admin', '0', 'asdasdasd\nasdasd', '2', '0');
-INSERT INTO `tblticket` VALUES ('8', '2010-06-18 00:00:00', 'admin', '0', 'asdasdasd\nasdasd', '2', '0');
-INSERT INTO `tblticket` VALUES ('9', '2010-06-18 00:00:00', 'admin', '0', 'asdasdasd\nasdasd', '2', '0');
-INSERT INTO `tblticket` VALUES ('10', '2010-06-19 00:00:00', 'hoi cai', '0', 'ádasdsad', '2', '1');
-INSERT INTO `tblticket` VALUES ('11', '2010-06-19 00:00:00', 'hoi caia', '0', 'ádasdasd', '2', '0');
-INSERT INTO `tblticket` VALUES ('12', '2010-06-19 00:00:00', 'hoi caiaaaa', '3', 'ádasdasd', '2', '0');
-INSERT INTO `tblticket` VALUES ('13', '2010-06-19 00:00:00', 'hoi caiaaaa', '3', 'ádasdasd', '2', '0');
-INSERT INTO `tblticket` VALUES ('15', '2010-06-21 02:06:43', 'ticket 21', '1', 'hoi ciasad ', '2', '1');
-INSERT INTO `tblticket` VALUES ('16', '2010-06-21 02:06:44', 'test', '0', 'asdadsasdasd', '2', '0');
-INSERT INTO `tblticket` VALUES ('18', '2010-06-22 11:06:26', 'Hoi admin ti', '2', 'what we kr l f dlf adslf', '1', '1');
-INSERT INTO `tblticket` VALUES ('19', '2010-06-22 05:06:30', 'meo meo meo hoi ti', '1', 'asdoi oi con meo', '1', '0');
+INSERT INTO `tblticket` VALUES ('1', '2010-06-25 06:06:14', 'test', '2', 'test', '1', '0');
 
 -- ----------------------------
 -- Table structure for `tblvideoconference`
@@ -2009,17 +1958,55 @@ CREATE TABLE `users` (
   `userlevel` tinyint(1) NOT NULL DEFAULT '1',
   `language` varchar(4) NOT NULL DEFAULT 'en',
   `description` text,
+  `tempPassword` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', '1', 'admin', 'yugi3000@gmail.com', 'Webmaster', null, null, '1', 'ac48ec59d616758e95e63b08a1689240', '3e31ecb790b293b9e24319a2a374ac53', '0', '2010-03-03 15:08:38', '127.0.0.1', '2010-06-24 14:49:12', '1', '1', '9', 'en', null);
-INSERT INTO `users` VALUES ('24', '1', 'user1', 'youzun@gmail.com', 'Hai Dang', 'Nguyen', 'XEMMEX', '1', '21232f297a57a5a743894a0e4a801fc3', 'a45e8a7bb02c385c5ae9046aa4971ace', '0', '2010-06-23 14:06:30', '127.0.0.1', '0000-00-00 00:00:00', '0', '1', '1', 'en', null);
-INSERT INTO `users` VALUES ('25', '1', 'zun3000', 'zun3000@gmail.com', 'Mz MEO', 'meo', 'XEMMEX', '1', 'ac48ec59d616758e95e63b08a1689240', '0', '0', '0000-00-00 00:00:00', '127.0.0.1', '0000-00-00 00:00:00', '1', '1', '1', 'en', 'no info');
-INSERT INTO `users` VALUES ('26', '1', 'meocon', 'yugi3k@yahoo.com', 'Con meo con', 'CO MOT', 'XEMMEX.TV', '82', 'ac48ec59d616758e95e63b08a1689240', '09bd6b044f68755b69cee95dd985f9d8', '0', '0000-00-00 00:00:00', '127.0.0.1', '0000-00-00 00:00:00', '1', '1', '1', 'en', 'abc e');
-INSERT INTO `users` VALUES ('27', '1', 'meomeo', 'abc@yahoo.com', 'MEO Mdosz', 'meo meo', 'dasfaf', '36', 'ac48ec59d616758e95e63b08a1689240', '461aa6ad981b0a7165e34a03375f2f13', '0', '0000-00-00 00:00:00', '127.0.0.1', '0000-00-00 00:00:00', '1', '1', '1', 'en', 'af');
+INSERT INTO `users` VALUES ('1', '1', 'admin', 'yugi3000@gmail.com', 'Webmaster', null, null, '1', 'e10adc3949ba59abbe56e057f20f883e', 'a340de6d65c3b0c362fc2237d34ac511', '0', '2010-03-03 15:08:38', '127.0.0.1', '0000-00-00 00:00:00', '1', '1', '9', 'en', null, 'pigN5mkKmYioxkxhUiaJ');
+INSERT INTO `users` VALUES ('24', '1', 'user1', 'youzun@gmail.com', 'Hai Dang', 'Nguyen', 'XEMMEX', '1', '21232f297a57a5a743894a0e4a801fc3', 'a45e8a7bb02c385c5ae9046aa4971ace', '0', '2010-06-23 14:06:30', '127.0.0.1', '0000-00-00 00:00:00', '0', '1', '1', 'en', null, null);
+INSERT INTO `users` VALUES ('25', '1', 'zun3000', 'zun3000@gmail.com', 'Mz MEO', 'meo', 'XEMMEX', '1', 'e10adc3949ba59abbe56e057f20f883e', '0', '0', '0000-00-00 00:00:00', '127.0.0.1', '0000-00-00 00:00:00', '1', '1', '1', 'en', 'no info', null);
+INSERT INTO `users` VALUES ('26', '1', 'meocon', 'yugi3k@yahoo.com', 'Con meo con', 'CO MOT', 'XEMMEX.TV', '82', 'e10adc3949ba59abbe56e057f20f883e', '09bd6b044f68755b69cee95dd985f9d8', '0', '0000-00-00 00:00:00', '127.0.0.1', '0000-00-00 00:00:00', '1', '1', '1', 'en', 'abc e', null);
+INSERT INTO `users` VALUES ('27', '1', 'meomeo', 'abc@yahoo.com', 'MEO Mdosz', 'meo meo', 'dasfaf', '36', 'e10adc3949ba59abbe56e057f20f883e', '8b81ac05676ccaa400f8f24ed5059088', '0', '0000-00-00 00:00:00', '127.0.0.1', '0000-00-00 00:00:00', '1', '1', '1', 'en', 'af', null);
+
+-- ----------------------------
+-- Table structure for `users_copy`
+-- ----------------------------
+DROP TABLE IF EXISTS `users_copy`;
+CREATE TABLE `users_copy` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `membership_id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `company_name` varchar(100) DEFAULT NULL,
+  `country` varchar(50) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `cookie_id` varchar(100) NOT NULL DEFAULT '0',
+  `token` varchar(100) NOT NULL DEFAULT '0',
+  `register_date` datetime NOT NULL,
+  `last_ip` varchar(255) NOT NULL,
+  `last_access` datetime NOT NULL,
+  `notify` tinyint(1) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `userlevel` tinyint(1) NOT NULL DEFAULT '1',
+  `language` varchar(4) NOT NULL DEFAULT 'en',
+  `description` text,
+  `tempPassword` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of users_copy
+-- ----------------------------
+INSERT INTO `users_copy` VALUES ('1', '1', 'admin', 'yugi3000@gmail.com', 'Webmaster', null, null, '1', 'fcea920f7412b5da7be0cf42b8c93759', 'd73afbe01cc44f65ab776533f86015a8', '0', '2010-03-03 15:08:38', '127.0.0.1', '0000-00-00 00:00:00', '1', '1', '9', 'en', null, '7W1Toep46ypnPAtzsmb1');
+INSERT INTO `users_copy` VALUES ('24', '1', 'user1', 'youzun@gmail.com', 'Hai Dang', 'Nguyen', 'XEMMEX', '1', '21232f297a57a5a743894a0e4a801fc3', 'a45e8a7bb02c385c5ae9046aa4971ace', '0', '2010-06-23 14:06:30', '127.0.0.1', '0000-00-00 00:00:00', '0', '1', '1', 'en', null, null);
+INSERT INTO `users_copy` VALUES ('25', '1', 'zun3000', 'zun3000@gmail.com', 'Mz MEO', 'meo', 'XEMMEX', '1', 'e10adc3949ba59abbe56e057f20f883e', '0', '0', '0000-00-00 00:00:00', '127.0.0.1', '0000-00-00 00:00:00', '1', '1', '1', 'en', 'no info', null);
+INSERT INTO `users_copy` VALUES ('26', '1', 'meocon', 'yugi3k@yahoo.com', 'Con meo con', 'CO MOT', 'XEMMEX.TV', '82', 'e10adc3949ba59abbe56e057f20f883e', '09bd6b044f68755b69cee95dd985f9d8', '0', '0000-00-00 00:00:00', '127.0.0.1', '0000-00-00 00:00:00', '1', '1', '1', 'en', 'abc e', null);
+INSERT INTO `users_copy` VALUES ('27', '1', 'meomeo', 'abc@yahoo.com', 'MEO Mdosz', 'meo meo', 'dasfaf', '36', 'e10adc3949ba59abbe56e057f20f883e', '8b81ac05676ccaa400f8f24ed5059088', '0', '0000-00-00 00:00:00', '127.0.0.1', '0000-00-00 00:00:00', '1', '1', '1', 'en', 'af', null);
 
 -- ----------------------------
 -- Table structure for `verification`
@@ -2076,7 +2063,7 @@ CREATE TABLE `videos` (
 -- ----------------------------
 -- Records of videos
 -- ----------------------------
-INSERT INTO `videos` VALUES ('100000', '1', 'abc', 'xxxx', '1', 'as adj kajsd askj', '1230742859', '223', 'ad', '0', '1', '1', '1', '1', '1', 'The Elephant Song - Cool Tunes for Kids by Eric Herman.flv', 'The Elephant Song - Cool Tunes for Kids by Eric Herman.jpg', '0', '0', '0', '1277174807', '0', '0', '0', '0', '25');
+INSERT INTO `videos` VALUES ('100000', '1', 'abc', 'xxxx', '1', 'as adj kajsd askj', '1230742859', '223', 'ad', '0', '1', '1', '1', '1', '1', 'The Elephant Song - Cool Tunes for Kids by Eric Herman.flv', 'The Elephant Song - Cool Tunes for Kids by Eric Herman.jpg', '0', '0', '0', '1277174807', '0', '0', '0', '0', '26');
 INSERT INTO `videos` VALUES ('100001', '1', 'Bullshit', 'Fusce quam magna, viverra nec tincidunt nec, congue id quam. Suspendisse id porttitor nibh. Aliquam a lectus a nisi bibendum aliquet. Duis vulputate enim volutpat lorem rutrum facilisis accumsan massa gravida. Curabitur convallis dolor ac enim porttitor ac dignissim erat fermentum. Sed lacinia odio quis felis dapibus gravida? Nulla hendrerit urna et orci tincidunt aliquet. Class aptent taciti sociosqu ad litora torquent per conubi', '1', 'as adj kajsd askj', '1230742859', '223', 'dsfasdfasfas', '0', '1', '1', '1', '1', '1', 'YouTube - Funny Commercial(1).flv', 'YouTube - Funny Commercial.jpg', '0', '0', '0', '1277174', '0', '0', '0', '0', '14');
 INSERT INTO `videos` VALUES ('100002', '1', 'YouTube - Funny Commercial', 'Fusce quam magna, viverra nec tincidunt nec, congue id quam. Suspendisse id porttitor nibh. Aliquam a lectus a nisi bibendum aliquet. Duis vulputate enim volutpat lorem rutrum facilisis accumsan massa gravida. Curabitur convallis dolor ac enim porttitor ac dignissim erat fermentum. Sed lacinia odio quis felis dapibus gravida? Nulla hendrerit urna et orci tincidunt aliquet. Class aptent taciti sociosqu ad litora torquent per conubi', '2', 'as adj kajsd askj', '1230742820', '1', 'sdf sdfs dfs afsafsf', '0', '1', '1', '1', '1', '1', 'best, funniest commercial video', 'best, funniest commercial video.jpg', '0', '0', '0', '12771745', '0', '0', '0', '0', '11');
 INSERT INTO `videos` VALUES ('100003', '4', 'best, funniest commercial video', 'Fusce quam magna, viverra nec tincidunt nec, congue id quam. Suspendisse id porttitor nibh. Aliquam a lectus a nisi bibendum aliquet. Duis vulputate enim volutpat lorem rutrum facilisis accumsan massa gravida. Curabitur convallis dolor ac enim porttitor ac dignissim erat fermentum. Sed lacinia odio quis felis dapibus gravida? Nulla hendrerit urna et orci tincidunt aliquet. Class aptent taciti sociosqu ad litora torquent per conubi', '3', 'ds sd qw assd', '1230742859', '100', 'ds s sdf sf safasfasf', '0', '1', '1', '1', '1', '1', 'funny Commercial.flv', 'funny Commercial.jpg', '0', '0', '0', '12771741', '0', '0', '0', '0', '6');
@@ -2205,4 +2192,4 @@ CREATE TABLE `viewkeys` (
 -- View structure for `get speaker by id`
 -- ----------------------------
 DROP VIEW IF EXISTS `get speaker by id`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `get speaker by id` AS select `tblspeaker`.`Email` AS `Email`,`tblspeaker`.`ID` AS `ID`,`tblsubscriptiontype`.`TypeName` AS `TypeName` from ((`tblspeaker` join `tblsubscription` on((`tblspeaker`.`Subscription` = `tblsubscription`.`ID`))) join `tblsubscriptiontype` on((`tblsubscription`.`SubscriptionType` = `tblsubscriptiontype`.`ID`))) order by `tblspeaker`.`ID` limit 2,4;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `get speaker by id` AS select `confor`.`tblspeaker`.`Email` AS `Email`,`confor`.`tblspeaker`.`ID` AS `ID`,`confor`.`tblsubscriptiontype`.`TypeName` AS `TypeName` from ((`tblspeaker` join `tblsubscription` on((`confor`.`tblspeaker`.`Subscription` = `confor`.`tblsubscription`.`ID`))) join `tblsubscriptiontype` on((`confor`.`tblsubscription`.`SubscriptionType` = `confor`.`tblsubscriptiontype`.`ID`))) order by `confor`.`tblspeaker`.`ID` limit 2,4;
