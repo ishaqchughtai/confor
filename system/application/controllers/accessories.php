@@ -11,15 +11,17 @@
         function show_element($ElementName)
         {   
             $admin_data = is_admin(FALSE);
-            $query = $this->Maccessories->get_element($ElementName);  
+            $query = $this->Maccessories->get_element($ElementName); 
             if($query->num_rows()==1)
             {
                 if ($admin_data == FALSE) 
                 {
+                    $this->_data['page_title'] = $this->convert_element_name($ElementName); 
                     $this->_data['query'] = $query->result_array();
                     $this->_load_view('home/page');               
                 }else
                 {
+                    $this->_data['page_title'] = $this->convert_element_name($ElementName);
                     $this->_data['query'] = $query->result_array();
                     $this->_load_view('admin/page_admin');    
                 }
@@ -28,11 +30,32 @@
                 redirect('home/index');
             }      
         }
+        function convert_element_name($ElementName)
+        {
+            if($ElementName == 'about')
+            {
+                $StrElementName = 'About us';
+            }elseif($ElementName == 'how')
+            {
+                $StrElementName = 'How it works';    
+            }elseif($ElementName == 'rules')
+            {
+                $StrElementName = 'The rules';    
+            }elseif($ElementName == 'training')
+            {
+                $StrElementName = 'Training';   
+            }else
+            {
+                $StrElementName = '';
+            }
+            return $StrElementName;    
+        }
         function get_element($ElementName)
         {
             is_admin();          
             $query = $this->Maccessories->get_element($ElementName);
             $this->_data['query'] = $query->result_array();
+            $this->_data['page_title'] = $this->convert_element_name($ElementName);
             $this->_load_view('admin/add_new_page');
         }    
         function update_element($ElementName)
@@ -43,6 +66,7 @@
             $query = $this->Maccessories->get_element($ElementName);
             $this->_data['query'] = $query->result_array();                                          
             $ElementContent=$this->input->post('ElementContent');
+            $this->_data['page_title'] = $this->convert_element_name($ElementName);
             if($this->form_validation->run()==FALSE)
             {
                 $this->_load_view('admin/add_new_page'); 
@@ -52,9 +76,6 @@
                 if($this->Maccessories->update_element($ElementName,$ElementContent)==TRUE)
                 {
                     redirect(site_url('accessories/show_element/'.$ElementName));  
-                }else
-                {
-                    echo 'asdasd';
                 }
             }        
         }

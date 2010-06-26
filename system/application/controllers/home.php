@@ -26,6 +26,7 @@ class Home extends Frontend_controller {
         'name' => __("CON_contact"),
         'link' => site_url("home/contact")
         );
+            $this->_data['page_title'] = 'Contact us';
             $this->form_validation->set_rules('name','Name','required');
             $this->form_validation->set_rules('email','Email','required|valid_email');
             $this->form_validation->set_rules('message','Message','required');

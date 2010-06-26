@@ -11,7 +11,7 @@
                                 $author = $row['Name'];
                                 $date = $row['Date'];
                                 $countcomment = $row['CountComment']; ?>
-        <h3><a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title)?>" target="_blank"><?php echo $title?></a><a href="blog_entry.html"></a></h3>
+        <h3><a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title)?>"><?php echo $title?></a><a href="blog_entry.html"></a></h3>
         <h5><?php echo $subject?></h5>
         <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title)?>#comments" class="comments_balloon"><?php echo $countcomment ?></a>
         <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="610" height="169" alt="Confor.ca" /></p>
