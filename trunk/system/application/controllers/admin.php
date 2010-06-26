@@ -203,46 +203,53 @@
             }
         }
         function edit_admin($id){
-            if((int)$this->session->userdata('right')==0)
+            if((int)$id>0&&is_nan($id)==FALSE)
             {
-                redirect(site_url("admin"));
-            }
-            else
-            {   
-                $this->_data['path'][] = array(
-                'name' => __("CON_admin_edit"),
-                'link' => '#'
-                );					
-                $data['error'] = ""; 
-                $this->form_validation->set_rules('txtName','Name','required');
-                $this->form_validation->set_rules('txtFirstName','First Name','required');
-                $this->form_validation->set_rules('txtEmail','Email','required|valid_email|xss_clean');
-                $this->form_validation->set_rules('txtpayPayAccount','Paypal Account','required|valid_email|xss_clean');
-                $this->_data['query']=$this->Madmin->get_admin_by_id($id);
-                $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-                if($this->input->post('Submit'))
+                if((int)$this->session->userdata('right')==0)
                 {
-                    if($this->form_validation->run()==FALSE)
+                    redirect(site_url("admin"));
+                }
+                else
+                {   
+                    $this->_data['path'][] = array(
+                    'name' => __("CON_admin_edit"),
+                    'link' => '#'
+                    );                    
+                    $data['error'] = ""; 
+                    $this->form_validation->set_rules('txtName','Name','required');
+                    $this->form_validation->set_rules('txtFirstName','First Name','required');
+                    $this->form_validation->set_rules('txtEmail','Email','required|valid_email|xss_clean');
+                    $this->form_validation->set_rules('txtpayPayAccount','Paypal Account','required|valid_email|xss_clean');
+                    $this->_data['query']=$this->Madmin->get_admin_by_id($id);
+                    $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
+                    if($this->input->post('Submit'))
                     {
-                        $this->_data['error'] = "Can not update !";
-                        $this->_load_view('admin/update_admin');
+                        if($this->form_validation->run()==FALSE)
+                        {
+                            $this->_data['error'] = "Can not update !";
+                            $this->_load_view('admin/update_admin');
+                        }
+                        else
+                        {
+                            $data = array(
+                            'Name'=>$this->input->post('txtName'),
+                            'FirstName'=>$this->input->post('txtFirstName'),
+                            'Email'=>$this->input->post('txtEmail'),
+                            'PayPalAccount'=>$this->input->post('txtpayPayAccount'),
+                            );
+                            $this->Madmin->update_admin($id,$data);
+                            redirect('admin/list_admin');  
+                        }
                     }
                     else
                     {
-                        $data = array(
-                        'Name'=>$this->input->post('txtName'),
-                        'FirstName'=>$this->input->post('txtFirstName'),
-                        'Email'=>$this->input->post('txtEmail'),
-                        'PayPalAccount'=>$this->input->post('txtpayPayAccount'),
-                        );
-                        $this->Madmin->update_admin($id,$data);
-                        redirect('admin/list_admin');  
+                        $this->_load_view('admin/update_admin');
                     }
                 }
-                else
-                {
-                    $this->_load_view('admin/update_admin');
-                }
+            }
+            else
+            {
+                redirect(site_url("admin"));
             }
         }
         function edit_profile($id)
@@ -366,7 +373,7 @@
             $this->_load_view('admin/user_list');
 
         }
-        function delete_user(int $id)
+        function delete_user($id)
         {
             if($this->session->userdata('admin')==FALSE)
             {
@@ -428,7 +435,7 @@
             }
             else
             {
-                $this->form_validation->set_rules('speaker_email','Email','required|valid_email|xss_clean');
+                $this->form_validation->set_rules('speaker_email','User name','required');
                 $this->form_validation->set_rules('title','Title','required');
                 $this->form_validation->set_rules('description','Description','required'); 
                 $this->form_validation->set_rules('category','Category','required');
@@ -502,6 +509,7 @@
             }
             else
             {
+                if(is_nan((float)$id)) redirect(site_url("admin"));
                 $this->form_validation->set_rules('title','Title','required');
                 $this->form_validation->set_rules('keywords','Keywords','required');
                 $this->form_validation->set_rules('description','Description','required'); 
