@@ -15,10 +15,14 @@
             $this->load->model('Madmin');
             $this->load->model('Mvconference');            
             $this->load->library('validation');                        
-            $this->load->helper('date'); 
+            $this->load->helper('date');
+            $this->load->library('video_lib');
+            $this->load->model('MShop');
+			require_once "phpuploader/include_phpuploader.php"; 
         }                       
         function index()
-        {   
+        {
+        	$this->_data['status'] = $this->MShop->get_shop_status();   
             if($this->session->userdata('admin')==TRUE)
             {
                 $this->_data['path'][] = array(
@@ -443,6 +447,7 @@
                 $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
                 $this->_data['query']=$this->Mvconference->get_category();
                 $this->_data['error'] ='';
+				$this->upload_file(); 
                 if($this->input->post('submit'))
                 {
                     if($this->form_validation->run()==FALSE)
@@ -452,21 +457,27 @@
                     }
                     else
                     {
-                        $config['upload_path'] = './videos/';//thu muc chu file upload
-                        $config['allowed_types'] = 'flv|gif|jpg|png';//dinh dang cho file
-                        $config['max_size']    = '20480'; //dung luong
-
-                        $this->load->library('upload', $config);
-
-                        if ( ! $this->upload->do_upload())
+						$this->upload_file();           
+                        //$config['upload_path'] = './videostemp/';
+                        //$config['max_size']    = '2048000'; 
+                        //$config['allowed_types'] = 'avi|mp4';
+                        //$this->load->library('upload', $config);
+                        //$config['overwrite']  = 'TRUE';  
+                        if ( ! $this->upload_file())
                         {
-                            $error = $this->upload->display_errors();
-                            $this->_load_view('admin/new_video_conference', $error);
+                            //$error = $this->upload->display_errors();
+                            //$this->_load_view('admin/new_video_conference', $error);
+							echo 'loi upload_file';
                         }    
                         else
-                        {
-                            $data_upload = $this->upload->data();  //upload file
-
+                        {							
+                            //$data_upload = $this->upload->data();
+                            //$fileName = $this->upload->file_name;
+                            $file = base_url().'videostemp/'.$task['FileName'];
+                            $this->video_lib->load_video($file);
+                            $this->video_lib->convert_to_flv('./videos/');
+                            $file_shash = $this->video_lib->create_thumb('./thumbs/'.$task['FileName']);
+                            //unlink($file); can phai xoa file vua upload
 
                             //fetch data from form
                             $dateupload= NOW();
@@ -477,12 +488,14 @@
                             'category'=>$this->input->post('category'),
                             'tags'=>$this->input->post('keywords'),
                             'Date'=>$dateupload,
-                            'vhash'=>$data_upload['file_name'],
+                            'vhash'=>$task['FileName'],
                             'approved'=>1,
-                            'viewed'=>0
+                            'viewed'=>0,
+                            'shash'=>$file_shash
                             );
                             if(!$data_upload)
                             {
+                                echo 'asddasd';
                                 return;
                             }
                             else
@@ -500,7 +513,22 @@
             }
 
         }
-
+		function upload_file()
+		{
+						$uploader=new PhpUploader();
+        
+						//$uploader->MultipleFilesUpload=FALSE;
+						$uploader->InsertText="Select files (Max 100M)";
+						
+						$uploader->MaxSizeKB=10240000;
+						$uploader->AllowedFileExtensions="*.jpg,*.avi,*.mp4";
+						
+						$uploader->SaveDirectory="videostemp";
+						
+						$uploader->FlashUploadMode="Partial";
+						
+						 $uploader->Render();	
+		}
         function edit_video_conference($id)
         {
             if($this->session->userdata('admin')==FALSE)

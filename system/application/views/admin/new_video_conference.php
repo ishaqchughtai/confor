@@ -43,7 +43,9 @@
                     <p>
                         <label for="video">Video:</label>
                         <input type="file" name="userfile" size="20" />
-                        <b style="color: red"><?php echo $error ;?></b>
+                            <?php if(isset($error)):?>
+        <p class="not_warning"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
+        <?php endif?>
                     </p>
                     <p>
                         <input name="submit" type="submit" class="submit" value="ADD" />
