@@ -1,4 +1,4 @@
-<?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php 
 /**
 * CodeIgniter
 *
@@ -171,4 +171,4 @@ class Video_lib {
     }
 
 }
-// END VIDEO Class
+// END VIDEO Class 

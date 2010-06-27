@@ -152,7 +152,7 @@ class Home extends Frontend_controller {
                     $keyword = '_';
                     $config['base_url'] = site_url('home/search_paging').'/'.$keyword.'/'.$num_per_page.'/';
                 }
-
+                
                 $this->pagination->initialize($config);  
                 $this->_data['link_html'] = $this->pagination->create_links();  
                 $this->_data['keyword'] = $keyword;
