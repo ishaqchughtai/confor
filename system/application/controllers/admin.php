@@ -457,10 +457,10 @@ class Admin extends Admin_controller
 				if (file_exists("./temp/".$new_name) && (filesize($vid_path.$new_name.'.flv')>0))
 				{
 					unlink("./temp/".$new_name);					
-					if ($old_name)
+					if (strlen($old_name)>1)
 					{
-						unlink($vid_path.$new_name.'.flv');
-						unlink($scr_path.$new_name.'.jpg');
+						unlink($vid_path.$old_name.'.flv');
+						unlink($scr_path.$old_name.'.jpg');
 					}					
 				} 
 				else
