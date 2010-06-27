@@ -37,6 +37,10 @@
 				$('#vname').val(data.toString());
 				$('#upload_button').val('Upload');				
 				if (data!=0) alert('Your file has been uploaded');
+				
+				var uploader = document.getElementById("myuploader");
+				uploader.reset();
+				//var guidlist = uploader.value;				
 			}
 		});	
 	}
