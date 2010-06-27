@@ -106,32 +106,31 @@ class Video_lib {
         $flvtool2Path = '/usr/bin/flvtool2';//$this->CI->config->item('flvtool2Path');
         
         // Extention of file is...
-        list($name, $ext) = explode('.', basename($this->filename));
-        $converted_name = $destFolder.$name.'.flv';
+        //list($name, $ext) = explode('.', basename($this->filename));		
+        $converted_name = $destFolder.basename($this->filename).'.flv';		
         $this->audioBitRate = 22050;
 		$this->audioBitRate = 32;		
 		//$cmd = $ffmpegPath . " -i " . $this->filename . " -ar " . $this->audioSampleRate . " -ab " . $this->audioBitRate . " -f flv -s " . $this->videoWidth . "x" . $this->videoHeight .  " | " . $flvtool2Path . " -U stdin " . $converted_name;
-		$cmd = $ffmpegPath . " -i " . $this->filename . " -ar 22050 -ab 32 -f flv -s 320x240 " . $converted_name;		
-		echo $cmd;
+		$cmd = $ffmpegPath . " -i " . $this->filename . " -ar 22050 -ab 32 -f flv -s 320x240 " . $converted_name;				
 		exec($cmd);
 		
-		return;
+		//return;
         // Call our convert using exec()
         //exec($ffmpegPath . " -i " . $this->filename . " -ar " . $this->audioSampleRate . " -ab " . $this->audioBitRate . " -f flv -s " . $this->videoWidth . "x" . $this->videoHeight . " " . $converted_name . " | " . $flvtool2Path . " -U stdin " . $converted_name);
 		//exec($ffmpegPath . " -i " . $this->filename . " -ar " . 44100 . " -ab " . 64 . " -f flv -s " . 320 . "x" . 240 . " " . $converted_name . " | " . $flvtool2Path . " -U stdin " . $converted_name);
         // Delete the origional file if the new files size is more than 0
-        if(file_exists($this->filename) && filesize($converted_name) > 0)
-        {
-            unlink($this->filename);
-            $this->filename = $converted_name;    
-        } else {
-            log_message('debug', "Video convert error, new file size is 0");
-			echo 'chan chua';
-            return false;
-        }
+        // if(file_exists($this->filename) && filesize($converted_name) > 0)
+        // {
+            // unlink($this->filename);
+            // $this->filename = $converted_name;    
+        // } else {
+            // log_message('debug', "Video convert error, new file size is 0");
+			// echo 'chan chua';
+            // return false;
+        // }
         
         // Check the new file exists, return true or false
-        return (file_exists($this->filename));
+        //return (file_exists($this->filename));
     
     }
     
