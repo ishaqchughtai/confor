@@ -1,8 +1,8 @@
 <?php 
     $admin_id=$this->session->userdata('admin_id');
     $admin_right=(int)$this->session->userdata('right');  
-?>
-<div class="x2">
+?><?php
+foreach($status as $row){	$status = $row['Status'];	}?><div class="x2">
     <h3>Administrator Panel</h3>
     <ul class="link_conttrol">
     <?php if($admin_right==1){?>
@@ -43,13 +43,11 @@
   <h3>Ticket Control</h3>
   <ul class="link_conttrol">
     <li><a class="icon_list" href="<?php echo site_url('ticket/open_tickets')?>">Ticket Open List</a></li>
-    <li><a class="icon_list" href="<?php echo site_url('ticket/closed_tickets')?>">Ticket Closed List</a></li>
+    <li><a class="icon_add" href="<?php echo site_url('ticket/closed_tickets')?>">Ticket Closed List</a></li>
   </ul>
 </div>
 <div class="x2 no_margin">
-    <h3>Shop Control </h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta nibh metus. Aliquam eget tellus vulputate nibh feugiat dictum nec nec tellus. Nullam vel turpis sit amet erat cursus hendrerit in ut odio. Quisque aliquam, leo a ultricies pulvinar, mi erat ullamcorper quam, sit amet ornare erat lacus non nisl. Proin facilisis tempor lobortis. Sed magna eros, aliquam euismod fringilla quis, mattis et nisi.</p>
-</div>
+    <h3>Shop Control </h3>    <ul class="link_conttrol">    <?php if ($status):?>    <li><a class="icon_list" href="<?php echo base_url().'shop/administrator'?>">Shop Management</a></li>    <li><a class="icon_add" href="<?php echo site_url('shop/deactive')?>" onclick="return confirm('Do you really wish to deactive shop?')">Deactive</a></li>    <?php else:?>    <label></label>    <li><a class="icon_add" href="<?php echo site_url('shop/active')?>" onclick="return confirm('Do you really wish to active shop?')">Active</a></li>        <?php endif;?>  </ul></div>
 <div class="divider"></div>
 <div class="x2">
     <h3>Blog Control</h3>
