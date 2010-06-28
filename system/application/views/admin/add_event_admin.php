@@ -7,13 +7,12 @@
 					<?php
 						$data=array('name' => 'event-form','id' => 'event-form'); 
 						echo form_open('event/add_event',$data);
-						//echo $error;
-						//echo $notify;
 					?>
 						<p>
 						<input id="speaker_id" type="hidden" name="speaker" value="0"/>
 						<label for="title">Speaker:</label>
 						<input id="speaker_email" class="short" type="text" value=""/>
+                        <?php echo form_error('speaker')?>
 						</p>
 						
 						<p>
@@ -35,7 +34,7 @@
 						<p>
 						
 							<label for="keywords">Keywords:</label>
-							<input class="short" name="keywords" id="keywords" maxlength="4" value="<?php if(isset($_POST['keywords'])){ echo $_POST['keywords'];}?>" />
+							<input class="short" name="keywords" id="keywords" value="<?php if(isset($_POST['keywords'])){ echo $_POST['keywords'];}?>" />
 							<?php echo form_error('keywords')?>
 						
 						</p>

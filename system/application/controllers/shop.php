@@ -10,14 +10,33 @@
 
     function index()
     {
-      redirect(base_url().'shop');
+      //redirect(base_url().'shop');
+      $this->check_status();
+
+    }
+
+    function check_status()
+    {
+      $status = $this->MShop->get_shop_status();
+      foreach($status as $row)
+      {
+        $data = $row->status;
+        if($data == 1)
+        {
+          redirect(base_url().'shop'); 
+        }
+        else
+        {
+          redirect('/');
+        }
+      }
     }
 
     function active()
     {
       is_admin();
       $this->MShop->active_shop();
-       redirect(site_url('admin'));
+      redirect(site_url('admin'));
     }
 
     function deactive()
@@ -26,6 +45,6 @@
       $this->MShop->deactive_shop();
       redirect(site_url('admin'));
     }
-    
+
   }
 ?>

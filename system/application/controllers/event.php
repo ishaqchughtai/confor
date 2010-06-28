@@ -15,7 +15,8 @@ class Event extends Frontend_controller {
   }	
 
 
-  function _before_render() {
+  function _before_render() 
+  {
     $side_bar['page'] = "event/sidebar";    
     $side_bar['popular_video'] = $this->Mhome->get_popular_video();
     $side_bar['recent_video'] = $this->Mhome->get_recent_video();  
@@ -34,7 +35,7 @@ class Event extends Frontend_controller {
 
     $this->_data['path'][] = array(
     'name' => "Event",
-    'link' => site_url("event/show_event/".$date)
+    'link' => site_url("event/show_event/".$date."/5")
     );
 
     $config['uri_segment'] = 5;
@@ -58,7 +59,7 @@ class Event extends Frontend_controller {
   }
 
   //Content's event of user
-  function event_content($id) 
+  function event_content($id='') 
   { 
     $id = (double)$id;
     if(is_nan($id)==FALSE && $id > 0)
@@ -286,6 +287,7 @@ class Event extends Frontend_controller {
     is_admin();
     if($this->input->post('btnsubmit'))
     {
+      $this->form_validation->set_rules('speaker','Speaker','required');
       $this->form_validation->set_rules('title','Title','trim|required|max_length[50]');
       $this->form_validation->set_rules('subject','Subject','trim|required|max_length[50]');
       $this->form_validation->set_rules('keywords','Keywords','trim|required|callback_keyword_check');
