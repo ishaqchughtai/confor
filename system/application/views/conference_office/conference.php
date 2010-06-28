@@ -1,4 +1,4 @@
-<?php require 'SimpleRatings/rSystem.php'; ?>
+
 <div id="left">
     <div class="content_item">
         <style type="text/css">
@@ -77,8 +77,6 @@
           
              <?php echo mdate('%F %j%S %Y', $rows['date'])?></h5>
 
-        <div class="rate_balloon"><?php $SimpleRatings->create($rows['vid_id']);?>
-        </div> 
 
         <p>
             <img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="202" height="90" alt="" class="alignleft" />
