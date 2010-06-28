@@ -110,8 +110,8 @@ class Vid_lib {
 	{
 		$vhash = VID_PATH.$vhash;
 		$shash = SCR_PATH.$shash;
-		if file_exists($vhash) unlink($vhash);
-		if file_exists($shash) unlink($shash);
+		if (file_exists($vhash)) unlink($vhash);
+		if (file_exists($shash)) unlink($shash);
 	}
 	
 	function init_uploader()
