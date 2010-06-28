@@ -148,6 +148,11 @@
         {
             $this->db->update('videos',$data,array('vid_id'=>$id)); 
         }
+        function delete_video($id)
+        {
+            $this->db->where('vid_id', $id);
+            $this->db->delete('videos');
+        }
         
 
     }

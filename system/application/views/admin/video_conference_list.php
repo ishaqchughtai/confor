@@ -48,7 +48,7 @@
             $upload_date=mdate("%Y-%m-%d", $row['date']);
         ?>
             <tr>
-                <td>&nbsp;<a href="<?php echo site_url('admin/edit_video_conference/'.$row['vid_id'])?>">Edit</a>&nbsp;|&nbsp;<a href="<?php echo site_url('admin/delete_video_conference/'.$row['vid_id'])?>">Del</a>&nbsp;</td>
+                <td>&nbsp;<a href="<?php echo site_url('admin/edit_video_conference/'.$row['vid_id'])?>">Edit</a>&nbsp;|&nbsp;<a href="<?php echo site_url('admin/delete_video_conference/'.$row['vid_id'])?>" onclick="javascript:return confirm('do you really wish to delete?')">Del</a>&nbsp;</td>
                 <td><img src="<?php echo $preview_img?>" width="81" height="52" alt=""> </td>
                 <td><?php echo $upload_date ?></td>
                 <td><?php echo $row['title']?></td>
