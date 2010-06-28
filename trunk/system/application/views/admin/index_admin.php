@@ -25,7 +25,7 @@ foreach($status as $row){	$status = $row['Status'];	}?><div class="x2">
 <div class="x2">
   <h3>Conferences Control</h3>                                                                                      
   <ul class="link_conttrol">
-    <li><a class="icon_list" href="<?php echo site_url('admin/showroom')?>">Showroom Images Control</a></li>  
+    <li><a class="icon_list" href="<?php echo site_url('showroom/add_new_images')?>">Showroom Images Control</a></li>  
     <li><a class="icon_list" href="<?php echo site_url('admin/list_video_conference/0/3')?>">Video conference List</a></li>
     <li><a class="icon_add" href="<?php echo site_url('admin/new_video_conference')?>">New video conference</a></li>
   </ul>

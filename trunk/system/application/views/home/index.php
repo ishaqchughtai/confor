@@ -57,11 +57,8 @@
 		<script type="text/javascript">
    			scale = new FlashScaler("flashcontent", 640, 360);
 		</script>					
-			  </div>
-					
-				  <p><?php echo $description?></p>
-										
-			  </div>
+		    </div>					
+				  <p><?php echo $description?></p>										
 				<!-- /.content_item -->
                 
                 <?php 

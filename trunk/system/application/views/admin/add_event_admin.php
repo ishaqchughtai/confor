@@ -59,13 +59,10 @@
                                     echo form_fckeditor($data);
 									echo form_error('description');
                                     ?>
-						</p>
-						
-						<p>
-						
+						</p>						
+						<p>						
 							<input name="btnsubmit" type="submit" class="submit" value="Send" />
-							<input name="btnreset" type="reset" class="reset" value="Reset" />
-						
+							<input name="btnreset" type="reset" class="reset" value="Reset" />						
 						</p>
 					<?php echo form_close();?>
 					
