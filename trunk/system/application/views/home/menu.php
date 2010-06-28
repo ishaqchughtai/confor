@@ -14,7 +14,7 @@
 			</ul>
 		</li>
 		
-		<li><a href="<?php echo site_url("home/video") ?>"><?php echo __("CON_conference_office")?></a></li>
+		<li><a href="<?php echo site_url("conference_office") ?>"><?php echo __("CON_conference_office")?></a></li>
 			
 		<li><a href="<?php echo site_url("accessories/show_element/training") ?>"><?php echo __("CON_training")?></a></li>
 	
