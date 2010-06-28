@@ -30,7 +30,23 @@
         }
         function select_speaker_video($Speaker)
         {
-               
+            $this->db->select("
+            videos.vid_id,
+            videos.title,
+            users.`name`,
+            users.id");
+            $this->db->from('videos');
+            $this->db->join('users','users.id = videos.mem_id'); 
+            $this->db->where('users.id',$Speaker);
+            $query = $this->db->get();
+            return $query->result_array();              
+        }
+        function get_all_speaker()
+        {
+            $this->db->select();
+            $this->db->from('users');
+            $query = $this->db->get();
+            return $query->result_array();
         }
     }   
 ?>
