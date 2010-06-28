@@ -6,6 +6,7 @@ function search_click (){
  return false;
 }
 </script>
+<?php $page = 5;?>
 </div>
 			<div id="right">
 			
@@ -34,7 +35,7 @@ function search_click (){
 				    <li>
 				      <ul class="ctabs_content">
 				        <?php foreach($categories as $row):?>
-				        <li><a href="<?php echo site_url('category/get_category/'.$row['ID'])?>"><?php echo $row['Name']?></a></li>
+				        <li><a href="<?php echo site_url('category/get_category/'.$row['ID'].'/'.$page)?>"><?php echo $row['Name']?></a></li>
                         <?php endforeach?>
 			          </ul>
 				      <!-- /.ctabs_content -->
@@ -44,7 +45,7 @@ function search_click (){
 				      <ul class="ctabs_content">
 				        <?php foreach($dates as $row):?>
 				        <li>
-                        <a href="<?php echo site_url('video/archives/'.date("m", mdate($row['month_yy'])).'/'.date("Y", mdate($row['month_yy'])))?>"><?php echo mdate('%F %Y',$row['month_yy']);?></a>
+                        <a href="<?php echo site_url('video/archives/'.date("m", mdate($row['month_yy'])).'/'.date("Y", mdate($row['month_yy'])).'/'.$page)?>"><?php echo mdate('%F %Y',$row['month_yy']);?></a>
                         </li>
                       <?php endforeach?>
 			          </ul>
@@ -54,7 +55,7 @@ function search_click (){
 				    <li>
 				      <ul class="ctabs_content">
 				        <?php foreach($top_speaker as $row):?>
-				        <li><a href="<?php echo site_url('video/speaker').'/'.$row['mem_id']?>"><?php echo $row['first_name'].' '.$row['name']?></a></li>
+				        <li><a href="<?php echo site_url('video/speaker').'/'.$row['mem_id'].'/'.$page?>"><?php echo $row['first_name'].' '.$row['name']?></a></li>
                       <?php endforeach?>
 			          </ul>
 				      <!-- /.ctabs_content -->
@@ -162,15 +163,9 @@ function search_click (){
               
               
 				<div class="sidebar_item">
-					<h3>E?vènements</h3>
+					<h3><?php echo __("CON_event")?></h3>
 					<div id="datepicker"></div>
-                    <ul>
-                    	<li><a href="a">E?vènement 1</a></li>
-                        <li><a href="b">E?vènement 2</a></li>
-                        <li><a href="c">E?vènement 3</a></li>
-                        <li><a href="d">E?vènement 4</a></li>
-                    </ul>
-					
+                 	
 				</div>
 			</div>
 			<!-- /#content #right - right side of main content or sidebar -->
