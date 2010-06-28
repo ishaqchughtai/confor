@@ -387,6 +387,12 @@ class Admin extends Admin_controller
 		}
 		else
 		{
+            $query=$this->Mvconference->get_conferenceid($id);
+            foreach($query as $row)
+            {
+                $this->Mvconference->delete_video($row['vid_id']);
+                //unlink();
+            }
 			$this->Madmin->delete_user($id);
 			redirect('admin/list_user');
 		}    
