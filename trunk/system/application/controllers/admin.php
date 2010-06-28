@@ -24,7 +24,7 @@ class Admin extends Admin_controller
 	}                       
 	function index()
 	{
-		$this->_data['status'] = $this->MShop->get_shop_status();   
+		$this->_data['status'] = $this->MShop->get_shop_status();
 		if($this->session->userdata('admin')==TRUE)
 		{
 			$this->_data['path'][] = array(

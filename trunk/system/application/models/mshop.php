@@ -9,8 +9,9 @@
     
     function get_shop_status()
     {
+      $this->db->select('status');
       $status = $this->db->get('tblshop');
-      return $status->result_array();
+      return $status->result();
     }
     
     function active_shop()

@@ -12,8 +12,9 @@
 			<div class="x3">			
 				<h3>Your video</h3>								
 				<ul class="link_conttrol">
-					<li><a href="<?php echo site_url('speaker/your_video')?>">Your video</a></li>
-					<li><a href="<?php echo site_url('speaker/add_video')?>">Add new video</a></li>
+                <?php $speaker_id = $this->session->userdata('speaker_id'); ?>
+					<li><a href="<?php echo site_url('video/your_video/'.$speaker_id.'/5')?>">Your video</a></li>
+					<li><a href="<?php echo site_url('video/add_video')?>">Add new video</a></li>
 				</ul>					
 			</div>
 			

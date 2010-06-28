@@ -93,6 +93,8 @@
             $query = $this->db->get();
             return $query->result_array();;
         }
+		
+		
         //count record get video by speaker
         function count_record_speaker($speaker)
         {
