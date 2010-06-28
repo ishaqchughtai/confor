@@ -34,7 +34,7 @@ if (! function_exists('xemmex_language'))
 			//$lg = array_search($CI->config->item('language'), $lang_array);
 			if (! array_key_exists($lang, $lang_array))	
 			{
-				$lang = $CI->config->item('language');
+				$lang = array_search($CI->config->item('language'), $lang_array);
 			}
 		}
 		else
