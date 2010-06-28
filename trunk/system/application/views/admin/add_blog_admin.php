@@ -1,101 +1,9 @@
 <!-- /.content_item -->
-<?php require_once "phpuploader/include_phpuploader.php" ?>
-<script type="text/javascript">
-    function doStart()
-    {
-        var uploadobj = document.getElementById('myuploader');
-        if (uploadobj.getqueuecount() > 0)
-            {
-            uploadobj.startupload();
-        }
-        else
-            {
-            alert("Please browse files for upload");
-        }
-    }
-</script>
 <div class="content_item">
     <h3>Add New Blog</h3>
-    <form method="post" id="blog_upload">
-            <?php echo form_error('txtLink'); ?>
-        <?php                
-        $FileNameImage = '';
-            $uploader=new PhpUploader();
-            $uploader->MaxSizeKB=10240;
-            $uploader->Name="myuploader";
-            $uploader->InsertText="Select multiple files (Max 10M)";
-            $uploader->AllowedFileExtensions="*.jpg,*.png,*.gif,*.txt,*.zip,*.rar,*.avi";  
-            $uploader->SaveDirectory="upload";   
-            //$uploader->MultipleFilesUpload=true;
-            //$uploader->ManualStartUpload=true;
-            $uploader->Render();
-        ?>
-<?php
-
-$files=array();
-
-$processedlist=@$_POST["processedlist"];
-if($processedlist)
-{
-    $guidlist=explode("/",$processedlist);
-    foreach($guidlist as $fileguid)
-    {
-        $mvcfile=$uploader->GetUploadedFile($fileguid);
-        if($mvcfile)
-        {
-            array_push($files,$mvcfile);
-        }
-    }
-} 
-$fileguidlist=@$_POST["myuploader"];
-if($fileguidlist)
-{
-    $guidlist=explode("/",$fileguidlist);
-    foreach($guidlist as $fileguid)
-    {
-        $mvcfile=$uploader->GetUploadedFile($fileguid);
-        if($mvcfile)
-        {
-            //Process the file here..
-            //rename(..)
-            
-            if($processedlist)
-                $processedlist= $processedlist . "/" . $fileguid;
-            else
-                $processedlist= $fileguid;
-        
-            array_push($files,$mvcfile);
-        }
-    }
-}
-
-if(count($files)>0)
-{
-   //$FileNameImage ='';
-//    echo("<table style='border-collapse: collapse' class='Grid' border='0' cellspacing='0' cellpadding='2'>");
-    foreach($files as $mvcfile)
-    {
-        $FileNameImage = $mvcfile->FileName;
-//        echo("<tr>");
-//        echo("<td>");echo("<img src='phpuploader/resources/circle.png' border='0' />");echo("</td>");
-//        echo("<td>");echo($mvcfile->FileName);echo("</td>");
-//        echo("<td>");echo($mvcfile->FileSize);echo("</td>");
-//        echo("</tr>");       
-        //Moves the uploaded file to a new location.
-        //$mvcfile->MoveTo("/uploads");
-        //Copys the uploaded file to a new location.
-        //$mvcfile->CopyTo("/uploads");
-        //Deletes this instance.
-        //$mvcfile->Delete();
-    }
-//    echo("</table>");
-}
-         
-?>  
-    </form> <input type="text" name="link" id="link" value="<?php echo $FileNameImage?>"> 
     <form action="" method="post" enctype="multipart/form-data" class="global" name="blog">
         <p>
-            <label for="name">Your Name: <?php echo $this->session->userdata('admin')?></label> 
+            <label for="name">Your Name: <?php echo $this->session->userdata('admin')?></label>
         </p>
         <?php 
             $datestring = "%F %j%S %Y";
@@ -105,14 +13,10 @@ if(count($files)>0)
         </p>
         <p>
         <label>Image thumbnail :</label>
-         
- 
-        <input name="txtLink" type="text" id="txtLink" value="<?php if(isset($_POST[$FileNameImage])){ echo $_POST[$FileNameImage] ;}?>" class="short"  readonly="true"/>
+        <?php echo form_error('txtLink'); ?>
+        <input name="txtLink" type="text" id="txtLink" value="<?php if(isset($_POST['txtLink'])){ echo $_POST['txtLink'] ;}?>" class="short"  readonly="true"/>
         <p>
-
-
-            <br /><br /><br />
-               
+            <input type="submit" value="upload" class="submit" name="uploadvideo" onclick="window.open('<?php echo site_url('blog/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" />
         </p>
         </p>
         <br />
