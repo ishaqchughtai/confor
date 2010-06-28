@@ -1,7 +1,15 @@
 <?php
 	$this->load->view('admin/speaker_selector');	
-?>   
 
+	$selected_cate = isset($video_cate)?$video_cate:1; 
+	$selected_cate_setting = array
+	(
+		'table_name' => 'tblcategory',
+		'key_field' => 'ID',
+		'value_field' => 'Name'
+	);	
+	$speaker_id = isset($speaker_id)?$speaker_id:0;	
+?>   
               <div class="x2">
 
                     <h3>Add new video</h3>
@@ -11,9 +19,9 @@
 					  <?php echo form_open('admin/new_video_conference/');?>
 						
 						<p>
-						<input id="speaker_id" type="hidden" name="speaker" value="0"/>
+						<input id="speaker_id" type="hidden" name="speaker" value="<?php echo $speaker_id?>"/>
 						<label for="title">Speaker:</label>
-						<input id="speaker_email" name="speaker_email" class="short" type="text" value=""/>
+						<input id="speaker_email" name="speaker_email" class="short" type="text" value="<?php echo set_value('speaker_email');?>"/>
 						<?php echo form_error('speaker_email')?>
                         </p>
 						
@@ -24,16 +32,12 @@
                     </p>
                     <p>
                         <label for="description">Description:</label>
-                        <textarea name="description" id="description" rows="4" cols="" value="<?php echo set_value('description');?>"></textarea>
+                        <textarea name="description" id="description" rows="4" cols=""><?php echo set_value('description');?></textarea>
                         <?php echo form_error('description')?>
                     </p>
                     <p>
-                        <label for="category">Category:</label>
-                        <select class="medium" name="category">
-                            <?php foreach($query as $row):?>
-                            <option value="<?php echo $row['ID']?>"><?php echo $row['Name']?></option>
-                            <?php endforeach;?>
-                        </select>
+					<label>Category</label>
+					<?php echo  form_dropdown('video_cate', dropdown_data($selected_cate_setting),$selected_cate, 'id="vid_cate" class="short"');?>			
                         <a href="#">Category Management</a>
                     </p>
                     <p>
@@ -51,11 +55,7 @@
                         <input name="submit" type="submit" class="submit" value="ADD" />
                     </p>
 					<?php echo form_close()?>	
-
-
-                   </div>
-				   
-				   
+                   </div>				   				   
               <!-- /.x2 - represents a half windows size div -->
                 <!-- /.x2 - represents a half windows size div -->
                 <!--                  -->
@@ -63,7 +63,4 @@
                 <!--                  -->
                 <div class="divider"></div>
                 <!-- /.divider -->
-                <!-- /.x4 - represents a fourth windows size div -->
-
-           
-           
+                <!-- /.x4 - represents a fourth windows size div -->                      
