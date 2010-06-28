@@ -29,9 +29,10 @@
 		echo script('../fancybox/jquery.fancybox-1.3.1.pack.js');
 		echo script('../jQueryUI/jquery-ui-1.8.custom.min.js');
 		echo script('scripts.js');
-		echo script('xemmex.frontend.js');	
-		echo script('flowplayer-3.2.2.min.js');	
+		echo script('xemmex.frontend.js');
 	?>
+    		<script type="text/javascript"  src="<?php echo base_url();?>vPlayer/js/swfobject.js"></script>
+		<script type="text/javascript" src="<?php echo base_url();?>vPlayer/js/flashscaler.js"></script>
 	<!--[if IE 6]>
 	<script src="js/DD_belatedPNG.js"></script>
 	<script> DD_belatedPNG.fix('*'); </script>
