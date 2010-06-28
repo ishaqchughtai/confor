@@ -451,20 +451,24 @@ class Admin extends Admin_controller
 		is_admin();
 		$this->vid_lib->init_uploader();
 		
-		$this->form_validation->set_rules('speaker_email','User name','required');
+		$this->form_validation->set_rules('speaker_email','Speaker','required');
 		$this->form_validation->set_rules('title','Title','required');
 		$this->form_validation->set_rules('description','Description','required'); 
-		$this->form_validation->set_rules('category','Category','required');
+		$this->form_validation->set_rules('video_cate','Category','required');
 		$this->form_validation->set_rules('keywords','Keywords','required');
 		$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-		$this->_data['query']=$this->Mvconference->get_category();                	
+		$this->_data['query']=$this->Mvconference->get_category();
 		
 		if($this->input->post('submit'))
-		{
+		{				
+			$this->_data['vname'] = $this->input->post('vname');
+			$this->_data['video_cate'] = $this->input->post('video_cate');
+			$this->_data['speaker_id'] = $this->input->post('speaker');
+						
 			if($this->form_validation->run()==FALSE)
 			{
-				$this->_data['error'] = "Can not update !";
-				$this->_load_view('admin/new_video_conference');   
+				$this->_data['error'] = "Can not update !";							
+				$this->_load_view('admin/new_video_conference'); 			
 			}
 			else
 			{
@@ -480,13 +484,13 @@ class Admin extends Admin_controller
 					'mem_id'=>$this->input->post('speaker'),
 					'title'=>$this->input->post('title'),
 					'description'=>$this->input->post('description'),
-					'category'=>$this->input->post('category'),
+					'category'=>$this->input->post('video_catte'),
 					'tags'=>$this->input->post('keywords'),
 					'Date'=>$dateupload,
 					'vhash'=>$vname.'.flv',
 					'shash'=>$vname.'.jpg',
 					'approved'=>1,
-					'viewed'=>0					
+					'viewed'=>0
 				);
 				$this->Mvconference->add_new_video($data);
 				$this->list_video_conference();			

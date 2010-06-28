@@ -80,24 +80,24 @@ class Vid_lib {
 				$mvcfile->CopyTo("./".VID_TEMP_PATH.$new_name); 
 				$mvcfile->Delete();
 				
-				$file = base_url().VID_TEMP_PATH.$new_name;
-				$this->load_video($file);
-				$this->convert_to_flv(VID_PATH);
-				$this->create_thumb(SCR_PATH.$new_name.'.jpg');
-				if (file_exists("./".VID_TEMP_PATH.$new_name) && (filesize(VID_PATH.$new_name.'.flv')>0))
-				{
-					unlink("./".VID_TEMP_PATH.$new_name);					
-					if (strlen($old_name)>1)
-					{						
-						unlink(VID_PATH.$old_name.'.flv');
-						unlink(SCR_PATH.$old_name.'.jpg');
-					}					
-				} 
-				else
-				{					
-					echo 0;
-					return;
-				}			
+				// $file = base_url().VID_TEMP_PATH.$new_name;
+				// $this->load_video($file);
+				// $this->convert_to_flv(VID_PATH);
+				// $this->create_thumb(SCR_PATH.$new_name.'.jpg');
+				// if (file_exists("./".VID_TEMP_PATH.$new_name) && (filesize(VID_PATH.$new_name.'.flv')>0))
+				// {
+					// unlink("./".VID_TEMP_PATH.$new_name);					
+					// if (strlen($old_name)>1)
+					// {						
+						// unlink(VID_PATH.$old_name.'.flv');
+						// unlink(SCR_PATH.$old_name.'.jpg');
+					// }					
+				// } 
+				// else
+				// {					
+					// echo 0;
+					// return;
+				// }			
 				echo $new_name;
 				return;
 			}
