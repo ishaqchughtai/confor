@@ -166,13 +166,6 @@
 				<div class="sidebar_item">
 					<h3><?php echo __("CON_event")?></h3>
 					<div id="datepicker"></div>
-                    <ul>
-                    	<li><a href="a">E?vènement 1</a></li>
-                        <li><a href="b">E?vènement 2</a></li>
-                        <li><a href="c">E?vènement 3</a></li>
-                        <li><a href="d">E?vènement 4</a></li>
-                    </ul>
-					
 				</div>
 			</div>
 			<!-- /#content #right - right side of main content or sidebar -->
