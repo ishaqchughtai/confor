@@ -147,6 +147,7 @@
         {
             $this->db->update('videos',$data,array('vid_id'=>$id)); 
         }
+        
 
     }
 ?>
