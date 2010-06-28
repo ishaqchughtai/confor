@@ -16,12 +16,11 @@ class Admin extends Admin_controller
 	function Admin(){
 		parent::Admin_controller();
 		$this->load->model('Madmin');
-		$this->load->model('Mvconference');            
-		$this->load->library('validation');                        
+		$this->load->model('Mvconference'); 
+		$this->load->library('validation'); 
 		$this->load->helper('date');
-		$this->load->library('video_lib');
-		$this->load->model('MShop');
-		$this->_init_uploader();
+		$this->load->library('vid_lib');
+		$this->load->model('MShop');		
 	}                       
 	function index()
 	{
@@ -437,48 +436,14 @@ class Admin extends Admin_controller
 	
 	function do_upload_ajax()
 	{
-		$fileguid=@$_POST["myuploader"];    
-		if($fileguid)    
-		{    
-			//get the uploaded file based on GUID    
-			$mvcfile=$this->uploader->GetUploadedFile($fileguid);    
-			$vid_path = './videos/';
-			$scr_path = './thumbs/';
-			if($mvcfile)    
-			{    			
-				$old_name = $this->input->post('vname');
-				$new_name = xm_generateRandStr(16);
-				$mvcfile->CopyTo("./temp/".$new_name);    
-				$mvcfile->Delete();
-				$file = base_url().'temp/'.$new_name;
-				$this->video_lib->load_video($file);
-				$this->video_lib->convert_to_flv($vid_path);
-				$this->video_lib->create_thumb($scr_path.$new_name.'.jpg');
-				if (file_exists("./temp/".$new_name) && (filesize($vid_path.$new_name.'.flv')>0))
-				{
-					unlink("./temp/".$new_name);					
-					if (strlen($old_name)>1)
-					{
-						unlink($vid_path.$old_name.'.flv');
-						unlink($scr_path.$old_name.'.jpg');
-					}					
-				} 
-				else
-				{					
-					echo 0;
-					return;
-				}			
-				echo $new_name;
-				return;
-			}
-		}
-		echo 0;
-		return;
+		$this->vid_lib->init_uploader();
+		$this->vid_lib->do_upload_ajax_admin();	
 	}
 	
 	function new_video_conference()
 	{
 		is_admin();
+		$this->vid_lib->init_uploader();
 		
 		$this->form_validation->set_rules('speaker_email','User name','required');
 		$this->form_validation->set_rules('title','Title','required');
@@ -501,10 +466,9 @@ class Admin extends Admin_controller
 				if (strlen($vname) <= 1)
 				{
 					$this->_data['error'] = "You must upload your clip !";
-					$this->_load_view('admin/new_video_conference');  					
+					$this->_load_view('admin/new_video_conference'); 			
 					return;
-				}
-				//$data_upload = $this->upload->data();
+				}				
 				$dateupload= NOW();
 				$data = array(
 					'mem_id'=>$this->input->post('speaker'),
@@ -519,7 +483,7 @@ class Admin extends Admin_controller
 					'viewed'=>0					
 				);
 				$this->Mvconference->add_new_video($data);
-				$this->list_video_conference();					
+				$this->list_video_conference();			
 			}
 		}
 		else
@@ -527,38 +491,7 @@ class Admin extends Admin_controller
 			$this->_load_view('admin/new_video_conference');
 		}						           
 	}
-	
-	function _init_uploader()
-	{
-		$this->uploader=new PhpUploader();        
-		$this->uploader->InsertText="Select files (Max 100M)";
-		$this->uploader->Name="myuploader";
-		$this->uploader->MaxSizeKB=10240000;
-		$this->uploader->AllowedFileExtensions="*.avi,*.mp4";
-		$this->uploader->MultipleFilesUpload=false;
-		$this->uploader->ManualStartUpload=true;
-		$this->uploader->MaxFilesLimit=1; 
-		//$this->uploader->SaveDirectory="./temp";		
-		//$this->uploader->SaveDirectory="temp";		
-		//$this->uploader->TempDirectory="/temp";     
-		$this->uploader->UploadType="Flash";
-		//$this->uploader->FlashUploadMode="Partial";			
-	}
-	
-	// function upload_file()
-	// {
-	// $this->uploader=new PhpUploader();        
-	// $this->uploader->InsertText="Select files (Max 100M)";
-	// $this->uploader->Name="myuploader";
-	// $this->uploader->MaxSizeKB=10240000;
-	// $this->uploader->AllowedFileExtensions="*.jpg,*.avi,*.mp4";
-	// $this->uploader->MultipleFilesUpload=false;
-	// $this->uploader->ManualStartUpload=true;
-	// $this->uploader->MaxFilesLimit=1; 
-	// $this->uploader->SaveDirectory="./temp";						
-	// $uploader->FlashUploadMode="Partial";						
-	// $this->uploader->Render();	
-	// }
+
 	
 	function edit_video_conference($id)
 	{
