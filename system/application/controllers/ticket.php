@@ -25,8 +25,8 @@
         function send_ticket_by_speaker()
         {
             $speaker_data = is_speaker();
-            $this->form_validation->set_rules('title','Title','required');
-            $this->form_validation->set_rules('message','Message','required');
+            $this->form_validation->set_rules('title',__('CON_title'),'required');
+            $this->form_validation->set_rules('message',__('CON_your_meesage'),'required');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
             if($this->form_validation->run()==FALSE)
             {
@@ -43,16 +43,29 @@
                 $SpeakerID= $speaker_data["speaker_id"];
                 if($this->Mticket->add_ticket_by_speaker($Date,$Status,$Title,$Message,$Is_answered,$SpeakerID)==TRUE)
                 {
-                    $this->_data['error']="Send Ticket success";
-                    $this->_load_view('home/ticket');
+                    $from = $speaker_data["speaker_email"];
+                    $name_from = $speaker_data["speaker_email"];
+                    $content = sprintf(__('CON_ticket_content_email_to_admin'),$Title,$Message);
+                    $to = 'mailbag@xemmex.com';
+                    $subject=__('CON_ticket_title_email').$this->input->post('title');
+                            
+                    $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);
+                    redirect(baser_url().'ticket/send_ticket_speaker_succ');
                 }   
             }            
         }        
+        
+        function send_ticket_speaker_succ()
+        {
+            $this->_data['error']= __('CON_ticket_send_success');
+            $this->_load_view('home/ticket');
+        }
+        
         function send_ticket_by_admin($Ticket)
         {				            
             is_admin();
-            $this->form_validation->set_rules('title','Title','required');
-            $this->form_validation->set_rules('message','Message','required');
+            $this->form_validation->set_rules('title',__('CON_title'),'required');
+            $this->form_validation->set_rules('message',__('CON_your_meesage'),'required');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
             if($this->form_validation->run()==FALSE)
             {
@@ -68,6 +81,26 @@
                 $Is_answered=1;
                 if($this->Mticket->add_ticket_by_admin($Date,$Title,$Message,$Ticket,$Admin)==TRUE)
                 {
+                    $to = '';
+                    $name_speaker = '';
+                    if ($query_speaker->num_rows() == 1) 
+                    {
+                        $row = $query_speaker->row();
+                        $to = $row->Email;
+                        $name_speaker = $row->Name;
+                    }
+                    
+                    if($to!='')
+                    {
+                        $from = 'mailbag@xemmex.com';
+                        $name_from = 'mailbag@xemmex.com';
+                        $content = sprintf(__('CON_ticket_content_email_to_speaker'),$name_speaker,$Title,$Message);
+                        $query_speaker = $this->CI->MSpeaker->get_speaker_for_login($email, $password);
+                        
+                        $subject=__('CON_ticket_title_email').$this->input->post('title');
+                        $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);    
+                    }                    
+                    
                     $this->Mticket->update_ticket_by_admin($Ticket,$Is_answered);
                     redirect('ticket/ticket_content_closed/'.$Ticket);
                 }   
