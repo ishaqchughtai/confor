@@ -13,9 +13,9 @@
 					
 				  <ul>
 					
-					  <li><a href="#">Conference office</a></li>
+					  <li><a href="<?php echo site_url("conference_office") ?>"><?php echo __("CON_conference_office")?></a></li>
 					
-					  <li><a href="#">Formation</a></li>
+                      <li><a href="<?php echo site_url("accessories/show_element/training") ?>">Formation</a></li>
 					
 				  </ul>
 				  <!-- /ul -->
@@ -33,11 +33,11 @@
 					
 						<li><a href="#">Telephone Sales</a></li>
 					
-						<li><a href="#">How to</a></li>
+						<li><a href="<?php echo site_url("accessories/show_element/how") ?>" ><?php echo __("CON_howto")?></li>
 					
 						<li><a href="#">Email Form</a></li>
 					
-						<li><a href="#">Mail</a></li>
+						<li><a href="<?php echo site_url("home/contact")?>">Email</a></li>
 					
 						
 					
@@ -98,22 +98,32 @@
 		
 			<ul class="left">
 			
-				<li><a href="#">Home</a></li>
+				<li><a href="<?php echo base_url()?>"><?php echo __("CON_home")?></a></li>
 			
-				<li><a href="#">About</a></li>
+				<li><a href="<?php echo site_url("accessories/show_element/about") ?>"><?php echo __("CON_about")?></a></li>
 			
-				<li><a href="#">Blog</a></li>
+				<li><a href="<?php echo site_url("blog") ?>"><?php echo __("CON_blog")?></a></li>
 			
-				<li><a href="#">Shop</a></li>
+				<li><a href="<?php echo site_url("shop") ?>"><?php echo __("CON_shop")?></a></li>
                 
-                <li><a href="#">Contact</a></li>
+                <li><a href="<?php echo site_url("home/contact")?>"><?php echo __("CON_contact")?></a></li>
 			
-				<li><a href="#" style="border: none;">Log in</a></li>
+         <?php if($this->session->userdata('admin')): ?>        
+        <li><a href="<?php echo site_url("admin") ?>"><?php echo __("CON_setting")?></a></li>
+        <li><a href="<?php echo site_url("admin/logout") ?>"><?php echo __("CON_logout")?></a></li>        
+        <?php elseif($this->session->userdata('speaker_id')): ?>
+        <li><a href="<?php echo site_url("speaker") ?>"><?php echo __("CON_setting")?></a></li>
+        <li><a href="<?php echo site_url("speaker/logout") ?>"><?php echo __("CON_logout")?></a></li>        
+        <?php else: ?>
+        <li><a href="<?php echo site_url("home/register") ?>">Register</a></li>        
+        <li id="login_link"><a href="#login_wrapper">Log in</a></li>    
+        <?php $this->load->view("home/login");?>
+        <?php endif ?>
 			
 			</ul>
 			<!-- /.left content-->
 			
-			<span class="right">&copy; 2010 Confor.ca | Designed and Developed by <a href="#">XemmeX</a></span>
+			<span class="right">&copy; 2010 Confor.ca | Designed and Developed by <a href="http://xemmex.com/">XemmeX</a></span>
 			<!-- /.right content-->
 		
 		</div>

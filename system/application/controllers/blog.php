@@ -13,7 +13,7 @@ class Blog extends Frontend_controller {
         $this->_data['path'][] = array(
         'name' => 'Blog',
         'link' => site_url("/blog")
-        );	
+        );		
     }	
 
     function _before_render() 
@@ -250,10 +250,10 @@ class Blog extends Frontend_controller {
             redirect(site_url("admin"));
         }
         else
-        {    
+        {
             $this->_data['page_title'] = 'Blog Confor';                     
             if($this->input->post('btnsubmit'))
-            {    
+            {
                 $this->form_validation->set_rules('txtTitle','Title','trim|required|callback_title_check|max_length[50]');
                 $this->form_validation->set_rules('txtSubject','Subject','trim|required|max_length[50]');
                 $this->form_validation->set_rules('txtKeywords','Keywords','trim|required|callback_keyword_check');
@@ -273,7 +273,6 @@ class Blog extends Frontend_controller {
                 $Keywords=$this->input->post('txtKeywords');
                 $Text=$this->input->post('txtBody');
                 $Link=$this->input->post('txtLink');
-                //$Link=$FileName;
                 $about=$this->input->post('about');
 
                 if($this->form_validation->run()==FALSE)
@@ -324,22 +323,7 @@ class Blog extends Frontend_controller {
             }
         }  
     }
-    function upload()
-    {
-        $uploader=new PhpUploader();
 
-        $uploader->MultipleFilesUpload=TRUE;
-        $uploader->InsertText="Select multiple files (Max 100M)";
-
-        $uploader->MaxSizeKB=10240000;
-        $uploader->AllowedFileExtensions="*.jpg,*.avi,*.mp4";
-
-        $uploader->SaveDirectory='./assets/uploads/image/';
-
-        $uploader->FlashUploadMode="Partial";
-
-        $uploader->Render();
-    }
     // Edit Blog
     function edit_blog_submit($id)
     {
