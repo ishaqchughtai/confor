@@ -205,6 +205,7 @@ class Home extends Frontend_controller {
                 $last_viewed=$row->viewed;
                 $viewed=$last_viewed+1;
                 $this->Mhome->update_view_time($id,$viewed);
+                $this->_data['page_title'] = $row->title;
                 $this->_load_view('home/play_video');
             }
             else
