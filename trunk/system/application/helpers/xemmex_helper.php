@@ -204,7 +204,7 @@ function is_admin($go_after_login=TRUE)
 		(
 			'admin_name' => $CI->session->userdata('admin_name'),
 			'admin' => $CI->session->userdata('admin'),
-			'id' => $CI->session->userdata('id'),
+			'admin_id' => $CI->session->userdata('admin_id'),
 			//'lang' => $this->CI->session->userdata('lang'),
 			'right' => $CI->session->userdata('right')
 		);
