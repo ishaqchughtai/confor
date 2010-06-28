@@ -120,6 +120,7 @@
       videos.tags,
       videos.`date`,
       videos.vhash,
+      videos.shash,
       videos.approved,
       videos.viewed,
       users.ID,
