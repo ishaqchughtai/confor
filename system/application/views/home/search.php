@@ -1,5 +1,4 @@
-<script type="text/javascript" src="../jquery-1.4.2.min.js"></script>
-                     <?php require 'SimpleRatings/rSystem.php'; ?>
+                <?php require 'SimpleRatings/rSystem.php'; ?>
 				<div class="content_item">
 				<h3>Search result for: "<?php echo $keyword?>" </h3>
 				</div>
