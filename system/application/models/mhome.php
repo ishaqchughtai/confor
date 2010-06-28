@@ -12,6 +12,7 @@
             videos.description,
             videos.viewed,
             videos.vhash,
+            videos.shash,
             users.name,
             users.first_name
             FROM videos ,users 
