@@ -556,6 +556,16 @@ class Admin extends Admin_controller
 			}
 		}    
 	}
-
+    function delete_video_conference($id){
+        if($this->session->userdata('admin')==FALSE)
+        {                                                
+            redirect(site_url("admin"));
+        }
+        else
+        {
+            $this->Mvconference->delete_video($id);
+            redirect('admin/list_video_conference');
+        }
+    }
 }
 ?>
