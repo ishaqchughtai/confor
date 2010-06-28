@@ -22,6 +22,8 @@
     {
       $this->db->select('
       videos.vid_id,
+      users.name,
+      users.first_name,
       videos.date,
       videos.title,
       videos.tags,

@@ -4,7 +4,7 @@
 				
 					<h3><a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><?php echo $rows['title'];?></a></h3>
 					
-					<h5>By <?php echo $rows['speaker_name']?> in : 
+					<h5>By <?php echo $rows['first_name'].' '.$rows['name']?> in : 
                     <?php for($i=0;$i<count($keyword);$i++){?>
                       <a href="#"><?php echo $keyword[$i]?></a>
                       <?php if ($i<count($keyword)-1) echo ','?>
