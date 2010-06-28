@@ -192,7 +192,7 @@ class Home extends Frontend_controller {
         $this->_load_view('home/search'); 
     }	
 
-    function play($id)
+    function play($id='')
     {
         $id=(double)$id;
         if(is_nan($id)==FALSE)
