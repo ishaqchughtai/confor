@@ -17,6 +17,7 @@
 					<?php if($status):?>
 					<div class="content_item">
 						<h3><a href="<?php echo site_url('event/event_content/'.$id)?>"><?php echo $title?></a></h3>
+                        <h5><?php echo $subject ?></h5>
 					<?php
 					    //$date = "%F %j%S %Y";
 						//$time = time();
