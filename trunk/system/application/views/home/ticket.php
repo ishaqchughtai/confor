@@ -1,10 +1,10 @@
 <div class="content_item">
 
-    <h3>Contactez-nous</h3>
+    <h3><?php echo lang('CON_ticket_title');?></h3>
 
-    <h5>Leo quam tincidunt velit?</h5>
+    <h5><?php echo lang('CON_ticket_question');?></h5>
 
-    <p>Curabitur viverra, ante non pulvinar pellentesque, leo quam tincidunt velit, quis eleifend erat orci eu orci. Proin ac eros nec dolor sodales pulvinar sit amet nec velit. Praesent tellus diam, luctus in.</p>
+    <p><?php echo lang('CON_ticket_condition');?></p>
     <?php if(isset($error)):?>
         <p class="not_info medium"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
         <?php endif;?> 
@@ -30,7 +30,7 @@
 
         <p>    
             <?php echo form_error('message');?>                    
-            <label for="message">Your message:</label>
+            <label for="message"><?php echo lang('CON_your_meesage')?>:</label>
             <textarea name="message" id="message" rows="8" cols="" ></textarea>                    
         </p>
 
