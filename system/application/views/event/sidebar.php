@@ -45,7 +45,7 @@ function search_click (){
 				      <ul class="ctabs_content">
 				        <?php foreach($dates as $row):?>
 				        <li>
-                        <a href="<?php echo site_url('video/archives/'.date("m", mdate($row['month_yy'])).'/'.date("Y", mdate($row['month_yy'])).'/'.$page)?>"><?php echo mdate('%F %Y',$row['month_yy']);?></a>
+                        <a href="#"><?php echo mdate('%F %Y',$row['month_yy']);?></a>
                         </li>
                       <?php endforeach?>
 			          </ul>

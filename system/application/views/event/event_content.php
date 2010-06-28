@@ -12,6 +12,7 @@
 					?>
         <div class="content_item">
           <h3><?php echo $title?></h3>
+          <h5><?php echo $subject ?></h5>
           <h5>By <?php echo $speaker?> in : 
           <?php for($i=0;$i<count($keyword);$i++){?>
                       <a href="#"><?php echo $keyword[$i]?></a>
