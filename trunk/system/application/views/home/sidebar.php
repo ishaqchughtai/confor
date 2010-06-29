@@ -82,7 +82,7 @@
 								
 									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
 									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>">VIEW</a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
 								
 								</li>
                                 <?php
@@ -110,7 +110,7 @@
 								
 									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
 									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>">VIEW</a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
 								
 								</li>
                                 <?php }?>
@@ -154,7 +154,7 @@
 								
 									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
 									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>" class="title"><?php echo $rows['title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>">VIEW</a>
+									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><?php echo __("CF_view")?></a>
 								
 								</li><br /><br />
                                 <?php endforeach?>
