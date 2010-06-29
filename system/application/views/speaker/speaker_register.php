@@ -71,7 +71,7 @@
 ?>
 
 
-		<h2><?php echo __("CF_register")?></h2>		
+		<h2><?php echo strtoupper(__("CF_register"))?></h2>		
 		<?php echo form_open('home/register');?>
 		<fieldset class="login">
 		  <legend></legend>		
@@ -129,7 +129,7 @@
 			<?php echo form_error('captcha');?>			
 			</div>
 			
-			<input type="submit" class="submit" name="register" value="<?php echo __("CF_register")?>">
+			<input type="submit" class="submit" name="register" value="<?php echo strtoupper(__("CF_register"))?>">
 			
 		</fieldset>	
 		</form>				

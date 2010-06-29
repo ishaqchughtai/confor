@@ -128,7 +128,7 @@ $lang['CF_pop_vid'] = 'List users';
 $lang['CF_search_vid'] = 'Search through all conferences';
 $lang['CF_cate'] = 'Categories';
 $lang['CF_arch'] = 'Archives';
-$lang['CF_view'] = 'View';
+$lang['CF_view'] = 'VIEW';
 $lang['CF_pop_vid'] = 'Popular Video';
 $lang['CF_recent_vid'] = 'Recent Video';
 $lang['CF_event'] = 'Event';
@@ -137,7 +137,7 @@ $lang['CF_event'] = 'Event';
 //------------------------------------------------------------------
 //LOGIN
 $lang['CF_remember'] = 'Remember me';
-$lang['CF_sign_me'] = 'Remember me';
+$lang['CF_forgot_pass'] = 'Forgotten Password';
 //------------------------------------------------------------------
 
 
@@ -151,7 +151,7 @@ $lang['CF_pass'] = 'PASSWORD';
 $lang['CF_confirm'] = 'CONFIRM PASSWORD';
 $lang['CF_company'] = 'COMPANY';
 $lang['CF_type_text'] = 'TYPE THE TEXT IN THE IMAGE';
-$lang['CF_register'] = 'REGISTER';
+$lang['CF_register'] = 'register';
 //------------------------------------------------------------------
 //SPEAKER
 //------------------------------------------------------------------

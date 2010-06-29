@@ -29,7 +29,7 @@
 		<li><a href="<?php echo site_url("speaker") ?>"><?php echo __("CF_setting")?></a></li>
 		<li><a href="<?php echo site_url("speaker/logout") ?>"><?php echo __("CF_logout")?></a></li>		
 		<?php else: ?>
-		<li><a href="<?php echo site_url("home/register") ?>"><?php echo __("CF_register")?></a></li>		
+		<li><a href="<?php echo site_url("home/register") ?>"><?php echo ucfirst(__("CF_register"))?></a></li>		
 		<li id="login_link"><a href="#login_wrapper"><?php echo __("CF_login")?></a></li>	
 		<?php $this->load->view("home/login");?>
 		<?php endif ?>
