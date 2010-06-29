@@ -125,6 +125,7 @@ class MUser extends Model
 		if (($keyword)&&(strlen($keyword)>0)) {
 			$this->db->like("users.username", $keyword); 
 		}
+		$this->db->where("users.userlevel <>", "9"); 
 		$this->db->order_by("users.username", "asc"); 
 		$this->db->order_by("users.id", "asc"); 
 		$this->db->limit($num_per_page, $page_offset);
