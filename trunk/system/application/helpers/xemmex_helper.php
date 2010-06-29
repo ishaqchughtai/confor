@@ -48,7 +48,7 @@ if (! function_exists('xemmex_language'))
 			if (array_key_exists($lang, $lang_array)) 
 			{
 				$CI->config->set_item('language', $lang_array[$lang]);
-				//$CI->lang->load('confor', $lang_array[$lang]);
+				$CI->lang->load('confor', $lang_array[$lang]);
 				$CI->lang->load('cf', $lang_array[$lang]);
 			} 
 			else 
@@ -62,7 +62,7 @@ if (! function_exists('xemmex_language'))
 			{
 				$CI->session->set_userdata('lang',$lang);
 				$CI->config->set_item('language', $lang_array[$lang]);
-				//$CI->lang->load('confor', $lang_array[$lang]);
+				$CI->lang->load('confor', $lang_array[$lang]);
 				$CI->lang->load('cf', $lang_array[$lang]);
 			} 
 			else 
