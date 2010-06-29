@@ -7,7 +7,7 @@ $lang['CF_shop'] = 'Shop';
 $lang['CF_home'] = 'Home';
 $lang['CF_blog'] = 'Blog';
 $lang['CF_contact'] = 'Contact';
-$lang['CF_login'] = 'Login';
+$lang['CF_login'] = 'Log in';
 $lang['CF_subscribe'] = 'Subscribe to RSS';
 
 //all form
@@ -65,6 +65,7 @@ $lang['CF_user_name'] = 'USER NAME';
 //------------------------------------------------------------------
 $lang['CF_by'] = 'By';
 $lang['CF_in'] = 'in';
+$lang['CF_views'] = 'views';
 
 //blog
 $lang['CF_has_written'] = 'has written';
@@ -76,6 +77,8 @@ $lang['CF_replay'] = 'REPLY';
 //------------------------------------------------------------------
 //MENU
 //------------------------------------------------------------------
+$lang['CF_how'] = 'How it works ?';
+$lang['CF_rules'] = 'The rules';
 $lang['CF_training'] = 'Training';
 $lang['CF_setting'] = 'Setting';
 $lang['CF_about_us'] = 'About us';
@@ -101,7 +104,7 @@ $lang['CF_porter'] = 'PORTER';
 $lang['CF_confer'] = 'CONFERENCE';
 $lang['CF_random'] = 'RANDOM';
 //------------------------------------------------------------------
-$lang['CF_about'] = 'ABOUT';
+$lang['CF_about'] = 'about';
 $lang['CF_copy_right'] = 'DESIGNED AND DEVELOPED BY';
 
 //------------------------------------------------------------------
@@ -130,13 +133,25 @@ $lang['CF_pop_vid'] = 'Popular Video';
 $lang['CF_recent_vid'] = 'Recent Video';
 $lang['CF_event'] = 'Event';
 
+
+//------------------------------------------------------------------
+//LOGIN
+$lang['CF_remember'] = 'Remember me';
+$lang['CF_sign_me'] = 'Remember me';
+//------------------------------------------------------------------
+
+
 //------------------------------------------------------------------
 //REGISTER
 //------------------------------------------------------------------
+
+
+$lang['CF_user'] = 'USERNAME';
 $lang['CF_pass'] = 'PASSWORD';
 $lang['CF_confirm'] = 'CONFIRM PASSWORD';
 $lang['CF_company'] = 'COMPANY';
 $lang['CF_type_text'] = 'TYPE THE TEXT IN THE IMAGE';
+$lang['CF_register'] = 'REGISTER';
 //------------------------------------------------------------------
 //SPEAKER
 //------------------------------------------------------------------
