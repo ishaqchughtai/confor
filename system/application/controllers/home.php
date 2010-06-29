@@ -115,17 +115,7 @@ class Home extends Frontend_controller {
             return FALSE;
         }
         return TRUE;		
-    }	 	
-
-    // function admin_login() 
-    // {
-    // $this->_data['path'][] = array(
-    // 'name' => __("CON_login"),
-    // 'link' => site_url("home/login")
-    // );	
-    // $this->load->library('speaker_lib'); 
-    // $this->speaker_lib->login();
-    // }	
+    }	 		
 
     function search()
     {
@@ -158,7 +148,7 @@ class Home extends Frontend_controller {
 
                 $this->pagination->initialize($config);  
                 $this->_data['link_html'] = $this->pagination->create_links();  
-                $this->_data['keyword'] = $keyword;
+                $this->_data['keyword'] = $keyword; 
                 $this->_load_view('home/search');                         
             }
             else
@@ -167,7 +157,6 @@ class Home extends Frontend_controller {
             }
         }
     }
-
 
     function search_paging($keywords_to_search, $num_per_page) 
     {  		

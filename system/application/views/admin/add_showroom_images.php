@@ -24,22 +24,22 @@
         </p>
 
         <p>
-            <input id="video" type="hidden" name="video" value="0"/> 
             <label for="title">Video:</label>
-            <select name="video_name" size="1" id="video_name" class="short">
+            <select name="jumpMenu" id="jumpMenu" onchange="MM_jumpMenu('parent',this,0)" class="short">  
                 <?php foreach($query_video as $row){
-                        $id = $row['id'];
+                        $id_video = $row['vid_id'];
                         $title = $row['title'];  
                     ?>
-                    <option value="<?php echo $id?>" ><?php echo $title?></option>
+                    <option value="<?php echo site_url('showroom/submit_add_new_images/'.$id_video);?>" ><?php echo $title?></option>
                     <?php }?>
-            </select> 
+            </select>
         </p>                        
         <p>
-            <label for="title">Image:</label>
-            <?php echo form_error('video')?>
-
-        </p>                       
+            <label>Image thumbnail :</label>
+            <?php echo form_error('txtLink'); ?>
+            <input name="txtLink" type="text" id="txtLink" value="<?php if(isset($_POST['txtLink'])){ echo $_POST['txtLink'] ;}?>" class="short"  readonly="true"/>
+        </p>
+        <input type="submit" value="upload" class="submit" name="uploadshowroom" onclick="window.open('<?php echo site_url('showroom/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" />                       
         <p>                       
             <input name="btnsubmit" type="submit" class="submit" value="Submit" />
             <input name="btnreset" type="reset" class="reset" value="Reset" />
