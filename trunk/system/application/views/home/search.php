@@ -1,4 +1,6 @@
 <?php $page = 5;?>
+<script type="text/javascript" src="<?php echo base_url();?>SimpleRatings/jQuery/jquery-1.4.2.min.js"></script>     
+<?php require 'SimpleRatings/rSystem.php';  ?>
 				<div class="content_item">
 				<h3>Search result for: "<?php echo $keyword?>" </h3>
 				</div>
@@ -18,7 +20,7 @@
                       
                      // <?php echo mdate('%F %j%S %Y', $rows['date'])?></h5>
  
-					<div class="rate_balloon">
+					<div class="rate_balloon"><?php $SimpleRatings->create($rows['vid_id']);?>  
 					</div> 
 					
 					<p>

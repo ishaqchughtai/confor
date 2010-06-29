@@ -4,11 +4,11 @@
 				overflow: hidden;
 			}
 		</style>			
-			  <div class="content_item" id="content">
+			  <div class="content_item" id="flashcontent">
 		      <?php 
                 if($video_path->num_rows()>0)
                 {
-                    $row = $video_path->row();
+                   $row = $video_path->row();
                    $top_view_video = $row->vhash;
 				   $speaker_id = $row->mem_id;
 				   $video_image=$row->shash;
