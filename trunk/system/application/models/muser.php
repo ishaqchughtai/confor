@@ -57,7 +57,61 @@ class MUser extends Model
 		$this->db->limit(1);
 		return $this->db->get();
 	}
+			
+	function get_payment_by_user_id($user_id) 
+	{			
+		$this->db->select("payments.*,
+			rates.amount,
+			rates.term,
+			rates.title as rate_title
+		");
+		$this->db->from('payments');
+		$this->db->where('user_id', $user_id);
+		$this->db->where('payments.status', 1); 
+		$this->db->where('payments.date >', time());
+		$this->db->join('rates','payments.rate_id=rates.id');
+		$this->db->limit(1);
+		$query = $this->db->get();		
+		if ($query->num_rows()<1) 
+		{
+			return FALSE;
+		}
+		else 
+		{
+			return $query->row();			
+		}		
+	}	
 	
+	function membership_info($user_id)
+	{
+		//Current Membership: 
+		//Current Membership Rate: 
+		//Membership Expires:		
+		$this->db->select("
+			users.username,
+			users.name,
+			memberships.title,			
+			memberships.desc
+		");
+		$this->db->from('users');
+		$this->db->where('users.id', $user_id); 
+		$this->db->join('memberships','users.membership_id=memberships.id');
+		$this->db->limit(1);
+		$query = $this->db->get();						
+		if ($query->num_rows()<1) 
+		{
+			return FALSE;
+		}
+		else 
+		{
+			return $query->row();			
+		}			
+	}
+	
+	function get_membership_rate()
+	{
+		
+	}
 	
 	// --------------------------------------------------------------------
 	
@@ -145,7 +199,7 @@ class MUser extends Model
 		$this->db->from('users');
 		$this->db->where('username', $username);		
 		$this->db->where('password', $password);
-		$this->db->limit(1);	
+		$this->db->limit(1);
 		return $this->db->get();
 	}
 	
@@ -173,7 +227,7 @@ class MUser extends Model
 	
 	// --------------------------------------------------------------------
 	
-	// function update_user_field($username, $field, $value) 
+	// function update_user_field($username, $field, $value)
 	// {
 		// $this->db->where('username', $username);
 		// $data[$field] = $value;
@@ -182,7 +236,7 @@ class MUser extends Model
 	
 	function update_user_for_login($username, $cookie_id) 
 	{
-		$data['last_access'] = "NOW()";
+		$data['last_access'] = time();
 		$data['cookie_id'] = $cookie_id;
 		$data['last_ip'] = $_SERVER['REMOTE_ADDR'];
 		$this->db->where('username', $username);

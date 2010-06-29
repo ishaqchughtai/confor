@@ -5,9 +5,18 @@
 				<h5>Your subcriptions</h5>
 				
 			  <div class="sidebar_item">
-				
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porta nibh metus. Aliquam eget tellus vulputate nibh feugiat dictum nec nec tellus. Nullam vel turpis sit amet erat cursus hendrerit in ut odio. Quisque aliquam, leo a ultricies pulvinar, mi erat ullamcorper quam, sit amet ornare erat lacus non nisl. Proin facilisis tempor lobortis. Sed magna eros, aliquam euismod fringilla quis, mattis et 			
-				
+			  <p><strong>Current Membership: </strong><?php echo $membership_info['ms_name']?></p>			  
+			  </br>			  
+			  <?php if ($membership_info['ms_rate']>0):?>
+			  <p><strong>Current Membership Rate: </strong><?php echo $membership_info['rate_info']?></p>
+			  </br>
+			  <p><strong>Membership Expires: </strong><?php echo $membership_info['ms_expire']?></p>			  
+			  <?php else:?>
+			  <p><strong>Current Membership Rate: </strong>Your payment might be pending. </p>			  
+			  <?php endif;?>
+			  <ul class="link_conttrol">
+			  <li><a href="<?php echo base_url().'pay'?>">Upgrade your subcription</a></li>
+			  </ul>
 			  </div>
 				<!-- /.sidebar_item #search -->                                            
 			</div>

@@ -19,9 +19,46 @@ class User_lib
 	function User_lib()
 	{
 		$this->CI =& get_instance();
-		$this->CI->load->model('MUser');			
+		$this->CI->load->model('MUser');
 	}
 
+	function _please_upgrade()
+	{
+		$this->CI->session->set_flashdata('msg', 'Please upgrade your membership to use this function');
+		$this->CI->session->set_flashdata('class_msg', 'warning');
+		redirect('speaker/message');	
+	}
+	
+	function get_membership_info()
+	{		
+		if ($this->CI->session->userdata('speaker_id')==FALSE) return FALSE;
+		$info = array();		
+		$user_id = $this->CI->session->userdata('speaker_id');
+		$m = $this->CI->MUser->membership_info($user_id);
+		if ($m) 
+		{	
+			$info['ms_name'] = $m->title;
+			$info['ms_rate'] = 0;
+			//Current Membership Rate
+			$pay = $this->CI->MUser->get_payment_by_user_id($user_id);
+			if ($pay)
+			{
+				$info['ms_rate'] = $pay->id;				
+				$info['rate_info'] = "You have paid $".$pay->amount." for this subcription";
+				$expire = round((strtotime($pay->date)-time())/(24*60*60));	
+				if ($expire>0) 
+				{
+					$info['ms_expire'] = $expire. ' days.';
+				}
+				else
+				{
+					$info['ms_expire'] = "Expired";
+				}				
+			}
+		}
+		return $info;
+	}
+	
 	// --------------------------------------------------------------------
 	
 	/**
@@ -30,7 +67,7 @@ class User_lib
 	 * @access	public	 
 	 * @return	mixed
 	 */		
-	function is_speaker($go_after_login=TRUE) 
+	function is_speaker($memberships=FALSE, $go_after_login=TRUE) 
 	{		
 		if ($this->CI->session->userdata('speaker_id')) 
 		{					
@@ -42,18 +79,46 @@ class User_lib
 			$speaker_data['cookie_id'] = $this->CI->session->userdata('cookie_id');
 			$speaker_data['lang'] = $this->CI->session->userdata('lang');
 			$speaker_data['userlevel'] = $this->CI->session->userdata('userlevel');	
-			$speaker_data['membership_id'] = $this->CI->session->userdata('membership_id');
-			return $speaker_data;
+			$speaker_data['membership_id'] = $this->CI->session->userdata('membership_id');									
+			$speaker_data['payment_id'] = $this->CI->session->userdata('payment_id');	
+			$speaker_data['payment_date_expire'] = $this->CI->session->userdata('payment_date_expire');	
+			
+			if ($memberships==FALSE) return $speaker_data;
+			
+			if (in_array($speaker_data['membership_id'], $memberships))
+			{			
+				if ($speaker_data['payment_id'] > 0)
+				{					
+					if ($speaker_data['payment_date_expire']>time()) return $speaker_data;
+				}				
+			}
+			// else
+			// {
+				// $this->CI->session->set_flashdata('msg', 'Please upgrade your membership to use this function');
+				// $this->CI->session->set_flashdata('class_msg', 'warning');
+				// redirect('speaker/message');
+			// }
+			$this->_please_upgrade();
 		} 
 		else 
-		{
-			// $user_name = $this->CI->input->cookie('MSM_COOKIE', TRUE);		
-			// $cookie_id = $this->CI->input->cookie('MSM_COOKIE_ID', TRUE);			
+		{			
 			if (isset($_COOKIE['MSM_COOKIE']) && isset($_COOKIE['MSM_COOKIE_ID']))			
 			{
 				$is_using_cookie = $this->_is_using_cookie($_COOKIE['MSM_COOKIE'], $_COOKIE['MSM_COOKIE_ID']);
-				if ($is_using_cookie) {return $is_using_cookie;}
-			}			
+				if ($is_using_cookie) 
+				{
+					if ($memberships==FALSE) return $is_using_cookie;
+					
+					if (in_array($is_using_cookie['membership_id'], $memberships))
+					{
+						if ($is_using_cookie['payment_id'] > 0)
+						{						
+							if ($is_using_cookie['payment_date_expire']>time()) return $is_using_cookie;					
+						}
+					} 
+					$this->_please_upgrade();
+				}
+			}
 		}	 	
 		
 		if ($go_after_login==TRUE)
@@ -113,8 +178,7 @@ class User_lib
 				$query = $this->CI->MUser->get_user_for_login($username, $this->_encode($password));
 				if ($query->num_rows() == 1) 
 				{
-					$row = $query->row();
-					//$speaker_data['id'] = $row->id;
+					$row = $query->row();					
 					$speaker_data['speaker_id'] = $row->id;
 					$speaker_data['speaker_email'] = $row->email;
 					$speaker_data['speaker_name'] = $row->name;
@@ -123,6 +187,20 @@ class User_lib
 					$speaker_data['lang'] = $row->language;
 					$speaker_data['userlevel'] = $row->userlevel;
 					$speaker_data['membership_id'] = $row->membership_id;
+					
+					$payment = $this->CI->MUser->get_payment_by_user_id($speaker_data['speaker_id']);					
+					if ($payment)
+					{						
+						$speaker_data['payment_id'] = $payment->id;
+						$speaker_data['payment_date_expire'] = strtotime($payment->date);
+						$speaker_data['membership_id'] = $payment->membership_id;
+					}
+					else 
+					{
+						$speaker_data['payment_id'] = 0;
+						$speaker_data['payment_date_expire'] = 0;
+					}											
+					
 					$this->_set_logindata($speaker_data, $is_cookie);
 					$result['name'] = $row->name;
 					return $result;	
@@ -154,8 +232,6 @@ class User_lib
 		} 
 		else 
 		{
-			// $user_name = $this->CI->input->cookie('MSM_COOKIE', TRUE);		
-			// $cookie_id = $this->CI->input->cookie('MSM_COOKIE_ID', TRUE);
 			if (isset($_COOKIE['MSM_COOKIE']) && isset($_COOKIE['MSM_COOKIE_ID']))	
 			{				
 				$is_using_cookie = $this->_is_using_cookie($_COOKIE['MSM_COOKIE'], $_COOKIE['MSM_COOKIE_ID']);
@@ -200,6 +276,20 @@ class User_lib
 						$speaker_data['lang'] = $row->language;
 						$speaker_data['userlevel'] = $row->userlevel;	
 						$speaker_data['membership_id'] = $row->membership_id;
+						
+						$payment = $this->CI->MUser->get_payment_by_user_id($speaker_data['speaker_id']);					
+						if ($payment)
+						{						
+							$speaker_data['payment_id'] = $payment->id;
+							$speaker_data['payment_date_expire'] = strtotime($payment->date);
+							$speaker_data['membership_id'] = $payment->membership_id;
+						}
+						else 
+						{
+							$speaker_data['payment_id'] = 0;
+							$speaker_data['payment_date_expire'] = 0;
+						}							
+						
 						$this->_set_logindata($speaker_data, $is_cookie);
 						//flashMsg('Login successful !');
 						// Login successful
@@ -464,6 +554,10 @@ class User_lib
 			$this->CI->session->unset_userdata('username');
 			$this->CI->session->unset_userdata('cookie_id');
 			$this->CI->session->unset_userdata('userlevel');
+			$this->CI->session->unset_userdata('membership_id');
+			$this->CI->session->unset_userdata('payment_id');
+			$this->CI->session->unset_userdata('payment_date_expire');							
+			
 			@session_start();
 			unset($_SESSION['username']);
 			unset($_SESSION['cookie_id']);			
@@ -503,13 +597,25 @@ class User_lib
 				$speaker_data['lang'] = $row->language;
 				$speaker_data['userlevel'] = $row->userlevel;
 				$speaker_data['membership_id'] = $row->membership_id;
+				$payment = $this->CI->MUser->get_payment_by_user_id($speaker_data['speaker_id']);					
+				if ($payment)
+				{						
+					$speaker_data['payment_id'] = $payment->id;
+					$speaker_data['payment_date_expire'] = strtotime($payment->date);
+					$speaker_data['membership_id'] = $payment->membership_id;
+				}
+				else 
+				{
+					$speaker_data['payment_id'] = 0;
+					$speaker_data['payment_date_expire'] = 0;
+				}																
 				$this->_set_logindata($speaker_data, FALSE);
 				return $speaker_data;
 			} 
 		} 
 		return FALSE;
 	}	
-	
+		
 	// --------------------------------------------------------------------
 	
 	/**

@@ -230,7 +230,17 @@ function is_admin($go_after_login=TRUE)
 function is_speaker($go_after_login=TRUE) 
 {
 	$CI =& get_instance();
-	return $CI->user_lib->is_speaker($go_after_login);	
+	return $CI->user_lib->is_speaker(FALSE, $go_after_login);	
+}
+
+function check_membership($memberships=FALSE, $go_after_login=TRUE)
+{
+	$CI =& get_instance();
+	if (($CI->_memberships) && ($membership==FALSE))
+	{
+		$memberships = $CI->_memberships;
+	}
+	return $CI->user_lib->is_speaker($memberships, $go_after_login);
 }
 
 function get_user_id() 

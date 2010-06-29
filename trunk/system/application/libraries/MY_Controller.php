@@ -4,6 +4,7 @@ class MY_controller extends Controller {
 
   var $_data	= FALSE;	
   var $_container = 'container';	
+  var $_memberships = FALSE;
   /**
   * Constructor
   *
@@ -104,7 +105,8 @@ class Speaker_controller extends MY_controller {
     'link' => site_url("/speaker")
     );				
     $side_bar['page'] = "speaker/sidebar";
-    $this->_data['side_bar'] = $side_bar;		
+	$side_bar['membership_info'] = $this->user_lib->get_membership_info();	
+    $this->_data['side_bar'] = $side_bar;				
   }	
 }
 
