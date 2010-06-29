@@ -119,8 +119,6 @@ class Home extends Frontend_controller {
 
     function search()
     {
-        if($this->input->post('search'))
-        {
             if($this->input->post('search'))
             {
                 $num_per_page = 5;    
@@ -155,7 +153,6 @@ class Home extends Frontend_controller {
             {
                 $this->_load_view('home/search');   
             }
-        }
     }
 
     function search_paging($keywords_to_search, $num_per_page) 
