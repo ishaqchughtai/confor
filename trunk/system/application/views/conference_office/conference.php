@@ -1,4 +1,5 @@
-
+<script type="text/javascript" src="<?php echo base_url();?>SimpleRatings/jQuery/jquery-1.4.2.min.js"></script>     
+<?php require_once 'SimpleRatings/rSystem.php';  ?>
 <div id="left">
     <div class="content_item">
         <style type="text/css">
@@ -7,11 +8,12 @@
                 overflow: hidden;
             }
         </style>			
-        <div class="content_item" id="content">
+        <div class="content_item" id="flashcontent">
             <?php 
                 if($video_path->num_rows()>0)
                 {
                     $row = $video_path->row();
+                    $vid_id=$row->vid_id;
                     $top_view_video = $row->vhash;
 					$speaker_id = $row->mem_id;
 					$tags=explode(" ",$row->tags);
@@ -73,7 +75,9 @@
             </div>
             <script type="text/javascript">
                 scale = new FlashScaler("flashcontent", 640, 360);
-            </script>			
+            </script>
+            <div class="rate_balloon"><?php $SimpleRatings->create($vid_id);?>  
+        </div> 			
             <p><?php echo $description?></p>		
         </div>
 
@@ -86,9 +90,7 @@
         <p>&nbsp</p>
         <div class="content_item">
 <h3><a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><?php echo $rows['title'];?></a></h3>
-
         <h5>By
-              
               <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $name?></b></a> 
 			   in 
 			  <?php for($i=0;$i<count($tags);$i++){?>
@@ -97,7 +99,8 @@
                       <?php ;}?>
                //
 			  <?php echo mdate('%F %j%S %Y', $date)?></h5>
-
+                      <div class="rate_balloon"><?php $SimpleRatings->create($rows['vid_id']);?>  
+        </div> 
 
         <p>
             <a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="202" height="90" alt="" class="alignleft" /></a>

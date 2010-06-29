@@ -1,4 +1,6 @@
 <?php $page = 5;?>
+<script type="text/javascript" src="<?php echo base_url();?>SimpleRatings/jQuery/jquery-1.4.2.min.js"></script>     
+<?php require 'SimpleRatings/rSystem.php';  ?>
         		<style type="text/css">
 
 			#flashcontent {
@@ -10,6 +12,7 @@
               if($video_url->num_rows()>0)
               {
                   $row=$video_url->row();
+                  $vid_id=$row->vid_id;
 				  $speaker_id = $row->mem_id;
                   $video_link=$row->vhash;
 				  $description=$row->description;
@@ -73,5 +76,7 @@
             <?php echo $description?>
 		<script type="text/javascript">
    			scale = new FlashScaler("flashcontent", 640, 360);
-		</script>					
+		</script>
+                <div class="rate_balloon"><?php $SimpleRatings->create($vid_id);?>  
+        </div> 					
 			  </div>		  
