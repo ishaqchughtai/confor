@@ -39,8 +39,8 @@
                         $temppass1 = random_string('alnum', 50);
                         if($this->Mforgotpassword->update_temp_pass($temppass1,$Email)==TRUE)
                         {
-                            $from = 'mailbag@xemmex.com';
-                            $name_from = 'mailbag@xemmex.com';
+                            $from = 'admin@conferences-formations.com';
+                            $name_from = 'admin@conferences-formations.com';
                             $content = __('CON_forgot_email_content_retrieve_password').$temppass;
                             $to = $this->input->post('email');
                             $subject=__('CON_forgot_email_title_retrieve_password');

@@ -6,7 +6,7 @@
         $video = $row['Video'];
         $images = $row['SpeakerImages'];
         ?>                               			
-			<li style="background: #020e13;"><a href="#"><img src="<?php echo base_url().'assets/uploads/image/'.$images;?>"width="880" height="300"></a></li>
+			<li style="background: #020e13;"><a href="<?php echo site_url('home/play/'.$video)?>"><img src="<?php echo base_url().'assets/uploads/image/'.$images;?>"width="880" height="300"></a></li>
 			<!-- /slider item -->	
         <?php }?>     
 		</ul>

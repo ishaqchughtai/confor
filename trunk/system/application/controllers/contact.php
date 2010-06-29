@@ -1,9 +1,9 @@
 <?php
-    class Contact extends Controller{
+    class Contact extends Frontend_controller{
 
         function Contact()
         {
-            parent::Controller();
+            parent::Frontend_controller();
             $this->load->model('send_mail');
             $this->load->helper('xemmex');
             $this->load->library('form_validation');
@@ -11,29 +11,29 @@
 
         function index()
         {
-            $this->_data['page_title'] = 'Contact us';
+            $this->_data['page_title'] = __('CON_contact_title');//'Contact us';
             $this->_load_view('contact'); 		
         }
         function send_contact()//($mail_type='text', $from, $name_from, $to, $subject, $content)
         {
             $this->form_validation->set_rules('name',__("CON_your_name"),'required');//'Name'
             $this->form_validation->set_rules('email',__("CON_contact_email"),'required|valid_email');//'Email'
-            $this->form_validation->set_rules('message',__("CON_your_message"),'required');//'Message'
+            $this->form_validation->set_rules('message',__("CON_your_meesage"),'required');//'Message'
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>'); 
             if($this->form_validation->run()!=FALSE)
             {
-                $this->load->view('contact');      
+                $this->_load_view('contact');      
             }else
             {
-                $from = 'mailbag@xemmex.com';
-                $name_from = 'mailbag@xemmex.com';
+                $from = $this->input->post('email');
+                $name_from = $this->input->post('name');.'<'.$this->input->post('email').'>';
                 $content = $this->input->post('message');
-                $to = $this->input->post('email');
+                $to = 'admin@conferences-formations.com';
                 $subject=__('CON_your_contact_mail').$name_from;
                 $content=$this->input->post('message');
                 /*$from=$this->input->post('email');
                 $content=$this->input->post('message');
-                $to='mailbag@xemmex.com';
+                $to='admin@conferences-formations.com';
                 $subject=__('CON_your_contact_mail').$name_from;
 
                 $this->email->clear();
