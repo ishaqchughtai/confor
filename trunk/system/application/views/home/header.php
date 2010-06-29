@@ -12,9 +12,7 @@
 
 <div id="header_info">
 
-	<div class="lang_selector left">
-		<a href="" class="flag-en"></a><a href="" class="flag-ca"></a>	
-	</div>	
+
 
 	<div class="left">
 		<?php echo __("CON_you_are_here");?>		
