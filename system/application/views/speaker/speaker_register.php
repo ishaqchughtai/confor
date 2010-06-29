@@ -71,7 +71,7 @@
 ?>
 
 
-		<h2>REGISTER</h2>		
+		<h2><?php echo __("CF_register")?></h2>		
 		<?php echo form_open('home/register');?>
 		<fieldset class="login">
 		  <legend></legend>		
@@ -79,57 +79,57 @@
 	    <p class="not_error medium"><span class="img"></span><?php echo $error;?><span class="close"></span></p>			
 			<?php endif;?>		
 
-			<div class="input text"><label><?php echo __("CON_user_name_label");?>(*)</label>		
+			<div class="input text"><label><?php echo __("CF_user");?>(*)</label>		
 				<?php echo form_input($usernameInput);?>
 			</div>					
 			<?php echo form_error('username');?>
 			
-			<div class="input text"><label>Password(*)</label>
+			<div class="input text"><label><?php echo __("CF_pass")?>(*)</label>
 				<?php echo form_input($password1Input);?>
 			</div>			
 			<?php echo form_error('password'); ?>
-			<div class="input text"><label>Confirm password</label>
+			<div class="input text"><label><?php echo __("CF_confirm")?></label>
 				<?php echo form_input($password2Input);?>
 			</div>			
 			<?php echo form_error('passconf'); ?>			
 			
-			<div class="input text"><label>Email(*)</label>
+			<div class="input text"><label><?php echo __("CF_email")?>(*)</label>
 				<?php echo form_input($emailInput);?>			
 			</div>								
 			<?php echo form_error('email');?>			
 			
-			<div class="input text"><label><?php echo __("CON_name");?>(*)</label>		
+			<div class="input text"><label><?php echo __("CF_name");?>(*)</label>		
 				<?php echo form_input($nameInput);?>
 			</div>					
 			<?php echo form_error('name');?>
-			<div class="input text"><label><?php echo __("CON_first_name");?>(*)</label>
+			<div class="input text"><label><?php echo __("CF_first_name");?>(*)</label>
 				<?php echo form_input($firstNameInput);?>			
 			</div>					
 			<?php echo form_error('firstName');?>			
 			
-			<div class="input text"><label>Company(*)</label>
+			<div class="input text"><label><?php echo __("CF_company")?>(*)</label>
 				<?php echo form_input($companyNameInput);?>
 			</div>
 			<?php echo form_error('companyName');?>
 
-			<div class="input text"><label>Country(*)</label>
+			<div class="input text"><label><?php echo __("CF_country")?>(*)</label>
 				<?php echo  form_dropdown('country', dropdown_data($selected_country_setting),$selected_country, ' class="short"');?>
 			</div>			
 			
-			<div class="input text"><label><?php echo __('CON_description');?></label>
+			<div class="input text"><label><?php echo __('CF_des_res');?></label>
 				<?php echo form_textarea($descriptionInput);?>			
 			</div>		
 			
 			<div>			
 			<div class="input text">
-				<label>Type the text in the image</label><br>
+				<label><?php echo __("CF_type_text")?></label><br>
 				<?php echo form_input($captchaInput);?><?php echo $captcha_img?>
 				<p>&nbsp;</p>
 			</div>								
 			<?php echo form_error('captcha');?>			
 			</div>
 			
-			<input type="submit" class="submit" name="register" value="REGISTER">
+			<input type="submit" class="submit" name="register" value="<?php echo __("CF_register")?>">
 			
 		</fieldset>	
 		</form>				

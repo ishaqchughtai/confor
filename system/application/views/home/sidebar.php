@@ -3,15 +3,15 @@
 </div>
 			<div id="right">
 			
-				<h3><?php echo __("CON_search")?></h3>
-				<h5>Search through all conferences</h5>
+				<h3><?php echo __("CF_search")?></h3>
+				<h5><?php echo __("CF_search_vid")?></h5>
 				
 			  <div class="sidebar_item" id="search">
 				
 					<?php echo form_open(site_url('home/search'));?>
 					
 						<input name="search_field" type="text" class="search_field">
-						<input name="search" type="submit" class="search_submit" value="submit">
+						<input name="search" type="submit" class="search_submit" value="">
 					
 					<?php echo form_close();?>
 					<!-- #search form -->
@@ -23,9 +23,9 @@
                 
 				<div class="sidebar_item">
 				  <ul id="tabs">
-				    <li>Categories</li>
-				    <li>Archives</li>
-				    <li>Speakers</li>
+				    <li><?php echo __("CF_cate")?></li>
+				    <li><?php echo __("CF_arch")?></li>
+				    <li><?php echo __("CF_speaker")?></li>
 			      </ul>
 				  <!-- /#tabs -->
                   
@@ -69,7 +69,7 @@
 				
 				<div class="sidebar_item">
 				
-					<h3><?php echo __("CON_popular_video")?></h3>
+					<h3><?php echo __("CF_pop_vid")?></h3>
 					
 					<ul id="popular_posts">
 					
@@ -146,7 +146,7 @@
               
               <div class="sidebar_item">
 				
-					<h3><?php echo __("CON_recent_video")?></h3>
+					<h3><?php echo __("CF_recent_vid")?></h3>
 
                     <ul class="popular_posts_content">
 							    <?php foreach($recent_video as $rows):?>
@@ -164,7 +164,7 @@
               
               
 				<div class="sidebar_item">
-					<h3><?php echo __("CON_event")?></h3>
+					<h3><?php echo __("CF_event")?></h3>
 					<div id="datepicker"></div>
 				</div>
 			</div>

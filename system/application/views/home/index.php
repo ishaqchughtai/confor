@@ -25,17 +25,18 @@
                 }
               ?>		
 					<h3><?php echo $video_title?></h3>
-              <h5>By
+              <h5>
+              <?php echo __("CF_by")?>
               
               <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $name?></b></a> 
-			   in 
+			   <?php echo __("CF_in")?> 
 			  <?php for($i=0;$i<count($tags);$i++){?>
                       <a href="#"><?php echo $tags[$i]?></a>
                       <?php if ($i<count($tags)-1) echo ','?>
                       <?php ;}?>
                //
 			  <?php echo mdate('%F %j%S %Y', $date)?></h5>              
-              <h5><b><?php echo $viewed?> views</b></h5>
+              <h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>
 				<script type="text/javascript">			
 			
 			var flashvars = {

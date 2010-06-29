@@ -10,14 +10,14 @@
             
                 <div class="login_block">
                 
-                    <label for="login_username"><?php echo __("CON_user_name_label")?></label>
+                    <label for="login_username"><?php echo __("CF_user")?></label>
                     <input type="text" id="login_username" name="username" />
                 
                 </div>
             
                 <div class="login_block">
                 
-                    <label for="login_password"><?php echo __("CON_user_password_label");?></label>
+                    <label for="login_password"><?php echo __("CF_pass");?></label>
                     <input type="password" id="login_password" name="password" />
                 
                 </div>
@@ -30,7 +30,7 @@
                 
                 <p class="not_login_info">
                 
-                    <span class="left"><input id="is_cookie" name="is_cookie" type="checkbox" class="checkbox" /> Remember me</span>
+                    <span class="left"><input id="is_cookie" name="is_cookie" type="checkbox" class="checkbox" /> <?php echo __("CF_remember")?></span>
                 
                     <a href="<?php echo site_url('forgot_password')?>" class="right"><?php echo __("CON_forgotten_password_label");?></a>
                     
