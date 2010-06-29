@@ -1,10 +1,13 @@
+<?php $page = 5;?>
 				<?php foreach($video_cate as $rows):?>			  
 			    <?php $keyword = explode(" ", $rows['tags']);?>
 				<div class="content_item">
 				
 					<h3><a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><?php echo $rows['title'];?></a></h3>
 					
-					<h5>By <?php echo $rows['first_name'].' '.$rows['name']?> in : 
+					<h5>By 
+                    <a href="<?php echo site_url('video/speaker').'/'.$rows['mem_id'].'/'.$page?>"><b><?php echo $rows['username']?></b></a> 
+                    in : 
                     <?php for($i=0;$i<count($keyword);$i++){?>
                       <a href="#"><?php echo $keyword[$i]?></a>
                       <?php if ($i<count($keyword)-1) echo ','?>
@@ -20,11 +23,11 @@
 					</div>
 					
 					<p>
-					<img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="202" height="90" alt="" class="alignleft" />
+					<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="202" height="90" alt="" class="alignleft" /></a>
 					</p>
 					
 					<p>
-					<?php echo $rows['description'];?>
+					<?php echo _substr($rows['description'],200);?>
 					</p>
 					
 					<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>" class="read_more">View</a>

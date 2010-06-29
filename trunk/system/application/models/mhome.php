@@ -8,13 +8,16 @@
     {
       $query=$this->db->query("SELECT 
       videos.vid_id,
+      videos.mem_id,
       videos.title,
       videos.description,
-      videos.viewed,
+      videos.category,
+      videos.tags,
+      videos.`date`,
       videos.vhash,
       videos.shash,
-      users.name,
-      users.first_name
+      videos.viewed,
+      users.username
       FROM videos ,users 
       WHERE videos.mem_id = users.id 
       order by videos.viewed DESC LIMIT 1");
@@ -28,10 +31,23 @@
       return $query->result_array();
     }
     function get_video_by_id($id)
-    {
-      $query=$this->db->query('Select 
-      vid_id,title ,tags,description,vhash,mem_id,shash
-      from videos Where vid_id= '.$id);
+    { 
+      $query=$this->db->query('SELECT
+      videos.vid_id,
+      videos.mem_id,
+      videos.title,
+      videos.description,
+      videos.category,
+      videos.tags,
+      videos.`date`,
+      videos.vhash,
+      videos.shash,
+      videos.viewed,
+      users.username
+      FROM
+      users
+      Inner Join videos ON users.id = videos.mem_id
+      Where vid_id= '.$id);
       return $query;
     }
 
@@ -44,8 +60,7 @@
 
     function search_paging($keyword, $num, $offset) {
       $this->db->select('
-      users.name,
-      users.first_name,
+      users.username,      
       videos.vid_id,
       videos.date,
       videos.title,
@@ -124,8 +139,7 @@
       $query = $this->db->query("SELECT
       Max(videos.viewed) AS max_viewed,
       videos.mem_id,
-      users.name,
-      users.first_name
+      users.username
       FROM
       videos, users
       WHERE

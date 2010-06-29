@@ -13,14 +13,28 @@
                 {
                     $row = $video_path->row();
                     $top_view_video = $row->vhash;
+					$speaker_id = $row->mem_id;
+					$tags=explode(" ",$row->tags);
                     $video_image=$row->shash;
+					$date=$row->date;
+				    $viewed=$row->viewed;
                     $video_title=$row->title;
-                    $speaker=$row->first_name.' '.$row->name;
+                    $name=$row->username;
                     $description=$row->description;
                 }
             ?>		
-            <h3><a href="blog_entry.html"><?php echo __("CON_top_video")?></a></h3>
-            <h5><?php echo $speaker.'   '.$video_title?></h5>
+            <h3><?php echo $video_title?></h3>
+              <h5>By
+              
+              <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $name?></b></a> 
+			   in 
+			  <?php for($i=0;$i<count($tags);$i++){?>
+                      <a href="#"><?php echo $tags[$i]?></a>
+                      <?php if ($i<count($tags)-1) echo ','?>
+                      <?php ;}?>
+               //
+			  <?php echo mdate('%F %j%S %Y', $date)?></h5>              
+              <h5><b><?php echo $viewed?> views</b></h5>
             <script type="text/javascript">			
 
                 var flashvars = {
@@ -73,17 +87,24 @@
         <div class="content_item">
 <h3><a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><?php echo $rows['title'];?></a></h3>
 
-        <h5>By <?php echo $rows['mem_id']?> in : 
-          
-             <?php echo mdate('%F %j%S %Y', $rows['date'])?></h5>
+        <h5>By
+              
+              <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $name?></b></a> 
+			   in 
+			  <?php for($i=0;$i<count($tags);$i++){?>
+                      <a href="#"><?php echo $tags[$i]?></a>
+                      <?php if ($i<count($tags)-1) echo ','?>
+                      <?php ;}?>
+               //
+			  <?php echo mdate('%F %j%S %Y', $date)?></h5>
 
 
         <p>
-            <img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="202" height="90" alt="" class="alignleft" />
+            <a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="202" height="90" alt="" class="alignleft" /></a>
         </p>
 
         <p>
-            <?php echo $rows['description'];?>
+            <?php echo _substr($rows['description'],200);?>
         </p>
 
         <a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>" class="read_more">View</a>
