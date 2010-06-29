@@ -36,9 +36,9 @@
 			<div class="input text">
 				<p class="not_login_info">
 					<?php echo form_input($rememberInput);?>Remember me.					
-					<a href="#">Lost your password or username?</a>					
+					<a href="<?php echo site_url('forgot_password')?>">Lost your password or username?</a>					
 				</p>
 			</div>
-			<input type="submit" name="login" style="width:80px" value="Login">	
+			<input type="submit" name="login" style="width:80px" value="Login" class="submit">	
 		</fieldset>	
 		</form>				

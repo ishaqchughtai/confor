@@ -46,21 +46,21 @@
                     $from = $speaker_data["speaker_email"];
                     $name_from = $speaker_data["speaker_email"];
                     $content = sprintf(__('CON_ticket_content_email_to_admin'),$Title,$Message);
-                    $to = 'mailbag@xemmex.com';
+                    $to = 'admin@conferences-formations.com';
                     $subject=__('CON_ticket_title_email').$this->input->post('title');
-
+                            
                     $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);
                     redirect(baser_url().'ticket/send_ticket_speaker_succ');
                 }   
             }            
         }        
-
+        
         function send_ticket_speaker_succ()
         {
             $this->_data['error']= __('CON_ticket_send_success');
             $this->_load_view('home/ticket');
         }
-
+        
         function send_ticket_by_admin($Ticket)
         {				            
             is_admin();
@@ -89,18 +89,18 @@
                         $to = $row->Email;
                         $name_speaker = $row->Name;
                     }
-
+                    
                     if($to!='')
                     {
-                        $from = 'mailbag@xemmex.com';
-                        $name_from = 'mailbag@xemmex.com';
+                        $from = 'admin@conferences-formations.com';
+                        $name_from = 'admin@conferences-formations.com';
                         $content = sprintf(__('CON_ticket_content_email_to_speaker'),$name_speaker,$Title,$Message);
                         $query_speaker = $this->CI->MSpeaker->get_speaker_for_login($email, $password);
-
+                        
                         $subject=__('CON_ticket_title_email').$this->input->post('title');
                         $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);    
                     }                    
-
+                    
                     $this->Mticket->update_ticket_by_admin($Ticket,$Is_answered);
                     redirect('ticket/ticket_content_closed/'.$Ticket);
                 }   

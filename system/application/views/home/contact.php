@@ -26,7 +26,7 @@
 
         <p>
             <?php echo form_error('message');?>  						
-            <label for="message"><?php echo lang('CON_your_email')?><:</label>
+            <label for="message"><?php echo lang('CON_your_meesage')?>:</label>
             <textarea name="message" id="message" rows="8" cols=""></textarea>					
         </p>
 

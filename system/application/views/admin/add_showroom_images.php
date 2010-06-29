@@ -37,9 +37,8 @@
         <p>
             <label>Image thumbnail :</label>
             <?php echo form_error('txtLink'); ?>
-            <input name="txtLink" type="text" id="txtLink" value="<?php if(isset($_POST['txtLink'])){ echo $_POST['txtLink'] ;}?>" class="short"  readonly="true"/>
+            <input type="file" name="txtLink" size="20" />
         </p>
-        <input type="submit" value="upload" class="submit" name="uploadshowroom" onclick="window.open('<?php echo site_url('showroom/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" />                       
         <p>                       
             <input name="btnsubmit" type="submit" class="submit" value="Submit" />
             <input name="btnreset" type="reset" class="reset" value="Reset" />

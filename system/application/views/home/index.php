@@ -54,7 +54,7 @@
 				glossy: true,												// Determines if control shows a shine effect.
 				tooltipType: "follower",									// Defines how playback time is showed (none, normal, follower).
 				logo: true,													// Allows to visualize a logotype.
-				logoAutoHide: true,											// Defines if the logo hides when controls are hidden.
+				logoAutoHide: false,											// Defines if the logo hides when controls are hidden.
 				logoURL: "http://conferences-formations.com",		// URL that will be followed when you click on the logo.
 				logoAlign: "topLeft",									// Defines the logotype alignment inside VPlayer.
 				iconsAlign: "topRight",										// Defines the icons alignment inside VPlayer (topLeft, topRight, bottomLeft, bottomRight).
