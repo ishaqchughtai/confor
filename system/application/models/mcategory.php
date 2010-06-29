@@ -22,8 +22,8 @@
     {
       $this->db->select('
       videos.vid_id,
-      users.name,
-      users.first_name,
+      videos.mem_id,
+      users.username,
       videos.date,
       videos.title,
       videos.tags,
@@ -32,8 +32,7 @@
       videos.vhash,
       videos.shash,
       videos.category,
-      tblcategory.Name,
-      users.name as speaker_name
+      tblcategory.Name
       ');
       $this->db->from('tblcategory');
       $this->db->join('videos','tblcategory.ID = videos.category');

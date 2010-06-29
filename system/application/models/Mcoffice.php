@@ -17,10 +17,26 @@
             return $this->db->count_all_results();
         }
 
-        function list_conference_office($offset,$num ) {
-            $this->db->from('videos');         
-            $this->db->limit($num, $offset);
-            $query=$this->db->get();
+        function list_conference_office($offset,$num ) 
+        {
+            $this->db->select('
+            users.username,
+            videos.vid_id,
+            videos.date,
+            videos.title,
+            videos.tags,
+            videos.description,
+            videos.viewed,
+            videos.vhash,
+            videos.mem_id,
+            videos.shash,
+            videos.category
+            ');
+            $this->db->from('videos');
+            $this->db->join('users','videos.mem_id = users.id');
+            $this->db->order_by('Viewed','desc');
+            $this->db->limit($num,$offset);
+            $query = $this->db->get();
             return $query->result_array();
         }
     }

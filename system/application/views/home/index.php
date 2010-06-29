@@ -10,14 +10,29 @@
                 {
                     $row = $video_path->row();
                    $top_view_video = $row->vhash;
+				   $speaker_id = $row->mem_id;
 				   $video_image=$row->shash;
                    $video_title=$row->title;
-                   $speaker=$row->first_name.' '.$row->name;
+                   $speaker=$row->username;
+				   $tags=explode(" ",$row->tags);
+				   $date=$row->date;
+				   $name=$row->username;
+				   $viewed=$row->viewed;
                    $description=$row->description;
                 }
               ?>		
-					<h3><a href="blog_entry.html"><?php echo __("CON_top_video")?></a></h3>
-					<h5><?php echo $speaker.'   '.$video_title?></h5>
+					<h3><?php echo $video_title?></h3>
+              <h5>By
+              
+              <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $name?></b></a> 
+			   in 
+			  <?php for($i=0;$i<count($tags);$i++){?>
+                      <a href="#"><?php echo $tags[$i]?></a>
+                      <?php if ($i<count($tags)-1) echo ','?>
+                      <?php ;}?>
+               //
+			  <?php echo mdate('%F %j%S %Y', $date)?></h5>              
+              <h5><b><?php echo $viewed?> views</b></h5>
 				<script type="text/javascript">			
 			
 			var flashvars = {

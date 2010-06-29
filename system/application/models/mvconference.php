@@ -107,8 +107,7 @@
         function get_video_by_speaker($speaker,$per_page,$offset)
         {
             $this->db->select('
-            users.name,
-            users.first_name,
+            users.username,
             videos.vid_id,
             videos.date,
             videos.title,
@@ -139,8 +138,7 @@
         function video_speaker($id,$per_page,$offset)
         {
             $this->db->select('
-            users.name,
-            users.first_name,
+            users.username,
             videos.vid_id,
             videos.date,
             videos.title,

@@ -133,7 +133,7 @@ class Home extends Frontend_controller {
         {
             if($this->input->post('search'))
             {
-                $num_per_page = 2;    
+                $num_per_page = 5;    
                 $keyword=$this->input->post('search_field');   
 
                 $config['full_tag_open'] = '<li>';        
