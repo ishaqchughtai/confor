@@ -19,10 +19,10 @@
 <div class="content_item">                 
     <form id="contactform" action="<?php echo site_url("Accessories/update_element/".$ElementName)?>" method="post" enctype="multipart/form-data" class="global">                   
         <p>
-            <label >Element Name : <?php echo $StrElementName?></label>
+            <label ><?php echo __("CF_element_name")?> : <?php echo $StrElementName?></label>
             <p></p>    
             <?php echo form_error('ElementContent');?>                    
-            <label for="description">Body:</label><br />
+            <label for="description"><?php echo __("CF_blog_body")?>:</label><br />
             <?php
                 $data = array('name' => 'ElementContent',
                 'id' => 'ElementContent',
@@ -34,8 +34,8 @@
         </p>
 
         <p>                    
-            <input name="" type="submit" class="submit" value="Submit"onclick="return confirm('Do you really wish to update?')" />
-            <input name="" type="reset" class="reset" value="Reset" />                        
+            <input name="" type="submit" class="submit" value="<?php echo __("CF_submit")?>"onclick="return confirm('Do you really wish to update?')" />
+            <input name="" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />                        
         </p>
 
     </form>    

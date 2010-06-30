@@ -8,11 +8,11 @@
 </script>
 <div class="content_item">
 
-    <h3>Add New Showroom Image</h3>
+    <h3><?php echo __("CF_add_showroom")?></h3>
 
     <form action="" method="post" enctype="multipart/form-data" name="showroom">
         <p>                
-            <label for="title">Speaker:</label>
+            <label for="title"><?php echo __("CF_one_speaker")?>:</label>
             <select name="jumpMenu" id="jumpMenu" onchange="MM_jumpMenu('parent',this,0)" class="short">
                 <?php foreach($query_speaker as $row){
                         $id = $row['id'];
@@ -24,7 +24,7 @@
         </p>
 
         <p>
-            <label for="title">Video:</label>
+            <label for="title"><?php echo __("CF_vid")?>:</label>
             <select name="jumpMenu" id="jumpMenu" onchange="MM_jumpMenu('parent',this,0)" class="short">  
                 <?php foreach($query_video as $row){
                         $id_video = $row['vid_id'];
@@ -35,13 +35,13 @@
             </select>
         </p>                        
         <p>
-            <label>Image thumbnail :</label>
+            <label><?php echo __("CF_blog_thum")?> :</label>
             <?php echo form_error('txtLink'); ?>
             <input type="file" name="txtLink" size="20" />
         </p>
         <p>                       
-            <input name="btnsubmit" type="submit" class="submit" value="Submit" />
-            <input name="btnreset" type="reset" class="reset" value="Reset" />
+            <input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_submit")?>" />
+            <input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />
 
         </p>
     </form>

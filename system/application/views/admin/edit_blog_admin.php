@@ -14,16 +14,16 @@
                                 ?>
         <form action="<?php echo site_url('blog/edit_blog_submit').'/'.$id?>" method="post" enctype="multipart/form-data" class="global" name="blog">
           <p>
-            <label for="name">Your Name: <?php echo $this->session->userdata('admin')?></label>
+            <label for="name"><?php echo __("CF_your_name")?>: <?php echo $this->session->userdata('admin')?></label>
           </p>
           <?php 
                                     $datestring = "%F %j%S %Y";
                                     $time = time();?>
           <p>
-            <label for="date">Date: <?php echo mdate($datestring,$time);?> </label>
+            <label for="date"><?php echo __("CF_date")?>: <?php echo mdate($datestring,$time);?> </label>
           </p>
           <p>
-            <label>Image thumbnail :</label>
+            <label><?php echo __("CF_blog_thum")?> :</label>
             <?php
                                     $data = array('name' => 'txtLink',
                                     'id' => 'txtLink',
@@ -33,14 +33,14 @@
                                     echo form_input($data);
                                     echo form_error('txtLink'); ?>
           <p>
-            <input type="button" value="upload" class="submit" name="uploadvideo" onclick="window.open('<?php echo site_url('blog/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" />
+            <input type="button" value="<?php echo __("CF_up")?>" class="submit" name="uploadvideo" onclick="window.open('<?php echo site_url('blog/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" />
           </p>
           </p>
           <br />
           <br />
           <br />
           <p>
-            <label for="title">Title:</label>
+            <label for="title"><?php echo __("CF_title")?>:</label>
             <?php
                                         $data = array('name' => 'txtTitle',
                                         'id' => 'txtTitle',
@@ -50,7 +50,7 @@
                                         echo form_error('txtTitle');?>
           </p>
           <p>
-            <label for="subject">Subject:</label>
+            <label for="subject"><?php echo __("CF_subject")?>:</label>
             <?php
                                         $data = array('name' => 'txtSubject',
                                         'id' => 'txtSubject',
@@ -60,7 +60,7 @@
                                         echo form_error('txtSubject');?>
           </p>
           <p>
-            <label for="keywords">Keywords:</label><br /><label>*Keywords Max 4 words and are separated by spaces. </label> 
+            <label for="keywords"><?php echo __("CF_key")?>:</label><br /><label>*<?php echo __("CF_blog_warning")?>. </label> 
             <?php
                                         $data = array('name' => 'txtKeywords',
                                         'id' => 'txtKeywords',
@@ -72,7 +72,7 @@
           </p>
            <p>
            <?php echo form_error('about');?>
-            <label for="">About The Author:</label><br />
+            <label for=""><?php echo __("CF_about_au")?>:</label><br />
             <?php
                                         $data = array('name' => 'about',
                                         'id' => 'about',
@@ -83,7 +83,7 @@
 ?>
           </p>
           <p>
-            <label for="Body">Body:</label>
+            <label for="Body"><?php echo __("CF_blog_body")?><?php echo __("CF_blog_body")?>:</label>
             <br />
             <?php
                                         $data = array('name' => 'txtBody',
@@ -98,8 +98,8 @@
           <br />
           <br />
           <p>
-            <input name="btnSave" type="submit" class="submit" value="Save" />
-            <input name="btnreset" type="reset" class="reset" value="Reset" />
+            <input name="btnSave" type="submit" class="submit" value="<?php echo __("CF_save")?>" />
+            <input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />
           </p>
         </form>
       </div>   

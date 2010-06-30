@@ -28,20 +28,20 @@
         <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="610" height="169" alt="Confor.ca" /></p>
         <p><?php echo $text ?></p>
         <form id="edit" name="edit" method="post" action="<?php echo site_url('blog/get_blog').'/'.$id ?>">
-            <input type="submit" name="Submit" value="Edit" class="submit" />
+            <input type="submit" name="Submit" value="<?php echo __("CF_edit")?>" class="submit" />
         </form>
         <form id="remove" name="remove" method="post" action="<?php echo site_url('blog/delete_blog').'/'.$id?>" >
-            <input type="submit" name="del" value="Remove" class="submit" onclick="return confirm('Do you really wish to delete?')" />
+            <input type="submit" name="del" value="<?php echo __("CF_remove")?>" class="submit" onclick="return confirm('Do you really wish to delete?')" />
         </form>
         <form id="new_blog" name="new_blog" method="post" action="<?php echo site_url('blog/add_blog')?>"  target="_blank">
             <label>
-                <input name="new_blog" type="submit" id="new_blog" value="New Blog"  class="submit"/>
+                <input name="new_blog" type="submit" id="new_blog" value="<?php echo __("CF_admin_new_blog")?>"  class="submit"/>
             </label>
         </form>
     </div>
     <!-- /.content_item -->
     <div class="content_item">
-        <h3>About the Author:</h3>
+        <h3><?php echo __("CF_about_au")?>:</h3>
         <div class="about_author"> <img src="<?php echo base_url().'assets/uploads/image/'.$linktemp?>" width="80" height="80" alt="XemmeX" class="alignleft" />
             <?php
                 foreach($query_show_author as $row)
@@ -49,14 +49,14 @@
                     $written = $row['written'];
 
                 ?>
-                <p><a href="#" class="author_link"><?php echo $author?></a> has written <?php echo $written?> articles for Confor.ca.</p>
+                <p><a href="#" class="author_link"><?php echo $author?></a> <?php echo __("CF_has_written")?> <?php echo $written?> articles for Confor.ca.</p>
             <?php echo $about?> </div>
             <?php }?>
     </div>
     <?php }?>
 <!-- /.content_item -->
 <div id="comments" class="content_item">
-    <h3><?php echo $countcommenttemp?> commentaires pour "<a href="#"><?php echo $titletemp?></a>"</h3>
+    <h3><?php echo $countcommenttemp?> commentaires po<?php echo __("CF_for_comments")?>ur "<a href="#"><?php echo $titletemp?></a>"</h3>
     <!-- Content -->
     <form >
         <?php foreach($query_show_comment as $row){                               
@@ -89,10 +89,10 @@
                     </p>
                     <!-- Content -->
                     <?php if($status==0){?>
-                        <a href="<?php echo site_url('blog/edit_comment'.'/'.$titletemp.'/'.$id.'/'.$idtemp.'/'.$countcommenttemp.'/'.$authortemp)?>"><b>Show Comment</b></a>
+                        <a href="<?php echo site_url('blog/edit_comment'.'/'.$titletemp.'/'.$id.'/'.$idtemp.'/'.$countcommenttemp.'/'.$authortemp)?>"><b><?php echo __("CF_show_comment")?></b></a>
                         <?php }?>
                     <br />
-                <a href="<?php echo site_url('blog/delete_comment'.'/'.$titletemp.'/'.$id.'/'.$idtemp.'/'.$countcommenttemp.'/'.$authortemp)?>"onclick="return confirm('Do you really wish to delete?')"  ><b>Delete Comment</b></a> </li>
+                <a href="<?php echo site_url('blog/delete_comment'.'/'.$titletemp.'/'.$id.'/'.$idtemp.'/'.$countcommenttemp.'/'.$authortemp)?>"onclick="return confirm('Do you really wish to delete?')"  ><b><?php echo __("CF_delete_comment")?></b></a> </li>
                 <!-- /#comments ol li -->
             </ol>
             <!-- /#comments ol -->
@@ -101,7 +101,7 @@
 </div>
 <!-- /#comments -->
 <div class="content_item" id="comment">
-    <h3> Leave a comment</h3>
+    <h3><?php echo __("CF_leave_cm")?></h3>
     <form action="<?php echo site_url("blog/add_comment")?>" method="post">
         <p>
             <label>
@@ -110,20 +110,20 @@
                 <input type="hidden" name="countcommenttemp" value="<?php echo $countcommenttemp?>" />
                 <input type="hidden" name="authortemp" value="<?php echo $authortemp?>" />
             </label>
-            <label for="name">Name*:</label>
+            <label for="name"><?php echo __("CF_name")?>*:</label>
             <input type="text" class="short" id="name" name="name" value="<?php if(isset($_POST['name'])){ echo $_POST['name'] ;}?>"/>
         <?php echo form_error('name'); ?> </p>
         <p>
-            <label for="email">Mail*: <em>Will not be published?</em></label>
+            <label for="email"><?php echo __("CF_email")?>*: <em>Will not be published?</em></label>
             <input type="text" class="short" id="email" name="email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'] ;}?>" />
         <?php echo form_error('email'); ?> </p>
         <p>
-            <label for="url">Site web:</label>
+            <label for="url"><?php echo __("CF_site_web")?>:</label>
             <input type="text" class="short" id="url" name="url" value="<?php if(isset($_POST['url'])){ echo $_POST['url'] ;}?>"/>
         <?php echo form_error('url'); ?> </p>
         <p>
 
-            <label for="msg">Message*:</label>
+            <label for="msg"><?php echo __("CF_mess")?>*:</label>
             <?php
                 if ( ! isset($_POST['msg']))
                 {
@@ -140,9 +140,9 @@
                 'value'=>$something);
                 echo form_textarea($data);
                  echo form_error('msg'); ?> </p>
-        <p> <label>* Please keep your comments clean. Max 400 chars. </label>  </p> 
+        <p> <label>* <?php echo __("CF_comment_notifying_message")?>. </label>  </p> 
         <p>
-            <input type="submit" class="submit" value="Submit" name="submit" />
+            <input type="submit" class="submit" value="<?php echo __("CF_submit")?>" name="submit" />
         </p>
     </form>
       </div>

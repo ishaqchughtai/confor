@@ -1,18 +1,18 @@
 <!-- /.content_item -->
 <div class="content_item">
-    <h3>Add New Blog</h3>
+    <h3><?php echo __("CF_add_new_blog")?></h3>
     <form action="" method="post" enctype="multipart/form-data" class="global" name="blog">
         <p>
-            <label for="name">Your Name: <?php echo $this->session->userdata('admin')?></label>
+            <label for="name"><?php echo __("CF_your_name")?>: <?php echo $this->session->userdata('admin')?></label>
         </p>
         <?php 
             $datestring = "%F %j%S %Y";
             $time = time();?>
         <p>
-            <label for="date">Date: <?php echo mdate($datestring,$time);?> </label>
+            <label for="date"><?php echo __("CF_date")?>: <?php echo mdate($datestring,$time);?> </label>
         </p>
         <p>
-        <label>Image thumbnail :</label>
+        <label><?php echo __("CF_blog_thum")?> :</label>
         <?php echo form_error('txtLink'); ?>
         <input name="txtLink" type="text" id="txtLink" value="<?php if(isset($_POST['txtLink'])){ echo $_POST['txtLink'] ;}?>" class="short"  readonly="true"/>
         <p>
@@ -23,18 +23,18 @@
         <br />
         <br />
         <p>
-            <label for="title">Title:</label>
+            <label for="title"><?php echo __("CF_title")?>:</label>
             <?php echo form_error('txtTitle');?>
             <input name="txtTitle" type="text" id="txtTitle" value="<?php if(isset($_POST['txtTitle'])){ echo $_POST['txtTitle'] ;}?>" class="short"/>
         </p>
         <p>
-            <label for="subject">Subject:</label>
+            <label for="subject"><?php echo __("CF_subject")?>:</label>
             <?php
                 echo form_error('txtSubject');?>
             <input name="txtSubject" type="text" id="txtSubject" value="<?php if(isset($_POST['txtSubject'])){ echo $_POST['txtSubject'] ;}?>" class="short"/>
         </p>
         <p>
-            <label for="keywords">Keywords:</label>
+            <label for="keywords"><?php echo __("CF_key")?>:</label>
             <br /><label>*Keywords Max 4 words and are separated by spaces. </label>
             <?php
                 echo form_error('txtKeywords');?>
@@ -42,7 +42,7 @@
 
         </p>              
         <p>
-            <label for="">About The Author:</label><br />
+            <label for=""><?php echo __("CF_about_au")?>:</label><br />
             <?php
                 if ( ! isset($_POST['about']))
                 {
@@ -61,7 +61,7 @@
             ?>
         </p>
         <p>
-            <label for="description">Body:</label><br />
+            <label for="description"><?php echo __("CF_blog_body")?>:</label><br />
             <?php
                 echo form_error('txtBody');
                 if ( ! isset($_POST['txtBody']))
@@ -84,8 +84,8 @@
         <br />
         <br />
         <p>
-            <input name="btnsubmit" type="submit" class="submit" value="Add new blog" />
-            <input name="btnreset" type="reset" class="reset" value="Reset" />
+            <input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_add_new_blog")?>" />
+            <input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />
         </p>
     </form>
       </div>   

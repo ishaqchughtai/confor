@@ -325,3 +325,26 @@ $lang['CF_image_link'] = 'IMAGE LINK';
 
 /* End of file confor_lang.php */
 /* Location: ./system/application/language/english/confor_lang.php */
+
+//Keys added by Dao Van Quyet
+$lang['CF_add_new_adv'] = 'Add New Advertisement';
+$lang['CF_advertiser_name'] = 'Advertiser Name';
+$lang['CF_advertiser_email'] = 'Advertiser Email';
+$lang['CF_your_name'] = 'Your Name';
+$lang['CF_one_speaker'] = 'Speaker';
+$lang['CF_element_name'] = 'Element name';
+$lang['CF_advertisement_name'] = 'Advertisement Name';
+$lang['CF_advertisement_email'] = 'Advertisement Email';
+$lang['CF_remove'] = 'REMOVE';
+$lang['CF_show_comment'] = 'Show comment';
+$lang['CF_delete_comment'] = 'Delete comment';
+$lang['CF_comment_notifying_message'] = 'Please keep your comments clean. Max 400 chars';
+$lang['CF_status'] = 'Status';
+$lang['CF_edit_adv'] = 'Edit Advertisement';
+$lang['CF_vid_update'] = 'Video conference update';
+$lang['CF_approved'] = 'Approved';
+$lang['CF_yes'] = 'Yes';
+$lang['CF_No'] = 'No';
+
+
+
