@@ -1,18 +1,18 @@
 <?php 
-$selected_cate = isset($video_cate)?$video_cate:1; 
+	$selected_cate = isset($video_cate)?$video_cate:1; 
 	$selected_cate_setting = array
 	(
 		'table_name' => 'tblcategory',
 		'key_field' => 'ID',
 		'value_field' => 'Name'
 	);	
-	$speaker_id = isset($speaker_id)?$speaker_id:0;
+	//$speaker_id = isset($speaker_id)?$speaker_id:0;
 ?>
 
                  <div class="x2">
 
                     <h3><?php echo __("CF_add_vid")?></h3>
-					  <?php echo form_open_multipart('video/add_video');?>
+					  <?php echo form_open('video/add_video');?>
 						
 						<p>
                         <label for="title"><?php echo __("CF_title")?>:</label>

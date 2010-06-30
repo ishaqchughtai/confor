@@ -25,18 +25,24 @@ class Video extends Frontend_controller
 	{
 		//$userData = is_speaker();
 		//$userData = check_membership(array(2,3));
-    $this->_data['path'][] = array(
-        'name' => __("CF_add_vid"),
-        'link' => site_url("video/add_video")
-        );
         
 		$userData = check_membership();
 		$speaker_id = $userData['speaker_id'];
-		$this->vid_lib->init_uploader();
+
+		$this->_data['path'][] = array(
+			'name' => __("CF_your_vid"),
+			'link' => site_url("video/your_video").'/'.$speaker_id.'/5'
+		);			
+		$this->_data['path'][] = array(
+			'name' => __("CF_add_vid"),
+			'link' => site_url("video/add_video")
+        );		
+		
+		$this->vid_lib->init_uploader();		
 		
 		$this->form_validation->set_rules('title','Title','required');
 		$this->form_validation->set_rules('description','Description','required'); 
-		$this->form_validation->set_rules('category','Category','required');
+		$this->form_validation->set_rules('video_cate','Category','required');
 		$this->form_validation->set_rules('keywords','Keywords','required');
 		$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
 		$this->_data['query']=$this->Mvconference->get_category();                  
@@ -68,7 +74,7 @@ class Video extends Frontend_controller
 					'mem_id'=>$speaker_id,
 					'title'=>$this->input->post('title'),
 					'description'=>$this->input->post('description'),
-					'category'=>$this->input->post('category'),
+					'category'=>$this->input->post('video_cate'),
 					'tags'=>$this->input->post('keywords'),
 					'Date'=>$dateupload,
 					'vhash'=>$this->_data['vname'].'.flv',
@@ -78,7 +84,7 @@ class Video extends Frontend_controller
 				);
 				$this->Mvconference->add_new_video($data);
 				//$this->list_video_conference();      
-				$this->_message('video', 'Your video has been created!', 'success',site_url("video/your_video"));
+				$this->_message('video', 'Your video has been created!', 'success',site_url("video/your_video").'/'.$speaker_id."/5");
 			}
 		}
 		else
@@ -107,15 +113,14 @@ class Video extends Frontend_controller
 
 	//get all video of a speaker
 	function your_video()
-	{
-    
-    $this->_data['path'][] = array(
-        'name' => __("CF_your_vid"),
-        'link' => site_url("")
-        );
-        
-        
+	{                    
 		$userData = is_speaker();		
+		
+		$this->_data['path'][] = array(
+			'name' => __("CF_your_vid"),
+			'link' => '#'
+        );	
+		
 		$id = $this->uri->segment(3);
 		$per_page = $this->uri->segment(4);
 		$offset = $this->uri->segment(5);
@@ -140,16 +145,20 @@ class Video extends Frontend_controller
 
 	//edit video of user
 	function edit_video_conference($speaker,$id) 
-	{
-    $this->_data['path'][] = array(
-        'name' => __("CF_edit_your_vid"),
-        'link' => site_url("")
-        );
-        
+	{        
 		$userData = check_membership();
 		$speaker_id = $userData['speaker_id'];
 		if ($speaker_id != $speaker) redirect('/');
 		if(is_nan((float)$id)) redirect(site_url("/"));
+	
+		$this->_data['path'][] = array(
+			'name' => __("CF_your_vid"),
+			'link' => site_url("video/your_video").'/'.$speaker.'/5'
+		);	
+		$this->_data['path'][] = array(
+			'name' => __("CF_edit_your_vid"),
+			'link' => '#'
+		);		
 		
 		$this->form_validation->set_rules('title','Title','required');
 		$this->form_validation->set_rules('keywords','Keywords','required');
