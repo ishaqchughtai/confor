@@ -23,6 +23,13 @@ class MY_controller extends Controller {
     $this->load->view($this->_container, $this->_data);
   }
   
+  function _message($controller_name, $msg, $class_msg='warning')
+  {
+	$this->session->set_flashdata('msg', $msg);
+	$this->session->set_flashdata('class_msg', $class_msg);
+	redirect($controller_name.'/message');
+  }
+  
   function message()
   {
 	$this->_load_view('message');
