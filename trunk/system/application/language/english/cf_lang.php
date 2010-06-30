@@ -306,7 +306,7 @@ $lang['CF_blog_warning'] = 'KEYWORDS MAX 4 WORDS AND ARE SEPARETED BY SPACE';
 $lang['CF_blog_body'] = 'BODY';
 
 //advertisement
-$lang['CF_blog_search'] = 'Search through all advertisement';
+$lang['CF_adv_search'] = 'Search through all advertisement';
 $lang['CF_adv_con'] = 'Paying Advertisement Control';
 $lang['CF_adv_list'] = 'Advertisement List';
 	$lang['CF_adv_date_begin'] = 'Date Beginning';
@@ -345,6 +345,7 @@ $lang['CF_vid_update'] = 'Video conference update';
 $lang['CF_approved'] = 'Approved';
 $lang['CF_yes'] = 'Yes';
 $lang['CF_No'] = 'No';
+$lang['CF_edit_event'] = 'Edit Event';
 
 
 
