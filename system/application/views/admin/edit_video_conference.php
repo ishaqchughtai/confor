@@ -54,11 +54,6 @@
                         <option value="0">No</option>
                     </select>
                     <p>
-                        <label for="video">Video:</label>
-                        <input type="file" name="userfile" size="20" />
-                        <b style="color: red"><?php echo $error ;?></b>
-                    </p>
-                    <p>
                         <label for="name"></label><input type="submit" name="submit" class="submit" value="Update" />
                     </p>
 
