@@ -353,7 +353,7 @@ $lang['CF_image_link'] = 'IMAGE LINK';
 /* Location: ./system/application/language/english/confor_lang.php */
 
 //Keys added by Dao Van Quyet
-/*$lang['CF_add_new_adv'] = 'Add New Advertisement';
+$lang['CF_add_new_adv'] = 'Add New Advertisement';
 $lang['CF_advertiser_name'] = 'Advertiser Name';
 $lang['CF_advertiser_email'] = 'Advertiser Email';
 $lang['CF_your_name'] = 'Your Name';
@@ -371,11 +371,10 @@ $lang['CF_vid_update'] = 'Video conference update';
 $lang['CF_approved'] = 'Approved';
 $lang['CF_yes'] = 'Yes';
 $lang['CF_No'] = 'No';
-$lang['CF_edit_event'] = 'Edit Event';*/
+$lang['CF_edit_event'] = 'Edit Event';
 $lang['CF_edit_element'] = 'Edit Element';
 $lang['CF_select_speaker'] = 'Select speaker from database';
 $lang['CF_filter_data'] = 'Filter your data';
-//$lang[''] = '';
 $lang['CF_Normal'] = 'Normal';
 $lang['CF_Urgent'] = 'Urgent';
 $lang['CF_Critical'] = 'Critical';
@@ -386,9 +385,6 @@ $lang['CF_Upload_Form'] = 'Upload Form';
 $lang['CF_success_upload'] = 'Your file was successfully uploaded';
 $lang['CF_click_link'] = 'Click Link';
 $lang['CF_upload_another?'] = 'Upload Another File!';
-$lang[''] = '';
-$lang[''] = '';
-$lang[''] = '';
 
 
 

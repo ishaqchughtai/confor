@@ -91,6 +91,7 @@
         {
             $this->db->select();
             $this->db->from('users');
+            $this->db->join('geo_countries','users.country = geo_countries.Icon_id');
             $this->db->limit($num,$offset);
             $query = $this->db->get();
             return $query->result_array();
