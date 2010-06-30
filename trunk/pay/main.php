@@ -11,7 +11,13 @@
       die('Direct access to this location is not allowed.');
 	  
   if ($session->logged_in)
+  {
       redirect_to("index.php?do=profile");
+	}
+	else
+	{
+	redirect_to("../");
+	}
   
   if (isset($_POST['submit']))
       : $result = $session->login($_POST['username'], $_POST['password'], isset($_POST['remember']));

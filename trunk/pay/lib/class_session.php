@@ -164,7 +164,7 @@
           if (!$this->logged_in) {
               $this->username = $_SESSION['username'] = "Guest";
               $this->userlevel = 0;
-			  redirect_to("../");
+			  //redirect_to("../");
           }          
       }
       
