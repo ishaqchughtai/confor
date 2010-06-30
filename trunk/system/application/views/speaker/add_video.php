@@ -34,11 +34,17 @@ $selected_cate = isset($video_cate)?$video_cate:1;
                         <?php echo form_error('keywords')?>
                     </p>
                     <p>
+							<script>
+							XEMMEX.ajax_upload_url = 'video/do_upload_ajax';
+							</script>
 							<?php $this->load->view('uploader');?>
 							<?php if(isset($error)):?>
         					<p class="not_warning"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
         					<?php endif?>
                     </p>
+					<p>
+					<a href="<?php echo site_url('ticket/send_ticket_by_speaker')?>">Order a cameraman team</a>
+					</p>
                     <p>
                         <input name="submit" type="submit" class="submit" value="ADD" />
                     </p>

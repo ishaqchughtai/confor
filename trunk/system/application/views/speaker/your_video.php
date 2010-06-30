@@ -40,7 +40,7 @@
         <form id="contactform" action="<?php echo site_url('video/edit_video_conference'.'/'.$speaker_id.'/'.$rows['vid_id'])?>" method="post" enctype="multipart/form-data" class="global">          
 		  <input name="btnedit" type="submit" class="submit" value="Edit" />
         </form>
-        <form id="contactform" action="<?php echo site_url('video/edit_video_conference'.'/'.$speaker_id.'/'.$rows['vid_id'])?>" method="post" enctype="multipart/form-data" class="global">
+        <form id="contactform" action="<?php echo site_url('video/delete_video_conference'.'/'.$speaker_id.'/'.$rows['vid_id'])?>" method="post" enctype="multipart/form-data" class="global">
           <input name="btndelete" type="submit" class="submit" value="Delete" onclick="return confirm('Do you really wish to delete?')" />
         </form>
         </p>

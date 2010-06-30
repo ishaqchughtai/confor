@@ -1,5 +1,13 @@
 <?php
 	$this->load->view('admin/speaker_selector');
+		
+	$selected_cate_setting = array
+	(
+		'table_name' => 'tblcategory',
+		'key_field' => 'ID',
+		'value_field' => 'Name'
+	);		
+	
 ?>   
               <div class="x2">
 
@@ -11,26 +19,22 @@
                         {
                             $row=$query->row();                      
                             $id=$row->vid_id;
-                            $title=$row->title;
-                            $subject=$row->category;
+                            $title=$row->title;                            
+							$selected_cate = $row->category;
                             $keywords=$row->tags;
                             $discription=$row->description;
                         }
                     ?>
                     <h3> <?php echo __("CF_vid_update")?> </h3>
-                    <?php echo form_open_multipart('admin/edit_video_conference/'.$id);?> 
+                    <?php echo form_open('admin/edit_video_conference/'.$id);?> 
                     <p>
                         <label for="title"><?php echo __("CF_title")?>:</label>
                         <input type="text" class="medium" name="title" id="title" value="<?php echo $title ?>" />
                         <?php echo form_error('title')?>
                     </p>
                     <p>
-                        <label for="category"><?php echo __("CF_cate_vid")?>:</label>
-                        <select class="medium" name="category">
-                            <?php foreach($category as $row):?>
-                            <option value="<?php echo $row['ID']?>"><?php echo $row['Name']?></option>
-                            <?php endforeach;?>
-                        </select>
+                        <label for="video_cate"><?php echo __("CF_cate_vid")?>:</label>
+						<?php echo  form_dropdown('video_cate', dropdown_data($selected_cate_setting),$selected_cate, 'id="vid_cate" class="short"');?>			
                     </p>
 
                     <p>

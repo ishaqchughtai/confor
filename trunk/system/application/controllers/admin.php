@@ -500,7 +500,8 @@ class Admin extends Admin_controller
 					'viewed'=>0
 				);
 				$this->Mvconference->add_new_video($data);
-				$this->list_video_conference();			
+				//$this->list_video_conference();	
+				$this->_message('admin', 'Your video has been created!', 'success',site_url("admin/list_video_conference"));
 			}
 		}
 		else
@@ -519,9 +520,12 @@ class Admin extends Admin_controller
 		$this->form_validation->set_rules('description','Description','required'); 
 		$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
 		$this->_data['query']=$this->Mvconference->get_video_conference_by_id($id);
-		$this->_data['category']=$this->Mvconference->get_category();
+		//$this->_data['category']=$this->Mvconference->get_category();
 		$this->_data['error'] ="";
+		
 		if($this->input->post('submit')){
+			//$this->_data['video_cate'] = $this->input->post('video_cate');
+		
 			if($this->form_validation->run()==FALSE)
 			{				
 				$this->_load_view('admin/edit_video_conference');
@@ -531,7 +535,7 @@ class Admin extends Admin_controller
 				$data = array(
 				'title'=>$this->input->post('title'),
 				'description'=>$this->input->post('description'),
-				'category'=>$this->input->post('category'),
+				'category'=>$this->input->post('video_cate'),
 				'tags'=>$this->input->post('keywords'),					
 				'approved'=>$this->input->post('approved')
 				);
