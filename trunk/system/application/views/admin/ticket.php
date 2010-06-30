@@ -19,16 +19,16 @@
         }
         if($Status==0)
         {
-            $Status_text='Normal'; 
+            $Status_text= __("CF_Normal"); 
         }elseif($Status==1)
         {
-            $Status_text='Urgent';    
+            $Status_text=__("CF_Urgent");    
         }elseif($Status==2)
         {
-            $Status_text='Critical';    
+            $Status_text=__("CF_Critical");    
         }elseif($Status==3)
         {
-            $Status_text='Ask for a cameraman team';    
+            $Status_text=__("CF_ask_camera");    
         }      
     ?>
     <h3>Title :<?php echo $title?></h3>
@@ -37,7 +37,7 @@
 
     <h5>Status : <?php echo $Status_text?></h5>
     <p>Message :<?php echo $text?></p>
-    <a href="<?php echo site_url('ticket/delete_ticket'.'/'.$id)?> "onclick="return confirm('Do you really wish to delete?')"  ><b>Delete Ticket</b></a>
+    <a href="<?php echo site_url('ticket/delete_ticket'.'/'.$id)?> "onclick="return confirm('<?php echo __("CF_mess_delete")?>')"  ><b><?php echo __("CF_Delete_Ticket")?></b></a>
     <?php }?>
 </div>    
 <div class="content_item">
@@ -45,19 +45,19 @@
 
         <p>
             <?php echo form_error('title');?>
-            <label for="title">Title:</label>
+            <label for="title"><?php echo __("CF_title")?>:</label>
             <input class="short" name="title" id="title" />
 
         </p>                       
         <p>    
             <?php echo form_error('message');?>                    
-            <label for="message">Your message:</label>
+            <label for="message"><?php echo __("CF_yr_mes")?>:</label>
             <textarea name="message" id="message" rows="8" cols="" ></textarea>                    
         </p>
 
         <p>                    
-            <input name="" type="submit" class="submit" value="Send" />
-            <input name="" type="reset" class="reset" value="Reset" />                        
+            <input name="" type="submit" class="submit" value="<?php echo __("CF_send")?>" />
+            <input name="" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />                        
         </p>
 
     </form>    

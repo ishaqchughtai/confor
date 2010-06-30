@@ -32,12 +32,12 @@
 
     <table border="0" cellpadding="0" cellspacing="1" style="width:100%">
         <tr>
-            <th width="65">Action</th>	        
-            <th width="85">Preview</th>	
-            <th width="157">Date</th>
-            <th>Tittle</th>
-            <th width="157">User name</th>
-            <th width="40">Viewed</th>	
+            <th width="65"><?php echo __("CF_action")?></th>	        
+            <th width="85"><?php echo __("CF_pre")?></th>	
+            <th width="157"><?php echo __("CF_date")?></th>
+            <th><?php echo __("CF_title")?></th>
+            <th width="157"><?php echo __("CF_user_name")?></th>
+            <th width="40"><?php echo __("CF_viewed")?></th>	
         </tr>
         <?php foreach ($query as $row):?>
         <?php 
@@ -46,7 +46,7 @@
             $upload_date=mdate("%Y-%m-%d", $row['date']);
         ?>
             <tr>
-                <td>&nbsp;<a href="<?php echo site_url('admin/edit_video_conference/'.$row['vid_id'])?>">Edit</a>&nbsp;|&nbsp;<a href="<?php echo site_url('admin/delete_video_conference/'.$row['vid_id'])?>" onclick="javascript:return confirm('do you really wish to delete?')">Del</a>&nbsp;</td>
+                <td>&nbsp;<a href="<?php echo site_url('admin/edit_video_conference/'.$row['vid_id'])?>"><?php echo __("CF_edit")?></a>&nbsp;|&nbsp;<a href="<?php echo site_url('admin/delete_video_conference/'.$row['vid_id'])?>" onclick="javascript:return confirm('<?php echo __("CF_mess_delete")?>')">Del</a>&nbsp;</td>
                 <td><img src="<?php echo $preview_img?>" width="81" height="52" alt=""> </td>
                 <td><?php echo $upload_date ?></td>
                 <td><?php echo $row['title']?></td>

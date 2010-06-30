@@ -372,6 +372,27 @@ $lang['CF_approved'] = 'Approved';
 $lang['CF_yes'] = 'Yes';
 $lang['CF_No'] = 'No';
 $lang['CF_edit_event'] = 'Edit Event';*/
+$lang['CF_edit_element'] = 'Edit Element';
+$lang['CF_select_speaker'] = 'Select speaker from database';
+$lang['CF_filter_data'] = 'Filter your data';
+//$lang[''] = '';
+$lang['CF_Normal'] = 'Normal';
+$lang['CF_Urgent'] = 'Urgent';
+$lang['CF_Critical'] = 'Critical';
+$lang['CF_ask_camera'] = 'Ask for a cameraman team';
+$lang['CF_Delete_Ticket'] = 'Delete Ticket';
+$lang['CF_Company_name'] = 'Company name';
+$lang['CF_Upload_Form'] = 'Upload Form';
+$lang['CF_success_upload'] = 'Your file was successfully uploaded';
+$lang['CF_click_link'] = 'Click Link';
+$lang['CF_upload_another?'] = 'Upload Another File!';
+$lang[''] = '';
+$lang[''] = '';
+$lang[''] = '';
+
+
+
+
 
 
 

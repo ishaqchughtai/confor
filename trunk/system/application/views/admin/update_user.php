@@ -14,30 +14,31 @@
                             $subscription=$row['userlevel'];     
                             $suspend=$row['status'];
                     }?>
-                    <h3>MODIFY SPEAKER</h3> 
+                    <h3><?php echo __("CF_modify_speaker")?></h3> 
                     <?php echo form_open('admin/modify_user/'.$id); ?>
-                        <label for="name">Name:</label>
+                        <label for="name"><?php echo __("CF_name")?>:</label>
                         <input class="medium" name="txtName" id="name" value="<?php echo $name?>" /><?php echo form_error("txtName"); ?>
-                        <label for="CompanyName">Company name:</label>
+                        <label for="CompanyName"><?php echo __("CF_Company_name")?>:</label>
                         <input class="medium" name="txtCompanyName" id="companyName" value="<?php echo $company?>" /><?php echo form_error("txtCompanyName"); ?>
-                        <label for="email">Email address:</label>
+                        <label for="email"><?php echo __("CF_admin_email")?>:</label>
                         <input class="medium" name="txtEmail" id="email" value="<?php echo $email?>" /><?php echo form_error("txtEmail"); ?>
-                        <label for="Country">Country:</label>
+                        <label for="Country"><?php echo __("CF_country")?>:</label>
                         <input class="medium" name="txtCountry" id="country" value="<?php echo $country?>" /><?php echo form_error("txtCountry"); ?>
-                        <label for="Description">Description:</label>
-                        <input class="medium" name="txtDescription" id="description" value="<?php echo $description?>" /><?php echo form_error("txtDescription"); ?>
+                        <label for="Description"><?php echo __("CF_des")?>:</label>
+                        <textarea name="txtDescription" id="txtDescription" rows="4" cols=""><?php echo $description ?></textarea>
+                        <?php echo form_error("txtDescription"); ?>
                         <?php if((int)$suspend==0){?>
-                            <label>(Active,</label> 
+                            <label>(<?php echo __("CF_suspended")?>,</label> 
                             <input name="radiobutton" type="radio" value="0" class="checkbox" checked="<?php echo 'checked';?>"/>
-                            <label>Suspended)</label> 
+                            <label><?php echo __("CF_active")?>)</label> 
                             <input name="radiobutton" type="radio" value="1" class="checkbox" />
                             <?php }else{?>
-                            <label>(Active,</label>
+                            <label>(<?php echo __("CF_suspended")?>,</label>
                             <input name="radiobutton" type="radio" value="0" class="checkbox" />
-                            <label>Suspended)</label>
+                            <label><?php echo __("CF_active")?>)</label>
                             <input name="radiobutton" type="radio" value="1" class="checkbox"  checked="<?php echo 'checked';?>"/>
                             <?php }?>
-                        <p><input name="submit" type="submit" class="submit" value="SAVE" /></p>
+                        <p><input name="submit" type="submit" class="submit" value="<?php echo __("CF_save")?>" /></p>
                     <?php form_close();?>
                 </div>
                 <!-- /.x2 - represents a half windows size div -->

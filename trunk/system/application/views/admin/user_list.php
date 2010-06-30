@@ -1,17 +1,17 @@
 <div id="content">
 
     <div class="">
-        <h3>User List</h3>
+        <h3><?php echo __("CF_user_list")?></h3>
         <table border="1" width="1000">
             <tr align="left">
-                <th width="88">First Name</th>
-                <th width="121">Company</th>
-                <th width="205">Email</th>
-                <th width="109">Country</th>
-                <th width="124">Description</th>
-                <th width="96">Subscription</th>
-                <th width="111">Account status </th>
-                <th width="44">Action</th>
+                <th width="88"><?php echo __("CF_first_name")?></th>
+                <th width="121"><?php echo __("CF_company")?></th>
+                <th width="205"><?php echo __("CF_email")?></th>
+                <th width="109"><?php echo __("CF_country")?></th>
+                <th width="124"><?php echo __("CF_des")?></th>
+                <th width="96"><?php echo __("CF_sup")?></th>
+                <th width="111"><?php echo __("CF_status_acc")?> </th>
+                <th width="44"><?php echo __("CF_action")?></th>
             </tr>
             <tr>
                 <ul id="pagination">
@@ -27,8 +27,8 @@
                     <td><?php echo $row['description']?></td>
                     <td><?php echo $row['userlevel']?></td>
                     <td><?php if((int)$row['status']=='0'){echo 'suspended';}else{echo 'activate';} ?></td>
-                    <td><a href="<?php echo site_url("admin/modify_user/".$row['id'])?>">Modify</a></td>
-                    <td width="45"><a href="<?php echo site_url("/admin/delete_user/".$row['id'])?>" onclick="return confirm('Are you sure want to delete?');">Delete</a></td>
+                    <td><a href="<?php echo site_url("admin/modify_user/".$row['id'])?>"><?php echo __("CF_modify")?></a></td>
+                    <td width="45"><a href="<?php echo site_url("/admin/delete_user/".$row['id'])?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
                 </tr>
                 <?php endforeach;?>
         </table>
