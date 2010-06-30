@@ -270,7 +270,7 @@ class Admin extends Admin_controller
 		$this->form_validation->set_rules('txtEmail','Email','required|valid_email|xss_clean');
 		$this->form_validation->set_rules('txtpayPayAccount','Paypal Account','required|valid_email|xss_clean');
 		$this->_data['query']=$this->Madmin->get_admin_by_id($id);
-		$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
+        $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
 		if($this->input->post('Submit'))
 		{
 			if($this->form_validation->run()==FALSE)
@@ -284,6 +284,7 @@ class Admin extends Admin_controller
 				'Name'=>$this->input->post('txtName'),
 				'FirstName'=>$this->input->post('txtFirstName'),
 				'Email'=>$this->input->post('txtEmail'),
+                'country'=>$this->input->post('txtCountry'),
 				'PayPalAccount'=>$this->input->post('txtpayPayAccount'),
 				);
 				$this->Madmin->update_admin($id,$data);
@@ -312,9 +313,9 @@ class Admin extends Admin_controller
 			$this->form_validation->set_rules('txtName','Name','required');
 			$this->form_validation->set_rules('txtCompanyName','Company Name','required');
 			$this->form_validation->set_rules('txtEmail','Email','required|valid_email');
-			$this->form_validation->set_rules('txtCountry','Country','required');
 			$this->form_validation->set_rules('txtDescription','Description','trim|required');
 			$this->_data['query']=$this->Madmin->get_user_id($id);
+            $this->_data['country']=$this->Madmin->get_all_country();
 			$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
 			if($this->input->post('submit'))
 			{    

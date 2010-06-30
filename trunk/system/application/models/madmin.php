@@ -69,10 +69,10 @@
         }
         /*Speaker*/
         //function get_user()
-       // {
-//            $query=$this->db->get('tblspeaker');
-//            return $query->result_array();
-//        }
+        // {
+        //            $query=$this->db->get('tblspeaker');
+        //            return $query->result_array();
+        //        }
         function delete_user($id)
         {
             $this->db->where('ID', $id);
@@ -80,7 +80,21 @@
         }
         function get_user_id($id)
         {
-            $query = $this->db->get_where('users',array('ID'=>$id)); 
+            $this->db->select("
+            users.id,
+            users.membership_id,
+            users.username,
+            users.email,
+            users.name AS name,
+            users.first_name,
+            users.company_name,
+            users.description,
+            geo_countries.name AS country
+            ");
+            $this->db->from('users');
+            $this->db->join('geo_countries','users.country = geo_countries.con_id');
+            $this->db->where('users.id',$id);
+            $query = $this->db->get();
             return $query->result_array();
         }
         function update_user($id,$data)
@@ -91,10 +105,14 @@
         {
             $this->db->select();
             $this->db->from('users');
-            $this->db->join('geo_countries','users.country = geo_countries.Icon_id');
+            $this->db->join('geo_countries','users.country = geo_countries.con_id');
             $this->db->limit($num,$offset);
             $query = $this->db->get();
             return $query->result_array();
+        }
+        function get_all_country(){
+            $country=$this->db->get('geo_countries');
+            return $country->result_array();
         }
         /*Video conference*/
         function get_all_video_conference(){

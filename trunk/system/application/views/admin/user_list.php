@@ -23,7 +23,7 @@
                     <td><?php echo $row['username']?></td>
                     <td><?php echo $row['company_name']?></td>
                     <td><?php echo $row['email']?></td>
-                    <td><?php echo $row['country']?></td>
+                    <td><?php echo $row['name']?></td>
                     <td><?php echo $row['description']?></td>
                     <td><?php echo $row['userlevel']?></td>
                     <td><?php if((int)$row['status']=='0'){echo 'suspended';}else{echo 'activate';} ?></td>
