@@ -436,17 +436,22 @@ class User_lib
 			else 
 			{							
 				$save_data['email'] = $this->CI->input->post('email');
-				$save_data['name'] = $this->CI->input->post('name');
+				$save_data['name'] = $this->CI->input->post('name');				
 				$save_data['first_name'] = $this->CI->input->post('first_name');
 				$save_data['company_name'] = $this->CI->input->post('company_name');
 				$save_data['country'] = $this->CI->input->post('country');
-				$save_data['description'] = $this->CI->input->post('description');						
+				$save_data['description'] = $this->CI->input->post('description');
+				// $save_data['userlevel'] = 1;
+				// $save_data['cookie_id'] = 0;
+				// $save_data['token'] = 0;
+				// $save_data['status'] = 1;
+				// $save_data['notify'] = 1;
+				// $save_data['register_date'] = 'NOW()';				
 				$save_data['last_ip'] = $this->CI->input->ip_address();							
 				$this->CI->MUser->save($id, $save_data);				
-				// $this->CI->session->set_flashdata('msg', 'Your profile has been updated');
-				// $this->CI->session->set_flashdata('class_msg', 'success');			
-				// redirect('speaker/message');	
-				$this->CI->_message('speaker', "Your profile has been updated", 'success');
+				$this->CI->session->set_flashdata('msg', 'Your profile has been updated');
+				$this->CI->session->set_flashdata('class_msg', 'success');			
+				redirect('speaker/message');							
 			}
 		}	
 		else 

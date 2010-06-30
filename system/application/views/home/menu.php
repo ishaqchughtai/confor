@@ -10,11 +10,11 @@
 						<li><a href="<?php echo site_url("accessories/show_element/rules") ?>" ><?php echo __("CF_rules")?></a></li>
 					</ul>
 				</li>
-				<li><a href="<?php echo site_url("home/contact")?>"><?php echo __("CF_contact")?></a></li>	
+				<li><a href="<?php echo site_url("contact")?>"><?php echo __("CF_contact")?></a></li>	
 			</ul>
 		</li>
 		
-		<li><a href="<?php echo site_url("Conference_office") ?>"><?php echo __("CF_conference_office")?></a></li>
+		<li><a href="<?php echo site_url("conference_office") ?>"><?php echo __("CF_conference_office")?></a></li>
 			
 		<li><a href="<?php echo site_url("accessories/show_element/training") ?>"><?php echo __("CF_training")?></a></li>
 	

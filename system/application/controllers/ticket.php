@@ -8,6 +8,7 @@
       $this->load->helper('date');     
       $this->load->model('MSpeaker');
       $this->load->model('Remember_me');					
+	  $this->load->model('send_mail');
     }
     function index()
     {
@@ -50,13 +51,14 @@
         if($this->Mticket->add_ticket_by_speaker($Date,$Status,$Title,$Message,$Is_answered,$SpeakerID)==TRUE)
         {
           $from = $speaker_data["speaker_email"];
-          $name_from = $speaker_data["speaker_email"];
+          //$name_from = $speaker_data["speaker_email"];
+		  $name_from ='';
           $content = sprintf(__('CON_ticket_content_email_to_admin'),$Title,$Message);
           $to = 'admin@conferences-formations.com';
           $subject=__('CON_ticket_title_email').$this->input->post('title');
 
           $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);
-          redirect(baser_url().'ticket/send_ticket_speaker_succ');
+          redirect(site_url("ticket/send_ticket_speaker_succ"));
         }   
       }            
     }        
@@ -89,19 +91,21 @@
         {
           $to = '';
           $name_speaker = '';
+		  $query_speaker = $this->MUser->get_by_id($Ticket);
           if ($query_speaker->num_rows() == 1) 
           {
             $row = $query_speaker->row();
-            $to = $row->Email;
-            $name_speaker = $row->Name;
+            $to = $row->email;
+            $name_speaker = $row->name;
           }
 
           if($to!='')
           {
             $from = 'admin@conferences-formations.com';
-            $name_from = 'admin@conferences-formations.com';
+            //$name_from = 'admin@conferences-formations.com';
+			$name_from = '';
             $content = sprintf(__('CON_ticket_content_email_to_speaker'),$name_speaker,$Title,$Message);
-            $query_speaker = $this->CI->MSpeaker->get_speaker_for_login($email, $password);
+            //$query_speaker = $this->MUser->get_speaker_for_login($email, $password);
 
             $subject=__('CON_ticket_title_email').$this->input->post('title');
             $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);    

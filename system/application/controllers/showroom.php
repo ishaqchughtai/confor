@@ -32,8 +32,11 @@
                 }else
                 {
                     if($this->Mshowroom->add_image($video_name,$txtLink)==TRUE)
-                    {
-                        echo 'duoc rui'; 
+                    {                    
+                        $this->_data['query_speaker'] = $this->Mshowroom->get_all_speaker();
+            		$this->_data['query_video'] = $this->Mshowroom->select_speaker_video($Speaker=1);
+            		$this->_data['error'] = 'New image successfully added';         
+            		$this->_load_view('admin/add_showroom_images'); 
                     } 
                 }
             }else

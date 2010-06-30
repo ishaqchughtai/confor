@@ -7,7 +7,9 @@
     //-->
 </script>
 <div class="content_item">
-
+    <?php if(isset($error)):?>
+        <p class="not_info medium"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
+        <?php endif;?>
     <h3><?php echo __("CF_add_showroom")?></h3>
 
     <form action="" method="post" enctype="multipart/form-data" name="showroom">
@@ -36,10 +38,12 @@
         </p>                        
         <p>
             <label><?php echo __("CF_blog_thum")?> :</label>
-            <?php echo form_error('txtLink'); ?>
-            <input type="file" name="txtLink" size="20" />
+        <input name="txtLink" type="text" id="txtLink" value="<?php if(isset($_POST['txtLink'])){ echo $_POST['txtLink'] ;}?>" class="short"  readonly="true"/>
+        <p>
+            <input type="submit" value="upload" class="submit" name="uploadvideo" onclick="window.open('<?php echo site_url('showroom/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" />
         </p>
-        <p>                       
+        </p>
+        <p>
             <input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_submit")?>" />
             <input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />
 
