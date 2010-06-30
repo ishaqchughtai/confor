@@ -18,11 +18,11 @@
             videos.shash,
             videos.approved,
             videos.viewed,
-            users.ID,
-            users.Name,
+            users.id,
+            users.name,
             users.first_name');
             $this->db->from('videos');
-            $this->db->join('users','videos.mem_id = users.ID'); 
+            $this->db->join('users','videos.mem_id = users.id'); 
             $this->db->order_by("videos.`date`", "desc"); 
             $this->db->limit($num,$offset);
             $query = $this->db->get();
@@ -31,7 +31,7 @@
         function get_video_conference_by_category($Category,$num,$offset)
         {
             $this->db->select("
-            users.`Name` as SpeakerName,
+            users.name as SpeakerName,
             users.first_name,
             users.company_name,
             videos.vid_id,
