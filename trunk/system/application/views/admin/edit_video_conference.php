@@ -51,7 +51,7 @@
                     </p>
                     
                     <p>
-                        <label for="name"><?php echo __("CF_approved")?>:</label>
+                        <label for="approved"><?php echo __("CF_approved")?>:</label>
                     </p>
                     <select name="approved" class="short">
                         <option value="1" selected="selected"><?php echo __("CF_yes")?></option>
