@@ -3,13 +3,13 @@
     $admin_right=(int)$this->session->userdata('right');  
 ?><?php
     foreach($status as $row){	$status = $row->status;	}?><div class="x2">
-    <h3>Administrator Panel</h3>
+    <h3><?php echo __("CF_admin_panel")?></h3>
     <ul class="link_conttrol">
         <?php if($admin_right==1){?>
-            <li><a class="icon_list" href="<?php echo site_url('admin/list_admin');?>">Administrator List</a></li>
-            <li><a class="icon_add" href="<?php echo site_url('admin/add_new_admin');?>">New administrator</a></li>
+            <li><a class="icon_list" href="<?php echo site_url('admin/list_admin');?>"><?php echo __("CF_admin_list")?></a></li>
+            <li><a class="icon_add" href="<?php echo site_url('admin/add_new_admin');?>"><?php echo __("CF_new_admin")?></a></li>
             <?php }?>
-        <li><a class="icon_add" href="<?php echo site_url('admin/edit_profile/'.$admin_id);?>">Edit Profile</a></li>
+        <li><a class="icon_add" href="<?php echo site_url('admin/edit_profile/'.$admin_id);?>"><?php echo __("CF_edit_admin")?></a></li>
     </ul>
     <p>&nbsp;</p>
 </div>
