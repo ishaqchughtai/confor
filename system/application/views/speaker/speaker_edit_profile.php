@@ -37,36 +37,36 @@
 		'value' => isset($email)?$email:set_value('email')	
 	);		
 ?>
-		<h2><?php echo __("CON_profile");?></h2>		
+		<h2><?php echo __("CF_profile");?></h2>		
 		<?php echo form_open('speaker/edit_profile');?>
 		<fieldset class="login">
-			<legend><?php echo __("CON_general_info");?></legend>		
+			<legend><?php echo __("CF_general_info");?></legend>		
 			<?php if(isset($error)):?>
 				<p class="not_error medium"><span class="img"></span><?php echo $error;?><span class="close"></span></p>			
 			<?php endif;?>			
-			<div class="input text"><label><?php echo __("CON_name");?></label>		
+			<div class="input text"><label><?php echo __("CF_name");?></label>		
 				<?php echo form_input($nameInput);?>
 			</div>					
 			<?php echo form_error('name');?>
-			<div class="input text"><label><?php echo __("CON_first_name");?></label>
+			<div class="input text"><label><?php echo __("CF_first_name");?></label>
 				<?php echo form_input($firstNameInput);?>			
 			</div>					
 			<?php echo form_error('first_name');?>			
-			<div class="input text"><label><?php echo __("CON_profile");?></label>
+			<div class="input text"><label><?php echo __("CF_profile");?></label>
 				<?php echo form_input($companyNameInput);?>
 			</div>
 			<?php echo form_error('company_name');?>
-			<div class="input text"><label>Email</label>
+			<div class="input text"><label><?php echo __("CF_email")?></label>
 				<?php echo form_input($emailInput);?>			
 			</div>	
-			<div class="input text"><label>Country(*)</label>
+			<div class="input text"><label><?php echo __("CF_country")?>(*)</label>
 				<?php echo  form_dropdown('country', dropdown_data($selected_country_setting),$selected_country, ' class="short"');?>
 			</div>					
 			<?php echo form_error('email');?>
-			<div class="input text"><label><?php echo __("CON_description");?></label>
+			<div class="input text"><label><?php echo __("CF_des_res");?></label>
 				<?php echo form_textarea($descriptionInput);?>			
 			</div>				
-			<input type="submit" class="submit" name="update" value="<?php echo __("CON_update");?>">
+			<input type="submit" class="submit" name="update" value="<?php echo __("CF_update");?>">
 			
 		</fieldset>	
 		</form>				

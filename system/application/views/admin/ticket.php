@@ -31,12 +31,12 @@
             $Status_text=__("CF_ask_camera");    
         }      
     ?>
-    <h3>Title :<?php echo $title?></h3>
+    <h3><?php echo __("CF_title")?> :<?php echo $title?></h3>
 
-    <h4>By : <?php echo $author?></h5>
+    <h4><?php echo __("CF_by")?> : <?php echo $author?></h5>
 
-    <h5>Status : <?php echo $Status_text?></h5>
-    <p>Message :<?php echo $text?></p>
+    <h5><?php echo __("CF_status")?> : <?php echo $Status_text?></h5>
+    <p><?php echo ucfirst(__("CF_mess"))?> :<?php echo $text?></p>
     <a href="<?php echo site_url('ticket/delete_ticket'.'/'.$id)?> "onclick="return confirm('<?php echo __("CF_mess_delete")?>')"  ><b><?php echo __("CF_Delete_Ticket")?></b></a>
     <?php }?>
 </div>    

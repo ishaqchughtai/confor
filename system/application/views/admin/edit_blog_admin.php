@@ -1,5 +1,5 @@
       <div class="content_item">
-        <h3>Edit Blog</h3>
+        <h3><?php echo __("CF_edit_blog")?></h3>
         <?php
                                     foreach($query as $row){                               
                                         $id = $row->ID;

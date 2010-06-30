@@ -14,7 +14,7 @@
 				
 					<h3><?php echo $title?></h3>
                     <h5><?php echo $subject ?></h5>
-					<h5>By <?php echo $speaker?> in : 
+					<h5><?php echo __("CF_by")?> <?php echo $speaker?> <?php echo __("CF_in")?> : 
                     <?php for($i=0;$i<count($keyword);$i++){?>
                       <a href="#"><?php echo $keyword[$i]?></a>
                       <?php if ($i<count($keyword)-1) echo ','?>
@@ -39,10 +39,10 @@
 						
 						<p>
 						<form id="contactform" action="<?php echo site_url('event/get_event_admin'.'/'.$id)?>" method="post" enctype="multipart/form-data" class="global">
-							<input name="btnedit" type="submit" class="submit" value="Edit" />
+							<input name="btnedit" type="submit" class="submit" value="<?php echo __("CF_edit")?>" />
 							</form>
 							<form id="contactform" action="<?php echo site_url('event/delete_event_admin'.'/'.$id)?>" method="post" enctype="multipart/form-data" class="global">
-							<input name="btndelete" type="submit" class="submit" value="Delete" onclick="return confirm('Do you really wish to delete?')" />
+							<input name="btndelete" type="submit" class="submit" value="<?php echo __("CF_del")?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>')" />
 						
 						</p>
 					

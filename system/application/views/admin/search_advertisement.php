@@ -19,7 +19,7 @@
     <p><a href="<?php echo $url;?>"><img src="<?php echo base_url().'assets/uploads/adv/'.$image_link ?>" width="200" height="200" /></a><?php echo $text_tips?></p>
     <p>
     <form id="contactform" action="<?php echo site_url('advertisement/get_advertisement'.'/'.$id)?>" method="post" enctype="multipart/form-data" class="global">
-      <input name="btnedit" type="submit" class="submit" value="Edit" />
+      <input name="btnedit" type="submit" class="submit" value="<?php echo __("CF_edit")?>" />
     </form>
     <form id="contactform" action="<?php echo site_url('advertisement/delete'.'/'.$id)?>" method="post" enctype="multipart/form-data" class="global">
     <input name="btndelete" type="submit" class="submit" value="<?php echo __("CF_del")?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>')" />

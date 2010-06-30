@@ -49,14 +49,14 @@
                     $written = $row['written'];
 
                 ?>
-                <p><a href="#" class="author_link"><?php echo $author?></a> <?php echo __("CF_has_written")?> <?php echo $written?> articles for Confor.ca.</p>
+                <p><a href="#" class="author_link"><?php echo $author?></a> <?php echo __("CF_has_written")?> <?php echo $written?> <?php echo __("CF_articles_for")?> Confor.ca.</p>
             <?php echo $about?> </div>
             <?php }?>
     </div>
     <?php }?>
 <!-- /.content_item -->
 <div id="comments" class="content_item">
-    <h3><?php echo $countcommenttemp?> commentaires po<?php echo __("CF_for_comments")?>ur "<a href="#"><?php echo $titletemp?></a>"</h3>
+    <h3><?php echo $countcommenttemp?> <?php echo __("CF_for_comments")?> "<a href="#"><?php echo $titletemp?></a>"</h3>
     <!-- Content -->
     <form >
         <?php foreach($query_show_comment as $row){                               
@@ -80,7 +80,7 @@
                         <!-- Date -->
                         <span class="time"><?php echo $final_time?></span>
                         <!-- Time -->
-                        <a href="#comment" class="reply">Reply</a>
+                        <a href="#comment" class="reply"><?php echo __("CF_replay")?></a>
                         <!-- Reply Link -->
                         <br />
                         <br />
@@ -114,7 +114,7 @@
             <input type="text" class="short" id="name" name="name" value="<?php if(isset($_POST['name'])){ echo $_POST['name'] ;}?>"/>
         <?php echo form_error('name'); ?> </p>
         <p>
-            <label for="email"><?php echo __("CF_email")?>*: <em>Will not be published?</em></label>
+            <label for="email"><?php echo __("CF_email")?>*: <em><?php echo __("CF_not_pub")?></em></label>
             <input type="text" class="short" id="email" name="email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'] ;}?>" />
         <?php echo form_error('email'); ?> </p>
         <p>

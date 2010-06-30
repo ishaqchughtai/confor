@@ -11,7 +11,7 @@ class Blog extends Frontend_controller {
         $this->load->helper('string');
         $this->_data['adv']['category'] = 'blog';		
         $this->_data['path'][] = array(
-        'name' => 'Blog',
+        'name' => __("CF_blog"),
         'link' => site_url("/blog")
         );		
     }	

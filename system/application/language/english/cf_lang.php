@@ -5,6 +5,7 @@
 $lang['CF_conference_office'] = 'Conference office';
 $lang['CF_shop'] = 'Shop';
 $lang['CF_home'] = 'Home';
+$lang['CF_set'] = 'Setting';
 $lang['CF_blog'] = 'Blog';
 $lang['CF_contact'] = 'Contact';
 $lang['CF_login'] = 'Log in';
@@ -13,6 +14,7 @@ $lang['CF_you_here'] = 'Your are here';
 
 //all form
 $lang['CF_search'] = 'Search';
+$lang['CF_play'] = 'Play';
 
 //form home and form register
 $lang['CF_register'] = 'Register';
@@ -24,6 +26,7 @@ $lang['CF_profile'] = 'PROFILE';
 $lang['CF_email'] = 'EMAIL';
 $lang['CF_country'] = 'COUNTRY';
 $lang['CF_des_res'] = 'DESCRIPTION AND INTRODUCTION';
+$lang['CF_general_info'] = 'General informations';
 
 //edit, new profile admin
 $lang['CF_paypal'] = 'PAYPAL ACCOUNT';
@@ -42,6 +45,7 @@ $lang['CF_title'] = 'TITLE';
 $lang['CF_subject'] = 'SUBJECT';
 $lang['CF_key'] = 'KEYWORDS';
 $lang['CF_des'] = 'DESCRIPTION';
+$lang['CF_order'] = 'Order a cameraman team';
 
 //continue reading of event and blog
 $lang['CF_continue'] = 'Continue Reading';
@@ -69,6 +73,7 @@ $lang['CF_by'] = 'By';
 $lang['CF_in'] = 'in';
 $lang['CF_views'] = 'views';
 $lang['CF_here'] = 'here';
+$lang['CF_date'] = 'here';
 
 //blog
 $lang['CF_has_written'] = 'has written';
@@ -124,6 +129,8 @@ $lang['CF_mess_delete'] = 'Do you really wish to delete?';
 $lang['CF_error_occurred'] = 'An error has been occurred';
 //message when need update player
 $lang['CF_update_player'] = 'Please update your flash player';
+//message when you registry susscess
+$lang['CF_mess_reg'] = 'Your profile has been saved!';
 
 //------------------------------------------------------------------
 
@@ -145,8 +152,23 @@ $lang['CF_event'] = 'Event';
 //LOGIN
 $lang['CF_remember'] = 'Remember me';
 $lang['CF_forgot_pass'] = 'Forgotten Password';
+$lang['CF_user_login'] = 'SPEAKER LOGIN';
+$lang['CF_login_as_spe'] = 'LOGIN AS A SPEAKER';
+$lang['CF_lost_pass'] = 'Lost your password or username?';
+$lang['CF_forgot_pass'] = 'Forgotten Password';
 //------------------------------------------------------------------
 
+//------------------------------------------------------------------
+//SIDEBAR MEMBERSHIP
+$lang['CF_member_ship'] = 'MEMBERSHIP';
+$lang['CF_yr_sub'] = 'Your subcriptions';
+$lang['CF_cur_mem'] = 'Current Membership';
+$lang['CF_cur_mem_rate'] = 'Current Membership Rate';
+$lang['CF_mem_exp'] = 'Membership Expires';
+$lang['CF_notify'] = 'Your payment might be pending';
+$lang['CF_upgrade'] = 'Upgrade your subcription';
+
+//------------------------------------------------------------------
 
 //------------------------------------------------------------------
 //REGISTER
@@ -166,7 +188,7 @@ $lang['CF_register'] = 'register';
 //profile
 
 $lang['CF_change_pass'] = 'Change password';
-$lang['CF_sub'] = 'Subcription';
+$lang['CF_sub'] = 'Subcriptions';
 
 //change password
 $lang['CF_text'] = 'Change your password';
@@ -175,8 +197,14 @@ $lang['CF_new_pass'] = 'NEW PASSWORD';
 $lang['CF_confirm_pass'] = 'CONFIRM NEW PASSWORD';
 $lang['CF_update'] = 'UPDATE';
 
+//forgot pass
+$lang['CF_forgot_pass_title'] = 'Forgotten Password';
+$lang['CF_forgot_pass_email_address'] = 'Your Email Address';
+$lang['CF_forgot_pass_back'] = 'Back';
+
 //your video
-$lang['CF_your_vid'] = 'You video';
+$lang['CF_your_vid'] = 'Your video';
+$lang['CF_edit_your_vid'] = 'Edit Your video';
 $lang['CF_add_vid'] = 'Add new video';
 	$lang['CF_up'] = 'UPLOAD';
 	$lang['CF_add'] = 'ADD';	
@@ -189,15 +217,14 @@ $lang['CF_add_tic'] = 'Add new ticket';
 	$lang['CF_ticket_title'] = 'Title Page';
 	$lang['CF_ticket_status'] = 'Status';
 	$lang['CF_ticket_question'] = 'Ticket Question';
-	$lang['CF_ticket_condition'] = 'Ticket Condition';
-	$lang['CF_ticket_condition'] = 'Ticket Condition';
-	$lang['CF_ticket_condition'] = 'Ticket Condition';
-	$lang['CF_ticket_condition'] = 'Ticket Condition';
+	$lang['CF_ticket_open'] = 'Open Tickets';
+	$lang['CF_ticket_close'] = 'Closed Tickets';
 	$lang['CF_ticket_send_success'] = 'Send Ticket success';
 	$lang['CF_ticket_title_email'] = 'Ticket: ';
 	$lang['CF_ticket_nor'] = 'Normal';
 	$lang['CF_ticket_ur'] = 'Urgent';
 	$lang['CF_ticket_cri'] = 'Critical';
+	$lang['CF_new_ticket'] = 'New Ticket';
 	$lang['CF_ticket_ask'] = 'Ask for a cameraman team';
 	$lang['CF_ticket_content_email_to_admin'] = 'Dear Administrator!'.chr(13).chr(10).'Your ticket was send by Speaker.'.chr(13).chr(10).'Title: %s'.chr(13).chr(10).'Content: %s.'.chr(13).chr(10).chr(13).chr(10).'Thank your for your attention!';
 	
@@ -275,6 +302,7 @@ $lang['CF_edit_admin'] = 'Edit Profile';
 	$lang['CF_udpate_admin'] = 'Administrator Data Update';	
 
 //speaker
+$lang['CF_control_panel'] = 'Control Panel';
 $lang['CF_speaker_con'] = 'Speaker Control';
 $lang['CF_speaker_list'] = 'Speaker List';
 	$lang['CF_user_list'] = 'User List';
@@ -327,6 +355,7 @@ $lang['CF_admin_new_blog'] = 'New Blog';
 
 //edit blog
 
+$lang['CF_edit_blog'] = 'Edit Blog';
 $lang['CF_blog_thum'] = 'IMAGE THUMBNAIL';
 $lang['CF_blog_warning'] = 'KEYWORDS MAX 4 WORDS AND ARE SEPARETED BY SPACE';
 $lang['CF_blog_body'] = 'BODY';
@@ -352,12 +381,23 @@ $lang['CF_image_link'] = 'IMAGE LINK';
 /* End of file confor_lang.php */
 /* Location: ./system/application/language/english/confor_lang.php */
 
+//OK
+$lang['CF_Company_name'] = 'Company name';
+$lang['CF_one_speaker'] = 'Speaker';
+$lang['CF_approved'] = 'Approved';
+$lang['CF_vid_update'] = 'Video conference update';
+$lang['CF_yes'] = 'Yes';
+$lang['CF_No'] = 'No';
+$lang['CF_success_upload'] = 'Your file was successfully uploaded';
+$lang['CF_click_link'] = 'Click Link';
+
+
+
 //Keys added by Dao Van Quyet
 $lang['CF_add_new_adv'] = 'Add New Advertisement';
 $lang['CF_advertiser_name'] = 'Advertiser Name';
 $lang['CF_advertiser_email'] = 'Advertiser Email';
 $lang['CF_your_name'] = 'Your Name';
-$lang['CF_one_speaker'] = 'Speaker';
 $lang['CF_element_name'] = 'Element name';
 $lang['CF_advertisement_name'] = 'Advertisement Name';
 $lang['CF_advertisement_email'] = 'Advertisement Email';
@@ -367,10 +407,6 @@ $lang['CF_delete_comment'] = 'Delete comment';
 $lang['CF_comment_notifying_message'] = 'Please keep your comments clean. Max 400 chars';
 $lang['CF_status'] = 'Status';
 $lang['CF_edit_adv'] = 'Edit Advertisement';
-$lang['CF_vid_update'] = 'Video conference update';
-$lang['CF_approved'] = 'Approved';
-$lang['CF_yes'] = 'Yes';
-$lang['CF_No'] = 'No';
 $lang['CF_edit_event'] = 'Edit Event';
 $lang['CF_edit_element'] = 'Edit Element';
 $lang['CF_select_speaker'] = 'Select speaker from database';
@@ -380,15 +416,7 @@ $lang['CF_Urgent'] = 'Urgent';
 $lang['CF_Critical'] = 'Critical';
 $lang['CF_ask_camera'] = 'Ask for a cameraman team';
 $lang['CF_Delete_Ticket'] = 'Delete Ticket';
-$lang['CF_Company_name'] = 'Company name';
 $lang['CF_Upload_Form'] = 'Upload Form';
-$lang['CF_success_upload'] = 'Your file was successfully uploaded';
-$lang['CF_click_link'] = 'Click Link';
+
+
 $lang['CF_upload_another?'] = 'Upload Another File!';
-
-
-
-
-
-
-

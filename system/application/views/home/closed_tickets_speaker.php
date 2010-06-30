@@ -1,7 +1,7 @@
 <!-- /.content_item -->
 <div id="header_info">
     <div class="left">
-<a href="<?php echo site_url('ticket/open_tickets_speaker')?>">Open Tickets <?php echo '('.$query_count_record_open_speaker.')'?></a> // <a href="<?php echo site_url('ticket/closed_tickets_speaker')?>">Closed Tickets <?php echo '('.$query_count_record_closed_speaker.')'?></a>           
+<a href="<?php echo site_url('ticket/open_tickets_speaker')?>"><?php echo __("CF_ticket_open")?> <?php echo '('.$query_count_record_open_speaker.')'?></a> // <a href="<?php echo site_url('ticket/closed_tickets_speaker')?>"><?php echo __("CF_ticket_close")?><?php echo '('.$query_count_record_closed_speaker.')'?></a>           
     </div>
 </div>
  <?php                     
@@ -24,25 +24,25 @@
         }
         if($Status==0)
         {
-            $Status_text='Normal'; 
+            $Status_text = __('CF_ticket_nor'); 
         }elseif($Status==1)
         {
-            $Status_text='Urgent';    
+            $Status_text=__('CF_ticket_ur');    
         }elseif($Status==2)
         {
-            $Status_text='Critical';    
+            $Status_text=__('CF_ticket_cri');    
         }elseif($Status==3)
         {
-            $Status_text='Ask for a cameraman team';    
+            $Status_text=__('CF_ticket_ask');    
         }      
     ?>
     <div class="content_item">
         <h3><a href="<?php echo site_url('ticket/ticket_content_closed_speaker/'.$id); ?>"><?php echo $title ?><img src="<?php echo $Answer?>" alt=""></img></a></h3>
-        <h5>By <?php echo $author ?> // Date :<?php echo  $final_date?> // Status :<?php echo $Status_text?>
+        <h5><?php echo __("CF_by")?> <?php echo $author ?> // <?php echo __("CF_date")?> :<?php echo  $final_date?> // <?php echo __("CF_ticket_status")?> :<?php echo $Status_text?>
         </h5>
         <?php echo $text?><br/>
         <br/>
-    <a href="<?php echo site_url('ticket/ticket_content_closed_speaker/'.$id); ?>" class="read_more">Continue Reading</a> </div>
+    <a href="<?php echo site_url('ticket/ticket_content_closed_speaker/'.$id); ?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
     <?php }?>
 <!-- /.content_item -->
 <ul id="pagination">
