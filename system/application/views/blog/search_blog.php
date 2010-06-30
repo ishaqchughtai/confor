@@ -20,7 +20,7 @@
       <div class="content_item">
         <?php if($this->session->userdata('admin')==TRUE):?>
         <h3><a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>"><?php echo $title ?></a></h3>
-        <h5>By <?php echo $author ?> in :
+        <h5><?php echo __("CF_by")?> <?php echo $author ?> <?php echo __("CF_in")?> :
           <?php for($i=0;$i<count($key);$i++){?>
           <a href="<?php echo site_url('blog/search_keyword').'/'.$key[$i]?>"><?php echo $key[$i]?></a>,
           <?php ;}?>
@@ -29,10 +29,10 @@
         <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="202" height="90" alt="Confor.ca" class="alignleft" /></p>
         <?php echo _substr($text,200)?><br/>
         <br/>
-        <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>" class="read_more">Continue Reading</a> </div>
+        <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
       <?php else:?>
       <h3><a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>"><?php echo $title ?></a></h3>
-      <h5>By <?php echo $author ?> in :
+      <h5><?php echo __("CF_by")?> <?php echo $author ?> <?php echo __("CF_in")?> :
         <?php for($i=0;$i<count($key);$i++){?>
         <a href="<?php echo site_url('blog/search_keyword').'/'.$key[$i]?>"><?php echo $key[$i]?></a>,
         <?php ;}?>
@@ -41,7 +41,7 @@
       <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="202" height="90" alt="Confor.ca" class="alignleft" /></p>
       <?php echo _substr($text,200)?><br/>
       <br/>
-      <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>" class="read_more">Continue Reading</a> </div>
+      <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
     <?php endif;?>
     <?php }?>
     <!-- /.content_item -->

@@ -1,5 +1,5 @@
 			
-				<p class="not_warning "><span class="img"></span>You have added an event successfully! Please wait for admin approval<span class="close"></span></p>
+				<p class="not_warning "><span class="img"></span><?php echo __("CF_mess_add_event")?><span class="close"></span></p>
 			  <div id="left">
 			  <!-- /.content_item -->
 					<form id="contactform" action="<?php echo site_url('event/add')?>" method="post" enctype="multipart/form-data" class="global">	
@@ -9,7 +9,7 @@
 			if ($this->session->userdata('speaker_id')):?>
 			<p>
 						
-				<input name="btnadd" type="submit" class="submit" value="Add New" />
+				<input name="btnadd" type="submit" class="submit" value="<?php echo __("CF_add_new")?>" />
 						
 			</p>
 			

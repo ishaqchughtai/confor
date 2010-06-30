@@ -27,7 +27,7 @@
 					<?php echo $rows['Description'];?>
 					</p>
 					
-					<a href="<?php echo site_url('home/play').'/'.$rows['ID']?>" class="read_more">[8:59:16 SA] yugi3000: <?php echo ucfirst(__("CF_views"))?></a>
+					<a href="<?php echo site_url('home/play').'/'.$rows['ID']?>" class="read_more"><?php echo __("CF_view")?></a>
 					
 				</div>		  
 				

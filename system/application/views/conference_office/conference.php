@@ -26,17 +26,17 @@
                 }
             ?>		
             <h3><?php echo $video_title?></h3>
-              <h5>By
+              <h5><?php echo __("CF_by")?>
               
               <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $name?></b></a> 
-			   in 
+			   <?php echo __("CF_in")?> 
 			  <?php for($i=0;$i<count($tags);$i++){?>
                       <a href="#"><?php echo $tags[$i]?></a>
                       <?php if ($i<count($tags)-1) echo ','?>
                       <?php ;}?>
                //
 			  <?php echo mdate('%F %j%S %Y', $date)?></h5>              
-              <h5><b><?php echo $viewed?> views</b></h5>
+              <h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>
             <script type="text/javascript">			
 
                 var flashvars = {
@@ -87,7 +87,6 @@
 
         <!-- /.content_item -->
         <?php foreach($conference_list as $rows):?>
-        <p>&nbsp</p>
         <div class="content_item">
 <h3><a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><?php echo $rows['title'];?></a></h3>
         <h5>By
@@ -110,7 +109,7 @@
             <?php echo _substr($rows['description'],200);?>
         </p>
 
-        <a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>" class="read_more">View</a>
+        <a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>" class="read_more"><?php echo __("CF_view")?></a>
 
         </div>
             <?php endforeach?>

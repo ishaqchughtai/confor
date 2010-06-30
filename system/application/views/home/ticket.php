@@ -1,10 +1,10 @@
 <div class="content_item">
 
-    <h3><?php echo lang('CON_ticket_title');?></h3>
+    <h3><?php echo __('CF_ticket_title');?></h3>
 
-    <h5><?php echo lang('CON_ticket_question');?></h5>
+    <h5><?php echo __('CF_ticket_question');?></h5>
 
-    <p><?php echo lang('CON_ticket_condition');?></p>
+    <p><?php echo __('CF_ticket_condition');?></p>
     <?php if(isset($error)):?>
         <p class="not_info medium"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
         <?php endif;?> 
@@ -12,31 +12,31 @@
 
         <p>
             <?php echo form_error('title');?>
-            <label for="title"><?php echo lang('CON_title')?></label>
+            <label for="title"><?php echo __('CF_title')?></label>
             <input class="short" name="title" id="title" />
 
         </p>
 
         <p>
             <?php echo form_error('Status');?>
-            <label for="Status"><?php echo lang('CON_Status')?></label>
+            <label for="Status"><?php echo __('CF_ticket_status')?></label>
             <select id="status" name="status" class="short">
-                <option value="0" selected="selected" >Normal</option>
-                <option value="1">Urgent</option>
-                <option value="2">Critical</option>
-                <option value="3">Ask for a cameraman team</option>
+                <option value="0" selected="selected" ><?php echo __("CF_ticket_nor")?></option>
+                <option value="1"><?php echo __("CF_ticket_ur")?></option>
+                <option value="2"><?php echo __("CF_ticket_cri")?></option>
+                <option value="3"><?php echo __("CF_ticket_ask")?></option>
             </select>
         </p>
 
         <p>    
             <?php echo form_error('message');?>                    
-            <label for="message"><?php echo lang('CON_your_meesage')?>:</label>
+            <label for="message"><?php echo __('CF_yr_mes')?>:</label>
             <textarea name="message" id="message" rows="8" cols="" ></textarea>                    
         </p>
 
         <p>                    
-            <input name="" type="submit" class="submit" value="Send" />
-            <input name="" type="reset" class="reset" value="Reset" />                        
+            <input name="" type="submit" class="submit" value="<?php echo __("CF_send")?>" />
+            <input name="" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />                        
         </p>
 
     </form>    

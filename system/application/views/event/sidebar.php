@@ -10,8 +10,8 @@ function search_click (){
 </div>
 			<div id="right">
 			
-				<h3>Search</h3>
-				<h5>Search through all events</h5>
+				<h3><?php echo __("CF_search")?></h3>
+				<h5><?php echo __("CF_event_search")?></h5>
 				
 			  <div class="sidebar_item" id="search">
 					<?php echo form_open('event/search_event')?>
@@ -26,9 +26,9 @@ function search_click (){
                 
 				<div class="sidebar_item">
 				  <ul id="tabs">
-				    <li>Categories</li>
-				    <li>Archives</li>
-				    <li>Speakers</li>
+				    <li><?php echo __("CF_cate")?></li>
+				    <li><?php echo __("CF_arch")?></li>
+				    <li><?php echo __("CF_speaker")?></li>
 			      </ul>
 				  <!-- /#tabs -->
 				  <ul id="ctabs">
@@ -55,7 +55,7 @@ function search_click (){
 				    <li>
 				      <ul class="ctabs_content">
 				        <?php foreach($top_speaker as $row):?>
-				        <li><a href="<?php echo site_url('video/speaker').'/'.$row['mem_id'].'/'.$page?>"><?php echo $row['first_name'].' '.$row['name']?></a></li>
+				        <li><a href="<?php echo site_url('video/speaker').'/'.$row['mem_id'].'/'.$page?>"><?php echo $row['username']?></a></li>
                       <?php endforeach?>
 			          </ul>
 				      <!-- /.ctabs_content -->
@@ -68,7 +68,7 @@ function search_click (){
 				
 				<div class="sidebar_item">
 				
-					<h3>Popular Video</h3>
+					<h3><?php echo __("CF_pop_vid")?></h3>
 					
 					<ul id="popular_posts">
 					
@@ -81,7 +81,7 @@ function search_click (){
 								
 									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
 									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>">VIEW</a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
 								
 								</li>
                                 <?php
@@ -109,7 +109,7 @@ function search_click (){
 								
 									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
 									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>">VIEW</a>
+									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
 								
 								</li>
                                 <?php }?>
@@ -145,7 +145,7 @@ function search_click (){
               
               <div class="sidebar_item">
 				
-					<h3>Recent Video</h3>
+					<h3><?php echo __("CF_recent_vid")?></h3>
 
                     <ul class="popular_posts_content">
 							    <?php foreach($recent_video as $rows):?>
@@ -153,7 +153,7 @@ function search_click (){
 								
 									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
 									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>" class="title"><?php echo $rows['title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>">VIEW</a>
+									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><?php echo __("CF_view")?></a>
 								
 								</li><br /><br />
                                 <?php endforeach?>

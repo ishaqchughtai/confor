@@ -15,7 +15,7 @@
 
 
 	<div class="left">
-		<?php echo __("CON_you_are_here");?>		
+		<?php echo __("CF_you_here");?> :		
 		<b><a href="<?php echo $path[0]['link']?>"><?php echo $path[0]['name']?></a></b>
 		<?php for ($i=1; $i<count($path); $i++):?>
 			/ <a href="<?php echo $path[$i]['link']?>"><?php echo $path[$i]['name']?></a>
@@ -23,7 +23,7 @@
 	</div>
 	
 	<div class="right">
-		<a href="#" class="rss">Subscribe to RSS</a>
+		<a href="#" class="rss"><?php echo __("CF_subscribe")?></a>
 	</div>	
 
 </div>

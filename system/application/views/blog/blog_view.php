@@ -17,7 +17,7 @@
         <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title)?>#comments" class="comments_balloon"><?php echo $countcomment ?></a>
         <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="610" height="169" alt="Confor.ca" /></p>
         <p><?php echo _substr($text,200)?></p>
-        <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title)?>" class="read_more">Continue Reading</a>
+        <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title)?>" class="read_more"><?php echo __("CF_continue")?></a>
         <?php }?>
       </div>
       <!-- /.content_item -->
@@ -37,7 +37,7 @@
                         ?>
       <div class="content_item">
         <h3><a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>"><?php echo $title ?></a></h3>
-        <h5>By <?php echo $author ?> in :
+        <h5><?php echo __("CF_by")?> <?php echo $author ?> <?php echo __("CF_in")?> :
           <?php for($i=0;$i<count($key);$i++){?>
           <a href="<?php echo site_url('blog/search_keyword').'/'.$key[$i]?>"><?php echo $key[$i]?></a>,
           <?php ;}?>
@@ -49,7 +49,7 @@
         <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="202" height="90" alt="Confor.ca" class="alignleft" /></p>
         <?php echo _substr($text,200)?><br/>
         <br/>
-        <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>" class="read_more">Continue Reading</a> </div>
+        <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
       <?php }?>
       <!-- /.content_item -->
       <ul id="pagination">
