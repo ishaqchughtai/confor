@@ -14,7 +14,7 @@
         $('#vid_cate').change(function()
         {
             $('#vid_cate :selected').each(function(i, selected){ 		  
-                gogo = XEMMEX.baseUrl + "admin/list_video_conference/" + $(selected).val() +"/3";			
+                gogo = XEMMEX.baseUrl + "admin/list_video_conference/" + $(selected).val();	
                 window.location = gogo;			
             });	
         });
@@ -22,10 +22,10 @@
     //-->
 </script>
 <div class="">
-    <h3><?php echo __("CON_video_list")?></h3>
+    <h3>Video menu</h3>
     <?php $this->load->view("admin/admin_menu_video");?>				
     <p>&nbsp;	</p>
-    <h3><?php echo __("CON_list_view")?></h3>
+    <h3><?php echo __("CF_admin_vid_list")?></h3>
 
     <label><?php echo __("CF_cate_vid")?></label>
     <?php echo  form_dropdown('video_cate', dropdown_data($selected_cate_setting),$selected_cate, 'id="vid_cate" class="short"');?>	
@@ -34,29 +34,34 @@
         <tr>
             <th width="65"><?php echo __("CF_action")?></th>	        
             <th width="85"><?php echo __("CF_pre")?></th>	
-            <th width="157"><?php echo __("CF_date")?></th>
-            <th><?php echo __("CF_title")?></th>
-            <th width="157"><?php echo __("CF_user_name")?></th>
-            <th width="40"><?php echo __("CF_viewed")?></th>	
+            <th width="90"><?php echo __("CF_date")?></th>
+            <th width="110"><?php echo __("CF_one_speaker")?></th>
+			<th width="150"><?php echo __("CF_title")?></th>   
+			<th><?php echo __("CF_des")?></th>  
+			<th width="10"><?php echo __("CF_approved")?></th>  			
+            <th width="30"><?php echo __("CF_viewed")?></th>	
         </tr>
         <?php foreach ($query as $row):?>
         <?php 
-            $user_name=$row['Name'].' '.$row['first_name'];
+            $user_name=$row['first_name'].' '.$row['name'];
             $preview_img=base_url().thumbs.'/'.$row['shash'];
             $upload_date=mdate("%Y-%m-%d", $row['date']);
+			$appr = ($row['approved']==1)?__("CF_yes"):__("CF_No");
         ?>
             <tr>
                 <td>&nbsp;<a href="<?php echo site_url('admin/edit_video_conference/'.$row['vid_id'])?>"><?php echo __("CF_edit")?></a>&nbsp;|&nbsp;<a href="<?php echo site_url('admin/delete_video_conference/'.$row['vid_id'])?>" onclick="javascript:return confirm('<?php echo __("CF_mess_delete")?>')"><?php echo ucfirst(__("CF_del"))?></a>&nbsp;</td>
                 <td><img src="<?php echo $preview_img?>" width="81" height="52" alt=""> </td>
-                <td><?php echo $upload_date ?></td>
-                <td><?php echo $row['title']?></td>
-                <td><?php echo $user_name?></td>	
-                <td><?php echo $row['viewed']?></td>
+                <td align="center"><?php echo $upload_date ?></td>
+                <td><?php echo $user_name?></td>
+				<td><?php echo $row['title']?></td>                	
+				<td><?php echo word_limiter($row['description'],15)?></td>
+				<td align="center"><?php echo $appr?></td> 
+                <td align="center"><?php echo $row['viewed']?></td>
             </tr>
 
             <?php endforeach ?>
         <tr>
-            <td colspan="6" height="50" valign="midle">				
+            <td colspan="8" height="50" valign="midle">				
                 <ul id="pagination">
                     <?php echo $pagination?>
                 </ul>
