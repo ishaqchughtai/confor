@@ -36,7 +36,7 @@
                         <?php echo form_error('description')?>
                     </p>
                     <p>
-					<label>Category</label>
+					<label><?php echo __("CF_cate_vid")?></label>
 					<?php echo  form_dropdown('video_cate', dropdown_data($selected_cate_setting),$selected_cate, 'id="vid_cate" class="short"');?>			
                         <a href="#"><?php echo __("CF_cate_man")?></a>
                     </p>
