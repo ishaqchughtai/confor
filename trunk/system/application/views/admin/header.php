@@ -22,7 +22,7 @@
 
 	<div class="right">
 
-		<a href="#" class="rss">Subscribe to RSS</a>
+		<a href="#" class="rss"><?php echo __("CF_subscribe")?></a>
 
 	</div>
 
