@@ -91,24 +91,33 @@
         {
           $to = '';
           $name_speaker = '';
-		  $query_speaker = $this->MUser->get_by_id($Ticket);
-          if ($query_speaker->num_rows() == 1) 
+    	$get_ticket = $this->Mticket->show_ticket_by_id($Ticket);
+    
+          if (count($get_ticket) == 1) 
           {
-            $row = $query_speaker->row();
-            $to = $row->email;
-            $name_speaker = $row->name;
+            	//$get_ticket = row();
+		   //$query_speaker = $this->MUser->get_by_id($get_ticket['Speaker']);//
+		   $get_ticket = $get_ticket[0];
+   $query_speaker = $this->MUser->get_by_id($get_ticket['Speaker']);//
+		   if($query_speaker->num_rows() == 1)
+		   {
+		    $row = $query_speaker->row();
+		    $to = $row->email;
+		    $name_speaker = $row->name;
+		   }
           }
 
           if($to!='')
           {
             $from = 'admin@conferences-formations.com';
             //$name_from = 'admin@conferences-formations.com';
-			$name_from = '';
+	    $name_from = '';
             $content = sprintf(__('CON_ticket_content_email_to_speaker'),$name_speaker,$Title,$Message);
-            //$query_speaker = $this->MUser->get_speaker_for_login($email, $password);
 
             $subject=__('CON_ticket_title_email').$this->input->post('title');
+            //echo $from.'-'.$name_from.'-'.$to.'-'.$subject.'-'.$content;
             $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);    
+            //var_dump($this->send_mail->send('text',$from , $name_from, $to, $subject, $content));
           }                    
 
           $this->Mticket->update_ticket_by_admin($Ticket,$Is_answered);
