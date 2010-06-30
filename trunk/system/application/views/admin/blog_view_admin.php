@@ -16,7 +16,7 @@
         <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title)?>#comments" class="comments_balloon"><?php echo $countcomment ?></a>
         <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="610" height="169" alt="Confor.ca" /></p>
         <p><?php echo _substr($text,200)?></p>
-        <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title)?>" class="read_more">Continue Reading</a>
+        <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title)?>" class="read_more"><?php echo __("CF_continue")?></a>
         <?php }?>
       </div>
       <!-- /.content_item -->
@@ -49,7 +49,7 @@
         <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="202" height="90" alt="Confor.ca" class="alignleft" /></p>
         <?php echo _substr($text,200)?><br/>
         <br/>
-        <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>" class="read_more">Continue Reading</a> </div>
+        <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
       <?php }?>
       <!-- /.content_item -->
       <ul id="pagination">
