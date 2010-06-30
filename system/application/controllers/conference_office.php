@@ -30,7 +30,7 @@
             $config['prev_link'] = '< Previous';
             $config['last_link'] = 'Last >>';
             $config['first_link'] = '<< First';
-
+            
             $this->pagination->initialize($config);
             $this->_data['conference_list'] = $this->Mcoffice->list_conference_office($this->uri->segment(3),$config['per_page']);
             $this->_data['pagination'] = $this->pagination->create_links();                

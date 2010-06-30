@@ -38,5 +38,21 @@
                 return FALSE;
             }                                
         }
+        function is_key_password_exists($key_password)
+        {        
+            $this->db->select("users.tempPassword");            
+            $this->db->from('users');           
+            $this->db->where('tempPassword', $key_password);            
+            $this->db->limit(1);    
+            $query = $this->db->get();
+            if ($query->num_rows()>0) 
+            {
+                return TRUE;
+            }
+            else 
+            {
+                return FALSE;
+            }                                
+        }
     }
 ?>
