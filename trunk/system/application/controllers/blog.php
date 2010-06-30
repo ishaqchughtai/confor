@@ -63,7 +63,7 @@ class Blog extends Frontend_controller {
         } 
     }		
 
-    function blog_content($author,$title)
+    function blog_content($author='',$title='')
     {                 	
         $this->_data['path'][] = array(
         'name' => $title,
@@ -91,7 +91,7 @@ class Blog extends Frontend_controller {
 
     }	
 
-    function blog_content_admin($author, $title)
+    function blog_content_admin($author='', $title='')
     {
         if($this->session->userdata('admin')==FALSE)
         {
@@ -204,8 +204,7 @@ class Blog extends Frontend_controller {
             $this->pagination->initialize($config);
             $this->_data['query'] = $this->Mblog->get_all_blog($this->uri->segment(3),$config['per_page']);
             $this->_data['pagination'] = $this->pagination->create_links();
-            $this->_data['query_most_blog'] = $this->Mblog->get_most_blog();
-            $this->_data['page_title'] = 'Blog Confor';                               
+            $this->_data['query_most_blog'] = $this->Mblog->get_most_blog();                               
             $this->_load_view('admin/blog_view_admin'); 
         }
     }     
@@ -228,17 +227,22 @@ class Blog extends Frontend_controller {
     }
 
     //Get Blog
-    function get_blog($id)
+    function get_blog($id='')
     {
-        if($this->session->userdata('admin')=="")
+        if($id==NULL)
         {
-            redirect(site_url("admin"));
-        }
-        else
-        {          
-            $this->_data['query'] = $this->Mblog->get_blog_by_id($id);
-            $this->_data['page_title'] = 'Blog Confor';
-            $this->_load_view('admin/edit_blog_admin');
+            $this->blog_list();
+        }else
+        {
+            if($this->session->userdata('admin')=="")
+            {
+                redirect(site_url("admin"));
+            }
+            else
+            {          
+                $this->_data['query'] = $this->Mblog->get_blog_by_id($id);
+                $this->_load_view('admin/edit_blog_admin');
+            }   
         }
     }
 
@@ -251,7 +255,7 @@ class Blog extends Frontend_controller {
         }
         else
         {
-            $this->_data['page_title'] = 'Blog Confor';                     
+
             if($this->input->post('btnsubmit'))
             {
                 $this->form_validation->set_rules('txtTitle','Title','trim|required|callback_title_check|max_length[50]');
@@ -325,43 +329,50 @@ class Blog extends Frontend_controller {
     }
 
     // Edit Blog
-    function edit_blog_submit($id)
+    function edit_blog_submit($id='')
     {
-        if($this->session->userdata('admin')==FALSE)
+        if($id==NULL)
         {
-            redirect(site_url("admin"));
-        }
-        else
-        {                    
-            $this->form_validation->set_rules('txtTitle','Title','trim|required|max_length[50]');
-            $this->form_validation->set_rules('txtSubject','Subject','trim|required|max_length[50]');
-            $this->form_validation->set_rules('txtKeywords','Keywords','trim|required|callback_keyword_check');
-            $this->form_validation->set_rules('txtBody','Text','required|max_length[500]');
-            $this->form_validation->set_rules('txtLink','Link','required');
-            $this->form_validation->set_rules('about','About','required');
-            $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
-            if($this->form_validation->run()==FALSE)
+            $this->blog_list();   
+        }else
+        {
+            if($this->session->userdata('admin')==FALSE)
             {
-                $this->get_blog($id);
-            }else
-            {
-                $Author=$this->session->userdata('admin_id');
-                $FirstName = $this->session->userdata('admin_name');
-                $datestring = "%Y-%m-%d";
-                $time = time();
-                $Date=mdate($datestring,$time);
-                $Title=$this->input->post('txtTitle');
-                $Title=quotes_to_entities($Title);                                          
-                $Subject=$this->input->post('txtSubject');
-                $Keywords=$this->input->post('txtKeywords');
-                $Text=$this->input->post('txtBody');
-                $Link=$this->input->post('txtLink');
-                $about=$this->input->post('about');
-                $this->_data['page_title'] = $title; 
-                $data = $this->Mblog->edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$Link,$about);
-                redirect('blog/blog_content_admin/'.$FirstName.'/'.$Title);  
+                redirect(site_url("admin"));
             }
+            else
+            {                    
+                $this->form_validation->set_rules('txtTitle','Title','trim|required|max_length[50]');
+                $this->form_validation->set_rules('txtSubject','Subject','trim|required|max_length[50]');
+                $this->form_validation->set_rules('txtKeywords','Keywords','trim|required|callback_keyword_check');
+                $this->form_validation->set_rules('txtBody','Text','required|max_length[500]');
+                $this->form_validation->set_rules('txtLink','Link','required');
+                $this->form_validation->set_rules('about','About','required');
+                $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+                if($this->form_validation->run()==FALSE)
+                {
+                    $this->get_blog($id='');
+                }else
+                {
+                    $Author=$this->session->userdata('admin_id');
+                    $FirstName = $this->session->userdata('admin_name');
+                    $datestring = "%Y-%m-%d";
+                    $time = time();
+                    $Date=mdate($datestring,$time);
+                    $Title=$this->input->post('txtTitle');
+                    $Title=quotes_to_entities($Title);                                          
+                    $Subject=$this->input->post('txtSubject');
+                    $Keywords=$this->input->post('txtKeywords');
+                    $Text=$this->input->post('txtBody');
+                    $Link=$this->input->post('txtLink');
+                    $about=$this->input->post('about');
+                    $this->_data['page_title'] = $Title; 
+                    $data = $this->Mblog->edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$Link,$about);
+                    redirect('blog/blog_content_admin/'.$FirstName.'/'.$Title);  
+                }
+            }            
         }
+
     }
     //Title check
     function title_check($Title)
@@ -427,7 +438,7 @@ class Blog extends Frontend_controller {
         }
 
     }	
-    function search_keyword($Keywords)
+    function search_keyword($Keywords='')
     {
         $config['base_url'] = base_url().'index.php/blog/search/';
         $config['total_rows'] = $this->Mblog->count_record($Keywords);
@@ -466,8 +477,7 @@ class Blog extends Frontend_controller {
             redirect(site_url("admin"));
         }
         else
-        {
-            $this->_data['page_title'] = 'Blog Confor';  
+        {              
             $Status=1;
             $CountComment=$countcommenttemp+1;                                                            
             $data = $this->Mblog->update_comment($id,$Status,$CountComment,$idblog);
