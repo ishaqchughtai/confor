@@ -29,15 +29,10 @@
                 {
                     if ( $this->MUser->is_email_exists($Email))
                     {
-                        $temppass = random_string('alnum', 20);
-                        
-                        $datestring = "%Y-%m-%d";
-                        $time = time();
-                        $Date=mdate($datestring,$time);
-                        $Date = random_string('alnum', 30);
-                        $temppass1 = $temppass.$Date;
-                        $temppass1 = random_string('alnum', 50);
-                        if($this->Mforgotpassword->update_temp_pass($temppass1,$Email)==TRUE)
+                        $temppass = random_string('alnum', 200);
+                        $temppass = base_url().'forgot_password/change_pass/'.$temppass ;
+                        $temppass_encode = md5($temppass);
+                        if($this->Mforgotpassword->update_temp_pass($temppass_encode ,$Email)==TRUE)
                         {
                             $from = 'admin@conferences-formations.com';
                             $name_from = 'admin@conferences-formations.com';
@@ -76,58 +71,65 @@
             }
             else
             {
-                if($this->input->post('submit'))
+                $key_password = base_url().'forgot_password/change_pass/'.$key_password ;
+                $key_password = md5($key_password);
+                if($this->Mforgotpassword->is_key_password_exists($key_password)==TRUE)
                 {
-                    $this->form_validation->set_rules('username',__('CON_user_name_label'),'trim|required');
-                    $this->form_validation->set_rules('email',__('CON_user_email_label'),'trim|required');
-                    $this->form_validation->set_rules('new_password',__('CON_new_password_label'),'trim|required');
-                    $this->form_validation->set_rules('passconf',__('CON_retype_new_password_label'),'trim|required');
-                    $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
-
-                    $username=$this->input->post('username'); 
-                    $email=$this->input->post('email'); 
-                    $new_password=$this->input->post('new_password'); 
-                    $passconf=$this->input->post('passconf');                 
-                    if($this->form_validation->run()==FALSE)
+                    if($this->input->post('submit'))
                     {
-                        $this->_load_view('speaker/form_change_pw_forgot'); 
+                        $this->form_validation->set_rules('username',__('CON_user_name_label'),'trim|required');
+                        $this->form_validation->set_rules('email',__('CON_user_email_label'),'trim|required');
+                        $this->form_validation->set_rules('new_password',__('CON_new_password_label'),'trim|required');
+                        $this->form_validation->set_rules('passconf',__('CON_retype_new_password_label'),'trim|required');
+                        $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+
+                        $username=$this->input->post('username'); 
+                        $email=$this->input->post('email'); 
+                        $new_password=$this->input->post('new_password'); 
+                        $passconf=$this->input->post('passconf');                 
+                        if($this->form_validation->run()==FALSE)
+                        {
+                            $this->_load_view('speaker/form_change_pw_forgot'); 
+                        }
+                        else
+                        {
+                            if($new_password == $passconf)
+                            {
+                                if ($this->Mforgotpassword->is_data_exists($username,$email,$key_password)==TRUE)
+                                {
+                                    $passconf = md5($passconf);
+                                    $key_password_new = random_string('alnum', 200);
+                                    $key_password_new = base_url().'forgot_password/change_pass/'.$key_password_new ;
+                                    $key_password_new = md5($key_password_new);
+                                    if($this->Mforgotpassword->update_temp_pass($key_password_new,$email))
+                                    {
+                                        if($this->Mforgotpassword->update_pass($passconf,$username)==TRUE)
+                                        {
+                                            $this->_data['error'] = __('CON_change_password_success');
+                                            $this->_load_view('speaker/form_change_pw_forgot');      
+                                        }    
+                                    }
+                                }else
+                                {
+                                    $this->_data['error'] = 'CON_data_is_not_exists';
+                                    $this->_load_view('speaker/form_change_pw_forgot');                        
+                                }  
+                            }else
+		                {
+		                    $this->_data['error'] = __('CON_confirm_password_same_new_pass') ;
+		                    $this->_load_view('speaker/form_change_pw_forgot');     
+		                }                          
+                        }
                     }
                     else
                     {
-                        if($new_password == $passconf)
-                        {
-                            if ($this->Mforgotpassword->is_data_exists($username,$email,$key_password)==TRUE)
-                            {
-                                $passconf = md5($passconf);
-                                $key_password_new = random_string('alnum', 20);
-                                if($this->Mforgotpassword->update_temp_pass($key_password_new,$email))
-                                {
-                                    if($this->Mforgotpassword->update_pass($passconf,$username)==TRUE)
-                                    {
-                                        $this->_data['error'] = __('CON_change_password_success');
-                                        $this->_load_view('speaker/form_change_pw_forgot');      
-                                    }    
-                                }
-                            }else
-                            {
-                                $this->_data['error'] = 'CON_data_is_not_exists';
-                                $this->_load_view('speaker/form_change_pw_forgot');                        
-                            }       
-                        }else
-                        {
-                            $this->_data['error'] = __('CON_confirm_password_same_new_pass') ;
-                            $this->_load_view('speaker/form_change_pw_forgot');     
-                        }
-
-                    }
-                }
-                else
+                        $this->_load_view('speaker/form_change_pw_forgot'); 
+                    }                        
+                }else
                 {
-                    $this->_load_view('speaker/form_change_pw_forgot'); 
+                    redirect('home/index');     
                 } 
             }
-
-
-        }                 
+        }                   
     }
 ?>
