@@ -12,36 +12,36 @@
 ?>   
               <div class="x2">
 
-                    <h3>Add new video</h3>
+                    <h3><?php echo __("CF_add_vid")?></h3>
 					<?php $this->load->view("admin/admin_menu_video");?>
                     <p>&nbsp;	</p>
-                    <h3>Add video conference </h3> 
+                    <h3><?php echo __("CF_add_vid")?> </h3> 
 					  <?php echo form_open('admin/new_video_conference/');?>
 						
 						<p>
 						<input id="speaker_id" type="hidden" name="speaker" value="<?php echo $speaker_id?>"/>
-						<label for="title">Speaker:</label>
+						<label for="title"><?php echo __("CF_one_speaker")?>:</label>
 						<input id="speaker_email" name="speaker_email" class="short" type="text" value="<?php echo set_value('speaker_email');?>"/>
 						<?php echo form_error('speaker_email')?>
                         </p>
 						
 						<p>
-                        <label for="title">Title:</label>
+                        <label for="title"><?php echo __("CF_title")?>:</label>
                         <input class="medium" name="title" id="title" value="<?php echo set_value('title');?>"/>
                         <?php echo form_error('title')?>
                     </p>
                     <p>
-                        <label for="description">Description:</label>
+                        <label for="description"><?php echo __("CF_des")?>:</label>
                         <textarea name="description" id="description" rows="4" cols=""><?php echo set_value('description');?></textarea>
                         <?php echo form_error('description')?>
                     </p>
                     <p>
 					<label>Category</label>
 					<?php echo  form_dropdown('video_cate', dropdown_data($selected_cate_setting),$selected_cate, 'id="vid_cate" class="short"');?>			
-                        <a href="#">Category Management</a>
+                        <a href="#"><?php echo __("CF_cate_man")?></a>
                     </p>
                     <p>
-                        <label for="keywords">Keywords:</label>
+                        <label for="keywords"><?php echo __("CF_key")?>:</label>
                         <input class="medium" name="keywords" id="keywords" value="<?php echo set_value('keywords');?>"/>
                         <?php echo form_error('keywords')?>
                     </p>
@@ -52,7 +52,7 @@
         					<?php endif?>
                     </p>
                     <p>
-                        <input name="submit" type="submit" class="submit" value="ADD" />
+                        <input name="submit" type="submit" class="submit" value="<?php echo __("CF_add")?>" />
                     </p>
 					<?php echo form_close()?>	
                    </div>				   				   
