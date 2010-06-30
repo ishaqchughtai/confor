@@ -5,7 +5,7 @@
 				
 					<h3><a href="<?php echo site_url('home/play').'/'.$rows['ID']?>"><?php echo $rows['Title'];?></a></h3>
 					
-					<h5>By <?php echo $rows['speaker_name']?> in : 
+					<h5><?php echo __("CF_by")?> <?php echo $rows['speaker_name']?> <?php echo __("CF_in")?> : 
                     <?php for($i=0;$i<count($keyword);$i++){?>
                       <a href="#"><?php echo $keyword[$i]?></a>
                       <?php if ($i<count($keyword)-1) echo ','?>
@@ -27,7 +27,7 @@
 					<?php echo $rows['Description'];?>
 					</p>
 					
-					<a href="<?php echo site_url('home/play').'/'.$rows['ID']?>" class="read_more">View</a>
+					<a href="<?php echo site_url('home/play').'/'.$rows['ID']?>" class="read_more">[8:59:16 SA] yugi3000: <?php echo ucfirst(__("CF_views"))?></a>
 					
 				</div>		  
 				
