@@ -44,6 +44,8 @@ $lang['CON_your_email'] = 'Your Email';
 $lang['CON_your_meesage'] = 'Your Message';
 $lang['CON_your_contact_mail'] = 'Contact from ';
 $lang['CON_contact_title'] = 'CONTACT';
+$lang['CON_contact_successfully'] = 'Contact send successfully';
+$lang['CON_contact_error'] = 'Contact can not send. Please try again';
 $lang['CON_contact_question'] = 'Leo quam tincidunt velit?';
 $lang['CON_contact_condition'] = 'Curabitur viverra, ante non pulvinar pellentesque, leo quam tincidunt velit, quis eleifend erat orci eu orci. Proin ac eros nec dolor sodales pulvinar sit amet nec velit. Praesent tellus diam, luctus in.';
 

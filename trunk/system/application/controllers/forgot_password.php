@@ -47,7 +47,7 @@
                             //$content=$this->input->post('message');
                             
                             $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);
-                            redirect(base_url().'/forgot_password/send_success');
+                            redirect(site_url("forgot_password/send_success"));
                             
                         }
                     }else

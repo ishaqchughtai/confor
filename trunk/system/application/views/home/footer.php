@@ -37,7 +37,7 @@
 					
 						<li><a href="#"><?php echo __("CF_email_form")?></a></li>
 					
-						<li><a href="<?php echo site_url("home/contact")?>"><?php echo __("CF_email")?></a></li>
+						<li><a href="<?php echo site_url("contact")?>"><?php echo __("CF_email")?></a></li>
 					
 						
 					
@@ -78,7 +78,7 @@
                 <a href="<?php echo site_url('home/play/'.$ramdomvideo[$i]['vid_id'])?>">
                 <img src="<?php echo base_url().'thumbs/'.$ramdomvideo[$i]['shash']?>" width="81" height="52" alt="flickr">
                 </a>                            
-                <!-- /.content .top_box_block -->
+                <!-- /.content .top_box_block --->
             <?php endfor;?>
 				</div>
 				<!-- /#footer_column_4 -->
@@ -106,7 +106,7 @@
 			
 				<li><a href="<?php echo site_url("shop") ?>"><?php echo __("CF_shop")?></a></li>
                 
-                <li><a href="<?php echo site_url("home/contact")?>"><?php echo __("CF_contact")?></a></li>
+                <li><a href="<?php echo site_url("contact")?>"><?php echo __("CF_contact")?></a></li>
 			
          <?php if($this->session->userdata('admin')): ?>        
         <li><a href="<?php echo site_url("admin") ?>"><?php echo __("CF_setting")?></a></li>

@@ -8,7 +8,7 @@
     <?php if(isset($error)):?>
         <p class="not_info medium"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
         <?php endif;?> 
-    <form id="contactform" action="<?php echo site_url('home/contact/send_contact')?>" method="post" enctype="multipart/form-data" class="global">
+    <form id="contactform" action="<?php echo site_url('contact/send_contact')?>" method="post" enctype="multipart/form-data" class="global">
 
         <p>
             <?php echo form_error('name');?> 

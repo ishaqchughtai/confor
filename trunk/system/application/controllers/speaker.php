@@ -12,7 +12,6 @@ class Speaker extends Speaker_controller
 	
 	function Speaker()	{
 		  parent::Speaker_controller();
-		  $this->load->model('MSpeaker');
 		  $this->load->helper(array('date', 'JSON'));		  
 	}	  
 	

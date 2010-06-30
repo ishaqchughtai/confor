@@ -23,47 +23,7 @@ class Home extends Frontend_controller {
         $this->_load_view('home/index');
     }
 
-    function contact()
-    {		
-        $this->_data['path'][] = array(
-        'name' => __("CF_contact"),
-        'link' => site_url("home/contact")
-        );
-        $this->_data['page_title'] = 'Contact us';
-        $this->form_validation->set_rules('name','Name','required');
-        $this->form_validation->set_rules('email','Email','required|valid_email');
-        $this->form_validation->set_rules('message','Message','required');
-        $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>'); 
-        if($this->form_validation->run()==FALSE)
-        {
-            $this->_load_view('home/contact');    
-        }else
-        {
-
-            $name_from=$this->input->post('name');
-            $from=$this->input->post('email');
-            $content=$this->input->post('message');
-            $to='admin@conferences-formations.com';
-            $subject='Contact message from '.$name_from;
-
-            $this->email->clear();
-
-            $config['protocol'] = 'sendmail';
-            $config['mailpath'] = '/usr/sbin/sendmail';
-            $config['charset'] = 'utf-8';
-            $config['wordwrap'] = TRUE;
-            $config['validate'] =TRUE;
-            $this->email->initialize($config);
-
-            $this->email->from($from, $name_from);
-            $this->email->to($to);
-            $this->email->subject($subject);
-            $this->email->message($content);    
-            $this->email->send();
-            $this->_data['error']='Contact send successfully';
-            $this->_load_view('home/contact');
-        }
-    }
+    
 
     function login() 
     {

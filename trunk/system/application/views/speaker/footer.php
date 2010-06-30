@@ -16,7 +16,7 @@
             
                 <li><a href="<?php echo site_url("shop") ?>"><?php echo __("CF_shop")?></a></li>
                 
-                <li><a href="<?php echo site_url("home/contact")?>"><?php echo __("CF_contact")?></a></li>
+                <li><a href="<?php echo site_url("contact")?>"><?php echo __("CF_contact")?></a></li>
             
          <?php if($this->session->userdata('admin')): ?>        
         <li><a href="<?php echo site_url("admin") ?>"><?php echo __("CF_setting")?></a></li>

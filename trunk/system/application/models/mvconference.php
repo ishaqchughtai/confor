@@ -82,24 +82,8 @@
         }
         function delete_video($id)
         {
-			$this->db->select('videos.vhash, videos.shash');
             $this->db->where('vid_id', $id);
-			$this->db->limit(1);
-			$this->db->from('videos');	
-			$query = $this->db->get();		
-			if ($query->num_rows()<1) 
-			{
-				return FALSE;
-			}
-			else 
-			{
-				$row = $query->row();
-				$ret['vhash'] = $row->vhash;
-				$ret['shash'] = $row->shash;
-				$this->db->where('vid_id', $id);
-				$this->db->delete('videos');
-				return $ret;
-			}							            
+            $this->db->delete('videos');
         }
         function get_conferenceid($mem_id)
         {

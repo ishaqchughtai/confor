@@ -1,6 +1,9 @@
+<script type="text/javascript" src="<?php echo base_url();?>SimpleRatings/jQuery/jquery-1.4.2.min.js"></script>     
+<?php require 'SimpleRatings/rSystem.php';  ?>
 				<?php foreach($your_vid as $rows):?>			  
 			    <?php $keyword = explode(" ", $rows['tags']);?>
                 <?php $speaker_id = $rows['mem_id']?>
+                <?php $vid_id = $rows['vid_id']?>
 				<div class="content_item">
 				
 					<h3><a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><?php echo $rows['title'];?></a></h3>
@@ -14,12 +17,8 @@
                       
                      // <?php echo mdate('%F %j%S %Y', $rows['date'])?></h5>
 					
-					<div class="rate_balloon"><img src="images/rElements.png" style="border:none" alt="rate" />
-					<img src="images/rElements.png" style="border:none" alt="rate" />
-					<img src="images/rElements.png" style="border:none" alt="rate" />
-					<img src="images/rElements_grey.png" style="border:none" alt="rate" />
-					<img src="images/rElements_grey.png" style="border:none" alt="rate" />
-					</div>
+					 <div class="rate_balloon"><?php $SimpleRatings->create($vid_id);?>  
+        </div>
 					
 					<p>
 					<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="202" height="90" alt="" class="alignleft" /></a>
