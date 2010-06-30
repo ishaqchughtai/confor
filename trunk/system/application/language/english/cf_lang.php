@@ -9,6 +9,7 @@ $lang['CF_blog'] = 'Blog';
 $lang['CF_contact'] = 'Contact';
 $lang['CF_login'] = 'Log in';
 $lang['CF_subscribe'] = 'Subscribe to RSS';
+$lang['CF_you_here'] = 'Your are here';
 
 //all form
 $lang['CF_search'] = 'Search';
@@ -47,6 +48,7 @@ $lang['CF_continue'] = 'Continue Reading';
 
 //footer and comment blog
 $lang['CF_mail'] = 'MAIL';
+$lang['CF_not_pub'] = 'Will not be published?';
 
 //archives,add new showroom image
 $lang['CF_speaker'] = 'Speakers';
@@ -66,6 +68,7 @@ $lang['CF_user_name'] = 'USER NAME';
 $lang['CF_by'] = 'By';
 $lang['CF_in'] = 'in';
 $lang['CF_views'] = 'views';
+$lang['CF_here'] = 'here';
 
 //blog
 $lang['CF_has_written'] = 'has written';
@@ -117,6 +120,10 @@ $lang['CF_mess_add_event'] = 'You have added an event successfully! Please wait 
 $lang['CF_mess_no_search'] = 'There are no results for your search.';
 //message when click button delete
 $lang['CF_mess_delete'] = 'Do you really wish to delete?';
+//message when has a error
+$lang['CF_error_occurred'] = 'An error has been occurred';
+//message when need update player
+$lang['CF_update_player'] = 'Please update your flash player';
 
 //------------------------------------------------------------------
 
@@ -179,10 +186,26 @@ $lang['CF_list_tic'] = 'List Tickets';
 	$lang['CF_open_tic'] = 'Open Tickets';
 	$lang['CF_close_tic'] = 'Close Tickets';
 $lang['CF_add_tic'] = 'Add new ticket';
+	$lang['CF_ticket_title'] = 'Title Page';
+	$lang['CF_ticket_status'] = 'Status';
+	$lang['CF_ticket_question'] = 'Ticket Question';
+	$lang['CF_ticket_condition'] = 'Ticket Condition';
+	$lang['CF_ticket_condition'] = 'Ticket Condition';
+	$lang['CF_ticket_condition'] = 'Ticket Condition';
+	$lang['CF_ticket_condition'] = 'Ticket Condition';
+	$lang['CF_ticket_send_success'] = 'Send Ticket success';
+	$lang['CF_ticket_title_email'] = 'Ticket: ';
+	$lang['CF_ticket_nor'] = 'Normal';
+	$lang['CF_ticket_ur'] = 'Urgent';
+	$lang['CF_ticket_cri'] = 'Critical';
+	$lang['CF_ticket_ask'] = 'Ask for a cameraman team';
+	$lang['CF_ticket_content_email_to_admin'] = 'Dear Administrator!'.chr(13).chr(10).'Your ticket was send by Speaker.'.chr(13).chr(10).'Title: %s'.chr(13).chr(10).'Content: %s.'.chr(13).chr(10).chr(13).chr(10).'Thank your for your attention!';
+	
+	$lang['CF_ticket_content_email_to_speaker'] = 'Dear %s!'.chr(13).chr(10).'Your ticket was send by Administrator.'.chr(13).chr(10).'Title: %s'.chr(13).chr(10).'Content: %s.'.chr(13).chr(10).chr(13).chr(10).'Thank your for your attention!';
 
 //event
 $lang['CF_list_event'] = 'List Events';
-$lang['CF_add_event'] = 'Add new event';
+$lang['CF_add_event'] = 'Add New Event';
 
 //change password
 $lang['CF_text'] = 'Change your password';
@@ -193,29 +216,31 @@ $lang['CF_update'] = 'UPDATE';
 
 
 //Add new contact
-$lang['CF_yr_mes'] = 'Your Message';
-$lang['CF_title_con'] = 'TITLE PAGE';
-$lang['CF_question_con'] = 'TICKET QUESTION';
+$lang['CF_yr_mes'] = 'YOUR MESSAGE';
+$lang['CF_yr_email'] = 'YOUR EMAIL';
+$lang['CF_yr_name'] = 'YOUR NAME';
+
 
 
 //------------------------------------------------------------------
 //HOME FRONTEND
 //------------------------------------------------------------------
 $lang['CF_top_video'] = 'Top Video';
+$lang['CF_search_video'] = 'Search result for';
 
 
 //------------------------------------------------------------------
 //EVENT
 //------------------------------------------------------------------
 $lang['CF_add_new'] = 'ADD NEW';
+$lang['CF_edit_event'] = 'Edit Event';
 
 //------------------------------------------------------------------
 //BLOG
-$lang['CF_pop_post'] = 'POPULAR POST';
-$lang['CF_about_au'] = 'ABOUT THE AUTHOR';
-$lang['CF_pop_post'] = 'POPULAR POST';
-$lang['CF_leave_cm'] = 'LEAVE A COMMENT';
-$lang['CF_cm'] = 'COMMENT';
+$lang['CF_about_au'] = 'About the author';
+$lang['CF_pop_post'] = 'Popular Posts';
+$lang['CF_leave_cm'] = 'Leave a comment';
+$lang['CF_cm'] = 'comments';
 $lang['CF_site_web'] = 'SITE WEB';
 $lang['CF_mess'] = 'MESSAGE';
 $lang['CF_warning'] = 'PLEASE KEEP YOUR COMMENTS CLEAN.MAX 400 CHARS';
@@ -275,6 +300,7 @@ $lang['CF_admin_new_vid'] = 'New Video Conference';
 	$lang['CF_cate_man'] = 'Category Management';
 
 //event
+$lang['CF_event_search'] = 'Search through all post';
 $lang['CF_event_con'] = 'Event Control';
 $lang['CF_admin_event_list'] = 'Event List';
 $lang['CF_admin_new_event'] = 'New Event';
@@ -327,7 +353,7 @@ $lang['CF_image_link'] = 'IMAGE LINK';
 /* Location: ./system/application/language/english/confor_lang.php */
 
 //Keys added by Dao Van Quyet
-$lang['CF_add_new_adv'] = 'Add New Advertisement';
+/*$lang['CF_add_new_adv'] = 'Add New Advertisement';
 $lang['CF_advertiser_name'] = 'Advertiser Name';
 $lang['CF_advertiser_email'] = 'Advertiser Email';
 $lang['CF_your_name'] = 'Your Name';
@@ -345,7 +371,7 @@ $lang['CF_vid_update'] = 'Video conference update';
 $lang['CF_approved'] = 'Approved';
 $lang['CF_yes'] = 'Yes';
 $lang['CF_No'] = 'No';
-$lang['CF_edit_event'] = 'Edit Event';
+$lang['CF_edit_event'] = 'Edit Event';*/
 
 
 

@@ -22,7 +22,7 @@
 					    //$date = "%F %j%S %Y";
 						//$time = time();
 					?>
-					<h5>By <?php echo $speaker?> in : 
+					<h5><?php echo __("CF_by")?> <?php echo $speaker?> <?php echo __("CF_in")?> : 
 					<?php for($i=0;$i<count($keyword);$i++){?>
           <a href="#"><?php echo $keyword[$i]?></a>
           <?php if ($i<count($keyword)-1) echo ','?>
@@ -30,7 +30,7 @@
 		  			<?php echo $date;?></h5>
 					<p> <?php echo _substr($description,200)?></p>
 					
-					<a href="<?php echo site_url('event/event_content/'.$id)?>" class="read_more">Continue Reading</a>
+					<a href="<?php echo site_url('event/event_content/'.$id)?>" class="read_more"><?php echo __("CF_continue")?></a>
 					</div>	
 					<?php else:?>
 					<?php endif;?>
@@ -38,7 +38,7 @@
 				}
 				?>
 <?php else:?>
-<p class="not_warning "><span class="img"></span>There isn't event in this day<span class="close"></span></p>
+<p class="not_warning "><span class="img"></span><?php echo __("CF_mess_no_event")?><span class="close"></span></p>
 <?php endif;?>
 				
 				</div>
@@ -51,7 +51,7 @@
 			if ($this->session->userdata('speaker_id')):?>
 			<p>
 						
-				<input name="btnadd" type="submit" class="submit" value="Add New" />
+				<input name="btnadd" type="submit" class="submit" value="<?php echo __("CF_add_new")?>" />
 						
 			</p>
 			

@@ -1,8 +1,8 @@
 </div>   
     <!-- /#content #left - left side of main content -->
     <div id="right">
-      <h3>Search</h3>
-      <h5>Search through all posts</h5>
+      <h3><?php echo __("CF_search")?></h3>
+      <h5><?php echo __("CF_blog_search")?></h5>
       <div class="sidebar_item" id="search">
         <form action="<?php echo site_url('blog/search')?>" method="post">
           <input name="search_field_blog" type="text" class="search_field">
@@ -16,9 +16,9 @@
       </div>
       <div class="sidebar_item">
         <ul id="tabs">
-          <li>Categories</li>
-          <li>Archives</li>
-          <li>Speakers</li>
+          <li><?php echo __("CF_cate")?></li>
+		  <li><?php echo __("CF_arch")?></li>
+    	  <li><?php echo __("CF_speaker")?></li>
         </ul>
         <!-- /#tabs -->
           <ul id="ctabs">
@@ -47,7 +47,7 @@
                     <li>
                       <ul class="ctabs_content">
                       <?php foreach($top_speaker as $row):?>
-                        <li><a href="<?php echo site_url('video/speaker').'/'.$row['mem_id'].'/'.$page?>"><?php echo $row['first_name'].' '.$row['name']?></a></li>
+                        <li><a href="<?php echo site_url('video/speaker').'/'.$row['mem_id'].'/'.$page?>"><?php echo $row['username']?></a></li>
                       <?php endforeach?>
                       </ul>
                       <!-- /.ctabs_content -->
@@ -58,7 +58,7 @@
       </div>
       <!-- /.sidebar_item tabbed content -->
       <div class="sidebar_item">
-        <h3>Billets Populaires</h3>
+        <h3><?php echo __("CF_pop_post")?></h3>
         <?php $this->load->view('blog/billets_populaires',$side_bar);?>		 
         <!-- /#popular_posts -->
         <ul id="pop_nav">

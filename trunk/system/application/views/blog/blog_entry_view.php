@@ -30,7 +30,7 @@
       </div>
       <!-- /.content_item -->
       <div class="content_item">
-        <h3>About the Author:</h3>
+        <h3><?php echo __("CF_about_au")?></h3>
         <div class="about_author"> <img src="<?php echo base_url().'assets/uploads/image/'.$linktemp?>" width="80" height="80" alt="XemmeX" class="alignleft" />
           <?php
     foreach($query_show_author as $row)
@@ -38,7 +38,7 @@
         $written = $row['written'];
     
 ?>
-          <p><a href="#" class="author_link"><?php echo $author?></a> has written <?php echo $written;?> articles for Confor.ca.</p>
+          <p><a href="#" class="author_link"><?php echo $author?></a> <?php echo __("CF_has_written")?> <?php echo $written;?> <?php echo __("CF_articles_for")?> Confor.ca.</p>
           <?php echo $about?> </div>
         <?php }?>
       </div>
@@ -46,7 +46,7 @@
       <!-- /.content_item -->
 	  
       <div id="comments" class="content_item">
-        <h3><?php echo $countcommenttemp?> commentaires pour "<a href="#"><?php echo $titletemp?></a>"</h3>
+        <h3><?php echo $countcommenttemp?> <?php echo __("CF_for_comments")?> "<a href="#"><?php echo $titletemp?></a>"</h3>
         <!-- Content -->
         <?php foreach($query_show_comment as $row){                               
                                 $id = $row['ID'];
@@ -66,7 +66,7 @@
               <!-- Date -->
               <span class="time"><?php echo $final_time?></span>
               <!-- Time -->
-              <a href="#comment" class="reply">Reply</a>
+              <a href="#comment" class="reply"><?php echo __("CF_replay")?></a>
               <!-- Reply Link -->
               <br />
               <br />
@@ -83,7 +83,7 @@
 	  
       <!-- /#comments -->
       <div class="content_item" id="comment">
-        <h3> Leave a comment</h3>
+        <h3> <?php echo __("CF_leave_cm")?></h3>
         <form action="<?php echo site_url("blog/add_comment")?>" method="post">
           <p>
             <label>
@@ -92,25 +92,25 @@
             <input type="hidden" name="countcommenttemp" value="<?php echo $countcommenttemp?>" />
             <input type="hidden" name="authortemp" value="<?php echo $authortemp?>" />
             </label>
-            <label for="name">Name*:</label>
+            <label for="name"><?php echo __("CF_name")?>*:</label>
             <input type="text" class="short" id="name" name="name" value="<?php if(isset($_POST['name'])){ echo $_POST['name'] ;}?>"/>
             <?php echo form_error('name'); ?> </p>
           <p>
-            <label for="email">Mail*: <em>Will not be published?</em></label>
+            <label for="email"><?php echo __("CF_mail")?>*: <em><?php echo __("CF_not_pub")?></em></label>
             <input type="text" class="short" id="email" name="email" value="<?php if(isset($_POST['email'])){ echo $_POST['email'] ;}?>" />
             <?php echo form_error('email'); ?> </p>
           <p>
-            <label for="url">Site web:</label>
+            <label for="url"><?php echo __("CF_site_web")?>:</label>
             <input type="text" class="short" id="url" name="url" value="<?php if(isset($_POST['url'])){ echo $_POST['url'] ;}?>"/>
             <?php echo form_error('url'); ?> </p>
           <p>
             
-            <label for="msg">Message*:</label>
+            <label for="msg"><?php echo __("CF_mess")?>*:</label>
             <textarea rows="8" id="msg" cols="" name="msg" value="<?php if(isset($_POST['msg'])){ echo $_POST['msg'] ;}?>"></textarea>
             <?php echo form_error('msg'); ?> </p>
-            <p><label>* Please keep your comments clean. Max 400 chars. </label></p>
+            <p><label>* <?php echo __("CF_warning")?> </label></p>
           <p>
-            <input type="submit" class="submit" value="Submit" name="submit" />
+            <input type="submit" class="submit" value="<?php echo __("CF_submit")?>" name="submit" />
           </p>
         </form>
       </div>

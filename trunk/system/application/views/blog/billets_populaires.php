@@ -22,12 +22,12 @@
                         <img src="<?php echo base_url().'assets/uploads/image/'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
                         <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> comments</a>
+                        <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php else:?>
                         <img src="<?php echo base_url().'assets/uploads/image/'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
                         <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> comments</a>
+                        <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php endif;?>
                 </li>
                 <?php }?>
@@ -56,12 +56,12 @@
                         <img src="<?php echo base_url().'assets/uploads/image/'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
                         <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> comments</a>
+                        <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php else:?>
                         <img src="<?php echo base_url().'assets/uploads/image/'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
                         <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> comments</a>
+                        <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php endif;?>
                 </li>
                 <?php }?>

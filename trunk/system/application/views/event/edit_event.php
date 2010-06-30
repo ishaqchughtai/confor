@@ -12,13 +12,13 @@
 					?>
 				<div class="content_item">
 				
-					<h3>Edit Event</h3>
+					<h3><?php echo __("CF_edit_event")?></h3>
 						<?php
 						echo form_open('event/edit_event/'.$speaker_id.'/'.$id);
 						?>
 						<p>
 						
-							<label for="title">Title:</label>
+							<label for="title"><?php echo __("CF_title")?>:</label>
 							<input class="short" name="title" id="title" value="<?php echo $title?>" />
 							<?php echo form_error('title');?>
 						
@@ -26,7 +26,7 @@
 						
 						<p>
 						
-							<label for="subject">Subject:</label>
+							<label for="subject"><?php echo __("CF_subject")?>:</label>
 							<input class="short" name="subject" id="subject" value="<?php echo $subject?>"/>
 							<?php echo form_error('subject');?>
 						
@@ -34,7 +34,7 @@
 						
 						<p>
 						
-							<label for="keywords">Keywords:</label>
+							<label for="keywords"><?php echo __("CF_key")?>:</label>
 							<input class="short" name="keywords" id="keywords" value="<?php echo $keywords?>" />
 							<?php echo form_error('keywords');?>
 						
@@ -42,7 +42,7 @@
 						
 						<p>
 						
-							<label for="description">Description:</label>
+							<label for="description"><?php echo __("CF_des")?>:</label>
 							<?php 
 									
                                     if ( ! isset($_POST['description']))
@@ -66,8 +66,8 @@
 						
 						<p>
 						
-							<input name="btnedit" type="submit" class="submit" value="Edit" />
-							<input name="btnreset" type="reset" class="reset" value="Reset" />
+							<input name="btnedit" type="submit" class="submit" value="<?php echo __("CF_edit")?>" />
+							<input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />
 						
 						</p>
 					<?php

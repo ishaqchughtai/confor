@@ -2,7 +2,7 @@
 <script type="text/javascript" src="<?php echo base_url();?>SimpleRatings/jQuery/jquery-1.4.2.min.js"></script>     
 <?php require 'SimpleRatings/rSystem.php';  ?>
 <div class="content_item">
-    <h3>Search result for: "<?php echo $keyword?>" </h3>
+    <h3><?php echo __("CF_search_video")?>: "<?php echo $keyword?>" </h3>
 </div>
 <?php foreach($search_results as $rows):?>			  
     <?php $keyword = explode(" ", $rows['tags']);?>
@@ -11,7 +11,7 @@
 
         <h3><a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><?php echo $rows['title'];?></a></h3>
 
-        <h5>By <a href="<?php echo site_url('video/speaker').'/'.$rows['mem_id'].'/'.$page?>"><b><?php echo $rows['username']?></b></a> in : 
+        <h5><?php echo __("CF_by")?> <a href="<?php echo site_url('video/speaker').'/'.$rows['mem_id'].'/'.$page?>"><b><?php echo $rows['username']?></b></a> <?php echo __("CF_in")?> : 
 
             <?php for($i=0;$i<count($keyword);$i++){?>
                 <a href="#"><?php echo $keyword[$i]?></a>
@@ -31,7 +31,7 @@
             <?php echo $rows['description'];?>
         </p>
 
-        <a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>" class="read_more">View</a>
+        <a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>" class="read_more"><?php echo __("CF_view")?></a>
 
     </div>		  
 

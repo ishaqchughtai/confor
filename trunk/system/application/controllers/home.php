@@ -118,12 +118,11 @@ class Home extends Frontend_controller {
     }	 		
 
     function search()
-    {
+    {    
             if($this->input->post('search'))
             {
                 $num_per_page = 5;    
                 $keyword=$this->input->post('search_field');   
-
                 $config['full_tag_open'] = '<li>';        
                 $config['full_tag_close'] = '</li>'; 
                 $config['next_link'] = 'Next >';
