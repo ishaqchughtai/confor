@@ -23,6 +23,7 @@
 							$selected_cate = $row->category;
                             $keywords=$row->tags;
                             $discription=$row->description;
+							$appr = $row->approved;							
                         }
                     ?>
                     <h3> <?php echo __("CF_vid_update")?> </h3>
@@ -52,10 +53,10 @@
                     
                     <p>
                         <label for="approved"><?php echo __("CF_approved")?>:</label>
-                    </p>
+                    </p>					
                     <select name="approved" class="short">
-                        <option value="1" selected="selected"><?php echo __("CF_yes")?></option>
-                        <option value="0"><?php echo __("CF_No")?></option>
+                        <option value="1" <?php if($appr==1) echo 'selected="selected"';?>><?php echo __("CF_yes")?></option>
+                        <option value="0" <?php if($appr==0) echo 'selected="selected"';?>><?php echo __("CF_No")?></option>
                     </select>
                     <p>
                         <label for="name"></label><input type="submit" name="submit" class="submit" value="<?php echo __("CF_update")?>" />
