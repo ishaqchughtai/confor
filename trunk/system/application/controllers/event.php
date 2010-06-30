@@ -34,7 +34,7 @@ class Event extends Frontend_controller {
     $offset = $this->uri->segment(5);
 
     $this->_data['path'][] = array(
-    'name' => "Event",
+    'name' => __("CF_event"),
     'link' => site_url("event/show_event/".$date."/5")
     );
 
@@ -78,6 +78,16 @@ class Event extends Frontend_controller {
   function add()
   {
     //$userData = $this->speaker_lib->is_speaker();
+    $this->_data['path'][] = array(
+    'name' => __("CF_event"),
+    'link' => site_url("event/show_event/".date('Y-m-d')."/5")
+    );
+    
+    $this->_data['path'][] = array(
+    'name' => __("CF_add_event"),
+    'link' => site_url("event/add")
+    );    
+        
     $userData = is_speaker();
     $id = $userData['speaker_id'];
     if($this->input->post('btnsubmit'))
@@ -115,6 +125,16 @@ class Event extends Frontend_controller {
   //Get Event To form
   function get_event($author, $id)
   {
+    $this->_data['path'][] = array(
+    'name' => __("CF_event"),
+    'link' => site_url("event/show_event/".date('Y-m-d')."/5")
+    );
+    
+    $this->_data['path'][] = array(
+    'name' => __("CF_edit_event"),
+    'link' => site_url("event/get_event/".$author."/".$id)
+    );
+    
     $userData = is_speaker();
     $speaker_id= $userData['speaker_id'];	  
 

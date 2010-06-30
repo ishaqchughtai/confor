@@ -16,7 +16,7 @@
 <!-- /.x2 - represents a half windows size div -->
 
 <div class="x2 no_margin">
-    <h3>Speakers Control</h3>
+    <h3><?php echo __("CF_speaker_con")?></h3>
     <ul class="link_conttrol">
         <li><a class="icon_list" href="<?php echo site_url('admin/list_user')?>"><?php echo __("CF_speaker_list")?></a></li>
     </ul>

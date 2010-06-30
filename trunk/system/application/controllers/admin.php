@@ -28,7 +28,7 @@ class Admin extends Admin_controller
 		if($this->session->userdata('admin')==TRUE)
 		{
 			$this->_data['path'][] = array(
-			'name' => __("CON_control_panel"),
+			'name' => __("CF_control_panel"),
 			'link' => site_url("admin")
 			);								
 			$this->_load_view('admin/index_admin'); 

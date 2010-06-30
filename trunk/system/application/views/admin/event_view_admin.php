@@ -13,7 +13,7 @@
 				
 					<h3><a href="<?php echo site_url('event/event_content_admin/'.$id)?>"><?php echo $title?></a></h3>
                     <h5><?php echo $subject ?></h5>
-					<h5>By <?php echo $speaker?> in : 
+					<h5><?php echo __("CF_by")?> <?php echo $speaker?> <?php echo __("CF_in")?> : 
                     <?php for($i=0;$i<count($keyword);$i++){?>
                       <a href="#"><?php echo $keyword[$i]?></a>
                       <?php if ($i<count($keyword)-1) echo ','?>
@@ -22,7 +22,7 @@
                      // <?php echo $date;?></h5>
 					<p> <?php echo _substr($description,200)?></p>
 					
-					<a href="<?php echo site_url('event/event_content_admin/'.$id)?>" class="read_more">Continue Reading</a>
+					<a href="<?php echo site_url('event/event_content_admin/'.$id)?>" class="read_more"><?php echo __("CF_continue")?></a>
 					
 				</div>
 					<?php

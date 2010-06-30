@@ -25,6 +25,11 @@ class Video extends Frontend_controller
 	{
 		//$userData = is_speaker();
 		//$userData = check_membership(array(2,3));
+    $this->_data['path'][] = array(
+        'name' => __("CF_add_vid"),
+        'link' => site_url("video/add_video")
+        );
+        
 		$userData = check_membership();
 		$speaker_id = $userData['speaker_id'];
 		$this->vid_lib->init_uploader();
@@ -103,6 +108,13 @@ class Video extends Frontend_controller
 	//get all video of a speaker
 	function your_video()
 	{
+    
+    $this->_data['path'][] = array(
+        'name' => __("CF_your_vid"),
+        'link' => site_url("")
+        );
+        
+        
 		$userData = is_speaker();		
 		$id = $this->uri->segment(3);
 		$per_page = $this->uri->segment(4);
@@ -127,8 +139,13 @@ class Video extends Frontend_controller
 	}
 
 	//edit video of user
-	function edit_video_conference($speaker,$id)
+	function edit_video_conference($speaker,$id) 
 	{
+    $this->_data['path'][] = array(
+        'name' => __("CF_edit_your_vid"),
+        'link' => site_url("")
+        );
+        
 		$userData = check_membership();
 		$speaker_id = $userData['speaker_id'];
 		if ($speaker_id != $speaker) redirect('/');

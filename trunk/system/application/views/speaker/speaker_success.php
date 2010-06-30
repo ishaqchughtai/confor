@@ -1,1 +1,1 @@
-<p class="not_success"><span class="img"></span>Your profile has been saved!<span class="close"></span></p>
+<p class="not_success"><span class="img"></span><?php echo __("CF_mess_reg")?><span class="close"></span></p>

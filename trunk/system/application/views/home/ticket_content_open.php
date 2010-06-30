@@ -19,23 +19,23 @@
         }
         if($Status==0)
         {
-            $Status_text='Normal'; 
+            $Status_text = __('CF_ticket_nor'); 
         }elseif($Status==1)
         {
-            $Status_text='Urgent';    
+            $Status_text=__('CF_ticket_ur');    
         }elseif($Status==2)
         {
-            $Status_text='Critical';    
+            $Status_text=__('CF_ticket_cri');    
         }elseif($Status==3)
         {
-            $Status_text='Ask for a cameraman team';    
+            $Status_text=__('CF_ticket_ask');    
         }      
     ?>
-    <h3>Title :<?php echo $title?></h3>
+    <h3><?php echo __("CF_title")?> :<?php echo $title?></h3>
 
-    <h4>By : <?php echo $author?></h5>
+    <h4><?php echo __("CF_by")?> : <?php echo $author?></h5>
 
-    <h5>Status : <?php echo $Status_text?></h5>
-    <p>Message :<?php echo $text?></p>
+    <h5><?php echo __("CF_by")?> : <?php echo $Status_text?></h5>
+    <p><?php echo __("CF_mess")?> :<?php echo $text?></p>
     <?php }?>
 </div>

@@ -61,7 +61,7 @@ class Frontend_controller extends MY_controller {
     $this->_data['footer'] = $footer;
 
     $this->_data['path'][0] = array(
-    'name' => __("CON_home"),
+    'name' => __("CF_home"),
     'link' => site_url("/")
     );		
   }
@@ -110,7 +110,7 @@ class Speaker_controller extends MY_controller {
     $this->_data['footer'] = $footer;
 
     $this->_data['path'][0] = array(
-    'name' => __("CON_speaker"),
+    'name' => __("CF_speaker"),
     'link' => site_url("/speaker")
     );				
     $side_bar['page'] = "speaker/sidebar";

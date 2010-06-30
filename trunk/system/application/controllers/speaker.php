@@ -19,7 +19,7 @@ class Speaker extends Speaker_controller
 	function index() {
 		is_speaker();
 		$this->_data['path'][] = array(
-			'name' => __("CON_control_panel"),
+			'name' => __("CF_control_panel"),
 			'link' => site_url("speaker")
 		);		
 		
@@ -45,13 +45,24 @@ class Speaker extends Speaker_controller
 		$this->user_lib->logout();
 	}
 	  	  
-	function edit_profile() {		
+	function edit_profile() {
+  
+  	$this->_data['path'][] = array(
+      'name' => __("CF_edit_admin"),
+      'link' => site_url("speaker/edit_profile")
+    );
+    	
 		$userData = $this->user_lib->is_speaker();
 		$id = $userData['speaker_id'];
 		$this->user_lib->edit_profile($id);		
 	}	
 	
 	function change_password() {
+    $this->_data['path'][] = array(
+      'name' => __("CF_change_pass"),
+      'link' => site_url("speaker/change_password")
+    );
+    
 		$user_data = $this->user_lib->is_speaker();
 		$username = $user_data['username'];
 		$this->user_lib->change_password($username);

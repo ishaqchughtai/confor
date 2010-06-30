@@ -27,7 +27,7 @@
     <p>&nbsp;	</p>
     <h3><?php echo __("CON_list_view")?></h3>
 
-    <label>Category</label>
+    <label><?php echo __("CF_cate_vid")?></label>
     <?php echo  form_dropdown('video_cate', dropdown_data($selected_cate_setting),$selected_cate, 'id="vid_cate" class="short"');?>	
 
     <table border="0" cellpadding="0" cellspacing="1" style="width:100%">
@@ -46,7 +46,7 @@
             $upload_date=mdate("%Y-%m-%d", $row['date']);
         ?>
             <tr>
-                <td>&nbsp;<a href="<?php echo site_url('admin/edit_video_conference/'.$row['vid_id'])?>"><?php echo __("CF_edit")?></a>&nbsp;|&nbsp;<a href="<?php echo site_url('admin/delete_video_conference/'.$row['vid_id'])?>" onclick="javascript:return confirm('<?php echo __("CF_mess_delete")?>')">Del</a>&nbsp;</td>
+                <td>&nbsp;<a href="<?php echo site_url('admin/edit_video_conference/'.$row['vid_id'])?>"><?php echo __("CF_edit")?></a>&nbsp;|&nbsp;<a href="<?php echo site_url('admin/delete_video_conference/'.$row['vid_id'])?>" onclick="javascript:return confirm('<?php echo __("CF_mess_delete")?>')"><?php echo ucfirst(__("CF_del"))?></a>&nbsp;</td>
                 <td><img src="<?php echo $preview_img?>" width="81" height="52" alt=""> </td>
                 <td><?php echo $upload_date ?></td>
                 <td><?php echo $row['title']?></td>

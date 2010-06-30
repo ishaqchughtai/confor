@@ -11,25 +11,25 @@ $selected_cate = isset($video_cate)?$video_cate:1;
 
                  <div class="x2">
 
-                    <h3>Add new video</h3>
+                    <h3><?php echo __("CF_add_vid")?></h3>
 					  <?php echo form_open_multipart('video/add_video');?>
 						
 						<p>
-                        <label for="title">Title:</label>
+                        <label for="title"><?php echo __("CF_title")?>:</label>
                         <input class="medium" name="title" id="title" value="<?php if(isset($_POST['title'])){ echo $_POST['title'];}?>"/>
                         <?php echo form_error('title')?>
                     </p>
                     <p>
-                        <label for="description">Description:</label>
+                        <label for="description"><?php echo __("CF_des")?>:</label>
                         <textarea name="description" id="description" rows="4" cols=""><?php if(isset($_POST['title'])){ echo $_POST['description'];}?></textarea>
                         <?php echo form_error('description')?>
                     </p>
                     <p>
-                        <label for="category">Category:</label>
+                        <label for="category"><?php echo __("CF_cate_vid")?>:</label>
                         <?php echo  form_dropdown('video_cate', dropdown_data($selected_cate_setting),$selected_cate, 'id="vid_cate" class="short"');?>
                     </p>
                     <p>
-                        <label for="keywords">Keywords:</label>
+                        <label for="keywords"><?php echo __("CF_key")?>:</label>
                         <input class="medium" name="keywords" id="keywords" value="<?php if(isset($_POST['keywords'])){ echo $_POST['title'];}?>"/>
                         <?php echo form_error('keywords')?>
                     </p>
@@ -43,10 +43,10 @@ $selected_cate = isset($video_cate)?$video_cate:1;
         					<?php endif?>
                     </p>
 					<p>
-					<a href="<?php echo site_url('ticket/send_ticket_by_speaker')?>">Order a cameraman team</a>
+					<a href="<?php echo site_url('ticket/send_ticket_by_speaker')?>"><?php echo __("CF_order")?></a>
 					</p>
                     <p>
-                        <input name="submit" type="submit" class="submit" value="ADD" />
+                        <input name="submit" type="submit" class="submit" value="<?php echo __("CF_add")?>" />
                     </p>
 					<?php echo form_close()?>	
 			  

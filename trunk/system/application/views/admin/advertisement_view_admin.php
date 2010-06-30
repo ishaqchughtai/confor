@@ -9,7 +9,7 @@
                                 $text_tips = $row['TextTips'];                           
                                 $image_link = $row['ImageLink']; ?>
     <div class="content_item">
-    <h5><?php echo __("CF_adv_date_begin")?>: <?php echo $date_beginning?> \ Date Expiry: <?php echo $date_expiry?></h5>
+    <h5><?php echo __("CF_adv_date_begin")?>: <?php echo $date_beginning?> \ <?php echo __("CF_adv_date_ex")?>: <?php echo $date_expiry?></h5>
     <h5><?php echo __("CF_advertisement_name")?>: <?php echo $advertiser_name?></h5>
     <h5><?php echo __("CF_advertisement_email")?>: <?php echo $advertiser_email?></h5>
     <p><a href="<?php echo $url;?>"><img src="<?php echo base_url().'assets/uploads/adv/'.$image_link ?>" width="200" height="200" /></a><?php echo $text_tips?></p>

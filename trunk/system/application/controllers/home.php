@@ -26,7 +26,7 @@ class Home extends Frontend_controller {
     function contact()
     {		
         $this->_data['path'][] = array(
-        'name' => __("CON_contact"),
+        'name' => __("CF_contact"),
         'link' => site_url("home/contact")
         );
         $this->_data['page_title'] = 'Contact us';
@@ -68,7 +68,7 @@ class Home extends Frontend_controller {
     function login() 
     {
         $this->_data['path'][] = array(
-        'name' => __("CON_login"),
+        'name' => __("CF_login"),
         'link' => site_url("home/login")
         );	
         //$this->load->library('speaker_lib'); 
@@ -79,7 +79,7 @@ class Home extends Frontend_controller {
     function register() 
     {
         $this->_data['path'][] = array(
-        'name' => 'Register',
+        'name' => __("CF_register"),
         'link' => site_url("home/register")
         );	
         //$this->load->library('speaker_lib'); 
@@ -182,6 +182,10 @@ class Home extends Frontend_controller {
 
     function play($id='')
     {
+        $this->_data['path'][] = array(
+        'name' => __("CF_play"),
+        'link' => site_url("home/login")
+        );
         $id=(double)$id;
         if(is_nan($id)==FALSE)
         {

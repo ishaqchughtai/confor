@@ -1,7 +1,7 @@
 <!-- /.content_item -->
 <div id="header_info">
     <div class="left">
-<a href="<?php echo site_url('ticket/open_tickets')?>">Open Tickets <?php echo '('.$query_count_record_open.')'?></a> // <a href="<?php echo site_url('ticket/closed_tickets')?>">Closed Tickets <?php echo '('.$query_count_record_closed.')'?></a>           
+<a href="<?php echo site_url('ticket/open_tickets')?>"><?php echo __("CF_open_tic")?> <?php echo '('.$query_count_record_open.')'?></a> // <a href="<?php echo site_url('ticket/closed_tickets')?>"><?php echo __("CF_close_tic")?> <?php echo '('.$query_count_record_closed.')'?></a>           
     </div>
 </div>
  <?php                     
