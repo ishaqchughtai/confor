@@ -5,13 +5,13 @@
             $admin_id=$this->session->userdata('admin_id');
             $admin_right=(int)$this->session->userdata('right');  
         ?>
-        <h3>Administrator Panel</h3>
+        <h3><?php echo __("CF_admin_panel")?></h3>
         <ul class="link_conttrol">
             <?php if($admin_right==1){?>
-                <li><a class="icon_list" href="<?php echo site_url('admin/list_admin');?>">Administrator List</a></li>
-                <li><a class="icon_add" href="<?php echo site_url('admin/add_new_admin');?>">New administrator</a></li>
+                <li><a class="icon_list" href="<?php echo site_url('admin/list_admin');?>"><?php echo __("CF_admin_list")?></a></li>
+                <li><a class="icon_add" href="<?php echo site_url('admin/add_new_admin');?>"><?php echo __("CF_new_admin")?></a></li>
                 <?php }?>
-            <li><a class="icon_add" href="<?php echo site_url('admin/edit_profile/'.$admin_id);?>">Edit Profile</a></li>
+            <li><a class="icon_add" href="<?php echo site_url('admin/edit_profile/'.$admin_id);?>"><?php echo __("CF_edit_admin")?></a></li>
         </ul>
         <p>&nbsp;</p>
         <?php 
@@ -24,7 +24,7 @@
                 $paypalaccount=$row['PayPalAccount'];
                 $password=$row['Password'];
         }?>
-        <h3>Administrator Data Update</h3>
+        <h3><?php echo __("CF_udpate_admin")?></h3>
         <?php 
         if($admin_right==1)
         {
@@ -38,23 +38,23 @@
         <?php echo $this->validation->error_string; ?>
         <?php echo form_open($link_edit); ?>
 
-        <label for="name">Name:</label>
+        <label for="name"><?php echo __("CF_name")?>:</label>
         <input class="medium" name="txtName" id="name" value="<?php echo $name?>" />
         <?php echo form_error("txtName"); ?>
 
-        <label for="first_name">First Name:</label>
+        <label for="first_name"><?php echo __("CF_first_name")?>:</label>
         <input name="txtFirstName" type="text" value="<?php echo $firstname ?>" size="40" />
         <?php echo form_error("txtFirstName"); ?>
 
-        <label for="email">Email address:</label>
+        <label for="email"><?php echo __("CF_email")?>:</label>
         <input name="txtEmail" type="text" value="<?php echo $email ?>" size="40" />
         <?php echo form_error("txtEmail"); ?>
 
-        <label for="PayPalAccount">PayPalAccount:</label>
+        <label for="PayPalAccount"><?php echo __("CF_paypal")?>:</label>
         <input name="txtpayPayAccount" type="text" value="<?php echo $paypalaccount ?>" size="40" />
         <?php echo form_error("txtpayPayAccount"); ?>
         <label>
-            <input type="submit" name="Submit" value="Submit" size="20" class="submit" />
+            <input type="submit" name="Submit" value="<?php echo __("CF_submit")?>" size="20" class="submit" />
         </label>
         <?php form_close();?> 
     </div>

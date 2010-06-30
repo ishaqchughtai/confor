@@ -16,7 +16,7 @@
           <h3><a href="<?php echo site_url('event/event_content_admin/'.$id)?>"><?php echo $title?></a></h3>
           <h5>By <?php echo $speaker?> in : <a href="#"><?php echo $keyword?></a> // <?php echo $date;?></h5>
           <p> <?php echo _substr($description,200)?></p>
-          <a href="<?php echo site_url('event/event_content_admin/'.$id)?>" class="read_more">Continue Reading</a> </div>
+          <a href="<?php echo site_url('event/event_content_admin/'.$id)?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
         <?php
 				}
 				?>

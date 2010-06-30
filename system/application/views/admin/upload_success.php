@@ -11,7 +11,7 @@
 							
   </ul>
 </div>
-<p align="center"><?php echo anchor('blog/do_upload', 'Upload Another File!'); ?></p>
+<p align="center"><?php echo anchor('blog/do_upload', __("CF_upload_another")); ?></p>
 
 </body>
 </html>

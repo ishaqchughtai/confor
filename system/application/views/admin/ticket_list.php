@@ -24,25 +24,25 @@
         }
         if($Status==0)
         {
-            $Status_text='Normal'; 
+            $Status_text= __("CF_Normal"); 
         }elseif($Status==1)
         {
-            $Status_text='Urgent';    
+            $Status_text=__("CF_Urgent");    
         }elseif($Status==2)
         {
-            $Status_text='Critical';    
+            $Status_text=__("CF_Critical");    
         }elseif($Status==3)
         {
-            $Status_text='Ask for a cameraman team';    
+            $Status_text=__("CF_ask_camera");    
         }      
     ?>
     <div class="content_item">
         <h3><a href="<?php echo site_url('ticket/ticket_content/'.$id); ?>"><?php echo $title ?><img src="<?php echo $Answer?>" alt=""></img></a></h3>
-        <h5>By <?php echo $author ?> // Date :<?php echo  $final_date?> // Status :<?php echo $Status_text?>
+        <h5><?php echo __("CF_by")?> <?php echo $author ?> // <?php echo __("CF_date")?> :<?php echo  $final_date?> // <?php echo __("CF_status")?> :<?php echo $Status_text?>
         </h5>
         <?php echo $text?><br/>
         <br/>
-    <a href="<?php echo site_url('ticket/ticket_content/'.$id); ?>" class="read_more">Continue Reading</a> </div>
+    <a href="<?php echo site_url('ticket/ticket_content/'.$id); ?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
     <?php }?>
 <!-- /.content_item -->
 <ul id="pagination">

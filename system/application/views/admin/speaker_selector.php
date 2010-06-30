@@ -22,11 +22,11 @@ $(document).ready(function() {
 	<div class="hidden">    
         <div id="ssel">    		
 			<div id="ssel_header">
-				<strong>Select speaker from database</strong>
+				<strong><?php echo __("CF_select_speaker")?></strong>
 			</div>
 			<div id="ssel_search_panel">
 				<div class="ssel_filter_label">
-					<h5>Filter your data</h5>
+					<h5><?php echo __("CF_filter_data")?></h5>
 				</div>					
 				<div id="search" class="sidebar_item">
 					<form action="" method="post">

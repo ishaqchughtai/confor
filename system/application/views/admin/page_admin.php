@@ -20,6 +20,6 @@
     <h3><?php echo $StrElementName?></h3>
     
     <p><?php echo $ElementContent?></p>
-    <a href="<?php echo site_url('accessories/get_element/'.$ElementName)?>">Edit Element</a>    
+    <a href="<?php echo site_url('accessories/get_element/'.$ElementName)?>"><?php echo __("CF_edit_element")?></a>    
 </div>
 <?php } ?>

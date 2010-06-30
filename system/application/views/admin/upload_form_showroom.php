@@ -14,7 +14,7 @@
   <br />
   <br />
   
-  <input type="submit" value="upload" name="upload"/>
+  <input type="submit" value="<?php echo __("CF_up")?>" name="upload"/>
   
   </form>
   
