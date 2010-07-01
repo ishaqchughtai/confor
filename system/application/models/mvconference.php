@@ -22,6 +22,7 @@
             users.name,
             users.first_name');
             $this->db->from('videos');
+            $this->db->where('videos.approved ', '1');
             $this->db->join('users','videos.mem_id = users.id'); 
             $this->db->order_by("videos.`date`", "desc"); 
             $this->db->limit($num,$offset);
