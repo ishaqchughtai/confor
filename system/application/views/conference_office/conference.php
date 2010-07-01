@@ -1,4 +1,3 @@
-<script type="text/javascript" src="<?php echo base_url();?>SimpleRatings/jQuery/jquery-1.4.2.min.js"></script>     
 <?php require_once 'SimpleRatings/rSystem.php';  ?>
 <div id="left">
     <div class="content_item">
