@@ -1,7 +1,3 @@
-jQuery.noConflict();
-(function($) { 
-$(function() {
-//jQuery
 $(document).ready(function(){
 	//Used to store average rating
 	var storeAR;
@@ -67,5 +63,4 @@ $(document).ready(function(){
 		
 	});//End Process Rating
 });//End jQuery
-});
-})(jQuery);
+
