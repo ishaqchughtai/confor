@@ -89,13 +89,21 @@
             users.first_name,
             users.company_name,
             users.description,
-            geo_countries.name AS country
+            users.country
             ");
             $this->db->from('users');
-            $this->db->join('geo_countries','users.country = geo_countries.con_id');
+            //$this->db->join('geo_countries','users.country = geo_countries.con_id');
             $this->db->where('users.id',$id);
+            $this->db->limit(1);
             $query = $this->db->get();
-            return $query->result_array();
+            if ($query->num_rows()>0)
+            {
+                return $query->row();
+            }
+            else
+            {
+                return FALSE;
+            }            
         }
         function update_user($id,$data)
         {
@@ -113,16 +121,6 @@
         function get_all_country(){
             $country=$this->db->get('geo_countries');
             return $country->result_array();
-        }
-        /*Video conference*/
-        function get_all_video_conference(){
-            $query=$this->db->get('tblvideoconference');
-            return $query->result_array();
-        }
-        function get_video_conference_by_id($id)
-        {
-            $query = $this->db->get_where('tblvideoconference',array('ID'=>$id)); 
-            return $query;
         }
     }
 ?>
