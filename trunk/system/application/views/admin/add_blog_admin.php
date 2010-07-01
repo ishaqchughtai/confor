@@ -1,7 +1,7 @@
 <!-- /.content_item -->
 <div class="content_item">
     <h3><?php echo __("CF_add_new_blog")?></h3>
-    <form action="" method="post" enctype="multipart/form-data" class="global" name="blog">
+    <form action="" method="post" enctype="multipart/form-data" class="global" name="blog"> 
         <p>
             <label for="name"><?php echo __("CF_your_name")?>: <?php echo $this->session->userdata('admin')?></label>
         </p>
@@ -13,7 +13,7 @@
         </p>
         <p>
         <label><?php echo __("CF_blog_thum")?> :</label>
-        <?php echo form_error('txtLink'); ?>
+        <?php echo form_error('txtLink'); ?>                  
         <input name="txtLink" type="text" id="txtLink" value="<?php if(isset($_POST['txtLink'])){ echo $_POST['txtLink'] ;}?>" class="short"  readonly="true"/>
         <p>
             <input type="submit" value="upload" class="submit" name="uploadvideo" onclick="window.open('<?php echo site_url('blog/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" />
