@@ -91,7 +91,7 @@
             users.description,
             users.country
             ");
-            $this->db->from('users');
+            $this->db->where('users.id',$id);
             //$this->db->join('geo_countries','users.country = geo_countries.con_id');
             $this->db->where('users.id',$id);
             $this->db->limit(1);

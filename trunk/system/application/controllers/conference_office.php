@@ -19,7 +19,7 @@
             $this->_data['page_title'] = 'Confor.ca - homepage';
             $this->_data['video_path'] = $this->Mhome->get_top_viewed_video();        
             $this->_data['page_title'] = 'Video Conference';
-
+            
             $config['base_url'] = base_url().'index.php/conference_office/index/';
             $config['total_rows'] = $this->db->count_all('videos');
             $config['per_page']='3';
