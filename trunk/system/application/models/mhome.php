@@ -75,6 +75,7 @@
       videos.category
       ');
       $this->db->from('videos');
+      $this->db->where('videos.approved ', '1');
       $this->db->join('users','videos.mem_id = users.id');
       $this->db->like('title', $keyword);
       $this->db->order_by('viewed','desc');
@@ -86,12 +87,12 @@
 
     function get_popular_video()
     {
-      $query=$this->db->query("SELECT * FROM videos order by viewed DESC LIMIT 8");
+      $query=$this->db->query("SELECT * FROM videos Where videos.approved='1' order by viewed DESC LIMIT 8");
       return $query->result_array();
     }
     function get_recent_video()
     {
-      $query=$this->db->query("SELECT * FROM videos order by Date DESC LIMIT 4");
+      $query=$this->db->query("SELECT * FROM videos Where videos.approved='1' order by Date DESC LIMIT 4");
       return $query->result_array();
     }
     function update_view_time($id,$viewed)
