@@ -9,6 +9,12 @@ class Showroom extends Admin_controller{
 	}
 	function add_new_images()
 	{
+		
+		$this->_data['path'][] = array(
+			'name' => __("CF_add_showroom"),
+			'link' => '#'
+		);
+				
 		$this->form_validation->set_rules('txtLink','Images','trim|required');
 		$this->form_validation->set_rules('speaker_email','Speaker','required');
 		$this->form_validation->set_rules('vid_title','Video','required');
