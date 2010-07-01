@@ -28,7 +28,7 @@ class Speaker extends Speaker_controller
 	}
 	
 	function do_login() {
-		$login = $this->user_lib->login_ajax();
+		$login = $this->user_lib->login_ajax();		
 		echo json_encode($login);
 	}
 	

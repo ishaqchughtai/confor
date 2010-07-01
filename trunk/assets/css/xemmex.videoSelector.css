@@ -1,0 +1,106 @@
+#vsel {	
+	background:#fff;
+	width:500px;
+	height:460px;	
+	padding:0px;
+}
+	#vsel_header {
+		height:24px;
+		background:#66CC33;
+		color:#fafafa;				
+		width:480px;
+		padding:6px 10px 0px 10px;
+		font-size:11pt;
+		float:left;
+	}
+	#vsel_content {
+		padding:10px;
+		float:left;
+		height:320px;
+	}	
+	
+#vsel_search_panel {
+	width:480px;
+	float:left;
+	background:#DDD;		
+	padding:10px 10px 0px 10px;
+}	
+	#vsel_search_panel .sidebar_item {
+		margin:0px;				
+		width:280px;
+		float:left;
+	}
+
+	#vsel_search_panel .vsel_filter_label {				
+		width:180px;
+		padding:6px 10px 0 0;
+		margin:0px;
+		text-align:right;		
+		float:left;
+	}
+		#search_panel .vsel_filter_label h5 {				
+			color:#000;
+		}	
+
+.vid_item {		
+	background:#fafafa;
+	cursor:pointer;
+	width:410px;
+	border:1px solid #ccc;
+	padding:4px 14px;		
+	margin:2px 20px 2px 20px;	
+	float:left;
+}
+	.vid_item:hover {
+		background:#999;
+		color:#fff;
+	}
+	.vid_item span {
+		float:left;		
+		display:block;		
+		text-decoration:none;
+	}
+	.vid_item .ui-icon {
+		margin-right:8px;
+	}	
+
+#vsel_paging
+{
+	font-family:Arial;
+	padding:12px 20px 12px 20px;
+	background:#DDD;
+	width:460px;
+	float:left;		
+}
+
+	#vsel_paging a
+	{
+		padding: 3px 8px 3px 8px;
+		border:1px #444 solid;
+		text-decoration:none;
+		background:#fafafa;
+		color:#444;
+	}
+
+	#vsel_paging a:hover
+	{
+		padding: 3px 8px 3px 8px;
+		border:1px #444 solid;
+		text-decoration:none;
+		background:#eee;
+		color:#444;
+	}
+
+	#vsel_paging b
+	{
+		padding: 3px 8px 3px 8px;
+		margin-left:4px;
+		text-decoration:none;
+		border:1px #ccc solid;
+		background:#444;
+		color:#fafafa;
+	}
+
+#vid_title {
+	cursor:pointer;
+}

@@ -17,7 +17,8 @@
 			pagingUrl : "",
 			numPerPage: 10,
 			width: 500,
-			height: 460
+			height: 460,
+			cb:function(i){}
 		};	
 		var settings = $.extend(defaults, settings);
 		
@@ -80,7 +81,8 @@
 								spk_email = $(this).find("span").get(1).innerHTML;
 								$.fancybox.close();	
 								$('#speaker_id').val(spk_id);
-								$('#speaker_email').val(spk_email);							
+								$('#speaker_email').val(spk_email);		
+								settings.cb(spk_id);
 							}
 						);					
 					}				
