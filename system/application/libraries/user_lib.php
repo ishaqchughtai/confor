@@ -164,7 +164,8 @@ class User_lib
 		
 		if($this->CI->form_validation->run()==FALSE) 
 		{
-			$result['error'] = __('CON_invalid_validation_message');
+			//$result['error'] = __('CON_invalid_validation_message');
+			$result['error'] = __("CF_error_occurred");
 			return $result;
 		} 
 		else 
@@ -212,7 +213,7 @@ class User_lib
 				}
 			}
 		}		 
-		$result['error'] = 'Unknown error';
+		$result['error'] = __("CF_error_occurred");
 		return $result;
 	}
 	
@@ -360,13 +361,13 @@ class User_lib
 		
 		$this->CI->load->library('form_validation');
 		$this->CI->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-		$this->CI->form_validation->set_rules('username', 'Username', $this->CI->config->item('spk_user_rule').'|callback_is_username_exists');		
-		$this->CI->form_validation->set_rules('password', __('CON_user_password_label'), $this->CI->config->item('spk_password_rule').'|matches[passconf]');
-		$this->CI->form_validation->set_rules('passconf', 'Password Confirmation', $this->CI->config->item('spk_password_rule'));				
-		$this->CI->form_validation->set_rules('name','Name','required');
-		$this->CI->form_validation->set_rules('company_name','Company','required');
-		$this->CI->form_validation->set_rules('first_name','First Name','required');
-		$this->CI->form_validation->set_rules('email','Email',$this->CI->config->item('spk_email_rule').'|callback_is_email_exists');
+		$this->CI->form_validation->set_rules('username', __('CF_user'), $this->CI->config->item('spk_user_rule').'|callback_is_username_exists');		
+		$this->CI->form_validation->set_rules('password', __('CF_pass'), $this->CI->config->item('spk_password_rule').'|matches[passconf]');
+		$this->CI->form_validation->set_rules('passconf', __('CF_confirm'), $this->CI->config->item('spk_password_rule'));				
+		$this->CI->form_validation->set_rules('name',__('CF_name'),'required');
+		$this->CI->form_validation->set_rules('company_name',__('CF_company'),'required');
+		$this->CI->form_validation->set_rules('first_name',__('CF_first_name'),'required');
+		$this->CI->form_validation->set_rules('email',__('CF_email'),$this->CI->config->item('spk_email_rule').'|callback_is_email_exists');
 		$this->CI->form_validation->set_rules('captcha','Confirm code','required|max_length[6]|callback_is_correct_captcha');
 		if($this->CI->input->post('register')) 
 		{							
