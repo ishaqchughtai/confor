@@ -9,7 +9,6 @@
                 <th width="205"><?php echo __("CF_email")?></th>
                 <th width="109"><?php echo __("CF_country")?></th>
                 <th width="124"><?php echo __("CF_des")?></th>
-                <th width="96"><?php echo __("CF_sup")?></th>
                 <th width="111"><?php echo __("CF_status_acc")?> </th>
                 <th width="44"><?php echo __("CF_action")?></th>
             </tr>
@@ -25,7 +24,6 @@
                     <td><?php echo $row['email']?></td>
                     <td><?php echo $row['name']?></td>
                     <td><?php echo $row['description']?></td>
-                    <td><?php echo $row['userlevel']?></td>
                     <td><?php if((int)$row['status']=='0'){echo 'suspended';}else{echo 'activate';} ?></td>
                     <td><a href="<?php echo site_url("admin/modify_user/".$row['id'])?>"><?php echo __("CF_modify")?></a></td>
                     <td width="45"><a href="<?php echo site_url("/admin/delete_user/".$row['id'])?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>

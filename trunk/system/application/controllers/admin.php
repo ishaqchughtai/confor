@@ -286,7 +286,7 @@ class Admin extends Admin_controller
 				'Name'=>$this->input->post('txtName'),
 				'FirstName'=>$this->input->post('txtFirstName'),
 				'Email'=>$this->input->post('txtEmail'),
-                'country'=>$this->input->post('txtCountry'),
+                'country'=>$this->input->post('country'),
 				'PayPalAccount'=>$this->input->post('txtpayPayAccount'),
 				);
 				$this->Madmin->update_admin($id,$data);
@@ -317,7 +317,7 @@ class Admin extends Admin_controller
 			$this->form_validation->set_rules('txtEmail','Email','required|valid_email');
 			$this->form_validation->set_rules('txtDescription','Description','trim|required');
 			$this->_data['query']=$this->Madmin->get_user_id($id);
-            $this->_data['country']=$this->Madmin->get_all_country();
+            //$this->_data['country']=$this->Madmin->get_all_country();
 			$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
 			if($this->input->post('submit'))
 			{    
@@ -336,7 +336,7 @@ class Admin extends Admin_controller
 					'name'=>$this->input->post('txtName'),
 					'company_name'=>$this->input->post('txtCompanyName'),
 					'email' =>$this->input->post('txtEmail'),
-					'country' =>$this->input->post('txtCountry'),   
+					'country' =>$this->input->post('country'),   
 					'description' =>$this->input->post('txtDescription'),
 					'status' =>$suspension
 					);

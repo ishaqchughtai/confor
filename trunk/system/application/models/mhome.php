@@ -17,9 +17,11 @@
       videos.vhash,
       videos.shash,
       videos.viewed,
+      videos.approved,
       users.username
       FROM videos ,users 
-      WHERE videos.mem_id = users.id 
+      WHERE videos.mem_id = users.id
+      AND videos.approved='1'  
       order by videos.viewed DESC LIMIT 1");
       return $query;
     }

@@ -2,17 +2,27 @@
 
                 <div class="x2">
                     <?php 
-                        foreach($query as $row)
-                        {
-                            $id = $row['id'];
-                            $name=$row['name'];
-                            $company=$row['company_name'];
-                            $email=$row['email'];
-                            $password=$row['password'];
-                            $description=$row['description'];
-                            $subscription=$row['userlevel'];     
-                            $suspend=$row['status'];
-                    }?>
+                    
+                    $selected_country_setting = array
+                    (
+                        'table_name' => 'geo_countries',
+                        'key_field' => 'con_id',
+                        'value_field' => 'name'
+                    );        
+                    if ($query)
+                    {
+                            $id = $query->id;
+                            $name=$query->name;
+                            $company=$query->company_name;
+                            $email=$query->email;
+                            $password=$query->password;
+                            $description=$query->description;
+                            $subscription=$query->userlevel;     
+                            $suspend=$query->status;
+                            $selected_country = $query->country;  
+                     }                     
+                    ?>           
+           
                     <h3><?php echo __("CF_modify_speaker")?></h3> 
                     <?php echo form_open('admin/modify_user/'.$id); ?>
                         <label for="name"><?php echo __("CF_name")?>:</label>
@@ -21,12 +31,9 @@
                         <input class="medium" name="txtCompanyName" id="companyName" value="<?php echo $company?>" /><?php echo form_error("txtCompanyName"); ?>
                         <label for="email"><?php echo __("CF_admin_email")?>:</label>
                         <input class="medium" name="txtEmail" id="email" value="<?php echo $email?>" /><?php echo form_error("txtEmail"); ?>
-                        <label for="Country"><?php echo __("CF_country")?>:</label>
-                        <select name="txtCountry" class="medium">
-                        <?php foreach($country as $countries):?>
-                        <option  value="<?php echo $countries['con_id']?>"><?php echo $countries['name']?></option>
-                        <?php endforeach;?>
-                        </select>
+            <label><?php echo __("CF_country")?>(*)</label>
+                <?php echo  form_dropdown('country', dropdown_data($selected_country_setting),$selected_country, ' class="short"');?>
+             
                         <label for="Description"><?php echo __("CF_des")?>:</label>
                         <textarea name="txtDescription" id="txtDescription" rows="4" cols=""><?php echo $description ?></textarea>
                         <?php echo form_error("txtDescription"); ?>
