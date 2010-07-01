@@ -128,6 +128,17 @@
     function open_tickets()
     {
       is_admin();                        
+
+	  $this->_data['path'][0] = array(
+		'name' => __("CF_admin"),
+		'link' => site_url("/admin")
+		);	
+		
+	  $this->_data['path'][] = array(
+		'name' => __("CF_admin_ticket_open_list"),
+		'link' => '#'
+		);			
+	
       $config['base_url'] = base_url().'index.php/ticket/open_tickets/';
       $config['total_rows'] = $this->Mticket->count_record_open();
       $config['per_page']='6';
@@ -148,7 +159,18 @@
     }        
     function closed_tickets()
     {
-      is_admin();                        
+      is_admin();       
+	  
+	  $this->_data['path'][0] = array(
+		'name' => __("CF_admin"),
+		'link' => site_url("/admin")
+		);	
+		
+	  $this->_data['path'][] = array(
+		'name' => __("CF_admin_ticket_closed_list"),
+		'link' => '#'
+		);		
+		
       $config['base_url'] = base_url().'index.php/ticket/closed_tickets/';
       $config['total_rows'] = $this->Mticket->count_record_closed();
       $config['per_page']='6';
