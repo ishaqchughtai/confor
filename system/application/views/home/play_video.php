@@ -1,5 +1,4 @@
 <?php $page = 5;?>
-<script type="text/javascript" src="<?php echo base_url();?>SimpleRatings/jQuery/jquery-1.4.2.min.js"></script>     
 <?php require 'SimpleRatings/rSystem.php';  ?>
         		<style type="text/css">
 

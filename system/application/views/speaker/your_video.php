@@ -1,4 +1,3 @@
-<script type="text/javascript" src="<?php echo base_url();?>SimpleRatings/jQuery/jquery-1.4.2.min.js"></script>     
 <?php require 'SimpleRatings/rSystem.php';  ?>
 				<?php foreach($your_vid as $rows):?>			  
 			    <?php $keyword = explode(" ", $rows['tags']);?>
