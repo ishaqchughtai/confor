@@ -11,7 +11,7 @@
 					<?php echo form_open(site_url('home/search'));?>
 					
 						<input name="search_field" type="text" class="search_field">
-						<input name="search" type="submit" class="search_submit" value="">
+						<input name="search" type="submit" class="search_submit" value="submit">
 					
 					<?php echo form_close();?>
 					<!-- #search form -->
