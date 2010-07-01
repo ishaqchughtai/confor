@@ -35,7 +35,7 @@ class Event extends Frontend_controller {
 
     $this->_data['path'][] = array(
     'name' => __("CF_event"),
-    'link' => site_url("event/show_event/".$date."/5")
+    'link' => "#"
     );
 
     $config['uri_segment'] = 5;
@@ -214,8 +214,8 @@ class Event extends Frontend_controller {
     if (is_admin())      
     {
       $this->_data['path'][] = array(
-      'name' => "Event",
-      'link' => site_url("event/event_list/")
+      'name' => __("CF_admin_event_list"),
+      'link' => '#'
       );
 
       $config['base_url'] = base_url().'index.php/event/event_list/';
@@ -242,7 +242,7 @@ class Event extends Frontend_controller {
     if (is_admin()) 
     { 
     $this->_data['path'][] = array(
-      'name' => "Event",
+      'name' => __("CF_admin_event_list"),
       'link' => site_url("event/event_list/")
       ); 
               
@@ -254,6 +254,10 @@ class Event extends Frontend_controller {
   //get event of admin
   function get_event_admin($id)
   {
+    $this->_data['path'][] = array(
+      'name' => __("CF_edit_event"),
+      'link' => '#'
+      );
     is_admin();
     $this->_data['query'] = $this->MEvent->get_data_to_form_admin($id);
     $this->_load_view('admin/get_event_admin');		
@@ -304,6 +308,10 @@ class Event extends Frontend_controller {
   //Add new event of admin
   function add_event()
   {
+    $this->_data['path'][] = array(
+      'name' => __("CF_add_event"),
+      'link' => '#'
+      );
     is_admin();
     if($this->input->post('btnsubmit'))
     {
@@ -342,6 +350,10 @@ class Event extends Frontend_controller {
   //Search Event
   function search_event()
   {
+     $this->_data['path'][] = array(
+      'name' => __("CF_search_event"),
+      'link' => '#'
+      );
     $keywords = $this->input->post('search_field');
 
     $keywords = $this->uri->segment(3);
@@ -364,6 +376,35 @@ class Event extends Frontend_controller {
     $this->pagination->initialize($config);
     $this->_data['pagination'] = $this->pagination->create_links();
     $this->_load_view('event/search_event');    
-  }	
+  }
+  
+  function your_event($speaker)	
+  {
+     $this->_data['path'][] = array(
+      'name' => __("CF_yr_event"),
+      'link' => '#'
+      );
+
+    $speaker = $this->uri->segment(3);
+    $per_page = $this->uri->segment(4);
+    $offset = $this->uri->segment(5);
+    
+
+    $config['uri_segment'] = 5;
+    $config['base_url'] = base_url().'index.php/event/your_event/'.$speaker.'/'.$per_page;
+    $config['total_rows'] = $this->MEvent->count_event_by_speaker($speaker);
+    $config['per_page']=$per_page;
+
+    $config['full_tag_open'] = '<li>';        
+    $config['full_tag_close'] = '</li>'; 
+    $config['next_link'] = 'Next >';
+    $config['prev_link'] = '< Previous';
+    $config['last_link'] = 'Last >>';
+    $config['first_link'] = '<< First';
+    $this->_data['your_event'] = $this->MEvent->list_event_by_speaker($speaker,$per_page,$offset); 
+    $this->pagination->initialize($config);
+    $this->_data['pagination'] = $this->pagination->create_links();
+    $this->_load_view('speaker/your_event');
+  }
 
 }

@@ -132,7 +132,7 @@ class Admin_controller extends MY_controller {
     $this->_data['header'] = $header;
     $this->_data['side_bar'] = $side_bar;	
     $this->_data['path'][0] = array(
-    'name' => __("CON_admin"),
+    'name' => __("CF_admin"),
     'link' => site_url("/admin")
     );			
   }		

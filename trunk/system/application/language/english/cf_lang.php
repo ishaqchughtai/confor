@@ -233,6 +233,7 @@ $lang['CF_add_tic'] = 'Add new ticket';
 //event
 $lang['CF_list_event'] = 'List Events';
 $lang['CF_add_event'] = 'Add New Event';
+$lang['CF_yr_event'] = 'Your Event';
 
 //change password
 $lang['CF_text'] = 'Change your password';
@@ -261,6 +262,7 @@ $lang['CF_search_video'] = 'Search result for';
 //------------------------------------------------------------------
 $lang['CF_add_new'] = 'ADD NEW';
 $lang['CF_edit_event'] = 'Edit Event';
+$lang['CF_search_event'] = 'Result Search Event';
 
 //------------------------------------------------------------------
 //BLOG
@@ -283,6 +285,7 @@ $lang['CF_warning'] = 'PLEASE KEEP YOUR COMMENTS CLEAN.MAX 400 CHARS';
 //genaral
 $lang['CF_action'] = 'Action';
 $lang['CF_save'] = 'SAVE';
+$lang['CF_edit_video_admin'] = 'Video Conference update';
 
 //form login
 $lang['CF_admin_login'] = 'ADMINISTRATOR LOGIN';
@@ -299,6 +302,7 @@ $lang['CF_new_admin'] = 'New Administrator';
 	$lang['CF_add_admin'] = 'Add New Administrator';
 $lang['CF_admin_login'] = 'Admin login';
 $lang['CF_edit_admin'] = 'Edit Profile';
+$lang['CF_edit_ad'] = 'Edit Admin';
 	$lang['CF_udpate_admin'] = 'Administrator Data Update';	
 
 //speaker
@@ -326,12 +330,14 @@ $lang['CF_admin_vid_list'] = 'Video Conference List';
 $lang['CF_admin_new_vid'] = 'New Video Conference';
 	$lang['CF_add_vid'] = 'Add video conference ';
 	$lang['CF_cate_man'] = 'Category Management';
+	$lang['CF_search_video'] = 'Result search video';
 
 //event
 $lang['CF_event_search'] = 'Search through all post';
 $lang['CF_event_con'] = 'Event Control';
 $lang['CF_admin_event_list'] = 'Event List';
 $lang['CF_admin_new_event'] = 'New Event';
+
 
 //ticket
 $lang['CF_ticket_con'] = 'Ticket Control';
@@ -366,10 +372,11 @@ $lang['CF_adv_con'] = 'Paying Advertisement Control';
 $lang['CF_adv_list'] = 'Advertisement List';
 	$lang['CF_adv_date_begin'] = 'Date Beginning';
 	$lang['CF_adv_date_ex'] = 'Date Expiry';
-	$lang['CF_adv_list'] = 'Advertisement List';
 	$lang['CF_adv_email'] = 'Advertisement Email';
 	
 $lang['CF_new_adv'] = 'New Advertisement';
+$lang['CF_edit_adv'] = 'Edit Advertisement';
+$lang['CF_search_adv'] = 'Result Search Advertisement';
 
 //edit advertisement
 $lang['CF_url'] = 'URL';
@@ -390,7 +397,7 @@ $lang['CF_yes'] = 'Yes';
 $lang['CF_No'] = 'No';
 $lang['CF_success_upload'] = 'Your file was successfully uploaded';
 $lang['CF_click_link'] = 'Click Link';
-
+$lang['CF_user_edit'] = 'Edit user';
 
 
 //Keys added by Dao Van Quyet

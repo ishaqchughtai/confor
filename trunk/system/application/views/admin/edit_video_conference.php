@@ -10,8 +10,6 @@
 	
 ?>   
               <div class="x2">
-
-                    <h3><?php echo __("CF_add_vid")?></h3>
 					<?php $this->load->view("admin/admin_menu_video");?>
                    
                     <?php 
@@ -26,6 +24,8 @@
 							$appr = $row->approved;							
                         }
                     ?>
+                    <br />
+
                     <h3> <?php echo __("CF_vid_update")?> </h3>
                     <?php echo form_open('admin/edit_video_conference/'.$id);?> 
                     <p>

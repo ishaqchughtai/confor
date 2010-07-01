@@ -4,7 +4,7 @@
 <?php foreach($events as $row)
    				{
 					$id = $row['ID'];
-					$speaker = $row['first_name'].' '.$row['name'];
+					$speaker = $row['username'];
 					$date = date("F jS Y", strtotime($row['Date']));
 					$title = $row['Title'];
 					$subject = $row['Subject'];
