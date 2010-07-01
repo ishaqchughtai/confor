@@ -1,97 +1,102 @@
 <?php require 'SimpleRatings/rSystem.php';  ?>
-       		<style type="text/css">
+<style type="text/css">
 
-			#flashcontent {
-				overflow: hidden;
-			}
-		</style>			
-			  <div class="content_item" id="flashcontent">
-		      <?php 
-                if($video_path->num_rows()>0)
-                {
-                   $row = $video_path->row();
-                   $vid_id=$row->vid_id;
-                   $top_view_video = $row->vhash;
-				   $speaker_id = $row->mem_id;
-				   $video_image=$row->shash;
-                   $video_title=$row->title;
-                   $speaker=$row->username;
-				   $tags=explode(" ",$row->tags);
-				   $date=$row->date;
-				   $name=$row->username;
-				   $viewed=$row->viewed;
-                   $description=$row->description;
-                }
-              ?>		
-					<h3><?php echo $video_title?></h3>
-              <h5>
-              <?php echo __("CF_by")?>
-              
-              <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $name?></b></a> 
-			   <?php echo __("CF_in")?> 
-			  <?php for($i=0;$i<count($tags);$i++){?>
-                      <a href="#"><?php echo $tags[$i]?></a>
-                      <?php if ($i<count($tags)-1) echo ','?>
-                      <?php ;}?>
-               //
-			  <?php echo mdate('%F %j%S %Y', $date)?></h5>              
-              <h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>
-				<script type="text/javascript">			
-			
-			var flashvars = {
-				cover: "<?php echo base_url().'thumbs/'.$video_image?>",								// Cover url.
-				source: "<?php echo base_url().'videos/'.$top_view_video?>",								// Source url.
-				autoPlay: false,											// Defines if vPlayer plays the video automatically.
-				scaleMode: "full",											// Defines how the video scale is fit to vPlayer (full, fitToWidthAndHeight, noScale).
-				bufferTime: 3,												// It is the time in seconds that an instance of VPlayer must load a video stream to reproduce.
-				loop: false,												// Defines if vPlayer loops the video.
-				controlsScale: 2,											// Defines the size of vPlayer controls scale. Default value is 2.5, minimum 1, maximun 10.
-				controlsAutoHide: true,										// Defines if controls are automatically hidden.
-				controlsHideDelay: 3,										// Defines the control hide delay.
-				allowFullScreen: true,										// Allows to play the video in full screen mode.
-				fullScreenOnPlay: false,									// Defines if VPlayer shows in full screen mode when user plays the video.
-				glossy: true,												// Determines if control shows a shine effect.
-				tooltipType: "follower",									// Defines how playback time is showed (none, normal, follower).
-				logo: true,													// Allows to visualize a logotype.
-				logoAutoHide: false,											// Defines if the logo hides when controls are hidden.
-				logoURL: "http://conferences-formations.com",		// URL that will be followed when you click on the logo.
-				logoAlign: "topLeft",									// Defines the logotype alignment inside VPlayer.
-				iconsAlign: "topRight",										// Defines the icons alignment inside VPlayer (topLeft, topRight, bottomLeft, bottomRight).
-				grid: false,												// Defines if a dot pattern over the video is showed.
-				gridPresset: 1,												// Defines the dot pattern that will be used from 0 to 9.
-				color: 0xffffff,											// Defines VPlayer primary color.
-				backgroundColor: 0xffffff,									// Defines background color.
-				backgroundAlpha: 1											// Defines background transparency level.
-			};
-			
-			var params = {allowFullScreen:"true", allowscriptaccess:"always", menu:"true", scale:"noscale", salign:"tl"};
-			var attributes = {id:"vPlayerPlugin"};
-			
-			swfobject.embedSWF("<?php echo base_url();?>vPlayer/vPlayerPlugin.swf", "flashmovie", 621, 344, "10.0.0", "<?php echo base_url();?>vPlayer/flashdetect/expressInstall.swf", flashvars, params, attributes);
-		</script>
-    		<div id="flashmovie">
-	    		<strong>Please update your flash player <a href="http://www.adobe.com/go/getflashplayer/">here.</a></strong>
-	    	</div>
-		<script type="text/javascript">
-   			scale = new FlashScaler("flashcontent", 640, 360);
-		</script>
-                <div class="rate_balloon"><?php $SimpleRatings->create($vid_id);?>  
-        </div>					
-		    </div>					
-				  <p><?php echo $description?></p>										
-				<!-- /.content_item -->
-                
-                <?php 
-	$advs = get_random_top_adv($category,4);
-	//print_r($ar);
-	$attr = array('width'=>'89', 'height'=>'75', 'class'=>'icon');
+    #flashcontent {
+        overflow: hidden;
+    }
+</style>
+<?php 
+        if($video_path){
+            if($video_path->num_rows()>0)
+            {
+                $row = $video_path->row();
+                $vid_id=$row->vid_id;
+                $top_view_video = $row->vhash;
+                $speaker_id = $row->mem_id;
+                $video_image=$row->shash;
+                $video_title=$row->title;
+                $speaker=$row->username;
+                $tags=explode(" ",$row->tags);
+                $date=$row->date;
+                $name=$row->username;
+                $viewed=$row->viewed;
+                $description=$row->description;
+            }
+        }
+    ?>        
+    			
+<div class="content_item" id="flashcontent">
+<?php if($video_path){?>
+    <h3><?php echo $video_title?></h3>
+    <h5>
+        <?php echo __("CF_by")?>
+
+        <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $name?></b></a> 
+        <?php echo __("CF_in")?> 
+        <?php for($i=0;$i<count($tags);$i++){?>
+            <a href="#"><?php echo $tags[$i]?></a>
+            <?php if ($i<count($tags)-1) echo ','?>
+            <?php ;}?>
+        //
+    <?php echo mdate('%F %j%S %Y', $date)?></h5>              
+    <h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>
+<?php }?>
+    <script type="text/javascript">			
+
+        var flashvars = {
+            cover: "<?php echo $video_path?base_url().'thumbs/'.$video_image:''?>",								// Cover url.
+            source: "<?php echo $video_path?base_url().'videos/'.$top_view_video:''?>",								// Source url.
+            autoPlay: false,											// Defines if vPlayer plays the video automatically.
+            scaleMode: "full",											// Defines how the video scale is fit to vPlayer (full, fitToWidthAndHeight, noScale).
+            bufferTime: 3,												// It is the time in seconds that an instance of VPlayer must load a video stream to reproduce.
+            loop: false,												// Defines if vPlayer loops the video.
+            controlsScale: 2,											// Defines the size of vPlayer controls scale. Default value is 2.5, minimum 1, maximun 10.
+            controlsAutoHide: true,										// Defines if controls are automatically hidden.
+            controlsHideDelay: 3,										// Defines the control hide delay.
+            allowFullScreen: true,										// Allows to play the video in full screen mode.
+            fullScreenOnPlay: false,									// Defines if VPlayer shows in full screen mode when user plays the video.
+            glossy: true,												// Determines if control shows a shine effect.
+            tooltipType: "follower",									// Defines how playback time is showed (none, normal, follower).
+            logo: true,													// Allows to visualize a logotype.
+            logoAutoHide: false,											// Defines if the logo hides when controls are hidden.
+            logoURL: "http://conferences-formations.com",		// URL that will be followed when you click on the logo.
+            logoAlign: "topLeft",									// Defines the logotype alignment inside VPlayer.
+            iconsAlign: "topRight",										// Defines the icons alignment inside VPlayer (topLeft, topRight, bottomLeft, bottomRight).
+            grid: false,												// Defines if a dot pattern over the video is showed.
+            gridPresset: 1,												// Defines the dot pattern that will be used from 0 to 9.
+            color: 0xffffff,											// Defines VPlayer primary color.
+            backgroundColor: 0xffffff,									// Defines background color.
+            backgroundAlpha: 1											// Defines background transparency level.
+        };
+
+        var params = {allowFullScreen:"true", allowscriptaccess:"always", menu:"true", scale:"noscale", salign:"tl"};
+        var attributes = {id:"vPlayerPlugin"};
+
+        swfobject.embedSWF("<?php echo base_url();?>vPlayer/vPlayerPlugin.swf", "flashmovie", 621, 344, "10.0.0", "<?php echo base_url();?>vPlayer/flashdetect/expressInstall.swf", flashvars, params, attributes);
+    </script>
+    <div id="flashmovie">
+        <strong>Please update your flash player <a href="http://www.adobe.com/go/getflashplayer/">here.</a></strong>
+    </div>
+    <script type="text/javascript">
+        scale = new FlashScaler("flashcontent", 640, 360);
+    </script>
+    <div class="rate_balloon"><?php $SimpleRatings->create($vid_id);?>  
+    </div>					
+</div>					
+<p><?php echo $video_path?$description:''?></p>										
+<!-- /.content_item -->
+
+<?php 
+    $advs = get_random_top_adv($category,4);
+    //print_r($ar);
+    $attr = array('width'=>'89', 'height'=>'75', 'class'=>'icon');
 ?>
-		<div class="x3_2">			
-			<?php for($i=0; $i<count($advs); $i++):?>							
-				<div class="x3<?php if(($i+1)%2==0) echo ' no_margin_r';?>" style="border-color:#FFF; border:thick;">
-		        	<a href="<?php echo $advs[$i]['URL']?>"><img src="<?php echo base_url().'assets/uploads/adv/'.$advs[$i]['ImageLink']?>" width="285" height="285" class="icon"></a> 
-                    <p><?php echo $advs[$i]['TextTips']?></p>
-                </div>
-				<!-- /.content .top_box_block -->
-			<?php endfor;?>
+<div class="x3_2">			
+    <?php for($i=0; $i<count($advs); $i++):?>							
+        <div class="x3<?php if(($i+1)%2==0) echo ' no_margin_r';?>" style="border-color:#FFF; border:thick;">
+            <a href="<?php echo $advs[$i]['URL']?>"><img src="<?php echo base_url().'assets/uploads/adv/'.$advs[$i]['ImageLink']?>" width="285" height="285" class="icon"></a> 
+            <p><?php echo $advs[$i]['TextTips']?></p>
+        </div>
+        <!-- /.content .top_box_block -->
+        <?php endfor;?>
 		</div>	
