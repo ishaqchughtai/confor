@@ -32,7 +32,8 @@
             $config['first_link'] = '<< First';
             
             $this->pagination->initialize($config);
-            $this->_data['conference_list'] = $this->Mcoffice->list_conference_office($this->uri->segment(3),$config['per_page']);
+            $num = !is_nan((double)$this->uri->segment(3))?0:$this->uri->segment(3);
+            $this->_data['conference_list'] = $this->Mcoffice->list_conference_office($num,$config['per_page']);
             $this->_data['pagination'] = $this->pagination->create_links();                
             
             $this->_load_view('conference_office/conference'); 

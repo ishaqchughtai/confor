@@ -49,7 +49,8 @@ class Blog extends Frontend_controller {
         $config['first_link'] = '<< First';
 
         $this->pagination->initialize($config);
-        $this->_data['query'] = $this->Mblog->get_all_blog($this->uri->segment(3),$config['per_page']);
+        $num = !is_nan((double)$this->uri->segment(3))?0:$this->uri->segment(3);
+        $this->_data['query'] = $this->Mblog->get_all_blog($num,$config['per_page']);
         $this->_data['pagination'] = $this->pagination->create_links();                
         if($this->session->userdata('admin')==TRUE)
         {
@@ -257,7 +258,7 @@ class Blog extends Frontend_controller {
         {
 
             if($this->input->post('btnsubmit'))
-            {
+            {          
                 $this->form_validation->set_rules('txtTitle','Title','trim|required|callback_title_check|max_length[50]');
                 $this->form_validation->set_rules('txtSubject','Subject','trim|required|max_length[50]');
                 $this->form_validation->set_rules('txtKeywords','Keywords','trim|required|callback_keyword_check');
@@ -278,13 +279,13 @@ class Blog extends Frontend_controller {
                 $Text=$this->input->post('txtBody');
                 $Link=$this->input->post('txtLink');
                 $about=$this->input->post('about');
-
+       
                 if($this->form_validation->run()==FALSE)
                 {
-                    $this->_load_view('admin/add_blog_admin'); 
+                    $this->_load_view('admin/add_blog_admin');        
                 }
                 else
-                {
+                {                              
                     if($this->Mblog->add_blog($Author,$Date,$Title,$Subject,$Keywords,$Text,$Link,$about)==TRUE)
                     {
                         redirect('blog/blog_content_admin/'.$FirstName.'/'.$Title);  
@@ -297,7 +298,7 @@ class Blog extends Frontend_controller {
         }
     }	
 
-    // Do upload
+    // Do upload  
     function do_upload()
     {
         if($this->session->userdata('admin')==FALSE)
@@ -421,7 +422,8 @@ class Blog extends Frontend_controller {
         $config['first_link'] = '<< First';
 
         $this->pagination->initialize($config);
-        $query_search = $this->Mblog->search_blog($config['per_page'],$this->uri->segment(3),$Keywords);
+        $num = !is_nan((double)$this->uri->segment(3))?0:$this->uri->segment(3);
+        $query_search = $this->Mblog->search_blog($config['per_page'],$num,$Keywords);
         $this->_data['page_title'] = 'Blog Search';
         if($query_search->num_rows()>0)
         {
