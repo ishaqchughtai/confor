@@ -16,8 +16,7 @@
       tblevent.Subject,
       tblevent.Keywords,
       tblevent.Description,
-      users.name,
-      users.first_name
+      users.username
       ");
       $this->db->from('tblevent');
       $this->db->join('users','tblevent.Speaker = users.ID');
@@ -40,8 +39,7 @@
     {
       $this->db->select('
       tblevent.ID,
-      users.name,
-      users.first_name,
+      users.username,
       tblevent.`Date`,
       tblevent.Title,
       tblevent.Subject,
@@ -68,8 +66,7 @@
     {
       $this->db->select('
       tblevent.ID,
-      users.name,
-      users.first_name,
+      users.username,
       tblevent.Speaker,
       tblevent.`Date`,
       tblevent.Title,
@@ -175,7 +172,7 @@
       $query = $this->db->count_all_results();
       return $query;
     }
-    
+
 
     function search_event($keywords,$per_page,$offset)
     {
@@ -204,6 +201,34 @@
       }
       $query->free_result();  
       return $events;
+    }
+
+    function count_event_by_speaker($speaker)
+    {
+      $this->db->from('tblevent');
+      $this->db->where('Speaker', $speaker);
+      $query = $this->db->count_all_results();
+      return $query;
+    }
+    function list_event_by_speaker($speaker,$per_page,$offset)
+    {
+      $this->db->select('
+      tblevent.ID,
+      users.username,
+      tblevent.Speaker,
+      tblevent.`Date`,
+      tblevent.Title,
+      tblevent.Subject,
+      tblevent.Keywords,
+      tblevent.Description,
+      tblevent.Status
+      ');
+      $this->db->from('tblevent');
+      $this->db->join('users','tblevent.Speaker = users.id');
+      $this->db->where(array('tblevent.Speaker'=>$speaker));
+      $this->db->limit($per_page,$offset);
+      $your_event = $this->db->get();
+      return $your_event->result_array();
     }
   }
 ?>

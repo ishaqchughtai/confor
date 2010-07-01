@@ -2,7 +2,7 @@
         <?php foreach($query as $row)
    				{
 					$id = $row['ID'];
-					$speaker = $row['first_name'].' '.$row['name'];
+					$speaker = $row['username'];
 					$speaker_id = $row['Speaker'];
 					$date = date("F jS Y", strtotime($row['Date']));
 					$title = $row['Title'];

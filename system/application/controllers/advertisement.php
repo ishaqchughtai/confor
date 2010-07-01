@@ -23,6 +23,10 @@ class Advertisement extends Admin_controller {
   //list advertisement
   function advertisement_list()
   {
+    $this->_data['path'][] = array(
+      'name' => __("CF_adv_list"),
+      'link' => '#'
+      );
     is_admin();      
     $this->_data['path'][] = array(
     'name' => __("CON_adv_list"),
@@ -47,6 +51,10 @@ class Advertisement extends Admin_controller {
 
   function add()
   {
+    $this->_data['path'][] = array(
+      'name' => __("CF_new_adv"),
+      'link' => '#'
+      );
     is_admin();
     if($this->input->post('btnsubmit'))
     {
@@ -84,6 +92,10 @@ class Advertisement extends Admin_controller {
 
   function get_advertisement($id)
   {
+    $this->_data['path'][] = array(
+      'name' => __("CF_edit_adv"),
+      'link' => '#'
+      );
     is_admin();
     $this->_data['query'] = $this->MAdvertisement->get_data_to_form($id);
     $this->_load_view('admin/edit_advertisement');
@@ -160,6 +172,10 @@ class Advertisement extends Admin_controller {
   //Search advertisement
   function search_advertisement()
   {
+    $this->_data['path'][] = array(
+      'name' => __("CF_search_adv"),
+      'link' => '#'
+      );
     $keywords = $this->input->post('search_field');
     
     $keywords = $this->uri->segment(3);

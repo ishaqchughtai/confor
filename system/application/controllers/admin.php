@@ -122,7 +122,7 @@ class Admin extends Admin_controller
 		else
 		{
 			$this->_data['path'][] = array(
-			'name' => __("CON_admin_list_all"),
+			'name' => __("CF_admin_list"),
 			'link' => site_url("admin/list_admin")
 			);
 			$num_per_page = $this->uri->segment(3);
@@ -165,7 +165,7 @@ class Admin extends Admin_controller
 		else
 		{
 			$this->_data['path'][] = array(
-			'name' => __("CON_admin_add"),
+			'name' => __("CF_add_admin"),
 			'link' => site_url("admin/add_new_admin")
 			);					
 			$this->_data['error'] = ""; 
@@ -220,7 +220,7 @@ class Admin extends Admin_controller
 			else
 			{   
 				$this->_data['path'][] = array(
-				'name' => __("CON_admin_edit"),
+				'name' => __("CF_edit_ad"),
 				'link' => '#'
 				);                    
 				$data['error'] = ""; 
@@ -263,7 +263,7 @@ class Admin extends Admin_controller
 	function edit_profile($id)
 	{
 		$this->_data['path'][] = array(
-		'name' => __("CON_admin_edit"),
+		'name' => __("CF_edit_admin"),
 		'link' => '#'
 		);                    
 		$data['error'] = ""; 
@@ -308,7 +308,7 @@ class Admin extends Admin_controller
 		else
 		{		
 			$this->_data['path'][] = array(
-			'name' => __("CON_user_edit"),
+			'name' => __("CF_user_edit"),
 			'link' => '#'
 			);				
 			$this->_data['error'] = ""; 
@@ -352,6 +352,10 @@ class Admin extends Admin_controller
 	}
 	function list_user()
 	{
+    $this->_data['path'][] = array(
+      'name' => __("CF_speaker_list"),
+      'link' => '#'
+      );
 		$num_per_page = $this->uri->segment(3);
 		if($num_per_page=='')
 		{
@@ -405,7 +409,7 @@ class Admin extends Admin_controller
 	{
 		is_admin();            
 		$this->_data['path'][] = array(
-		'name' => __("CON_video_list"),
+		'name' => __("CF_list_vid"),
 		'link' => site_url("admin/list_video_conference")
 		);   
 
@@ -456,6 +460,10 @@ class Admin extends Admin_controller
 	
 	function new_video_conference()
 	{
+    $this->_data['path'][] = array(
+      'name' => __("CF_admin_new_vid"),
+      'link' => '#'
+      );
 		is_admin();
 		$this->vid_lib->init_uploader();
 		
@@ -514,6 +522,10 @@ class Admin extends Admin_controller
 	
 	function edit_video_conference($id)
 	{
+    $this->_data['path'][] = array(
+      'name' => __("CF_edit_video_admin"),
+      'link' => '#'
+      );
 		is_admin();
 		if(is_nan((float)$id)) redirect(site_url("admin"));
 		$this->form_validation->set_rules('title','Title','required');
