@@ -15,7 +15,14 @@
 $(document).ready(function() {	
 	$("#speaker_email").xemmexSpeakerSelector({
 		pagingUrl : XEMMEX.Speaker.basePagingUrl,
-		numPerPage: 10,			
+		numPerPage: 10,		
+		cb: function(i)
+		{
+			if (typeof XEMMEX.SpeakerSelectorCb == 'function')
+			{
+				XEMMEX.SpeakerSelectorCb(i);
+			}
+		}
 	});								
 });	
 </script>			

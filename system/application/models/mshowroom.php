@@ -48,5 +48,23 @@
             $query = $this->db->get();
             return $query->result_array();
         }
+		
+		function show_paging($speaker_id, $num_per_page, $page_offset, $keyword) 
+		{				
+			$this->db->select("
+			videos.vid_id,
+			videos.title,
+			videos.shash"); 
+			$this->db->from('videos');
+			if (($keyword)&&(strlen($keyword)>0)) {
+				$this->db->like("videos.title", $keyword); 
+			}
+			$this->db->where('videos.mem_id',$speaker_id);
+			$this->db->order_by("videos.title", "asc"); 
+			$this->db->order_by("videos.vid_id", "asc"); 
+			$this->db->limit($num_per_page, $page_offset);
+			return $this->db->get();		
+		}		
+		
     }   
 ?>
