@@ -159,7 +159,7 @@
     function get_random_by_video($category, $limit) 
     {
       $this->db->from('videos');
-      //$this->db->where('category', $category);
+      $this->db->where('approved', '1');
       $this->db->order_by("RAND()");
       $this->db->limit($limit);
       return $this->db->get();
