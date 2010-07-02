@@ -58,12 +58,13 @@ class Advertisement extends Admin_controller {
     is_admin();
     if($this->input->post('btnsubmit'))
     {
-      $this->form_validation->set_rules('advertiser_name','Advertiser Name','trim|required|max_length[50]');
-      $this->form_validation->set_rules('advertiser_email','Advertiser Email','valid_email|callback_check_email');
-      $this->form_validation->set_rules('url','URL','prep_url|required');
-      $this->form_validation->set_rules('text_tips','Text Tips','trim|required|max_length[50]');
-      $this->form_validation->set_rules('image_link','Image Link','trim|required');
-      $this->form_validation->set_error_delimiters('<p class="not_error long"><span class="img"></span>','<span class="close"></span></p>');
+      $this->form_validation->set_rules('date_expiry',strtolower(__("CF_adv_date_ex")),'trim|required');
+      $this->form_validation->set_rules('advertiser_name',strtolower(__("CF_advertiser_name")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('advertiser_email',strtolower(__("CF_advertiser_email")),'trim|required|valid_email|callback_check_email');
+      $this->form_validation->set_rules('url',strtolower(__("CF_url")),'prep_url|required');
+      $this->form_validation->set_rules('text_tips',strtolower(__("CF_text_tips")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('image_link',strtolower(__("CF_image_link")),'trim|required');
+      $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
         $this->_load_view('admin/add_advertisement');
@@ -105,12 +106,13 @@ class Advertisement extends Admin_controller {
   {   
     if($this->input->post('btnedit'))
     {
-      $this->form_validation->set_rules('advertiser_name','Advertiser Name','trim|required|max_length[50]');
-      $this->form_validation->set_rules('advertiser_email','Advertiser Email','valid_email');
-      $this->form_validation->set_rules('url','URL','valid_url');
-      $this->form_validation->set_rules('text_tips','Text Tips','trim|required|max_length[50]');
-      $this->form_validation->set_rules('image_link','Image Link','trim|required');
-      $this->form_validation->set_error_delimiters('<p class="not_error long"><span class="img"></span>','<span class="close"></span></p>');
+      $this->form_validation->set_rules('date_expiry',strtolower(__("CF_adv_date_ex")),'trim|required');
+      $this->form_validation->set_rules('advertiser_name',strtolower(__("CF_advertiser_name")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('advertiser_email',strtolower(__("CF_advertiser_email")),'trim|required|valid_email|callback_check_email');
+      $this->form_validation->set_rules('url',strtolower(__("CF_url")),'valid_url');
+      $this->form_validation->set_rules('text_tips',strtolower(__("CF_text_tips")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('image_link',strtolower(__("CF_image_link")),'trim|required');
+      $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
         $this->get_advertisement($id);

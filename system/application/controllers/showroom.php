@@ -15,9 +15,9 @@ class Showroom extends Admin_controller{
 			'link' => '#'
 		);
 				
-		$this->form_validation->set_rules('txtLink','Images','trim|required');
-		$this->form_validation->set_rules('speaker_email','Speaker','required');
-		$this->form_validation->set_rules('vid_title','Video','required');
+		$this->form_validation->set_rules('txtLink',strtolower(__("CF_image_link")),'trim|required');
+		$this->form_validation->set_rules('speaker_email',strtolower(__("CF_one_speaker")),'required');
+		$this->form_validation->set_rules('vid_title',strtolower(__("CF_vid")),'required');
 		
 		$this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
 		if($this->input->post('btnsubmit'))
@@ -35,7 +35,7 @@ class Showroom extends Admin_controller{
 				
 				if($this->Mshowroom->add_image($this->_data['vid_id'], $txtLink)==TRUE)
 				{                    
-					$this->_message('admin', 'New image successfully added', 'success',site_url("showroom/add_new_images"));
+					$this->_message('admin', __("CF_add_image_suc"), 'success',site_url("showroom/add_new_images"));
 				} 
 			}
 		}else
@@ -54,7 +54,7 @@ class Showroom extends Admin_controller{
 	function do_paging() {							
 		if (! is_admin(FALSE)) 
 		{
-			$out['error'] = 'Only Admin can use this function';
+			$out['error'] = strtolower(__("CF_only_admin"));
 			return $out;
 		}	
 		$num_per_page = $this->uri->segment(3);
@@ -76,12 +76,12 @@ class Showroom extends Admin_controller{
 			} 
 			else 
 			{
-				$out['error'] = 'Your searching did not match any rows. ';
+				$out['error'] = strtolower(__("CF_reslult_search"));
 			}
 		} 
 		else 
 		{
-			$out['error'] = 'Row each page must > 0';
+			$out['error'] = strtolower(__("CF_row"));
 		}
 		
 		$this->load->view('admin/get_video_json',$out);
@@ -118,7 +118,7 @@ class Showroom extends Admin_controller{
 	function submit_add_new_images($video_name='')
 	{
 		is_admin(); 
-		$this->form_validation->set_rules('txtLink','Images','trim|required');
+		$this->form_validation->set_rules('txtLink',strtolower(__("CF_image_link")),'trim|required');
 		$this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
 		if($this->input->post('btnsubmit'))
 		{                                         
@@ -132,7 +132,7 @@ class Showroom extends Admin_controller{
 				{                    
 					$this->_data['query_speaker'] = $this->Mshowroom->get_all_speaker();
 					$this->_data['query_video'] = $this->Mshowroom->select_speaker_video($Speaker=1);
-					$this->_data['error'] = 'New image successfully added';         
+					$this->_data['error'] = __("CF_add_image_suc");         
 					$this->_load_view('admin/add_showroom_images'); 
 				} 
 			}

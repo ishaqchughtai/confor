@@ -1,5 +1,5 @@
 			
-				<p class="not_warning "><span class="img"></span><?php echo __("CF_mess_add_event")?><span class="close"></span></p>
+				<p class="not_success"><span class="img"></span><?php echo __("CF_mess_add_event")?><span class="close"></span></p>
 			  <div id="left">
 			  <!-- /.content_item -->
 					<form id="contactform" action="<?php echo site_url('event/add')?>" method="post" enctype="multipart/form-data" class="global">	

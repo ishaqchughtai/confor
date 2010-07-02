@@ -51,7 +51,7 @@ class Home extends Frontend_controller {
     {
         if ( $this->MUser->is_username_exists($username))
         {
-            $this->form_validation->set_message('is_username_exists', 'The %s already exists');
+            $this->form_validation->set_message('is_username_exists', __("CF_one_speaker").'%s').__("CF_already_exist");
             return FALSE;
         }
         return TRUE;
@@ -61,7 +61,7 @@ class Home extends Frontend_controller {
     {
         if ( $this->MUser->is_email_exists($email))
         {
-            $this->form_validation->set_message('is_email_exists', 'The %s already exists');
+            $this->form_validation->set_message('is_email_exists', __("CF_one_speaker").'%s').__("CF_already_exist");
             return FALSE;
         }
         return TRUE;
@@ -71,7 +71,7 @@ class Home extends Frontend_controller {
     {
         if (! $this->Mhome->is_correct_captcha($captcha))
         {
-            $this->form_validation->set_message('is_correct_captcha', 'Invalid code');
+            $this->form_validation->set_message('is_correct_captcha', __("CF_invalid_code"));
             return FALSE;
         }
         return TRUE;		

@@ -128,10 +128,10 @@ class Blog extends Frontend_controller {
     //Add comment
     function add_comment()
     {                    
-        $this->form_validation->set_rules('name','Name','trim|required');
-        $this->form_validation->set_rules('email','Mail','trim|required|valid_email');
-        $this->form_validation->set_rules('url','Site','trim');
-        $this->form_validation->set_rules('msg','Body','required|max_length[400]');
+        $this->form_validation->set_rules('name',strtolower(__("CF_name")),'trim|required');
+        $this->form_validation->set_rules('email',strtolower(__("CF_mail")),'trim|required|valid_email');
+        $this->form_validation->set_rules('url',strtolower(__("CF_site_web")),'trim');
+        $this->form_validation->set_rules('msg',strtolower(__("CF_blog_body")),'required|max_length[400]');
         $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
 
         $datestring = "%Y-%m-%d %h:%m:%s";
@@ -259,11 +259,11 @@ class Blog extends Frontend_controller {
 
             if($this->input->post('btnsubmit'))
             {          
-                $this->form_validation->set_rules('txtTitle','Title','trim|required|callback_title_check|max_length[50]');
-                $this->form_validation->set_rules('txtSubject','Subject','trim|required|max_length[50]');
-                $this->form_validation->set_rules('txtKeywords','Keywords','trim|required|callback_keyword_check');
-                $this->form_validation->set_rules('txtBody','Body','required|max_length[500]');
-                $this->form_validation->set_rules('txtLink','Link','required');
+                $this->form_validation->set_rules('txtTitle',strtolower(__("CF_title")),'trim|required|callback_title_check|max_length[50]');
+                $this->form_validation->set_rules('txtSubject',strtolower(__("CF_subject")),'trim|required|max_length[50]');
+                $this->form_validation->set_rules('txtKeywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
+                $this->form_validation->set_rules('txtBody',strtolower(__("CF_blog_body")),'required|max_length[500]');
+                $this->form_validation->set_rules('txtLink',strtolower(__("CF_image_link")),'required');
                 $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
 
                 $Author=$this->session->userdata('admin_id');
@@ -343,12 +343,12 @@ class Blog extends Frontend_controller {
             }
             else
             {                    
-                $this->form_validation->set_rules('txtTitle','Title','trim|required|max_length[50]');
-                $this->form_validation->set_rules('txtSubject','Subject','trim|required|max_length[50]');
-                $this->form_validation->set_rules('txtKeywords','Keywords','trim|required|callback_keyword_check');
-                $this->form_validation->set_rules('txtBody','Text','required|max_length[500]');
-                $this->form_validation->set_rules('txtLink','Link','required');
-                $this->form_validation->set_rules('about','About','required');
+                $this->form_validation->set_rules('txtTitle',strtolower(__("CF_title")),'trim|required|max_length[50]');
+                $this->form_validation->set_rules('txtSubject',strtolower(__("CF_subject")),'trim|required|max_length[50]');
+                $this->form_validation->set_rules('txtKeywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
+                $this->form_validation->set_rules('txtBody',strtolower(__("CF_blog_body")),'required|max_length[500]');
+                $this->form_validation->set_rules('txtLink',strtolower(__("CF_image_link")),'required');
+                $this->form_validation->set_rules('about',strtolower(__("CF_about")),'required');
                 $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
                 if($this->form_validation->run()==FALSE)
                 {
@@ -434,7 +434,7 @@ class Blog extends Frontend_controller {
         }
         else
         {
-            $this->_data['error']='There are no results for your search.';
+            $this->_data['error']=__("CF_mess_no_search");
             $this->_data['query_most_blog_post'] = $this->Mblog->get_most_blog_post();
             $this->_load_view('blog/search_blog');
         }
@@ -465,7 +465,7 @@ class Blog extends Frontend_controller {
         }
         else
         {
-            $this->_data['error']='There are no results for your search.';
+            $this->_data['error']=__("CF_mess_no_search");
             $this->_data['query_most_blog_post'] = $this->Mblog->get_most_blog_post();
             $this->_load_view('blog/search_blog');
         } 
