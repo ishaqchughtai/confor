@@ -30,11 +30,11 @@
         </p>
         <p>
             <label for="paypayacount"><?php echo __("CF_paypal")?>:</label>
-            <input class="medium" name="txtpayPayAccount" id="name" /><?php echo form_error("txtpayPayAccount"); ?>
+            <input class="medium" name="txtpayPayAccount" id="name" /><?php echo form_error("txtpayPayAcc ount"); ?>
         </p>
         <p>
             <label for="password"><?php echo __("CF_pass")?>:</label>
-            <input class="medium" name="txtPassword" id="name" /><?php echo form_error("txtPassword"); ?>
+            <input class="medium" type="password" name="txtPassword" id="name" /><?php echo form_error("txtPassword"); ?>
         </p>
         <p>
             <input name="submit" type="submit" class="submit" value="<?php echo __("CF_add")?>" />
