@@ -10,6 +10,7 @@
             <li><a class="icon_add" href="<?php echo site_url('admin/add_new_admin');?>"><?php echo __("CF_new_admin")?></a></li>
             <?php }?>
         <li><a class="icon_add" href="<?php echo site_url('admin/edit_profile/'.$admin_id);?>"><?php echo __("CF_edit_admin")?></a></li>
+        <li><a class="icon_add" href="<?php echo site_url('admin/change_pass/'.$admin_id);?>">Change Password</a></li>
 		<li><a class="icon_add" href="<?php echo base_url().'pay/admin';?>">Paypal Management</a></li>
     </ul>
     <p>&nbsp;</p>
