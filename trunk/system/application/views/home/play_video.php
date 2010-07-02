@@ -95,26 +95,7 @@ $("div.scrollable").scrollable({easing: 'custom', speed: 700, circular: true});
             left: 20,
             displayTime: 2000   
         },
-        playlist: [
-        {
-            url: '<?php echo base_url()?>videos/<?php echo $video_link?>',
-            title: 'Palm trees and the sun'
-        },    
-        {
-            url: 'KimAronson-TwentySeconds58192.flv',
-            title: 'Happy feet in a car'
-        },    
-        {
-            url: 'KimAronson-TwentySeconds63617.flv',
-            title: 'People jogging'
-        }
-        ],
-        plugins: {
-            controls: {
-                playlist: true
-            }
-        },
-        clip:{autoPlay: false,autoBuffering: true}
+        clip:{autoPlay: true,autoBuffering: true}
     }        
     );
 </script>
