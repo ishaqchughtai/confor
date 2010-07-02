@@ -95,6 +95,17 @@ $("div.scrollable").scrollable({easing: 'custom', speed: 700, circular: true});
             left: 20,
             displayTime: 2000   
         },
+        playlist: [
+        {
+            url: '<?php echo base_url()?>videos/<?php echo $video_link?>',
+            title: 'Palm trees and the sun'
+        }
+        ],
+        plugins: {
+            controls: {
+                playlist: false
+            }
+        },
         clip:{autoPlay: true,autoBuffering: true}
     }        
     );
