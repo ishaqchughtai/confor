@@ -438,15 +438,18 @@
             else
             {
                 $query=$this->Mvconference->get_conferenceid($id);
+                
                 foreach($query as $row)
                 {
-                    $this->Mvconference->delete_video($row['vid_id']);
-                    $file_to_delete='./videos/'.$row['vhashs'];
+                    //print_r($row);
+                    //echo $row['vhash'];
+                    //$this->Mvconference->delete_video($row['vid_id']);
+                    $file_to_delete='./videos/'.$row['vhash'];
                     echo $file_to_delete;
                     unlink($file_to_delete);
                 }
-                $this->Madmin->delete_user($id);
-                redirect('admin/list_user');
+                //$this->Madmin->delete_user($id);
+                //redirect('admin/list_user');
             }    
         }
         /*Video Conference*/
