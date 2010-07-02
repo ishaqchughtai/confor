@@ -77,7 +77,7 @@
     function update_element($ElementName)
     {
       is_admin();
-      $this->form_validation->set_rules('ElementContent','Element Content','required');
+      $this->form_validation->set_rules('ElementContent',__("CF_element_content"),'required');
       $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
       $query = $this->Maccessories->get_element($ElementName);
       $this->_data['query'] = $query->result_array();                                          

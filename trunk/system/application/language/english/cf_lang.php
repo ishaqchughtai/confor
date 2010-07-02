@@ -132,6 +132,7 @@ $lang['CF_update_player'] = 'Please update your flash player';
 //message when you registry susscess
 $lang['CF_mess_reg'] = 'Your profile has been saved!';
 
+
 //------------------------------------------------------------------
 
 
@@ -196,11 +197,18 @@ $lang['CF_old_pass'] = 'OLD PASSWORD';
 $lang['CF_new_pass'] = 'NEW PASSWORD';
 $lang['CF_confirm_pass'] = 'CONFIRM NEW PASSWORD';
 $lang['CF_update'] = 'UPDATE';
+$lang['CF_change_password_success'] = 'Your password has been successfully changed';
+$lang['CF_data_is_not_exists'] = 'The data is not exists';
+$lang['CF_confirm_password_same_new_pass'] = 'Confirm Password be the same as New Password';
 
 //forgot pass
 $lang['CF_forgot_pass_title'] = 'Forgotten Password';
 $lang['CF_forgot_pass_email_address'] = 'Your Email Address';
 $lang['CF_forgot_pass_back'] = 'Back';
+$lang['CF_forgot_email_content_retrieve_password'] = 'Your password to login at website http://conferences-formations.com is: ';
+$lang['CF_forgot_check_email_to_retrieve'] = 'You need to check e-mail to retrieve your password';
+$lang['CF_forgot_email_to_not_exist'] = 'The Email is not exists';
+$lang['CF_forgot_email_title_retrieve_password'] = 'Retrieve your password from http://conferences-formations.com';
 
 //your video
 $lang['CF_your_vid'] = 'Your video';
@@ -424,6 +432,60 @@ $lang['CF_Critical'] = 'Critical';
 $lang['CF_ask_camera'] = 'Ask for a cameraman team';
 $lang['CF_Delete_Ticket'] = 'Delete Ticket';
 $lang['CF_Upload_Form'] = 'Upload Form';
-
-
 $lang['CF_upload_another?'] = 'Upload Another File!';
+
+
+
+
+//New Key
+
+//message when you enter invalid password
+$lang['CF_invalid_pass'] = 'You have entered invalid password!';
+
+//message when you enter invalid email
+$lang['CF_invalid_email'] = 'You have entered invalid email address!';
+
+//message when you insert new admin fail
+$lang['CF_insert_fail'] = 'Insert new admin failed!';
+
+//message when you email or paypal already exist
+$lang['CF_email_paypal_exist'] = 'Email or paypal account already exist!';
+
+//message when you can not update
+$lang['CF_cant_update'] = 'Can not update!';
+
+//message when you haven't upload
+$lang['CF_havent_upload'] = 'You must upload your clip!';
+
+//message when you upload success
+$lang['CF_upload_success'] = 'Your video has been created!';
+
+//message when you save video information
+$lang['CF_save_info'] = 'Your video information has been saved!';
+
+//message when you delete video
+$lang['CF_delete_vid'] = 'Your video has been deleted!';
+
+$lang['CF_contact_error'] = 'Contact can not send. Please try again';
+
+$lang['CF_contact_successfully'] = 'Contact send successfully';
+
+$lang['CF_your_contact_mail'] = 'Contact from';
+
+$lang['CF_element_content'] = 'Element Content';
+
+$lang['CF_event_content'] = 'Event Content';
+
+$lang['CF_the'] = 'The';
+
+$lang['CF_already_exist'] = 'Already exist';
+
+$lang['CF_invalid_code'] = 'Invalid Code';
+
+$lang['CF_add_image_suc'] = 'New image successfully added';
+
+$lang['CF_only_admin'] = 'Only Admin can use this function';
+
+$lang['CF_reslult_search'] = 'Your searching did not match any rows';
+
+$lang['CF_row'] = 'Row each page must > 0';

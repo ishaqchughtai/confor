@@ -60,7 +60,17 @@ class Event extends Frontend_controller {
 
   //Content's event of user
   function event_content($id='') 
-  { 
+  {
+
+    $this->_data['path'][] = array(
+    'name' => __("CF_event"),
+    'link' => site_url("event/show_event/".date('Y-m-d')."/5")
+    );
+
+    $this->_data['path'][] = array(
+    'name' => __("CF_event_content"),
+    'link' => '#'
+    ); 
     $id = (double)$id;
     if(is_nan($id)==FALSE && $id > 0)
     {
@@ -82,20 +92,20 @@ class Event extends Frontend_controller {
     'name' => __("CF_event"),
     'link' => site_url("event/show_event/".date('Y-m-d')."/5")
     );
-    
+
     $this->_data['path'][] = array(
     'name' => __("CF_add_event"),
-    'link' => site_url("event/add")
+    'link' => "#"
     );    
-        
+
     $userData = is_speaker();
     $id = $userData['speaker_id'];
     if($this->input->post('btnsubmit'))
     {
-      $this->form_validation->set_rules('title','Title','trim|required|max_length[50]');
-      $this->form_validation->set_rules('subject','Subject','trim|required|max_length[50]');
-      $this->form_validation->set_rules('keywords','Keywords','trim|required|callback_keyword_check');
-      $this->form_validation->set_rules('description','Description','trim|required|max_length[500]');
+      $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('subject',strtolower(__("CF_subject")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
+      $this->form_validation->set_rules('description',strtolower(__("CF_des")),'trim|required|max_length[500]');
       $this->form_validation->set_error_delimiters('<p class="not_error long"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
@@ -129,12 +139,12 @@ class Event extends Frontend_controller {
     'name' => __("CF_event"),
     'link' => site_url("event/show_event/".date('Y-m-d')."/5")
     );
-    
+
     $this->_data['path'][] = array(
     'name' => __("CF_edit_event"),
-    'link' => site_url("event/get_event/".$author."/".$id)
+    'link' => '#'
     );
-    
+
     $userData = is_speaker();
     $speaker_id= $userData['speaker_id'];	  
 
@@ -153,10 +163,10 @@ class Event extends Frontend_controller {
 
     if($this->input->post('btnedit'))
     {
-      $this->form_validation->set_rules('title','Title','trim|required|max_length[50]');
-      $this->form_validation->set_rules('subject','Subject','trim|required|max_length[50]');
-      $this->form_validation->set_rules('keywords','Keywords','trim|required|callback_keyword_check');
-      $this->form_validation->set_rules('description','Description','trim|required|max_length[500]');
+      $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('subject',strtolower(__("CF_subject")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
+      $this->form_validation->set_rules('description',strtolower(__("CF_des")),'trim|required|max_length[500]');
       $this->form_validation->set_error_delimiters('<p class="not_error long"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
@@ -239,13 +249,24 @@ class Event extends Frontend_controller {
   //Content's event of admin
   function event_content_admin($id) 
   {
+
     if (is_admin()) 
     { 
-    $this->_data['path'][] = array(
+      $this->_data['path'][] = array(
+      'name' => __("CF_event"),
+      'link' => site_url("event/show_event/".date('Y-m-d')."/5")
+      );
+
+      $this->_data['path'][] = array(
+      'name' => __("CF_event_content"),
+      'link' => '#'
+      );
+      
+      $this->_data['path'][] = array(
       'name' => __("CF_admin_event_list"),
       'link' => site_url("event/event_list/")
       ); 
-              
+
       $this->_data['query'] = $this->MEvent->get_event_by_id($id);
       $this->_load_view('admin/event_content_admin');
     }
@@ -255,9 +276,9 @@ class Event extends Frontend_controller {
   function get_event_admin($id)
   {
     $this->_data['path'][] = array(
-      'name' => __("CF_edit_event"),
-      'link' => '#'
-      );
+    'name' => __("CF_edit_event"),
+    'link' => '#'
+    );
     is_admin();
     $this->_data['query'] = $this->MEvent->get_data_to_form_admin($id);
     $this->_load_view('admin/get_event_admin');		
@@ -269,11 +290,11 @@ class Event extends Frontend_controller {
     is_admin();
     if($this->input->post('btnedit'))
     {
-      $this->form_validation->set_rules('speaker','Speaker','trim|required|');
-      $this->form_validation->set_rules('title','Title','trim|required|max_length[50]');
-      $this->form_validation->set_rules('subject','Subject','trim|required|max_length[50]');
-      $this->form_validation->set_rules('keywords','Keywords','trim|required|callback_keyword_check');
-      $this->form_validation->set_rules('description','Description','trim|required|max_length[500]');
+      $this->form_validation->set_rules('speaker',strtolower(__("CF_one_speaker")),'trim|required|');
+      $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('subject',strtolower(__("CF_subject")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
+      $this->form_validation->set_rules('description',strtolower(__("CF_des")),'trim|required|max_length[500]');
       $this->form_validation->set_error_delimiters('<p class="not_error long"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
@@ -309,17 +330,17 @@ class Event extends Frontend_controller {
   function add_event()
   {
     $this->_data['path'][] = array(
-      'name' => __("CF_add_event"),
-      'link' => '#'
-      );
+    'name' => __("CF_add_event"),
+    'link' => '#'
+    );
     is_admin();
     if($this->input->post('btnsubmit'))
     {
-      $this->form_validation->set_rules('speaker','Speaker','required');
-      $this->form_validation->set_rules('title','Title','trim|required|max_length[50]');
-      $this->form_validation->set_rules('subject','Subject','trim|required|max_length[50]');
-      $this->form_validation->set_rules('keywords','Keywords','trim|required|callback_keyword_check');
-      $this->form_validation->set_rules('description','Description','trim|required|max_length[500]');
+      $this->form_validation->set_rules('speaker',strtolower(__("CF_one_speaker")),'required');
+      $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('subject',strtolower(__("CF_subject")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
+      $this->form_validation->set_rules('description',strtolower(__("CF_des")),'trim|required|max_length[500]');
       $this->form_validation->set_error_delimiters('<p class="not_error long"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
@@ -350,16 +371,16 @@ class Event extends Frontend_controller {
   //Search Event
   function search_event()
   {
-     $this->_data['path'][] = array(
-      'name' => __("CF_search_event"),
-      'link' => '#'
-      );
+    $this->_data['path'][] = array(
+    'name' => __("CF_search_event"),
+    'link' => '#'
+    );
     $keywords = $this->input->post('search_field');
 
     $keywords = $this->uri->segment(3);
     $per_page = $this->uri->segment(4);
     $offset = $this->uri->segment(5);
-    
+
 
     $config['uri_segment'] = 5;
     $config['base_url'] = base_url().'index.php/event/search_event/'.$keywords.'/'.$per_page;
@@ -377,18 +398,18 @@ class Event extends Frontend_controller {
     $this->_data['pagination'] = $this->pagination->create_links();
     $this->_load_view('event/search_event');    
   }
-  
+
   function your_event($speaker)	
   {
-     $this->_data['path'][] = array(
-      'name' => __("CF_yr_event"),
-      'link' => '#'
-      );
+    $this->_data['path'][] = array(
+    'name' => __("CF_yr_event"),
+    'link' => '#'
+    );
 
     $speaker = $this->uri->segment(3);
     $per_page = $this->uri->segment(4);
     $offset = $this->uri->segment(5);
-    
+
 
     $config['uri_segment'] = 5;
     $config['base_url'] = base_url().'index.php/event/your_event/'.$speaker.'/'.$per_page;

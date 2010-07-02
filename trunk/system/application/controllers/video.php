@@ -40,10 +40,10 @@ class Video extends Frontend_controller
 		
 		$this->vid_lib->init_uploader();		
 		
-		$this->form_validation->set_rules('title','Title','required');
-		$this->form_validation->set_rules('description','Description','required'); 
-		$this->form_validation->set_rules('video_cate','Category','required');
-		$this->form_validation->set_rules('keywords','Keywords','required');
+		$this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');
+		$this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 
+		$this->form_validation->set_rules('video_cate',strtolower(__("CF_cate_vid")),'required');
+		$this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'required');
 		$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
 		$this->_data['query']=$this->Mvconference->get_category();                  
 
@@ -53,7 +53,7 @@ class Video extends Frontend_controller
 			$this->_data['video_cate'] = $this->input->post('video_cate');			
 			if (strlen($this->_data['vname']) <= 1)
 			{
-				$this->_data['error'] = "You must upload your clip !";
+				$this->_data['error'] = __("CF_havent_upload");
 			}
 				
 			if($this->form_validation->run()==FALSE)
@@ -84,7 +84,7 @@ class Video extends Frontend_controller
 				);
 				$this->Mvconference->add_new_video($data);
 				//$this->list_video_conference();      
-				$this->_message('video', 'Your video has been created!', 'success',site_url("video/your_video").'/'.$speaker_id."/5");
+				$this->_message('video', __("CF_upload_success"), 'success',site_url("video/your_video").'/'.$speaker_id."/5");
 			}
 		}
 		else
@@ -103,7 +103,7 @@ class Video extends Frontend_controller
 		if ($delete_data)
 		{
 			$this->vid_lib->delete_old_data($delete_data['vhash'],$delete_data['shash']);
-			$this->_message('video', 'Your video has been deleted!', 'success',site_url("video/your_video").'/'.$speaker_id."/5");
+			$this->_message('video', __("CF_delete_vid"), 'success',site_url("video/your_video").'/'.$speaker_id."/5");
 		}
 		else
 		{
@@ -160,9 +160,9 @@ class Video extends Frontend_controller
 			'link' => '#'
 		);		
 		
-		$this->form_validation->set_rules('title','Title','required');
-		$this->form_validation->set_rules('keywords','Keywords','required');
-		$this->form_validation->set_rules('description','Description','required'); 
+		$this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');
+		$this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'required');
+		$this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 
 		$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
 		$this->_data['query']=$this->Mvconference->get_video_conference_by_id($id);	
 		$this->_data['speaker_id'] = $speaker_id;
@@ -181,7 +181,7 @@ class Video extends Frontend_controller
 				'tags'=>$this->input->post('keywords')				
 				);
 				$this->Mvconference->update_conference($data,$id);
-				$this->_message('video', 'Your video information has been saved!', 'success',site_url("video/your_video").'/'.$speaker_id."/5");
+				$this->_message('video', __("CF_mess_reg"), 'success',site_url("video/your_video").'/'.$speaker_id."/5");
 			}
 		}
 		else
