@@ -28,14 +28,14 @@
 	</script>
 	<?php
 		echo script('Cufon_yui.js');
-		echo script('jquery.min.js');
+		echo script('jquery.tools.min.js'); 
+		//echo script('jquery.min.js');
 		echo script('../fancybox/jquery.fancybox-1.3.1.pack.js');
 		echo script('../jQueryUI/jquery-ui-1.8.custom.min.js');
 		echo script('scripts.js');
 		echo script('xemmex.frontend.js');
         echo script('flowplayer-3.2.2.min.js');    
-        echo script('flowplayer.playlist-3.0.8.min.js');    
-        echo script('jquery.tools.min.js');    
+        echo script('flowplayer.playlist-3.0.8.min.js');          
 	?>
 	<!--[if IE 6]>
 	<script src="js/DD_belatedPNG.js"></script>
