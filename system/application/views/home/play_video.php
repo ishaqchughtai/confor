@@ -1,81 +1,120 @@
 <?php $page = 5;?>
 <?php require 'SimpleRatings/rSystem.php';  ?>
-        		<style type="text/css">
+</style>        
+<div class="content_item">
+<?php 
+    if($video_url->num_rows()>0)
+    {
+        $row=$video_url->row();
+        $vid_id=$row->vid_id;
+        $speaker_id = $row->mem_id;
+        $video_link=$row->vhash;
+        $description=$row->description;
+        $category=$row->category;
+        $tags=explode(" ",$row->tags);
+        $date=$row->date;
+        $viewed=$row->viewed;
+        $name=$row->username;
+        $video_title=$row->title;
+        $video_image=$row->shash;
+    }
+?>
+<h3><?php echo $video_title?></h3>
+<h5><?php echo __("CF_by")?>
 
-			#flashcontent {
-				overflow: hidden;
-			}
-		</style>		
-			  <div class="content_item" id="flashcontent">
-              <?php 
-              if($video_url->num_rows()>0)
-              {
-                  $row=$video_url->row();
-                  $vid_id=$row->vid_id;
-				  $speaker_id = $row->mem_id;
-                  $video_link=$row->vhash;
-				  $description=$row->description;
-				  $category=$row->category;
-				  $tags=explode(" ",$row->tags);
-				  $date=$row->date;
-				  $viewed=$row->viewed;
-				  $name=$row->username;
-                  $video_title=$row->title;
-				  $video_image=$row->shash;
-              }
-              ?>
-              <h3><?php echo $video_title?></h3>
-              <h5><?php echo __("CF_by")?>
-              
-              <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $name?></b></a> 
-			   <?php echo __("CF_in")?> 
-			  <?php for($i=0;$i<count($tags);$i++){?>
-                      <a href="#"><?php echo $tags[$i]?></a>
-                      <?php if ($i<count($tags)-1) echo ','?>
-                      <?php ;}?>
-               //
-			  <?php echo mdate('%F %j%S %Y', $date)?></h5>              
-              <h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>              
-		<script type="text/javascript">			
-			
-			var flashvars = {
-				cover: "<?php echo base_url().'thumbs/'.$video_image?>",								// Cover url.
-				source: "<?php echo base_url().'videos/'.$video_link?>",								// Source url.
-				autoPlay: false,											// Defines if vPlayer plays the video automatically.
-				scaleMode: "full",											// Defines how the video scale is fit to vPlayer (full, fitToWidthAndHeight, noScale).
-				bufferTime: 3,												// It is the time in seconds that an instance of VPlayer must load a video stream to reproduce.
-				loop: false,												// Defines if vPlayer loops the video.
-				controlsScale: 2,											// Defines the size of vPlayer controls scale. Default value is 2.5, minimum 1, maximun 10.
-				controlsAutoHide: true,										// Defines if controls are automatically hidden.
-				controlsHideDelay: 3,										// Defines the control hide delay.
-				allowFullScreen: true,										// Allows to play the video in full screen mode.
-				fullScreenOnPlay: false,									// Defines if VPlayer shows in full screen mode when user plays the video.
-				glossy: true,												// Determines if control shows a shine effect.
-				tooltipType: "follower",									// Defines how playback time is showed (none, normal, follower).
-				logo: true,													// Allows to visualize a logotype.
-				logoAutoHide: true,											// Defines if the logo hides when controls are hidden.
-				logoURL: "http://conferences-formations.com",		// URL that will be followed when you click on the logo.
-				logoAlign: "topLeft",									// Defines the logotype alignment inside VPlayer.
-				iconsAlign: "topRight",										// Defines the icons alignment inside VPlayer (topLeft, topRight, bottomLeft, bottomRight).
-				grid: false,												// Defines if a dot pattern over the video is showed.
-				gridPresset: 1,												// Defines the dot pattern that will be used from 0 to 9.
-				color: 0xffffff,											// Defines VPlayer primary color.
-				backgroundColor: 0xffffff,									// Defines background color.
-				backgroundAlpha: 1											// Defines background transparency level.
-			};
-			
-			var params = {allowFullScreen:"true", allowscriptaccess:"always", menu:"true", scale:"noscale", salign:"tl"};
-			var attributes = {id:"vPlayerPlugin"};
-			
-			swfobject.embedSWF("<?php echo base_url();?>vPlayer/vPlayerPlugin.swf", "flashmovie", 621, 344, "10.0.0", "<?php echo base_url();?>vPlayer/flashdetect/expressInstall.swf", flashvars, params, attributes);
-		</script>
-    		<div id="flashmovie">
-	    		<strong><?php echo __("CF_update_player")?> <a href="http://www.adobe.com/go/getflashplayer/"><?php echo __("CF_here")?>.</a></strong>
-	    	</div>
-            <?php echo $description?>
-		<script type="text/javascript">
-   			scale = new FlashScaler("flashcontent", 640, 360);
-		</script>
-                <div class="rate_balloon"><?php $SimpleRatings->create($vid_id);?>  
-        </div> 					
-			  </div>		  
+    <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $name?></b></a> 
+    <?php echo __("CF_in")?> 
+    <?php for($i=0;$i<count($tags);$i++){?>
+        <a href="#"><?php echo $tags[$i]?></a>
+        <?php if ($i<count($tags)-1) echo ','?>
+        <?php ;}?>
+    //
+<?php echo mdate('%F %j%S %Y', $date)?></h5>              
+<h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>
+<p><a href="" style="display:block;width:621px;height:344px;"id="player"></a></p>                  
+<?php echo $description?>
+<p></p>
+<a class="prev browse left"></a>
+
+<div class="scrollable"> <!--scrollable -->
+
+    <div class="items"> <!-- items close --->
+    
+        <div>
+            <?php
+                $ramdomvideo = get_random_top_video($category); 
+                for($i=0; $i<count($ramdomvideo); $i++):?>
+                <a href="<?php echo site_url('home/play/'.$ramdomvideo[$i]['vid_id'])?>">
+                    <img src="<?php echo base_url().'thumbs/'.$ramdomvideo[$i]['shash']?>" width="81" height="46" alt="flickr">
+                </a>                            
+                <!-- /.content .top_box_block --->
+                <?php endfor;?>
+         </div>
+         <div>
+             <?php
+                $ramdomvideo = get_random_top_video($category); 
+                for($i=0; $i<count($ramdomvideo); $i++):?>
+                <a href="<?php echo site_url('home/play/'.$ramdomvideo[$i]['vid_id'])?>">
+                    <img src="<?php echo base_url().'thumbs/'.$ramdomvideo[$i]['shash']?>" width="81" height="46" alt="flickr">
+                </a>                            
+                <!-- /.content .top_box_block --->
+                <?php endfor;?>
+      </div>
+    </div> <!-- items close --->   
+</div> <!--scrollable close--> 
+<a class="next browse right"></a>
+<!-- javascript coding -->              
+<div class="rate_balloon"><?php $SimpleRatings->create($vid_id);?></div>  
+                     
+</div> 
+<script language="JavaScript">    
+
+// custom easing called "custom"
+$.easing.custom = function (x, t, b, c, d) {
+    var s = 1.70158; 
+    if ((t/=d/2) < 1) return c/2*(t*t*(((s*=(1.525))+1)*t - s)) + b;
+    return c/2*((t-=2)*t*(((s*=(1.525))+1)*t + s) + 2) + b;
+}
+
+
+
+// use the custom easing
+$("div.scrollable").scrollable({easing: 'custom', speed: 700, circular: true});
+</script>         
+<script language="JavaScript">
+    flowplayer("player", 
+    "<?php echo base_url();?>flowplayer/flowplayer.commercial-3.2.2.swf",
+    {// product key
+        key: '#$7163ea352c072a8b4f2' ,
+
+        // logo initially has zero opacity
+        logo: {   
+            url: 'http://conferences-formations.com/flowplayer/logo.png',   
+            fullscreenOnly: false,   
+            top: 20, 
+            left: 20,
+            displayTime: 2000   
+        },
+        playlist: [
+        {
+            url: '<?php echo base_url()?>videos/<?php echo $video_link?>',
+            title: 'Palm trees and the sun'
+        },    
+        {
+            url: 'KimAronson-TwentySeconds58192.flv',
+            title: 'Happy feet in a car'
+        },    
+        {
+            url: 'KimAronson-TwentySeconds63617.flv',
+            title: 'People jogging'
+        }
+        ],
+        plugins: {
+            controls: {
+                playlist: true
+            }
+        },
+        clip:{autoPlay: false,autoBuffering: true}
+    }        
+    );
+</script>

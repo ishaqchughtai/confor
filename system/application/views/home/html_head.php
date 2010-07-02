@@ -15,10 +15,13 @@
 		};	
 	</script>
 	<?php
-		echo style('style.css');		
+        echo style('style.css');            
+        echo style('playlist.css');        	
 		echo style('../fancybox/jquery.fancybox-1.3.1.css');
 		echo style('../jQueryUI/jquery-ui-1.8.custom.css');
 		echo style('xemmex.frontend.css');
+        echo style('scrollable-buttons.css');
+        echo style('scrollable-horizontal.css');
 	?>
 	<script>
 		site_url = "<?php echo site_url("")?>/";		
@@ -30,9 +33,10 @@
 		echo script('../jQueryUI/jquery-ui-1.8.custom.min.js');
 		echo script('scripts.js');
 		echo script('xemmex.frontend.js');
+        echo script('flowplayer-3.2.2.min.js');    
+        echo script('flowplayer.playlist-3.0.8.min.js');    
+        echo script('jquery.tools.min.js');    
 	?>
-    		<script type="text/javascript"  src="<?php echo base_url();?>vPlayer/js/swfobject.js"></script>
-		<script type="text/javascript" src="<?php echo base_url();?>vPlayer/js/flashscaler.js"></script>
 	<!--[if IE 6]>
 	<script src="js/DD_belatedPNG.js"></script>
 	<script> DD_belatedPNG.fix('*'); </script>
