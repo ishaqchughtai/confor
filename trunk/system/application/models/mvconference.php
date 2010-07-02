@@ -4,7 +4,7 @@
             parent::Model();
             $this->load->database();
         }
-        function get_all_video_conference($num,$offset)
+        function get_all_video_conference($num,$offset,$approved = 1)
         {
             $this->db->select('
             videos.vid_id,
@@ -22,14 +22,14 @@
             users.name,
             users.first_name');
             $this->db->from('videos');
-            $this->db->where('videos.approved ', '1');
+            if ($approved==1) $this->db->where('videos.approved ', '1');
             $this->db->join('users','videos.mem_id = users.id'); 
             $this->db->order_by("videos.`date`", "desc"); 
             $this->db->limit($num,$offset);
             $query = $this->db->get();
             return $query->result_array();
         }
-        function get_video_conference_by_category($Category,$num,$offset)
+        function get_video_conference_by_category($Category,$num,$offset, $approved=1)
         {
             $this->db->select("
             users.name as SpeakerName,
@@ -50,6 +50,7 @@
             $this->db->from('videos');
             $this->db->join('users','videos.mem_id = users.ID');
             $this->db->join('tblcategory','videos.category = tblcategory.ID');
+			if ($approved==1) $this->db->where('videos.approved ', '1');
             $this->db->where('videos.category',$Category);
             $this->db->order_by("videos.`date`", "desc");
             $this->db->limit($num,$offset); 
@@ -67,6 +68,22 @@
             $query = $this->db->get_where('videos',array('vid_id'=>$id)); 
             return $query;
         }
+		
+		function get_video_info_by_id($vid_id)
+		{
+            $this->db->select('
+            users.username,
+			users.name,
+            videos.*
+            ');
+            $this->db->from('videos');
+            $this->db->join('users','videos.mem_id = users.id');
+            $this->db->where('vid_id', $vid_id);            
+            $this->db->limit(1);
+            return $this->db->get();            
+		}
+		
+		
         function get_category()
         {
             $this->db->select('ID,Name');
