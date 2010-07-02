@@ -67,6 +67,29 @@
                 return FALSE;
             }
         }
+        function get_admin_password($id)
+        {
+            $this->db->select("Password");
+            $this->db->from('tbladmin');
+            $this->db->where('id',$id);
+            $query = $this->db->get();
+            if ($query->num_rows()>0)
+            {
+                return $query->row();
+            }
+            else
+            {
+                return FALSE;
+            } 
+        }
+        function change_admin_password($id,$password)
+        {
+            $data = array(
+            'Password' => $password
+            );
+            $this->db->where('id', $id);
+            $this->db->update('tbladmin', $data);
+        }
         /*Speaker*/
         //function get_user()
         // {
@@ -89,12 +112,12 @@
             users.first_name,
             users.company_name,
             users.description,
-            users.country
+            users.country,
+            users.status
             ");
-            $this->db->where('users.id',$id);
-            //$this->db->join('geo_countries','users.country = geo_countries.con_id');
-            $this->db->where('users.id',$id);
-            $this->db->limit(1);
+            $this->db->from('users');
+            $this->db->where('id',$id);
+            //$this->db->limit(1);
             $query = $this->db->get();
             if ($query->num_rows()>0)
             {
@@ -122,5 +145,6 @@
             $country=$this->db->get('geo_countries');
             return $country->result_array();
         }
+
     }
 ?>
