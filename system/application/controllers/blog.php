@@ -49,7 +49,7 @@ class Blog extends Frontend_controller {
         $config['first_link'] = '<< First';
 
         $this->pagination->initialize($config);
-        $num = !is_nan((double)$this->uri->segment(3))?0:$this->uri->segment(3);
+        $num = $this->uri->segment(3);
         $this->_data['query'] = $this->Mblog->get_all_blog($num,$config['per_page']);
         $this->_data['pagination'] = $this->pagination->create_links();                
         if($this->session->userdata('admin')==TRUE)
