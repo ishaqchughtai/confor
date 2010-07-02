@@ -21,13 +21,22 @@
 							$selected_cate = $row->category;
                             $keywords=$row->tags;
                             $discription=$row->description;
-							$appr = $row->approved;							
+							$appr = $row->approved;	
+							$speaker_id = $row->mem_id;
+							$speaker_name = $row->username . '('.$row->name.')';							
                         }
                     ?>
                     <br />
 
                     <h3> <?php echo __("CF_vid_update")?> </h3>
                     <?php echo form_open('admin/edit_video_conference/'.$id);?> 
+					
+					<p>
+					<input id="speaker_id" type="hidden" name="speaker" value="<?php echo $speaker_id?>"/>
+					<label for="title"><?php echo __("CF_one_speaker")?>:</label>
+					<input id="speaker_email" name="speaker_email" class="short" type="text" value="<?php echo $speaker_name?>"/>					
+					</p>					
+					
                     <p>
                         <label for="title"><?php echo __("CF_title")?>:</label>
                         <input type="text" class="medium" name="title" id="title" value="<?php echo $title ?>" />

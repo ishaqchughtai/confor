@@ -151,8 +151,12 @@ class Home extends Frontend_controller {
     function play($id='')
     {
         $this->_data['path'][] = array(
+        'name' => __("CF_conference_office"),
+        'link' => site_url('conference_office')
+        );	
+        $this->_data['path'][] = array(
         'name' => __("CF_play"),
-        'link' => site_url("home/login")
+        'link' => '#'
         );
         $id=(double)$id;
         if(is_nan($id)==FALSE)
