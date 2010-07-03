@@ -146,6 +146,36 @@
             $country=$this->db->get('geo_countries');
             return $country->result_array();
         }
-
+        //Category
+         function get_all_category()
+        {
+            $this->db->select();
+            $this->db->from('tblcategory');
+            $query = $this->db->get();
+            return $query->result_array();
+        }
+        function delete_category($cateid)
+        {
+            $this->db->where('ID', $cateid);
+            $this->db->delete('tblcategory');
+        }
+        function modify_category($cateid,$data)
+        {
+            $this->db->update('tblcategory',$data,array('ID'=>$cateid));
+        }
+        function get_category_by_id($id)
+        {
+            $query = $this->db->get_where('tblcategory',array('ID'=>$id)); 
+            return $query->result_array();
+        }
+        function add_new_category($data)
+        {
+            $this->db->insert('tblcategory', $data);
+        }
+        function get_video_by_category($cateID)
+        {
+            $query = $this->db->get_where('videos',array('category'=>$cateID)); 
+            return $query->result_array();
+        }
     }
 ?>
