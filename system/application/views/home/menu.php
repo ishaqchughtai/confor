@@ -14,7 +14,9 @@
 			</ul>
 		</li>
 		
-		<li><a href="<?php echo site_url("conference_office") ?>"><?php echo __("CF_conference_office")?></a></li>
+        <li><a href="<?php echo site_url("conference_office") ?>"><?php echo __("CF_conference")?></a></li>
+        
+		<li><a href="<?php echo site_url("accessories/show_element/office") ?>"><?php echo __("CF_conference_office")?></a></li>
 			
 		<li><a href="<?php echo site_url("accessories/show_element/training") ?>"><?php echo __("CF_training")?></a></li>
 	

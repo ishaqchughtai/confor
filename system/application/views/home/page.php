@@ -14,6 +14,9 @@
                             }elseif($ElementName == 'Training')
                             {
                                 $StrElementName = 'Training';   
+                            }elseif($ElementName == 'Office')
+                            {
+                                $StrElementName = 'Conference Office';   
                             }
                         ?>
 <div class="content_item">

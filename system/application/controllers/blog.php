@@ -87,7 +87,7 @@ class Blog extends Frontend_controller {
             $this->_load_view('blog/blog_entry_view');
         }else
         {
-            redirect(site_url().'blog/index');
+            redirect(site_url('blog'));
         }
 
     }	
@@ -102,7 +102,7 @@ class Blog extends Frontend_controller {
         {
             $this->_data['path'][] = array(
             'name' => $title,
-            'link' => site_url("/blog/blog_content/".$author.'/'.$title)
+            'link' => site_url("blog/blog_content/".$author.'/'.$title)
             );
             $this->blog_sidebar = 'most_view';    
             $query=$this->Mblog->get_blog_by_title_countview($title);
@@ -116,10 +116,10 @@ class Blog extends Frontend_controller {
                 $this->_data['query_show_comment'] = $this->Mblog->show_comment($title);
                 $this->_data['query_show_author'] = $this->Mblog->written($author);
                 $this->_data['page_title'] = $title; 
-                $this->_load_view('admin/blog_entry_view_admin');
+                $this->_load_view('admin/blog_entry_view_admin');               
             }else
             {
-                redirect('blog/index');
+                redirect(site_url('blog'));
             }
 
         }
