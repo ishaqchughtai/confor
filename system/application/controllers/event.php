@@ -252,9 +252,9 @@ class Event extends Frontend_controller {
 
     if (is_admin()) 
     { 
-      $this->_data['path'][] = array(
-      'name' => __("CF_event"),
-      'link' => site_url("event/show_event/".date('Y-m-d')."/5")
+     $this->_data['path'][] = array(
+      'name' => __("CF_admin_event_list"),
+      'link' => site_url("event/event_list/")
       );
 
       $this->_data['path'][] = array(
@@ -262,10 +262,7 @@ class Event extends Frontend_controller {
       'link' => '#'
       );
       
-      $this->_data['path'][] = array(
-      'name' => __("CF_admin_event_list"),
-      'link' => site_url("event/event_list/")
-      ); 
+       
 
       $this->_data['query'] = $this->MEvent->get_event_by_id($id);
       $this->_load_view('admin/event_content_admin');
@@ -275,6 +272,15 @@ class Event extends Frontend_controller {
   //get event of admin
   function get_event_admin($id)
   {
+    $this->_data['path'][] = array(
+      'name' => __("CF_admin_event_list"),
+      'link' => site_url("event/event_list/")
+      );
+
+      $this->_data['path'][] = array(
+      'name' => __("CF_event_content"),
+      'link' => site_url("event/event_content_admin/".$id)
+      );
     $this->_data['path'][] = array(
     'name' => __("CF_edit_event"),
     'link' => '#'

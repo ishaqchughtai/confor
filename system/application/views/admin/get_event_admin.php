@@ -8,6 +8,7 @@
 			$id = $row->ID;
 			$email = $row->email;
 			$date =  $row->Date;
+			$speaker_id = $row->Speaker;
 			$title = $row->Title;
 			$subject = $row->Subject;
 			$keywords = $row->Keywords;
@@ -23,7 +24,7 @@
 						?>
 						
 						<p>
-						<input id="speaker_id" type="hidden" name="speaker" value="0"/>
+						<input id="speaker_id" type="hidden" name="speaker" value="<?php echo $speaker_id ?>"/>
 						<label for="title"><?php echo __("CF_one_speaker")?>:</label>
 						<input id="speaker_email" class="short" type="text" value="<?php echo $email ?>"/>
 						<?php echo form_error('speaker');?>

@@ -492,11 +492,11 @@ $lang['CF_reslult_search'] = 'Your searching did not match any rows';
 
 $lang['CF_row'] = 'Row each page must > 0';
 
-$lang['CF_edit_image_suc'] = 'Edit Imgae Success';
+$lang['CF_edit_image_suc'] = 'Edit Image Success';
 
 $lang['CF_showroom_menu'] = 'Showroom Menu';
 
-$lang['CF_ad_menu_showroom'] = 'List images';
+$lang['CF_ad_menu_showroom'] = 'List Images';
 
 $lang['CF_vid_from_speaker'] = 'Video from speaker';
 

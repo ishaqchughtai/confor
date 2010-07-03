@@ -10,177 +10,179 @@
 //------------------------------------------------------------------
 //WEBSITE STUFF
 //------------------------------------------------------------------
-$lang['CON_turned_off_message'] = 'The website %s is actually down for maintenance.';
-$lang['CON_welcome'] = 'Welcome on board ';
-$lang['CON_user_name_label'] = 'User Name';
-$lang['CON_user_password_label'] = 'Password';
-$lang['CON_user_password_confirm_label'] = 'Confirm Password';
-$lang['CON_user_email_label'] = 'Email';
-$lang['CON_user_autologin_label'] = 'remember me';
-$lang['CON_user_country_label'] = 'Country';
+$lang['CON_turned_off_message'] = 'Le site %s est actuellement ferm&eacute; pour maintenance.';
+$lang['CON_welcome'] = 'Bienvenue &agrave; bord';
+$lang['CON_user_name_label'] = 'Nom d\'utilisateur';
+$lang['CON_user_password_label'] = 'Mot de passe';
+$lang['CON_user_password_confirm_label'] = 'Confirmer le mot de passe';
+$lang['CON_user_email_label'] = 'Courriel';
+$lang['CON_user_autologin_label'] = 'Se souvenir de moi';
+$lang['CON_user_country_label'] = 'Pays';
 
-$lang['CON_login_label'] = 'Login';
-$lang['CON_logout_label'] = 'Logout';
+$lang['CON_login_label'] = 'Connexion';
+$lang['CON_logout_label'] = 'D&eacute;connexion';
 
-$lang['CON_cancel_label'] = 'Cancel';
-$lang['CON_agree_label'] = 'I Agree';
-$lang['CON_continue_label'] = 'Continue';
-$lang['CON_donotagree_label'] = 'I Do Not Agree';
-$lang['CON_forgotten_password_label'] = 'Forgotten Password';
-$lang['CON_register_label'] = 'Register';
-$lang['CON_registration_label'] = 'Registration';
-$lang['CON_change_password_label'] = 'Change Password';
+$lang['CON_cancel_label'] = 'Annuler';
+$lang['CON_agree_label'] = 'Je suis d\'accord';
+$lang['CON_continue_label'] = 'Continuer';
+$lang['CON_donotagree_label'] = 'Je n\'accepte pas';
+$lang['CON_forgotten_password_label'] = 'Mot de passe oubli&eacute;';
+$lang['CON_register_label'] = 'S\'enregistrer';
+$lang['CON_registration_label'] = 'Enregistrement';
+$lang['CON_change_password_label'] = 'Changer le mot de passe';
 
 
-$lang['CON_citation_message'] = 'Thank You!';
-$lang['CON_already_logged_in_msg'] = 'you have already logged in!';
+$lang['CON_citation_message'] = 'Merci!';
+$lang['CON_already_logged_in_msg'] = 'vous &ecirc;tes d&eacute;j&agrave; connect&eacute;!';
 
-$lang['CON_unknown_user'] = 'unknown user';
+$lang['CON_unknown_user'] = 'utilisateur inconnu';
 
 $lang['CON_ok'] = 'OK';
-$lang['CON_reset'] = 'RESET';
-$lang['CON_your_name'] = 'Your Name';
-$lang['CON_your_email'] = 'Your Email';
-$lang['CON_your_meesage'] = 'Your Message';
-$lang['CON_your_contact_mail'] = 'Contact from ';
+$lang['CON_reset'] = 'R&Eacute;TABLIR';
+$lang['CON_your_name'] = 'Votre nom';
+$lang['CON_your_email'] = 'Votre courriel';
+$lang['CON_your_meesage'] = 'Votre Message';
+$lang['CON_your_contact_mail'] = 'Formulaire de contact';
 $lang['CON_contact_title'] = 'CONTACT';
-$lang['CON_contact_question'] = 'Leo quam tincidunt velit?';
-$lang['CON_contact_condition'] = 'Curabitur viverra, ante non pulvinar pellentesque, leo quam tincidunt velit, quis eleifend erat orci eu orci. Proin ac eros nec dolor sodales pulvinar sit amet nec velit. Praesent tellus diam, luctus in.';
+$lang['CON_contact_successfully'] = 'Message envoy&eacute; avec succ&egrave;s';
+$lang['CON_contact_error'] = 'Le message ne peut pas envoyer. S.V.P., essayer de nouveau';
+$lang['CON_contact_question'] = 'Vous avez une question';
+$lang['CON_contact_condition'] = 'Si vous avez des questions sur les services offerts par Confor.ca ou sur tout autre sujet, veuillez remplir le formulaire ci-dessous et cliquez sur le bouton ENVOYER.';
 
 //------------------------------------------------------------------
 //VALIDATION ERROR MESSAGES
 //------------------------------------------------------------------
-$lang['CON_invalid_user_message'] = 'Invalid user.';
-$lang['CON_invalid_username_password_message'] = 'invalid username or password';
-$lang['CON_invalid_username_message'] = 'Invalid username';
-$lang['CON_invalid_password_message'] = 'Invalid password';
-$lang['CON_username_first_password_message'] = 'Please enter your username first and then type your password';
-$lang['CON_banned_user_message'] = 'Go away man!';
-$lang['CON_login_message'] = 'You have successfully logged in.';
-$lang['CON_logout_message'] = 'You have successfully logged out.';
-$lang['CON_length_validation_message'] = 'must be between %s and %s characters in length.';
-$lang['CON_allowed_characters_validation_message'] = 'Only alpha characters, digits, underline or dash characters allowed.';
-$lang['CON_invalid_validation_message'] = 'The %s is invalid: ';
-$lang['CON_in_use_validation_message'] = 'The %s is already in use.';
-$lang['CON_country_validation_message'] = 'Please choose the country where you live';
-$lang['CON_user_email_duplicate'] = 'A user with this e-mail has already registered. If you have forgotten your login details you can get them here.';
-$lang['CON_usertemp_email_duplicate'] = 'A user with this e-mail has already registered and is waiting for activation. If this is your e-mail address please check your e-mail inbox and activate your account.';
+$lang['CON_invalid_user_message'] = 'Usager invalide';
+$lang['CON_invalid_username_password_message'] = 'Nom d\'utilisateur ou mot de passe invalide';
+$lang['CON_invalid_username_message'] = 'Nom d\'utilisateur incorrect';
+$lang['CON_invalid_password_message'] = 'Mot de passe incorrect';
+$lang['CON_username_first_password_message'] = 'S.V.P., entrer votre nom d\'utilisateur et tapez ensuite votre mot de passe';
+$lang['CON_banned_user_message'] = 'Vous avez &eacute;t&eacute; banni!';
+$lang['CON_login_message'] = 'Vous avez r&eacute;ussi &agrave; vous connecter.';
+$lang['CON_logout_message'] = 'Vous &ecirc;tes d&eacute;connect&eacute; avec succ&egrave;s.';
+$lang['CON_length_validation_message'] = 'doit &ecirc;tre comprise entre %s et %s caract&egrave;res';
+$lang['CON_allowed_characters_validation_message'] = 'Seuls les caract&egrave;res alphab&eacute;tiques, chiffres, soulignement ou trait d\'union sont autoris&eacute;s.';
+$lang['CON_invalid_validation_message'] = 'Le %s est invalide: ';
+$lang['CON_in_use_validation_message'] = 'Le %s est d&eacute;j&agrave; utili&eacute;.';
+$lang['CON_country_validation_message'] = 'S.V.P., choisir le pays où vous vivez';
+$lang['CON_user_email_duplicate'] = 'Un utilisateur avec ce courriel est d&eacute;j&agrave; enregistr&eacute;. Si vous avez oubli&eacute; vos informations de connexion vous pouvez les obtenir ici.';
+$lang['CON_usertemp_email_duplicate'] = 'Un utilisateur avec ce courriel a d&eacute;j&agrave; &eacute;t&eacute; enregistr&eacute; et est en attente d\'activation. S\'il s\'agit de votre adresse courriel S.V.P., consulter votre boite de r&eacute;ception et activer votre compte.';
  
 //------------------------------------------------------------------
 //CHANGE PASSWORD
 //------------------------------------------------------------------
-$lang['CON_change_password_success'] = 'Your password has been successfully changed';
-$lang['CON_old_password_label'] = 'Old Password';
-$lang['CON_new_password_label'] = 'New Password';
-$lang['CON_retype_new_password_label'] = 'Confirm';
-$lang['CON_submit'] = 'submit';
-$lang['CON_reset'] = 'reset';
-$lang['CON_data_is_not_exists'] = 'The data is not exists';
-$lang['CON_confirm_password_same_new_pass'] = 'Confirm Password be the same as New Password';
-$lang['CON_change_password_failed_message'] = 'Invalid information';
+$lang['CON_change_password_success'] = 'Votre mot de passe a &eacute;t&eacute; chang&eacute; avec succ&egrave;s';
+$lang['CON_old_password_label'] = 'Ancien mot de passe';
+$lang['CON_new_password_label'] = 'Nouveau mot de passe';
+$lang['CON_retype_new_password_label'] = 'Confirmer';
+$lang['CON_submit'] = 'soummettre';
+$lang['CON_reset'] = 'r&eacute;tablir';
+$lang['CON_data_is_not_exists'] = 'Les donn&eacute;es n\'existent pas';
+$lang['CON_confirm_password_same_new_pass'] = 'Les deux mots de passe doivent &ecirc;tre identiques';
+$lang['CON_change_password_failed_message'] = 'Information invalide';
 
 //-------------------------------------------------------------------------------
 //FORGOT PASSWORD
 //-------------------------------------------------------------------------------
-$lang['CON_forgot_pass_email_address'] = 'Your Email Address';
-$lang['CON_forgot_pass_title'] = 'Forgotten Password';
-$lang['CON_forgot_pass_back'] = 'Back';
-$lang['CON_forgot_check_email_to_retrieve'] = 'You need to check e-mail to retrieve your password';
-$lang['CON_forgot_email_to_not_exist'] = 'The Email is not exists';
-$lang['CON_forgot_email_title_retrieve_password'] = 'Retrieve your password from http://conferences-formations.com';
-$lang['CON_forgot_email_content_retrieve_password'] = 'Your password to login at website http://conferences-formations.com is: ';
+$lang['CON_forgot_pass_email_address'] = 'Votre adresse courriel';
+$lang['CON_forgot_pass_title'] = 'Mot de passe oubli&eacute;';
+$lang['CON_forgot_pass_back'] = 'Retour';
+$lang['CON_forgot_check_email_to_retrieve'] = 'Vous devez de consulter vos courriel pour r&eacute;cup&eacute;rer votre mot de passe';
+$lang['CON_forgot_email_to_not_exist'] = 'Le courrier n\'existent pas';
+$lang['CON_forgot_email_title_retrieve_password'] = 'R&eacute;cup&eacute;reration de votre mot de passe pour http://confor.ca';
+$lang['CON_forgot_email_content_retrieve_password'] = 'Votre mot de passe pour vous connecter au site  http://conferences-formations.com est: ';
 
 //------------------------------------------------------------------
 //FLASH MESSAGES
 //------------------------------------------------------------------
-$lang['CON_user_added'] = ' new user successfully added!';
-$lang['CON_user_edited'] = ' user edited successfully!';
-$lang['CON_user_deleted'] = ' user successfully deleted!';
-$lang['CON_no_permissions'] = 'You don\'t have the credentials to access this area';
+$lang['CON_user_added'] = ' nouvel utilisateur ajout&eacute;!';
+$lang['CON_user_edited'] = ' utilisateur modifi&eacute; avec succ&egrave;s!';
+$lang['CON_user_deleted'] = ' utilisateur supprim&eacute; avec succ&egrave;s!';
+$lang['CON_no_permissions'] = 'Vous n\'avez pas les informations d\'identification pour acc&eacute;der &agrave; cette zone';
 
 
 //------------------------------------------------------------------
 //TICKET
 //------------------------------------------------------------------
-$lang['CON_ticket_title'] = 'Title Page';
-$lang['CON_ticket_question'] = 'Ticket Question';
-$lang['CON_ticket_condition'] = 'Ticket Condition';
-$lang['CON_ticket_send_success'] = 'Send Ticket success';
-$lang['CON_ticket_title_email'] = 'Ticket: ';
-$lang['CON_ticket_content_email_to_admin'] = 'Dear Administrator!'.chr(13).chr(10).'Your ticket was send by Speaker.'.chr(13).chr(10).'Title: %s'.chr(13).chr(10).'Content: %s.'.chr(13).chr(10).chr(13).chr(10).'Thank your for your attention!';
+$lang['CON_ticket_title'] = 'Titre de la page';
+$lang['CON_ticket_question'] = 'Objet du billet';
+$lang['CON_ticket_condition'] = '&Eacute;tat du billet';
+$lang['CON_ticket_send_success'] = 'Envoi du billet avec succ&egrave;s';
+$lang['CON_ticket_title_email'] = 'Billet : ';
+$lang['CON_ticket_content_email_to_admin'] = 'Cher Administrateur,'.chr(13).chr(10).'Vous avez re&ccedil;u un billet a &eacute;t&eacute; envoy&eacute; par un conf&eacute;rencier.'.chr(13).chr(10).'Titre : %s'.chr(13).chr(10).'Contenu : %s.'.chr(13).chr(10).chr(13).chr(10).'Merci pour votre attention!';
 
-$lang['CON_ticket_content_email_to_speaker'] = 'Dear %s!'.chr(13).chr(10).'Your ticket was send by Administrator.'.chr(13).chr(10).'Title: %s'.chr(13).chr(10).'Content: %s.'.chr(13).chr(10).chr(13).chr(10).'Thank your for your attention!';
+$lang['CON_ticket_content_email_to_speaker'] = 'Cher(e) %s!'.chr(13).chr(10).'Vous avez re&ccedil;u un billet a &eacute;t&eacute; envoy&eacute; par l\'administrateur.'.chr(13).chr(10).'Title: %s'.chr(13).chr(10).'Content: %s.'.chr(13).chr(10).chr(13).chr(10).'Merci pour votre attention!';
 
 
 
 //------------------------------------------------------------------
 //COMMON
 //------------------------------------------------------------------
-$lang['CON_user_list'] = 'List users';
-$lang['CON_user_add'] = 'Add user';
-$lang['CON_user_edit'] = 'Edit user';
-$lang['CON_control_panel'] = 'Control Panel';
-$lang['CON_list_view'] = 'List view';
+$lang['CON_user_list'] = 'Liste d\'usagers';
+$lang['CON_user_add'] = 'Ajouter un usager';
+$lang['CON_user_edit'] = 'Modifier l\'usager';
+$lang['CON_control_panel'] = 'Panneau de contr&ocirc;le';
+$lang['CON_list_view'] = 'Apper&ccedil;u de la liste';
 //------------------------------------------------------------------
 //SPEAKER
 //------------------------------------------------------------------
-$lang['CON_profile'] = 'PROFILE';
-$lang['CON_general_info'] = 'General informations';
-$lang['CON_description'] = 'Description and introduction';
-$lang['CON_first_name'] = 'First name';
-$lang['CON_name'] = 'Name';
-$lang['CON_update'] = 'Update';
-$lang['CON_speaker'] = 'Speaker';
-$lang['CON_control_panel'] = 'Control Panel';
+$lang['CON_profile'] = 'PROFIL';
+$lang['CON_general_info'] = 'Informations g&eacute;n&eacute;rale ';
+$lang['CON_description'] = 'Description et introduction';
+$lang['CON_first_name'] = 'Pr&eacute;nom';
+$lang['CON_name'] = 'Nom';
+$lang['CON_update'] = 'Mise &agrave; jour';
+$lang['CON_speaker'] = 'Conf&eacute;rencier';
+$lang['CON_control_panel'] = 'Panneau de contr&ocirc;le';
 // $lang['CON_list_speaker'] = 'List speakers';
 // $lang['CON_edit_speaker'] = 'Edit speaker';
 //------------------------------------------------------------------
 //MENU
 //------------------------------------------------------------------
-$lang['CON_home'] = 'Home';
-$lang['CON_conference_office'] = 'Conference office';
-$lang['CON_training'] = 'Training';
-$lang['CON_blog'] = 'Blog';
-$lang['CON_shop'] = 'Shop';
-$lang['CON_setting'] = 'Setting';
+$lang['CON_home'] = 'Accueil';
+$lang['CON_conference_office'] = 'Bureau de Conf&eacute;rence';
+$lang['CON_training'] = 'Formations';
+$lang['CON_blog'] = 'Blogue';
+$lang['CON_shop'] = 'Boutique';
+$lang['CON_setting'] = 'R&eacute;glages';
 $lang['CON_contact'] = 'Contact';
-$lang['CON_about'] = 'About us';
-$lang['CON_howto'] = 'How to use';
-$lang['CON_rules'] = 'The rules';
-$lang['CON_video'] = 'Video';
-$lang['CON_event'] = 'Event';
-$lang['CON_login'] = 'Login';
-$lang['CON_logout'] = 'Logout';
-$lang['CON_you_are_here'] = 'You are here :';
+$lang['CON_about'] = 'A propos de nous';
+$lang['CON_howto'] = 'Comment faire';
+$lang['CON_rules'] = 'Les r&egrave;gles';
+$lang['CON_video'] = 'Vid&eacute;os';
+$lang['CON_event'] = '&Eacute;v&eacute;nements';
+$lang['CON_login'] = 'Connexion';
+$lang['CON_logout'] = 'D&eacute;connexion';
+$lang['CON_you_are_here'] = 'Vous &ecirc;tes ici :';
 //------------------------------------------------------------------
 //FRONTEND
 //------------------------------------------------------------------
-$lang['CON_top_video'] = 'Top Video';
-$lang['CON_search'] = 'Search';
-$lang['CON_popular_video'] = 'Popular Video';
-$lang['CON_recent_video'] = 'Recent Video';
-$lang['CON_popular_posts'] = 'Popular Posts';
+$lang['CON_top_video'] = 'Top Vid&eacute;os';
+$lang['CON_search'] = 'Recherche';
+$lang['CON_popular_video'] = 'Vid&eacute;os Populaires';
+$lang['CON_recent_video'] = 'Vid&eacute;os R&eacute;centes';
+$lang['CON_popular_posts'] = 'Messages Populaires';
 //------------------------------------------------------------------
 //ADMIN
 //------------------------------------------------------------------
 $lang['CON_admin'] = 'Admin';
-$lang['CON_admin_login'] = 'Admin login';
-$lang['CON_admin_list_all'] = 'List all admin';
-$lang['CON_admin_add'] = 'Add admin';
-$lang['CON_admin_edit'] = 'Edit admin';
+$lang['CON_admin_login'] = 'Connexion Admin';
+$lang['CON_admin_list_all'] = 'Liste de tous les administrateurs';
+$lang['CON_admin_add'] = 'Ajouter un administrateur';
+$lang['CON_admin_edit'] = 'Modifier un administrateur';
 //------------------------------------------------------------------
 //ADVERTISE
 //------------------------------------------------------------------
-$lang['CON_adv_list'] = 'List all advertises';
-$lang['CON_adv_add'] = 'Add advertise';
-$lang['CON_adv_edit'] = 'Edit advertise';
+$lang['CON_adv_list'] = 'Liste des annonces';
+$lang['CON_adv_add'] = 'Ajouter une annonce';
+$lang['CON_adv_edit'] = 'Modifier une annonce';
 //------------------------------------------------------------------
 //VIDEO
 //------------------------------------------------------------------
-$lang['CON_video_list'] = 'List video';
-$lang['CON_video_add'] = 'Add video conference';
-$lang['CON_video_edit'] = 'Edit video conference';
+$lang['CON_video_list'] = 'Liste des vid&eacute;os conf&eacute;rences';
+$lang['CON_video_add'] = 'Ajouter une vid&eacute;o conf&eacute;rence';
+$lang['CON_video_edit'] = 'Modifier une vid&eacute;o conf&eacute;rence';
 
 
 /* End of file confor_lang.php */
-/* Location: ./system/application/language/english/confor_lang.php */
+/* Location: ./system/application/language/french/confor_lang.php */

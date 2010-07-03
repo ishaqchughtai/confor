@@ -9,6 +9,7 @@
 					$subject = $row['Subject'];
 					$keyword = explode(" ", $row['Keywords']);
 					$description = $row['Description'];
+					$status = $row->Status;
 					?>
 					<div class="content_item">
 				
