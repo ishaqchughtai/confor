@@ -191,29 +191,7 @@ class Home extends Frontend_controller {
     // $side_bar['popular_video'] = $this->Mhome->get_popular_video();
     // $side_bar['recent_video'] = $this->Mhome->get_recent_video();	
     // $this->_data['side_bar'] = $side_bar;		
-    // }
-
-    function blog()
-    {
-        $config['base_url'] = base_url().'index.php/home/blog/';
-        $config['total_rows'] = $this->db->count_all('tblblog');
-        $config['per_page']='3';
-
-        $config['full_tag_open'] = '<li>';        
-        $config['full_tag_close'] = '</li>'; 
-        $config['next_link'] = 'Next >';
-        $config['prev_link'] = '< Previous';
-        $config['last_link'] = 'Last >>';
-        $config['first_link'] = '<< First';
-
-        $this->pagination->initialize($config);
-        $this->data['query'] = $this->Mblog->get_all_blog($this->uri->segment(3),$config['per_page']);
-
-        $this->data['pagination'] = $this->pagination->create_links();
-        $this->data['query_most_blog'] = $this->Mblog->get_most_blog();
-        $this->data['get_most_blog_post'] = $this->Mblog->get_most_blog_post();  
-        $this->load->view('blog_view',$this->data);    
-    } 
+    // } 
 
     function show_room_image()
     {

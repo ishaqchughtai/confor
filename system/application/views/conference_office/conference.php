@@ -102,8 +102,8 @@
     logo: {   
         url: 'http://conferences-formations.com/flowplayer/logo.png',   
         fullscreenOnly: false,   
-        top: 20, 
-        left: 20,
+        top: 255, 
+        right: 10,
         displayTime: 2000   
     },
         clip:{autoPlay: false,autoBuffering: true}

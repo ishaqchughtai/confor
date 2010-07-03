@@ -37,7 +37,7 @@ class Blog extends Frontend_controller {
     function index()
     {						
         $this->_data['query_most_blog'] = $this->Mblog->get_most_blog();
-        $config['base_url'] = base_url().'index.php/blog/index/';
+        $config['base_url'] = base_url().'blog/';
         $config['total_rows'] = $this->db->count_all('tblblog');
         $config['per_page']='3';
 
@@ -87,7 +87,7 @@ class Blog extends Frontend_controller {
             $this->_load_view('blog/blog_entry_view');
         }else
         {
-            redirect('blog/index');
+            redirect(site_url().'blog/index');
         }
 
     }	
@@ -189,7 +189,7 @@ class Blog extends Frontend_controller {
         }
         else
         {
-            $config['base_url'] = base_url().'index.php/blog/blog_list/';
+            $config['base_url'] = base_url().'blog/blog_list/';
             $config['total_rows'] = $this->db->count_all('tblblog');
             $config['per_page']='3';
 
@@ -410,7 +410,7 @@ class Blog extends Frontend_controller {
     function search()
     {
         $Keywords = $this->input->post('search_field_blog');
-        $config['base_url'] = base_url().'index.php/blog/search/';
+        $config['base_url'] = base_url().'blog/search/';
         $config['total_rows'] = $this->Mblog->count_record($Keywords);
         $config['per_page']='3';
 
@@ -442,7 +442,7 @@ class Blog extends Frontend_controller {
     }	
     function search_keyword($Keywords='')
     {
-        $config['base_url'] = base_url().'index.php/blog/search/';
+        $config['base_url'] = base_url().'blog/search/';
         $config['total_rows'] = $this->Mblog->count_record($Keywords);
         $config['per_page']='3';
 

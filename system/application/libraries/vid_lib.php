@@ -23,7 +23,7 @@ define('R_HEIGHT', 240);
 define('R_WIDTH', 320);
 define('RESIZE', 'yes');
 define('KEEP_ORIGINAL', 0);
-define('MAX_UPLOAD_SIZE', 20);
+define('MAX_UPLOAD_SIZE', 600);
 define('THUMB_HEIGHT', 90);
 define('THUMB_WIDTH', 120);
 define('FFMPEG_TYPE', 'static');

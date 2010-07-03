@@ -8,8 +8,7 @@ class Showroom extends Admin_controller{
 		$this->load->library('session'); 
 	}
 	function add_new_images()
-	{
-		
+	{		
 		$this->_data['path'][] = array(
 			'name' => __("CF_add_showroom"),
 			'link' => '#'
@@ -33,7 +32,7 @@ class Showroom extends Admin_controller{
 			else
 			{
 				
-				if($this->Mshowroom->add_image($this->_data['vid_id'], $txtLink)==TRUE)
+				if($this->Mshowroom->add_image($this->_data['vid_id'], $txtLink,0)==TRUE)
 				{                    
 					$this->_message('admin', __("CF_add_image_suc"), 'success',site_url("showroom/add_new_images"));
 				} 
@@ -42,13 +41,6 @@ class Showroom extends Admin_controller{
 		{
 			$this->_load_view('admin/add_showroom_images');   
 		}  		
-	}
-	
-	function add_new_images_for_speaker($Speaker='')
-	{
-		$this->_data['query_speaker'] = $this->Mshowroom->get_all_speaker();
-		$this->_data['query_video'] = $this->Mshowroom->select_speaker_video($Speaker); 
-		$this->_load_view('admin/add_showroom_images'); 
 	}
 	
 	function do_paging() {							
@@ -115,35 +107,10 @@ class Showroom extends Admin_controller{
 		echo $this->pagination->create_links();	
 	}	
 	
-	function submit_add_new_images($video_name='')
+	function list_images()
 	{
-		is_admin(); 
-		$this->form_validation->set_rules('txtLink',strtolower(__("CF_image_link")),'trim|required');
-		$this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
-		if($this->input->post('btnsubmit'))
-		{                                         
-			$txtLink=$this->input->post('txtLink');
-			if($this->form_validation->run()==FALSE)
-			{
-				$this->add_new_images();                             
-			}else
-			{
-				if($this->Mshowroom->add_image($video_name,$txtLink)==TRUE)
-				{                    
-					$this->_data['query_speaker'] = $this->Mshowroom->get_all_speaker();
-					$this->_data['query_video'] = $this->Mshowroom->select_speaker_video($Speaker=1);
-					$this->_data['error'] = __("CF_add_image_suc");         
-					$this->_load_view('admin/add_showroom_images'); 
-				} 
-			}
-		}else
-		{
-			$this->add_new_images();
-		}  
-	}
-	function show_all_images()
-	{
-		
+	    $this->_data['query'] = $this->Mshowroom->get_all_show_room();
+        $this->_load_view('admin/list_images_showroom');       	
 	}
 	// Do upload
 	function do_upload()
@@ -175,5 +142,46 @@ class Showroom extends Admin_controller{
 			}
 		}  
 	}
+    
+    function delete_image($id)
+    {
+        if($this->Mshowroom->del_image($id)==TRUE)
+        {
+            $this->_message('admin', __("CF_add_image_suc"), 'success',site_url("showroom/list_images"));   
+        }else
+        {
+            
+        }    
+    }
+    function edit_image($id)
+    {
+        $this->_data['path'][] = array(
+            'name' => 'Edit image',
+            'link' => '#'
+        );
+        $this->_data['query_image']= $this->Mshowroom->get_one_show_room($id);
+        $this->_load_view('admin/edit_showroom_images');            
+        $this->form_validation->set_rules('txtLink',strtolower(__("CF_image_link")),'trim|required');
+        
+        $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+        if($this->input->post('btnsubmit'))
+        {                                         
+            $txtLink=$this->input->post('txtLink');
+            $show=$this->input->post('show');
+            if($this->form_validation->run()==FALSE)
+            {
+                $this->_load_view('admin/edit_showroom_images');   
+            }
+            else
+            {
+                
+                if($this->Mshowroom->edit_image($id,$txtLink,$show)==TRUE)
+                {                    
+                    $this->_message('admin', __("Edit Image success"), 'success',site_url("showroom/add_new_images"));
+                } 
+ 
+            }
+        }        
+    }
 }   
 ?>
