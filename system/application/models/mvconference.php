@@ -50,7 +50,7 @@
             $this->db->from('videos');
             $this->db->join('users','videos.mem_id = users.ID');
             $this->db->join('tblcategory','videos.category = tblcategory.ID');
-			if ($approved==1) $this->db->where('videos.approved ', '1');
+            if ($approved==1) $this->db->where('videos.approved ', '1');
             $this->db->where('videos.category',$Category);
             $this->db->order_by("videos.`date`", "desc");
             $this->db->limit($num,$offset); 
@@ -68,12 +68,12 @@
             $query = $this->db->get_where('videos',array('vid_id'=>$id)); 
             return $query;
         }
-		
-		function get_video_info_by_id($vid_id)
-		{
+
+        function get_video_info_by_id($vid_id)
+        {
             $this->db->select('
             users.username,
-			users.name,
+            users.name,
             videos.*
             ');
             $this->db->from('videos');
@@ -81,9 +81,9 @@
             $this->db->where('vid_id', $vid_id);            
             $this->db->limit(1);
             return $this->db->get();            
-		}
-		
-		
+        }
+
+
         function get_category()
         {
             $this->db->select('ID,Name');
@@ -100,25 +100,26 @@
         }
         function delete_video($id)
         {
-			$this->db->select('videos.vhash, videos.shash');
+            $this->db->select('videos.vhash, videos.shash');
             $this->db->where('vid_id', $id);
-			$this->db->limit(1);
-			$this->db->from('videos');	
-			$query = $this->db->get();		
-			if ($query->num_rows()<1) 
-			{
-				return FALSE;
-			}
-			else 
-			{
-				$row = $query->row();
-				$ret['vhash'] = $row->vhash;
-				$ret['shash'] = $row->shash;
-				$this->db->where('vid_id', $id);
-				$this->db->delete('videos');
-				return $ret;
-			}							            
+            $this->db->limit(1);
+            $this->db->from('videos');	
+            $query = $this->db->get();		
+            if ($query->num_rows()<1) 
+            {
+                return FALSE;
+            }
+            else 
+            {
+                $row = $query->row();
+                $ret['vhash'] = $row->vhash;
+                $ret['shash'] = $row->shash;
+                $this->db->where('vid_id', $id);
+                $this->db->delete('videos');
+                return $ret;
+            }							            
         }
+
         function get_conferenceid($mem_id)
         {
             $this->db->select('vid_id,vhash,shash');
@@ -127,8 +128,8 @@
             $query = $this->db->get();
             return $query->result_array();;
         }
-		
-		
+
+
         //count record get video by speaker
         function count_record_speaker($speaker)
         {
@@ -192,5 +193,6 @@
             $your_vid = $this->db->get();
             return $your_vid->result_array();
         }
+        
     }
 ?>
