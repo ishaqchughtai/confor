@@ -633,7 +633,7 @@
             else
             {
                 $this->_data['path'][] = array(
-                'name' =>'category_managing',
+                'name' =>__("CF_cate_man"),
                 'link' => '#'
                 );                
                 $this->_load_view('admin/category_managing');
@@ -647,7 +647,7 @@
             }
             else{
                 $this->_data['path'][] = array(
-                'name' =>'list_category',
+                'name' =>__("CF_list_cate"),
                 'link' => '#'
                 );                
                 $this->_data['query'] = $this->Madmin->get_all_category();
@@ -692,11 +692,11 @@
             else
             {
                 $this->_data['path'][] = array(
-                'name' =>'modify_category',
+                'name' =>__("CF_modify_cate"),
                 'link' => '#'
                 );                
                 $this->_data['error'] = ""; 
-                $this->form_validation->set_rules('txtCateName',"Category Name",'required');
+                $this->form_validation->set_rules('txtCateName',strtolower(__("CF_cate_name")),'required');
                 $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
                 $this->_data['query']=$this->Madmin->get_category_by_id($cateid);
                 if($this->input->post('submit'))
@@ -725,11 +725,11 @@
         function add_new_category()
         {
             $this->_data['path'][] = array(
-            'name' =>'add_new_category',
+            'name' =>__("CF_add_cate"),
             'link' => site_url("admin/add_new_category")
             );                    
             $this->_data['error'] = ""; 
-            $this->form_validation->set_rules('txtCateName','Category Name','required');
+            $this->form_validation->set_rules('txtCateName',strtolower(__("CF_cate_name")),'required');
             $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
             if($this->input->post('submit'))
             {

@@ -13,7 +13,7 @@ XEMMEX.SpeakerSelectorCb = function(i)
     <?php if(isset($error)):?>
         <p class="not_info medium"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
         <?php endif;?>
-        <h3>Showroom menu</h3>
+        <h3><?php echo __("CF_showroom_menu")?></h3>
         <?php $this->load->view("admin/admin_menu_showroom");?>
         <p>&nbsp;    </p>
     <h4><?php echo __("CF_add_showroom")?></h4>
@@ -29,7 +29,7 @@ XEMMEX.SpeakerSelectorCb = function(i)
 						
 		<p>
 		<input id="vid_id" type="hidden" name="vid_id" value="<?php if (isset($vid_id)) echo $vid_id?>"/>
-		<label for="title">Video from speaker</label>
+		<label for="title"><?php echo __("CF_vid_from_speaker")?></label>
 		<input id="vid_title" name="vid_title" class="short" type="text" value="<?php if (isset($vid_title)) echo $vid_title?>"/>			
 		<?php echo form_error('vid_title')?>
 		</p>		
@@ -40,7 +40,7 @@ XEMMEX.SpeakerSelectorCb = function(i)
         <?php echo form_error('txtLink')?>
 		 </p>                       
         <p>
-			<input value="upload"  type="button" class="submit" name="uploadvideo" onclick="window.open('<?php echo site_url('showroom/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" />			
+			<input value="<?php echo __("CF_up")?>"  type="button" class="submit" name="uploadvideo" onclick="window.open('<?php echo site_url('showroom/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" />			
             <input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_submit")?>" />
             <input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />
         </p>

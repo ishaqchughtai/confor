@@ -10,8 +10,8 @@
             <li><a class="icon_add" href="<?php echo site_url('admin/add_new_admin');?>"><?php echo __("CF_new_admin")?></a></li>
             <?php }?>
         <li><a class="icon_add" href="<?php echo site_url('admin/edit_profile/'.$admin_id);?>"><?php echo __("CF_edit_admin")?></a></li>
-        <li><a class="icon_add" href="<?php echo site_url('admin/change_pass/'.$admin_id);?>">Change Password</a></li>
-		<li><a class="icon_add" href="<?php echo base_url().'pay/admin';?>">Paypal Management</a></li>
+        <li><a class="icon_add" href="<?php echo site_url('admin/change_pass/'.$admin_id);?>"><?php echo __("CF_change_pass")?></a></li>
+		<li><a class="icon_add" href="<?php echo base_url().'pay/admin';?>"><?php echo __("CF_paypal_man")?></a></li>
     </ul>
     <p>&nbsp;</p>
 </div>
@@ -30,7 +30,7 @@
         <li><a class="icon_list" href="<?php echo site_url('showroom/list_images')?>"><?php echo __("CF_showroom")?></a></li>  
         <li><a class="icon_list" href="<?php echo site_url('admin/list_video_conference')?>"><?php echo __("CF_admin_vid_list")?></a></li>
         <li><a class="icon_add" href="<?php echo site_url('admin/new_video_conference')?>"><?php echo __("CF_admin_new_vid")?></a></li>
-        <li><a class="icon_add" href="<?php echo site_url('admin/category_managing')?>">Video Category Management</a></li>
+        <li><a class="icon_add" href="<?php echo site_url('admin/category_managing')?>"><?php echo __("CF_cate_man")?></a></li>
     </ul>
 </div>
 <!-- /.x2 - represents a half windows size div -->

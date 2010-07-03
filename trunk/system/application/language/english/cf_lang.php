@@ -478,7 +478,9 @@ $lang['CF_event_content'] = 'Event Content';
 
 $lang['CF_the'] = 'The';
 
-$lang['CF_already_exist'] = 'Already exist';
+$lang['CF_already_exist'] = 'already exist';
+
+$lang['CF_field_max'] = 'field max are four word';
 
 $lang['CF_invalid_code'] = 'Invalid Code';
 
@@ -489,3 +491,37 @@ $lang['CF_only_admin'] = 'Only Admin can use this function';
 $lang['CF_reslult_search'] = 'Your searching did not match any rows';
 
 $lang['CF_row'] = 'Row each page must > 0';
+
+$lang['CF_edit_image_suc'] = 'Edit Imgae Success';
+
+$lang['CF_showroom_menu'] = 'Showroom Menu';
+
+$lang['CF_ad_menu_showroom'] = 'List images';
+
+$lang['CF_edit_showroom'] = 'List images';
+
+$lang['CF_vid_from_speaker'] = 'Video from speaker';
+
+$lang['CF_show'] = 'Video from speaker';
+
+$lang['CF_paypal_man'] = 'Paypal Management';
+
+$lang['CF_cate_man'] = 'Video Category Management';
+
+$lang['CF_list_vid_cate'] = 'List of Video Category';
+
+$lang['CF_cate_name'] = 'Category Name';
+
+$lang['CF_cate_name'] = 'Category Name';
+
+$lang['CF_cate_update'] = 'Category Update';
+
+$lang['CF_edit_image'] = 'Edit Image';
+
+$lang['CF_add_cate'] = 'Add new category';
+
+$lang['CF_list_cate'] = 'List Category';
+
+$lang['CF_modify_cate'] = 'Modify Category';
+
+

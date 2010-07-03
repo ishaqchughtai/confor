@@ -110,7 +110,7 @@
         function list_images()
         {
             $this->_data['path'][] = array(
-            'name' => __("CF_add_showroom"),
+            'name' => __("CF_ad_menu_showroom"),
             'link' => '#'
             );
             $this->_data['query'] = $this->Mshowroom->get_all_show_room();
@@ -160,7 +160,7 @@
         function edit_image($id)
         {
             $this->_data['path'][] = array(
-            'name' => 'Edit image',
+            'name' => __("CF_edit_image"),
             'link' => '#'
             );
             $this->_data['query_image']= $this->Mshowroom->get_one_show_room($id);
@@ -181,7 +181,7 @@
 
                     if($this->Mshowroom->edit_image($id,$txtLink,$show)==TRUE)
                     {                    
-                        $this->_message('admin', __("Edit Image success"), 'success',site_url("showroom/add_new_images"));
+                        $this->_message('admin', __("CF_edit_image_suc"), 'success',site_url("showroom/add_new_images"));
                     } 
 
                 }

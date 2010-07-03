@@ -1,5 +1,5 @@
 <div class="">
-        <h3>Showroom menu</h3>
+        <h3><?php echo __("CF_showroom_menu")?></h3>
         <?php $this->load->view("admin/admin_menu_showroom");?>
         <p>&nbsp;    </p>
     <h4><?php echo __("CF_add_showroom")?></h4>
@@ -11,7 +11,7 @@
             <th width="150"><?php echo __("CF_title")?></th> 
             <th width="110"><?php echo __("CF_one_speaker")?></th>              
             <th width="30"><?php echo __("CF_viewed")?></th>    
-            <th width="30">Show</th>    
+            <th width="30"><?php echo __("CF_show")?></th>    
         </tr>
         <?php foreach($query as $row){                               
         $id = $row['ID'];

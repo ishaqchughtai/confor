@@ -383,7 +383,7 @@ class Blog extends Frontend_controller {
             return TRUE;    
         }else
         {
-            $this->form_validation->set_message('title_check', 'The %s already exist'); 
+            $this->form_validation->set_message('title_check', '__("CF_the") %s __("CF_already_exist")'); 
             return FALSE;    
         }    
     }	
@@ -398,7 +398,7 @@ class Blog extends Frontend_controller {
         }
         if($i > 4)
         {
-            $this->form_validation->set_message('keyword_check', 'The %s field max are four word'); 
+            $this->form_validation->set_message('keyword_check', '__("CF_the") %s __("CF_already_exist")'); 
             return FALSE ;           
         }else
         {

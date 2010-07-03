@@ -2,10 +2,10 @@
 <div id="content">
 
     <div class="x2">
-        <h3>Category Management</h3>
+        <h3><?php echo __("CF_cate_man")?></h3>
         <ul class="link_conttrol">
-                <li><a class="icon_list" href="<?php echo site_url('admin/list_category') ?>">List of Video category</a></li>
-                <li><a class="icon_add" href="<?php echo site_url('admin/add_new_category')?>">Add  New Category</a></li>
+                <li><a class="icon_list" href="<?php echo site_url('admin/list_category') ?>"><?php echo __("CF_list_vid_cate")?></a></li>
+                <li><a class="icon_add" href="<?php echo site_url('admin/add_new_category')?>"><?php echo __("CF_cate_name")?></a></li>
         </ul>
     </div>
     

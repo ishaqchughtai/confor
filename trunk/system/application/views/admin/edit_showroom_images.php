@@ -1,8 +1,8 @@
 <div class="">
-    <h3>Showroom menu</h3>
+    <h3><?php echo __("CF_showroom_menu")?></h3>
     <?php $this->load->view("admin/admin_menu_showroom");?>
     <p>&nbsp;    </p>
-    <h4>Edit Image</h4>
+    <h4><?php echo __("CF_edit_showroom")?></h4>
     <?php if(isset($error)):?>
         <p class="not_info medium"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
         <?php endif;?>
@@ -23,15 +23,15 @@
         </p>
 
         <p>
-            <label for="title">Video from speaker</label>
+            <label for="title"><?php echo __("CF_vid_from_speaker")?>:</label>
             <input id="vid_title" name="vid_title" class="short" type="text" value="<?php if (isset($vid_title)) echo $vid_title?>"readonly="true"/>            
         </p>        
 
         <p>
-            <label><?php echo __("CF_blog_thum")?> :</label>
+            <label><?php echo __("CF_blog_thum")?>:</label>
             <input name="txtLink" type="text" id="txtLink" value="<?php if (isset($images)) echo $images?>" class="short"  readonly="true"/>            
         </p>
-        <p><?php echo form_error('txtLink')?><input value="upload"  type="button" class="submit" name="upload" onclick="window.open('<?php echo site_url('showroom/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" /></p>
+        <p><?php echo form_error('txtLink')?><input value="<?php echo __("CF_up")?>"  type="button" class="submit" name="upload" onclick="window.open('<?php echo site_url('showroom/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" /></p>
         <br />
         <p>&nbsp;    </p>
         <p>
