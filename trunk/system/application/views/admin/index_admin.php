@@ -27,7 +27,7 @@
 <div class="x2">
     <h3><?php echo __("CF_vid_con")?></h3>                                                                                      
     <ul class="link_conttrol">
-        <li><a class="icon_list" href="<?php echo site_url('showroom/add_new_images')?>"><?php echo __("CF_showroom")?></a></li>  
+        <li><a class="icon_list" href="<?php echo site_url('showroom/list_images')?>"><?php echo __("CF_showroom")?></a></li>  
         <li><a class="icon_list" href="<?php echo site_url('admin/list_video_conference')?>"><?php echo __("CF_admin_vid_list")?></a></li>
         <li><a class="icon_add" href="<?php echo site_url('admin/new_video_conference')?>"><?php echo __("CF_admin_new_vid")?></a></li>
         <li><a class="icon_add" href="<?php echo site_url('admin/category_managing')?>">Video Category Management</a></li>
