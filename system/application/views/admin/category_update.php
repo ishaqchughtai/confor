@@ -1,7 +1,7 @@
 <div id="content">
 
     <div class="x2">
-        <h3>Category Update</h3>
+        <h3><?php echo __("CF_cate_update")?></h3>
         <p>&nbsp;</p>
         <?php 
             foreach($query as $row)

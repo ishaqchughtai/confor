@@ -1,10 +1,10 @@
 <div id="content">
 
     <div class="">
-        <h3>List of Video Category</h3>
+        <h3><?php echo __("CF_list_vid_cate")?></h3>
         <table border="1" width="833">
             <tr align="left">
-                <th width="640">Category Name</th>
+                <th width="640"><?php echo __("CF_cate_name")?></th>
                 <th width="83" colspan="2"><?php echo __("CF_action")?></th>
             </tr>
             <?php foreach($query as $row):?>
