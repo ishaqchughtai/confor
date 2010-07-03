@@ -6,7 +6,6 @@ XEMMEX.SpeakerSelectorCb = function(i)
 	$('#vid_title').val('');
 }
 </script>
-
 <?php $this->load->view('admin/speaker_selector');	?>
 <?php $this->load->view('admin/vid_selector');	?>
 
@@ -14,7 +13,11 @@ XEMMEX.SpeakerSelectorCb = function(i)
     <?php if(isset($error)):?>
         <p class="not_info medium"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
         <?php endif;?>
-    <h3><?php echo __("CF_add_showroom")?></h3>
+        <h3>Showroom menu</h3>
+        <?php $this->load->view("admin/admin_menu_showroom");?>
+        <p>&nbsp;    </p>
+    <h4><?php echo __("CF_add_showroom")?></h4>
+    
 
     <form action="" method="post" enctype="multipart/form-data" name="showroom">        
 		<p>

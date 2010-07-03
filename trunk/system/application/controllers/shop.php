@@ -23,7 +23,7 @@
         $data = $row->status;
         if($data == 1)
         {
-          redirect(base_url().'shop'); 
+          redirect(base_url().'prestashop'); 
         }
         else
         {

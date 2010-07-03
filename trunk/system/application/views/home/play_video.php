@@ -31,7 +31,7 @@
     //
 <?php echo mdate('%F %j%S %Y', $date)?></h5>              
 <h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>
-<p><a href="" style="display:block;width:621px;height:344px;"id="player"></a></p>                  
+<p><a href="<?php echo base_url()?>videos/<?php echo $video_link?>" style="display:block;width:621px;height:344px;"id="player"></a></p>                  
 <?php echo $description?>
 <p></p>
 <a class="prev browse left"></a>
@@ -42,8 +42,10 @@
     
         <div>
             <?php
-                $ramdomvideo = get_random_top_video($category); 
-                for($i=0; $i<count($ramdomvideo); $i++):?>
+                $ramdomvideo = get_random_top_video($category);
+                $temp_video = count($ramdomvideo);
+                $total = (count($ramdomvideo)-1>3)?3:count($ramdomvideo)-1;
+                for($i=0; $i<=$total; $i++):?>
                 <a href="<?php echo site_url('home/play/'.$ramdomvideo[$i]['vid_id'])?>">
                     <img src="<?php echo base_url().'thumbs/'.$ramdomvideo[$i]['shash']?>" width="81" height="46" alt="flickr">
                 </a>                            
@@ -51,9 +53,9 @@
                 <?php endfor;?>
          </div>
          <div>
-             <?php
-                $ramdomvideo = get_random_top_video($category); 
-                for($i=0; $i<count($ramdomvideo); $i++):?>
+             <?php 
+             $total = (count($ramdomvideo)-1>7)?7:count($ramdomvideo)-1;
+                for($i=4; $i<$total; $i++):?>
                 <a href="<?php echo site_url('home/play/'.$ramdomvideo[$i]['vid_id'])?>">
                     <img src="<?php echo base_url().'thumbs/'.$ramdomvideo[$i]['shash']?>" width="81" height="46" alt="flickr">
                 </a>                            
@@ -91,20 +93,9 @@ $("div.scrollable").scrollable({easing: 'custom', speed: 700, circular: true});
         logo: {   
             url: 'http://conferences-formations.com/flowplayer/logo.png',   
             fullscreenOnly: false,   
-            top: 20, 
-            left: 20,
+            bottom: 30,  
+            right: 10,
             displayTime: 2000   
-        },
-        playlist: [
-        {
-            url: '<?php echo base_url()?>videos/<?php echo $video_link?>',
-            title: 'Palm trees and the sun'
-        }
-        ],
-        plugins: {
-            controls: {
-                playlist: false
-            }
         },
         clip:{autoPlay: true,autoBuffering: true}
     }        

@@ -17,7 +17,7 @@
                             }
 }?>
 <div class="content_item">                 
-    <form id="contactform" action="<?php echo site_url("Accessories/update_element/".$ElementName)?>" method="post" enctype="multipart/form-data" class="global">                   
+    <form id="contactform" action="<?php echo site_url("accessories/update_element/".$ElementName)?>" method="post" enctype="multipart/form-data" class="global">                   
         <p>
             <label ><?php echo __("CF_element_name")?> : <?php echo $StrElementName?></label>
             <p></p>    
