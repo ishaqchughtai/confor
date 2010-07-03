@@ -10,7 +10,7 @@
             $this->load->helper('string');
             $this->load->model('Mcoffice');       
             $this->_data['path'][] = array(
-            'name' => __("CF_conference_office"),
+            'name' => __("CF_conference"),
             'link' => site_url("/conference_office")
             );    
         }    

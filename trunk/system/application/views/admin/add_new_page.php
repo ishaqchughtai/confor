@@ -1,3 +1,6 @@
+<h3><?php echo __("CF_accessories")?></h3>
+<?php $this->load->view("admin/admin_menu_accessories");?>
+<p>&nbsp;    </p>
 <?php foreach($query as $row){
                             $StrElementName = '';                               
                             $ElementName = $row['ElementName'];
@@ -14,12 +17,15 @@
                             }elseif($ElementName == 'Training')
                             {
                                 $StrElementName = 'Training';   
+                            }elseif($ElementName == 'Office')
+                            {
+                                $StrElementName = 'Conference Office';   
                             }
 }?>
 <div class="content_item">                 
-    <form id="contactform" action="<?php echo site_url("accessories/update_element/".$ElementName)?>" method="post" enctype="multipart/form-data" class="global">                   
+    <form id="contactform" action="<?php echo site_url("admin/update_element/".$ElementName)?>" method="post" enctype="multipart/form-data" class="global">                   
         <p>
-            <label ><?php echo __("CF_element_name")?> : <?php echo $StrElementName?></label>
+            <h3 ><?php echo $StrElementName?></h3>
             <p></p>    
             <?php echo form_error('ElementContent');?>                    
             <label for="description"><?php echo __("CF_blog_body")?>:</label><br />

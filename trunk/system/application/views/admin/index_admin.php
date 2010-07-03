@@ -11,7 +11,8 @@
             <?php }?>
         <li><a class="icon_add" href="<?php echo site_url('admin/edit_profile/'.$admin_id);?>"><?php echo __("CF_edit_admin")?></a></li>
         <li><a class="icon_add" href="<?php echo site_url('admin/change_pass/'.$admin_id);?>"><?php echo __("CF_change_pass")?></a></li>
-		<li><a class="icon_add" href="<?php echo base_url().'pay/admin';?>"><?php echo __("CF_paypal_man")?></a></li>
+        <li><a class="icon_add" href="<?php echo base_url().'pay/admin';?>"><?php echo __("CF_paypal_man")?></a></li>
+        <li><a class="icon_list" href="<?php echo site_url('admin/show_element/about');?>"><?php echo __("CF_accessories")?></a></li>
     </ul>
     <p>&nbsp;</p>
 </div>
