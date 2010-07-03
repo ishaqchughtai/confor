@@ -122,6 +122,7 @@
       users.email,
       tblevent.`Date`,
       tblevent.Title,
+      tblevent.Speaker,
       tblevent.Subject,
       tblevent.Keywords,
       tblevent.Description,
