@@ -2,7 +2,7 @@
         <h3><?php echo __("CF_showroom_menu")?></h3>
         <?php $this->load->view("admin/admin_menu_showroom");?>
         <p>&nbsp;    </p>
-    <h4><?php echo __("CF_add_showroom")?></h4>
+    <h4><?php echo __("CF_ad_menu_showroom")?></h4>
 
     <table border="0" cellpadding="0" cellspacing="1" style="width:100%">
         <tr>

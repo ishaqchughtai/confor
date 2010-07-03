@@ -498,8 +498,6 @@ $lang['CF_showroom_menu'] = 'Showroom Menu';
 
 $lang['CF_ad_menu_showroom'] = 'List images';
 
-$lang['CF_edit_showroom'] = 'List images';
-
 $lang['CF_vid_from_speaker'] = 'Video from speaker';
 
 $lang['CF_show'] = 'Video from speaker';
@@ -516,7 +514,7 @@ $lang['CF_cate_name'] = 'Category Name';
 
 $lang['CF_cate_update'] = 'Category Update';
 
-$lang['CF_edit_image'] = 'Edit Image';
+$lang['CF_edit_image'] = 'Edit Images';
 
 $lang['CF_add_cate'] = 'Add new category';
 

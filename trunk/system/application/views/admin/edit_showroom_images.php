@@ -2,7 +2,7 @@
     <h3><?php echo __("CF_showroom_menu")?></h3>
     <?php $this->load->view("admin/admin_menu_showroom");?>
     <p>&nbsp;    </p>
-    <h4><?php echo __("CF_edit_showroom")?></h4>
+    <h4><?php echo __("CF_edit_image")?></h4>
     <?php if(isset($error)):?>
         <p class="not_info medium"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
         <?php endif;?>
