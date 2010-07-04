@@ -6,6 +6,7 @@ $lang['CF_conference'] = 'Conferences';
 $lang['CF_conference_office'] = 'Conference Office';
 $lang['CF_shop'] = 'Shop';
 $lang['CF_home'] = 'Home';
+$lang['CF_membermenu'] = 'Member';
 $lang['CF_set'] = 'Setting';
 $lang['CF_blog'] = 'Blog';
 $lang['CF_contact'] = 'Contact';
@@ -91,8 +92,7 @@ $lang['CF_rules'] = 'The rules';
 $lang['CF_training'] = 'Training';
 $lang['CF_setting'] = 'Setting';
 $lang['CF_about_us'] = 'About us';
-$lang['CF_accessories'] = 'Accessories';
-$lang['CF_edit_accessories'] = 'Edit Accessories';
+$lang['CF_accessories'] = 'Editable Pages';
 $lang['CF_logout'] = 'Logout';
 $lang['CF_you_are_here'] = 'You are here :';
 

@@ -775,7 +775,45 @@
                 redirect('admin/index');
             }      
         }
-
+        function get_element($ElementName)
+        {
+            is_admin();
+            $StrElementName = $this->convert_element_name($ElementName);
+            $this->_data['path'][] = array(
+            'name' => __("CF_accessories"),
+            'link' => site_url('admin/show_element/about')
+            );                                
+            $query = $this->Maccessories->get_element($ElementName);
+            $this->_data['query'] = $query->result_array();
+            $this->_data['page_title'] = $this->convert_element_name($ElementName);
+            $this->_load_view('admin/add_new_page');
+        }    
+        function update_element($ElementName)
+        {
+            is_admin();
+            $StrElementName = $this->convert_element_name($ElementName);
+            $this->_data['path'][] = array(
+            'name' => __("CF_accessories"),
+            'link' => site_url('admin/show_element/about')
+            );
+            $this->form_validation->set_rules('ElementContent',__("CF_element_content"),'required');
+            $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+            $query = $this->Maccessories->get_element($ElementName);
+            $this->_data['query'] = $query->result_array();                                          
+            $ElementContent=$this->input->post('ElementContent');
+            $this->_data['page_title'] = $this->convert_element_name($ElementName);
+            if($this->form_validation->run()==FALSE)
+            {
+                $this->_load_view('admin/add_new_page'); 
+            }
+            else
+            {
+                if($this->Maccessories->update_element($ElementName,$ElementContent)==TRUE)
+                {
+                    redirect(site_url('admin/show_element/'.$ElementName));  
+                }
+            }        
+        }
         function convert_element_name($ElementName)
         {
             if($ElementName == 'about')
@@ -838,53 +876,6 @@
                 $StrElementName = '';
             }
             return $StrElementName;    
-        }
-        function get_element($ElementName)
-        {
-            is_admin();
-            $this->_data['page_title'] = $this->convert_element_name($ElementName);
-            $this->_data['path'][] = array(
-            'name' => __("CF_accessories"),
-            'link' => site_url('admin/show_element/about')
-            );           
-            $this->_data['path'][] = array(
-            'name' => __("CF_edit_accessories"),
-            'link' => '#' 
-            );                     
-            $query = $this->Maccessories->get_element($ElementName);
-            $this->_data['query'] = $query->result_array();
-            $this->_data['page_title'] = $this->convert_element_name($ElementName);
-            $this->_load_view('admin/add_new_page');
-        }    
-        function update_element($ElementName)
-        {
-            is_admin();
-            $this->_data['page_title'] = $this->convert_element_name($ElementName);
-            $this->_data['path'][] = array(
-            'name' => __("CF_accessories"),
-            'link' => site_url('admin/show_element/about')
-            );
-            $this->_data['path'][] = array(
-            'name' => __("CF_edit_accessories"),
-            'link' => '#' 
-            );
-            $this->form_validation->set_rules('ElementContent',__("CF_element_content"),'required');
-            $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
-            $query = $this->Maccessories->get_element($ElementName);
-            $this->_data['query'] = $query->result_array();                                          
-            $ElementContent=$this->input->post('ElementContent');
-            $this->_data['page_title'] = $this->convert_element_name($ElementName);
-            if($this->form_validation->run()==FALSE)
-            {
-                $this->_load_view('admin/add_new_page'); 
-            }
-            else
-            {
-                if($this->Maccessories->update_element($ElementName,$ElementContent)==TRUE)
-                {
-                    redirect(site_url('admin/show_element/'.$ElementName));  
-                }
-            }        
         }
     }
 ?>
