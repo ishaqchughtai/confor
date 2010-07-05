@@ -29,7 +29,7 @@ define('THUMB_WIDTH', 120);
 define('FFMPEG_TYPE', 'static');
 
 class Vid_lib {
-	var $allowed_ext = "*.avi,*.mp4,*.flv,*.mpg,*.asf";
+	var $allowed_ext = "*.avi,*.mp4,*.flv,*.mpg,*.asf,*.3gp,*.mmv,*.mpe,*.mpeg,*.ogv,*.rm,*.wmv,*.ts";
 	var $filename  = '';
 	var $videoWidth = 0;
 	var $videoHeight = 0;
@@ -170,13 +170,8 @@ class Vid_lib {
 	*/    
 	function convert_to_flv($destFolder)
 	{				
-		// $ffmpegPath = '/usr/local/bin/ffmpeg';
-		// $flvtool2Path = '/usr/bin/flvtool2';		
-		// Extention of file is...
 		//list($name, $ext) = explode('.', basename($this->filename));		
 		$converted_name = $destFolder.basename($this->filename).'.flv';
-		//$cmd = $ffmpegPath . " -i " . $this->filename . " -ar " . $this->audioSampleRate . " -ab " . $this->audioBitRate . " -f flv -s " . $this->videoWidth . "x" . $this->videoHeight .  " | " . $flvtool2Path . " -U stdin " . $converted_name;
-		//$cmd = FFMPEG_BINARY . " -i " . $this->filename . " -ar ".SRATE." -ab 32 -f flv -s 320x240 " . $converted_name;				
 		$cmd = FFMPEG_BINARY . " -i " . $this->filename . " -ar ".SRATE." -ab ".SBRATE." -f flv -s ".R_WIDTH."x".R_HEIGHT." " . $converted_name;
 		exec($cmd);
 	}		
