@@ -512,9 +512,9 @@ $lang['CF_cate_man'] = 'Video Category Management';
 
 $lang['CF_list_vid_cate'] = 'List of Video Category';
 
-$lang['CF_cate_name'] = 'Eng_Category Name';
+$lang['CF_cate_name'] = 'Category Name';
 
-$lang['CF_new_cate'] = 'Eng_New Category';
+$lang['CF_new_cate'] = 'New Category';
 
 $lang['CF_cate_update'] = 'Category Update';
 
