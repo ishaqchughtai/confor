@@ -12,7 +12,7 @@
     <h5><?php echo __("CF_adv_date_begin")?>: <?php echo $date_beginning?> \ <?php echo __("CF_adv_date_ex")?>: <?php echo $date_expiry?></h5>
     <h5><?php echo __("CF_advertisement_name")?>: <?php echo $advertiser_name?></h5>
     <h5><?php echo __("CF_advertisement_email")?>: <?php echo $advertiser_email?></h5>
-    <p><a href="<?php echo $url;?>"><img src="<?php echo base_url().'assets/uploads/adv/'.$image_link ?>" width="200" height="200" /></a><?php echo $text_tips?></p>
+    <p><a href="<?php echo $url;?>"><img src="<?php echo base_url().'assets/uploads/image/thumb_'.$image_link ?>" width="200" height="200" /></a><?php echo $text_tips?></p>
     <p>
     <form id="contactform" action="<?php echo site_url('advertisement/get_advertisement'.'/'.$id)?>" method="post" enctype="multipart/form-data" class="global">
       <input name="btnedit" type="submit" class="submit" value="<?php echo __("CF_edit")?>" />

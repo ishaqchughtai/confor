@@ -10,12 +10,23 @@ class Blog extends Frontend_controller {
         $this->load->helper('date');
         $this->load->helper('string');
         $this->_data['adv']['category'] = 'blog';		
+        $this->load->library('image_upload_lib'); 
+        $this->image_upload_lib->ajax_link = site_url('blog/do_upload_ajax');        
         $this->_data['path'][] = array(
         'name' => __("CF_blog"),
         'link' => site_url("/blog")
         );		
     }	
-
+    function do_upload_ajax()
+    {
+        if (! is_admin(FALSE)) 
+        {
+            echo '0';
+            return;
+        }
+        $this->image_upload_lib->init();
+        $this->image_upload_lib->do_upload_ajax();
+    }
     function _before_render() 
     {
         if ($this->blog_sidebar == 'most_post') 
@@ -256,14 +267,15 @@ class Blog extends Frontend_controller {
         }
         else
         {
-
+            $this->image_upload_lib->init();  
             if($this->input->post('btnsubmit'))
-            {          
+            { 
+
                 $this->form_validation->set_rules('txtTitle',strtolower(__("CF_title")),'trim|required|callback_title_check|max_length[50]');
                 $this->form_validation->set_rules('txtSubject',strtolower(__("CF_subject")),'trim|required|max_length[50]');
                 $this->form_validation->set_rules('txtKeywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
                 $this->form_validation->set_rules('txtBody',strtolower(__("CF_blog_body")),'required|max_length[500]');
-                $this->form_validation->set_rules('txtLink',strtolower(__("CF_image_link")),'required');
+                //$this->form_validation->set_rules('txtLink',strtolower(__("CF_image_link")),'required');
                 $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
 
                 $Author=$this->session->userdata('admin_id');
@@ -277,16 +289,16 @@ class Blog extends Frontend_controller {
                 $Subject=$this->input->post('txtSubject');
                 $Keywords=$this->input->post('txtKeywords');
                 $Text=$this->input->post('txtBody');
-                $Link=$this->input->post('txtLink');
+                //$Link=$this->input->post('txtLink');
                 $about=$this->input->post('about');
-       
+                $this->_data['uname'] = $this->input->post('uname'); 
                 if($this->form_validation->run()==FALSE)
                 {
                     $this->_load_view('admin/add_blog_admin');        
                 }
                 else
                 {                              
-                    if($this->Mblog->add_blog($Author,$Date,$Title,$Subject,$Keywords,$Text,$Link,$about)==TRUE)
+                    if($this->Mblog->add_blog($Author,$Date,$Title,$Subject,$Keywords,$Text,$this->_data['uname'],$about)==TRUE)
                     {
                         redirect('blog/blog_content_admin/'.$FirstName.'/'.$Title);  
                     }

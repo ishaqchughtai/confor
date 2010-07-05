@@ -51,7 +51,7 @@
 <div class="x3_2">            
     <?php for($i=0; $i<count($advs); $i++):?>                            
         <div class="x3<?php if(($i+1)%2==0) echo ' no_margin_r';?>" style="border-color:#FFF; border:thick;">
-            <a href="<?php echo $advs[$i]['URL']?>" target="_blank"><img src="<?php echo base_url().'assets/uploads/adv/'.$advs[$i]['ImageLink']?>" width="285" height="285" class="icon"></a> 
+            <a href="<?php echo $advs[$i]['URL']?>" target="_blank"><img src="<?php echo base_url().'assets/uploads/image/thumb_'.$advs[$i]['ImageLink']?>" width="285" height="285" class="icon"></a> 
             <p><?php echo $advs[$i]['TextTips']?></p>
         </div>
         <!-- /.content .top_box_block -->
