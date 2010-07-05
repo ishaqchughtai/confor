@@ -36,11 +36,9 @@ XEMMEX.SpeakerSelectorCb = function(i)
                       
         <p>
         <label><?php echo __("CF_blog_thum")?> :</label>
-        <input name="txtLink" type="text" id="txtLink" value="<?php if(isset($_POST['txtLink'])){ echo $_POST['txtLink'] ;}?>" class="short"  readonly="true"/>
-        <?php echo form_error('txtLink')?>
-		 </p>                       
-        <p>
-			<input value="<?php echo __("CF_up")?>"  type="button" class="submit" name="uploadvideo" onclick="window.open('<?php echo site_url('showroom/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" />			
+		<?php $this->load->view('image_upload');?>
+		</p>                       
+        <p>			
             <input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_submit")?>" />
             <input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />
         </p>
