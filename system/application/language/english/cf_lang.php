@@ -280,6 +280,7 @@ $lang['CF_search_event'] = 'Result Search Event';
 //BLOG
 $lang['CF_about_au'] = 'About the author';
 $lang['CF_pop_post'] = 'Popular Posts';
+$lang['CF_pop_bill'] = 'Billets Populaires';
 $lang['CF_leave_cm'] = 'Leave a comment';
 $lang['CF_cm'] = 'comments';
 $lang['CF_site_web'] = 'SITE WEB';
