@@ -16,7 +16,8 @@
             $viewed=$row->viewed ;
             $show=$row->Show ;
     }?>
-    <form action="" method="post" enctype="multipart/form-data" name="editshowroom">        
+    <form action="" method="post" name="editshowroom">        
+		<input name="edit_image" id="edit_image" type="hidden" value="<?php echo $images;?>"/>
         <p>
             <label for="title"><?php echo __("CF_one_speaker")?>:</label>
             <input id="speaker_email" name="speaker_email" class="short" type="text" value="<?php echo $speaker;?>"readonly="true"/>
@@ -29,10 +30,9 @@
 
         <p>
             <label><?php echo __("CF_blog_thum")?>:</label>
-            <input name="txtLink" type="text" id="txtLink" value="<?php if (isset($images)) echo $images?>" class="short"  readonly="true"/>            
+			<?php $this->load->view('image_upload',array('edit_image'=>$images));?>
         </p>
-        <p><?php echo form_error('txtLink')?><input value="<?php echo __("CF_up")?>"  type="button" class="submit" name="upload" onclick="window.open('<?php echo site_url('showroom/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" /></p>
-        <br />
+
         <p>&nbsp;    </p>
         <p>
         <select name="show" class="short">

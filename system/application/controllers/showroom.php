@@ -11,6 +11,11 @@
 		
 		function do_upload_ajax()
 		{
+			if (! is_admin(FALSE)) 
+			{
+				echo '0';
+				return;
+			}		
 			$this->image_upload_lib->init();
 			$this->image_upload_lib->do_upload_ajax();
 		}		
@@ -170,34 +175,46 @@
             }    
         }
         function edit_image($id)
-        {
+        {			
             $this->_data['path'][] = array(
             'name' => __("CF_edit_image"),
             'link' => '#'
             );
-            $this->_data['query_image']= $this->Mshowroom->get_one_show_room($id);
-            $this->_load_view('admin/edit_showroom_images');            
-            $this->form_validation->set_rules('txtLink',strtolower(__("CF_image_link")),'trim|required');
-
+			$this->image_upload_lib->init();
+			
+            $this->_data['query_image']= $this->Mshowroom->get_one_show_room($id);            
+            //$this->form_validation->set_rules('txtLink',strtolower(__("CF_image_link")),'trim|required');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
             if($this->input->post('btnsubmit'))
             {                                         
-                $txtLink=$this->input->post('txtLink');
+                $edit_image=$this->input->post('edit_image');
                 $show=$this->input->post('show');
-                if($this->form_validation->run()==FALSE)
-                {
-                    $this->_load_view('admin/edit_showroom_images');   
-                }
-                else
-                {
-
-                    if($this->Mshowroom->edit_image($id,$txtLink,$show)==TRUE)
+				$this->_data['uname'] = $this->input->post('uname');
+				
+				if (strlen($this->_data['uname'])>0)
+				{					
+					$this->image_upload_lib->remove_image_from_db($id,'ID','SpeakerImages','tblshowroom');
+                    if($this->Mshowroom->edit_image($id,$this->_data['uname'],$show)==TRUE)
                     {                    
-                        $this->_message('admin', __("CF_edit_image_suc"), 'success',site_url("showroom/add_new_images"));
-                    } 
+                        $this->_message('admin', __("CF_edit_image_suc"), 'success',site_url("showroom/list_images"));
+                    } 					
+				}
+				else
+				{
+                    if($this->Mshowroom->edit_image($id,$edit_image,$show)==TRUE)
+                    {                    
+                        $this->_message('admin', __("CF_edit_image_suc"), 'success',site_url("showroom/list_images"));
+                    } 										
+				}
+					// $this->image_upload_lib->remove_image_from_db($id,'ID','SpeakerImages','tblshowroom');
+                    // if($this->Mshowroom->edit_image($id,$this->_data['uname'],$show)==TRUE)
+                    // {                    
+                        // $this->_message('admin', __("CF_edit_image_suc"), 'success',site_url("showroom/add_new_images"));
+                    // } 
+					// $this->_load_view('admin/edit_showroom_images');  
 
-                }
             }        
+			$this->_load_view('admin/edit_showroom_images');            
         }
     }   
 ?>

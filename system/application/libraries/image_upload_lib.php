@@ -145,7 +145,7 @@ class Image_upload_lib {
 	
 	function remove_old_image($fname, $delete_in_db = FALSE)
 	{
-		if (($fname == $this->old_image)&&($delete_in_db==FALSE)) return 2;
+		//if (($fname == $this->old_image)&&($delete_in_db==FALSE)) return 2;
 		
 		if (file_exists($this->upload_folder.$fname))
 		{
