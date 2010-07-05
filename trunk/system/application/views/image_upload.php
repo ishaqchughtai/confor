@@ -9,7 +9,11 @@
  */
  
 	$CI=& get_instance(); 
-	$uname = isset($uname)?$uname:0;		
+	$uname = isset($uname)?$uname:0;	
+	if (isset($edit_image))
+	{
+		$CI->image_upload_lib->old_image = $edit_image;
+	}
 ?>
 
 <style>
@@ -83,15 +87,18 @@
 		return false;
 	}
 </script>			
-
-	<label for="video">Video:</label> <br />   	
+	
 	<p><?php $CI->image_upload_lib->uploader->Render();?></p>	
 	<p></p>
 	<p><input id="upload_button" type="submit" onclick="return doUpload()" value="<?php echo __("CF_up")?>" /></p>
 	<input id="uname" type="hidden" name="uname" value="<?php echo $uname?>"/>
 	<p>
 	<?php if ($uname==0):?>
-	<img id="preview_img" src="<?php echo base_url()?>assets/img/noimage.gif"/>
+		<?php if (isset($edit_image)):?>
+		<img id="preview_img" src="<?php echo base_url().'assets/uploads/image/thumb_'.$edit_image?>"/>
+		<?php else:?>
+		<img id="preview_img" src="<?php echo base_url()?>assets/img/noimage.gif"/>
+		<?php endif;?>
 	<?php else:?>
 	<img id="preview_img" src="<?php echo base_url().'assets/uploads/image/thumb_'.$uname?>"/>
 	<?php endif;?>
