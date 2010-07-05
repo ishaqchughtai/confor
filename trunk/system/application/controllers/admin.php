@@ -553,7 +553,7 @@
                     'Date'=>$dateupload,
                     'vhash'=>$vname.'.flv',
                     'shash'=>$vname.'.jpg',
-                    'approved'=>1,
+                    'approved'=>'1',
                     'viewed'=>0
                     );
                     $this->Mvconference->add_new_video($data);
