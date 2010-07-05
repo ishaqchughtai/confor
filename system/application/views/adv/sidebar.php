@@ -9,8 +9,8 @@ function search_click (){
 </div>
 			<div id="right">
 			
-    <h3>Search</h3>
-    <h5>Search through all advertisement</h5>
+    <h3><?php echo __("CF_search")?></h3>
+    <h5><?php echo __("CF_adv_search")?></h5>
     <div class="sidebar_item" id="search">
     <form action="<?php echo site_url('advertisement/search_advertisement')?>" method="post">
       <input id="keyword" name="search_field" type="text" class="search_field" >

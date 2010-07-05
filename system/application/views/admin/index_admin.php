@@ -52,7 +52,10 @@
     </ul>
 </div>
 <div class="x2 no_margin">
-    <h3><?php echo __("CF_shop_con")?></h3>    <ul class="link_conttrol">    <?php if ($status):?>    <li><a class="icon_list" href="<?php echo base_url().'shop/administrator'?>"><?php echo __("CF_shop_man")?></a></li>    <li><a class="icon_add" href="<?php echo site_url('shop/deactive')?>" onclick="return confirm('Do you really wish to deactive shop?')"><?php echo __("CF_shop_deac")?></a></li>    <?php else:?>    <label></label>    <li><a class="icon_add" href="<?php echo site_url('shop/active')?>" onclick="return confirm('Do you really wish to active shop?')"><?php echo __("CF_shop_ac")?></a></li>        <?php endif;?>  </ul></div>
+    <h3><?php echo __("CF_shop_con")?></h3>    
+    <ul class="link_conttrol"> 
+    <li><a class="icon_list" href="<?php echo base_url().'prestashop/admin_shop'?>"><?php echo __("CF_shop_man")?></a></li>    
+    </ul></div>
 <div class="divider"></div>
 <div class="x2">
     <h3><?php echo __("CF_blog_con")?></h3>

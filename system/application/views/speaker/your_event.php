@@ -1,6 +1,5 @@
-<?php $page = 5;?>
       <div class="content_item">
-        <?php foreach($query as $row)
+        <?php foreach($your_event as $row)
    				{
 					$id = $row['ID'];
 					$speaker = $row['username'];
@@ -16,21 +15,13 @@
           <h5><?php echo $subject ?></h5>
           <h5><?php echo __("CF_by")?> <?php echo $speaker?> <?php echo __("CF_in")?> : 
           <?php for($i=0;$i<count($keyword);$i++){?>
-                      <a href="<?php echo site_url('event/search_keyword').'/'.$keyword[$i].'/'.$page?>"><?php echo $keyword[$i]?></a>
+                      <a href="#"><?php echo $keyword[$i]?></a>
                       <?php if ($i<count($keyword)-1) echo ','?>
                       <?php ;}?>
            // <?php echo $date;?></h5>
           <p> <?php echo $description?></p>
-        </div>
-        <?php
-				}
-				?>
-      </div>
-      <!-- /.content_item -->
-      <!-- /.content_item -->
-      <!-- /.content_item -->
-      <!-- /#pagination -->
-      <div id="left">
+          
+          <div id="left">
         <!-- /.content_item -->
         <?php
 			if ($this->session->userdata('speaker_id')==$speaker_id):			
@@ -45,6 +36,23 @@
         </p>
         <?php else:?>
         <?php endif;?>
-      </div>    
+      </div> 
+        </div>
+        <?php
+				}
+				?>
+                
+                
+                
+      </div>
+      <!-- /.content_item -->
+      <!-- /.content_item -->
+      <!-- /.content_item -->
+      <!-- /#pagination -->
+         <ul id="pagination">
+				
+					<?php echo $pagination?>		
+				
+				</ul>
     <!-- /#content #left - left side of main content -->
 

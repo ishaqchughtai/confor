@@ -374,7 +374,7 @@ class Event extends Frontend_controller {
     }   
   }
 
-  //Search Event
+  //Search Event of speaker
   function search_event()
   {
     $this->_data['path'][] = array(
@@ -390,7 +390,7 @@ class Event extends Frontend_controller {
 
     $config['uri_segment'] = 5;
     $config['base_url'] = base_url().'index.php/event/search_event/'.$keywords.'/'.$per_page;
-    $config['total_rows'] = $this->MEvent->count_record_by_keywords($keywords);
+    $config['total_rows'] = $this->MEvent->count_record_by_title($keywords);
     $config['per_page']=$per_page;
 
     $config['full_tag_open'] = '<li>';        
@@ -404,7 +404,97 @@ class Event extends Frontend_controller {
     $this->_data['pagination'] = $this->pagination->create_links();
     $this->_load_view('event/search_event');    
   }
+  
+  //Search keyword of speaker
+  function search_keyword($keyword = '')
+  {
+    $this->_data['path'][] = array(
+    'name' => __("CF_search_event"),
+    'link' => '#'
+    );
 
+    $keywords = $this->uri->segment(3);
+    $per_page = $this->uri->segment(4);
+    $offset = $this->uri->segment(5);
+
+
+    $config['uri_segment'] = 5;
+    $config['base_url'] = base_url().'index.php/event/search_keyword/'.$keywords.'/'.$per_page;
+    $config['total_rows'] = $this->MEvent->count_record_by_keywords($keywords);
+    $config['per_page']=$per_page;
+
+    $config['full_tag_open'] = '<li>';        
+    $config['full_tag_close'] = '</li>'; 
+    $config['next_link'] = 'Next >';
+    $config['prev_link'] = '< Previous';
+    $config['last_link'] = 'Last >>';
+    $config['first_link'] = '<< First';
+    $this->_data['events'] = $this->MEvent->search_event_by_keyword($keywords,$per_page,$offset); 
+    $this->pagination->initialize($config);
+    $this->_data['pagination'] = $this->pagination->create_links();
+    $this->_load_view('event/search_event');    
+  }
+
+   //search event of  admin
+  function search_event_admin()
+  {
+    $this->_data['path'][] = array(
+    'name' => __("CF_search_event"),
+    'link' => '#'
+    );
+    $keywords = $this->input->post('search_field');
+
+    $keywords = $this->uri->segment(3);
+    $per_page = $this->uri->segment(4);
+    $offset = $this->uri->segment(5);
+
+
+    $config['uri_segment'] = 5;
+    $config['base_url'] = base_url().'index.php/event/search_event_admin/'.$keywords.'/'.$per_page;
+    $config['total_rows'] = $this->MEvent->count_record_by_title($keywords);
+    $config['per_page']=$per_page;
+
+    $config['full_tag_open'] = '<li>';        
+    $config['full_tag_close'] = '</li>'; 
+    $config['next_link'] = 'Next >';
+    $config['prev_link'] = '< Previous';
+    $config['last_link'] = 'Last >>';
+    $config['first_link'] = '<< First';
+    $this->_data['events'] = $this->MEvent->search_event($keywords,$per_page,$offset); 
+    $this->pagination->initialize($config);
+    $this->_data['pagination'] = $this->pagination->create_links();
+    $this->_load_view('admin/search_event');    
+  }
+  
+  //search keyword of admin
+  function search_keyword_admin($keyword = '')
+  {
+    $this->_data['path'][] = array(
+    'name' => __("CF_search_event"),
+    'link' => '#'
+    );
+
+    $keywords = $this->uri->segment(3);
+    $per_page = $this->uri->segment(4);
+    $offset = $this->uri->segment(5);
+
+
+    $config['uri_segment'] = 5;
+    $config['base_url'] = base_url().'index.php/event/search_keyword_admin/'.$keywords.'/'.$per_page;
+    $config['total_rows'] = $this->MEvent->count_record_by_keywords($keywords);
+    $config['per_page']=$per_page;
+
+    $config['full_tag_open'] = '<li>';        
+    $config['full_tag_close'] = '</li>'; 
+    $config['next_link'] = 'Next >';
+    $config['prev_link'] = '< Previous';
+    $config['last_link'] = 'Last >>';
+    $config['first_link'] = '<< First';
+    $this->_data['events'] = $this->MEvent->search_event_by_keyword($keywords,$per_page,$offset); 
+    $this->pagination->initialize($config);
+    $this->_data['pagination'] = $this->pagination->create_links();
+    $this->_load_view('admin/search_event');    
+  }
   function your_event($speaker)	
   {
     $this->_data['path'][] = array(

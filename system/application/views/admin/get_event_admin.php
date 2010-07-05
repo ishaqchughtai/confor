@@ -49,7 +49,7 @@
 						<p>
 						
 							<label for="keywords"><?php echo __("CF_key")?>:</label>
-							<input class="short" name="keywords" id="keywords" maxlength="4" value="<?php echo $keywords?>" />
+							<input class="short" name="keywords" id="keywords" value="<?php echo $keywords?>" />
 							<?php echo form_error('keywords');?>
 						
 						</p>

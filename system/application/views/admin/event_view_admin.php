@@ -1,4 +1,5 @@
-				<div class="content_item">
+				<?php $page = 5;?>
+                <div class="content_item">
 				<?php foreach($query as $row)
    				{
 					$id = $row['ID'];
@@ -15,7 +16,7 @@
                     <h5><?php echo $subject ?></h5>
 					<h5><?php echo __("CF_by")?> <?php echo $speaker?> <?php echo __("CF_in")?> : 
                     <?php for($i=0;$i<count($keyword);$i++){?>
-                      <a href="#"><?php echo $keyword[$i]?></a>
+                      <a href="<?php echo site_url('event/search_keyword_admin').'/'.$keyword[$i].'/'.$page?>"><?php echo $keyword[$i]?></a>
                       <?php if ($i<count($keyword)-1) echo ','?>
                       <?php ;}?>
                     
