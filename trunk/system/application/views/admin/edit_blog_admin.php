@@ -3,7 +3,7 @@
         <?php
                                     foreach($query as $row){                               
                                         $id = $row->ID;
-                                        $link = $row->Link;
+                                        $images = $row->Link;
                                         $title = $row->Title;
                                         $subject = $row->Subject;
                                         $keywords = $row->Keywords;
@@ -13,6 +13,7 @@
                                     }
                                 ?>
         <form action="<?php echo site_url('blog/edit_blog_submit').'/'.$id?>" method="post" enctype="multipart/form-data" class="global" name="blog">
+          <input name="edit_image" id="edit_image" type="hidden" value="<?php echo $images;?>"/>
           <p>
             <label for="name"><?php echo __("CF_your_name")?>: <?php echo $this->session->userdata('admin')?></label>
           </p>
@@ -24,17 +25,7 @@
           </p>
           <p>
             <label><?php echo __("CF_blog_thum")?> :</label>
-            <?php
-                                    $data = array('name' => 'txtLink',
-                                    'id' => 'txtLink',
-                                    'class'=>'short',
-                                    'readonly'=>'true',
-                                    'value'=>$link);                                         
-                                    echo form_input($data);
-                                    echo form_error('txtLink'); ?>
-          <p>
-            <input type="button" value="<?php echo __("CF_up")?>" class="submit" name="uploadvideo" onclick="window.open('<?php echo site_url('blog/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" />
-          </p>
+            <?php $this->load->view('image_upload',array('edit_image'=>$images));?>
           </p>
           <br />
           <br />

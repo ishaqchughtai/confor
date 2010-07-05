@@ -246,12 +246,13 @@ class Blog extends Frontend_controller {
             $this->blog_list();
         }else
         {
+            $this->image_upload_lib->init();
             if($this->session->userdata('admin')=="")
             {
                 redirect(site_url("admin"));
             }
             else
-            {          
+            {         
                 $this->_data['query'] = $this->Mblog->get_blog_by_id($id);
                 $this->_load_view('admin/edit_blog_admin');
             }   
@@ -310,37 +311,6 @@ class Blog extends Frontend_controller {
         }
     }	
 
-    // Do upload  
-    function do_upload()
-    {
-        if($this->session->userdata('admin')==FALSE)
-        {
-            redirect(site_url("admin"));
-        }
-        else
-        {
-            $config['upload_path'] = './assets/uploads/image/';
-            $config['allowed_types'] = 'jpg';
-            $config['max_size']    = '300';
-            $config['max_width']  = '1024';
-            $config['max_height']  = '768';
-            $config['overwrite']  = 'TRUE';
-            $this->load->library('upload', $config);
-
-            if ( ! $this->upload->do_upload())
-            {
-                $error = array('error' => $this->upload->display_errors());
-                $this->load->view('admin/upload_form', $error);
-            }    
-            else
-            {
-                $data = array('upload_data' => $this->upload->data());
-                $data['Link_full'] = $this->upload->file_name;
-                $this->load->view('admin/upload_success', $data);
-            }
-        }  
-    }
-
     // Edit Blog
     function edit_blog_submit($id='')
     {
@@ -354,12 +324,12 @@ class Blog extends Frontend_controller {
                 redirect(site_url("admin"));
             }
             else
-            {                    
+            {
+                //$this->image_upload_lib->init();                    
                 $this->form_validation->set_rules('txtTitle',strtolower(__("CF_title")),'trim|required|max_length[50]');
                 $this->form_validation->set_rules('txtSubject',strtolower(__("CF_subject")),'trim|required|max_length[50]');
                 $this->form_validation->set_rules('txtKeywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
                 $this->form_validation->set_rules('txtBody',strtolower(__("CF_blog_body")),'required|max_length[500]');
-                $this->form_validation->set_rules('txtLink',strtolower(__("CF_image_link")),'required');
                 $this->form_validation->set_rules('about',strtolower(__("CF_about")),'required');
                 $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
                 if($this->form_validation->run()==FALSE)
@@ -377,15 +347,23 @@ class Blog extends Frontend_controller {
                     $Subject=$this->input->post('txtSubject');
                     $Keywords=$this->input->post('txtKeywords');
                     $Text=$this->input->post('txtBody');
-                    $Link=$this->input->post('txtLink');
                     $about=$this->input->post('about');
-                    $this->_data['page_title'] = $Title; 
-                    $data = $this->Mblog->edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$Link,$about);
-                    redirect('blog/blog_content_admin/'.$FirstName.'/'.$Title);  
+                    $this->_data['page_title'] = $Title;
+                    $edit_image=$this->input->post('edit_image');
+                    $this->_data['uname'] = $this->input->post('uname');
+                    if (strlen($this->_data['uname'])>1)
+                    {
+                        $this->image_upload_lib->remove_image_from_db($id,'ID','Link','tblblog'); 
+                        $data = $this->Mblog->edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$this->_data['uname'],$about);
+                        redirect('blog/blog_content_admin/'.$FirstName.'/'.$Title);  
+                    }else
+                    {
+                        $data = $this->Mblog->edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$edit_image,$about);
+                        redirect('blog/blog_content_admin/'.$FirstName.'/'.$Title);
+                    }
                 }
             }            
         }
-
     }
     //Title check
     function title_check($Title)
