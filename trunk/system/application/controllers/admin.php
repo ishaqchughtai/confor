@@ -287,7 +287,6 @@
                     'Name'=>$this->input->post('txtName'),
                     'FirstName'=>$this->input->post('txtFirstName'),
                     'Email'=>$this->input->post('txtEmail'),
-                    'country'=>$this->input->post('country'),
                     'PayPalAccount'=>$this->input->post('txtpayPayAccount'),
                     );
                     $this->Madmin->update_admin($id,$data);

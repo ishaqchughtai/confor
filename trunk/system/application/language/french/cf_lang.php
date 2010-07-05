@@ -427,3 +427,90 @@ $lang['CF_Upload_Form'] = 'Formulaire de t&eacute;l&eacute;versement';
 
 
 $lang['CF_upload_another?'] = 'T&eacute;l&eacute;verser un autre fichier!';
+
+
+
+//New Key
+
+//message when you enter invalid password
+$lang['CF_invalid_pass'] = 'You have entered invalid password!';
+
+//message when you enter invalid email
+$lang['CF_invalid_email'] = 'You have entered invalid email address!';
+
+//message when you insert new admin fail
+$lang['CF_insert_fail'] = 'Insert new admin failed!';
+
+//message when you email or paypal already exist
+$lang['CF_email_paypal_exist'] = 'Email or paypal account already exist!';
+
+//message when you can not update
+$lang['CF_cant_update'] = 'Can not update!';
+
+//message when you haven't upload
+$lang['CF_havent_upload'] = 'You must upload your clip!';
+
+//message when you upload success
+$lang['CF_upload_success'] = 'Your video has been created!';
+
+//message when you save video information
+$lang['CF_save_info'] = 'Your video information has been saved!';
+
+//message when you delete video
+$lang['CF_delete_vid'] = 'Your video has been deleted!';
+
+$lang['CF_contact_error'] = 'Contact can not send. Please try again';
+
+$lang['CF_contact_successfully'] = 'Contact send successfully';
+
+$lang['CF_your_contact_mail'] = 'Contact from';
+
+$lang['CF_element_content'] = 'Element Content';
+
+$lang['CF_event_content'] = 'Event Content';
+
+$lang['CF_the'] = 'The';
+
+$lang['CF_already_exist'] = 'already exist';
+
+$lang['CF_field_max'] = 'field max are four word';
+
+$lang['CF_invalid_code'] = 'Invalid Code';
+
+$lang['CF_add_image_suc'] = 'New image successfully added';
+
+$lang['CF_only_admin'] = 'Only Admin can use this function';
+
+$lang['CF_reslult_search'] = 'Your searching did not match any rows';
+
+$lang['CF_row'] = 'Row each page must > 0';
+
+$lang['CF_edit_image_suc'] = 'Edit Image Success';
+
+$lang['CF_showroom_menu'] = 'Showroom Menu';
+
+$lang['CF_ad_menu_showroom'] = 'List Images';
+
+$lang['CF_vid_from_speaker'] = 'Video from speaker';
+
+$lang['CF_show'] = 'Video from speaker';
+
+$lang['CF_paypal_man'] = 'Paypal Management';
+
+$lang['CF_cate_man'] = 'Video Category Management';
+
+$lang['CF_list_vid_cate'] = 'List of Video Category';
+
+$lang['CF_cate_name'] = 'FCategory Name';
+
+$lang['CF_new_cate'] = 'FNew Category';
+
+$lang['CF_cate_update'] = 'Category Update';
+
+$lang['CF_edit_image'] = 'Edit Images';
+
+$lang['CF_add_cate'] = 'Add new category';
+
+$lang['CF_list_cate'] = 'List Category';
+
+$lang['CF_modify_cate'] = 'Modify Category';
