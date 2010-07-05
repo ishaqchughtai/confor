@@ -9,15 +9,14 @@
  */
  
 	$CI=& get_instance(); 
-	$vname_value = isset($vname)?$vname:0;	
+	$vname_value = isset($vname)?$vname:'0';	
 ?>
 
 <style>
 #myuploaderButton
 {
 	width:150px;
-	height:35px;
-	float:left;
+	height:35px;	
 	border:1px #ccc solid;
 	margin-right:5px
 }
@@ -70,6 +69,7 @@
 </script>			
 
 	<label for="video">Video:</label> <br />   
-	<?php $CI->uploader->Render();?>
-	<input id="upload_button" type="submit" onclick="return doUpload()" value="Upload" />												                        
+	<p><?php $CI->uploader->Render();?></p>
+	<p></p>
+	<p><input id="upload_button" type="submit" onclick="return doUpload()" value="Upload" /></p>												                        
 	<input id="vname" type="hidden" name="vname" value="<?php echo $vname_value?>"/>
