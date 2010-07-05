@@ -191,8 +191,8 @@
                 $show=$this->input->post('show');
 				$this->_data['uname'] = $this->input->post('uname');
 				
-				if (strlen($this->_data['uname'])>0)
-				{					
+				if (strlen($this->_data['uname'])>1)
+				{										
 					$this->image_upload_lib->remove_image_from_db($id,'ID','SpeakerImages','tblshowroom');
                     if($this->Mshowroom->edit_image($id,$this->_data['uname'],$show)==TRUE)
                     {                    
@@ -200,7 +200,7 @@
                     } 					
 				}
 				else
-				{
+				{					
                     if($this->Mshowroom->edit_image($id,$edit_image,$show)==TRUE)
                     {                    
                         $this->_message('admin', __("CF_edit_image_suc"), 'success',site_url("showroom/list_images"));
