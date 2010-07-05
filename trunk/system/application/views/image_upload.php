@@ -9,11 +9,11 @@
  */
  
 	$CI=& get_instance(); 
-	$uname = isset($uname)?$uname:0;	
-	if (isset($edit_image))
-	{
-		$CI->image_upload_lib->old_image = $edit_image;
-	}
+	$uname = isset($uname)?$uname:'0';	
+	// if (isset($edit_image))
+	// {
+		// $CI->image_upload_lib->old_image = $edit_image;
+	// }
 ?>
 
 <style>
@@ -93,7 +93,7 @@
 	<p><input id="upload_button" type="submit" onclick="return doUpload()" value="<?php echo __("CF_up")?>" /></p>
 	<input id="uname" type="hidden" name="uname" value="<?php echo $uname?>"/>
 	<p>
-	<?php if ($uname==0):?>
+	<?php if ($uname=='0'):?>
 		<?php if (isset($edit_image)):?>
 		<img id="preview_img" src="<?php echo base_url().'assets/uploads/image/thumb_'.$edit_image?>"/>
 		<?php else:?>
