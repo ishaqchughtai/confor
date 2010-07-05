@@ -166,6 +166,16 @@
       $this->db->delete('tblevent',array('ID'=>$id));
     }
 
+    //count record by title
+    function count_record_by_title($keywords)
+    {
+      $this->db->from('tblevent');
+      $this->db->like('Title', $keywords);
+      $query = $this->db->count_all_results();
+      return $query;
+    }
+    
+    //count record by keyword
     function count_record_by_keywords($keywords)
     {
       $this->db->from('tblevent');
@@ -174,7 +184,7 @@
       return $query;
     }
 
-
+    //search event by title
     function search_event($keywords,$per_page,$offset)
     {
       //try
@@ -192,6 +202,35 @@
       $this->db->from('tblevent');
       $this->db->join('users','tblevent.Speaker = users.ID');
       $this->db->like('title',$keywords,'both') ;
+      $this->db->limit($per_page,$offset);
+
+      $query = $this->db->get();
+      $events=FALSE; 
+      foreach ($query->result_array() as $row_event)
+      {                    
+        $events[] = $row_event;
+      }
+      $query->free_result();  
+      return $events;
+    }
+    
+    function search_event_by_keyword($keywords,$per_page,$offset)
+    {
+      //try
+      //      {
+      $this->db->select('
+      tblevent.ID,
+      users.first_name,
+      users.name,
+      tblevent.`Date`,
+      tblevent.Title,
+      tblevent.Subject,
+      tblevent.Keywords,
+      tblevent.Description
+      ');
+      $this->db->from('tblevent');
+      $this->db->join('users','tblevent.Speaker = users.ID');
+      $this->db->like('Keywords',$keywords,'both') ;
       $this->db->limit($per_page,$offset);
 
       $query = $this->db->get();
