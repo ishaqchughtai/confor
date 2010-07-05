@@ -486,12 +486,12 @@
             if($category == 0)
             {
                 $config['total_rows'] = $this->db->count_all('videos'); 
-                $this->_data['query'] = $this->Mvconference->get_all_video_conference($this->vid_per_page,$page_offset);                  
+                $this->_data['query'] = $this->Mvconference->get_all_video_conference($this->vid_per_page,$page_offset,0);                  
             }
             else
             {
                 $config['total_rows'] = $this->Mvconference->count_video_Category($category);
-                $this->_data['query'] = $this->Mvconference->get_video_conference_by_category($category,$this->vid_per_page,$page_offset);
+                $this->_data['query'] = $this->Mvconference->get_video_conference_by_category($category,$this->vid_per_page,$page_offset,0);
             } 
             $this->pagination->initialize($config);
             //$this->_data['video_categories'] = $this->Mvconference->get_category();
@@ -581,7 +581,7 @@
             $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'required');
             $this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 
             $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-            $this->_data['query']=$this->Mvconference->get_video_conference_by_id($id);
+			$this->_data['query']=$this->Mvconference->get_video_info_by_id($id);
             //$this->_data['category']=$this->Mvconference->get_category();
             $this->_data['error'] ="";
 
@@ -596,6 +596,7 @@
                 {												
                     $data = array(
                     'title'=>$this->input->post('title'),
+					'mem_id'=>$this->input->post('speaker'),
                     'description'=>$this->input->post('description'),
                     'category'=>$this->input->post('video_cate'),
                     'tags'=>$this->input->post('keywords'),					
