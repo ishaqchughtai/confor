@@ -21,7 +21,7 @@ class Image_upload_lib {
 	var $upload_folder = './assets/uploads/image/';
 	
 	var $max_size = 2;
-	var $allowed_ext = '.jpg, .gif, .png';
+	var $allowed_ext = '*.jpg,*.gif,*.png,*.bmp';
 	var $ajax_link = '';
 	var $max_width = 1024;
 	var $max_height = 768;
