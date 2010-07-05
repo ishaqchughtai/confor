@@ -30,7 +30,7 @@
                     </p>
                     <p>
                         <label for="keywords"><?php echo __("CF_key")?>:</label>
-                        <input class="medium" name="keywords" id="keywords" value="<?php if(isset($_POST['keywords'])){ echo $_POST['title'];}?>"/>
+                        <input class="medium" name="keywords" id="keywords" value="<?php if(isset($_POST['keywords'])){ echo $_POST['keywords'];}?>"/>
                         <?php echo form_error('keywords')?>
                     </p>
                     <p>
