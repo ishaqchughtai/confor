@@ -58,7 +58,7 @@
       </div>
       <!-- /.sidebar_item tabbed content -->
       <div class="sidebar_item">
-        <h3><?php echo __("CF_pop_post")?></h3>
+        <h3><?php echo __("CF_pop_bill")?></h3>
         <?php $this->load->view('blog/billets_populaires',$side_bar);?>		 
         <!-- /#popular_posts -->
         <ul id="pop_nav">

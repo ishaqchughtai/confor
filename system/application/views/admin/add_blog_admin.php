@@ -12,12 +12,8 @@
             <label for="date"><?php echo __("CF_date")?>: <?php echo mdate($datestring,$time);?> </label>
         </p>
         <p>
-        <label><?php echo __("CF_blog_thum")?> :</label>
-        <?php echo form_error('txtLink'); ?>                  
-        <input name="txtLink" type="text" id="txtLink" value="<?php if(isset($_POST['txtLink'])){ echo $_POST['txtLink'] ;}?>" class="short"  readonly="true"/>
-        <p>
-            <input type="submit" value="upload" class="submit" name="uploadvideo" onclick="window.open('<?php echo site_url('blog/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" />
-        </p>
+        <label><?php echo __("CF_blog_thum")?> :</label>                 
+        <?php $this->load->view('image_upload');?>
         </p>
         <br />
         <br />

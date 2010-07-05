@@ -25,7 +25,7 @@
         <h3><a href="#"><?php echo $title?></a></h3>
         <h5><?php echo $subject ?></h5>
         <a href="#comments" class="comments_balloon"><?php echo $countcommenttemp;?></a>
-        <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="610" height="169" alt="Confor.ca" /></p>
+        <p><img src="<?php echo base_url().'assets/uploads/image/thumb_'.$link ?>" width="610" height="169" alt="Confor.ca" /></p>
         <p><?php echo $text ?></p>
       </div>
       <!-- /.content_item -->
@@ -57,7 +57,7 @@
                                 $final_time=date("h:i a",strtotime($date));      
         ?>		
         <ol>
-          <li> <img src="<?php echo base_url().'assets/uploads/image/'.$linktemp?>" alt="XemmeX" width="80" height="80"  class="comment_image" />
+          <li> <img src="<?php echo base_url().'assets/uploads/image/thumb_'.$linktemp?>" alt="XemmeX" width="80" height="80"  class="comment_image" />
             <!-- Author Image -->
             <p class="content" style="width:500px"> 
 			  <a href="#comments" class="author"><?php echo $author?></a>
