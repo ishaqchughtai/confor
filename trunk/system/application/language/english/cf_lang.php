@@ -13,6 +13,8 @@ $lang['CF_contact'] = 'Contact';
 $lang['CF_login'] = 'Log in';
 $lang['CF_subscribe'] = 'Subscribe to RSS';
 $lang['CF_you_here'] = 'Your are here';
+$lang['CF_member'] = 'Member';
+$lang['CF_account'] = 'Account';
 
 //all form
 $lang['CF_search'] = 'Search';
@@ -526,5 +528,3 @@ $lang['CF_add_cate'] = 'Add new category';
 $lang['CF_list_cate'] = 'List Category';
 
 $lang['CF_modify_cate'] = 'Modify Category';
-
-
