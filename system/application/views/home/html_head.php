@@ -11,7 +11,8 @@
 	<!-- Main CSS Stylesheet -->
 	<script>
 		XEMMEX = {
-			baseUrl: '<?php echo site_url("/")?>'
+			baseUrl: '<?php echo site_url("/")?>',
+			monthNames : [<?php echo __("CF_month_name_array")?>]
 		};	
 	</script>
 	<?php

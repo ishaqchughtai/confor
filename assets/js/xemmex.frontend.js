@@ -3,6 +3,7 @@ $(function(){
 	$('#datepicker').datepicker({
 		inline: true,				
 		dateFormat: 'yy-mm-dd',
+		monthNames: XEMMEX.monthNames,
 		onSelect: function(dateText, inst) {																				
 			gogo = XEMMEX.baseUrl + "event/show_event/" + dateText + "/5";
 			//alert(gogo);

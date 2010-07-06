@@ -517,3 +517,6 @@ $lang['CF_add_cate'] = 'Ajouter une nouvelle cat&eacute;gorie';
 $lang['CF_list_cate'] = 'Liste des cat&eacute;gories';
 
 $lang['CF_modify_cate'] = 'Modifier la cat&eacute;gorie';
+
+//date
+$lang['CF_month_name_array'] = "'Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'";
