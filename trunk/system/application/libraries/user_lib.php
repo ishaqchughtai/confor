@@ -365,7 +365,7 @@ class User_lib
 		$this->CI->form_validation->set_rules('password', __('CF_pass'), $this->CI->config->item('spk_password_rule').'|matches[passconf]');
 		$this->CI->form_validation->set_rules('passconf', __('CF_confirm'), $this->CI->config->item('spk_password_rule'));				
 		$this->CI->form_validation->set_rules('name',__('CF_name'),'required');
-		$this->CI->form_validation->set_rules('company_name',__('CF_company'),'required');
+		//$this->CI->form_validation->set_rules('company_name',__('CF_company'),'required');
 		$this->CI->form_validation->set_rules('first_name',__('CF_first_name'),'required');
 		$this->CI->form_validation->set_rules('email',__('CF_email'),$this->CI->config->item('spk_email_rule').'|callback_is_email_exists');
 		$this->CI->form_validation->set_rules('captcha','Confirm code','required|max_length[6]|callback_is_correct_captcha');
@@ -374,6 +374,7 @@ class User_lib
 			if($this->CI->form_validation->run()==FALSE) 
 			{
 				$this->CI->_data['country'] = $this->CI->input->post('country');
+				$this->CI->_data['company_name'] = $this->CI->input->post('company_name');
 				$this->CI->_data['description'] = $this->CI->input->post('description');
 				$this->CI->_load_view('speaker/speaker_register');
 				return;
