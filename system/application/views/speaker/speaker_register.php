@@ -17,7 +17,7 @@
 	$companyNameInput = array(
 		'name' => 'company_name',
 		'class' => 'medium',
-		'value' => isset($company_name)?$company_name:set_value('company_name')
+		'value' => isset($company_name)?$company_name:''
 	);			
 		
 	$selected_country = isset($country)?$country:225; // united kingdom
@@ -110,7 +110,7 @@
 			<div class="input text"><label><?php echo __("CF_company")?>(*)</label>
 				<?php echo form_input($companyNameInput);?>
 			</div>
-			<?php echo form_error('companyName');?>
+			
 
 			<div class="input text"><label><?php echo __("CF_country")?>(*)</label>
 				<?php echo  form_dropdown('country', dropdown_data($selected_country_setting),$selected_country, ' class="short"');?>
