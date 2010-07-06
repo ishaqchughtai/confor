@@ -107,7 +107,16 @@ if ( ! function_exists('__'))
 
 function get_path($file, $type) 
 {	
-	$retval = base_url().'assets/'.$type.'/'.$file;
+	$CI =& get_instance();
+	$file_lang = 'assets/'.$type.'/'.$CI->_data['lang'].'/'.$file;
+	if (file_exists($file_lang))
+	{
+		$retval = base_url().$file_lang;
+	}
+	else
+	{
+		$retval = base_url().'assets/'.$type.'/'.$file;
+	}
 	return $retval;
 }
 
