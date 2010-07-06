@@ -528,3 +528,6 @@ $lang['CF_add_cate'] = 'Add new category';
 $lang['CF_list_cate'] = 'List Category';
 
 $lang['CF_modify_cate'] = 'Modify Category';
+
+//date
+$lang['CF_month_name_array'] = "'January','February','March','April','May','June','July','August','September','October','November','December'";
