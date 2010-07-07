@@ -67,7 +67,7 @@
             return $this->db->count_all_results();
         }
 
-        function search_paging($keyword, $num, $offset) {
+        function search_paging($keyword, $num, $offset,$istitle=true) {
             $this->db->select('
             users.username,      
             videos.vid_id,
@@ -84,7 +84,14 @@
             $this->db->from('videos');
             $this->db->where('videos.approved ', '1');
             $this->db->join('users','videos.mem_id = users.id');
-            $this->db->like('title', $keyword);
+            if($istitle)
+            {
+                $this->db->like('title', $keyword);
+            }
+            else
+            {
+                $this->db->like('tags', $keyword);
+            }
             $this->db->order_by('viewed','desc');
             $this->db->limit($num, $offset);
             $video_speaker = $this->db->get();

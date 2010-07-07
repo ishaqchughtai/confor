@@ -138,11 +138,12 @@ class Home extends Frontend_controller {
         
         $config['base_url'] = site_url('home/search_paging').'/'.$keywords_to_search.'/'.$num_per_page.'/';        
         $config['per_page'] = $num_per_page;
-        $config['uri_segment'] = 5;
+        $config['uri_segment'] = 6;
         if ($keywords_to_search == '_') $keywords_to_search = '';
         $config['total_rows'] = $this->Mhome->count_video_search($keywords_to_search);
         $this->pagination->initialize($config);
-        $this->_data['search_results']=$this->Mhome->search_paging($keywords_to_search, $num_per_page, $offset);       
+        $istitle = $this->uri->segment(6);
+        $this->_data['search_results']=$this->Mhome->search_paging($keywords_to_search, $num_per_page, $offset,$istitle);       
         $this->_data['link_html'] = $this->pagination->create_links();
         $this->_data['keyword'] = $keywords_to_search;
         $this->_load_view('home/search'); 
