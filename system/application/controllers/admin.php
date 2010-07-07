@@ -27,7 +27,7 @@
         }                       
         function index()
         {
-            $this->_data['status'] = $this->MShop->get_shop_status();
+            //$this->_data['status'] = $this->MShop->get_shop_status();
             if($this->session->userdata('admin')==TRUE)
             {
                 $this->_data['path'][] = array(
@@ -548,7 +548,7 @@
                     'mem_id'=>$this->input->post('speaker'),
                     'title'=>$this->input->post('title'),
                     'description'=>$this->input->post('description'),
-                    'category'=>$this->input->post('video_catte'),
+                    'category'=>$this->input->post('video_cate'),
                     'tags'=>$this->input->post('keywords'),
                     'Date'=>$dateupload,
                     'vhash'=>$vname.'.flv',
