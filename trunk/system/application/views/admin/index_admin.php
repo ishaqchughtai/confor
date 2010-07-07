@@ -1,8 +1,8 @@
 <?php 
     $admin_id=$this->session->userdata('admin_id');
     $admin_right=(int)$this->session->userdata('right');  
-?><?php
-    foreach($status as $row){	$status = $row->status;	}?><div class="x2">
+?>
+<div class="x2">
     <h3><?php echo __("CF_admin_panel")?></h3>
     <ul class="link_conttrol">
         <?php if($admin_right==1){?>

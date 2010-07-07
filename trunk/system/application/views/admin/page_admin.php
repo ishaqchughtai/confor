@@ -7,19 +7,19 @@
         $ElementContent = $row['ElementContent'];
         if($ElementName == 'About')
         {
-            $StrElementName = 'About us';
+            $StrElementName = __("CF_about_us");
         }elseif($ElementName == 'How')
         {
-            $StrElementName = 'How it works';    
+            $StrElementName = __("CF_how");    
         }elseif($ElementName == 'Rules')
         {
-            $StrElementName = 'The rules';    
+            $StrElementName = __("CF_rules");    
         }elseif($ElementName == 'Training')
         {
-            $StrElementName = 'Training';   
+            $StrElementName = __("CF_training");   
         }elseif($ElementName == 'Office')
         {
-            $StrElementName = 'Conference Office';   
+            $StrElementName = __("CF_conference_office");   
         }else
         {
             $StrElementName='';
