@@ -532,7 +532,7 @@ $lang['CF_modify_cate'] = 'Modify Category';
 //date
 $lang['CF_month_name_array'] = "'January','February','March','April','May','June','July','August','September','October','November','December'";
 
-$lang['CON_invalid_username_password_message'] = 'invalid username or password';
+$lang['CF_invalid_username_password_message'] = 'invalid username or password';
 
 $lang['CF_up_profile'] = 'Your profile has been updated';
 
