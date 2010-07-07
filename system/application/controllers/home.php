@@ -118,7 +118,7 @@ class Home extends Frontend_controller {
             }
     }
 
-    function search_paging($keywords_to_search, $num_per_page) 
+    function search_paging($keywords_to_search, $num_per_page='') 
     {
     $this->_data['path'][] = array(
       'name' => __("CF_search_video"),
@@ -135,7 +135,7 @@ class Home extends Frontend_controller {
         $config['prev_link'] = '< Previous';
         $config['last_link'] = 'Last >>';
         $config['first_link'] = '<< First';	
-
+        
         $config['base_url'] = site_url('home/search_paging').'/'.$keywords_to_search.'/'.$num_per_page.'/';        
         $config['per_page'] = $num_per_page;
         $config['uri_segment'] = 5;

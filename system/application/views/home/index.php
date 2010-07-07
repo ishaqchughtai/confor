@@ -28,7 +28,7 @@
         <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $name?></b></a> 
         <?php echo __("CF_in")?> 
         <?php for($i=0;$i<count($tags);$i++){?>
-            <a href="#"><?php echo $tags[$i]?></a>
+            <a href="<?php echo site_url('home/search_paging/'.$tags[$i])?>"><?php echo $tags[$i]?></a>
             <?php if ($i<count($tags)-1) echo ','?>
             <?php ;}?>
         //
