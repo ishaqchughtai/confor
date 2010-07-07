@@ -520,3 +520,19 @@ $lang['CF_modify_cate'] = 'Modifier la cat&eacute;gorie';
 
 //date
 $lang['CF_month_name_array'] = "'Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'";
+
+$lang['CON_invalid_username_password_message'] = 'Nom d\'utilisateur ou mot de passe invalide';
+
+$lang['CF_up_profile'] = 'f_Your profile has been updated';
+
+$lang['CF_upgrade_mem'] = 'f_Please upgrade your membership to use this function';
+
+$lang['CF_you_have_paid'] = 'You have paid $';
+
+$lang['CF_for_this'] = 'for this subcription';
+
+$lang['CF_day'] = ' day.';
+
+$lang['CF_expired'] = 'Expired';
+
+$lang['CF_old_pass_incorrect'] = 'Your Old Password was incorrect';

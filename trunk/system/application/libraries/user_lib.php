@@ -24,7 +24,7 @@ class User_lib
 
 	function _please_upgrade()
 	{
-		$this->CI->session->set_flashdata('msg', 'Please upgrade your membership to use this function');
+		$this->CI->session->set_flashdata('msg', __("CF_upgrade_mem"));
 		$this->CI->session->set_flashdata('class_msg', 'warning');
 		redirect('speaker/message');	
 	}
@@ -44,15 +44,15 @@ class User_lib
 			if ($pay)
 			{
 				$info['ms_rate'] = $pay->id;				
-				$info['rate_info'] = "You have paid $".$pay->amount." for this subcription";
+				$info['rate_info'] = __("CF_you_have_paid").$pay->amount.__("CF_for_this");
 				$expire = round((strtotime($pay->date)-time())/(24*60*60));	
 				if ($expire>0) 
 				{
-					$info['ms_expire'] = $expire. ' days.';
+					$info['ms_expire'] = $expire. __("CF_day");
 				}
 				else
 				{
-					$info['ms_expire'] = "Expired";
+					$info['ms_expire'] = __("CF_expired");
 				}				
 			}
 		}
@@ -156,8 +156,8 @@ class User_lib
 			}					
 		}
 				
-		$this->CI->form_validation->set_rules('username', 'Username', $this->CI->config->item('spk_user_rule'));
-		$this->CI->form_validation->set_rules('password', __('CON_user_password_label'), $this->CI->config->item('spk_password_rule'));
+		$this->CI->form_validation->set_rules('username', strtolower(__("CF_user")), $this->CI->config->item('spk_user_rule'));
+		$this->CI->form_validation->set_rules('password', strtolower(__("CF_pass")), $this->CI->config->item('spk_password_rule'));
 						
 		$data['username'] = $this->CI->input->post('username');
 		$data['password'] = $this->CI->input->post('password');
@@ -208,7 +208,7 @@ class User_lib
 				} 
 				else 
 				{
-					$result['error'] = __('CON_invalid_username_password_message');					
+					$result['error'] = __('CF_invalid_username_password_message');					
 					return $result;
 				}
 			}
@@ -242,8 +242,8 @@ class User_lib
 		
 		$this->CI->load->library('form_validation');
 		$this->CI->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-		$this->CI->form_validation->set_rules('username', 'Username', $this->CI->config->item('spk_user_rule'));
-		$this->CI->form_validation->set_rules('password', __('CON_user_password_label'),$this->CI->config->item('spk_password_rule'));
+		$this->CI->form_validation->set_rules('username', strtolower(__("CF_user")), $this->CI->config->item('spk_user_rule'));
+		$this->CI->form_validation->set_rules('password', strtolower(__("CF_pass")),$this->CI->config->item('spk_password_rule'));
 		
 		if($this->CI->input->post('login')) 
 		{				
@@ -298,7 +298,7 @@ class User_lib
 					} 
 					else 
 					{
-						$this->CI->_data['error'] = __('CON_invalid_username_password_message');
+						$this->CI->_data['error'] = __('CF_invalid_username_password_message');
 						$this->CI->_load_view('speaker/user_login');
 					}
 				} 
@@ -361,13 +361,13 @@ class User_lib
 		
 		$this->CI->load->library('form_validation');
 		$this->CI->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-		$this->CI->form_validation->set_rules('username', __('CF_user'), $this->CI->config->item('spk_user_rule').'|callback_is_username_exists');		
-		$this->CI->form_validation->set_rules('password', __('CF_pass'), $this->CI->config->item('spk_password_rule').'|matches[passconf]');
-		$this->CI->form_validation->set_rules('passconf', __('CF_confirm'), $this->CI->config->item('spk_password_rule'));				
-		$this->CI->form_validation->set_rules('name',__('CF_name'),'required');
+		$this->CI->form_validation->set_rules('username', strtolower(__('CF_user')), $this->CI->config->item('spk_user_rule').'|callback_is_username_exists');		
+		$this->CI->form_validation->set_rules('password', strtolower(__('CF_pass')), $this->CI->config->item('spk_password_rule').'|matches[passconf]');
+		$this->CI->form_validation->set_rules('passconf', strtolower(__('CF_confirm')), $this->CI->config->item('spk_password_rule'));				
+		$this->CI->form_validation->set_rules('name',strtolower(__('CF_name')),'required');
 		//$this->CI->form_validation->set_rules('company_name',__('CF_company'),'required');
-		$this->CI->form_validation->set_rules('first_name',__('CF_first_name'),'required');
-		$this->CI->form_validation->set_rules('email',__('CF_email'),$this->CI->config->item('spk_email_rule').'|callback_is_email_exists');
+		$this->CI->form_validation->set_rules('first_name',strtolower(__('CF_first_name')),'required');
+		$this->CI->form_validation->set_rules('email',strtolower(__('CF_email')),$this->CI->config->item('spk_email_rule').'|callback_is_email_exists');
 		$this->CI->form_validation->set_rules('captcha','Confirm code','required|max_length[6]|callback_is_correct_captcha');
 		if($this->CI->input->post('register')) 
 		{							
@@ -421,10 +421,10 @@ class User_lib
 	function edit_profile($id) 
 	{													
 		$this->CI->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-		$this->CI->form_validation->set_rules('name','Name','required');
-		$this->CI->form_validation->set_rules('first_name','First Name','required');
-		$this->CI->form_validation->set_rules('company_name','Company','required');
-		$this->CI->form_validation->set_rules('email','Email',$this->CI->config->item('spk_email_rule').'|callback_is_email_exists');		
+		$this->CI->form_validation->set_rules('name',strtolower(__('CF_name')),'required');
+		$this->CI->form_validation->set_rules('first_name',strtolower(__('CF_first_name')),'required');
+		$this->CI->form_validation->set_rules('company_name',strtolower(__("CF_company")),'required');
+		$this->CI->form_validation->set_rules('email',strtolower(__('CF_email')),$this->CI->config->item('spk_email_rule').'|callback_is_email_exists');		
 		
 		if($this->CI->input->post('update')) 
 		{							
@@ -448,7 +448,7 @@ class User_lib
 				// $this->CI->session->set_flashdata('msg', 'Your profile has been updated');
 				// $this->CI->session->set_flashdata('class_msg', 'success');			
 				// redirect('speaker/message');	
-				$this->CI->_message('speaker', "Your profile has been updated", 'success');
+				$this->CI->_message('speaker',__("CF_up_profile"), 'success');
 			}
 		}	
 		else 
@@ -480,9 +480,9 @@ class User_lib
 	function change_password($username) 
 	{		
 		$this->CI->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-		$this->CI->form_validation->set_rules('old_password', 'Old Password', $this->CI->config->item('spk_password_rule'));
-		$this->CI->form_validation->set_rules('new_password', 'New Password', $this->CI->config->item('spk_password_rule').'|matches[passconf]');
-		$this->CI->form_validation->set_rules('passconf', 'Password Confirmation', $this->CI->config->item('spk_password_rule'));				
+		$this->CI->form_validation->set_rules('old_password', strtolower(__("CF_old_pass")), $this->CI->config->item('spk_password_rule'));
+		$this->CI->form_validation->set_rules('new_password', strtolower(__("CF_new_pass")), $this->CI->config->item('spk_password_rule').'|matches[passconf]');
+		$this->CI->form_validation->set_rules('passconf', strtolower(__("CF_confirm_pass")), $this->CI->config->item('spk_password_rule'));				
 			
 		if($this->CI->input->post('change')) 
 		{		
@@ -508,20 +508,20 @@ class User_lib
 						{
 							$save_data['password'] = $this->_encode($new_password);
 							$this->CI->MUser->update_by_username($row->username, $save_data);								
-							$this->CI->session->set_flashdata('msg', 'Your password has been successfully updated');
+							$this->CI->session->set_flashdata('msg', __("CF_change_password_success"));
 							$this->CI->session->set_flashdata('class_msg', 'success');
 							redirect('speaker/message');
 						}									
 					} 
 					else 
 					{
-						$this->CI->_data['error'] = 'Your Old Password was incorrect';
+						$this->CI->_data['error'] = __("CF_old_pass_incorrect");
 						$this->CI->_load_view('speaker/speaker_change_pw');							
 					}
 				} 
 				else 
 				{
-					$this->CI->_data['error'] = 'An error has been occurred';
+					$this->CI->_data['error'] = __("CF_error_occurred");
 					$this->CI->_load_view('speaker/speaker_change_pw');
 				}
 			}
@@ -667,12 +667,12 @@ class User_lib
 			} 
 			else 
 			{
-				$out['error'] = 'Your searching did not match any rows. ';
+				$out['error'] = __("CF_reslult_search");
 			}
 		} 
 		else 
 		{
-			$out['error'] = 'Row each page must > 0';
+			$out['error'] = __("CF_row");
 		}
 		
 		return $out;
