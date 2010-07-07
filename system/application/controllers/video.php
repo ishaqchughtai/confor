@@ -43,7 +43,7 @@ class Video extends Frontend_controller
 		$this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');
 		$this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 
 		$this->form_validation->set_rules('video_cate',strtolower(__("CF_cate_vid")),'required');
-		$this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'required');
+		$this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
 		$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
 		$this->_data['query']=$this->Mvconference->get_category();                  
 
@@ -161,7 +161,7 @@ class Video extends Frontend_controller
 		);		
 		
 		$this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');
-		$this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'required');
+		$this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
 		$this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 
 		$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
 		$this->_data['query']=$this->Mvconference->get_video_conference_by_id($id);	
@@ -238,7 +238,18 @@ class Video extends Frontend_controller
 		$this->_load_view('home/archives');
 	}
 
-
+    function keyword_check($Keywords)
+    {
+        $Key = explode(" ", $Keywords);				
+        if(count($Key)>4)
+        {
+            $this->form_validation->set_message('keyword_check', __("CF_the").'%s'.__("CF_field_max")); 
+            return FALSE ;           
+        }else
+        {
+            return TRUE ;
+        }
+    }	
 
 
 }
