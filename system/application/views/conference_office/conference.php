@@ -42,7 +42,7 @@
                 <?php echo mdate('%F %j%S %Y', $date)?></h5>              
                 <h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>
                 <?php }?>
-            <p><a href="<?php echo base_url().'videos/'.$top_view_video;?>" style="display:block;width:621px;height:344px;"id="player"></a></p>
+            <p><a href="<?php echo base_url().'videos/'.$top_view_video;?>" style="display:block;width:621px;height:380px;"id="player"></a></p>
             <?php if($video_path){?>
                 <div class="rate_balloon"><?php $SimpleRatings->create($vid_id);?>  
                 </div>
