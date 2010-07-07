@@ -210,7 +210,7 @@ class Event extends Frontend_controller {
     }
     if($i > 4)
     {
-      $this->form_validation->set_message('keyword_check', 'The %s field max are four word'); 
+      $this->form_validation->set_message('keyword_check', __("CF_the").'%s'.__("CF_field_max")); 
       return FALSE ;           
     }else
     {
