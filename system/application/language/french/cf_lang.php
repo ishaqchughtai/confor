@@ -536,3 +536,11 @@ $lang['CF_day'] = ' day.';
 $lang['CF_expired'] = 'Expired';
 
 $lang['CF_old_pass_incorrect'] = 'Your Old Password was incorrect';
+
+$lang['CF_next'] = 'f_Next >';
+
+$lang['CF_previous'] = '< f_Previous';
+
+$lang['CF_last'] = 'f_Last >>';
+
+$lang['CF_first'] = "<< f_First";

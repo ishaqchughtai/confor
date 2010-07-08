@@ -46,10 +46,10 @@ class Event extends Frontend_controller {
 
     $config['full_tag_open'] = '<li>';        
     $config['full_tag_close'] = '</li>'; 
-    $config['next_link'] = 'Next >';
-    $config['prev_link'] = '< Previous';
-    $config['last_link'] = 'Last >>';
-    $config['first_link'] = '<< First';
+    $config['next_link'] = __("CF_next");
+    $config['prev_link'] = __("CF_previous");
+    $config['last_link'] = __("CF_last");
+    $config['first_link'] = __("CF_first");
 
     $this->pagination->initialize($config);
     $this->_data['events'] = $this->MEvent->get_event_by_date($date,$per_page,$offset);
@@ -234,10 +234,10 @@ class Event extends Frontend_controller {
 
       $config['full_tag_open'] = '<li>';        
       $config['full_tag_close'] = '</li>'; 
-      $config['next_link'] = 'Next >';
-      $config['prev_link'] = '< Previous';
-      $config['last_link'] = 'Last >>';
-      $config['first_link'] = '<< First';
+      $config['next_link'] = __("CF_next");
+      $config['prev_link'] = __("CF_previous");
+      $config['last_link'] = __("CF_last");
+      $config['first_link'] = __("CF_first");
 
       $this->pagination->initialize($config);
       $this->_data['query'] = $this->MEvent->get_all_event($config['per_page'], $this->uri->segment(3));
@@ -252,7 +252,7 @@ class Event extends Frontend_controller {
 
     if (is_admin()) 
     { 
-     $this->_data['path'][] = array(
+      $this->_data['path'][] = array(
       'name' => __("CF_admin_event_list"),
       'link' => site_url("event/event_list/")
       );
@@ -261,8 +261,8 @@ class Event extends Frontend_controller {
       'name' => __("CF_event_content"),
       'link' => '#'
       );
-      
-       
+
+
 
       $this->_data['query'] = $this->MEvent->get_event_by_id($id);
       $this->_load_view('admin/event_content_admin');
@@ -273,14 +273,14 @@ class Event extends Frontend_controller {
   function get_event_admin($id)
   {
     $this->_data['path'][] = array(
-      'name' => __("CF_admin_event_list"),
-      'link' => site_url("event/event_list/")
-      );
+    'name' => __("CF_admin_event_list"),
+    'link' => site_url("event/event_list/")
+    );
 
-      $this->_data['path'][] = array(
-      'name' => __("CF_event_content"),
-      'link' => site_url("event/event_content_admin/".$id)
-      );
+    $this->_data['path'][] = array(
+    'name' => __("CF_event_content"),
+    'link' => site_url("event/event_content_admin/".$id)
+    );
     $this->_data['path'][] = array(
     'name' => __("CF_edit_event"),
     'link' => '#'
@@ -395,16 +395,16 @@ class Event extends Frontend_controller {
 
     $config['full_tag_open'] = '<li>';        
     $config['full_tag_close'] = '</li>'; 
-    $config['next_link'] = 'Next >';
-    $config['prev_link'] = '< Previous';
-    $config['last_link'] = 'Last >>';
-    $config['first_link'] = '<< First';
+    $config['next_link'] = __("CF_next");
+    $config['prev_link'] = __("CF_previous");
+    $config['last_link'] = __("CF_last");
+    $config['first_link'] = __("CF_first");
     $this->_data['events'] = $this->MEvent->search_event($keywords,$per_page,$offset); 
     $this->pagination->initialize($config);
     $this->_data['pagination'] = $this->pagination->create_links();
     $this->_load_view('event/search_event');    
   }
-  
+
   //Search keyword of speaker
   function search_keyword($keyword = '')
   {
@@ -425,17 +425,17 @@ class Event extends Frontend_controller {
 
     $config['full_tag_open'] = '<li>';        
     $config['full_tag_close'] = '</li>'; 
-    $config['next_link'] = 'Next >';
-    $config['prev_link'] = '< Previous';
-    $config['last_link'] = 'Last >>';
-    $config['first_link'] = '<< First';
+    $config['next_link'] = __("CF_next");
+    $config['prev_link'] = __("CF_previous");
+    $config['last_link'] = __("CF_last");
+    $config['first_link'] = __("CF_first");
     $this->_data['events'] = $this->MEvent->search_event_by_keyword($keywords,$per_page,$offset); 
     $this->pagination->initialize($config);
     $this->_data['pagination'] = $this->pagination->create_links();
     $this->_load_view('event/search_event');    
   }
 
-   //search event of  admin
+  //search event of  admin
   function search_event_admin()
   {
     $this->_data['path'][] = array(
@@ -456,16 +456,16 @@ class Event extends Frontend_controller {
 
     $config['full_tag_open'] = '<li>';        
     $config['full_tag_close'] = '</li>'; 
-    $config['next_link'] = 'Next >';
-    $config['prev_link'] = '< Previous';
-    $config['last_link'] = 'Last >>';
-    $config['first_link'] = '<< First';
+    $config['next_link'] = __("CF_next");
+    $config['prev_link'] = __("CF_previous");
+    $config['last_link'] = __("CF_last");
+    $config['first_link'] = __("CF_first");
     $this->_data['events'] = $this->MEvent->search_event($keywords,$per_page,$offset); 
     $this->pagination->initialize($config);
     $this->_data['pagination'] = $this->pagination->create_links();
     $this->_load_view('admin/search_event');    
   }
-  
+
   //search keyword of admin
   function search_keyword_admin($keyword = '')
   {
@@ -486,10 +486,10 @@ class Event extends Frontend_controller {
 
     $config['full_tag_open'] = '<li>';        
     $config['full_tag_close'] = '</li>'; 
-    $config['next_link'] = 'Next >';
-    $config['prev_link'] = '< Previous';
-    $config['last_link'] = 'Last >>';
-    $config['first_link'] = '<< First';
+    $config['next_link'] = __("CF_next");
+    $config['prev_link'] = __("CF_previous");
+    $config['last_link'] = __("CF_last");
+    $config['first_link'] = __("CF_first");
     $this->_data['events'] = $this->MEvent->search_event_by_keyword($keywords,$per_page,$offset); 
     $this->pagination->initialize($config);
     $this->_data['pagination'] = $this->pagination->create_links();
@@ -514,10 +514,10 @@ class Event extends Frontend_controller {
 
     $config['full_tag_open'] = '<li>';        
     $config['full_tag_close'] = '</li>'; 
-    $config['next_link'] = 'Next >';
-    $config['prev_link'] = '< Previous';
-    $config['last_link'] = 'Last >>';
-    $config['first_link'] = '<< First';
+    $config['next_link'] = __("CF_next");
+    $config['prev_link'] = __("CF_previous");
+    $config['last_link'] = __("CF_last");
+    $config['first_link'] = __("CF_first");
     $this->_data['your_event'] = $this->MEvent->list_event_by_speaker($speaker,$per_page,$offset); 
     $this->pagination->initialize($config);
     $this->_data['pagination'] = $this->pagination->create_links();
