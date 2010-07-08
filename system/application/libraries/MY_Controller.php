@@ -50,7 +50,7 @@ class Frontend_controller extends MY_controller {
     $this->load->model('Mhome'); 		
     $this->_container = 'home/container';		
 
-    $adv['page'] = "home/adv";
+    $adv['page'] = "home/show_shop_product";
     $adv['category'] = 'video';
 
     $header['page'] = "home/header";
@@ -100,7 +100,7 @@ class Speaker_controller extends MY_controller {
   {	
     parent::MY_controller();
 
-    $adv['page'] = "speaker/adv";				
+    $adv['page'] = "speaker/show_shop_product";				
     $header['page'] = "speaker/header";
     $footer['page'] = "speaker/footer";
 

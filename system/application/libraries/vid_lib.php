@@ -15,17 +15,17 @@ define('FFMPEG_FLVTOOLS_BINARY', '/usr/bin/flvtool2');
 define('VID_PATH', './videos/');
 define('SCR_PATH', './thumbs/');
 define('VID_TEMP_PATH', 'temp/');
-
-define('VBRATE', 500000);
-define('SRATE', 22050);
-define('SBRATE', 32);
-define('R_HEIGHT', 240);
-define('R_WIDTH', 320);
+							//Dang original format
+define('VBRATE', 500000);	//500000
+define('SRATE', 22050);		//22050
+define('SBRATE', 32);		//22050
+define('R_HEIGHT', 380);	//240
+define('R_WIDTH', 620);		//320
 define('RESIZE', 'yes');
 define('KEEP_ORIGINAL', 0);
 define('MAX_UPLOAD_SIZE', 600);
 define('THUMB_HEIGHT', 90);
-define('THUMB_WIDTH', 120);
+define('THUMB_WIDTH', 180);		//120
 define('FFMPEG_TYPE', 'static');
 
 class Vid_lib {

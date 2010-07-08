@@ -5,18 +5,19 @@ class Blog extends Frontend_controller {
     function Blog()
     {
         parent::Frontend_controller();
-        $this->_container = 'container';		
-        $this->load->model('Mblog');		
+        $this->_container = 'container';        
+        $this->load->model('Mblog');        
         $this->load->helper('date');
         $this->load->helper('string');
-        $this->_data['adv']['category'] = 'blog';		
+        $this->_data['adv']['category'] = 'blog';        
         $this->load->library('image_upload_lib'); 
+        $this->load->model('Mshopproduct','mshopproduct');
         $this->image_upload_lib->ajax_link = site_url('blog/do_upload_ajax');        
         $this->_data['path'][] = array(
         'name' => __("CF_blog"),
         'link' => site_url("/blog")
-        );		
-    }	
+        );        
+    }    
     function do_upload_ajax()
     {
         if (! is_admin(FALSE)) 
@@ -31,13 +32,13 @@ class Blog extends Frontend_controller {
     {
         if ($this->blog_sidebar == 'most_post') 
         {
-            $side_bar['page'] = "blog/sidebar_pop";	
-            $side_bar['pop'] = $this->Mblog->get_most_blog_post();		
+            $side_bar['page'] = "blog/sidebar_pop";    
+            $side_bar['pop'] = $this->Mblog->get_most_blog_post();        
         }
         else 
         {
-            $side_bar['page'] = "blog/sidebar_bill";				
-            $side_bar['bill'] = $this->Mblog->get_most_blog_view();								
+            $side_bar['page'] = "blog/sidebar_bill";                
+            $side_bar['bill'] = $this->Mblog->get_most_blog_view();                                
         }
         $side_bar['categories'] = $this->Mhome->get_category();
         $side_bar['dates'] = $this->Mhome->get_dates();
@@ -46,9 +47,9 @@ class Blog extends Frontend_controller {
     }
 
     function index()
-    {						
+    {                        
         $this->_data['query_most_blog'] = $this->Mblog->get_most_blog();
-        $config['base_url'] = base_url().'blog/';
+        $config['base_url'] = base_url().'blog/index/';
         $config['total_rows'] = $this->db->count_all('tblblog');
         $config['per_page']='3';
 
@@ -73,17 +74,17 @@ class Blog extends Frontend_controller {
             $this->_data['page_title'] = 'Blog confor';                 
             $this->_load_view('blog/blog_view'); 
         } 
-    }		
+    }        
 
     function blog_content($author='',$title='')
-    {                 	
+    {                     
         $this->_data['path'][] = array(
         'name' => $title,
         'link' => site_url("/blog/blog_content/".$author.'/'.$title)
         );
 
-        $this->blog_sidebar = 'most_view';		
-        $this->_data['query'] = $this->Mblog->get_blog_by_title($title);		
+        $this->blog_sidebar = 'most_view';        
+        $this->_data['query'] = $this->Mblog->get_blog_by_title($title);        
         $this->_data['query_show_comment'] = $this->Mblog->show_comment($title);
         $this->_data['query_show_author'] = $this->Mblog->written($author);
 
@@ -101,7 +102,7 @@ class Blog extends Frontend_controller {
             redirect(site_url('blog'));
         }
 
-    }	
+    }    
 
     function blog_content_admin($author='', $title='')
     {
@@ -171,7 +172,7 @@ class Blog extends Frontend_controller {
             {
                 if($this->session->userdata('admin'))
                 {
-                    $this->blog_content_admin($Name,$Title);    										
+                    $this->blog_content_admin($Name,$Title);                                            
                 }else
                 {
                     $this->blog_content($Name,$Title);
@@ -190,7 +191,7 @@ class Blog extends Frontend_controller {
                 } 
             }  
         }
-    }	
+    }    
 
     function blog_list()
     {
@@ -275,7 +276,7 @@ class Blog extends Frontend_controller {
                 $this->form_validation->set_rules('txtTitle',strtolower(__("CF_title")),'trim|required|callback_title_check|max_length[50]');
                 $this->form_validation->set_rules('txtSubject',strtolower(__("CF_subject")),'trim|required|max_length[50]');
                 $this->form_validation->set_rules('txtKeywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
-                $this->form_validation->set_rules('txtBody',strtolower(__("CF_blog_body")),'required|max_length[500]');
+                $this->form_validation->set_rules('txtBody',strtolower(__("CF_blog_body")),'required');
                 //$this->form_validation->set_rules('txtLink',strtolower(__("CF_image_link")),'required');
                 $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
 
@@ -309,7 +310,7 @@ class Blog extends Frontend_controller {
                 $this->_load_view('admin/add_blog_admin');
             } 
         }
-    }	
+    }    
 
     // Edit Blog
     function edit_blog_submit($id='')
@@ -329,7 +330,7 @@ class Blog extends Frontend_controller {
                 $this->form_validation->set_rules('txtTitle',strtolower(__("CF_title")),'trim|required|max_length[50]');
                 $this->form_validation->set_rules('txtSubject',strtolower(__("CF_subject")),'trim|required|max_length[50]');
                 $this->form_validation->set_rules('txtKeywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
-                $this->form_validation->set_rules('txtBody',strtolower(__("CF_blog_body")),'required|max_length[500]');
+                $this->form_validation->set_rules('txtBody',strtolower(__("CF_blog_body")),'required');
                 $this->form_validation->set_rules('about',strtolower(__("CF_about")),'required');
                 $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
                 if($this->form_validation->run()==FALSE)
@@ -376,7 +377,7 @@ class Blog extends Frontend_controller {
             $this->form_validation->set_message('title_check', '__("CF_the") %s __("CF_already_exist")'); 
             return FALSE;    
         }    
-    }	
+    }    
 
     //Keyword check
     function keyword_check($Keywords)
@@ -394,7 +395,7 @@ class Blog extends Frontend_controller {
         {
             return TRUE ;
         }
-    }	
+    }    
 
     //Search
     function search()
@@ -429,7 +430,7 @@ class Blog extends Frontend_controller {
             $this->_load_view('blog/search_blog');
         }
 
-    }	
+    }    
     function search_keyword($Keywords='')
     {
         $config['base_url'] = base_url().'blog/search/';

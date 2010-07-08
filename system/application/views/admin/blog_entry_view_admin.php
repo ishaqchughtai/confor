@@ -89,7 +89,7 @@
                     </p>
                     <!-- Content -->
                     <?php if($status==0){?>
-                        <a href="<?php echo site_url('blog/edit_comment'.'/'.$titletemp.'/'.$id.'/'.$idtemp.'/'.$countcommenttemp.'/'.$authortemp)?>"><b><?php echo __("CF_show_comment")?></b></a>
+                        <a href="<?php echo site_url('blog/edit_comment'.'/'.$titletemp.'/'.$id.'/'.$idtemp.'/'.$countcommenttemp.'/'.$authortemp)?>"onclick="return confirm('Do you really wish to show comment?')"><b><?php echo __("CF_show_comment")?></b></a>
                         <?php }?>
                     <br />
                 <a href="<?php echo site_url('blog/delete_comment'.'/'.$titletemp.'/'.$id.'/'.$idtemp.'/'.$countcommenttemp.'/'.$authortemp)?>"onclick="return confirm('Do you really wish to delete?')"  ><b><?php echo __("CF_delete_comment")?></b></a> </li>

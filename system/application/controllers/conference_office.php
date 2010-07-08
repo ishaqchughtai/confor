@@ -8,7 +8,8 @@
             $this->_container = 'container';               
             $this->load->helper('date');
             $this->load->helper('string');
-            $this->load->model('Mcoffice');       
+            $this->load->model('Mcoffice');
+            $this->load->model('Mshopproduct','mshopproduct');           
             $this->_data['path'][] = array(
             'name' => __("CF_conference"),
             'link' => site_url("/conference_office")

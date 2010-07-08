@@ -33,20 +33,11 @@
             videos.category
             ');
             $this->db->from('videos');
-            $this->db->where('videos.approved ', '1');
             $this->db->join('users','videos.mem_id = users.id');
             $this->db->order_by('Viewed','desc');
             $this->db->limit($num,$offset);
             $query = $this->db->get();
-            if ($query->num_rows()<1) 
-            {
-                return FALSE;
-            }
-            else
-            {
-                return $query->result_array();
-            }
-
+            return $query->result_array();
         }
     }
 ?>

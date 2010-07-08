@@ -2,18 +2,18 @@
 //GENARAL
 //------------------------------------------------------------------
 //menu and footer
-$lang['CF_conference_office'] = 'Bureau de conf&eacute;rence';
 $lang['CF_conference'] = 'Conf&eacute;rence';
+$lang['CF_account'] = 'Compte';
+$lang['CF_conference_office'] = 'Bureau de conf&eacute;rence';
 $lang['CF_shop'] = 'Boutique';
 $lang['CF_home'] = 'Accueil';
+$lang['CF_membermenu'] = 'Membre';
 $lang['CF_set'] = 'Configuration';
 $lang['CF_blog'] = 'Blogue';
 $lang['CF_contact'] = 'Contact';
 $lang['CF_login'] = 'Connexion';
 $lang['CF_subscribe'] = 'Souscrire au RSS';
 $lang['CF_you_here'] = 'Vous &ecirc;tes ici';
-$lang['CF_member'] = 'Membre';
-$lang['CF_account'] = 'Compte';
 
 //all form
 $lang['CF_search'] = 'Recherche';
@@ -93,7 +93,6 @@ $lang['CF_rules'] = 'Les r&egrave;gles';
 $lang['CF_training'] = 'Formation';
 $lang['CF_setting'] = 'R&eacute;glage';
 $lang['CF_about_us'] = 'A propos de nous';
-$lang['CF_accessories'] = 'Pages modifiables';
 $lang['CF_logout'] = 'D&eacute;connexion';
 $lang['CF_you_are_here'] = 'Vou &ecirc;tes ici :';
 //------------------------------------------------------------------
@@ -132,7 +131,7 @@ $lang['CF_mess_delete'] = 'Voulez-vous vraiment supprimer?';
 //message when has a error
 $lang['CF_error_occurred'] = 'Une erreur s\'est produite';
 //message when need update player
-$lang['CF_update_player'] = 'S\'il vous pla&icirc;t mettez &agrave; jour votre Adobe FlashPlayer';
+$lang['CF_update_player'] = 'S\'il vous pla&#238;t mettez &agrave; jour votre Adobe FlashPlayer';
 //message when you registry susscess
 $lang['CF_mess_reg'] = 'Votre profil a &eacute;t&eacute; sauvegard&eacute;!';
 
@@ -431,117 +430,3 @@ $lang['CF_Upload_Form'] = 'Formulaire de t&eacute;l&eacute;versement';
 
 
 $lang['CF_upload_another?'] = 'T&eacute;l&eacute;verser un autre fichier!';
-
-
-
-//New Key
-
-//message when you enter invalid password
-$lang['CF_invalid_pass'] = 'Vous avez entr&eacute; un mot de passe invalide!';
-
-//message when you enter invalid email
-$lang['CF_invalid_email'] = 'Vous avez entr&eacute; une adresse courriel valide!';
-
-//message when you insert new admin fail
-$lang['CF_insert_fail'] = 'L\'ajout d\'un nouvel admin a &eacute;chou&eacute;!';
-
-//message when you email or paypal already exist
-$lang['CF_email_paypal_exist'] = 'Le courriel du compte paypal existe d&eacute;j&agrave;!';
-
-//message when you can not update
-$lang['CF_cant_update'] = 'Ne peut &ecirc;tre mis &agrave; jour!';
-
-//message when you haven't upload
-$lang['CF_havent_upload'] = 'Vous devez t&eacute;l&eacute;verser un clip!';
-
-//message when you upload success
-$lang['CF_upload_success'] = 'Votre vid&eacute;o &agrave; &eacute;t&eacute; cr&eacute;&eacute;';
-
-//message when you save video information
-$lang['CF_save_info'] = 'Vos informations vid&eacute;o ont &eacute;t&eacute; sauvegard&eacute;es!';
-
-//message when you delete video
-$lang['CF_delete_vid'] = 'Votre vid&eacute;o &agrave; &eacute;t&eacute; supprim&eacute;';
-
-$lang['CF_contact_error'] = 'Le message ne peut &ecirc;tre envoy&eacute;! Essayez encore!';
-
-$lang['CF_contact_successfully'] = 'Message envoy&eacute; avec succ&egrave;s!';
-
-$lang['CF_your_contact_mail'] = 'Formulaire de contact';
-
-$lang['CF_element_content'] = 'Contenu &eacute;l&eacute;ments';
-
-$lang['CF_event_content'] = 'Contenu &eacute;v&eacute;nements';
-
-$lang['CF_the'] = 'Le';
-
-$lang['CF_already_exist'] = 'existe d&eacute;j&agrave;';
-
-$lang['CF_field_max'] = 'maximum de ce champ est de 4 mots';
-
-$lang['CF_invalid_code'] = 'Code invalide';
-
-$lang['CF_add_image_suc'] = 'Image ajout&eacute; avec succ&egrave;s!';
-
-$lang['CF_only_admin'] = 'Seul l\'administrateur peut avoir acc&egrave;s &agrave; cette fonction!';
-
-$lang['CF_reslult_search'] = 'Votre recherche ne correspond &agrave; aucune ligne';
-
-$lang['CF_row'] = 'Les ligne de chaque page doivent &ecirc;tre > 0';
-
-$lang['CF_edit_image_suc'] = 'Image modif&eacute; avec succ&egrave;s';
-
-$lang['CF_showroom_menu'] = 'Menu Showroom';
-
-$lang['CF_ad_menu_showroom'] = 'Liste d\'images';
-
-$lang['CF_vid_from_speaker'] = 'Vid&eacute;o des conf&eacute;renciers';
-
-$lang['CF_show'] = 'Vid&eacute;o des conf&eacute;renciers';
-
-$lang['CF_paypal_man'] = 'Gestion Paypal';
-
-$lang['CF_cate_man'] = 'Gestion des cat&eacute;gories vid&eacute;o';
-
-$lang['CF_list_vid_cate'] = 'Liste des cat&eacute;gories vid&eacute;o';
-
-$lang['CF_cate_name'] = 'Nom de cat&eacute;gogie';
-
-$lang['CF_new_cate'] = 'Nouvelle cat&eacute;gogie';
-
-$lang['CF_cate_update'] = 'Cat&eacute;gogie mise &agrave; jour';
-
-$lang['CF_edit_image'] = 'Modifier les images';
-
-$lang['CF_add_cate'] = 'Ajouter une nouvelle cat&eacute;gorie';
-
-$lang['CF_list_cate'] = 'Liste des cat&eacute;gories';
-
-$lang['CF_modify_cate'] = 'Modifier la cat&eacute;gorie';
-
-//date
-$lang['CF_month_name_array'] = "'Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'";
-
-//new key 7-6
-$lang['CF_invalid_username_password_message'] = 'Nom d\'utilisateur ou mot de passe invalide';
-
-$lang['CF_up_profile'] = 'f_Your profile has been updated';
-
-$lang['CF_upgrade_mem'] = 'f_Please upgrade your membership to use this function';
-
-$lang['CF_you_have_paid'] = 'You have paid $';
-
-$lang['CF_for_this'] = 'for this subcription';
-
-$lang['CF_day'] = ' day.';
-
-$lang['CF_expired'] = 'Expired';
-
-$lang['CF_old_pass_incorrect'] = 'Your Old Password was incorrect';
-$lang['CF_next'] = 'f_Next >';
-
-$lang['CF_previous'] = '< f_Previous';
-
-$lang['CF_last'] = 'f_Last >>';
-
-$lang['CF_first'] = "<< f_First";

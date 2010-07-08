@@ -50,7 +50,7 @@ $autoload['libraries'] = array('session', 'language', 'pagination', 'form_valida
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('xemmex', 'form', 'url', 'language', 'file', 'cookie', 'security');
+$autoload['helper'] = array('xemmex', 'form', 'url', 'language', 'file', 'cookie', 'security','text');
 
 /*
 | -------------------------------------------------------------------

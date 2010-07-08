@@ -31,7 +31,7 @@
     //
 <?php echo mdate('%F %j%S %Y', $date)?></h5>              
 <h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>
-<p><a href="<?php echo base_url()?>videos/<?php echo $video_link?>" style="display:block;width:621px;height:344px;"id="player"></a></p>                  
+<p><a href="<?php echo base_url()?>videos/<?php echo $video_link?>" style="display:block;width:621px;height:380px;"id="player"></a></p>                  
 <?php echo $description?>
 <p></p>
 <a class="prev browse left"></a>
@@ -55,7 +55,7 @@
          <div>
              <?php 
              $total = (count($ramdomvideo)-1>7)?7:count($ramdomvideo)-1;
-                for($i=4; $i<$total; $i++):?>
+                for($i=4; $i<=$total; $i++):?>
                 <a href="<?php echo site_url('home/play/'.$ramdomvideo[$i]['vid_id'])?>">
                     <img src="<?php echo base_url().'thumbs/'.$ramdomvideo[$i]['shash']?>" width="81" height="46" alt="flickr">
                 </a>                            
@@ -93,8 +93,8 @@ $("div.scrollable").scrollable({easing: 'custom', speed: 700, circular: true});
         logo: {   
             url: 'http://conferences-formations.com/flowplayer/logo.png',   
             fullscreenOnly: false,   
-            bottom: 30,  
-            right: 10,
+            top: 10, 
+            left: 10,
             displayTime: 2000   
         },
         clip:{autoPlay: true,autoBuffering: true}
