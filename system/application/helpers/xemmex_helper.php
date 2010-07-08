@@ -87,6 +87,15 @@ if (! function_exists('xemmex_language'))
 	}
 }
 
+if ( ! function_exists('xemmex_get_lang'))
+{
+	function xemmex_get_lang()
+	{
+		$CI =& get_instance();
+		return $CI->_data["lang"];
+	}
+}
+
 // ------------------------------------------------------------------------
 // this function for get text by key in currently language
 if ( ! function_exists('__'))
