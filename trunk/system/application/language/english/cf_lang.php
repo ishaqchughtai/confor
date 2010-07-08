@@ -548,3 +548,11 @@ $lang['CF_expired'] = 'Expired';
 
 $lang['CF_old_pass_incorrect'] = 'Your Old Password was incorrect';
 
+$lang['CF_next'] = 'Next >';
+
+$lang['CF_previous'] = '< Previous';
+
+$lang['CF_last'] = 'Last >>';
+
+$lang['CF_first'] = "<< First";
+
