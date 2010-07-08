@@ -8,7 +8,7 @@ class Event extends Frontend_controller {
     $this->_container = 'container';		
     $this->load->model('MEvent');		
     $this->load->helper('date');		
-    //$this->load->library('speaker_lib'); 
+    $this->load->model('Mshopproduct','mshopproduct'); 
     $this->load->model('MSpeaker');
     $this->load->model('Remember_me');		
     $this->_data['adv']['category'] = 'event';
@@ -252,7 +252,7 @@ class Event extends Frontend_controller {
 
     if (is_admin()) 
     { 
-      $this->_data['path'][] = array(
+     $this->_data['path'][] = array(
       'name' => __("CF_admin_event_list"),
       'link' => site_url("event/event_list/")
       );
@@ -261,8 +261,8 @@ class Event extends Frontend_controller {
       'name' => __("CF_event_content"),
       'link' => '#'
       );
-
-
+      
+       
 
       $this->_data['query'] = $this->MEvent->get_event_by_id($id);
       $this->_load_view('admin/event_content_admin');
@@ -273,14 +273,14 @@ class Event extends Frontend_controller {
   function get_event_admin($id)
   {
     $this->_data['path'][] = array(
-    'name' => __("CF_admin_event_list"),
-    'link' => site_url("event/event_list/")
-    );
+      'name' => __("CF_admin_event_list"),
+      'link' => site_url("event/event_list/")
+      );
 
-    $this->_data['path'][] = array(
-    'name' => __("CF_event_content"),
-    'link' => site_url("event/event_content_admin/".$id)
-    );
+      $this->_data['path'][] = array(
+      'name' => __("CF_event_content"),
+      'link' => site_url("event/event_content_admin/".$id)
+      );
     $this->_data['path'][] = array(
     'name' => __("CF_edit_event"),
     'link' => '#'
@@ -404,7 +404,7 @@ class Event extends Frontend_controller {
     $this->_data['pagination'] = $this->pagination->create_links();
     $this->_load_view('event/search_event');    
   }
-
+  
   //Search keyword of speaker
   function search_keyword($keyword = '')
   {
@@ -435,7 +435,7 @@ class Event extends Frontend_controller {
     $this->_load_view('event/search_event');    
   }
 
-  //search event of  admin
+   //search event of  admin
   function search_event_admin()
   {
     $this->_data['path'][] = array(
@@ -465,7 +465,7 @@ class Event extends Frontend_controller {
     $this->_data['pagination'] = $this->pagination->create_links();
     $this->_load_view('admin/search_event');    
   }
-
+  
   //search keyword of admin
   function search_keyword_admin($keyword = '')
   {

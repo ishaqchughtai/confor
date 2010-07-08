@@ -38,7 +38,7 @@
 <p><a href="<?php echo base_url().'videos/'.$top_view_video;?>" style="display:block;width:621px;height:380px;"id="player"></a></p>    
 
     <div class="rate_balloon"><?php $SimpleRatings->create($vid_id);?>  
-    </div>                    
+    </div>                   
 </div>                    
 <p><?php echo $video_path?$description:''?></p>                                        
 <!-- /.content_item -->
@@ -51,7 +51,7 @@
 <div class="x3_2">            
     <?php for($i=0; $i<count($advs); $i++):?>                            
         <div class="x3<?php if(($i+1)%2==0) echo ' no_margin_r';?>" style="border-color:#FFF; border:thick;">
-            <a href="<?php echo $advs[$i]['URL']?>" target="_blank"><img src="<?php echo base_url().'assets/uploads/image/thumb_'.$advs[$i]['ImageLink']?>" width="285" height="285" class="icon"></a> 
+            <a href="<?php echo $advs[$i]['URL']?>" target="_blank"><img src="<?php echo base_url().'assets/uploads/adv/'.$advs[$i]['ImageLink']?>" width="285" height="285" class="icon"></a> 
             <p><?php echo $advs[$i]['TextTips']?></p>
         </div>
         <!-- /.content .top_box_block -->
@@ -67,8 +67,8 @@
     logo: {   
         url: 'http://conferences-formations.com/flowplayer/logo.png',   
         fullscreenOnly: false,   
-        bottom: 30, 
-        right: 10,
+        top: 10, 
+        left: 10,
         displayTime: 2000   
     },
         clip:{autoPlay: false,autoBuffering: true}

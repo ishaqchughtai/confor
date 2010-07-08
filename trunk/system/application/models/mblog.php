@@ -93,7 +93,8 @@ class Mblog extends Model{
         tblblog.Date,
         tblblog.CountView,
         tblblog.CountComment,
-        tbladmin.FirstName");
+        tbladmin.FirstName,
+        tbladmin.Name");
         $this->db->from('tblblog');
         $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
         $this->db->order_by("tblblog.CountComment", "desc");
@@ -110,7 +111,8 @@ class Mblog extends Model{
         tblblog.Date,
         tblblog.CountView,
         tblblog.CountComment,
-        tbladmin.FirstName");
+        tbladmin.FirstName,
+        tbladmin.Name");
         $this->db->from('tblblog');
         $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
         $this->db->order_by("tblblog.CountView", "desc");

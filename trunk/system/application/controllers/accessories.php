@@ -6,7 +6,8 @@
       parent::Frontend_controller();
       $this->_container = 'container';        
       $this->load->model('Maccessories');        
-      $this->load->helper('date');       
+      $this->load->helper('date');
+      $this->load->model('Mshopproduct','mshopproduct');           
     }        
     function show_element($ElementName)
     {   

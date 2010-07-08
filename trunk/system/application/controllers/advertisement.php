@@ -10,6 +10,7 @@ class Advertisement extends Admin_controller {
         $this->load->helper('date');		
         $this->load->model('MSpeaker');
         $this->load->model('Remember_me');
+        $this->load->model('Mshopproduct','mshopproduct');
         $this->load->library('image_upload_lib');	
         $this->image_upload_lib->ajax_link = site_url('advertisement/do_upload_ajax');	
     }	
