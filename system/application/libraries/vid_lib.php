@@ -68,6 +68,7 @@ class Vid_lib {
 	function _do_upload_ajax()
 	{		
 		$fileguid=@$_POST["myuploader"];    
+		$is_convert = TRUE;
 		if($fileguid)    
 		{    
 			//get the uploaded file based on GUID    
@@ -76,13 +77,21 @@ class Vid_lib {
 			{    			
 				$old_name = $this->CI->input->post('vname');
 				$new_name = xm_generateRandStr(16);
+								
+				$ext = end(explode(".", $mvcfile->FileName));
+				if (strtolower($ext) == 'flv')
+				{
+					$mvcfile->CopyTo("./".VID_PATH.$new_name.'.flv');
+					$is_convert = FALSE;
+				}
 				
 				$mvcfile->CopyTo("./".VID_TEMP_PATH.$new_name); 
 				$mvcfile->Delete();
 				
-				$file = base_url().VID_TEMP_PATH.$new_name;
+				$file = base_url().VID_TEMP_PATH.$new_name;								
+				
 				$this->load_video($file);
-				$this->convert_to_flv(VID_PATH);
+				if ($is_convert) $this->convert_to_flv(VID_PATH);
 				$this->create_thumb(SCR_PATH.$new_name.'.jpg');
 				if (file_exists("./".VID_TEMP_PATH.$new_name) && (filesize(VID_PATH.$new_name.'.flv')>0))
 				{
