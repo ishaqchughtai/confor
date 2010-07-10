@@ -83,17 +83,20 @@
     }
 
     //Add new event
-    function add_event($speaker,$date,$title,$subject,$keywords,$description,$status)
+    function add_event($speaker,$date,$title,$fr_title,$subject,$fr_subject,$keywords,$description,$fr_description,$status)
     {                    
       try
       {
         $data = array(
         'Speaker'=>$speaker,
         'Date'=>$date,
-        'Title'=>$title,                                          
+        'Title'=>$title,
+        'fr_Title'=>$fr_title,
         'Subject'=>$subject,
+        'fr_Subject'=>$fr_subject,
         'Keywords'=>$keywords,
         'Description'=>$description,
+        'fr_Description'=>$fr_description,
         'Status'=>$status
         );    
         $this->db->insert('tblevent',$data);
