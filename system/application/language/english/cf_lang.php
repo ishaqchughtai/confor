@@ -556,3 +556,19 @@ $lang['CF_last'] = 'Last >>';
 
 $lang['CF_first'] = "<< First";
 
+
+//new key for two language
+$lang['CF_en_title'] = "English Title";
+
+$lang['CF_fr_title'] = "French Title";
+
+$lang['CF_en_subject'] = "English Subject";
+
+$lang['CF_fr_subject'] = "French Subject";
+
+$lang['CF_en_des'] = "English Description";
+
+$lang['CF_fr_des'] = "French Description";
+
+
+

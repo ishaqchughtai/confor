@@ -210,7 +210,7 @@ class Event extends Frontend_controller {
     }
     if($i > 4)
     {
-      $this->form_validation->set_message('keyword_check', __("CF_the").'%s'.__("CF_field_max")); 
+      $this->form_validation->set_message('keyword_check', __("CF_the").' %s '.__("CF_field_max")); 
       return FALSE ;           
     }else
     {
@@ -342,12 +342,15 @@ class Event extends Frontend_controller {
     is_admin();
     if($this->input->post('btnsubmit'))
     {
-      $this->form_validation->set_rules('speaker',strtolower(__("CF_one_speaker")),'required');
-      $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
-      $this->form_validation->set_rules('subject',strtolower(__("CF_subject")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('speaker_name',strtolower(__("CF_one_speaker")),'required');
+      $this->form_validation->set_rules('en_title',strtolower(__("CF_en_title")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('fr_title',strtolower(__("CF_fr_title")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('en_subject',strtolower(__("CF_en_subject")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('fr_subject',strtolower(__("CF_fr_subject")),'trim|required|max_length[50]');
       $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
-      $this->form_validation->set_rules('description',strtolower(__("CF_des")),'trim|required|max_length[500]');
-      $this->form_validation->set_error_delimiters('<p class="not_error long"><span class="img"></span>','<span class="close"></span></p>');
+      $this->form_validation->set_rules('en_description',strtolower(__("CF_en_des")),'trim|required');
+      $this->form_validation->set_rules('fr_description',strtolower(__("CF_fr_des")),'trim|required');
+      $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
         $this->_load_view('admin/add_event_admin');
@@ -356,12 +359,15 @@ class Event extends Frontend_controller {
       {   
         $speaker = $this->input->post('speaker');
         $date = date('Y-m-d');
-        $title = $this->input->post('title');                                          
-        $subject = $this->input->post('subject');
+        $title = $this->input->post('en_title');
+        $fr_title = $this->input->post('fr_title');                                         
+        $subject = $this->input->post('en_subject');
+        $fr_subject = $this->input->post('fr_subject');
         $keywords = $this->input->post('keywords');
-        $description = $this->input->post('description');
+        $description = $this->input->post('en_description');
+        $fr_description = $this->input->post('fr_description');
         $status = 1;
-        if($this->MEvent->add_event($speaker,$date,$title,$subject,$keywords,$description,$status)==TRUE)
+        if($this->MEvent->add_event($speaker,$date,$title,$fr_title,$subject,$fr_subject,$keywords,$description,$fr_description,$status)==TRUE)
         {
           //$this->_load_view('admin/add_event_admin');
           redirect('event/event_list');
