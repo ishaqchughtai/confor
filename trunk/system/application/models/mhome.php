@@ -172,7 +172,15 @@
       $this->db->limit($limit);
       return $this->db->get();
     }	
-
+    function get_random_by_speaker($mem_id, $limit) 
+        {
+            $this->db->from('videos');
+            $this->db->where('mem_id',$mem_id);
+            $this->db->where('approved', '1');
+            $this->db->order_by("RAND()");
+            //$this->db->limit($limit);
+            return $this->db->get();
+        }
     function is_correct_captcha($str)
     {
       // First, delete old captchas

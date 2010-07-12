@@ -25,7 +25,7 @@
     <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $name?></b></a> 
     <?php echo __("CF_in")?> 
     <?php for($i=0;$i<count($tags);$i++){?>
-        <a href="#"><?php echo $tags[$i]?></a>
+        <a href="<?php echo site_url('home/search_paging/'.$tags[$i].'/false')?>"><?php echo $tags[$i]?></a>
         <?php if ($i<count($tags)-1) echo ','?>
         <?php ;}?>
     //
@@ -42,11 +42,11 @@
     
         <div>
             <?php
-                $ramdomvideo = get_random_top_video($category);
+                $ramdomvideo = get_random_by_speaker($speaker_id);
                 $temp_video = count($ramdomvideo);
                 $total = (count($ramdomvideo)-1>3)?3:count($ramdomvideo)-1;
                 for($i=0; $i<=$total; $i++):?>
-                <a href="<?php echo site_url('home/play/'.$ramdomvideo[$i]['vid_id'])?>">
+                <a href="<?php echo site_url('video/play/'.$ramdomvideo[$i]['vid_id'])?>">
                     <img src="<?php echo base_url().'thumbs/'.$ramdomvideo[$i]['shash']?>" width="81" height="46" alt="flickr">
                 </a>                            
                 <!-- /.content .top_box_block --->
@@ -56,7 +56,7 @@
              <?php 
              $total = (count($ramdomvideo)-1>7)?7:count($ramdomvideo)-1;
                 for($i=4; $i<=$total; $i++):?>
-                <a href="<?php echo site_url('home/play/'.$ramdomvideo[$i]['vid_id'])?>">
+                <a href="<?php echo site_url('video/play/'.$ramdomvideo[$i]['vid_id'])?>">
                     <img src="<?php echo base_url().'thumbs/'.$ramdomvideo[$i]['shash']?>" width="81" height="46" alt="flickr">
                 </a>                            
                 <!-- /.content .top_box_block --->
