@@ -1,8 +1,7 @@
 <?php 
     $admin_id=$this->session->userdata('admin_id');
     $admin_right=(int)$this->session->userdata('right');  
-?>
-<div class="x2">
+?><div class="x2">
     <h3><?php echo __("CF_admin_panel")?></h3>
     <ul class="link_conttrol">
         <?php if($admin_right==1){?>
@@ -29,8 +28,9 @@
     <h3><?php echo __("CF_vid_con")?></h3>                                                                                      
     <ul class="link_conttrol">
         <li><a class="icon_list" href="<?php echo site_url('showroom/list_images')?>"><?php echo __("CF_showroom")?></a></li>  
-        <li><a class="icon_list" href="<?php echo site_url('admin/list_video_conference')?>"><?php echo __("CF_admin_vid_list")?></a></li>
-        <li><a class="icon_add" href="<?php echo site_url('admin/new_video_conference')?>"><?php echo __("CF_admin_new_vid")?></a></li>
+        <li><a class="icon_list" href="<?php echo site_url('vid/list_video_conference')?>"><?php echo __("CF_admin_vid_list")?></a></li>
+        <li><a class="icon_add" href="<?php echo site_url('vid/new_video_conference')?>"><?php echo __("CF_admin_new_vid")?></a></li>
+		<li><a class="icon_add" href="<?php echo site_url('vid/setting')?>">Video settings</a></li>
         <li><a class="icon_add" href="<?php echo site_url('admin/category_managing')?>"><?php echo __("CF_cate_man")?></a></li>
     </ul>
 </div>
@@ -52,10 +52,7 @@
     </ul>
 </div>
 <div class="x2 no_margin">
-    <h3><?php echo __("CF_shop_con")?></h3>    
-    <ul class="link_conttrol"> 
-    <li><a class="icon_list" href="<?php echo base_url().'prestashop/admin_shop'?>"><?php echo __("CF_shop_man")?></a></li>    
-    </ul></div>
+    <h3><?php echo __("CF_shop_con")?></h3>    <ul class="link_conttrol"> <li><a class="icon_list" href="<?php echo base_url().'prestashop/admin_shop'?>"><?php echo __("CF_shop_man")?></a></li></ul></div>
 <div class="divider"></div>
 <div class="x2">
     <h3><?php echo __("CF_blog_con")?></h3>

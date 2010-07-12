@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	dropDownMenu();
+	//dropDownMenu1();
 	autoSlide(5000, 0);
 	addSeparators();
 	autoTab();
@@ -17,21 +18,89 @@ $(document).ready(function() {
 	
 });
 
+$(window).load(function() {
+    $('.show_shop_product img.icon').each(function() {
+        var maxWidth = 150; // Max width for the image
+        var maxHeight = 150;    // Max height for the image
+        var ratio = 0;  // Used for aspect ratio
+        var width = $(this).width();    // Current image width
+        var height = $(this).height();  // Current image height
+        // Check if the current width is larger than the max
+        if(width > maxWidth){
+            ratio = maxWidth / width;   // get ratio for scaling image
+            $(this).css("width", maxWidth); // Set new width
+            $(this).css("height", height * ratio);  // Scale height based on ratio
+            height = height * ratio;    // Reset height to match scaled image
+            width = width * ratio;    // Reset width to match scaled image
+        }
+ 
+        // Check if current height is larger than max
+        if(height > maxHeight){
+            ratio = maxHeight / height; // get ratio for scaling image
+            $(this).css("height", maxHeight);   // Set new height
+            $(this).css("width", width * ratio);    // Scale width based on ratio
+            width = width * ratio;    // Reset width to match scaled image
+        }
+    });
+});
+
+
+
 function dropDownMenu() {
 	
 	$("#menu ul a").removeAttr('title');
 	$("#menu ul ul").css({display: "none"}); // Fixes opera Bug
-	  
-	$("#menu ul li").hover(function() {
-		$(this).find('ul:first').css({display: "block", opacity: 0}).stop().animate({ opacity: 1 }, 200); //Slides down when hover the UL
-		$(this).children('a').addClass("hovered"); //Adds a hovered class, so you can see the menu path you are following
+	//$("#menu ul ").css({display: "none"});  
+	$("#menu li").hover(function() {
+		//$(this).find('ul:first').css({display: "block", opacity: 0 }).stop().animate({ opacity: 1 }, 200); //Slides down when hover the UL
+		$(this).find("ul:first").css({visibility: "visible",display: "none"}).show(400);
+		//$(this).find('ul:first').css({visibility: "visible",display: "none"}).show(400);
+		//$(this).find('ul:first').css({visibility: "visible",display: "none"}).show(400);
+		//$(this).children('li').addClass("hovered"); //Adds a hovered class, so you can see the menu path you are following		
 	}
 	,function() {
-		$(this).find('ul:first').css({display: "none"}); //Slides up on mouseleave
-		$(this).children('a').removeClass("hovered"); //removes the hovered class.
-	});
+		/*$(this).find('ul').css({display: "none"}); //Slides up on mouseleave		
+		$(this).children('a').removeClass("hovered"); //removes the hovered class.*/
+		$(this).find('ul:first').css({ visibility: "hidden" });
+
+	});	
 	
+	$("#menu li ul li").hover(function() {
+		//$(this).find('ul:first').css({display: "block", opacity: 0 }).stop().animate({ opacity: 1 }, 200); //Slides down when hover the UL
+		$(this).find("ul").css({visibility: "visible",display: "none"}).show(400);
+		//$(this).find('ul:first').css({visibility: "visible",display: "none"}).show(400);
+		//$(this).find('ul:first').css({visibility: "visible",display: "none"}).show(400);
+		//$(this).children('li').addClass("hovered"); //Adds a hovered class, so you can see the menu path you are following		
+	}
+	,function() {
+		/*$(this).find('ul').css({display: "none"}); //Slides up on mouseleave		
+		$(this).children('a').removeClass("hovered"); //removes the hovered class.*/
+		$(this).find('ul').css({ visibility: "hidden" });
+
+	});	
+	
+		
+	/*$(" #menu ul ").css({display: "none"}); // Opera Fix
+	$(" #menu li").hover(function(){
+				$(this).find('ul:first').css({visibility: "visible",display: "none"}).show(400);
+				},function(){
+				$(this).find('ul:first').css({visibility: "hidden"});
+				});*/
+		
 }
+
+function dropDownMenu1() {
+	
+	$("a#id_about_showmenu").hover(function() {
+		$("ul#showIE7error").css({display: "block", opacity: 0 }).stop().animate({ opacity: 1 }, 200); //Slides down when hover the UL
+		$("ul#showIE7error li").children('a').addClass("hovered"); //Adds a hovered class, so you can see the menu path you are following		
+	}
+	,function() {
+		$("ul#showIE7error").css({display: "none"}); //Slides up on mouseleave		
+		$("ul#showIE7error li").children('a').removeClass("hovered"); //removes the hovered class.
+	});	
+}
+
 
 function nextSlide() {
 	

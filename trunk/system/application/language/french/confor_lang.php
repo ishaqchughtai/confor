@@ -140,7 +140,7 @@ $lang['CON_control_panel'] = 'Panneau de contr&ocirc;le';
 //MENU
 //------------------------------------------------------------------
 $lang['CON_home'] = 'Accueil';
-$lang['CON_conference_office'] = 'Bureau de Conf&eacute;rence';
+$lang['CON_conference_office'] = 'Bureau de Conf&eacute;renciers';
 $lang['CON_training'] = 'Formations';
 $lang['CON_blog'] = 'Blogue';
 $lang['CON_shop'] = 'Boutique';

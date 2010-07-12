@@ -17,7 +17,7 @@
   define('DB_SERVER', "localhost");
   define('DB_USER', "root");
   define('DB_PASS', "");
-  define('DB_DATABASE', "confor");
+  define('DB_DATABASE', "conferen_conferen");
 
   define("COOKIE_EXPIRE", 60 * 60 * 24 * 60); //60 days by default
   define("COOKIE_PATH", "/"); //Avaible in whole domain

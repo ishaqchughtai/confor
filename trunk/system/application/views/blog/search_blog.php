@@ -28,7 +28,7 @@
           // <?php echo $final_date ?></h5>
         <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title)?>#comments" class="comments_balloon"><?php echo $countcomment ?></a>
         <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="202" height="90" alt="Confor.ca" class="alignleft" /></p>
-        <?php echo _substr($text,200)?><br/>
+        <?php echo word_limiter(strip_tags($text), 100); ?><br/>
         <br/>
         <a href="<?php echo site_url('blog/blog_content_admin/'.$author.'/'.$title); ?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
       <?php else:?>
@@ -41,7 +41,7 @@
         // <?php echo $final_date ?></h5>
       <a href="<?php echo site_url('blog/blog_content/'.$title)?>#comments" class="comments_balloon"><?php echo $countcomment ?></a>
       <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="202" height="90" alt="Confor.ca" class="alignleft" /></p>
-      <?php echo _substr($text,200)?><br/>
+      <?php echo word_limiter(strip_tags($text), 100); ?><br/>
       <br/>
       <a href="<?php echo site_url('blog/blog_content/'.$author.'/'.$title); ?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
     <?php endif;?>

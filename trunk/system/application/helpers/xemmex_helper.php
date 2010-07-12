@@ -87,15 +87,6 @@ if (! function_exists('xemmex_language'))
 	}
 }
 
-if ( ! function_exists('xemmex_get_lang'))
-{
-	function xemmex_get_lang()
-	{
-		$CI =& get_instance();
-		return $CI->_data["lang"];
-	}
-}
-
 // ------------------------------------------------------------------------
 // this function for get text by key in currently language
 if ( ! function_exists('__'))
@@ -208,7 +199,7 @@ function form_fckeditor($data = '', $value = '', $extra = '')
     
     if( $fckeditor->IsCompatible() )
     {
-        $fckeditor->Value = html_entity_decode($value);
+        $fckeditor->Value = $value;//html_entity_decode($value);
         $fckeditor->BasePath = $fckeditor_basepath;
         if( $fckeditor_toolbarset = $CI->config->item('fckeditor_toolbarset_default'))
                 $fckeditor->ToolbarSet = $fckeditor_toolbarset;
@@ -216,7 +207,7 @@ function form_fckeditor($data = '', $value = '', $extra = '')
         if( is_array($data) )
         {
             if( isset($data['value']) )
-                $fckeditor->Value = html_entity_decode($data['value']);
+                $fckeditor->Value = $data['value'];//html_entity_decode($data['value']);
             if( isset($data['basepath']) )
                 $fckeditor->BasePath = $data['basepath'];
             if( isset($data['toolbarset']) )
