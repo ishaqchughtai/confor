@@ -10,7 +10,12 @@ class Video extends Frontend_controller
 		$this->_container = 'container';    
 		$this->load->helper('date');
 		$this->load->model('Remember_me');
-		$this->load->library('vid_lib');		
+		$this->load->library('vid_lib');
+        $this->load->helper('date');
+        $this->load->library('email');
+        $this->load->model('Mshowroom');
+        $this->load->model('Mshopproduct','mshopproduct');
+        $this->load->helper('url');		
 		$this->_memberships = array(2,3);
 	}
 
@@ -250,6 +255,39 @@ class Video extends Frontend_controller
             return TRUE ;
         }
     }	
-
-
+    /*Add function*/
+    function play($id='')
+    {
+        $this->_data['path'][] = array(
+        'name' => __("CF_conference_office"),
+        'link' => site_url('conference_office')
+        );    
+        $this->_data['path'][] = array(
+        'name' => __("CF_play"),
+        'link' => '#'
+        );
+        $id=(double)$id;
+        if(is_nan($id)==FALSE)
+        {
+            $this->_data['video_url']=$this->Mhome->get_video_by_id($id);
+            $query=$this->Mhome->get_view_by_id($id);
+            if($query->num_rows()>0)
+            {
+                $row=$query->row();
+                $last_viewed=$row->viewed;
+                $viewed=$last_viewed+1;
+                $this->Mhome->update_view_time($id,$viewed);
+                $this->_data['page_title'] = $row->title;
+                $this->_load_view('home/play_video');
+            }
+            else
+            {
+                redirect(site_url());
+            }
+        }
+        else
+        {
+            redirect(site_url());
+        }
+    }
 }
