@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: conferen_conferen
 Target Host: localhost
 Target Database: conferen_conferen
-Date: 12/07/2010 1:50:37 CH
+Date: 12/07/2010 5:27:04 CH
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -12,11 +12,11 @@ SET FOREIGN_KEY_CHECKS=0;
 -- Table structure for captcha
 -- ----------------------------
 CREATE TABLE `captcha` (
-  `captcha_id` bigint(13) unsigned NOT NULL auto_increment,
+  `captcha_id` bigint(13) unsigned NOT NULL AUTO_INCREMENT,
   `captcha_time` int(10) unsigned NOT NULL,
-  `ip_address` varchar(16) NOT NULL default '0',
+  `ip_address` varchar(16) NOT NULL DEFAULT '0',
   `word` varchar(20) NOT NULL,
-  PRIMARY KEY  (`captcha_id`),
+  PRIMARY KEY (`captcha_id`),
   KEY `word` (`word`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -34,55 +34,55 @@ CREATE TABLE `code` (
 -- Table structure for email_templates
 -- ----------------------------
 CREATE TABLE `email_templates` (
-  `id` int(5) NOT NULL auto_increment,
+  `id` int(5) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `body` text,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for geo_countries
 -- ----------------------------
 CREATE TABLE `geo_countries` (
-  `con_id` bigint(20) unsigned NOT NULL auto_increment,
+  `con_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(250) NOT NULL,
-  PRIMARY KEY  (`con_id`)
+  PRIMARY KEY (`con_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=227 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for memberships
 -- ----------------------------
 CREATE TABLE `memberships` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `desc` text NOT NULL,
-  `free` tinyint(1) NOT NULL default '0',
-  `public` tinyint(1) NOT NULL default '1',
-  `status` tinyint(1) NOT NULL default '1',
-  PRIMARY KEY  (`id`)
+  `free` tinyint(1) NOT NULL DEFAULT '0',
+  `public` tinyint(1) NOT NULL DEFAULT '1',
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for payment_gateway
 -- ----------------------------
 CREATE TABLE `payment_gateway` (
-  `order_id` bigint(20) unsigned NOT NULL auto_increment,
+  `order_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `mem_id` bigint(20) unsigned NOT NULL,
   `psystem` tinyint(3) unsigned NOT NULL,
   `order_name` varchar(250) NOT NULL,
   `order_type` enum('membership','blogs','classifieds','events','clubs') NOT NULL,
   `order_object_id` bigint(20) unsigned NOT NULL,
   `amount` double NOT NULL,
-  `currency` char(10) default NULL,
-  `recurrent` enum('0','1') default NULL,
+  `currency` char(10) DEFAULT NULL,
+  `recurrent` enum('0','1') DEFAULT NULL,
   `last_paid` bigint(20) unsigned NOT NULL,
   `next_payment` bigint(20) unsigned NOT NULL,
   `period` char(30) NOT NULL,
   `created` bigint(20) unsigned NOT NULL,
-  `status` enum('pending','paid') default NULL,
+  `status` enum('pending','paid') DEFAULT NULL,
   `now` bigint(20) unsigned NOT NULL,
-  PRIMARY KEY  (`order_id`),
+  PRIMARY KEY (`order_id`),
   KEY `mem_id` (`mem_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=334456778 DEFAULT CHARSET=utf8;
 
@@ -90,15 +90,15 @@ CREATE TABLE `payment_gateway` (
 -- Table structure for payments
 -- ----------------------------
 CREATE TABLE `payments` (
-  `id` int(11) NOT NULL auto_increment,
-  `txn_id` varchar(100) default NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `txn_id` varchar(100) DEFAULT NULL,
   `membership_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `rate_id` int(11) NOT NULL,
   `rate_amount` varchar(255) NOT NULL,
   `date` datetime NOT NULL,
-  `status` int(1) NOT NULL default '0',
-  PRIMARY KEY  (`id`)
+  `status` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
@@ -111,7 +111,7 @@ CREATE TABLE `presshop_access` (
   `add` int(11) NOT NULL,
   `edit` int(11) NOT NULL,
   `delete` int(11) NOT NULL,
-  PRIMARY KEY  (`id_profile`,`id_tab`)
+  PRIMARY KEY (`id_profile`,`id_tab`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -127,28 +127,28 @@ CREATE TABLE `presshop_accessory` (
 -- Table structure for presshop_address
 -- ----------------------------
 CREATE TABLE `presshop_address` (
-  `id_address` int(10) unsigned NOT NULL auto_increment,
+  `id_address` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_country` int(10) unsigned NOT NULL,
-  `id_state` int(10) unsigned default NULL,
-  `id_customer` int(10) unsigned NOT NULL default '0',
-  `id_manufacturer` int(10) unsigned NOT NULL default '0',
-  `id_supplier` int(10) unsigned NOT NULL default '0',
+  `id_state` int(10) unsigned DEFAULT NULL,
+  `id_customer` int(10) unsigned NOT NULL DEFAULT '0',
+  `id_manufacturer` int(10) unsigned NOT NULL DEFAULT '0',
+  `id_supplier` int(10) unsigned NOT NULL DEFAULT '0',
   `alias` varchar(32) NOT NULL,
-  `company` varchar(32) default NULL,
+  `company` varchar(32) DEFAULT NULL,
   `lastname` varchar(32) NOT NULL,
   `firstname` varchar(32) NOT NULL,
   `address1` varchar(128) NOT NULL,
-  `address2` varchar(128) default NULL,
-  `postcode` varchar(12) default NULL,
+  `address2` varchar(128) DEFAULT NULL,
+  `postcode` varchar(12) DEFAULT NULL,
   `city` varchar(64) NOT NULL,
   `other` text,
-  `phone` varchar(16) default NULL,
-  `phone_mobile` varchar(16) default NULL,
+  `phone` varchar(16) DEFAULT NULL,
+  `phone_mobile` varchar(16) DEFAULT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  `active` tinyint(1) unsigned NOT NULL default '1',
-  `deleted` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id_address`),
+  `active` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_address`),
   KEY `address_customer` (`id_customer`),
   KEY `id_country` (`id_country`),
   KEY `id_state` (`id_state`),
@@ -160,11 +160,11 @@ CREATE TABLE `presshop_address` (
 -- Table structure for presshop_alias
 -- ----------------------------
 CREATE TABLE `presshop_alias` (
-  `id_alias` int(10) unsigned NOT NULL auto_increment,
+  `id_alias` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `alias` varchar(255) NOT NULL,
   `search` varchar(255) NOT NULL,
-  `active` tinyint(1) NOT NULL default '1',
-  PRIMARY KEY  (`id_alias`),
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_alias`),
   UNIQUE KEY `alias` (`alias`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
@@ -172,31 +172,31 @@ CREATE TABLE `presshop_alias` (
 -- Table structure for presshop_attachment
 -- ----------------------------
 CREATE TABLE `presshop_attachment` (
-  `id_attachment` int(10) unsigned NOT NULL auto_increment,
+  `id_attachment` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `file` varchar(40) NOT NULL,
   `mime` varchar(32) NOT NULL,
-  PRIMARY KEY  (`id_attachment`)
+  PRIMARY KEY (`id_attachment`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_attachment_lang
 -- ----------------------------
 CREATE TABLE `presshop_attachment_lang` (
-  `id_attachment` int(10) unsigned NOT NULL auto_increment,
+  `id_attachment` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_lang` int(10) unsigned NOT NULL,
-  `name` varchar(32) default NULL,
+  `name` varchar(32) DEFAULT NULL,
   `description` text,
-  PRIMARY KEY  (`id_attachment`,`id_lang`)
+  PRIMARY KEY (`id_attachment`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_attribute
 -- ----------------------------
 CREATE TABLE `presshop_attribute` (
-  `id_attribute` int(10) unsigned NOT NULL auto_increment,
+  `id_attribute` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_attribute_group` int(10) unsigned NOT NULL,
-  `color` varchar(32) default NULL,
-  PRIMARY KEY  (`id_attribute`),
+  `color` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id_attribute`),
   KEY `attribute_group` (`id_attribute_group`)
 ) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
@@ -204,9 +204,9 @@ CREATE TABLE `presshop_attribute` (
 -- Table structure for presshop_attribute_group
 -- ----------------------------
 CREATE TABLE `presshop_attribute_group` (
-  `id_attribute_group` int(10) unsigned NOT NULL auto_increment,
-  `is_color_group` tinyint(1) NOT NULL default '0',
-  PRIMARY KEY  (`id_attribute_group`)
+  `id_attribute_group` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `is_color_group` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_attribute_group`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -217,19 +217,19 @@ CREATE TABLE `presshop_attribute_group_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(128) NOT NULL,
   `public_name` varchar(64) NOT NULL,
-  PRIMARY KEY  (`id_attribute_group`,`id_lang`)
+  PRIMARY KEY (`id_attribute_group`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_attribute_impact
 -- ----------------------------
 CREATE TABLE `presshop_attribute_impact` (
-  `id_attribute_impact` int(10) unsigned NOT NULL auto_increment,
+  `id_attribute_impact` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_product` int(11) unsigned NOT NULL,
   `id_attribute` int(11) unsigned NOT NULL,
   `weight` float NOT NULL,
   `price` decimal(17,2) NOT NULL,
-  PRIMARY KEY  (`id_attribute_impact`),
+  PRIMARY KEY (`id_attribute_impact`),
   UNIQUE KEY `id_product` (`id_product`,`id_attribute`)
 ) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
@@ -240,7 +240,7 @@ CREATE TABLE `presshop_attribute_lang` (
   `id_attribute` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(128) NOT NULL,
-  PRIMARY KEY  (`id_attribute`,`id_lang`),
+  PRIMARY KEY (`id_attribute`,`id_lang`),
   KEY `id_lang` (`id_lang`,`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -250,23 +250,23 @@ CREATE TABLE `presshop_attribute_lang` (
 CREATE TABLE `presshop_block_cms` (
   `id_block` int(10) unsigned NOT NULL,
   `id_cms` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id_block`,`id_cms`)
+  PRIMARY KEY (`id_block`,`id_cms`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_carrier
 -- ----------------------------
 CREATE TABLE `presshop_carrier` (
-  `id_carrier` int(10) unsigned NOT NULL auto_increment,
-  `id_tax` int(10) unsigned default '0',
+  `id_carrier` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_tax` int(10) unsigned DEFAULT '0',
   `name` varchar(64) NOT NULL,
-  `url` varchar(255) default NULL,
-  `active` tinyint(1) unsigned NOT NULL default '0',
-  `deleted` tinyint(1) unsigned NOT NULL default '0',
-  `shipping_handling` tinyint(1) unsigned NOT NULL default '1',
-  `range_behavior` tinyint(1) unsigned NOT NULL default '0',
-  `is_module` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id_carrier`),
+  `url` varchar(255) DEFAULT NULL,
+  `active` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `shipping_handling` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `range_behavior` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `is_module` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_carrier`),
   KEY `deleted` (`deleted`,`active`),
   KEY `id_tax` (`id_tax`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -286,7 +286,7 @@ CREATE TABLE `presshop_carrier_group` (
 CREATE TABLE `presshop_carrier_lang` (
   `id_carrier` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
-  `delay` varchar(128) default NULL,
+  `delay` varchar(128) DEFAULT NULL,
   UNIQUE KEY `shipper_lang_index` (`id_lang`,`id_carrier`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -296,14 +296,14 @@ CREATE TABLE `presshop_carrier_lang` (
 CREATE TABLE `presshop_carrier_zone` (
   `id_carrier` int(10) unsigned NOT NULL,
   `id_zone` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id_carrier`,`id_zone`)
+  PRIMARY KEY (`id_carrier`,`id_zone`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_cart
 -- ----------------------------
 CREATE TABLE `presshop_cart` (
-  `id_cart` int(10) unsigned NOT NULL auto_increment,
+  `id_cart` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_carrier` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
   `id_address_delivery` int(10) unsigned NOT NULL,
@@ -311,12 +311,12 @@ CREATE TABLE `presshop_cart` (
   `id_currency` int(10) unsigned NOT NULL,
   `id_customer` int(10) unsigned NOT NULL,
   `id_guest` int(10) unsigned NOT NULL,
-  `recyclable` tinyint(1) unsigned NOT NULL default '1',
-  `gift` tinyint(1) unsigned NOT NULL default '0',
+  `recyclable` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `gift` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `gift_message` text,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  PRIMARY KEY  (`id_cart`),
+  PRIMARY KEY (`id_cart`),
   KEY `cart_customer` (`id_customer`),
   KEY `id_address_delivery` (`id_address_delivery`),
   KEY `id_address_invoice` (`id_address_invoice`),
@@ -342,8 +342,8 @@ CREATE TABLE `presshop_cart_discount` (
 CREATE TABLE `presshop_cart_product` (
   `id_cart` int(10) unsigned NOT NULL,
   `id_product` int(10) unsigned NOT NULL,
-  `id_product_attribute` int(10) unsigned default NULL,
-  `quantity` int(10) unsigned NOT NULL default '0',
+  `id_product_attribute` int(10) unsigned DEFAULT NULL,
+  `quantity` int(10) unsigned NOT NULL DEFAULT '0',
   `date_add` datetime NOT NULL,
   KEY `cart_product_index` (`id_cart`,`id_product`),
   KEY `id_product_attribute` (`id_product_attribute`)
@@ -353,13 +353,13 @@ CREATE TABLE `presshop_cart_product` (
 -- Table structure for presshop_category
 -- ----------------------------
 CREATE TABLE `presshop_category` (
-  `id_category` int(10) unsigned NOT NULL auto_increment,
+  `id_category` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_parent` int(10) unsigned NOT NULL,
-  `level_depth` tinyint(3) unsigned NOT NULL default '0',
-  `active` tinyint(1) unsigned NOT NULL default '0',
+  `level_depth` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `active` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  PRIMARY KEY  (`id_category`),
+  PRIMARY KEY (`id_category`),
   KEY `category_parent` (`id_parent`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
@@ -383,9 +383,9 @@ CREATE TABLE `presshop_category_lang` (
   `name` varchar(128) NOT NULL,
   `description` text,
   `link_rewrite` varchar(128) NOT NULL,
-  `meta_title` varchar(128) default NULL,
-  `meta_keywords` varchar(255) default NULL,
-  `meta_description` varchar(255) default NULL,
+  `meta_title` varchar(128) DEFAULT NULL,
+  `meta_keywords` varchar(255) DEFAULT NULL,
+  `meta_description` varchar(255) DEFAULT NULL,
   UNIQUE KEY `category_lang_index` (`id_category`,`id_lang`),
   KEY `category_name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -396,7 +396,7 @@ CREATE TABLE `presshop_category_lang` (
 CREATE TABLE `presshop_category_product` (
   `id_category` int(10) unsigned NOT NULL,
   `id_product` int(10) unsigned NOT NULL,
-  `position` int(10) unsigned NOT NULL default '0',
+  `position` int(10) unsigned NOT NULL DEFAULT '0',
   KEY `category_product_index` (`id_category`,`id_product`),
   KEY `id_product` (`id_product`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -405,8 +405,8 @@ CREATE TABLE `presshop_category_product` (
 -- Table structure for presshop_cms
 -- ----------------------------
 CREATE TABLE `presshop_cms` (
-  `id_cms` int(10) unsigned NOT NULL auto_increment,
-  PRIMARY KEY  (`id_cms`)
+  `id_cms` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_cms`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -416,23 +416,23 @@ CREATE TABLE `presshop_cms_lang` (
   `id_cms` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
   `meta_title` varchar(128) NOT NULL,
-  `meta_description` varchar(255) default NULL,
-  `meta_keywords` varchar(255) default NULL,
+  `meta_description` varchar(255) DEFAULT NULL,
+  `meta_keywords` varchar(255) DEFAULT NULL,
   `content` longtext,
   `link_rewrite` varchar(128) NOT NULL,
-  PRIMARY KEY  (`id_cms`,`id_lang`)
+  PRIMARY KEY (`id_cms`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_configuration
 -- ----------------------------
 CREATE TABLE `presshop_configuration` (
-  `id_configuration` int(10) unsigned NOT NULL auto_increment,
+  `id_configuration` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
   `value` text,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  PRIMARY KEY  (`id_configuration`),
+  PRIMARY KEY (`id_configuration`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=118 DEFAULT CHARSET=utf8;
 
@@ -443,21 +443,21 @@ CREATE TABLE `presshop_configuration_lang` (
   `id_configuration` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
   `value` text,
-  `date_upd` datetime default NULL,
-  PRIMARY KEY  (`id_configuration`,`id_lang`)
+  `date_upd` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_configuration`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_connections
 -- ----------------------------
 CREATE TABLE `presshop_connections` (
-  `id_connections` int(10) unsigned NOT NULL auto_increment,
+  `id_connections` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_guest` int(10) unsigned NOT NULL,
   `id_page` int(10) unsigned NOT NULL,
-  `ip_address` int(11) default NULL,
+  `ip_address` int(11) DEFAULT NULL,
   `date_add` datetime NOT NULL,
-  `http_referer` varchar(255) default NULL,
-  PRIMARY KEY  (`id_connections`),
+  `http_referer` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_connections`),
   KEY `id_guest` (`id_guest`),
   KEY `date_add` (`date_add`),
   KEY `id_page` (`id_page`)
@@ -470,35 +470,35 @@ CREATE TABLE `presshop_connections_page` (
   `id_connections` int(10) unsigned NOT NULL,
   `id_page` int(10) unsigned NOT NULL,
   `time_start` datetime NOT NULL,
-  `time_end` datetime default NULL,
-  PRIMARY KEY  (`id_connections`,`id_page`,`time_start`)
+  `time_end` datetime DEFAULT NULL,
+  PRIMARY KEY (`id_connections`,`id_page`,`time_start`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_connections_source
 -- ----------------------------
 CREATE TABLE `presshop_connections_source` (
-  `id_connections_source` int(10) unsigned NOT NULL auto_increment,
+  `id_connections_source` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_connections` int(10) unsigned NOT NULL,
-  `http_referer` varchar(255) default NULL,
-  `request_uri` varchar(255) default NULL,
-  `keywords` varchar(255) default NULL,
+  `http_referer` varchar(255) DEFAULT NULL,
+  `request_uri` varchar(255) DEFAULT NULL,
+  `keywords` varchar(255) DEFAULT NULL,
   `date_add` datetime NOT NULL,
-  PRIMARY KEY  (`id_connections_source`),
+  PRIMARY KEY (`id_connections_source`),
   KEY `connections` (`id_connections`),
   KEY `orderby` (`date_add`),
   KEY `http_referer` (`http_referer`),
   KEY `request_uri` (`request_uri`)
-) ENGINE=MyISAM AUTO_INCREMENT=192 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=195 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_contact
 -- ----------------------------
 CREATE TABLE `presshop_contact` (
-  `id_contact` int(10) unsigned NOT NULL auto_increment,
+  `id_contact` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(128) NOT NULL,
-  `position` tinyint(2) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id_contact`)
+  `position` tinyint(2) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_contact`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -516,13 +516,13 @@ CREATE TABLE `presshop_contact_lang` (
 -- Table structure for presshop_country
 -- ----------------------------
 CREATE TABLE `presshop_country` (
-  `id_country` int(10) unsigned NOT NULL auto_increment,
+  `id_country` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_zone` int(10) unsigned NOT NULL,
   `iso_code` varchar(3) NOT NULL,
-  `active` tinyint(1) unsigned NOT NULL default '0',
-  `contains_states` tinyint(1) NOT NULL default '0',
+  `active` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `contains_states` tinyint(1) NOT NULL DEFAULT '0',
   `need_identification_number` tinyint(1) NOT NULL,
-  PRIMARY KEY  (`id_country`),
+  PRIMARY KEY (`id_country`),
   KEY `country_iso_code` (`iso_code`),
   KEY `country_` (`id_zone`)
 ) ENGINE=MyISAM AUTO_INCREMENT=245 DEFAULT CHARSET=utf8;
@@ -541,42 +541,42 @@ CREATE TABLE `presshop_country_lang` (
 -- Table structure for presshop_currency
 -- ----------------------------
 CREATE TABLE `presshop_currency` (
-  `id_currency` int(10) unsigned NOT NULL auto_increment,
+  `id_currency` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
-  `iso_code` varchar(3) NOT NULL default '0',
+  `iso_code` varchar(3) NOT NULL DEFAULT '0',
   `sign` varchar(8) NOT NULL,
-  `blank` tinyint(1) unsigned NOT NULL default '0',
-  `format` tinyint(1) unsigned NOT NULL default '0',
-  `decimals` tinyint(1) unsigned NOT NULL default '1',
+  `blank` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `format` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `decimals` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `conversion_rate` decimal(13,6) NOT NULL,
-  `deleted` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id_currency`)
+  `deleted` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_currency`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_customer
 -- ----------------------------
 CREATE TABLE `presshop_customer` (
-  `id_customer` int(10) unsigned NOT NULL auto_increment,
+  `id_customer` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_gender` int(10) unsigned NOT NULL,
-  `id_default_group` int(10) unsigned NOT NULL default '1',
-  `secure_key` varchar(32) NOT NULL default '-1',
+  `id_default_group` int(10) unsigned NOT NULL DEFAULT '1',
+  `secure_key` varchar(32) NOT NULL DEFAULT '-1',
   `email` varchar(128) NOT NULL,
   `passwd` varchar(32) NOT NULL,
-  `last_passwd_gen` timestamp NOT NULL default CURRENT_TIMESTAMP,
-  `birthday` date default NULL,
+  `last_passwd_gen` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `birthday` date DEFAULT NULL,
   `lastname` varchar(32) NOT NULL,
-  `newsletter` tinyint(1) unsigned NOT NULL default '0',
-  `ip_registration_newsletter` varchar(15) default NULL,
-  `newsletter_date_add` datetime default NULL,
-  `optin` tinyint(1) unsigned NOT NULL default '0',
+  `newsletter` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `ip_registration_newsletter` varchar(15) DEFAULT NULL,
+  `newsletter_date_add` datetime DEFAULT NULL,
+  `optin` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `firstname` varchar(32) NOT NULL,
-  `dni` varchar(16) default NULL,
-  `active` tinyint(1) unsigned NOT NULL default '0',
-  `deleted` tinyint(1) NOT NULL default '0',
+  `dni` varchar(16) DEFAULT NULL,
+  `active` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `deleted` tinyint(1) NOT NULL DEFAULT '0',
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  PRIMARY KEY  (`id_customer`),
+  PRIMARY KEY (`id_customer`),
   UNIQUE KEY `customer_email` (`email`),
   KEY `customer_login` (`email`,`passwd`),
   KEY `id_customer_passwd` (`id_customer`,`passwd`),
@@ -589,7 +589,7 @@ CREATE TABLE `presshop_customer` (
 CREATE TABLE `presshop_customer_group` (
   `id_customer` int(10) unsigned NOT NULL,
   `id_group` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id_customer`,`id_group`),
+  PRIMARY KEY (`id_customer`,`id_group`),
   KEY `customer_login` (`id_group`),
   KEY `id_customer` (`id_customer`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -598,14 +598,14 @@ CREATE TABLE `presshop_customer_group` (
 -- Table structure for presshop_customization
 -- ----------------------------
 CREATE TABLE `presshop_customization` (
-  `id_customization` int(10) unsigned NOT NULL auto_increment,
-  `id_product_attribute` int(10) unsigned NOT NULL default '0',
+  `id_customization` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_product_attribute` int(10) unsigned NOT NULL DEFAULT '0',
   `id_cart` int(10) unsigned NOT NULL,
   `id_product` int(10) NOT NULL,
   `quantity` int(10) NOT NULL,
-  `quantity_refunded` int(11) NOT NULL default '0',
-  `quantity_returned` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id_customization`,`id_cart`,`id_product`),
+  `quantity_refunded` int(11) NOT NULL DEFAULT '0',
+  `quantity_returned` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_customization`,`id_cart`,`id_product`),
   KEY `id_product_attribute` (`id_product_attribute`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -613,11 +613,11 @@ CREATE TABLE `presshop_customization` (
 -- Table structure for presshop_customization_field
 -- ----------------------------
 CREATE TABLE `presshop_customization_field` (
-  `id_customization_field` int(10) unsigned NOT NULL auto_increment,
+  `id_customization_field` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_product` int(10) unsigned NOT NULL,
   `type` tinyint(1) NOT NULL,
   `required` tinyint(1) NOT NULL,
-  PRIMARY KEY  (`id_customization_field`),
+  PRIMARY KEY (`id_customization_field`),
   KEY `id_product` (`id_product`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -628,7 +628,7 @@ CREATE TABLE `presshop_customization_field_lang` (
   `id_customization_field` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(255) NOT NULL,
-  PRIMARY KEY  (`id_customization_field`,`id_lang`)
+  PRIMARY KEY (`id_customization_field`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -639,30 +639,30 @@ CREATE TABLE `presshop_customized_data` (
   `type` tinyint(1) NOT NULL,
   `index` int(3) NOT NULL,
   `value` varchar(255) NOT NULL,
-  PRIMARY KEY  (`id_customization`,`type`,`index`)
+  PRIMARY KEY (`id_customization`,`type`,`index`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_date_range
 -- ----------------------------
 CREATE TABLE `presshop_date_range` (
-  `id_date_range` int(10) unsigned NOT NULL auto_increment,
+  `id_date_range` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `time_start` datetime NOT NULL,
   `time_end` datetime NOT NULL,
-  PRIMARY KEY  (`id_date_range`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id_date_range`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_delivery
 -- ----------------------------
 CREATE TABLE `presshop_delivery` (
-  `id_delivery` int(10) unsigned NOT NULL auto_increment,
+  `id_delivery` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_carrier` int(10) unsigned NOT NULL,
-  `id_range_price` int(10) unsigned default NULL,
-  `id_range_weight` int(10) unsigned default NULL,
+  `id_range_price` int(10) unsigned DEFAULT NULL,
+  `id_range_weight` int(10) unsigned DEFAULT NULL,
   `id_zone` int(10) unsigned NOT NULL,
   `price` decimal(17,2) NOT NULL,
-  PRIMARY KEY  (`id_delivery`),
+  PRIMARY KEY (`id_delivery`),
   KEY `id_zone` (`id_zone`),
   KEY `id_carrier` (`id_carrier`,`id_zone`),
   KEY `id_range_price` (`id_range_price`),
@@ -673,21 +673,21 @@ CREATE TABLE `presshop_delivery` (
 -- Table structure for presshop_discount
 -- ----------------------------
 CREATE TABLE `presshop_discount` (
-  `id_discount` int(10) unsigned NOT NULL auto_increment,
+  `id_discount` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_discount_type` int(10) unsigned NOT NULL,
   `id_customer` int(10) unsigned NOT NULL,
-  `id_currency` int(10) unsigned NOT NULL default '0',
+  `id_currency` int(10) unsigned NOT NULL DEFAULT '0',
   `name` varchar(32) NOT NULL,
-  `value` decimal(17,2) NOT NULL default '0.00',
-  `quantity` int(10) unsigned NOT NULL default '0',
-  `quantity_per_user` int(10) unsigned NOT NULL default '1',
-  `cumulable` tinyint(1) unsigned NOT NULL default '0',
-  `cumulable_reduction` tinyint(1) unsigned NOT NULL default '0',
+  `value` decimal(17,2) NOT NULL DEFAULT '0.00',
+  `quantity` int(10) unsigned NOT NULL DEFAULT '0',
+  `quantity_per_user` int(10) unsigned NOT NULL DEFAULT '1',
+  `cumulable` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `cumulable_reduction` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `date_from` datetime NOT NULL,
   `date_to` datetime NOT NULL,
-  `minimal` decimal(17,2) default NULL,
-  `active` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id_discount`),
+  `minimal` decimal(17,2) DEFAULT NULL,
+  `active` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_discount`),
   KEY `discount_name` (`name`),
   KEY `discount_customer` (`id_customer`),
   KEY `id_discount_type` (`id_discount_type`)
@@ -699,7 +699,7 @@ CREATE TABLE `presshop_discount` (
 CREATE TABLE `presshop_discount_category` (
   `id_category` int(11) unsigned NOT NULL,
   `id_discount` int(11) unsigned NOT NULL,
-  PRIMARY KEY  (`id_category`,`id_discount`),
+  PRIMARY KEY (`id_category`,`id_discount`),
   KEY `discount` (`id_discount`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -710,20 +710,20 @@ CREATE TABLE `presshop_discount_lang` (
   `id_discount` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
   `description` text,
-  PRIMARY KEY  (`id_discount`,`id_lang`)
+  PRIMARY KEY (`id_discount`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_discount_quantity
 -- ----------------------------
 CREATE TABLE `presshop_discount_quantity` (
-  `id_discount_quantity` int(10) unsigned NOT NULL auto_increment,
+  `id_discount_quantity` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_discount_type` int(10) unsigned NOT NULL,
   `id_product` int(10) unsigned NOT NULL,
-  `id_product_attribute` int(10) unsigned default NULL,
+  `id_product_attribute` int(10) unsigned DEFAULT NULL,
   `quantity` int(10) unsigned NOT NULL,
   `value` decimal(17,2) unsigned NOT NULL,
-  PRIMARY KEY  (`id_discount_quantity`),
+  PRIMARY KEY (`id_discount_quantity`),
   KEY `id_discount_type` (`id_discount_type`),
   KEY `id_product` (`id_product`),
   KEY `id_product_attribute` (`id_product_attribute`)
@@ -733,8 +733,8 @@ CREATE TABLE `presshop_discount_quantity` (
 -- Table structure for presshop_discount_type
 -- ----------------------------
 CREATE TABLE `presshop_discount_type` (
-  `id_discount_type` int(10) unsigned NOT NULL auto_increment,
-  PRIMARY KEY  (`id_discount_type`)
+  `id_discount_type` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_discount_type`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -744,24 +744,24 @@ CREATE TABLE `presshop_discount_type_lang` (
   `id_discount_type` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(64) NOT NULL,
-  PRIMARY KEY  (`id_discount_type`,`id_lang`)
+  PRIMARY KEY (`id_discount_type`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_employee
 -- ----------------------------
 CREATE TABLE `presshop_employee` (
-  `id_employee` int(10) unsigned NOT NULL auto_increment,
+  `id_employee` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_profile` int(10) unsigned NOT NULL,
   `lastname` varchar(32) NOT NULL,
   `firstname` varchar(32) NOT NULL,
   `email` varchar(128) NOT NULL,
   `passwd` varchar(32) NOT NULL,
-  `last_passwd_gen` timestamp NOT NULL default CURRENT_TIMESTAMP,
-  `stats_date_from` date default NULL,
-  `stats_date_to` date default NULL,
-  `active` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id_employee`),
+  `last_passwd_gen` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `stats_date_from` date DEFAULT NULL,
+  `stats_date_to` date DEFAULT NULL,
+  `active` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_employee`),
   KEY `employee_login` (`email`,`passwd`),
   KEY `id_employee_passwd` (`id_employee`,`passwd`),
   KEY `id_profile` (`id_profile`)
@@ -771,8 +771,8 @@ CREATE TABLE `presshop_employee` (
 -- Table structure for presshop_feature
 -- ----------------------------
 CREATE TABLE `presshop_feature` (
-  `id_feature` int(10) unsigned NOT NULL auto_increment,
-  PRIMARY KEY  (`id_feature`)
+  `id_feature` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_feature`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -781,8 +781,8 @@ CREATE TABLE `presshop_feature` (
 CREATE TABLE `presshop_feature_lang` (
   `id_feature` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
-  `name` varchar(128) default NULL,
-  PRIMARY KEY  (`id_feature`,`id_lang`)
+  `name` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id_feature`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -792,7 +792,7 @@ CREATE TABLE `presshop_feature_product` (
   `id_feature` int(10) unsigned NOT NULL,
   `id_product` int(10) unsigned NOT NULL,
   `id_feature_value` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id_feature`,`id_product`),
+  PRIMARY KEY (`id_feature`,`id_product`),
   KEY `id_feature_value` (`id_feature_value`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -800,10 +800,10 @@ CREATE TABLE `presshop_feature_product` (
 -- Table structure for presshop_feature_value
 -- ----------------------------
 CREATE TABLE `presshop_feature_value` (
-  `id_feature_value` int(10) unsigned NOT NULL auto_increment,
+  `id_feature_value` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_feature` int(10) unsigned NOT NULL,
-  `custom` tinyint(3) unsigned default NULL,
-  PRIMARY KEY  (`id_feature_value`),
+  `custom` tinyint(3) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id_feature_value`),
   KEY `feature` (`id_feature`)
 ) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
@@ -813,20 +813,20 @@ CREATE TABLE `presshop_feature_value` (
 CREATE TABLE `presshop_feature_value_lang` (
   `id_feature_value` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
-  `value` varchar(255) default NULL,
-  PRIMARY KEY  (`id_feature_value`,`id_lang`)
+  `value` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_feature_value`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_group
 -- ----------------------------
 CREATE TABLE `presshop_group` (
-  `id_group` int(10) unsigned NOT NULL auto_increment,
-  `reduction` decimal(17,2) NOT NULL default '0.00',
-  `price_display_method` tinyint(4) NOT NULL default '0',
+  `id_group` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `reduction` decimal(17,2) NOT NULL DEFAULT '0.00',
+  `price_display_method` tinyint(4) NOT NULL DEFAULT '0',
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  PRIMARY KEY  (`id_group`)
+  PRIMARY KEY (`id_group`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -843,22 +843,22 @@ CREATE TABLE `presshop_group_lang` (
 -- Table structure for presshop_guest
 -- ----------------------------
 CREATE TABLE `presshop_guest` (
-  `id_guest` int(10) unsigned NOT NULL auto_increment,
-  `id_operating_system` int(10) unsigned default NULL,
-  `id_web_browser` int(10) unsigned default NULL,
-  `id_customer` int(10) unsigned default NULL,
-  `javascript` tinyint(1) default '0',
-  `screen_resolution_x` smallint(5) unsigned default NULL,
-  `screen_resolution_y` smallint(5) unsigned default NULL,
-  `screen_color` tinyint(3) unsigned default NULL,
-  `sun_java` tinyint(1) default NULL,
-  `adobe_flash` tinyint(1) default NULL,
-  `adobe_director` tinyint(1) default NULL,
-  `apple_quicktime` tinyint(1) default NULL,
-  `real_player` tinyint(1) default NULL,
-  `windows_media` tinyint(1) default NULL,
-  `accept_language` varchar(8) default NULL,
-  PRIMARY KEY  (`id_guest`),
+  `id_guest` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_operating_system` int(10) unsigned DEFAULT NULL,
+  `id_web_browser` int(10) unsigned DEFAULT NULL,
+  `id_customer` int(10) unsigned DEFAULT NULL,
+  `javascript` tinyint(1) DEFAULT '0',
+  `screen_resolution_x` smallint(5) unsigned DEFAULT NULL,
+  `screen_resolution_y` smallint(5) unsigned DEFAULT NULL,
+  `screen_color` tinyint(3) unsigned DEFAULT NULL,
+  `sun_java` tinyint(1) DEFAULT NULL,
+  `adobe_flash` tinyint(1) DEFAULT NULL,
+  `adobe_director` tinyint(1) DEFAULT NULL,
+  `apple_quicktime` tinyint(1) DEFAULT NULL,
+  `real_player` tinyint(1) DEFAULT NULL,
+  `windows_media` tinyint(1) DEFAULT NULL,
+  `accept_language` varchar(8) DEFAULT NULL,
+  PRIMARY KEY (`id_guest`),
   KEY `id_customer` (`id_customer`),
   KEY `id_operating_system` (`id_operating_system`),
   KEY `id_web_browser` (`id_web_browser`)
@@ -868,12 +868,12 @@ CREATE TABLE `presshop_guest` (
 -- Table structure for presshop_hook
 -- ----------------------------
 CREATE TABLE `presshop_hook` (
-  `id_hook` int(10) unsigned NOT NULL auto_increment,
+  `id_hook` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `title` varchar(64) NOT NULL,
   `description` text,
-  `position` tinyint(1) NOT NULL default '1',
-  PRIMARY KEY  (`id_hook`),
+  `position` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_hook`),
   UNIQUE KEY `hook_name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
 
@@ -884,7 +884,7 @@ CREATE TABLE `presshop_hook_module` (
   `id_module` int(10) unsigned NOT NULL,
   `id_hook` int(10) unsigned NOT NULL,
   `position` tinyint(2) unsigned NOT NULL,
-  PRIMARY KEY  (`id_module`,`id_hook`),
+  PRIMARY KEY (`id_module`,`id_hook`),
   KEY `id_hook` (`id_hook`),
   KEY `id_module` (`id_module`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -893,11 +893,11 @@ CREATE TABLE `presshop_hook_module` (
 -- Table structure for presshop_hook_module_exceptions
 -- ----------------------------
 CREATE TABLE `presshop_hook_module_exceptions` (
-  `id_hook_module_exceptions` int(10) unsigned NOT NULL auto_increment,
+  `id_hook_module_exceptions` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_module` int(10) unsigned NOT NULL,
   `id_hook` int(10) unsigned NOT NULL,
-  `file_name` varchar(255) default NULL,
-  PRIMARY KEY  (`id_hook_module_exceptions`),
+  `file_name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_hook_module_exceptions`),
   KEY `id_module` (`id_module`),
   KEY `id_hook` (`id_hook`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -906,11 +906,11 @@ CREATE TABLE `presshop_hook_module_exceptions` (
 -- Table structure for presshop_image
 -- ----------------------------
 CREATE TABLE `presshop_image` (
-  `id_image` int(10) unsigned NOT NULL auto_increment,
+  `id_image` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_product` int(10) unsigned NOT NULL,
-  `position` tinyint(2) unsigned NOT NULL default '0',
-  `cover` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id_image`),
+  `position` tinyint(2) unsigned NOT NULL DEFAULT '0',
+  `cover` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_image`),
   KEY `image_product` (`id_product`),
   KEY `product_position` (`id_product`,`position`),
   KEY `id_product_cover` (`id_product`,`cover`)
@@ -922,7 +922,7 @@ CREATE TABLE `presshop_image` (
 CREATE TABLE `presshop_image_lang` (
   `id_image` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
-  `legend` varchar(128) default NULL,
+  `legend` varchar(128) DEFAULT NULL,
   UNIQUE KEY `image_lang_index` (`id_image`,`id_lang`),
   KEY `id_image` (`id_image`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -931,16 +931,16 @@ CREATE TABLE `presshop_image_lang` (
 -- Table structure for presshop_image_type
 -- ----------------------------
 CREATE TABLE `presshop_image_type` (
-  `id_image_type` int(10) unsigned NOT NULL auto_increment,
+  `id_image_type` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(16) NOT NULL,
   `width` int(10) unsigned NOT NULL,
   `height` int(10) unsigned NOT NULL,
-  `products` tinyint(1) NOT NULL default '1',
-  `categories` tinyint(1) NOT NULL default '1',
-  `manufacturers` tinyint(1) NOT NULL default '1',
-  `suppliers` tinyint(1) NOT NULL default '1',
-  `scenes` tinyint(1) NOT NULL default '1',
-  PRIMARY KEY  (`id_image_type`),
+  `products` tinyint(1) NOT NULL DEFAULT '1',
+  `categories` tinyint(1) NOT NULL DEFAULT '1',
+  `manufacturers` tinyint(1) NOT NULL DEFAULT '1',
+  `suppliers` tinyint(1) NOT NULL DEFAULT '1',
+  `scenes` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_image_type`),
   KEY `image_type_name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
@@ -948,11 +948,11 @@ CREATE TABLE `presshop_image_type` (
 -- Table structure for presshop_lang
 -- ----------------------------
 CREATE TABLE `presshop_lang` (
-  `id_lang` int(10) unsigned NOT NULL auto_increment,
+  `id_lang` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
-  `active` tinyint(3) unsigned NOT NULL default '0',
+  `active` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `iso_code` char(2) NOT NULL,
-  PRIMARY KEY  (`id_lang`),
+  PRIMARY KEY (`id_lang`),
   KEY `lang_iso_code` (`iso_code`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
@@ -960,11 +960,11 @@ CREATE TABLE `presshop_lang` (
 -- Table structure for presshop_manufacturer
 -- ----------------------------
 CREATE TABLE `presshop_manufacturer` (
-  `id_manufacturer` int(10) unsigned NOT NULL auto_increment,
+  `id_manufacturer` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  PRIMARY KEY  (`id_manufacturer`)
+  PRIMARY KEY (`id_manufacturer`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -974,26 +974,26 @@ CREATE TABLE `presshop_manufacturer_lang` (
   `id_manufacturer` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
   `description` text,
-  `short_description` varchar(254) default NULL,
-  `meta_title` varchar(128) default NULL,
-  `meta_keywords` varchar(255) default NULL,
-  `meta_description` varchar(255) default NULL,
-  PRIMARY KEY  (`id_manufacturer`,`id_lang`)
+  `short_description` varchar(254) DEFAULT NULL,
+  `meta_title` varchar(128) DEFAULT NULL,
+  `meta_keywords` varchar(255) DEFAULT NULL,
+  `meta_description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_manufacturer`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_message
 -- ----------------------------
 CREATE TABLE `presshop_message` (
-  `id_message` int(10) unsigned NOT NULL auto_increment,
-  `id_cart` int(10) unsigned default NULL,
+  `id_message` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_cart` int(10) unsigned DEFAULT NULL,
   `id_customer` int(10) unsigned NOT NULL,
-  `id_employee` int(10) unsigned default NULL,
+  `id_employee` int(10) unsigned DEFAULT NULL,
   `id_order` int(10) unsigned NOT NULL,
   `message` text NOT NULL,
-  `private` tinyint(1) unsigned NOT NULL default '1',
+  `private` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `date_add` datetime NOT NULL,
-  PRIMARY KEY  (`id_message`),
+  PRIMARY KEY (`id_message`),
   KEY `message_order` (`id_order`),
   KEY `id_cart` (`id_cart`),
   KEY `id_customer` (`id_customer`),
@@ -1007,16 +1007,16 @@ CREATE TABLE `presshop_message_readed` (
   `id_message` int(10) unsigned NOT NULL,
   `id_employee` int(10) unsigned NOT NULL,
   `date_add` datetime NOT NULL,
-  PRIMARY KEY  (`id_message`,`id_employee`)
+  PRIMARY KEY (`id_message`,`id_employee`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_meta
 -- ----------------------------
 CREATE TABLE `presshop_meta` (
-  `id_meta` int(10) unsigned NOT NULL auto_increment,
+  `id_meta` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `page` varchar(64) NOT NULL,
-  PRIMARY KEY  (`id_meta`),
+  PRIMARY KEY (`id_meta`),
   KEY `meta_name` (`page`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
@@ -1026,20 +1026,20 @@ CREATE TABLE `presshop_meta` (
 CREATE TABLE `presshop_meta_lang` (
   `id_meta` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
-  `title` varchar(128) default NULL,
-  `description` varchar(255) default NULL,
-  `keywords` varchar(255) default NULL,
-  PRIMARY KEY  (`id_meta`,`id_lang`)
+  `title` varchar(128) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `keywords` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_meta`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_module
 -- ----------------------------
 CREATE TABLE `presshop_module` (
-  `id_module` int(10) unsigned NOT NULL auto_increment,
+  `id_module` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
-  `active` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id_module`),
+  `active` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_module`),
   KEY `name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
 
@@ -1049,7 +1049,7 @@ CREATE TABLE `presshop_module` (
 CREATE TABLE `presshop_module_country` (
   `id_module` int(10) unsigned NOT NULL,
   `id_country` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id_module`,`id_country`)
+  PRIMARY KEY (`id_module`,`id_country`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1058,7 +1058,7 @@ CREATE TABLE `presshop_module_country` (
 CREATE TABLE `presshop_module_currency` (
   `id_module` int(10) unsigned NOT NULL,
   `id_currency` int(11) NOT NULL,
-  PRIMARY KEY  (`id_module`,`id_currency`),
+  PRIMARY KEY (`id_module`,`id_currency`),
   KEY `id_module` (`id_module`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -1068,46 +1068,46 @@ CREATE TABLE `presshop_module_currency` (
 CREATE TABLE `presshop_module_group` (
   `id_module` int(10) unsigned NOT NULL,
   `id_group` int(11) unsigned NOT NULL,
-  PRIMARY KEY  (`id_module`,`id_group`)
+  PRIMARY KEY (`id_module`,`id_group`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_operating_system
 -- ----------------------------
 CREATE TABLE `presshop_operating_system` (
-  `id_operating_system` int(10) unsigned NOT NULL auto_increment,
-  `name` varchar(64) default NULL,
-  PRIMARY KEY  (`id_operating_system`)
+  `id_operating_system` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`id_operating_system`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_order_detail
 -- ----------------------------
 CREATE TABLE `presshop_order_detail` (
-  `id_order_detail` int(10) unsigned NOT NULL auto_increment,
+  `id_order_detail` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_order` int(10) unsigned NOT NULL,
   `product_id` int(10) unsigned NOT NULL,
-  `product_attribute_id` int(10) unsigned default NULL,
+  `product_attribute_id` int(10) unsigned DEFAULT NULL,
   `product_name` varchar(255) NOT NULL,
-  `product_quantity` int(10) unsigned NOT NULL default '0',
-  `product_quantity_in_stock` int(10) unsigned NOT NULL default '0',
-  `product_quantity_refunded` int(10) unsigned NOT NULL default '0',
-  `product_quantity_return` int(10) unsigned NOT NULL default '0',
-  `product_quantity_reinjected` int(10) unsigned NOT NULL default '0',
-  `product_price` decimal(20,6) NOT NULL default '0.000000',
-  `product_quantity_discount` decimal(20,6) NOT NULL default '0.000000',
-  `product_ean13` varchar(13) default NULL,
-  `product_reference` varchar(32) default NULL,
-  `product_supplier_reference` varchar(32) default NULL,
+  `product_quantity` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_quantity_in_stock` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_quantity_refunded` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_quantity_return` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_quantity_reinjected` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_price` decimal(20,6) NOT NULL DEFAULT '0.000000',
+  `product_quantity_discount` decimal(20,6) NOT NULL DEFAULT '0.000000',
+  `product_ean13` varchar(13) DEFAULT NULL,
+  `product_reference` varchar(32) DEFAULT NULL,
+  `product_supplier_reference` varchar(32) DEFAULT NULL,
   `product_weight` float NOT NULL,
   `tax_name` varchar(16) NOT NULL,
-  `tax_rate` decimal(10,3) NOT NULL default '0.000',
-  `ecotax` decimal(17,2) NOT NULL default '0.00',
-  `discount_quantity_applied` tinyint(1) NOT NULL default '0',
-  `download_hash` varchar(255) default NULL,
-  `download_nb` int(10) unsigned default '0',
-  `download_deadline` datetime default '0000-00-00 00:00:00',
-  PRIMARY KEY  (`id_order_detail`),
+  `tax_rate` decimal(10,3) NOT NULL DEFAULT '0.000',
+  `ecotax` decimal(17,2) NOT NULL DEFAULT '0.00',
+  `discount_quantity_applied` tinyint(1) NOT NULL DEFAULT '0',
+  `download_hash` varchar(255) DEFAULT NULL,
+  `download_nb` int(10) unsigned DEFAULT '0',
+  `download_deadline` datetime DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id_order_detail`),
   KEY `order_detail_order` (`id_order`),
   KEY `product_id` (`product_id`),
   KEY `product_attribute_id` (`product_attribute_id`),
@@ -1118,12 +1118,12 @@ CREATE TABLE `presshop_order_detail` (
 -- Table structure for presshop_order_discount
 -- ----------------------------
 CREATE TABLE `presshop_order_discount` (
-  `id_order_discount` int(10) unsigned NOT NULL auto_increment,
+  `id_order_discount` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_order` int(10) unsigned NOT NULL,
   `id_discount` int(10) unsigned NOT NULL,
   `name` varchar(32) NOT NULL,
-  `value` decimal(17,2) NOT NULL default '0.00',
-  PRIMARY KEY  (`id_order_discount`),
+  `value` decimal(17,2) NOT NULL DEFAULT '0.00',
+  PRIMARY KEY (`id_order_discount`),
   KEY `order_discount_order` (`id_order`),
   KEY `id_discount` (`id_discount`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -1132,12 +1132,12 @@ CREATE TABLE `presshop_order_discount` (
 -- Table structure for presshop_order_history
 -- ----------------------------
 CREATE TABLE `presshop_order_history` (
-  `id_order_history` int(10) unsigned NOT NULL auto_increment,
+  `id_order_history` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_employee` int(10) unsigned NOT NULL,
   `id_order` int(10) unsigned NOT NULL,
   `id_order_state` int(10) unsigned NOT NULL,
   `date_add` datetime NOT NULL,
-  PRIMARY KEY  (`id_order_history`),
+  PRIMARY KEY (`id_order_history`),
   KEY `order_history_order` (`id_order`),
   KEY `id_employee` (`id_employee`),
   KEY `id_order_state` (`id_order_state`)
@@ -1147,9 +1147,9 @@ CREATE TABLE `presshop_order_history` (
 -- Table structure for presshop_order_message
 -- ----------------------------
 CREATE TABLE `presshop_order_message` (
-  `id_order_message` int(10) unsigned NOT NULL auto_increment,
+  `id_order_message` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `date_add` datetime NOT NULL,
-  PRIMARY KEY  (`id_order_message`)
+  PRIMARY KEY (`id_order_message`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1160,21 +1160,21 @@ CREATE TABLE `presshop_order_message_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(128) NOT NULL,
   `message` text NOT NULL,
-  PRIMARY KEY  (`id_order_message`,`id_lang`)
+  PRIMARY KEY (`id_order_message`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_order_return
 -- ----------------------------
 CREATE TABLE `presshop_order_return` (
-  `id_order_return` int(10) unsigned NOT NULL auto_increment,
+  `id_order_return` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_customer` int(10) unsigned NOT NULL,
   `id_order` int(10) unsigned NOT NULL,
-  `state` tinyint(1) unsigned NOT NULL default '1',
+  `state` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `question` text NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  PRIMARY KEY  (`id_order_return`),
+  PRIMARY KEY (`id_order_return`),
   KEY `order_return_customer` (`id_customer`),
   KEY `id_order` (`id_order`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -1185,18 +1185,18 @@ CREATE TABLE `presshop_order_return` (
 CREATE TABLE `presshop_order_return_detail` (
   `id_order_return` int(10) unsigned NOT NULL,
   `id_order_detail` int(10) unsigned NOT NULL,
-  `id_customization` int(10) unsigned NOT NULL default '0',
-  `product_quantity` int(10) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id_order_return`,`id_order_detail`,`id_customization`)
+  `id_customization` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_quantity` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_order_return`,`id_order_detail`,`id_customization`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_order_return_state
 -- ----------------------------
 CREATE TABLE `presshop_order_return_state` (
-  `id_order_return_state` int(10) unsigned NOT NULL auto_increment,
-  `color` varchar(32) default NULL,
-  PRIMARY KEY  (`id_order_return_state`)
+  `id_order_return_state` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `color` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id_order_return_state`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1213,13 +1213,13 @@ CREATE TABLE `presshop_order_return_state_lang` (
 -- Table structure for presshop_order_slip
 -- ----------------------------
 CREATE TABLE `presshop_order_slip` (
-  `id_order_slip` int(10) unsigned NOT NULL auto_increment,
+  `id_order_slip` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_customer` int(10) unsigned NOT NULL,
   `id_order` int(10) unsigned NOT NULL,
-  `shipping_cost` tinyint(3) unsigned NOT NULL default '0',
+  `shipping_cost` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  PRIMARY KEY  (`id_order_slip`),
+  PRIMARY KEY (`id_order_slip`),
   KEY `order_slip_customer` (`id_customer`),
   KEY `id_order` (`id_order`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -1230,23 +1230,23 @@ CREATE TABLE `presshop_order_slip` (
 CREATE TABLE `presshop_order_slip_detail` (
   `id_order_slip` int(10) unsigned NOT NULL,
   `id_order_detail` int(10) unsigned NOT NULL,
-  `product_quantity` int(10) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id_order_slip`,`id_order_detail`)
+  `product_quantity` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_order_slip`,`id_order_detail`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_order_state
 -- ----------------------------
 CREATE TABLE `presshop_order_state` (
-  `id_order_state` int(10) unsigned NOT NULL auto_increment,
-  `invoice` tinyint(1) unsigned default '0',
-  `send_email` tinyint(1) unsigned NOT NULL default '0',
-  `color` varchar(32) default NULL,
+  `id_order_state` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `invoice` tinyint(1) unsigned DEFAULT '0',
+  `send_email` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `color` varchar(32) DEFAULT NULL,
   `unremovable` tinyint(1) unsigned NOT NULL,
-  `hidden` tinyint(1) unsigned NOT NULL default '0',
-  `logable` tinyint(1) NOT NULL default '0',
-  `delivery` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id_order_state`)
+  `hidden` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `logable` tinyint(1) NOT NULL DEFAULT '0',
+  `delivery` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_order_state`)
 ) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1264,7 +1264,7 @@ CREATE TABLE `presshop_order_state_lang` (
 -- Table structure for presshop_orders
 -- ----------------------------
 CREATE TABLE `presshop_orders` (
-  `id_order` int(10) unsigned NOT NULL auto_increment,
+  `id_order` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_carrier` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
   `id_customer` int(10) unsigned NOT NULL,
@@ -1272,28 +1272,28 @@ CREATE TABLE `presshop_orders` (
   `id_currency` int(10) unsigned NOT NULL,
   `id_address_delivery` int(10) unsigned NOT NULL,
   `id_address_invoice` int(10) unsigned NOT NULL,
-  `secure_key` varchar(32) NOT NULL default '-1',
+  `secure_key` varchar(32) NOT NULL DEFAULT '-1',
   `payment` varchar(255) NOT NULL,
-  `module` varchar(255) default NULL,
-  `recyclable` tinyint(1) unsigned NOT NULL default '0',
-  `gift` tinyint(1) unsigned NOT NULL default '0',
+  `module` varchar(255) DEFAULT NULL,
+  `recyclable` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `gift` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `gift_message` text,
-  `shipping_number` varchar(32) default NULL,
-  `total_discounts` decimal(17,2) NOT NULL default '0.00',
-  `total_paid` decimal(17,2) NOT NULL default '0.00',
-  `total_paid_real` decimal(17,2) NOT NULL default '0.00',
-  `total_products` decimal(17,2) NOT NULL default '0.00',
-  `total_products_wt` decimal(17,2) NOT NULL default '0.00',
-  `total_shipping` decimal(17,2) NOT NULL default '0.00',
-  `total_wrapping` decimal(17,2) NOT NULL default '0.00',
-  `invoice_number` int(10) unsigned NOT NULL default '0',
-  `delivery_number` int(10) unsigned NOT NULL default '0',
+  `shipping_number` varchar(32) DEFAULT NULL,
+  `total_discounts` decimal(17,2) NOT NULL DEFAULT '0.00',
+  `total_paid` decimal(17,2) NOT NULL DEFAULT '0.00',
+  `total_paid_real` decimal(17,2) NOT NULL DEFAULT '0.00',
+  `total_products` decimal(17,2) NOT NULL DEFAULT '0.00',
+  `total_products_wt` decimal(17,2) NOT NULL DEFAULT '0.00',
+  `total_shipping` decimal(17,2) NOT NULL DEFAULT '0.00',
+  `total_wrapping` decimal(17,2) NOT NULL DEFAULT '0.00',
+  `invoice_number` int(10) unsigned NOT NULL DEFAULT '0',
+  `delivery_number` int(10) unsigned NOT NULL DEFAULT '0',
   `invoice_date` datetime NOT NULL,
   `delivery_date` datetime NOT NULL,
-  `valid` int(1) unsigned NOT NULL default '0',
+  `valid` int(1) unsigned NOT NULL DEFAULT '0',
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  PRIMARY KEY  (`id_order`),
+  PRIMARY KEY (`id_order`),
   KEY `id_customer` (`id_customer`),
   KEY `id_cart` (`id_cart`),
   KEY `invoice_number` (`invoice_number`),
@@ -1310,18 +1310,18 @@ CREATE TABLE `presshop_orders` (
 CREATE TABLE `presshop_pack` (
   `id_product_pack` int(10) unsigned NOT NULL,
   `id_product_item` int(10) unsigned NOT NULL,
-  `quantity` int(10) unsigned NOT NULL default '1',
-  PRIMARY KEY  (`id_product_pack`,`id_product_item`)
+  `quantity` int(10) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_product_pack`,`id_product_item`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_page
 -- ----------------------------
 CREATE TABLE `presshop_page` (
-  `id_page` int(10) unsigned NOT NULL auto_increment,
+  `id_page` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_page_type` int(10) unsigned NOT NULL,
-  `id_object` int(10) unsigned default NULL,
-  PRIMARY KEY  (`id_page`),
+  `id_object` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id_page`),
   KEY `id_page_type` (`id_page_type`),
   KEY `id_object` (`id_object`)
 ) ENGINE=MyISAM AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
@@ -1330,9 +1330,9 @@ CREATE TABLE `presshop_page` (
 -- Table structure for presshop_page_type
 -- ----------------------------
 CREATE TABLE `presshop_page_type` (
-  `id_page_type` int(10) unsigned NOT NULL auto_increment,
+  `id_page_type` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  PRIMARY KEY  (`id_page_type`),
+  PRIMARY KEY (`id_page_type`),
   KEY `name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
@@ -1343,54 +1343,54 @@ CREATE TABLE `presshop_page_viewed` (
   `id_page` int(10) unsigned NOT NULL,
   `id_date_range` int(10) unsigned NOT NULL,
   `counter` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id_page`,`id_date_range`)
+  PRIMARY KEY (`id_page`,`id_date_range`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_pagenotfound
 -- ----------------------------
 CREATE TABLE `presshop_pagenotfound` (
-  `id_pagenotfound` int(10) unsigned NOT NULL auto_increment,
+  `id_pagenotfound` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `request_uri` varchar(256) NOT NULL,
   `http_referer` varchar(256) NOT NULL,
   `date_add` datetime NOT NULL,
-  PRIMARY KEY  (`id_pagenotfound`)
+  PRIMARY KEY (`id_pagenotfound`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_product
 -- ----------------------------
 CREATE TABLE `presshop_product` (
-  `id_product` int(10) unsigned NOT NULL auto_increment,
-  `id_supplier` int(10) unsigned default NULL,
-  `id_manufacturer` int(10) unsigned default NULL,
+  `id_product` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_supplier` int(10) unsigned DEFAULT NULL,
+  `id_manufacturer` int(10) unsigned DEFAULT NULL,
   `id_tax` int(10) unsigned NOT NULL,
-  `id_category_default` int(10) unsigned default NULL,
-  `id_color_default` int(10) unsigned default NULL,
-  `on_sale` tinyint(1) unsigned NOT NULL default '0',
-  `ean13` varchar(13) default NULL,
-  `ecotax` decimal(17,2) NOT NULL default '0.00',
-  `quantity` int(10) unsigned NOT NULL default '0',
-  `price` decimal(20,6) NOT NULL default '0.000000',
-  `wholesale_price` decimal(20,6) NOT NULL default '0.000000',
-  `reduction_price` decimal(17,2) default NULL,
-  `reduction_percent` float default NULL,
-  `reduction_from` datetime NOT NULL default '1970-01-01 00:00:00',
-  `reduction_to` datetime NOT NULL default '1970-01-01 00:00:00',
-  `reference` varchar(32) default NULL,
-  `supplier_reference` varchar(32) default NULL,
-  `location` varchar(64) default NULL,
-  `weight` float NOT NULL default '0',
-  `out_of_stock` int(10) unsigned NOT NULL default '2',
-  `quantity_discount` tinyint(1) default '0',
-  `customizable` tinyint(2) NOT NULL default '0',
-  `uploadable_files` tinyint(4) NOT NULL default '0',
-  `text_fields` tinyint(4) NOT NULL default '0',
-  `active` tinyint(1) unsigned NOT NULL default '0',
-  `indexed` tinyint(1) NOT NULL default '0',
+  `id_category_default` int(10) unsigned DEFAULT NULL,
+  `id_color_default` int(10) unsigned DEFAULT NULL,
+  `on_sale` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `ean13` varchar(13) DEFAULT NULL,
+  `ecotax` decimal(17,2) NOT NULL DEFAULT '0.00',
+  `quantity` int(10) unsigned NOT NULL DEFAULT '0',
+  `price` decimal(20,6) NOT NULL DEFAULT '0.000000',
+  `wholesale_price` decimal(20,6) NOT NULL DEFAULT '0.000000',
+  `reduction_price` decimal(17,2) DEFAULT NULL,
+  `reduction_percent` float DEFAULT NULL,
+  `reduction_from` datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
+  `reduction_to` datetime NOT NULL DEFAULT '1970-01-01 00:00:00',
+  `reference` varchar(32) DEFAULT NULL,
+  `supplier_reference` varchar(32) DEFAULT NULL,
+  `location` varchar(64) DEFAULT NULL,
+  `weight` float NOT NULL DEFAULT '0',
+  `out_of_stock` int(10) unsigned NOT NULL DEFAULT '2',
+  `quantity_discount` tinyint(1) DEFAULT '0',
+  `customizable` tinyint(2) NOT NULL DEFAULT '0',
+  `uploadable_files` tinyint(4) NOT NULL DEFAULT '0',
+  `text_fields` tinyint(4) NOT NULL DEFAULT '0',
+  `active` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `indexed` tinyint(1) NOT NULL DEFAULT '0',
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  PRIMARY KEY  (`id_product`),
+  PRIMARY KEY (`id_product`),
   KEY `product_supplier` (`id_supplier`),
   KEY `product_manufacturer` (`id_manufacturer`),
   KEY `id_tax` (`id_tax`),
@@ -1405,26 +1405,26 @@ CREATE TABLE `presshop_product` (
 CREATE TABLE `presshop_product_attachment` (
   `id_product` int(10) unsigned NOT NULL,
   `id_attachment` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id_product`,`id_attachment`)
+  PRIMARY KEY (`id_product`,`id_attachment`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_product_attribute
 -- ----------------------------
 CREATE TABLE `presshop_product_attribute` (
-  `id_product_attribute` int(10) unsigned NOT NULL auto_increment,
+  `id_product_attribute` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_product` int(10) unsigned NOT NULL,
-  `reference` varchar(32) default NULL,
-  `supplier_reference` varchar(32) default NULL,
-  `location` varchar(64) default NULL,
-  `ean13` varchar(13) default NULL,
-  `wholesale_price` decimal(20,6) NOT NULL default '0.000000',
-  `price` decimal(17,2) NOT NULL default '0.00',
-  `ecotax` decimal(17,2) NOT NULL default '0.00',
-  `quantity` int(10) unsigned NOT NULL default '0',
-  `weight` float NOT NULL default '0',
-  `default_on` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id_product_attribute`),
+  `reference` varchar(32) DEFAULT NULL,
+  `supplier_reference` varchar(32) DEFAULT NULL,
+  `location` varchar(64) DEFAULT NULL,
+  `ean13` varchar(13) DEFAULT NULL,
+  `wholesale_price` decimal(20,6) NOT NULL DEFAULT '0.000000',
+  `price` decimal(17,2) NOT NULL DEFAULT '0.00',
+  `ecotax` decimal(17,2) NOT NULL DEFAULT '0.00',
+  `quantity` int(10) unsigned NOT NULL DEFAULT '0',
+  `weight` float NOT NULL DEFAULT '0',
+  `default_on` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_product_attribute`),
   KEY `product_attribute_product` (`id_product`),
   KEY `reference` (`reference`),
   KEY `supplier_reference` (`supplier_reference`),
@@ -1438,7 +1438,7 @@ CREATE TABLE `presshop_product_attribute` (
 CREATE TABLE `presshop_product_attribute_combination` (
   `id_attribute` int(10) unsigned NOT NULL,
   `id_product_attribute` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id_attribute`,`id_product_attribute`),
+  PRIMARY KEY (`id_attribute`,`id_product_attribute`),
   KEY `id_product_attribute` (`id_product_attribute`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -1448,7 +1448,7 @@ CREATE TABLE `presshop_product_attribute_combination` (
 CREATE TABLE `presshop_product_attribute_image` (
   `id_product_attribute` int(10) unsigned NOT NULL,
   `id_image` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id_product_attribute`,`id_image`),
+  PRIMARY KEY (`id_product_attribute`,`id_image`),
   KEY `id_image` (`id_image`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -1456,16 +1456,16 @@ CREATE TABLE `presshop_product_attribute_image` (
 -- Table structure for presshop_product_download
 -- ----------------------------
 CREATE TABLE `presshop_product_download` (
-  `id_product_download` int(10) unsigned NOT NULL auto_increment,
+  `id_product_download` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_product` int(10) unsigned NOT NULL,
-  `display_filename` varchar(255) default NULL,
-  `physically_filename` varchar(255) default NULL,
+  `display_filename` varchar(255) DEFAULT NULL,
+  `physically_filename` varchar(255) DEFAULT NULL,
   `date_deposit` datetime NOT NULL,
-  `date_expiration` datetime default NULL,
-  `nb_days_accessible` int(10) unsigned default NULL,
-  `nb_downloadable` int(10) unsigned default '1',
-  `active` tinyint(1) unsigned NOT NULL default '1',
-  PRIMARY KEY  (`id_product_download`),
+  `date_expiration` datetime DEFAULT NULL,
+  `nb_days_accessible` int(10) unsigned DEFAULT NULL,
+  `nb_downloadable` int(10) unsigned DEFAULT '1',
+  `active` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_product_download`),
   KEY `product_active` (`id_product`,`active`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -1478,12 +1478,12 @@ CREATE TABLE `presshop_product_lang` (
   `description` text,
   `description_short` text,
   `link_rewrite` varchar(128) NOT NULL,
-  `meta_description` varchar(255) default NULL,
-  `meta_keywords` varchar(255) default NULL,
-  `meta_title` varchar(128) default NULL,
+  `meta_description` varchar(255) DEFAULT NULL,
+  `meta_keywords` varchar(255) DEFAULT NULL,
+  `meta_title` varchar(128) DEFAULT NULL,
   `name` varchar(128) NOT NULL,
-  `available_now` varchar(255) default NULL,
-  `available_later` varchar(255) default NULL,
+  `available_now` varchar(255) DEFAULT NULL,
+  `available_later` varchar(255) DEFAULT NULL,
   UNIQUE KEY `product_lang_index` (`id_product`,`id_lang`),
   KEY `id_lang` (`id_lang`),
   KEY `name` (`name`)
@@ -1494,10 +1494,10 @@ CREATE TABLE `presshop_product_lang` (
 -- ----------------------------
 CREATE TABLE `presshop_product_sale` (
   `id_product` int(10) unsigned NOT NULL,
-  `quantity` int(10) unsigned NOT NULL default '0',
-  `sale_nbr` int(10) unsigned NOT NULL default '0',
+  `quantity` int(10) unsigned NOT NULL DEFAULT '0',
+  `sale_nbr` int(10) unsigned NOT NULL DEFAULT '0',
   `date_upd` date NOT NULL,
-  PRIMARY KEY  (`id_product`)
+  PRIMARY KEY (`id_product`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1506,7 +1506,7 @@ CREATE TABLE `presshop_product_sale` (
 CREATE TABLE `presshop_product_tag` (
   `id_product` int(10) unsigned NOT NULL,
   `id_tag` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id_product`,`id_tag`),
+  PRIMARY KEY (`id_product`,`id_tag`),
   KEY `id_tag` (`id_tag`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -1514,8 +1514,8 @@ CREATE TABLE `presshop_product_tag` (
 -- Table structure for presshop_profile
 -- ----------------------------
 CREATE TABLE `presshop_profile` (
-  `id_profile` int(10) unsigned NOT NULL auto_increment,
-  PRIMARY KEY  (`id_profile`)
+  `id_profile` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_profile`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1525,17 +1525,17 @@ CREATE TABLE `presshop_profile_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `id_profile` int(10) unsigned NOT NULL,
   `name` varchar(128) NOT NULL,
-  PRIMARY KEY  (`id_profile`,`id_lang`)
+  PRIMARY KEY (`id_profile`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_quick_access
 -- ----------------------------
 CREATE TABLE `presshop_quick_access` (
-  `id_quick_access` int(10) unsigned NOT NULL auto_increment,
-  `new_window` tinyint(1) NOT NULL default '0',
+  `id_quick_access` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `new_window` tinyint(1) NOT NULL DEFAULT '0',
   `link` varchar(128) NOT NULL,
-  PRIMARY KEY  (`id_quick_access`)
+  PRIMARY KEY (`id_quick_access`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1545,18 +1545,18 @@ CREATE TABLE `presshop_quick_access_lang` (
   `id_quick_access` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(32) NOT NULL,
-  PRIMARY KEY  (`id_quick_access`,`id_lang`)
+  PRIMARY KEY (`id_quick_access`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_range_price
 -- ----------------------------
 CREATE TABLE `presshop_range_price` (
-  `id_range_price` int(10) unsigned NOT NULL auto_increment,
+  `id_range_price` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_carrier` int(10) unsigned NOT NULL,
   `delimiter1` decimal(20,6) NOT NULL,
   `delimiter2` decimal(20,6) NOT NULL,
-  PRIMARY KEY  (`id_range_price`),
+  PRIMARY KEY (`id_range_price`),
   UNIQUE KEY `id_carrier` (`id_carrier`,`delimiter1`,`delimiter2`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -1564,11 +1564,11 @@ CREATE TABLE `presshop_range_price` (
 -- Table structure for presshop_range_weight
 -- ----------------------------
 CREATE TABLE `presshop_range_weight` (
-  `id_range_weight` int(10) unsigned NOT NULL auto_increment,
+  `id_range_weight` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_carrier` int(10) unsigned NOT NULL,
   `delimiter1` decimal(20,6) NOT NULL,
   `delimiter2` decimal(20,6) NOT NULL,
-  PRIMARY KEY  (`id_range_weight`),
+  PRIMARY KEY (`id_range_weight`),
   UNIQUE KEY `id_carrier` (`id_carrier`,`delimiter1`,`delimiter2`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -1576,30 +1576,30 @@ CREATE TABLE `presshop_range_weight` (
 -- Table structure for presshop_referrer
 -- ----------------------------
 CREATE TABLE `presshop_referrer` (
-  `id_referrer` int(10) unsigned NOT NULL auto_increment,
+  `id_referrer` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
-  `passwd` varchar(32) default NULL,
-  `http_referer_regexp` varchar(64) default NULL,
-  `http_referer_like` varchar(64) default NULL,
-  `request_uri_regexp` varchar(64) default NULL,
-  `request_uri_like` varchar(64) default NULL,
-  `http_referer_regexp_not` varchar(64) default NULL,
-  `http_referer_like_not` varchar(64) default NULL,
-  `request_uri_regexp_not` varchar(64) default NULL,
-  `request_uri_like_not` varchar(64) default NULL,
-  `base_fee` decimal(5,2) NOT NULL default '0.00',
-  `percent_fee` decimal(5,2) NOT NULL default '0.00',
-  `click_fee` decimal(5,2) NOT NULL default '0.00',
-  `cache_visitors` int(11) default NULL,
-  `cache_visits` int(11) default NULL,
-  `cache_pages` int(11) default NULL,
-  `cache_registrations` int(11) default NULL,
-  `cache_orders` int(11) default NULL,
-  `cache_sales` decimal(17,2) default NULL,
-  `cache_reg_rate` decimal(5,4) default NULL,
-  `cache_order_rate` decimal(5,4) default NULL,
+  `passwd` varchar(32) DEFAULT NULL,
+  `http_referer_regexp` varchar(64) DEFAULT NULL,
+  `http_referer_like` varchar(64) DEFAULT NULL,
+  `request_uri_regexp` varchar(64) DEFAULT NULL,
+  `request_uri_like` varchar(64) DEFAULT NULL,
+  `http_referer_regexp_not` varchar(64) DEFAULT NULL,
+  `http_referer_like_not` varchar(64) DEFAULT NULL,
+  `request_uri_regexp_not` varchar(64) DEFAULT NULL,
+  `request_uri_like_not` varchar(64) DEFAULT NULL,
+  `base_fee` decimal(5,2) NOT NULL DEFAULT '0.00',
+  `percent_fee` decimal(5,2) NOT NULL DEFAULT '0.00',
+  `click_fee` decimal(5,2) NOT NULL DEFAULT '0.00',
+  `cache_visitors` int(11) DEFAULT NULL,
+  `cache_visits` int(11) DEFAULT NULL,
+  `cache_pages` int(11) DEFAULT NULL,
+  `cache_registrations` int(11) DEFAULT NULL,
+  `cache_orders` int(11) DEFAULT NULL,
+  `cache_sales` decimal(17,2) DEFAULT NULL,
+  `cache_reg_rate` decimal(5,4) DEFAULT NULL,
+  `cache_order_rate` decimal(5,4) DEFAULT NULL,
   `date_add` datetime NOT NULL,
-  PRIMARY KEY  (`id_referrer`)
+  PRIMARY KEY (`id_referrer`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1608,16 +1608,16 @@ CREATE TABLE `presshop_referrer` (
 CREATE TABLE `presshop_referrer_cache` (
   `id_connections_source` int(11) unsigned NOT NULL,
   `id_referrer` int(11) unsigned NOT NULL,
-  PRIMARY KEY  (`id_connections_source`,`id_referrer`)
+  PRIMARY KEY (`id_connections_source`,`id_referrer`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_scene
 -- ----------------------------
 CREATE TABLE `presshop_scene` (
-  `id_scene` int(10) unsigned NOT NULL auto_increment,
-  `active` tinyint(1) NOT NULL default '1',
-  PRIMARY KEY  (`id_scene`)
+  `id_scene` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_scene`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1626,7 +1626,7 @@ CREATE TABLE `presshop_scene` (
 CREATE TABLE `presshop_scene_category` (
   `id_scene` int(10) unsigned NOT NULL,
   `id_category` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id_scene`,`id_category`)
+  PRIMARY KEY (`id_scene`,`id_category`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1636,7 +1636,7 @@ CREATE TABLE `presshop_scene_lang` (
   `id_scene` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(100) NOT NULL,
-  PRIMARY KEY  (`id_scene`,`id_lang`)
+  PRIMARY KEY (`id_scene`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1649,17 +1649,17 @@ CREATE TABLE `presshop_scene_products` (
   `y_axis` int(4) NOT NULL,
   `zone_width` int(3) NOT NULL,
   `zone_height` int(3) NOT NULL,
-  PRIMARY KEY  (`id_scene`,`id_product`,`x_axis`,`y_axis`)
+  PRIMARY KEY (`id_scene`,`id_product`,`x_axis`,`y_axis`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_search_engine
 -- ----------------------------
 CREATE TABLE `presshop_search_engine` (
-  `id_search_engine` int(10) unsigned NOT NULL auto_increment,
+  `id_search_engine` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `server` varchar(64) NOT NULL,
   `getvar` varchar(16) NOT NULL,
-  PRIMARY KEY  (`id_search_engine`)
+  PRIMARY KEY (`id_search_engine`)
 ) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1668,18 +1668,18 @@ CREATE TABLE `presshop_search_engine` (
 CREATE TABLE `presshop_search_index` (
   `id_product` int(11) unsigned NOT NULL,
   `id_word` int(11) unsigned NOT NULL,
-  `weight` tinyint(4) NOT NULL default '1',
-  PRIMARY KEY  (`id_word`,`id_product`)
+  `weight` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id_word`,`id_product`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_search_word
 -- ----------------------------
 CREATE TABLE `presshop_search_word` (
-  `id_word` int(10) unsigned NOT NULL auto_increment,
+  `id_word` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_lang` int(10) unsigned NOT NULL,
   `word` varchar(15) NOT NULL,
-  PRIMARY KEY  (`id_word`),
+  PRIMARY KEY (`id_word`),
   UNIQUE KEY `id_lang` (`id_lang`,`word`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2173 DEFAULT CHARSET=utf8;
 
@@ -1687,24 +1687,24 @@ CREATE TABLE `presshop_search_word` (
 -- Table structure for presshop_sekeyword
 -- ----------------------------
 CREATE TABLE `presshop_sekeyword` (
-  `id_sekeyword` int(10) unsigned NOT NULL auto_increment,
+  `id_sekeyword` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `keyword` varchar(256) NOT NULL,
   `date_add` datetime NOT NULL,
-  PRIMARY KEY  (`id_sekeyword`)
+  PRIMARY KEY (`id_sekeyword`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_state
 -- ----------------------------
 CREATE TABLE `presshop_state` (
-  `id_state` int(10) unsigned NOT NULL auto_increment,
+  `id_state` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_country` int(11) unsigned NOT NULL,
   `id_zone` int(11) unsigned NOT NULL,
   `name` varchar(64) NOT NULL,
   `iso_code` char(4) NOT NULL,
-  `tax_behavior` smallint(1) NOT NULL default '0',
-  `active` tinyint(1) NOT NULL default '0',
-  PRIMARY KEY  (`id_state`),
+  `tax_behavior` smallint(1) NOT NULL DEFAULT '0',
+  `active` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_state`),
   KEY `id_country` (`id_country`),
   KEY `id_zone` (`id_zone`)
 ) ENGINE=MyISAM AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
@@ -1713,31 +1713,31 @@ CREATE TABLE `presshop_state` (
 -- Table structure for presshop_statssearch
 -- ----------------------------
 CREATE TABLE `presshop_statssearch` (
-  `id_statssearch` int(10) unsigned NOT NULL auto_increment,
+  `id_statssearch` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `keywords` varchar(255) NOT NULL,
-  `results` int(6) NOT NULL default '0',
+  `results` int(6) NOT NULL DEFAULT '0',
   `date_add` datetime NOT NULL,
-  PRIMARY KEY  (`id_statssearch`)
+  PRIMARY KEY (`id_statssearch`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_subdomain
 -- ----------------------------
 CREATE TABLE `presshop_subdomain` (
-  `id_subdomain` int(10) unsigned NOT NULL auto_increment,
+  `id_subdomain` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(16) NOT NULL,
-  PRIMARY KEY  (`id_subdomain`)
+  PRIMARY KEY (`id_subdomain`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_supplier
 -- ----------------------------
 CREATE TABLE `presshop_supplier` (
-  `id_supplier` int(10) unsigned NOT NULL auto_increment,
+  `id_supplier` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
-  PRIMARY KEY  (`id_supplier`)
+  PRIMARY KEY (`id_supplier`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1747,22 +1747,22 @@ CREATE TABLE `presshop_supplier_lang` (
   `id_supplier` int(10) unsigned NOT NULL,
   `id_lang` int(10) unsigned NOT NULL,
   `description` text,
-  `meta_title` varchar(128) default NULL,
-  `meta_keywords` varchar(255) default NULL,
-  `meta_description` varchar(255) default NULL,
-  PRIMARY KEY  (`id_supplier`,`id_lang`)
+  `meta_title` varchar(128) DEFAULT NULL,
+  `meta_keywords` varchar(255) DEFAULT NULL,
+  `meta_description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_supplier`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_tab
 -- ----------------------------
 CREATE TABLE `presshop_tab` (
-  `id_tab` int(10) unsigned NOT NULL auto_increment,
+  `id_tab` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_parent` int(11) NOT NULL,
   `class_name` varchar(64) NOT NULL,
-  `module` varchar(64) default NULL,
+  `module` varchar(64) DEFAULT NULL,
   `position` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`id_tab`),
+  PRIMARY KEY (`id_tab`),
   KEY `class_name` (`class_name`),
   KEY `id_parent` (`id_parent`)
 ) ENGINE=MyISAM AUTO_INCREMENT=69 DEFAULT CHARSET=utf8;
@@ -1773,18 +1773,18 @@ CREATE TABLE `presshop_tab` (
 CREATE TABLE `presshop_tab_lang` (
   `id_lang` int(10) unsigned NOT NULL,
   `id_tab` int(10) unsigned NOT NULL,
-  `name` varchar(32) default NULL,
-  PRIMARY KEY  (`id_tab`,`id_lang`)
+  `name` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`id_tab`,`id_lang`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_tag
 -- ----------------------------
 CREATE TABLE `presshop_tag` (
-  `id_tag` int(10) unsigned NOT NULL auto_increment,
+  `id_tag` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `id_lang` int(10) unsigned NOT NULL,
   `name` varchar(32) NOT NULL,
-  PRIMARY KEY  (`id_tag`),
+  PRIMARY KEY (`id_tag`),
   KEY `tag_name` (`name`),
   KEY `id_lang` (`id_lang`)
 ) ENGINE=MyISAM AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
@@ -1793,9 +1793,9 @@ CREATE TABLE `presshop_tag` (
 -- Table structure for presshop_tax
 -- ----------------------------
 CREATE TABLE `presshop_tax` (
-  `id_tax` int(10) unsigned NOT NULL auto_increment,
+  `id_tax` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `rate` decimal(10,3) NOT NULL,
-  PRIMARY KEY  (`id_tax`)
+  PRIMARY KEY (`id_tax`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1830,29 +1830,29 @@ CREATE TABLE `presshop_tax_zone` (
 -- Table structure for presshop_timezone
 -- ----------------------------
 CREATE TABLE `presshop_timezone` (
-  `id_timezone` int(10) unsigned NOT NULL auto_increment,
+  `id_timezone` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(32) NOT NULL,
-  PRIMARY KEY  (`id_timezone`)
+  PRIMARY KEY (`id_timezone`)
 ) ENGINE=MyISAM AUTO_INCREMENT=561 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_web_browser
 -- ----------------------------
 CREATE TABLE `presshop_web_browser` (
-  `id_web_browser` int(10) unsigned NOT NULL auto_increment,
-  `name` varchar(64) default NULL,
-  PRIMARY KEY  (`id_web_browser`)
+  `id_web_browser` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) DEFAULT NULL,
+  PRIMARY KEY (`id_web_browser`)
 ) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for presshop_zone
 -- ----------------------------
 CREATE TABLE `presshop_zone` (
-  `id_zone` int(10) unsigned NOT NULL auto_increment,
+  `id_zone` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(64) NOT NULL,
-  `active` tinyint(1) unsigned NOT NULL default '0',
-  `enabled` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`id_zone`)
+  `active` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `enabled` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_zone`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -1869,23 +1869,23 @@ CREATE TABLE `private_access` (
 -- Table structure for rates
 -- ----------------------------
 CREATE TABLE `rates` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `membership_id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `desc` text NOT NULL,
   `amount` varchar(255) NOT NULL,
   `term` bigint(255) NOT NULL,
   `term_c` varchar(1) NOT NULL,
-  `automatic` tinyint(1) NOT NULL default '1',
-  PRIMARY KEY  (`id`)
+  `automatic` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for ratingbans
 -- ----------------------------
 CREATE TABLE `ratingbans` (
-  `identityList` varchar(25) collate latin1_general_ci NOT NULL,
-  `idList` varchar(100) collate latin1_general_ci NOT NULL,
+  `identityList` varchar(25) COLLATE latin1_general_ci NOT NULL,
+  `idList` varchar(100) COLLATE latin1_general_ci NOT NULL,
   KEY `identityList` (`identityList`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -1893,11 +1893,11 @@ CREATE TABLE `ratingbans` (
 -- Table structure for ratingitems
 -- ----------------------------
 CREATE TABLE `ratingitems` (
-  `id` int(11) NOT NULL auto_increment,
-  `uniqueName` varchar(25) collate latin1_general_ci NOT NULL,
-  `totalVotes` int(11) NOT NULL default '0',
-  `totalPoints` int(11) NOT NULL default '0',
-  PRIMARY KEY  (`id`),
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uniqueName` varchar(25) COLLATE latin1_general_ci NOT NULL,
+  `totalVotes` int(11) NOT NULL DEFAULT '0',
+  `totalPoints` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
   UNIQUE KEY `uniqueName` (`uniqueName`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -1913,44 +1913,44 @@ CREATE TABLE `settings` (
   `site_email` varchar(100) NOT NULL,
   `paypal_id` varchar(100) NOT NULL,
   `sandbox` tinyint(1) NOT NULL,
-  `reg_verify` tinyint(1) NOT NULL default '0',
-  `reg_allowed` tinyint(1) NOT NULL default '1',
-  `user_limit` varchar(5) NOT NULL default '0',
+  `reg_verify` tinyint(1) NOT NULL DEFAULT '0',
+  `reg_allowed` tinyint(1) NOT NULL DEFAULT '1',
+  `user_limit` varchar(5) NOT NULL DEFAULT '0',
   `currency` varchar(3) NOT NULL,
   `cur_symbol` varchar(5) NOT NULL,
-  `captcha` tinyint(1) NOT NULL default '1',
-  `version` varchar(5) default NULL
+  `captcha` tinyint(1) NOT NULL DEFAULT '1',
+  `version` varchar(5) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tblaccessories
 -- ----------------------------
 CREATE TABLE `tblaccessories` (
-  `ID` int(10) unsigned NOT NULL auto_increment,
-  `ElementName` varchar(50) default NULL,
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ElementName` varchar(50) DEFAULT NULL,
   `ElementContent` text,
-  PRIMARY KEY  (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tbladmin
 -- ----------------------------
 CREATE TABLE `tbladmin` (
-  `ID` int(10) unsigned NOT NULL auto_increment,
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Name` varchar(50) NOT NULL,
   `FirstName` varchar(50) NOT NULL,
   `Email` varchar(50) NOT NULL,
   `PayPalAccount` varchar(50) NOT NULL,
   `Password` varchar(50) NOT NULL,
   `Right` tinyint(1) NOT NULL,
-  PRIMARY KEY  (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for tbladvertisement
 -- ----------------------------
 CREATE TABLE `tbladvertisement` (
-  `ID` int(11) unsigned NOT NULL auto_increment,
+  `ID` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `DateBeginning` date NOT NULL,
   `DateExpiry` date NOT NULL,
   `AdvertiserName` varchar(50) NOT NULL,
@@ -1958,14 +1958,14 @@ CREATE TABLE `tbladvertisement` (
   `URL` text NOT NULL,
   `TextTips` varchar(50) NOT NULL,
   `ImageLink` varchar(200) NOT NULL,
-  PRIMARY KEY  (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for tblblog
 -- ----------------------------
 CREATE TABLE `tblblog` (
-  `ID` int(10) unsigned NOT NULL auto_increment,
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Date` date NOT NULL,
   `Author` int(50) NOT NULL,
   `About` text NOT NULL,
@@ -1974,9 +1974,9 @@ CREATE TABLE `tblblog` (
   `Keywords` varchar(200) NOT NULL,
   `Text` text NOT NULL,
   `Link` varchar(200) NOT NULL,
-  `CountView` int(11) unsigned default NULL,
-  `CountComment` int(11) unsigned default NULL,
-  PRIMARY KEY  (`ID`),
+  `CountView` int(11) unsigned DEFAULT NULL,
+  `CountComment` int(11) unsigned DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_tblblog_tbladmin` (`Author`)
 ) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
@@ -1984,24 +1984,24 @@ CREATE TABLE `tblblog` (
 -- Table structure for tblcategory
 -- ----------------------------
 CREATE TABLE `tblcategory` (
-  `ID` int(10) unsigned NOT NULL auto_increment,
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Name` varchar(70) NOT NULL,
-  PRIMARY KEY  (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for tblcomment
 -- ----------------------------
 CREATE TABLE `tblcomment` (
-  `ID` int(10) unsigned NOT NULL auto_increment,
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Comment` text NOT NULL,
   `Blog` int(11) NOT NULL,
   `Date` datetime NOT NULL,
   `Author` varchar(50) NOT NULL,
-  `Website` varchar(200) default NULL,
+  `Website` varchar(200) DEFAULT NULL,
   `Email` varchar(100) NOT NULL,
   `Status` tinyint(1) NOT NULL,
-  PRIMARY KEY  (`ID`),
+  PRIMARY KEY (`ID`),
   KEY `FK_tblcomment_tblblog` (`Blog`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
@@ -2009,7 +2009,7 @@ CREATE TABLE `tblcomment` (
 -- Table structure for tblevent
 -- ----------------------------
 CREATE TABLE `tblevent` (
-  `ID` int(10) unsigned NOT NULL auto_increment,
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Date` date NOT NULL,
   `Title` varchar(50) NOT NULL,
   `Subject` varchar(50) NOT NULL,
@@ -2017,7 +2017,7 @@ CREATE TABLE `tblevent` (
   `Description` varchar(500) NOT NULL,
   `Speaker` int(11) NOT NULL,
   `Status` tinyint(4) NOT NULL,
-  PRIMARY KEY  (`ID`),
+  PRIMARY KEY (`ID`),
   KEY `Speaker` (`Speaker`)
 ) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
@@ -2025,13 +2025,13 @@ CREATE TABLE `tblevent` (
 -- Table structure for tblfeedback
 -- ----------------------------
 CREATE TABLE `tblfeedback` (
-  `ID` int(11) unsigned NOT NULL auto_increment,
+  `ID` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `Date` text NOT NULL,
   `Title` varchar(100) NOT NULL,
   `Message` text NOT NULL,
   `Ticket` int(11) NOT NULL,
   `Admin` int(11) NOT NULL,
-  PRIMARY KEY  (`ID`),
+  PRIMARY KEY (`ID`),
   KEY `FK_tblfeedback_tbladmin` (`Admin`),
   KEY `FK_tblfeedback_tblticket` (`Ticket`)
 ) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=latin1;
@@ -2040,38 +2040,38 @@ CREATE TABLE `tblfeedback` (
 -- Table structure for tblremember_me
 -- ----------------------------
 CREATE TABLE `tblremember_me` (
-  `id` int(11) NOT NULL auto_increment,
-  `username` varchar(16) character set latin1 collate latin1_general_cs default NULL,
-  `usernamehash` varchar(128) default NULL,
-  `random_string` varchar(128) default NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(16) CHARACTER SET latin1 COLLATE latin1_general_cs DEFAULT NULL,
+  `usernamehash` varchar(128) DEFAULT NULL,
+  `random_string` varchar(128) DEFAULT NULL,
   `origin_time` int(11) NOT NULL,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for tblshowroom
 -- ----------------------------
 CREATE TABLE `tblshowroom` (
-  `ID` int(10) unsigned NOT NULL auto_increment,
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `Video` int(11) NOT NULL,
   `SpeakerImages` varchar(50) NOT NULL,
   `Show` tinyint(3) unsigned NOT NULL,
-  PRIMARY KEY  (`ID`),
+  PRIMARY KEY (`ID`),
   KEY `FK_tblShowroom_Videos` (`Video`)
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tblticket
 -- ----------------------------
 CREATE TABLE `tblticket` (
-  `ID` int(11) unsigned NOT NULL auto_increment,
+  `ID` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `Date` datetime NOT NULL,
   `Title` varchar(50) NOT NULL,
   `Status` tinyint(1) NOT NULL,
   `Message` text NOT NULL,
-  `Speaker` int(11) default NULL,
-  `Is_answered` tinyint(1) default NULL,
-  PRIMARY KEY  (`ID`),
+  `Speaker` int(11) DEFAULT NULL,
+  `Is_answered` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
   KEY `FK_tblticket_users` (`Speaker`)
 ) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
@@ -2079,27 +2079,27 @@ CREATE TABLE `tblticket` (
 -- Table structure for users
 -- ----------------------------
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `membership_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `first_name` varchar(50) default NULL,
-  `company_name` varchar(100) default NULL,
-  `country` varchar(50) default NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `company_name` varchar(100) DEFAULT NULL,
+  `country` varchar(50) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
-  `cookie_id` varchar(100) NOT NULL default '0',
-  `token` varchar(100) NOT NULL default '0',
+  `cookie_id` varchar(100) NOT NULL DEFAULT '0',
+  `token` varchar(100) NOT NULL DEFAULT '0',
   `register_date` datetime NOT NULL,
   `last_ip` varchar(255) NOT NULL,
   `last_access` datetime NOT NULL,
   `notify` tinyint(1) NOT NULL,
-  `status` tinyint(1) NOT NULL default '0',
-  `userlevel` tinyint(1) NOT NULL default '1',
-  `language` varchar(4) NOT NULL default 'en',
+  `status` tinyint(1) NOT NULL DEFAULT '0',
+  `userlevel` tinyint(1) NOT NULL DEFAULT '1',
+  `language` varchar(4) NOT NULL DEFAULT 'en',
   `description` text,
   `tempPassword` text,
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
@@ -2119,39 +2119,39 @@ CREATE TABLE `verification` (
 -- ----------------------------
 CREATE TABLE `video_settings` (
   `id` int(11) NOT NULL,
-  `resize_w` int(11) default NULL,
-  `resize_h` int(11) default NULL,
-  `thumb_w` int(11) default NULL,
-  `thumb_h` int(11) default NULL,
-  `allowed_ext` varchar(255) default NULL,
-  `max_upload_size` int(11) default NULL,
-  `ratio` varchar(10) default NULL,
-  `vbrate` int(11) default NULL,
-  `sbrate` int(11) default NULL,
-  `srate` int(11) default NULL,
-  `thumb_frame` int(11) default NULL,
-  `is_resize` tinyint(4) default NULL,
-  `keep_ratio` tinyint(4) default NULL,
-  PRIMARY KEY  (`id`)
+  `resize_w` int(11) DEFAULT NULL,
+  `resize_h` int(11) DEFAULT NULL,
+  `thumb_w` int(11) DEFAULT NULL,
+  `thumb_h` int(11) DEFAULT NULL,
+  `allowed_ext` varchar(255) DEFAULT NULL,
+  `max_upload_size` int(11) DEFAULT NULL,
+  `ratio` varchar(10) DEFAULT NULL,
+  `vbrate` int(11) DEFAULT NULL,
+  `sbrate` int(11) DEFAULT NULL,
+  `srate` int(11) DEFAULT NULL,
+  `thumb_frame` int(11) DEFAULT NULL,
+  `is_resize` tinyint(4) DEFAULT NULL,
+  `keep_ratio` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for video_temps
 -- ----------------------------
 CREATE TABLE `video_temps` (
-  `id` bigint(13) unsigned NOT NULL auto_increment,
+  `id` bigint(13) unsigned NOT NULL AUTO_INCREMENT,
   `expire` int(10) unsigned NOT NULL,
-  `ip_address` varchar(16) NOT NULL default '0',
+  `ip_address` varchar(16) NOT NULL DEFAULT '0',
   `filename` varchar(255) NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   KEY `word` (`filename`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for videos
 -- ----------------------------
 CREATE TABLE `videos` (
-  `vid_id` bigint(20) unsigned NOT NULL auto_increment,
+  `vid_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `mem_id` bigint(20) unsigned NOT NULL,
   `title` varchar(250) NOT NULL,
   `title_fr` varchar(250) NOT NULL,
@@ -2175,13 +2175,13 @@ CREATE TABLE `videos` (
   `votes` bigint(20) unsigned NOT NULL,
   `posted` bigint(20) unsigned NOT NULL,
   `screenshot` tinyint(3) unsigned NOT NULL,
-  `converted` enum('0','1') NOT NULL default '0',
-  `featured` enum('0','1') NOT NULL default '0',
-  `approved` enum('0','1') NOT NULL default '0',
+  `converted` enum('0','1') NOT NULL DEFAULT '0',
+  `featured` enum('0','1') NOT NULL DEFAULT '0',
+  `approved` enum('0','1') NOT NULL DEFAULT '0',
   `viewed` bigint(20) unsigned NOT NULL,
-  PRIMARY KEY  (`vid_id`),
+  PRIMARY KEY (`vid_id`),
   KEY `mem_id` (`mem_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records 
@@ -3594,6 +3594,11 @@ INSERT INTO `presshop_connections_page` VALUES ('98', '31', '2010-07-11 17:26:31
 INSERT INTO `presshop_connections_page` VALUES ('99', '31', '2010-07-11 19:37:44', null);
 INSERT INTO `presshop_connections_page` VALUES ('100', '31', '2010-07-11 21:07:06', null);
 INSERT INTO `presshop_connections_page` VALUES ('25', '1', '2010-07-11 21:47:45', null);
+INSERT INTO `presshop_connections_page` VALUES ('51', '1', '2010-07-12 05:25:14', null);
+INSERT INTO `presshop_connections_page` VALUES ('51', '3', '2010-07-12 05:26:43', null);
+INSERT INTO `presshop_connections_page` VALUES ('51', '3', '2010-07-12 05:26:44', null);
+INSERT INTO `presshop_connections_page` VALUES ('51', '1', '2010-07-12 05:26:49', null);
+INSERT INTO `presshop_connections_page` VALUES ('51', '1', '2010-07-12 05:31:30', null);
 INSERT INTO `presshop_connections_source` VALUES ('1', '5', 'http://conferences-formations.com/index.php', 'conferences-formations.com/prestashop/product.php?id_product=5', '', '2010-07-02 09:47:19');
 INSERT INTO `presshop_connections_source` VALUES ('2', '9', 'http://conferences-formations.com/index.php', 'conferences-formations.com/prestashop/product.php?id_product=2&lang=2', '', '2010-07-02 09:53:58');
 INSERT INTO `presshop_connections_source` VALUES ('3', '9', 'http://conferences-formations.com/index.php/contact', 'conferences-formations.com/prestashop/product.php?id_product=9&lang=2', '', '2010-07-02 10:50:22');
@@ -3785,6 +3790,9 @@ INSERT INTO `presshop_connections_source` VALUES ('188', '98', 'http://conferenc
 INSERT INTO `presshop_connections_source` VALUES ('189', '99', 'http://conferences-formations.com/index.php/event/show_event/2010-07-19/5', 'conferences-formations.com/prestashop/product.php?id_product=11&lang=2', '', '2010-07-11 19:37:44');
 INSERT INTO `presshop_connections_source` VALUES ('190', '100', 'http://conferences-formations.com/', 'conferences-formations.com/prestashop/product.php?id_product=11&lang=2', '', '2010-07-11 21:07:06');
 INSERT INTO `presshop_connections_source` VALUES ('191', '25', 'http://conferences-formations.com/', 'conferences-formations.com/prestashop/', '', '2010-07-11 21:47:45');
+INSERT INTO `presshop_connections_source` VALUES ('192', '51', 'http://localhost/confor/', 'localhost/confor/prestashop/', '', '2010-07-12 05:25:14');
+INSERT INTO `presshop_connections_source` VALUES ('193', '51', 'http://localhost/confor/', 'localhost/confor/prestashop/', '', '2010-07-12 05:26:49');
+INSERT INTO `presshop_connections_source` VALUES ('194', '51', 'http://localhost/confor/', 'localhost/confor/prestashop/', '', '2010-07-12 05:31:30');
 INSERT INTO `presshop_contact` VALUES ('1', 'admin@conferences-formations.com', '0');
 INSERT INTO `presshop_contact` VALUES ('2', 'admin@conferences-formations.com', '0');
 INSERT INTO `presshop_contact_lang` VALUES ('1', '1', 'Webmaster', 'If a technical problem occurs on this website');
@@ -4546,6 +4554,7 @@ INSERT INTO `presshop_date_range` VALUES ('9', '2010-07-08 00:00:00', '2010-07-0
 INSERT INTO `presshop_date_range` VALUES ('10', '2010-07-09 00:00:00', '2010-07-09 23:59:59');
 INSERT INTO `presshop_date_range` VALUES ('11', '2010-07-10 00:00:00', '2010-07-10 23:59:59');
 INSERT INTO `presshop_date_range` VALUES ('12', '2010-07-11 00:00:00', '2010-07-11 23:59:59');
+INSERT INTO `presshop_date_range` VALUES ('13', '2010-07-12 00:00:00', '2010-07-12 23:59:59');
 INSERT INTO `presshop_delivery` VALUES ('1', '2', null, '1', '1', '5.00');
 INSERT INTO `presshop_delivery` VALUES ('2', '2', null, '1', '2', '5.00');
 INSERT INTO `presshop_delivery` VALUES ('7', '2', '1', null, '2', '5.00');
@@ -5293,6 +5302,8 @@ INSERT INTO `presshop_page_viewed` VALUES ('7', '12', '1');
 INSERT INTO `presshop_page_viewed` VALUES ('30', '12', '2');
 INSERT INTO `presshop_page_viewed` VALUES ('27', '12', '1');
 INSERT INTO `presshop_page_viewed` VALUES ('9', '12', '4');
+INSERT INTO `presshop_page_viewed` VALUES ('1', '13', '3');
+INSERT INTO `presshop_page_viewed` VALUES ('3', '13', '2');
 INSERT INTO `presshop_product` VALUES ('10', '0', '0', '4', '7', '0', '0', '', '0.00', '20', '15.950000', '0.000000', '0.00', '0', '2010-07-06 00:00:00', '2010-07-06 00:00:00', '', '', '', '0.2', '2', '0', '0', '0', '0', '1', '1', '2010-07-06 22:06:50', '2010-07-08 12:14:38');
 INSERT INTO `presshop_product` VALUES ('11', '0', '0', '4', '6', '0', '1', '', '0.00', '10', '24.950000', '20.000000', '0.00', '0', '2010-07-06 00:00:00', '2010-07-06 00:00:00', '', '', '', '0', '0', '0', '0', '0', '0', '1', '1', '2010-07-06 23:38:47', '2010-07-07 08:27:07');
 INSERT INTO `presshop_product` VALUES ('12', '0', '0', '4', '6', '0', '0', '', '0.00', '1', '34.950000', '0.000000', '0.00', '0', '2010-07-06 00:00:00', '2010-07-06 00:00:00', '', '', '', '0', '2', '0', '0', '0', '0', '1', '1', '2010-07-07 00:16:10', '2010-07-07 14:33:54');
@@ -7781,6 +7792,9 @@ INSERT INTO `tblshowroom` VALUES ('11', '100018', 'OymizNIClsOi4rcK.jpg', '0');
 INSERT INTO `tblshowroom` VALUES ('12', '100043', '7nUb6d7SLaPFSAOW.jpg', '1');
 INSERT INTO `tblshowroom` VALUES ('13', '100030', 'j7vd2SPZtpDZ3Kmi.jpg', '1');
 INSERT INTO `tblshowroom` VALUES ('14', '0', 'N4tDUocrw78ILrEr.jpg', '0');
+INSERT INTO `tblshowroom` VALUES ('15', '1', 'uw90jDHfGDvjLQ3Z.jpg', '1');
+INSERT INTO `tblshowroom` VALUES ('16', '3', 'HwBPsDqssIci6oKf.jpg', '1');
+INSERT INTO `tblshowroom` VALUES ('17', '2', 'RPvdELI7CbuczWy3.jpg', '1');
 INSERT INTO `tblticket` VALUES ('1', '2010-06-30 06:06:51', 'Test ticket', '2', 'Fusce quam magna, viverra nec tincidunt nec, congue id quam. Suspendisse id porttitor nibh. Aliquam a lectus a nisi bibendum aliquet. Duis vulputate enim volutpat lorem rutrum facilisis accumsan massa gravida. Curabitur convallis dolor ac enim porttitor ac dignissim erat fermentum. Sed lacinia odio quis felis dapibus gravida? Nulla hendrerit urna et orci tincidunt aliquet. Class aptent taciti sociosqu ad litora torquent per conubi', '1', '1');
 INSERT INTO `tblticket` VALUES ('2', '2010-06-30 06:06:26', 'test admin cai ', '2', '               You need to enter your activation key before you are able to register free domain names.\n\n\n               This is an automated message - do not reply', '29', '1');
 INSERT INTO `tblticket` VALUES ('3', '2010-06-30 07:06:56', 'Test ticket 2', '1', 'test\n\n               Your account was created successfully. Login with:\n\n               Username: huunam09\n\n      \n\n\n               You need to enter your activation key before you are able to register free domain names.\n\n\n               This is an automated message - do not reply\n', '29', '1');
@@ -7801,3 +7815,6 @@ INSERT INTO `users` VALUES ('32', '1', 'robertpiche', 'rene@confor.ca', 'Piché'
 INSERT INTO `users` VALUES ('33', '1', 'georgewright', 'rene@groupe-ace.com', 'Wright', 'George', 'Groupe Confor', '224', '925d51c5a276dc14d7eacf989682609f', '0', '0', '0000-00-00 00:00:00', '205.237.48.52', '0000-00-00 00:00:00', '1', '1', '1', 'en', 'Conférencier, formateur, expert pour la peur en avion', null);
 INSERT INTO `users` VALUES ('34', '1', 'linebolduc', 'rene@confor.ca', 'Bolduc', 'Line', 'Groupe Confor', '224', '925d51c5a276dc14d7eacf989682609f', '0', '0', '0000-00-00 00:00:00', '205.237.48.52', '0000-00-00 00:00:00', '1', '1', '1', 'en', 'Conférencière, formatrice et auteure', null);
 INSERT INTO `video_settings` VALUES ('1', '320', '240', '128', '96', '*.avi,*.mp4,*.flv,*.mpg,*.asf,*.3gp,*.mmv,*.mpe,*.mpeg,*.ogv,*.rm,*.wmv,*.ts', '500', '4:3', '500000', '64', '22050', '20', '1', '1');
+INSERT INTO `videos` VALUES ('1', '2', 'Suspendisse faucibus turpis(en)', 'Suspendisse faucibus turpis(f)', 'Suspendisse faucibus turpis ac velit mollis tempus. Phasellus a pretium augue. Integer sapien mi, vestibulum ac volutpat a, feugiat vel odio. Donec vitae ante et metus vehicula tempus at at lectus. Ut tellus nunc, mattis eget accumsan nec, sodales sed dolor. Quisque leo nulla, elementum vel porta sit amet, laoreet sed sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ips', 'Suspendisse faucibus turpis ac velit mollis tempus. Phasellus a pretium augue. Integer sapien mi, vestibulum ac volutpat a, feugiat vel odio. Donec vitae ante et metus vehicula tempus at at lectus. Ut tellus nunc, mattis eget accumsan nec, sodales sed dolor. Quisque leo nulla, elementum vel porta sit amet, laoreet sed sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ips', '10', 'aaa', '1278926658', '0', '', '0', '0', '0', '0', '0', '0', 'BEJNBfhtwjHziiLW1278926654.flv', 'BEJNBfhtwjHziiLW1278926654.jpg', '0', '0', '0', '0', '0', '0', '0', '1', '0');
+INSERT INTO `videos` VALUES ('2', '2', ' Nulla neque felis (en)', ' Nulla neque felis (f)', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ipsum dui, bibendum vel rhoncus vitae, vulputate vel tortor. Nulla neque felis', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ipsum dui, bibendum vel rhoncus vitae, vulputate vel tortor. Nulla neque felis', '10', 'aaa', '1278926785', '0', '', '0', '0', '0', '0', '0', '0', 'v3KULHKiByyssc0y1278926782.flv', 'v3KULHKiByyssc0y1278926782.jpg', '0', '0', '0', '0', '0', '0', '0', '1', '0');
+INSERT INTO `videos` VALUES ('3', '36', 'abc (en)', 'abc (f)', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ipsum dui, bibendum vel rhoncus vitae, vulputate vel tortor. Nulla neque felis', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ipsum dui, bibendum vel rhoncus vitae, vulputate vel tortor. Nulla neque felis', '1', 'aaa bbb', '1278926877', '0', '', '0', '0', '0', '0', '0', '0', 'cOaBOrNhNueomZju1278926873.flv', 'cOaBOrNhNueomZju1278926873.jpg', '0', '0', '0', '0', '0', '0', '0', '1', '0');

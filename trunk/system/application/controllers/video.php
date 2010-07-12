@@ -8,8 +8,7 @@ class Video extends Frontend_controller
 		parent::Frontend_controller();
 		$this->load->model('Mvconference');
 		$this->_container = 'container';    
-		$this->load->helper('date');
-		$this->load->model('Remember_me');
+		$this->load->helper('date');		
 		$this->load->library('vid_lib');
         $this->load->helper('date');
         $this->load->library('email');
