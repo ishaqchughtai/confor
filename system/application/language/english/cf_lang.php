@@ -532,6 +532,7 @@ $lang['CF_modify_cate'] = 'Modify Category';
 //date
 $lang['CF_month_name_array'] = "'January','February','March','April','May','June','July','August','September','October','November','December'";
 
+//new key 7-6
 $lang['CF_invalid_username_password_message'] = 'invalid username or password';
 
 $lang['CF_up_profile'] = 'Your profile has been updated';
@@ -547,28 +548,11 @@ $lang['CF_day'] = ' day.';
 $lang['CF_expired'] = 'Expired';
 
 $lang['CF_old_pass_incorrect'] = 'Your Old Password was incorrect';
+//new key 09-07
+$lang['CF_Blog_Title'] = 'Blog confor';
+$lang['CF_Blog_search'] = 'Blog search';
 
 $lang['CF_next'] = 'Next >';
-
 $lang['CF_previous'] = '< Previous';
-
 $lang['CF_last'] = 'Last >>';
-
-$lang['CF_first'] = "<< First";
-
-
-//new key for two language
-$lang['CF_en_title'] = "English Title";
-
-$lang['CF_fr_title'] = "French Title";
-
-$lang['CF_en_subject'] = "English Subject";
-
-$lang['CF_fr_subject'] = "French Subject";
-
-$lang['CF_en_des'] = "English Description";
-
-$lang['CF_fr_des'] = "French Description";
-
-
-
+$lang['CF_first'] = '<< First';

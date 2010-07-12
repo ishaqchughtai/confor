@@ -119,7 +119,7 @@ class Home extends Frontend_controller {
             }
     }
 
-    function search_paging($keywords_to_search, $num_per_page='') 
+    function search_paging($keywords_to_search, $num_per_page) 
     {
     $this->_data['path'][] = array(
       'name' => __("CF_search_video"),

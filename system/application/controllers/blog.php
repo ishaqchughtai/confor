@@ -49,7 +49,7 @@ class Blog extends Frontend_controller {
     function index()
     {                        
         $this->_data['query_most_blog'] = $this->Mblog->get_most_blog();
-        $config['base_url'] = base_url().'blog/index/';
+        $config['base_url'] = base_url().'index.php/blog/index/';
         $config['total_rows'] = $this->db->count_all('tblblog');
         $config['per_page']='3';
 
@@ -66,12 +66,12 @@ class Blog extends Frontend_controller {
         $this->_data['pagination'] = $this->pagination->create_links();                
         if($this->session->userdata('admin')==TRUE)
         {
-            $this->_data['page_title'] = 'Blog confor'; 
+            $this->_data['page_title'] = __("CF_Blog_Title"); 
             $this->_load_view('admin/blog_view_admin'); 
         }
         else
         {
-            $this->_data['page_title'] = 'Blog confor';                 
+            $this->_data['page_title'] = __("CF_Blog_Title");                 
             $this->_load_view('blog/blog_view'); 
         } 
     }        
@@ -413,9 +413,9 @@ class Blog extends Frontend_controller {
         $config['first_link'] = '<< First';
 
         $this->pagination->initialize($config);
-        $num = !is_nan((double)$this->uri->segment(3))?0:$this->uri->segment(3);
-        $query_search = $this->Mblog->search_blog($config['per_page'],$num,$Keywords);
-        $this->_data['page_title'] = 'Blog Search';
+        //$num = !is_nan((double)$this->uri->segment(3))?0:$this->uri->segment(3);
+        $query_search = $this->Mblog->search_blog($this->uri->segment(3),$config['per_page'],$Keywords);
+        $this->_data['page_title'] = __("CF_Blog_search");
         if($query_search->num_rows()>0)
         {
             $this->_data['pagination'] = $this->pagination->create_links(); 
@@ -446,7 +446,7 @@ class Blog extends Frontend_controller {
 
         $this->pagination->initialize($config);
         $query_search = $this->Mblog->search_blog($config['per_page'],$this->uri->segment(3),$Keywords);
-        $this->_data['page_title'] = 'Blog Search';
+        $this->_data['page_title'] = __("CF_Blog_search");
         if($query_search->num_rows()>0)
         {
             $this->_data['pagination'] = $this->pagination->create_links(); 

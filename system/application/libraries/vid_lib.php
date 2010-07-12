@@ -191,15 +191,15 @@ class Vid_lib {
 		if(!is_object($this->videoObj)) echo 'FALSE';
 		
 		// Pick a frame to use as the thumb, this is 1/8th through it    
-		//$captureFrame = round($this->videoObj->getFrameCount() / 3);
+		$captureFrame = round($this->videoObj->getFrameCount() / 3);
 		
-		$thumb=$this->videoObj->getFrame(20);
+		$thumb=$this->videoObj->getFrame($captureFrame);
 		if ($thumb) {
 
 			$thumbImage = $thumb->toGDImage();
 			if ($thumbImage) {
 
-				imagepng($thumbImage,$thumbFile);
+				imagejpeg($thumbImage,$thumbFile);
 				imagedestroy($thumbImage);
 				
 				return true;

@@ -55,7 +55,8 @@
 						<p>
 						
 							<label for="image_link"><?php echo __("CF_image_link")?></label>
-							<?php $this->load->view('image_upload');?></p>
+							<input class="short" name="image_link" id="image_link" value="<?php if(isset($_POST['image_link'])){ echo $_POST['image_link'];}?>" onclick="window.open('<?php echo site_url('advertisement/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" readonly="true"/>
+				        <?php echo form_error('image_link')?></p>
 				  <p>
 						
 							<input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_send")?>" />

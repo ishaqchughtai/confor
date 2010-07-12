@@ -2,7 +2,7 @@
 //GENARAL
 //------------------------------------------------------------------
 //menu and footer
-$lang['CF_conference_office'] = 'Bureau de conf&eacute;rence';
+$lang['CF_conference_office'] = 'Bureau de conf&eacute;renciers';
 $lang['CF_conference'] = 'Conf&eacute;rence';
 $lang['CF_shop'] = 'Boutique';
 $lang['CF_home'] = 'Accueil';
@@ -538,10 +538,11 @@ $lang['CF_day'] = ' day.';
 $lang['CF_expired'] = 'Expired';
 
 $lang['CF_old_pass_incorrect'] = 'Your Old Password was incorrect';
+
+//new key 09-07
+$lang['CF_Blog_Title'] = 'Blog confor';
+$lang['CF_Blog_search'] = 'Blog search';
 $lang['CF_next'] = 'f_Next >';
-
 $lang['CF_previous'] = '< f_Previous';
-
 $lang['CF_last'] = 'f_Last >>';
-
-$lang['CF_first'] = "<< f_First";
+$lang['CF_first'] = '<< f_First';
