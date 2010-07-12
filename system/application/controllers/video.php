@@ -290,4 +290,75 @@ class Video extends Frontend_controller
             redirect(site_url());
         }
     }
+    function search()
+    {
+    $this->_data['path'][] = array(
+      'name' => __("CF_search_video"),
+      'link' => '#'
+      );    
+            if($this->input->post('search'))
+            {                
+                $num_per_page = 5;    
+                $keyword=$this->input->post('search_field');   
+                $config['full_tag_open'] = '<li>';        
+                $config['full_tag_close'] = '</li>'; 
+                $config['next_link'] = 'Next >';
+                $config['prev_link'] = '< Previous';
+                $config['last_link'] = 'Last >>';
+                $config['first_link'] = '<< First';            
+
+                $config['per_page'] = $num_per_page;
+                $config['uri_segment'] = 5;            
+                $config['total_rows'] = $this->Mhome->count_video_search($keyword);
+                $this->_data['search_results']=$this->Mhome->search_paging($keyword, $num_per_page, 0);
+
+                if (($keyword) && strlen($keyword)>0)
+                {
+                    $config['base_url'] = site_url('home/search_paging').'/'.$keyword.'/'.$num_per_page.'/';  
+                } else {
+                    $keyword = '_';
+                    $config['base_url'] = site_url('home/search_paging').'/'.$keyword.'/'.$num_per_page.'/';
+                }
+
+                $this->pagination->initialize($config);  
+                $this->_data['link_html'] = $this->pagination->create_links();  
+                $this->_data['keyword'] = $keyword; 
+                $this->_load_view('home/search');                         
+            }
+            else
+            {                
+                $this->_load_view('home/search');   
+            }
+    }
+
+    function search_paging($keywords_to_search, $num_per_page) 
+    {
+    $this->_data['path'][] = array(
+      'name' => __("CF_search_video"),
+      'link' => '#'
+      );          
+        $this->load->library('pagination');
+        $offset = $this->uri->segment(5);      
+
+        if ($offset == FALSE) $offset=0;
+
+        $config['full_tag_open'] = '<li>';        
+        $config['full_tag_close'] = '</li>'; 
+        $config['next_link'] = 'Next >';
+        $config['prev_link'] = '< Previous';
+        $config['last_link'] = 'Last >>';
+        $config['first_link'] = '<< First';    
+
+        $config['base_url'] = site_url('home/search_paging').'/'.$keywords_to_search.'/'.$num_per_page.'/';        
+        $config['per_page'] = $num_per_page;
+        $config['uri_segment'] = 6;
+        if ($keywords_to_search == '_') $keywords_to_search = '';
+        $config['total_rows'] = $this->Mhome->count_video_search($keywords_to_search);
+        $this->pagination->initialize($config);
+        $istitle = $this->uri->segment(6);
+        $this->_data['search_results']=$this->Mhome->search_paging($keywords_to_search, $num_per_page, $offset,$istitle);     
+        $this->_data['link_html'] = $this->pagination->create_links();
+        $this->_data['keyword'] = $keywords_to_search;
+        $this->_load_view('home/search'); 
+    }
 }

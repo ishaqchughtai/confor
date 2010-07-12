@@ -8,7 +8,7 @@
 				
 			  <div class="sidebar_item" id="search">
 				
-					<?php echo form_open(site_url('home/search'));?>
+					<?php echo form_open(site_url('video/search'));?>
 					
 						<input name="search_field" type="text" class="search_field">
 						<input name="search" type="submit" class="search_submit" value="&nbsp">
