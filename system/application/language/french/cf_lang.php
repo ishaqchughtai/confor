@@ -495,7 +495,7 @@ $lang['CF_showroom_menu'] = 'Menu Showroom';
 
 $lang['CF_ad_menu_showroom'] = 'Liste d\'images';
 
-$lang['CF_vid_from_speaker'] = 'Vid&eacute;o des conf&eacute;renciers';
+$lang['CF_vid_from_'] = 'Vid&eacute;o des conf&eacute;renciers';
 
 $lang['CF_show'] = 'Vid&eacute;o des conf&eacute;renciers';
 
@@ -546,3 +546,5 @@ $lang['CF_next'] = 'f_Next >';
 $lang['CF_previous'] = '< f_Previous';
 $lang['CF_last'] = 'f_Last >>';
 $lang['CF_first'] = '<< f_First';
+/*new key on 13rd Jul 2010*/
+$lang['CF_new_speaker'] = 'Nouvel Conf&eacute;rencier';

@@ -52,10 +52,10 @@
       Where vid_id= '.$id);
       return $query;
     }
-    function get_video_by_category($catid)
+    function get_video_by_category($catid,$offset,$per_page)
     {
-        $query=$this->db->query('SELECT
-      videos.vid_id,
+        $this->db->select('
+            videos.vid_id,
       videos.mem_id,
       videos.title,
       videos.description,
@@ -66,12 +66,22 @@
       videos.shash,
       videos.viewed,
       users.username
-      FROM
-      users
-      Inner Join videos ON users.id = videos.mem_id
-      Where category= '.$catid);
+      ');
+      $this->db->from('videos');
+      $this->db->join('users','videos.mem_id = users.id');
+      $this->db->where(array('videos.category'=>$catid));
+      $this->db->limit($per_page,$offset);
+      $query = $this->db->get();
       return $query->result_array();
     }
+    function count_video_record($cat_id)
+    {
+      $this->db->from('videos');
+      $this->db->where(array('videos.category'=>$cat_id));
+      $total_rows = $this->db->count_all_results();
+      return $total_rows;
+    }
+    
     function count_video_search($keyword) 
     {
       $this->db->like('title', $keyword);

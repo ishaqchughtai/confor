@@ -21,6 +21,7 @@
     <h3><?php echo __("CF_speaker_con")?></h3>
     <ul class="link_conttrol">
         <li><a class="icon_list" href="<?php echo site_url('admin/list_user')?>"><?php echo __("CF_speaker_list")?></a></li>
+        <li><a class="icon_list" href="<?php echo site_url('admin/new_speaker')?>"><?php echo __("CF_new_speaker")?></a></li>
     </ul>
 </div>
 <div class="divider"></div>

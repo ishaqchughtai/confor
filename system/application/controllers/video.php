@@ -278,7 +278,24 @@ class Video extends Frontend_controller
                 $this->Mhome->update_view_time($id,$viewed);
                 $this->_data['page_title'] = $row->title;
                 $catid=$row->category;
-                $this->_data['video_by_cat'] = $this->Mhome->get_video_by_category($catid);
+                $page_offset=$this->uri->segment(5);
+                $config['base_url'] = 'http://localhost/confor/index.php/video/play/'.$id.'/4/';
+            $config['total_rows'] = $this->Mhome->count_video_record($catid);
+            $config['per_page']='4';
+            $config['uri_segment'] = 5;
+
+            $config['full_tag_open'] = '<li class="selected">';    
+            $config['full_tag_close'] = '</li>';
+            $config['cur_tag_open'] = '<li class="selected">';
+            $config['cur_tag_close'] = '<li>'; 
+            $config['next_link'] = 'Next >';
+            $config['prev_link'] = '< Previous';
+            $config['last_link'] = 'Last >>';
+            $config['first_link'] = '<< First';
+            $this->pagination->initialize($config);
+            $this->_data['pagination'] = $this->pagination->create_links();
+                $this->_data['video_by_cat'] = $this->Mhome->get_video_by_category($catid,$page_offset,$config['per_page']);
+                $this->_data['pagination'] = $this->pagination->create_links();
                 $this->_load_view('home/play_video');
             }
             else
