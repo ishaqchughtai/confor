@@ -8,8 +8,6 @@ class Advertisement extends Admin_controller {
     //$this->_container = 'container';		
     $this->load->model('MAdvertisement');		
     $this->load->helper('date');		
-    $this->load->model('MSpeaker');
-    $this->load->model('Remember_me');	
     $this->load->model('Mshopproduct','mshopproduct');	
   }	
 
