@@ -69,6 +69,7 @@
 <div class="rate_balloon"><?php $SimpleRatings->create($vid_id);?></div>  
                      
 </div> 
+<?php $this->load->view('home/list_video_by_category',$video_by_cat);?>
 <script language="JavaScript">    
 
 // custom easing called "custom"

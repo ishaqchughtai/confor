@@ -277,6 +277,8 @@ class Video extends Frontend_controller
                 $viewed=$last_viewed+1;
                 $this->Mhome->update_view_time($id,$viewed);
                 $this->_data['page_title'] = $row->title;
+                $catid=$row->category;
+                $this->_data['video_by_cat'] = $this->Mhome->get_video_by_category($catid);
                 $this->_load_view('home/play_video');
             }
             else

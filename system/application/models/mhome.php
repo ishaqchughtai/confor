@@ -52,7 +52,26 @@
       Where vid_id= '.$id);
       return $query;
     }
-
+    function get_video_by_category($catid)
+    {
+        $query=$this->db->query('SELECT
+      videos.vid_id,
+      videos.mem_id,
+      videos.title,
+      videos.description,
+      videos.category,
+      videos.tags,
+      videos.`date`,
+      videos.vhash,
+      videos.shash,
+      videos.viewed,
+      users.username
+      FROM
+      users
+      Inner Join videos ON users.id = videos.mem_id
+      Where category= '.$catid);
+      return $query->result_array();
+    }
     function count_video_search($keyword) 
     {
       $this->db->like('title', $keyword);
@@ -110,7 +129,7 @@
     }
     function get_view_by_id($id)
     {
-      $query=$this->db->query('Select title,viewed from videos Where vid_id= '.$id);
+      $query=$this->db->query('Select title,category,viewed from videos Where vid_id= '.$id);
       return $query;
     }
 
