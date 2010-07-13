@@ -87,6 +87,24 @@ if (! function_exists('xemmex_language'))
 	}
 }
 
+function lang_name_by_short_key($lg, $return_bool=FALSE)
+{
+	$lang_array = array(
+		'en' => 'english',
+		'fr' => 'french',
+		'ca' => 'french'
+	);
+	if (! array_key_exists($lg, $lang_array))	
+	{
+		if ($return_bool) return FALSE;
+		return 'english';
+	}	
+	else
+	{
+		return $lang_array[$lg];
+	}
+}
+
 // ------------------------------------------------------------------------
 // this function for get text by key in currently language
 if ( ! function_exists('__'))

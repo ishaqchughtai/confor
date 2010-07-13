@@ -28,10 +28,15 @@
     <h3><?php echo __("CF_vid_con")?></h3>                                                                                      
     <ul class="link_conttrol">
         <li><a class="icon_list" href="<?php echo site_url('showroom/list_images')?>"><?php echo __("CF_showroom")?></a></li>  
-        <li><a class="icon_list" href="<?php echo site_url('vid/list_video_conference')?>"><?php echo __("CF_admin_vid_list")?></a></li>
-        <li><a class="icon_add" href="<?php echo site_url('vid/new_video_conference')?>"><?php echo __("CF_admin_new_vid")?></a></li>
-		<li><a class="icon_add" href="<?php echo site_url('vid/setting')?>">Video settings</a></li>
-        <li><a class="icon_add" href="<?php echo site_url('admin/category_managing')?>"><?php echo __("CF_cate_man")?></a></li>
+		<li><a class="icon_add" href="<?php echo site_url('admin/category_managing')?>"><?php echo __("CF_cate_man")?></a></li>
+        <li><a class="icon_add" href="<?php echo site_url('vid/setting')?>">Video settings</a></li>
+		<br/>
+		<li><a class="icon_list" href="<?php echo site_url('vid/list_video_conference/en')?>"><?php echo __("CF_admin_vid_list")?> - (English)</a></li>
+        <li><a class="icon_add" href="<?php echo site_url('vid/new_video_conference/en')?>"><?php echo __("CF_admin_new_vid")?> - (English)</a></li>		
+		<br/>
+		<li><a class="icon_list" href="<?php echo site_url('vid/list_video_conference/fr')?>"><?php echo __("CF_admin_vid_list")?> - (French)</a></li>
+        <li><a class="icon_add" href="<?php echo site_url('vid/new_video_conference/fr')?>"><?php echo __("CF_admin_new_vid")?> - (French)</a></li>		
+        
     </ul>
 </div>
 <!-- /.x2 - represents a half windows size div -->
