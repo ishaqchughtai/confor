@@ -105,6 +105,21 @@ function lang_name_by_short_key($lg, $return_bool=FALSE)
 	}
 }
 
+function choose_your_language($lg=FALSE, $js='')
+{
+	$lang_option = array(
+		'en' => 'English',
+		'fr' => 'French'
+	);	
+	
+	if ($lg==FALSE)
+	{
+		$CI =& get_instance();
+		$lg = $CI->_data['lang'];
+	}
+	echo form_dropdown('lg', $lang_option, $lg,'id="lg" style="width:100px"'.$js);
+}
+
 // ------------------------------------------------------------------------
 // this function for get text by key in currently language
 if ( ! function_exists('__'))

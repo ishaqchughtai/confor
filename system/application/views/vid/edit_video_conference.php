@@ -36,6 +36,11 @@
 
                     <h3> <?php echo __("CF_vid_update")?> </h3>
                     <?php echo form_open('vid/edit_video_conference/'.$id);?> 
+
+					<div class="input text">
+						<label>Display language</label>		
+						<?php choose_your_language($lg);?>
+					</div>	
 					
 					<p>
 					<input id="speaker_id" type="hidden" name="speaker" value="<?php echo $speaker_id?>"/>
@@ -74,12 +79,7 @@
                     <select name="approved" class="short">
                         <option value="1" <?php if($appr==1) echo 'selected="selected"';?>><?php echo __("CF_yes")?></option>
                         <option value="0" <?php if($appr==0) echo 'selected="selected"';?>><?php echo __("CF_No")?></option>
-                    </select>
-					
-					<div class="input text">
-						<label>Display language</label>		
-						<?php echo form_dropdown('lg', $lang_option, $lg,'style="width:100px"');?>
-					</div>	
+                    </select>					
 			
                     <p>
                         <label for="name"></label><input type="submit" name="submit" class="submit" value="<?php echo __("CF_update")?>" />
