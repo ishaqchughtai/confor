@@ -21,7 +21,7 @@
             $this->_data['video_path'] = $this->Mhome->get_top_viewed_video();        
             $this->_data['page_title'] = 'Video Conference';
             
-            $config['base_url'] = base_url().'index.php/conference_office/index/';
+            $config['base_url'] = base_url().'index.php/conference/index/';
             $config['total_rows'] = $this->db->count_all('videos');
             $config['per_page']= $this->per_page;
 
