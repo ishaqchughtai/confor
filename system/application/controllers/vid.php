@@ -1,10 +1,12 @@
 <?php
 class Vid extends Admin_controller {
+	var $vid_per_page = 10;
+	
 	function Vid()
 	{	
 		parent::Admin_controller();		
 		$this->load->library('video_upload_lib');
-		$this->load->model('Mvconference'); 
+		$this->load->model('Mvid'); 
 		$this->load->helper('date');
 		$this->load->helper('text');
 		$this->video_upload_lib->ajax_link = site_url('vid/do_upload_ajax');
@@ -20,65 +22,78 @@ class Vid extends Admin_controller {
 		is_admin();            
 		$this->_data['path'][] = array(
 		'name' => __("CF_list_vid"),
-		'link' => site_url("vid/list_video_conference")
+		'link' => site_url("vid/list_video_conference/".$lg)
 		);   
 
-		$category = $this->uri->segment(3);
-		//$num_per_page = $this->uri->segment(4);
-		$page_offset = $this->uri->segment(4);           
+		$lg = $this->uri->segment(3);	
+		if (! $lg) return;
+		if (lang_name_by_short_key($lg,TRUE)==FALSE)
+		{
+			$this->_message('admin', 'Invaild language', 'error',site_url("vid/list_video_conference").'/'.$this->_data['lang']);
+		}
+		
+		$this->_data['lg'] = $lg;
+		
+		$category = $this->uri->segment(4);		
+		$page_offset = $this->uri->segment(5);
 
 		if (!$category)
 		{
-			$category = 0;				
+			$category = 0;							
 		}
 
-		$config['base_url'] = base_url().'index.php/vid/list_video_conference/'.$category.'/';
+		$config['base_url'] = base_url().'index.php/vid/list_video_conference/'.$lg.'/'.$category.'/';
 		$config['full_tag_open'] = '<li>';        
 		$config['full_tag_close'] = '</li>'; 
 		$config['next_link'] = 'Next >';
 		$config['prev_link'] = '< Previous';
 		$config['last_link'] = 'Last >>';
 		$config['first_link'] = '<< First';	
-		$config['uri_segment'] = 4;
+		$config['uri_segment'] = 5;
 		$config['per_page']=$this->vid_per_page;
 		// $config['cur_tag_open'] = '<li class="selected">';
 		// $config['cur_tag_close'] = '</li>'; 
 
 		if($category == 0)
 		{
-			$config['total_rows'] = $this->db->count_all('videos'); 
-			$this->_data['query'] = $this->Mvconference->get_all_video_conference($this->vid_per_page,$page_offset,0);                  
+			$config['total_rows'] = $this->Mvid->count_by_category($lg); 
+			$this->_data['videos'] = $this->Mvid->get_all($lg,$this->vid_per_page,$page_offset,0);
 		}
 		else
 		{
-			$config['total_rows'] = $this->Mvconference->count_video_Category($category);
-			$this->_data['query'] = $this->Mvconference->get_video_conference_by_category($category,$this->vid_per_page,$page_offset,0);
+			$config['total_rows'] = $this->Mvid->count_by_category($lg,$category);
+			$this->_data['videos'] = $this->Mvid->get_by_category($lg, $category,$this->vid_per_page,$page_offset,0);
 		} 
-		$this->pagination->initialize($config);		
+		$this->pagination->initialize($config);
 		$this->_data['pagination'] = $this->pagination->create_links();
 		$this->_data['video_cate'] = $category;
 		$this->_load_view('vid/video_conference_list'); 
-
 	}
 		
-	function new_video_conference()
+	function new_video_conference($lg)
 	{
 		is_admin();
 		$this->_data['path'][] = array(
 		'name' => __("CF_admin_new_vid"),
 		'link' => '#'
 		);		
+		
+		
+		if (lang_name_by_short_key($lg,TRUE)==FALSE)
+		{
+			$this->_message('admin', 'Invaild language', 'error',site_url("vid/list_video_conference"));
+		}
+		
+		$this->_data['lg'] = $lg;
 		$this->video_upload_lib->init();
 
 		$this->form_validation->set_rules('speaker_email',strtolower(__("CF_one_speaker")),'required');
 		$this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');
-		$this->form_validation->set_rules('title_fr','title(fr)','required');
-		$this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 
-		$this->form_validation->set_rules('description_fr','description(fr)','required');
+		$this->form_validation->set_rules('description',strtolower(__("CF_des")),'required');
 		$this->form_validation->set_rules('video_cate',strtolower(__("CF_cate_vid")),'required');
 		$this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
 		$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-
+				
 		if($this->input->post('submit'))
 		{				
 			$this->_data['uname'] = $this->input->post('uname');
@@ -100,19 +115,18 @@ class Vid extends Admin_controller {
 				
 				$data = array(
 					'mem_id'=>$this->input->post('speaker'),
-					'title'=>$this->input->post('title'),
-					'title_fr'=>$this->input->post('title_fr'),
+					'title'=>$this->input->post('title'),					
 					'description'=>$this->input->post('description'),
-					'description_fr'=>$this->input->post('description_fr'),
 					'category'=>$this->input->post('video_cate'),
 					'tags'=>$this->input->post('keywords'),
+					'lang'=>$lg,
 					'Date'=>time(),
 					'approved'=>'1',
 					'viewed'=>0
 				);                    
 				if ($this->video_upload_lib->add_new_video($data, $this->_data['uname']))
 				{
-					$this->_message('admin', __("CF_upload_success"), 'success',site_url("vid/list_video_conference"));
+					$this->_message('admin', __("CF_upload_success"), 'success',site_url("vid/list_video_conference").'/'.$lg);
 				}
 				else
 				{
@@ -136,16 +150,11 @@ class Vid extends Admin_controller {
 		'link' => '#'
 		);
 				
-		$this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');
-		$this->form_validation->set_rules('title_fr','title(fr)','required');
-		$this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 
-		$this->form_validation->set_rules('description_fr','description(fr)','required');
+		$this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');		
+		$this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 		
 		$this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
-
-		//$this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');		
-		//$this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 
 		$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-		$this->_data['query']=$this->Mvconference->get_video_info_by_id($id);
+		$this->_data['query']=$this->Mvid->get_info_by_id($id);
 
 		if($this->input->post('submit')){
 			if($this->form_validation->run()==FALSE)
@@ -155,17 +164,16 @@ class Vid extends Admin_controller {
 			else
 			{												
 				$data = array(
-				'mem_id'=>$this->input->post('speaker'),
-				'title'=>$this->input->post('title'),
-				'title_fr'=>$this->input->post('title_fr'),				
-				'description'=>$this->input->post('description'),
-				'description_fr'=>$this->input->post('description_fr'),
-				'category'=>$this->input->post('video_cate'),
-				'tags'=>$this->input->post('keywords'),					
-				'approved'=>$this->input->post('approved')
+					'mem_id'=>$this->input->post('speaker'),
+					'title'=>$this->input->post('title'),					
+					'description'=>$this->input->post('description'),				
+					'category'=>$this->input->post('video_cate'),
+					'tags'=>$this->input->post('keywords'),			
+					'approved'=>$this->input->post('approved'),
+					'lang'=>$this->input->post('lg')
 				);
-				$this->Mvconference->update_conference($data,$id);									
-				$this->_message('admin', __("CF_save_info"), 'success',site_url("vid/list_video_conference"));
+				$this->Mvid->update_conference($data,$id);									
+				$this->_message('admin', __("CF_save_info"), 'success',site_url("vid/list_video_conference").'/'.$this->input->post('lg'));
 			}
 		}
 		else

@@ -8,6 +8,11 @@
 		'value_field' => 'Name'
 	);		
 	
+	$lang_option = array(
+		'en' => 'English',
+		'fr' => 'French'
+	);	
+	
 ?>   
               <div class="x2">
 					<?php $this->load->view("vid/menu_video_admin");?>
@@ -17,15 +22,14 @@
                         {
                             $row=$query->row();                      
                             $id=$row->vid_id;
-                            $title=$row->title;
-							$title_fr=$row->title_fr;     
+                            $title=$row->title;							
 							$selected_cate = $row->category;
                             $keywords=$row->tags;
-                            $description=$row->description;
-							$description_fr=$row->description_fr;
+                            $description=$row->description;							
 							$appr = $row->approved;	
 							$speaker_id = $row->mem_id;
-							$speaker_name = $row->username . '('.$row->name.')';							
+							$speaker_name = $row->username . '('.$row->name.')';
+							$lg = $row->lang;
                         }
                     ?>
                     <br />
@@ -40,16 +44,11 @@
 					</p>					
 					
                     <p>
-                        <label for="title"><?php echo __("CF_title")?>:</label>( English )
+                        <label for="title"><?php echo __("CF_title")?>:</label>
                         <input type="text" class="medium" name="title" id="title" value="<?php echo $title ?>" />
                         <?php echo form_error('title')?>
                     </p>
-                    <p>
-                        <label for="title_fr"><?php echo __("CF_title")?></label>( French )
-                        <input type="text" class="medium" name="title_fr" id="title_fr" value="<?php echo $title_fr ?>" />
-                        <?php echo form_error('title_fr')?>
-                    </p>
-					
+          					
                     <p>
                         <label for="video_cate"><?php echo __("CF_cate_vid")?>:</label>
 						<?php echo  form_dropdown('video_cate', dropdown_data($selected_cate_setting),$selected_cate, 'id="vid_cate" class="short"');?>			
@@ -64,16 +63,11 @@
                     </p>
 					
                     <p>
-                        <label for="description"><?php echo __("CF_des")?>:</label>( English )
+                        <label for="description"><?php echo __("CF_des")?>:</label>
                         <textarea name="description" id="description" rows="4" cols=""><?php echo $description ?></textarea>
                         <?php echo form_error('description')?>
                     </p>
-                    <p>
-                        <label for="description_fr"><?php echo __("CF_des")?>:</label>( French )
-                        <textarea name="description_fr" id="description_fr" rows="4" cols=""><?php echo $description_fr ?></textarea>
-                        <?php echo form_error('description_fr')?>
-                    </p>					
-                    
+					                    					
                     <p>
                         <label for="approved"><?php echo __("CF_approved")?>:</label>
                     </p>					
@@ -81,11 +75,17 @@
                         <option value="1" <?php if($appr==1) echo 'selected="selected"';?>><?php echo __("CF_yes")?></option>
                         <option value="0" <?php if($appr==0) echo 'selected="selected"';?>><?php echo __("CF_No")?></option>
                     </select>
+					
+					<div class="input text">
+						<label>Display language</label>		
+						<?php echo form_dropdown('lg', $lang_option, $lg,'style="width:100px"');?>
+					</div>	
+			
                     <p>
                         <label for="name"></label><input type="submit" name="submit" class="submit" value="<?php echo __("CF_update")?>" />
                     </p>
 
-                    <?echo form_close();?>
+                    <?php echo form_close();?>
 			  
                    </div>
               <!-- /.x2 - represents a half windows size div -->

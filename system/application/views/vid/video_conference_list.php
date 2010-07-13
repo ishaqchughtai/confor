@@ -14,7 +14,7 @@
         $('#vid_cate').change(function()
         {
             $('#vid_cate :selected').each(function(i, selected){ 		  
-                gogo = XEMMEX.baseUrl + "vid/list_video_conference/" + $(selected).val();	
+                gogo = XEMMEX.baseUrl + "vid/list_video_conference/<?php echo $lg?>/" + $(selected).val();	
                 window.location = gogo;			
             });	
         });
@@ -25,7 +25,7 @@
     <h3>Video menu</h3>
     <?php $this->load->view("vid/menu_video_admin");?>				
     <p>&nbsp;	</p>
-    <h3><?php echo __("CF_admin_vid_list")?></h3>
+    <h3><?php echo __("CF_admin_vid_list")?> (<?php echo lang_name_by_short_key($lg)?>)</h3>
 
     <label><?php echo __("CF_cate_vid")?></label>
     <?php echo  form_dropdown('video_cate', dropdown_data($selected_cate_setting),$selected_cate, 'id="vid_cate" class="short"');?>	
@@ -41,7 +41,7 @@
 			<th width="10"><?php echo __("CF_approved")?></th>  			
             <th width="30"><?php echo __("CF_viewed")?></th>	
         </tr>
-        <?php foreach ($query as $row):?>
+        <?php foreach ($videos as $row):?>
         <?php 
             $user_name=$row['first_name'].' '.$row['name'];
             $preview_img=base_url().thumbs.'/'.$row['shash'];

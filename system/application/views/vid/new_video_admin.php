@@ -15,8 +15,8 @@
                     <h3><?php echo __("CF_add_vid")?></h3>
 					<?php $this->load->view("vid/menu_video_admin");?>
                     <p>&nbsp;	</p>
-                    <h3><?php echo __("CF_add_vid")?> </h3> 
-					  <?php echo form_open('vid/new_video_conference/');?>
+                    <h3><?php echo __("CF_add_vid")?> (<?php echo lang_name_by_short_key($lg)?>) </h3> 
+					  <?php echo form_open('vid/new_video_conference/'.$lg);?>
 						
 					<p>
 					<input id="speaker_id" type="hidden" name="speaker" value="<?php echo $speaker_id?>"/>
@@ -26,26 +26,15 @@
 					</p>
 					
 					<p>
-					<label for="title"><?php echo __("CF_title")?></label>( English )
+					<label for="title"><?php echo __("CF_title")?></label>
 					<input class="medium" name="title" id="title" value="<?php echo set_value('title');?>"/>
 					<?php echo form_error('title')?>
 					</p>
-
-					<p>
-					<label for="title_fr"><?php echo __("CF_title")?></label>( French )
-					<input class="medium" name="title_fr" id="title_fr" value="<?php echo set_value('title_fr');?>"/>
-					<?php echo form_error('title_fr')?>
-					</p>
-					
+				
                     <p>
-                        <label for="description"><?php echo __("CF_des")?></label>( English )
+                        <label for="description"><?php echo __("CF_des")?></label>
                         <textarea name="description" id="description" rows="4" cols=""><?php echo set_value('description');?></textarea>
                         <?php echo form_error('description')?>
-                    </p>
-                    <p>
-                        <label for="description_fr"><?php echo __("CF_des")?></label>( French )
-                        <textarea name="description_fr" id="description_fr" rows="4" cols=""><?php echo set_value('description_fr');?></textarea>
-                        <?php echo form_error('description_fr')?>
                     </p>
 					
                     <p>
