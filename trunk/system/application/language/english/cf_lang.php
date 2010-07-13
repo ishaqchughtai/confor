@@ -556,3 +556,5 @@ $lang['CF_next'] = 'Next >';
 $lang['CF_previous'] = '< Previous';
 $lang['CF_last'] = 'Last >>';
 $lang['CF_first'] = '<< First';
+/*key added on 13rd JUL 2010*/
+$lang['CF_new_speaker'] = 'New Speaker';

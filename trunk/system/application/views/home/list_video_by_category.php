@@ -1,4 +1,4 @@
-<H4>VIDEO WITH SAME CATEGORY</H4>
+
 <?php foreach($video_by_cat as $rows):?>              
     <?php $keyword = explode(" ", $rows['tags']);?>
     <div class="content_item">
@@ -29,4 +29,7 @@
     </div>          
 
     <?php endforeach;?>
+    <ul id="pagination">
+    <?php echo $pagination?>        
+</ul>
 

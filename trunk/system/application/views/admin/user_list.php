@@ -4,7 +4,7 @@
         <h3><?php echo __("CF_user_list")?></h3>
         <table border="1" width="1000">
             <tr align="left">
-                <th width="88"><?php echo __("CF_first_name")?></th>
+                <th width="88"><?php echo __("CF_name")?></th>
                 <th width="121"><?php echo __("CF_company")?></th>
                 <th width="205"><?php echo __("CF_email")?></th>
                 <th width="109"><?php echo __("CF_country")?></th>

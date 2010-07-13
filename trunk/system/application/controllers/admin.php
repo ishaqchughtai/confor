@@ -17,6 +17,7 @@
         function Admin(){
             parent::Admin_controller();
             $this->load->model('Madmin');
+            $this->load->model('Muser');
             $this->load->model('Mvconference'); 
             $this->load->library('validation'); 
             $this->load->helper('date');
@@ -299,6 +300,62 @@
             }
         }
         /*Speaker information managed by administrator*/
+        function new_speaker()
+        {
+            if($this->session->userdata('admin')==FALSE)
+            {                                                
+                redirect(site_url("admin"));
+            }
+            else
+            {
+                $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
+                $this->form_validation->set_rules('username', strtolower(__('CF_user')), $this->config->item('spk_user_rule').'|callback_is_username_exists');        
+                $this->form_validation->set_rules('password', strtolower(__('CF_pass')), $this->config->item('spk_password_rule').'|matches[passconf]');
+                $this->form_validation->set_rules('passconf', strtolower(__('CF_confirm')), $this->config->item('spk_password_rule'));                
+                $this->form_validation->set_rules('name',strtolower(__('CF_name')),'required');
+                $this->form_validation->set_rules('first_name',strtolower(__('CF_first_name')),'required');
+                $this->form_validation->set_rules('email',strtolower(__('CF_email')),$this->config->item('spk_email_rule').'|callback_is_email_exists');
+                if($this->input->post('submit'))
+                {
+                    if($this->form_validation->run()==FALSE)
+                    {
+                        $this->_data['country'] = $this->input->post('country');
+                        $this->_data['company_name'] = $this->input->post('company_name');
+                        $this->_data['description'] = $this->input->post('description');
+                        $this->_load_view('admin/new_speaker');
+                        return;   
+                    }
+                    else
+                    {
+                        $save_data['username'] = $this->input->post('username');
+                        $save_data['email'] = $this->input->post('email');
+                        $save_data['name'] = $this->input->post('name');                
+                        $save_data['first_name'] = $this->input->post('first_name');
+                        $save_data['company_name'] = $this->input->post('company_name');
+                        $save_data['country'] = $this->input->post('country');                
+                        $save_data['description'] = $this->input->post('description');                
+                        $save_data['userlevel'] = 1;
+                        $save_data['cookie_id'] = 0;
+                        $save_data['token'] = 0;
+                        $save_data['status'] = 1;
+                        $save_data['notify'] = 1;
+                        $save_data['membership_id'] = 1;
+                        $save_data['register_date'] = 'NOW()';                
+                        $save_data['last_ip'] = '';            
+                        $save_data['password'] = $this->user_lib->_encode($this->input->post('password'));                                                                                
+                        $this->MUser->add($save_data);
+                
+                        $this->session->set_flashdata('msg', 'Register succesfull');
+                        $this->session->set_flashdata('class_msg', 'success');            
+                        redirect('admin/list_user');
+                    }
+                }
+                else
+                {
+                    $this->_load_view('admin/new_speaker');
+                }
+            }
+        }
         function modify_user($id)
         {
             if($this->session->userdata('admin')==FALSE)

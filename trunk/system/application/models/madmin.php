@@ -139,6 +139,7 @@
 			$this->db->where("users.userlevel <>", "9"); 
             $this->db->join('geo_countries','users.country = geo_countries.con_id');
             $this->db->limit($num,$offset);
+            $this->db->order_by('users.username','ASC');
             $query = $this->db->get();
             return $query->result_array();
         }
