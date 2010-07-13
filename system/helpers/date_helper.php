@@ -80,10 +80,13 @@ if ( ! function_exists('now'))
  * @param	integer
  * @return	integer
  */	
+if(function_exists("date_default_timezone_set") and function_exists("date_default_timezone_get"))
+@date_default_timezone_set(@date_default_timezone_get());
 if ( ! function_exists('mdate'))
 {
 	function mdate($datestr = '', $time = '')
 	{
+        
 		if ($datestr == '')
 			return '';
 	
