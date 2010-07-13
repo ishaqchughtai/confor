@@ -1,3 +1,24 @@
+.frame{
+	background:#f3f8fa url(img/box1.jpg) no-repeat top left;	
+	padding:0px;	
+	width:450px;		
+}
+
+.frame_bottom{
+	background:#fff url(img/box1_bottom.jpg) no-repeat top left;	
+	width:450px;	
+	height:30px;
+}
+
+.frame h3{
+	color:#fafafa;
+	font-size:20px;
+	margin:11px 0px 30px 25px;
+}
+	
+.frame ul{
+	margin-left:20px;
+}	
 .link_conttrol { 
 	margin: 0; padding: 0; list-style: none;
 	line-height:24px;
@@ -10,7 +31,7 @@
 	background-position: 5px 4px;
 	display: block; 
 	padding-left: 30px;
-	color:#5BB12F;
+	color:#666;
 }
 .link_conttrol li a span { color: #f00; }
 
@@ -30,3 +51,38 @@
 	background: url(img/aero.gif) no-repeat top left;	
 }
 
+.icon_profile {
+	background: url(img/profile.png) no-repeat top left;	
+}
+
+.icon_user_add {
+	background: url(img/user_add.png) no-repeat top left;	
+}
+
+.icon_image {
+	background: url(img/image.gif) no-repeat top left;	
+}
+
+.icon_setting {
+	background: url(img/setting.png) no-repeat top left;	
+}
+
+.icon_add_category {
+	background: url(img/add_category.gif) no-repeat top left;	
+}
+
+.icon_key {
+	background: url(img/icon_key.gif) no-repeat top left;	
+}
+
+.icon_paypal {
+	background: url(img/paypal.gif) no-repeat top left;	
+}
+
+.icon_text {
+	background: url(img/text.png) no-repeat top left;	
+}
+
+.icon_cart {
+	background: url(img/cart.png) no-repeat top left;	
+}

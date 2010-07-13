@@ -71,14 +71,19 @@ class Vid extends Admin_controller {
 		$this->_load_view('vid/video_conference_list'); 
 	}
 		
-	function new_video_conference($lg)
+	function new_video_conference()
 	{
 		is_admin();	
-		
-		if (lang_name_by_short_key($lg,TRUE)==FALSE)
+		$lg = $this->input->post('lg');
+		if (! $lg)
 		{
-			$this->_message('admin', 'Invaild language', 'error',site_url("vid/list_video_conference"));
+			$lg = $this->_data['lang'];
 		}
+		
+		// if (lang_name_by_short_key($lg,TRUE)==FALSE)
+		// {
+			// $this->_message('admin', 'Invaild language', 'error',site_url("vid/list_video_conference"));
+		// }
 		
 		$this->_data['path'][] = array(
 		'name' => __("CF_list_vid"),
@@ -206,8 +211,8 @@ class Vid extends Admin_controller {
 		is_admin();
 		
 		$this->_data['path'][] = array(
-		'name' => "Video management",
-		'link' => site_url("vid/list_video_conference")
+		'name' => __("CF_list_vid"),
+		'link' => site_url("vid/list_video_conference").'/'.$this->_data['lang']
 		);
 		
 		$this->_data['path'][] = array(

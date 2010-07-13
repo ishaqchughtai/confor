@@ -14,10 +14,16 @@
 
                     <h3><?php echo __("CF_add_vid")?></h3>
 					<?php $this->load->view("vid/menu_video_admin");?>
-                    <p>&nbsp;	</p>
-                    <h3><?php echo __("CF_add_vid")?> (<?php echo lang_name_by_short_key($lg)?>) </h3> 
-					  <?php echo form_open('vid/new_video_conference/'.$lg);?>
+                    <p>&nbsp;	</p>					
+				
+                    <h3><?php echo __("CF_add_vid")?> </h3> 
+					<?php echo form_open('vid/new_video_conference/'.$lg);?>
 						
+					<div class="input text">
+						<label>Display language</label>		
+						<?php choose_your_language($lg);?>
+					</div>	
+					
 					<p>
 					<input id="speaker_id" type="hidden" name="speaker" value="<?php echo $speaker_id?>"/>
 					<label for="title"><?php echo __("CF_one_speaker")?>:</label>

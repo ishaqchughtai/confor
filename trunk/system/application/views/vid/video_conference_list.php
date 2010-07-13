@@ -13,11 +13,23 @@
     $(function(){
         $('#vid_cate').change(function()
         {
-            $('#vid_cate :selected').each(function(i, selected){ 		  
-                gogo = XEMMEX.baseUrl + "vid/list_video_conference/<?php echo $lg?>/" + $(selected).val();	
+            $('#vid_cate :selected').each(function(i, selected){ 		
+				var lg = $('#lg option:selected').val();				
+				var cate = $(selected).val();
+                gogo = XEMMEX.baseUrl + "vid/list_video_conference/" + lg +"/" + cate;	
                 window.location = gogo;			
             });	
         });
+        
+		$('#lg').change(function()
+        {
+            $('#lg :selected').each(function(i, selected){ 		  				
+				var lg = $(selected).val();				
+				var cate = $('#vid_cate option:selected').val();				
+                gogo = XEMMEX.baseUrl + "vid/list_video_conference/" + lg + "/" + cate;	
+                window.location = gogo;			
+            });	
+        });	
     });	
     //-->
 </script>
@@ -27,6 +39,10 @@
     <p>&nbsp;	</p>
     <h3><?php echo __("CF_admin_vid_list")?> (<?php echo lang_name_by_short_key($lg)?>)</h3>
 
+	<div class="input text">
+		<label>Display language</label>		
+		<?php choose_your_language($lg);?>
+	</div>	
     <label><?php echo __("CF_cate_vid")?></label>
     <?php echo  form_dropdown('video_cate', dropdown_data($selected_cate_setting),$selected_cate, 'id="vid_cate" class="short"');?>	
 
