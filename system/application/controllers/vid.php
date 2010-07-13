@@ -20,17 +20,18 @@ class Vid extends Admin_controller {
 	function list_video_conference()
 	{
 		is_admin();            
-		$this->_data['path'][] = array(
-		'name' => __("CF_list_vid"),
-		'link' => site_url("vid/list_video_conference/".$lg)
-		);   
-
+		
 		$lg = $this->uri->segment(3);	
 		if (! $lg) return;
 		if (lang_name_by_short_key($lg,TRUE)==FALSE)
 		{
 			$this->_message('admin', 'Invaild language', 'error',site_url("vid/list_video_conference").'/'.$this->_data['lang']);
 		}
+		
+		$this->_data['path'][] = array(
+		'name' => __("CF_list_vid"),
+		'link' => site_url("vid/list_video_conference/".$lg)
+		);   
 		
 		$this->_data['lg'] = $lg;
 		
@@ -72,17 +73,22 @@ class Vid extends Admin_controller {
 		
 	function new_video_conference($lg)
 	{
-		is_admin();
-		$this->_data['path'][] = array(
-		'name' => __("CF_admin_new_vid"),
-		'link' => '#'
-		);		
-		
+		is_admin();	
 		
 		if (lang_name_by_short_key($lg,TRUE)==FALSE)
 		{
 			$this->_message('admin', 'Invaild language', 'error',site_url("vid/list_video_conference"));
 		}
+		
+		$this->_data['path'][] = array(
+		'name' => __("CF_list_vid"),
+		'link' => site_url("vid/list_video_conference/".$lg)
+		);  
+		
+		$this->_data['path'][] = array(
+		'name' => __("CF_admin_new_vid"),
+		'link' => '#'
+		);				
 		
 		$this->_data['lg'] = $lg;
 		$this->video_upload_lib->init();
@@ -145,6 +151,7 @@ class Vid extends Admin_controller {
 	function edit_video_conference($id)
 	{
 		is_admin();
+				
 		$this->_data['path'][] = array(
 		'name' => __("CF_edit_video_admin"),
 		'link' => '#'
