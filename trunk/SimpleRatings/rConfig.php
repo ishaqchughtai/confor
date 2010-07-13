@@ -2,7 +2,7 @@
 
 $SimpleRatings->dbHost= "localhost"; //Database Host //Try "localhost"
 
-$SimpleRatings->dbName= "conforence_conforence"; //Database Name
+$SimpleRatings->dbName= "conferen_conferen"; //Database Name
 $SimpleRatings->dbUser= "root"; //Database Username
 $SimpleRatings->dbPass= ""; //Database Password
 
