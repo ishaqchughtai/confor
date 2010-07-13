@@ -78,5 +78,25 @@ class Mvid extends Model{
 		$this->db->update('videos',$data,array('vid_id'=>$id)); 
 	}		
 	
+    function get_popular_video($lg = 'en')
+    {
+		$this->db->where('approved','1');
+		$this->db->where('lang',$lg);
+		$this->db->order_by('viewed','desc');
+		$this->db->limit(8);
+		$query = $this->db->get('videos');
+		return $query->result_array();
+    }
+	
+    function get_recent_video($lg = 'en')
+    {
+		$this->db->where('approved','1');
+		$this->db->where('lang',$lg);
+		$this->db->order_by('date','desc');
+		$this->db->limit(8);
+		$query = $this->db->get('videos');
+		return $query->result_array();	
+    }	
+	
 }
 ?>
