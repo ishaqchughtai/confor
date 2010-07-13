@@ -7,7 +7,7 @@
       $this->load->model('MCategory');
       $this->_container = 'container';    
       $this->load->helper('date');    
-      $this->load->model('Remember_me');
+      //$this->load->model('Remember_me');
       $this->load->model('Mshopproduct','mshopproduct');
     }
 
