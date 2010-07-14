@@ -14,9 +14,9 @@
 					?>
 					
 					
-					<?php if($status):?>
+					<?php if($status==1):?>
 					<div class="content_item">
-						<h3><a href="<?php echo site_url('event/event_content/'.$id)?>"><?php echo $title?></a></h3>
+						<h3><a href="<?php echo site_url('event_frontend/event_content/'.$id)?>"><?php echo $title?></a></h3>
                         <h5><?php echo $subject ?></h5>
 					<?php
 					    //$date = "%F %j%S %Y";
@@ -24,13 +24,13 @@
 					?>
 					<h5><?php echo __("CF_by")?> <?php echo $speaker?> <?php echo __("CF_in")?> : 
 					<?php for($i=0;$i<count($keyword);$i++){?>
-          <a href="<?php echo site_url('event/search_keyword').'/'.$keyword[$i].'/'.$page?>"><?php echo $keyword[$i]?></a>
+          <a href="<?php echo site_url('event_frontend/search_keyword').'/'.$keyword[$i].'/'.$page?>"><?php echo $keyword[$i]?></a>
           <?php if ($i<count($keyword)-1) echo ','?>
           <?php ;}?> // 
 		  			<?php echo $date;?></h5>
 					<p> <?php echo _substr($description,200)?></p>
 					
-					<a href="<?php echo site_url('event/event_content/'.$id)?>" class="read_more"><?php echo __("CF_continue")?></a>
+					<a href="<?php echo site_url('event_frontend/event_content/'.$id)?>" class="read_more"><?php echo __("CF_continue")?></a>
 					</div>	
 					<?php else:?>
 					<?php endif;?>
@@ -44,20 +44,6 @@
 				</div>
 			  <div id="left">
 			  <!-- /.content_item -->
-					<form id="contactform" action="<?php echo site_url('event/add')?>" method="post" enctype="multipart/form-data" class="global">	
-					
-					
-			<?php
-			if ($this->session->userdata('speaker_id')):?>
-			<p>
-						
-				<input name="btnadd" type="submit" class="submit" value="<?php echo __("CF_add_new")?>" />
-						
-			</p>
-			
-			<?php else:?>
-			<?php endif;?>			
-					</form>
 		  </div>
 				<!-- /.content_item -->
 				<!-- /.content_item -->

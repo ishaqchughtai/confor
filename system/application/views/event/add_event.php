@@ -1,9 +1,12 @@
 				<div class="content_item">
-				
+				<ul class="link_conttrol">
+        <li><a class="icon_list" href="<?php echo site_url('manage_event/your_event'.'/'.$lg.'/5')?>"><?php echo __("CF_admin_event_list")?></a></li>
+    </ul>
+    <br>
 					<h3><?php echo __("CF_add_event")?></h3>
 					<?php
 						$data=array('name' => 'event-form','id' => 'event-form'); 
-						echo form_open('event/add',$data);
+						echo form_open('manage_event/add',$data);
 						//echo $error;
 						//echo $notify;
 					?>

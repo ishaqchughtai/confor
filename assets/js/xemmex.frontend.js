@@ -5,7 +5,7 @@ $(function(){
 		dateFormat: 'yy-mm-dd',
 		monthNames: XEMMEX.monthNames,
 		onSelect: function(dateText, inst) {																				
-			gogo = XEMMEX.baseUrl + "event/show_event/" + dateText + "/5";
+			gogo = XEMMEX.baseUrl + "event_frontend/show_event/" + dateText + "/5";
 			//alert(gogo);
 			window.location = gogo;
 		}

@@ -562,7 +562,8 @@ $lang['CF_blog_list'] = 'Blog List';
 $lang['CF_blog_comment'] = 'Comments';
 $lang['CF_blog_approved'] = 'Approved Comment';
 
-/*key added on 14/07/2010*/ 
+/*key added on 14/07/2010*/
+$lang['CF_dis_lang'] = 'Display language'; 
 $lang['CF_blog_not_approved'] = 'Not Approved Comment';
 $lang['CF_mess_approved'] = 'Do you really wish to approved comment?';
 $lang['CF_mess_not_approved'] = 'Do you really wish to not approved comment?';

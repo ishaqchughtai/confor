@@ -43,8 +43,8 @@
 <div class="x2 frame no_margin">
     <h3><?php echo __("CF_event_con")?> </h3>
     <ul class="link_conttrol">
-        <li><a class="icon_list" href="<?php echo site_url('event/event_list')?>"><?php echo __("CF_admin_event_list")?></a></li>
-        <li><a class="icon_add" href="<?php echo site_url('event/add_event')?>"><?php echo __("CF_admin_new_event")?></a></li>
+        <li><a class="icon_list" href="<?php echo site_url('event/event_list/en/5')?>"><?php echo __("CF_admin_event_list")?></a></li>
+        <li><a class="icon_add" href="<?php echo site_url('event/add_event/en/5')?>"><?php echo __("CF_admin_new_event")?></a></li>
     </ul>    
 	<div class="frame_bottom"></div>		
 </div>

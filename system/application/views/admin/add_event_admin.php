@@ -2,17 +2,24 @@
 	$this->load->view('admin/speaker_selector');
 ?>
 				<div class="content_item">
-				
+				<ul class="link_conttrol">
+        <li><a class="icon_list" href="<?php echo site_url('event/event_list'.'/'.$lg.'/5')?>"><?php echo __("CF_admin_event_list")?></a></li>
+    </ul>
+    <br>
 					<h3><?php echo __("CF_add_event")?></h3>
 					<?php
 						$data=array('name' => 'event-form','id' => 'event-form'); 
 						echo form_open('event/add_event',$data);
 					?>
+                    <div class="input text">
+						<label><?php echo __("CF_dis_lang")?></label>		
+						<?php choose_your_language($lg);?>
+					</div>
 						<p>
 						<input id="speaker_id" type="hidden" name="speaker" value="0"/>
 						<label for="title"><?php echo __("CF_one_speaker")?>:</label>
-						<input id="speaker_email" class="short" type="text" value=""/>
-                        <?php echo form_error('speaker')?>
+						<input id="speaker_email" name="speaker_name" class="short" type="text" value=""/>
+                        <?php echo form_error('speaker_name')?>
 						</p>
 						
 						<p>
@@ -42,6 +49,7 @@
 						<p>
 						
 							<label for="description"><?php echo __("CF_des")?>:</label>
+                            <p>
 							<?php 
 									
                                     if ( ! isset($_POST['description']))
@@ -59,6 +67,7 @@
                                     echo form_fckeditor($data);
 									echo form_error('description');
                                     ?>
+                                    </p>
 						</p>						
 						<p>						
 							<input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_send")?>" />
