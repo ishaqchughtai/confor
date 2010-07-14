@@ -27,7 +27,7 @@ class Blog_frontend extends Frontend_controller {
             $side_bar['page'] = "blog/sidebar_bill";                
             $side_bar['bill'] = $this->Mblog->get_most_blog_view($this->_data['lang']);                                
         }
-        $side_bar['categories'] = $this->Mhome->get_category();
+        $side_bar['categories'] = $this->Mhome->get_category($this->_data['lang']);
         $side_bar['dates'] = $this->Mhome->get_dates();
         $side_bar['top_speaker'] = $this->Mhome->get_top_speaker();
         $this->_data['side_bar'] = $side_bar;
