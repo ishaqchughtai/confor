@@ -143,8 +143,13 @@
       return $query;
     }
 
-    function get_category($lg)
+    function get_category($lg=FALSE)
     {
+		$CI =& get_instance();
+		if ($lg==FALSE)
+		{
+			$lg = $CI->_data['lang'];
+		}		
       $query = $this->db->get_where('tblcategory',array('lang'=>$lg));
       return $query->result_array();
     }
