@@ -6,8 +6,7 @@
       $this->_container = 'container';        
       $this->load->model('Mticket');        
       $this->load->helper('date');     
-      $this->load->model('MSpeaker');
-      $this->load->model('Remember_me');					
+      //$this->load->model('Remember_me');					
 	  $this->load->model('send_mail');
       $this->load->model('Mshopproduct','mshopproduct');
     }

@@ -1,3 +1,6 @@
+<?php $this->load->view("admin/admin_menu_blog");?>
+<br />
+<br /> 
 <!-- /.content_item -->
 <div class="content_item">
     <h3><?php echo __("CF_add_new_blog")?></h3>
@@ -50,9 +53,8 @@
                 }
                 $data = array('name' => 'about',
                 'id' => 'about',
-                'width' => '600',
-                'height' => '400',
-                'value'=>$something);
+                'value'=>$something,
+                'class'=>"medium");
                 echo form_textarea($data);
             ?>
         </p>

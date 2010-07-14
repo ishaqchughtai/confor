@@ -4,7 +4,7 @@
       <h3><?php echo __("CF_search")?></h3>
       <h5><?php echo __("CF_blog_search")?></h5>
       <div class="sidebar_item" id="search">
-        <form action="<?php echo site_url('blog/search')?>" method="post">
+        <form action="<?php echo site_url('blog_frontend/search')?>" method="post">
           <input name="search_field_blog" type="text" class="search_field">
           <input name="search_field" type="submit" class="search_submit" value="">
         </form>
