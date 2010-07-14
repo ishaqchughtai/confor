@@ -19,6 +19,11 @@
 .frame ul{
 	margin-left:20px;
 }	
+
+.frame ul li a{
+	text-decoration:none;	
+}	
+
 .link_conttrol { 
 	margin: 0; padding: 0; list-style: none;
 	line-height:24px;

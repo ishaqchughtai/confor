@@ -4,7 +4,7 @@ class Mvid extends Model{
 		parent::Model();
 		$this->load->database();
 	}
-	function get_all($lg, $num,$offset,$approved = 1)
+	function get_all($lg, $num, $offset, $approved=1)
 	{
 		$this->db->select('
 		videos.*,
@@ -23,6 +23,18 @@ class Mvid extends Model{
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+	
+	function get_all_by_speaker_id($lg, $num, $offset, $speaker_id=0, $approved=1 )
+	{	
+		$this->db->where('videos.lang ', $lg);		
+		if ($approved==1) $this->db->where('videos.approved ', '1');
+		if ($speaker_id>0) $this->db->where('videos.mem_id',$speaker_id);		
+		$this->db->order_by("videos.`date`", "desc"); 
+		$this->db->limit($num,$offset);				
+		$query = $this->db->get('videos');
+		return $query->result_array();		
+	}
+	
 	function get_by_category($lg, $category, $num, $offset, $approved=1)
 	{
 		$this->db->select('
@@ -45,10 +57,30 @@ class Mvid extends Model{
 		return $query->result_array();    
 	}
 	
-	function count_by_category($lg, $category=0) 
+	function get_by_category_speaker($lg, $category, $num, $offset, $speaker_id=0, $approved=1)
+	{
+		$this->db->select('
+		videos.*,    
+		tblcategory.Name');
+		$this->db->from('videos');		
+		$this->db->join('tblcategory','videos.category = tblcategory.ID');
+				
+		$this->db->where('videos.lang ', $lg);
+		if ($speaker_id>0) $this->db->where('videos.mem_id',$speaker_id);				
+		if ($category>0) $this->db->where('videos.category',$category);
+		if ($approved==1) $this->db->where('videos.approved ', '1');			            
+		$this->db->order_by("videos.`date`", "desc");			
+		$this->db->limit($num,$offset); 
+		
+		$query = $this->db->get();
+		return $query->result_array();    
+	}	
+	
+	function count_by_category($lg, $category=0, $speaker_id=0) 
 	{
 		$this->db->from('videos');
-		if ($category>0) $this->db->where('videos.category',$category);			
+		if ($category>0) $this->db->where('videos.category',$category);	
+		if ($speaker_id>0) $this->db->where('videos.mem_id',$speaker_id);	
 		$this->db->where('videos.lang', $lg);
 		return $this->db->count_all_results();
 	}
@@ -72,6 +104,15 @@ class Mvid extends Model{
 		$this->db->limit(1);
 		return $this->db->get();            
 	}
+	
+	function get_info_by_vid_speaker($vid_id, $speaker_id)
+	{
+		$this->db->from('videos');		
+		$this->db->where('vid_id', $vid_id);            
+		$this->db->where('mem_id', $speaker_id);  
+		$this->db->limit(1);
+		return $this->db->get();            
+	}	
 	
 	function update_conference($data,$id)
 	{

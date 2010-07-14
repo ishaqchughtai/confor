@@ -311,12 +311,13 @@ class Video_upload_lib {
 		}
 	}			
 	
-	function remove_video_by_vid_id($vid_id)
+	function remove_video_by_vid_id($vid_id, $speaker_id=0)
 	{
 		$this->CI->db->select('vhash,shash');
 		$this->CI->db->from('videos');
 		$this->CI->db->limit(1);
 		$this->CI->db->where('vid_id', $vid_id);
+		if ($speaker_id > 0) $this->CI->db->where('mem_id', $speaker_id);
 		$result = $this->CI->db->get();
 		if ($result->num_rows()<1) 
 		{

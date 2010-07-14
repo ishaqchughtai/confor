@@ -1,21 +1,7 @@
-<?php
-	$this->load->view('admin/speaker_selector');
-		
-	// $selected_cate_setting = array
-	// (
-		// 'table_name' => 'tblcategory',
-		// 'key_field' => 'ID',
-		// 'value_field' => 'Name'
-	// );		
+<?php 
+	if($vid_edit->num_rows()>0):
 	
-	// $lang_option = array(
-		// 'en' => 'English',
-		// 'fr' => 'French'
-	// );	
-	
-	if($query->num_rows()>0):
-	
-		$row=$query->row();                      
+		$row=$vid_edit->row();                      
 		$id=$row->vid_id;
 		$title=$row->title;							
 		$selected_cate = $row->category;
@@ -25,28 +11,24 @@
 		$speaker_id = $row->mem_id;
 		$speaker_name = $row->username . '('.$row->name.')';
 		$lg = $row->lang;	
-?>   
+?>
               <div class="x2">
 					<h3>Video menu</h3>
-					<?php $this->load->view("vid/menu_video_admin",array("lg"=>$lg));?>
+					<?php $this->load->view("vspeaker/sub_menu",array("lg"=>$lg));?>                  
                     <br />
+
                     <h3> <?php echo __("CF_vid_update")?> </h3>
-                    <?php echo form_open('vid/edit_video_conference/'.$id);?> 
-					<?php $this->load->view('vid/lang_category_selector');?>
-					
-					<p>
-					<input id="speaker_id" type="hidden" name="speaker" value="<?php echo $speaker_id?>"/>
-					<label for="title"><?php echo __("CF_one_speaker")?>:</label>
-					<input id="speaker_email" name="speaker_email" class="short" type="text" value="<?php echo $speaker_name?>"/>					
-					</p>					
+                    <?php echo form_open('vspeaker/edit_video_conference/'.$id);?> 
+
+					<?php $this->load->view('vid/lang_category_selector');?>					
 					
                     <p>
                         <label for="title"><?php echo __("CF_title")?>:</label>
                         <input type="text" class="medium" name="title" id="title" value="<?php echo $title ?>" />
                         <?php echo form_error('title')?>
-                    </p>          					       
-
-                    <p>
+                    </p>
+          					
+					<p>
                         <label for="keywords"><?php echo __("CF_key")?>:</label>
                         <input type="text" class="medium" name="keywords" id="keywords" value="<?php echo $keywords ?>" />
                         <?php echo form_error('keywords')?>

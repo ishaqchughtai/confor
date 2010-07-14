@@ -1,32 +1,14 @@
-<?php
-	$this->load->view('admin/speaker_selector');	
 
-	// $selected_cate = isset($video_cate)?$video_cate:1; 
-	// $selected_cate_setting = array
-	// (
-		// 'table_name' => 'tblcategory',
-		// 'key_field' => 'ID',
-		// 'value_field' => 'Name'
-	// );	
-	$speaker_id = isset($speaker_id)?$speaker_id:0;	
-?>   
               <div class="x2">
 
                     <h3><?php echo __("CF_add_vid")?></h3>
-					<?php $this->load->view("vid/menu_video_admin");?>
+					<?php $this->load->view("vspeaker/sub_menu");?>
                     <p>&nbsp;	</p>					
 				
                     <h3><?php echo __("CF_add_vid")?> </h3> 
-					<?php echo form_open('vid/new_video_conference/');?>
+					<?php echo form_open('vspeaker/new_video_conference');?>
 						
-					<?php $this->load->view('vid/lang_category_selector');?>					
-					<a href="<?php echo site_url('admin/category_managing')?>"><?php echo __("CF_cate_man")?></a>
-					<p>
-					<input id="speaker_id" type="hidden" name="speaker" value="<?php echo $speaker_id?>"/>
-					<label for="title"><?php echo __("CF_one_speaker")?>:</label>
-					<input id="speaker_email" name="speaker_email" class="short" type="text" value="<?php echo set_value('speaker_email');?>"/>
-					<?php echo form_error('speaker_email')?>
-					</p>
+					<?php $this->load->view('vid/lang_category_selector');?>
 					
 					<p>
 					<label for="title"><?php echo __("CF_title")?></label>
@@ -53,8 +35,7 @@
 							<?php $this->load->view('vid/vid_uploader');?>
 							<?php if(isset($error)):?>
         					<p class="not_warning"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
-        					<?php endif?>
-                    
+        					<?php endif?>                    
                     <p>
                         <input name="submit" type="submit" class="submit" value="<?php echo __("CF_add")?>" />
                     </p>
