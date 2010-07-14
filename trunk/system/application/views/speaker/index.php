@@ -13,8 +13,8 @@
 				<h3><?php echo __("CF_your_vid")?></h3>								
 				<ul class="link_conttrol">
                 <?php $speaker_id = $this->session->userdata('speaker_id'); ?>
-					<li><a href="<?php echo site_url('video/your_video/'.$speaker_id.'/5')?>"><?php echo __("CF_your_vid")?></a></li>
-					<li><a href="<?php echo site_url('video/add_video')?>"><?php echo __("CF_add_vid")?></a></li>
+					<li><a href="<?php echo site_url('vspeaker')?>"><?php echo __("CF_your_vid")?></a></li>
+					<li><a href="<?php echo site_url('vspeaker/new_video_conference')?>"><?php echo __("CF_add_vid")?></a></li>
 				</ul>					
 			</div>
 			

@@ -1,6 +1,6 @@
 <?php
 class Vid extends Admin_controller {
-	var $vid_per_page = 2;
+	var $vid_per_page = 10;
 	
 	function Vid()
 	{	
@@ -159,18 +159,28 @@ class Vid extends Admin_controller {
 	function edit_video_conference($id)
 	{
 		is_admin();
-				
-		$this->_data['path'][] = array(
-		'name' => __("CF_edit_video_admin"),
-		'link' => '#'
-		);
-				
+								
 		$this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');		
 		$this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 		
 		$this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
 		$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-		$this->_data['query']=$this->Mvid->get_info_by_id($id);
-
+		//$this->_data['query']=$this->Mvid->get_info_by_id($id);
+		
+		$query=$this->Mvid->get_info_by_id($id);		
+		if($query->num_rows()>0)
+		{
+			$this->_data['row'] = $query->row(); 
+			$this->_data['path'][] = array(
+			'name' => __("CF_list_vid"),
+			'link' => site_url("vid/list_video_conference/".$this->_data['row']->lang)
+			);  	
+		}
+		
+		$this->_data['path'][] = array(
+		'name' => __("CF_edit_video_admin"),
+		'link' => '#'
+		);
+		
 		if($this->input->post('submit')){
 			if($this->form_validation->run()==FALSE)
 			{				

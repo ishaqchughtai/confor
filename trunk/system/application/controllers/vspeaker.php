@@ -170,20 +170,30 @@ class VSpeaker extends Speaker_controller
 		
 	function edit_video_conference($id)
 	{
-		$user_data = check_membership();
-							
-		$this->_data['path'][] = array(
-		'name' => __("CF_edit_video_admin"),
-		'link' => '#'
-		);
+		$user_data = check_membership();							
 				
 		$this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');		
 		$this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 		
 		$this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
-//		$this->form_validation->set_rules('video_cate',strtolower(__("CF_cate_vid")),'required|callback_category_check');
 		$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-		$this->_data['vid_edit']=$this->Mvid->get_info_by_vid_speaker($id, $user_data['speaker_id']);
-
+				
+		//$this->_data['vid_edit']=$this->Mvid->get_info_by_vid_speaker($id, $user_data['speaker_id']);
+		$query=$this->Mvid->get_info_by_vid_speaker($id, $user_data['speaker_id']);
+		if($query->num_rows()>0)
+		{
+			$this->_data['row'] = $query->row(); 
+			$this->_data['path'][] = array(
+			'name' => __("CF_list_vid"),
+			'link' => site_url("vspeaker/list_video_conference/".$this->_data['row']->lang)
+			);  			
+		}
+		
+		$this->_data['path'][] = array(
+		'name' => __("CF_edit_video_admin"),
+		'link' => '#'
+		);		
+		
+		
 		if($this->input->post('submit')){
 			if($this->form_validation->run()==FALSE)
 			{				
@@ -231,17 +241,7 @@ class VSpeaker extends Speaker_controller
 		}		
 		$this->video_upload_lib->init();
 		$this->video_upload_lib->do_upload_ajax();
-	}
-	
-	// function category_check($cate)
-	// {
-		// if ((int)$cate==0)
-		// {
-			// $this->form_validation->set_message('category_check','You must select 1 category'); 
-			// return FALSE;
-		// }
-		// return TRUE;
-	// }
+	}	
 	
 	function keyword_check($Keywords)
 	{
