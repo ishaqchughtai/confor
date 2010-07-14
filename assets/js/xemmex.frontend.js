@@ -16,7 +16,7 @@ $(function(){
         dateFormat: 'yy-mm-dd',
         monthNames: XEMMEX.monthNames,
         onSelect: function(dateText, inst) {                                                                                
-            gogo = XEMMEX.baseUrl + "blog_frontend/search_blog_by_date/" + dateText+"/5";
+            gogo = XEMMEX.baseUrl + "blog_frontend/search_blog_by_date/" + dateText;
             //alert(gogo);
             window.location = gogo;
         }
