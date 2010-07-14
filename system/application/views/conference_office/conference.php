@@ -59,7 +59,7 @@
 
             <?php foreach($conference_list as $rows):?>
                 <div class="content_item">
-                    <h3><a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><?php echo $rows['title'];?></a></h3>
+                    <h3><a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>"><?php echo $rows['title'];?></a></h3>
                     <h5>By
                         <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $name?></b></a> 
                         in 
@@ -73,14 +73,14 @@
                     </div> 
 
                     <p>
-                        <a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="202" height="90" alt="" class="alignleft" /></a>
+                        <a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="202" height="90" alt="" class="alignleft" /></a>
                     </p>
 
                     <p>
                         <?php echo _substr($rows['description'],200);?>
                     </p>
 
-                    <a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>" class="read_more"><?php echo __("CF_view")?></a>
+                    <a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>" class="read_more"><?php echo __("CF_view")?></a>
 
                 </div>
                 <?php endforeach?>
