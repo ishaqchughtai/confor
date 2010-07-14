@@ -10,6 +10,8 @@
 			  <?php if ($membership_info['ms_rate']>0):?>
 			  <p><strong><?php echo __("CF_cur_mem_rate")?>: </strong><?php echo $membership_info['rate_info']?></p>
 			  </br>
+			  <p><strong>Purchase date: </strong><?php echo $membership_info['purchase_date']?></p>
+			  </br>
 			  <p><strong><?php echo __("CF_mem_exp")?>: </strong><?php echo $membership_info['ms_expire']?></p>			  
 			  <?php else:?>
 			  <p><strong><?php echo __("CF_cur_mem_rate")?>: </strong><?php echo __("CF_notify")?>. </p>			  

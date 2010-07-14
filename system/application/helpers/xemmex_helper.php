@@ -3,15 +3,15 @@
 // ------------------------------------------------------------------------
 
 /**
- * XemmeX Helpers
- *
- * This helper contains some functions using for XEMMEX.TV project
- * 
- * @package		Confor
- * @subpackage	Helpers
- * @category	Helpers
- * @author		Nguyen Hai Dang (XemmeX developer)
- */
+* XemmeX Helpers
+*
+* This helper contains some functions using for XEMMEX.TV project
+* 
+* @package		Confor
+* @subpackage	Helpers
+* @category	Helpers
+* @author		Nguyen Hai Dang (XemmeX developer)
+*/
 
 // ------------------------------------------------------------------------
 
@@ -24,9 +24,9 @@ if (! function_exists('xemmex_language'))
 		$lang = get_languages('header');
 		
 		$lang_array = array(
-			'en' => 'english',
-			'fr' => 'french',
-			'ca' => 'french'
+		'en' => 'english',
+		'fr' => 'french',
+		'ca' => 'french'
 		);
 		
 		if ($lg == FALSE) 
@@ -53,35 +53,35 @@ if (! function_exists('xemmex_language'))
 		{
 			return FALSE;		
 		}
-			
+		
 		//echo $lang;
 		// if($CI->session->userdata('lang')) 
 		// {
-			// $lang = $CI->session->userdata('lang');
-			// if (array_key_exists($lang, $lang_array)) 
-			// {
-				// $CI->config->set_item('language', $lang_array[$lang]);
-				// $CI->lang->load('confor', $lang_array[$lang]);
-				// $CI->lang->load('cf', $lang_array[$lang]);
-			// } 
-			// else 
-			// {
-				// return FALSE;		
-			// }
+		// $lang = $CI->session->userdata('lang');
+		// if (array_key_exists($lang, $lang_array)) 
+		// {
+		// $CI->config->set_item('language', $lang_array[$lang]);
+		// $CI->lang->load('confor', $lang_array[$lang]);
+		// $CI->lang->load('cf', $lang_array[$lang]);
 		// } 
 		// else 
 		// {
-			// if (array_key_exists($lang, $lang_array)) 
-			// {
-				// $CI->session->set_userdata('lang',$lang);
-				// $CI->config->set_item('language', $lang_array[$lang]);
-				// $CI->lang->load('confor', $lang_array[$lang]);
-				// $CI->lang->load('cf', $lang_array[$lang]);
-			// } 
-			// else 
-			// {
-				// return FALSE;		
-			// }
+		// return FALSE;		
+		// }
+		// } 
+		// else 
+		// {
+		// if (array_key_exists($lang, $lang_array)) 
+		// {
+		// $CI->session->set_userdata('lang',$lang);
+		// $CI->config->set_item('language', $lang_array[$lang]);
+		// $CI->lang->load('confor', $lang_array[$lang]);
+		// $CI->lang->load('cf', $lang_array[$lang]);
+		// } 
+		// else 
+		// {
+		// return FALSE;		
+		// }
 		// }
 		return $lang;
 	}
@@ -90,9 +90,9 @@ if (! function_exists('xemmex_language'))
 function lang_name_by_short_key($lg, $return_bool=FALSE)
 {
 	$lang_array = array(
-		'en' => 'english',
-		'fr' => 'french',
-		'ca' => 'french'
+	'en' => 'english',
+	'fr' => 'french',
+	'ca' => 'french'
 	);
 	if (! array_key_exists($lg, $lang_array))	
 	{
@@ -108,8 +108,8 @@ function lang_name_by_short_key($lg, $return_bool=FALSE)
 function choose_your_language($lg=FALSE, $js='')
 {
 	$lang_option = array(
-		'en' => 'English',
-		'fr' => 'French'
+	'en' => 'English',
+	'fr' => 'French'
 	);	
 	
 	if ($lg==FALSE)
@@ -221,43 +221,43 @@ function img($file, $attributes = NULL)
 
 function form_fckeditor($data = '', $value = '', $extra = '')
 {
-    $CI =& get_instance();
+	$CI =& get_instance();
 
-    $fckeditor_basepath = $CI->config->item('fckeditor_basepath');
-    
-    require_once( $_SERVER["DOCUMENT_ROOT"] . $fckeditor_basepath. 'fckeditor.php' );
-    
-    $instanceName = ( is_array($data) && isset($data['name'])  ) ? $data['name'] : $data;
-    $fckeditor = new FCKeditor($instanceName);
-    
-    if( $fckeditor->IsCompatible() )
-    {
-        $fckeditor->Value = $value;//html_entity_decode($value);
-        $fckeditor->BasePath = $fckeditor_basepath;
-        if( $fckeditor_toolbarset = $CI->config->item('fckeditor_toolbarset_default'))
-                $fckeditor->ToolbarSet = $fckeditor_toolbarset;
-        
-        if( is_array($data) )
-        {
-            if( isset($data['value']) )
-                $fckeditor->Value = $data['value'];//html_entity_decode($data['value']);
-            if( isset($data['basepath']) )
-                $fckeditor->BasePath = $data['basepath'];
-            if( isset($data['toolbarset']) )
-                $fckeditor->ToolbarSet = $data['toolbarset'];
-            if( isset($data['width']) )
-                $fckeditor->Width = $data['width'];
-            if( isset($data['height']) )
-                $fckeditor->Height = $data['height'];
-        }
-        
-        
-        return $fckeditor->CreateHtml();
-    }
-    else
-    {
-        return form_textarea( $data, $value, $extra );
-    }
+	$fckeditor_basepath = $CI->config->item('fckeditor_basepath');
+	
+	require_once( $_SERVER["DOCUMENT_ROOT"] . $fckeditor_basepath. 'fckeditor.php' );
+	
+	$instanceName = ( is_array($data) && isset($data['name'])  ) ? $data['name'] : $data;
+	$fckeditor = new FCKeditor($instanceName);
+	
+	if( $fckeditor->IsCompatible() )
+	{
+		$fckeditor->Value = $value;//html_entity_decode($value);
+		$fckeditor->BasePath = $fckeditor_basepath;
+		if( $fckeditor_toolbarset = $CI->config->item('fckeditor_toolbarset_default'))
+		$fckeditor->ToolbarSet = $fckeditor_toolbarset;
+		
+		if( is_array($data) )
+		{
+			if( isset($data['value']) )
+			$fckeditor->Value = $data['value'];//html_entity_decode($data['value']);
+			if( isset($data['basepath']) )
+			$fckeditor->BasePath = $data['basepath'];
+			if( isset($data['toolbarset']) )
+			$fckeditor->ToolbarSet = $data['toolbarset'];
+			if( isset($data['width']) )
+			$fckeditor->Width = $data['width'];
+			if( isset($data['height']) )
+			$fckeditor->Height = $data['height'];
+		}
+		
+		
+		return $fckeditor->CreateHtml();
+	}
+	else
+	{
+		return form_textarea( $data, $value, $extra );
+	}
 }
 
 function is_admin($go_after_login=TRUE) 
@@ -267,11 +267,11 @@ function is_admin($go_after_login=TRUE)
 	{
 		$admin_data = array
 		(
-			'admin_name' => $CI->session->userdata('admin_name'),
-			'admin' => $CI->session->userdata('admin'),
-			'admin_id' => $CI->session->userdata('admin_id'),
-			//'lang' => $this->CI->session->userdata('lang'),
-			'right' => $CI->session->userdata('right')
+		'admin_name' => $CI->session->userdata('admin_name'),
+		'admin' => $CI->session->userdata('admin'),
+		'admin_id' => $CI->session->userdata('admin_id'),
+		//'lang' => $this->CI->session->userdata('lang'),
+		'right' => $CI->session->userdata('right')
 		);
 		return $admin_data;
 	}
@@ -316,19 +316,19 @@ if (! function_exists('_substr'))
 	{
 		$sub = '';
 		$len = 0;
-	   
+		
 		foreach (explode(' ', $str) as $word)
 		{
 			$part = (($sub != '') ? ' ' : '') . $word;
 			$sub .= $part;
 			$len += strlen($part);
-		   
+			
 			if (strlen($word) > $minword && strlen($sub) >= $length)
 			{
 				break;
 			}
 		}
-	   
+		
 		return $sub . (($len < strlen($str)) ? ' [...]' : '');
 	}
 }
@@ -346,25 +346,25 @@ if ( ! function_exists('get_random_top_adv'))
 }
 if ( ! function_exists('get_random_top_video'))
 {
-    function get_random_top_video($category=FALSE)
-    {
-        $CI =& get_instance();
-        $CI->load->model('Mhome');
-        $items = $CI->Mhome->get_random_by_video($category, 8);
-        return $items->result_array();
-        //....
-    }
+	function get_random_top_video($category=FALSE)
+	{
+		$CI =& get_instance();
+		$CI->load->model('Mhome');
+		$items = $CI->Mhome->get_random_by_video($category, 8);
+		return $items->result_array();
+		//....
+	}
 }
 if ( ! function_exists('get_random_by_speaker'))
 {
-    function get_random_by_speaker($mem_id=FALSE)
-    {
-        $CI =& get_instance();
-        $CI->load->model('Mhome');
-        $items = $CI->Mhome->get_random_by_speaker($mem_id, 8);
-        return $items->result_array();
-        //....
-    }
+	function get_random_by_speaker($mem_id=FALSE)
+	{
+		$CI =& get_instance();
+		$CI->load->model('Mhome');
+		$items = $CI->Mhome->get_random_by_speaker($mem_id, 8);
+		return $items->result_array();
+		//....
+	}
 }
 if ( ! function_exists('xm_generateRandStr'))
 {
@@ -376,13 +376,13 @@ if ( ! function_exists('xm_generateRandStr'))
 			$randnum = mt_rand(0, 61);
 			if ($randnum < 10) 
 			{
-			  $randstr .= chr($randnum + 48);
+				$randstr .= chr($randnum + 48);
 			} elseif ($randnum < 36) 
 			{
-			  $randstr .= chr($randnum + 55);
+				$randstr .= chr($randnum + 55);
 			} else 
 			{
-			  $randstr .= chr($randnum + 61);
+				$randstr .= chr($randnum + 61);
 			}
 		}
 		return $randstr;
@@ -392,9 +392,9 @@ if ( ! function_exists('xm_generateRandStr'))
 if ( ! function_exists('xm_generateRandID'))
 {
 	function xm_generateRandID()
-    {
-        return md5(xm_generateRandStr(16));
-    }
+	{
+		return md5(xm_generateRandStr(16));
+	}
 }
 
 
@@ -668,33 +668,106 @@ function get_languages( $feature, $spare='' )
 		return $user_languages[0][1];
 		// switch ( $user_languages[0][1] )
 		// {
-			// case 'vi':
-				// return 'fr';
-				// break;
-			// case 'fr':
-				// return 'fr';
-				// break;				
-			// default:
-				// return 'en';
-				// break;
+		// case 'vi':
+		// return 'fr';
+		// break;
+		// case 'fr':
+		// return 'fr';
+		// break;				
+		// default:
+		// return 'en';
+		// break;
 		// }
 	}
 }
 
-// if ( ! function_exists('sanitize'))
-// {
-	// function sanitize($string, $trim = false)
-	// {
-	  // $string = filter_var($string, FILTER_SANITIZE_STRING);
-	  // $string = trim($string);
-	  // $string = stripslashes($string);
-	  // $string = strip_tags($string);
-	  // $string = str_replace(array('‘', '’', '“', '”'), array("'", "'", '"', '"'), $string);
-	  // if ($trim)
-		  // $string = substr($string, 0, $trim);
-	  
-	  // return $string;
-	// }
-// }
+/**
+* getDays()
+* 
+* @param mixed $number
+* @param mixed $term
+* @return
+*/
+
+function getDays($number, $term)
+{
+	switch ($term) {
+	case 'D':
+		return $number;
+		break;
+	case 'W':
+		return($number * 7);
+		break;
+	case 'M':
+		return($number * 31);
+		break;
+	case 'Y':
+		return($number * 365);
+		break;
+	}
+}
+
+/**
+* getTerm()
+* 
+* @param mixed $term
+* @return
+*/
+function getTerm($term)
+{
+	switch ($term) {
+	case 'D':
+		return 'Days';
+		break;
+	case 'W':
+		return 'Weeks';
+		break;
+	case 'M':
+		return 'Months';
+		break;
+	case 'Y':
+		return 'Years';
+		break;
+	}
+}
+
+/**
+* getDifference()
+* 
+* @param mixed $startDate
+* @param mixed $endDate
+* @param integer $format
+* @return
+*/
+function getDifference($startDate, $endDate, $format = 6)
+{
+	@list($date, $time) = explode(' ', $endDate);
+	$startdate = explode("-", $date);
+	$starttime = explode(":", $time);
+	
+	list($date, $time) = explode(' ', $startDate);
+	$enddate = explode("-", $date);
+	$endtime = explode(":", $time);
+	
+	$secondsDifference = @mktime($endtime[0], $endtime[1], $endtime[2], $enddate[1], $enddate[2], $enddate[0]) - @mktime($starttime[0], $starttime[1], $starttime[2], $startdate[1], $startdate[2], $startdate[0]);
+	
+	switch ($format) {
+	case 0:
+		return $secondsDifference;
+	case 1:
+		return floor($secondsDifference / 60);
+	case 2:
+		return floor($secondsDifference / 60 / 60);
+	case 3:
+		return floor($secondsDifference / 60 / 60 / 24);
+	case 4:
+		return floor($secondsDifference / 60 / 60 / 24 / 7);
+	case 5:
+		return floor($secondsDifference / 60 / 60 / 24 / 7 / 4);
+	default:
+		return floor($secondsDifference / 365 / 60 / 60 / 24);
+	}
+}
+
 /* End of file xemmex_helper.php */ 
 /* Location: ./system/application/helpers/xemmex_helper.php */ 
