@@ -1,7 +1,7 @@
 <?php 
-	if($vid_edit->num_rows()>0):
+	if(isset($row)):
 	
-		$row=$vid_edit->row();                      
+		//$row=$vid_edit->row();                      
 		$id=$row->vid_id;
 		$title=$row->title;							
 		$selected_cate = $row->category;

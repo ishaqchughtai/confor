@@ -1,21 +1,7 @@
 <?php
 	$this->load->view('admin/speaker_selector');
-		
-	// $selected_cate_setting = array
-	// (
-		// 'table_name' => 'tblcategory',
-		// 'key_field' => 'ID',
-		// 'value_field' => 'Name'
-	// );		
-	
-	// $lang_option = array(
-		// 'en' => 'English',
-		// 'fr' => 'French'
-	// );	
-	
-	if($query->num_rows()>0):
-	
-		$row=$query->row();                      
+
+	if(isset($row)):
 		$id=$row->vid_id;
 		$title=$row->title;							
 		$selected_cate = $row->category;
@@ -24,7 +10,7 @@
 		$appr = $row->approved;	
 		$speaker_id = $row->mem_id;
 		$speaker_name = $row->username . '('.$row->name.')';
-		$lg = $row->lang;	
+		$lg = $row->lang;		
 ?>   
               <div class="x2">
 					<h3>Video menu</h3>
