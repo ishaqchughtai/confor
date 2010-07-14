@@ -3,6 +3,10 @@
         <h3>Add New Category</h3>
         <p>&nbsp;</p>
         <?php echo form_open('admin/add_new_category'); ?>
+        <div class="input text">
+                        <label>Display language</label>        
+                        <?php choose_your_language($lg);?>
+        </div>
         <p>
             <label for="catename"><?php echo __("CF_name")?>:</label>
             <input class="medium" name="txtCateName" id="CateName" /><?php echo form_error("txtCateName"); ?>

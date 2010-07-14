@@ -699,18 +699,20 @@
         }
         function list_category()
         {
-            if($this->session->userdata('admin')==FALSE)
-            {                                                
-                redirect(site_url("admin"));
+            is_admin();            
+            $lg = $this->uri->segment(3);    
+            if (! $lg) return;
+            if (lang_name_by_short_key($lg,TRUE)==FALSE)
+            {
+                $this->_message('admin', 'Invaild language', 'error',site_url("admin/list_category").'/'.$this->_data['lang']);
             }
-            else{
-                $this->_data['path'][] = array(
-                'name' =>__("CF_list_cate"),
-                'link' => '#'
-                );                
-                $this->_data['query'] = $this->Madmin->get_all_category();
-                $this->_load_view('admin/category_list');
-            }
+            $this->_data['path'][] = array(
+            'name' =>__("CF_list_cate"),
+            'link' => 'admin/list_category/'.$lg
+            );
+            $this->_data['lg'] = $lg;                
+            $this->_data['query'] = $this->Madmin->get_all_category($lg);
+            $this->_load_view('admin/category_list');   
         }
         function delete_category($catid)
         {
@@ -782,6 +784,13 @@
         }
         function add_new_category()
         {
+            is_admin();    
+            $lg = $this->input->post('lg');
+            if (! $lg)
+            {
+                $lg = $this->_data['lang'];
+            }
+            $this->_data['lg'] = $lg;
             $this->_data['path'][] = array(
             'name' =>__("CF_add_cate"),
             'link' => site_url("admin/add_new_category")
@@ -799,6 +808,7 @@
                 {
                     $data = array(
                     'Name'=>$this->input->post('txtCateName'),
+                    'lang'=>$lg
                     );
                     $this->Madmin->add_new_category($data);
                     redirect('admin/list_category');
