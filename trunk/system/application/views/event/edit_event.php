@@ -14,7 +14,7 @@
 				
 					<h3><?php echo __("CF_edit_event")?></h3>
 						<?php
-						echo form_open('event/edit_event/'.$speaker_id.'/'.$id);
+						echo form_open('manage_event/edit_event/'.$speaker_id.'/'.$id);
 						?>
 						<p>
 						

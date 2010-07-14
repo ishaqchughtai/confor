@@ -16,7 +16,7 @@
           <h5><?php echo $subject ?></h5>
           <h5><?php echo __("CF_by")?> <?php echo $speaker?> <?php echo __("CF_in")?> : 
           <?php for($i=0;$i<count($keyword);$i++){?>
-                      <a href="<?php echo site_url('event/search_keyword').'/'.$keyword[$i].'/'.$page?>"><?php echo $keyword[$i]?></a>
+                      <a href="<?php echo site_url('event_frontend/search_keyword').'/'.$keyword[$i].'/'.$page?>"><?php echo $keyword[$i]?></a>
                       <?php if ($i<count($keyword)-1) echo ','?>
                       <?php ;}?>
            // <?php echo $date;?></h5>
@@ -32,19 +32,6 @@
       <!-- /#pagination -->
       <div id="left">
         <!-- /.content_item -->
-        <?php
-			if ($this->session->userdata('speaker_id')==$speaker_id):			
-		?>
-        <p>
-        <form id="contactform" action="<?php echo site_url('event/get_event'.'/'.$speaker_id.'/'.$id)?>" method="post" enctype="multipart/form-data" class="global">          
-		  <input name="btnedit" type="submit" class="submit" value="<?php echo __("CF_edit")?>" />
-        </form>
-        <form id="contactform" action="<?php echo site_url('event/delete_event'.'/'.$speaker_id.'/'.$id)?>" method="post" enctype="multipart/form-data" class="global">
-          <input name="btndelete" type="submit" class="submit" value="<?php echo __("CF_del")?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>')" />
-        </form>
-        </p>
-        <?php else:?>
-        <?php endif;?>
       </div>    
     <!-- /#content #left - left side of main content -->
 

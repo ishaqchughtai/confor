@@ -12,22 +12,32 @@
 			$title = $row->Title;
 			$subject = $row->Subject;
 			$keywords = $row->Keywords;
-			$description = $row->Description;						
+			$description = $row->Description;
+			$status = $row->Status;
+			$lg = $row->lang;						
 		}
 	?>
 			
 				<div class="content_item">
-				
+				<ul class="link_conttrol">
+        <li><a class="icon_list" href="<?php echo site_url('event/event_list'.'/'.$lg.'/5')?>"><?php echo __("CF_admin_event_list")?></a></li>
+        <li><a class="icon_add" href="<?php echo site_url('event/add_event')?>"><?php echo __("CF_admin_new_event")?></a></li>
+    </ul>
+    <br />
 					<h3><?php echo __("CF_edit_event")?></h3>
 						<?php
 						echo form_open('event/edit_event_admin/'.$id);
 						?>
 						
+                        <div class="input text">
+						<label><?php echo __("CF_dis_lang")?></label>		
+						<?php choose_your_language($lg);?>
+					</div>			
 						<p>
 						<input id="speaker_id" type="hidden" name="speaker" value="<?php echo $speaker_id ?>"/>
 						<label for="title"><?php echo __("CF_one_speaker")?>:</label>
-						<input id="speaker_email" class="short" type="text" value="<?php echo $email ?>"/>
-						<?php echo form_error('speaker');?>
+						<input id="speaker_email" name="speaker_name" class="short" type="text" value="<?php echo $email ?>"/>
+						<?php echo form_error('speaker_name');?>
 						</p>
 						
 						<p>
@@ -57,6 +67,7 @@
 						<p>
 						
 							<label for="description"><?php echo __("CF_des")?>:</label>
+                            <p>
 							<?php 
 									
                                     if ( ! isset($_POST['description']))
@@ -75,14 +86,15 @@
                                     echo form_fckeditor($data);
 									echo form_error('description');
                                     ?>
+                                    </p>
 						</p>
 							
 							<p>
 						
 							<label for="status"><?php echo __("CF_status")?>:</label>
 							<select class="short" name="status">
-								<option value="1"><?php echo __("CF_yes")?></option>
-								<option value="0"><?php echo __("CF_No")?></option>
+								<option value="1" <?php if($status==1) echo 'selected="selected"';?>><?php echo __("CF_shop_ac")?></option>
+								<option value="0" <?php if($status==0) echo 'selected="selected"';?>><?php echo __("CF_shop_deac")?></option>
 							</select>
 						</p>
 						

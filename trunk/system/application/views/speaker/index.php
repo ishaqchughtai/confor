@@ -39,8 +39,8 @@
 			<div class="x3">			
 				<h3>Your events</h3>								
 				<ul class="link_conttrol">
-					<li><a href="<?php echo site_url('event/your_event/'.get_user_id().'/5')?>"><?php echo __("CF_list_event")?></a></li>
-					<li><a href="<?php echo site_url('event/add')?>"><?php echo __("CF_add_event")?></a></li>
+					<li><a href="<?php echo site_url('manage_event/your_event/en/5')?>"><?php echo __("CF_list_event")?></a></li>
+					<li><a href="<?php echo site_url('manage_event/add')?>"><?php echo __("CF_add_event")?></a></li>
 				</ul>	
 			</div>
 			<!-- /.x3 - represents a third windows size div -->

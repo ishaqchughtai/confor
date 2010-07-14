@@ -1,58 +1,82 @@
-      <div class="content_item">
-        <?php foreach($your_event as $row)
-   				{
-					$id = $row['ID'];
-					$speaker = $row['username'];
-					$speaker_id = $row['Speaker'];
-					$date = date("F jS Y", strtotime($row['Date']));
-					$title = $row['Title'];
-					$subject = $row['Subject'];
-					$keyword = explode(" ", $row['Keywords']);
-					$description = $row['Description'];
-					?>
-        <div class="content_item">
-          <h3><?php echo $title?></h3>
-          <h5><?php echo $subject ?></h5>
-          <h5><?php echo __("CF_by")?> <?php echo $speaker?> <?php echo __("CF_in")?> : 
-          <?php for($i=0;$i<count($keyword);$i++){?>
-                      <a href="#"><?php echo $keyword[$i]?></a>
+<script type="text/javascript">
+    $(function(){
+		$('#lg').change(function()
+        {
+            $('#lg :selected').each(function(i, selected){ 		  				
+				var lg = $(selected).val();				
+				var cate = $('#lg option:selected').val();				
+                gogo = XEMMEX.baseUrl + "manage_event/your_event/" + lg +"/5";	
+                window.location = gogo;			
+            });	
+        });	
+    });	
+    //-->
+</script>
+<?php $page = 5;?>
+<br /> 
+    <div id="content">
+       	<ul class="link_conttrol">
+        <li><a class="icon_add" href="<?php echo site_url('manage_event/add')?>"><?php echo __("CF_admin_new_event")?></a></li>
+    </ul>
+    <br />
+        <h3><?php echo __("CF_list_event")?></h3><br /><br/>
+        
+        <div class="input text">
+		<label>Display language</label>		
+		<?php choose_your_language($lg);?>
+	</div>
+        <table border="1" width="1000px">
+            <tr align="left">
+                <th width="111"><?php echo __("CF_date")?></th>
+                <th width="157"><?php echo __("CF_title")?></th>
+                <th width="84"><?php echo __("CF_subject")?></th>
+                <th width="123"><?php echo __("CF_key")?></th>
+                <th width="412"><?php echo __("CF_des")?></th>
+                <th width="19" align="center"><?php echo mb_strtoupper(__("CF_action"))?></th>
+            </tr>
+            
+            <?php foreach($your_event as $row):?>
+            <?php 
+											
+						$title = $row['Title'];
+						$subject = $row['Subject'];
+						$description = $row['Description'];					
+			?>
+            <?php $keyword = explode(" ", $row['Keywords']); ?>
+                <tr>
+                    <td><?php echo date("F jS Y", strtotime($row['Date']))?></td>     
+                    <td><a href="<?php echo site_url('event_frontend/event_content/'.$row['ID'])?>" target="_blank"><?php echo $title?></a></td>                   
+                    
+                    <td><?php echo $subject?></td>
+                    <td>
+					<?php for($i=0;$i<count($keyword);$i++){?>
+                      <?php echo $keyword[$i]?>
                       <?php if ($i<count($keyword)-1) echo ','?>
                       <?php ;}?>
-           // <?php echo $date;?></h5>
-          <p> <?php echo $description?></p>
-          
-          <div id="left">
-        <!-- /.content_item -->
-        <?php
-			if ($this->session->userdata('speaker_id')==$speaker_id):			
-		?>
-        <p>
-        <form id="contactform" action="<?php echo site_url('event/get_event'.'/'.$speaker_id.'/'.$id)?>" method="post" enctype="multipart/form-data" class="global">          
-		  <input name="btnedit" type="submit" class="submit" value="<?php echo __("CF_edit")?>" />
-        </form>
-        <form id="contactform" action="<?php echo site_url('event/delete_event'.'/'.$speaker_id.'/'.$id)?>" method="post" enctype="multipart/form-data" class="global">
-          <input name="btndelete" type="submit" class="submit" value="<?php echo __("CF_del")?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>')" />
-        </form>
-        </p>
-        <?php else:?>
-        <?php endif;?>
-      </div> 
+                    </td>                    
+                    <td><?php echo _substr($description,100)?></td>
+                    <td width="19"><a href="<?php echo site_url('manage_event/get_event'.'/'.$row['Speaker'].'/'.$row['ID'])?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></td>
+                    <td width="23"><a href="<?php echo site_url('manage_event/delete_event'.'/'.$row['Speaker'].'/'.$row['ID'])?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
+                </tr>
+                <?php endforeach;?>
+        </table>
+        <!-- /.x2 - represents a half windows size div -->
+        <!-- /.x2 - represents a half windows size div -->
+        <!--                  -->
+        <!-- END OF .x2 CLASS -->
+        <!--                  -->
+        <!-- /.divider -->
+        <!-- /.x4 - represents a fourth windows size div -->
+        <div>
+            <ul id="pagination">
+                    <li><?php echo $pagination?></li>
+                </ul>
         </div>
-        <?php
-				}
-				?>
-                
-                
-                
-      </div>
-      <!-- /.content_item -->
-      <!-- /.content_item -->
-      <!-- /.content_item -->
-      <!-- /#pagination -->
-         <ul id="pagination">
+    <!-- /#content -->
+    <!-- /#content -->
+    <!-- /#content -->
+    <!-- /#content -->
+        </div>
+   
 				
-					<?php echo $pagination?>		
-				
-				</ul>
-    <!-- /#content #left - left side of main content -->
 

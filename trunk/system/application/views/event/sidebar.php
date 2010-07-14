@@ -1,20 +1,12 @@
 <script type="text/javascript">
 function search_click_speaker (){
  keyword = $('#keyword').val();
- gogo = XEMMEX.baseUrl + "event/search_event/" + keyword + "/5";
- window.location = gogo;
- return false;
-}
-
-function search_click_admin (){
- keyword = $('#keyword').val();
- gogo = XEMMEX.baseUrl + "event/search_event_admin/" + keyword + "/5";
+ gogo = XEMMEX.baseUrl + "event_frontend/search_event/" + keyword + "/5";
  window.location = gogo;
  return false;
 }
 </script>
 <?php $page = 5;?>
-<?php if($this->session->userdata('admin')!=TRUE):?>
 </div>
 			<div id="right">
 			
@@ -22,7 +14,7 @@ function search_click_admin (){
 				<h5><?php echo __("CF_event_search")?></h5>
 				
 			  <div class="sidebar_item" id="search">
-					<?php echo form_open('event/search_event')?>
+					<?php echo form_open('event_frontend/search_event')?>
 					
 						<input name="search_field" type="text" class="search_field" id="keyword">
 				        <input name="btnsubmit" type="submit" class="search_submit" value="" onclick="return search_click_speaker();" />
@@ -185,28 +177,3 @@ function search_click_admin (){
 	<!-- /#top-box -->
 </div>
 <!-- /#wrapper -->	
-<?php else:?>
-</div>
-			<div id="right">
-			
-    <h3><?php echo __("CF_search")?></h3>
-    <h5><?php echo __("CF_event_search")?></h5>
-    <div class="sidebar_item" id="search">
-    <form action="<?php echo site_url('admin/search_event_admin')?>" method="post">
-      <input id="keyword" name="search_field" type="text" class="search_field" >
-      <input name="btnsearch" type="submit" class="search_submit" value="" onclick="return search_click_admin();">
-    </form>
-    <!-- #search form -->
-  </div>
-				<!-- /.sidebar_item #search -->                                            
-			</div>
-			<!-- /#content #right - right side of main content or sidebar -->
-
-		</div>
-		<!-- /#content -->
-		
-	</div>
-	<!-- /#top-box -->
-</div>
-<?php endif;?>
-			

@@ -6,8 +6,14 @@
       parent::Model();
       $this->load->database();
     }
-
-    function get_all_event($offset,$num)
+    function count_event_by_en($lg)
+    {
+      $this->db->from('tblevent');
+      $this->db->where(array('lang'=>$lg));
+      $query = $this->db->count_all_results();
+      return $query;
+    }
+    function get_all_event($lg,$offset,$num)
     {
       $this->db->select("
       tblevent.ID,
@@ -16,26 +22,28 @@
       tblevent.Subject,
       tblevent.Keywords,
       tblevent.Description,
+      tblevent.Status,
       users.username
       ");
       $this->db->from('tblevent');
       $this->db->join('users','tblevent.Speaker = users.ID');
-      $this->db->order_by("Date", "desc");
+      $this->db->where(array('lang'=>$lg));
+      $this->db->order_by("tblevent.ID", "desc");
       $this->db->limit($offset,$num);
       $query = $this->db->get();
       return $query->result_array();
     }
 
-    function count_record_by_date($date)
+    function count_record_by_date($date,$lg)
     {
       $this->db->from('tblevent');
-      $this->db->where(array('Date'=>$date));
+      $this->db->where(array('Date'=>$date,'Status'=>1,'lang'=>$lg));
       $query = $this->db->count_all_results();
       return $query;
     }
 
 
-    function get_event_by_date($date,$per_page,$offset)
+    function get_event_by_date($lg,$date,$per_page,$offset)
     {
       $this->db->select('
       tblevent.ID,
@@ -49,7 +57,7 @@
       ');
       $this->db->from('tblevent');
       $this->db->join('users','tblevent.Speaker = users.id');
-      $this->db->where(array('Date'=>$date));
+      $this->db->where(array('Date'=>$date,'tblevent.Status'=>1,'lang'=>$lg));
       $this->db->limit($per_page,$offset);
       $query = $this->db->get();
       $events=FALSE;
@@ -83,7 +91,7 @@
     }
 
     //Add new event
-    function add_event($speaker,$date,$title,$subject,$keywords,$description,$status)
+    function add_event($speaker,$date,$title,$subject,$keywords,$description,$status,$lg)
     {                    
       try
       {
@@ -94,7 +102,8 @@
         'Subject'=>$subject,
         'Keywords'=>$keywords,
         'Description'=>$description,
-        'Status'=>$status
+        'Status'=>$status,
+        'lang'=>$lg
         );    
         $this->db->insert('tblevent',$data);
         return TRUE;
@@ -126,7 +135,8 @@
       tblevent.Subject,
       tblevent.Keywords,
       tblevent.Description,
-      tblevent.Status
+      tblevent.Status,
+      tblevent.lang
       ');
       $this->db->from('tblevent');
       $this->db->join('users','tblevent.Speaker = users.id');
@@ -148,7 +158,7 @@
     }
 
     //Edit event of admin    
-    function edit_event($id,$speaker_id,$title,$subject,$keywords,$description,$status)
+    function edit_event($id,$speaker_id,$title,$subject,$keywords,$description,$status,$lg)
     {
       $data = array(
       'Speaker'=>$speaker_id,
@@ -156,7 +166,8 @@
       'Subject'=>$subject,
       'Keywords'=>$keywords,
       'Description'=>$description,
-      'Status'=>$status
+      'Status'=>$status,
+      'lang'=>$lg
       );
       $this->db->update('tblevent',$data,array('ID'=>$id));
     }
@@ -167,28 +178,29 @@
     }
 
     //count record by title
-    function count_record_by_title($keywords)
+    function count_record_by_title($keywords,$lg)
     {
       $this->db->from('tblevent');
       $this->db->like('Title', $keywords);
+      $this->db->where(array('tblevent.Status'=>1,'lang'=>$lg));
       $query = $this->db->count_all_results();
       return $query;
     }
-    
+
     //count record by keyword
-    function count_record_by_keywords($keywords)
+    function count_record_by_keywords($keywords,$lg)
     {
       $this->db->from('tblevent');
       $this->db->like('Keywords', $keywords);
+      $this->db->where(array('lang'=>$lg));
+      $this->db->where(array('tblevent.Status'=>1,'lang'=>$lg));
       $query = $this->db->count_all_results();
       return $query;
     }
 
     //search event by title
-    function search_event($keywords,$per_page,$offset)
+    function search_event($keywords,$lg,$per_page,$offset)
     {
-      //try
-      //      {
       $this->db->select('
       tblevent.ID,
       users.first_name,
@@ -197,11 +209,14 @@
       tblevent.Title,
       tblevent.Subject,
       tblevent.Keywords,
-      tblevent.Description
+      tblevent.Description,
+      tblevent.Status,
+      users.username
       ');
       $this->db->from('tblevent');
       $this->db->join('users','tblevent.Speaker = users.ID');
-      $this->db->like('title',$keywords,'both') ;
+      $this->db->like('title',$keywords,'both');
+      $this->db->where(array('tblevent.Status'=>1,'lang'=>$lg));
       $this->db->limit($per_page,$offset);
 
       $query = $this->db->get();
@@ -213,11 +228,9 @@
       $query->free_result();  
       return $events;
     }
-    
-    function search_event_by_keyword($keywords,$per_page,$offset)
+
+    function search_event_by_keyword($keywords,$lg,$per_page,$offset)
     {
-      //try
-      //      {
       $this->db->select('
       tblevent.ID,
       users.first_name,
@@ -226,13 +239,15 @@
       tblevent.Title,
       tblevent.Subject,
       tblevent.Keywords,
-      tblevent.Description
+      tblevent.Description,
+      tblevent.Status,
+      users.username
       ');
       $this->db->from('tblevent');
       $this->db->join('users','tblevent.Speaker = users.ID');
       $this->db->like('Keywords',$keywords,'both') ;
+      $this->db->where(array('tblevent.Status'=>1,'lang'=>$lg));
       $this->db->limit($per_page,$offset);
-
       $query = $this->db->get();
       $events=FALSE; 
       foreach ($query->result_array() as $row_event)
@@ -243,14 +258,14 @@
       return $events;
     }
 
-    function count_event_by_speaker($speaker)
+    function count_event_by_speaker($speaker,$lg)
     {
       $this->db->from('tblevent');
-      $this->db->where('Speaker', $speaker);
+      $this->db->where(array('tblevent.Speaker'=>$speaker,'lang'=>$lg));
       $query = $this->db->count_all_results();
       return $query;
     }
-    function list_event_by_speaker($speaker,$per_page,$offset)
+    function list_event_by_speaker($speaker,$lg,$per_page,$offset)
     {
       $this->db->select('
       tblevent.ID,
@@ -265,7 +280,8 @@
       ');
       $this->db->from('tblevent');
       $this->db->join('users','tblevent.Speaker = users.id');
-      $this->db->where(array('tblevent.Speaker'=>$speaker));
+      $this->db->where(array('tblevent.Speaker'=>$speaker,'lang'=>$lg));
+      $this->db->order_by("tblevent.ID", "desc");
       $this->db->limit($per_page,$offset);
       $your_event = $this->db->get();
       return $your_event->result_array();

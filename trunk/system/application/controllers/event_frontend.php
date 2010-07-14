@@ -1,0 +1,153 @@
+<?php
+  class Event_frontend extends Frontend_controller
+  {
+    function Event_frontend()
+    {
+      parent::Frontend_controller();
+      $this->_container = 'container';    
+      $this->load->model('MEvent');    
+      $this->load->helper('date');    
+      $this->load->model('Mshopproduct','mshopproduct');    
+      $this->_data['adv']['category'] = 'event';
+    }
+
+    function _before_render() 
+    {
+      $side_bar['page'] = "event/sidebar";    
+      $side_bar['popular_video'] = $this->Mhome->get_popular_video();
+      $side_bar['recent_video'] = $this->Mhome->get_recent_video();  
+      $side_bar['categories'] = $this->Mhome->get_category();
+      $side_bar['dates'] = $this->Mhome->get_dates(); 
+      $side_bar['top_speaker'] = $this->Mhome->get_top_speaker();     
+      $this->_data['side_bar'] = $side_bar;    
+    }
+
+    function show_event()
+    {
+      $lg = $this->_data['lang'];
+      $this->_data['lg'] = $lg;
+      $date = $this->uri->segment(3);
+      $per_page = $this->uri->segment(4);
+      $offset = $this->uri->segment(5);
+
+      $this->_data['path'][] = array(
+      'name' => __("CF_event"),
+      'link' => "#"
+      );
+
+      $config['uri_segment'] = 5;
+      $config['base_url'] = base_url().'index.php/event_frontend/show_event/'.'/'.$date.'/'.$per_page;
+      $config['total_rows'] = $this->MEvent->count_record_by_date($date,$lg);
+      //echo $config['total_rows'];
+      //      return;
+      $config['per_page']=$per_page;
+
+      $config['full_tag_open'] = '<li>';        
+      $config['full_tag_close'] = '</li>'; 
+      $config['next_link'] = __("CF_next");
+      $config['prev_link'] = __("CF_previous");
+      $config['last_link'] = __("CF_last");
+      $config['first_link'] = __("CF_first");
+
+      $this->pagination->initialize($config);
+      $this->_data['events'] = $this->MEvent->get_event_by_date($lg,$date,$per_page,$offset);
+
+      $this->_data['pagination'] = $this->pagination->create_links();
+      $this->_load_view('event/show_event');
+    }
+
+    //Content's event of user
+    function event_content($id='') 
+    {
+
+      $this->_data['path'][] = array(
+      'name' => __("CF_event"),
+      'link' => site_url("event_frontend/show_event/".date('Y-m-d')."/5")
+      );
+
+      $this->_data['path'][] = array(
+      'name' => __("CF_event_content"),
+      'link' => '#'
+      ); 
+      $id = (double)$id;
+      if(is_nan($id)==FALSE && $id > 0)
+      {
+        $this->_data['query'] = $this->MEvent->get_event_by_id($id);
+        $this->_load_view('event/event_content');  
+      }
+      else
+      {
+        redirect(base_url());
+      }
+    }
+
+    //Search Event of speaker
+    function search_event()
+    {
+      $lg = $this->_data['lang'];
+      $this->_data['lg'] = $lg;
+      $this->_data['path'][] = array(
+      'name' => __("CF_search_event"),
+      'link' => '#'
+      );
+      $keywords = $this->input->post('search_field');
+
+      $keywords = $this->uri->segment(3);
+      $per_page = $this->uri->segment(4);
+      $offset = $this->uri->segment(5);
+
+
+      $config['uri_segment'] = 5;
+      $config['base_url'] = base_url().'index.php/event_frontend/search_event/'.$keywords.'/'.$per_page;
+      $config['total_rows'] = $this->MEvent->count_record_by_title($keywords,$lg);
+      $config['per_page']=$per_page;
+
+      $config['full_tag_open'] = '<li>';        
+      $config['full_tag_close'] = '</li>'; 
+      $config['next_link'] = __("CF_next");
+      $config['prev_link'] = __("CF_previous");
+      $config['last_link'] = __("CF_last");
+      $config['first_link'] = __("CF_first");
+      $this->_data['events'] = $this->MEvent->search_event($keywords,$lg,$per_page,$offset); 
+      $this->pagination->initialize($config);
+      $this->_data['pagination'] = $this->pagination->create_links();
+      $this->_load_view('event/search_event');    
+    }
+
+    //Search keyword of speaker
+    function search_keyword($keyword = '')
+    {
+      $lg = $this->_data['lang'];
+      $this->_data['lg'] = $lg;
+      $this->_data['path'][] = array(
+      'name' => __("CF_event"),
+      'link' => site_url("event_frontend/show_event/".date('Y-m-d')."/5")
+      );
+      $this->_data['path'][] = array(
+      'name' => __("CF_search_event"),
+      'link' => '#'
+      );
+
+      $keywords = $this->uri->segment(3);
+      $per_page = $this->uri->segment(4);
+      $offset = $this->uri->segment(5);
+
+
+      $config['uri_segment'] = 5;
+      $config['base_url'] = base_url().'index.php/event_frontend/search_keyword/'.$keywords.'/'.$per_page;
+      $config['total_rows'] = $this->MEvent->count_record_by_keywords($keywords,$lg);
+      $config['per_page']=$per_page;
+
+      $config['full_tag_open'] = '<li>';        
+      $config['full_tag_close'] = '</li>'; 
+      $config['next_link'] = __("CF_next");
+      $config['prev_link'] = __("CF_previous");
+      $config['last_link'] = __("CF_last");
+      $config['first_link'] = __("CF_first");
+      $this->_data['events'] = $this->MEvent->search_event_by_keyword($keywords,$lg,$per_page,$offset); 
+      $this->pagination->initialize($config);
+      $this->_data['pagination'] = $this->pagination->create_links();
+      $this->_load_view('event/search_event');    
+    }  
+  }
+?>
