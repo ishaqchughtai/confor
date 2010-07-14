@@ -1,3 +1,6 @@
+<?php $this->load->view("admin/admin_menu_blog");?>
+<br />
+<br />    
       <div class="content_item">
         <h3><?php echo __("CF_edit_blog")?></h3>
         <?php
@@ -69,7 +72,8 @@
                                         'id' => 'about',
                                         'width' => '600',
                                         'height' => '400',
-                                        'value'=>$about);
+                                        'value'=>$about,
+                                        'class'=>"medium");
                                         echo form_textarea($data);
 ?>
           </p>

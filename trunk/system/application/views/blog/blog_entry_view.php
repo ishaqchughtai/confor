@@ -84,7 +84,7 @@
       <!-- /#comments -->
       <div class="content_item" id="comment">
         <h3> <?php echo __("CF_leave_cm")?></h3>
-        <form action="<?php echo site_url("blog/add_comment")?>" method="post">
+        <form action="<?php echo site_url("blog_frontend/add_comment")?>" method="post">
           <p>
             <label>
             <input type="hidden" name="blog" value="<?php echo $idtemp?>" />
@@ -110,7 +110,7 @@
             <?php echo form_error('msg'); ?> </p>
             <p><label>* <?php echo __("CF_warning")?> </label></p>
           <p>
-            <input type="submit" class="submit" value="<?php echo __("CF_submit")?>" name="submit" />
+            <input type="submit" class="submit" value="<?php echo __("CF_submit")?>" name="submit" onclick="return confirm('<?php echo __("CF_mess_comment")?>')" />
           </p>
         </form>
       </div>

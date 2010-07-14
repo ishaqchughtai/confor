@@ -274,6 +274,42 @@ class Mblog extends Model{
             $query = $this->db->get();
             return $query->result_array(); 
         } 
+    }    
+    function show_comment_agree()
+    {
+        $this->db->select("
+        tblcomment.ID,
+        tblcomment.`Comment`,
+        tblcomment.Blog,
+        tblcomment.Date,
+        tblcomment.Author,
+        tblcomment.Website,
+        tblcomment.Email,
+        tblcomment.Status,
+        tblblog.CountComment");
+        $this->db->from('tblcomment');
+        $this->db->join('tblblog','tblcomment.Blog = tblblog.ID');  
+            $this->db->where('tblcomment.Status', 1);
+            $query = $this->db->get();
+            return $query->result_array(); 
+    }
+    function show_comment_not_agree()
+    {
+        $this->db->select("
+        tblcomment.ID,
+        tblcomment.`Comment`,
+        tblcomment.Blog,
+        tblcomment.Date,
+        tblcomment.Author,
+        tblcomment.Website,
+        tblcomment.Email,
+        tblcomment.Status,
+        tblblog.CountComment");
+        $this->db->from('tblcomment');
+        $this->db->join('tblblog','tblcomment.Blog = tblblog.ID');  
+            $this->db->where('tblcomment.Status', 0);
+            $query = $this->db->get();
+            return $query->result_array(); 
     }
     function update_comment($id,$Status,$CountComment,$idblog)
     {
@@ -287,7 +323,7 @@ class Mblog extends Model{
         $dataBlog = array('CountComment'=>$CountComment); 
         $this->db->update('tblblog',$dataBlog,array('ID'=>$idblog));
         $this->db->delete('tblcomment',array('ID'=>$id));
-        return TRUE;        
+//        return TRUE;        
     }
     function count_comment($title)
     {

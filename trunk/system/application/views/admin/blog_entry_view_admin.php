@@ -27,17 +27,6 @@
         <a href="#comments" class="comments_balloon"><?php echo $countcommenttemp?></a>
         <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="610" height="169" alt="Confor.ca" /></p>
         <p><?php echo $text ?></p>
-        <form id="edit" name="edit" method="post" action="<?php echo site_url('blog/get_blog').'/'.$id ?>">
-            <input type="submit" name="Submit" value="<?php echo __("CF_edit")?>" class="submit" />
-        </form>
-        <form id="remove" name="remove" method="post" action="<?php echo site_url('blog/delete_blog').'/'.$id?>" >
-            <input type="submit" name="del" value="<?php echo __("CF_remove")?>" class="submit" onclick="return confirm('Do you really wish to delete?')" />
-        </form>
-        <form id="new_blog" name="new_blog" method="post" action="<?php echo site_url('blog/add_blog')?>"  target="_blank">
-            <label>
-                <input name="new_blog" type="submit" id="new_blog" value="<?php echo __("CF_admin_new_blog")?>"  class="submit"/>
-            </label>
-        </form>
     </div>
     <!-- /.content_item -->
     <div class="content_item">
@@ -74,7 +63,7 @@
             <ol>
                 <li> <img src="<?php echo base_url().'assets/uploads/image/thumb_'.$linktemp?>" alt="XemmeX" width="80" height="80" class="comment_image" />
                     <!-- Author Image -->
-                    <p class="content" style="width:500px"> <a href="<?php echo $site?>" class="author"><?php echo $author?></a>
+                    <p class="content" style="width:500px"> <a href="<?php echo $site?>" class="author"target="_blank"><?php echo $author?></a>
                         <!-- Author -->
                         <span class="date"><?php echo $final_date?></span>
                         <!-- Date -->
@@ -102,7 +91,7 @@
 <!-- /#comments -->
 <div class="content_item" id="comment">
     <h3><?php echo __("CF_leave_cm")?></h3>
-    <form action="<?php echo site_url("blog/add_comment")?>" method="post">
+    <form action="<?php echo site_url("blog_frontend/add_comment")?>" method="post">
         <p>
             <label>
                 <input type="hidden" name="blog" value="<?php echo $idtemp?>" />

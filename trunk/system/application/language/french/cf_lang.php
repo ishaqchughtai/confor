@@ -548,3 +548,11 @@ $lang['CF_last'] = 'f_Last >>';
 $lang['CF_first'] = '<< f_First';
 /*new key on 13rd Jul 2010*/
 $lang['CF_new_speaker'] = 'Nouvel Conf&eacute;rencier';
+$lang['CF_blog_list'] = 'Blog List';
+$lang['CF_blog_comment'] = 'Comments';
+$lang['CF_blog_approved'] = 'Approved';
+/*key added on 14/07/2010*/ 
+$lang['CF_blog_not_approved'] = 'Not Approved';
+$lang['CF_mess_approved'] = 'Do you really wish to approved comment?';
+$lang['CF_mess_not_approved'] = 'Do you really wish to not approved comment?';
+$lang['CF_mess_comment'] = 'Your articles will be approved by Admin !'; 
