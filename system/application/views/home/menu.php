@@ -25,7 +25,7 @@
 			</ul>
         	</li>
         	
-		<li><a href="<?php echo site_url("accessories/show_element/training") ?>"><?php echo __("CF_training")?></a></li>
+		<li><a href="<?php echo site_url("training") ?>"><?php echo __("CF_training")?></a></li>
 	
 		<li><a href="<?php echo site_url("blog_frontend") ?>"><?php echo __("CF_blog")?></a></li>
 		
