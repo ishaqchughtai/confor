@@ -148,10 +148,11 @@
             return $country->result_array();
         }
         //Category
-         function get_all_category()
+         function get_all_category($lg)
         {
             $this->db->select();
             $this->db->from('tblcategory');
+            $this->db->where('lang',$lg);
             $query = $this->db->get();
             return $query->result_array();
         }

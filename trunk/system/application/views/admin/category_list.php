@@ -1,7 +1,24 @@
+<script type="text/javascript">
+    $(function(){
+        $('#lg').change(function()
+        {
+            $('#lg :selected').each(function(i, selected){                           
+                var lg = $(selected).val();                              
+                gogo = XEMMEX.baseUrl + "admin/list_category/" + lg + "/";    
+                window.location = gogo;            
+            });    
+        });    
+    });    
+    //-->
+</script>
 <div id="content">
 
     <div class="">
         <h3><?php echo __("CF_list_vid_cate")?></h3>
+        <div class="input text">
+            <label>Display language</label>        
+            <?php choose_your_language($lg);?>
+        </div>
         <table border="1" width="833">
             <tr align="left">
                 <th width="640"><?php echo __("CF_cate_name")?></th>
