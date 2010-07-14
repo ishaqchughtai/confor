@@ -143,9 +143,9 @@
       return $query;
     }
 
-    function get_category()
+    function get_category($lg)
     {
-      $query = $this->db->get('tblcategory');
+      $query = $this->db->get_where('tblcategory',array('lang'=>$lg));
       return $query->result_array();
     }
 

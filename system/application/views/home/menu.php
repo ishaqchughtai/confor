@@ -19,7 +19,7 @@
 		
 		<!--<li><a href="<?php echo site_url("conference") ?>"><?php echo __("CF_conference")?></a></li>-->
 		
-        	<li><a href="<?php echo site_url("accessories/show_element/office") ?>"><?php echo __("CF_conference_office")?></a>
+        	<li><a href="<?php echo site_url("conference_office/conference_office/") ?>"><?php echo __("CF_conference_office")?></a>
         		<ul>
 				<li><a href="<?php echo site_url("conference") ?>"><?php echo __("CF_conference")?></a></li>
 			</ul>
