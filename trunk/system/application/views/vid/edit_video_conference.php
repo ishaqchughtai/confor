@@ -18,7 +18,7 @@
                     <br />
                     <h3> <?php echo __("CF_vid_update")?> </h3>
                     <?php echo form_open('vid/edit_video_conference/'.$id);?> 
-					<?php $this->load->view('vid/lang_category_selector');?>
+					<?php $this->load->view('vid/lang_category_selector',array("video_cate"=>$selected_cate));?>
 					
 					<p>
 					<input id="speaker_id" type="hidden" name="speaker" value="<?php echo $speaker_id?>"/>
