@@ -29,26 +29,41 @@ class User_lib
 		redirect('speaker/message');	
 	}
 	
+	function _day_left($pay)
+	{		
+		if ($pay==FALSE) return -1;	
+		$getDifference = getDifference(date("Y-m-d G:i:s"), $pay->date, 3);
+		$paidForDays = getDays($pay->term, $pay->term_c);
+		return $paidForDays - $getDifference;				
+	}
+	
 	function get_membership_info()
 	{		
 		if ($this->CI->session->userdata('speaker_id')==FALSE) return FALSE;
 		$info = array();		
-		$user_id = $this->CI->session->userdata('speaker_id');
-		$m = $this->CI->MUser->membership_info($user_id);
-		if ($m) 
+		$user_id = $this->CI->session->userdata('speaker_id');				
+		
+		$ms = $this->CI->MUser->membership_info($user_id);
+		if ($ms) 
 		{	
-			$info['ms_name'] = $m->title;
+			$info['ms_name'] = $ms->title;
 			$info['ms_rate'] = 0;
 			//Current Membership Rate
 			$pay = $this->CI->MUser->get_payment_by_user_id($user_id);
 			if ($pay)
 			{
+				$getDifference = getDifference(date("Y-m-d G:i:s"), $pay->date, 3);
+				$paidForDays = getDays($pay->term, $pay->term_c);
+				$daysDiffer = $paidForDays - $getDifference;
+				
 				$info['ms_rate'] = $pay->id;				
-				$info['rate_info'] = __("CF_you_have_paid").$pay->amount.__("CF_for_this");
-				$expire = round((strtotime($pay->date)-time())/(24*60*60));	
-				if ($expire>0) 
+				$info['rate_info'] = __("CF_you_have_paid").$pay->amount.' '.__("CF_for_this");
+				$info['purchase_date'] = $pay->date;
+				//$expire = round((strtotime($pay->date)-time())/(24*60*60));	
+				
+				if ($daysDiffer>0) 
 				{
-					$info['ms_expire'] = $expire. __("CF_day");
+					$info['ms_expire'] = $daysDiffer. __("CF_day");
 				}
 				else
 				{
@@ -89,7 +104,7 @@ class User_lib
 			{			
 				if ($speaker_data['payment_id'] > 0)
 				{					
-					if ($speaker_data['payment_date_expire']>time()) return $speaker_data;
+					if ($speaker_data['payment_date_expire']>0) return $speaker_data;
 				}				
 			}
 			// else
@@ -113,7 +128,7 @@ class User_lib
 					{
 						if ($is_using_cookie['payment_id'] > 0)
 						{						
-							if ($is_using_cookie['payment_date_expire']>time()) return $is_using_cookie;					
+							if ($is_using_cookie['payment_date_expire']>0) return $is_using_cookie;					
 						}
 					} 
 					$this->_please_upgrade();
@@ -193,7 +208,7 @@ class User_lib
 					if ($payment)
 					{						
 						$speaker_data['payment_id'] = $payment->id;
-						$speaker_data['payment_date_expire'] = strtotime($payment->date);
+						$speaker_data['payment_date_expire'] = $this->_day_left($payment);
 						$speaker_data['membership_id'] = $payment->membership_id;
 					}
 					else 
@@ -282,7 +297,7 @@ class User_lib
 						if ($payment)
 						{						
 							$speaker_data['payment_id'] = $payment->id;
-							$speaker_data['payment_date_expire'] = strtotime($payment->date);
+							$speaker_data['payment_date_expire'] = $this->_day_left($payment);
 							$speaker_data['membership_id'] = $payment->membership_id;
 						}
 						else 
@@ -598,7 +613,7 @@ class User_lib
 				if ($payment)
 				{						
 					$speaker_data['payment_id'] = $payment->id;
-					$speaker_data['payment_date_expire'] = strtotime($payment->date);
+					$speaker_data['payment_date_expire'] = $this->_day_left($payment);
 					$speaker_data['membership_id'] = $payment->membership_id;
 				}
 				else 

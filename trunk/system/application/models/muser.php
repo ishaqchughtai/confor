@@ -63,6 +63,7 @@ class MUser extends Model
 		$this->db->select("payments.*,
 			rates.amount,
 			rates.term,
+			rates.term_c,
 			rates.title as rate_title
 		");
 		$this->db->from('payments');
@@ -90,7 +91,8 @@ class MUser extends Model
 		$this->db->select("
 			users.username,
 			users.name,
-			memberships.title,			
+			memberships.title,
+			memberships.free,
 			memberships.desc
 		");
 		$this->db->from('users');
