@@ -1,6 +1,6 @@
 <?php
 class Vid extends Admin_controller {
-	var $vid_per_page = 10;
+	var $vid_per_page = 2;
 	
 	function Vid()
 	{	
@@ -8,7 +8,7 @@ class Vid extends Admin_controller {
 		$this->load->library('video_upload_lib');
 		$this->load->model('Mvid'); 
 		$this->load->helper('date');
-		$this->load->helper('text');
+		//$this->load->helper('text');
 		$this->video_upload_lib->ajax_link = site_url('vid/do_upload_ajax');
 	}
 	
@@ -22,7 +22,10 @@ class Vid extends Admin_controller {
 		is_admin();            
 		
 		$lg = $this->uri->segment(3);	
-		if (! $lg) return;
+		if (! $lg)
+		{
+			$lg = $this->_data['lang'];
+		}
 		if (lang_name_by_short_key($lg,TRUE)==FALSE)
 		{
 			$this->_message('admin', 'Invaild language', 'error',site_url("vid/list_video_conference").'/'.$this->_data['lang']);
@@ -198,11 +201,11 @@ class Vid extends Admin_controller {
 		is_admin();				
 		if ($this->video_upload_lib->remove_video_by_vid_id($id))
 		{			
-			$this->_message('admin', __("CF_delete_vid"), 'success',site_url("vid/list_video_conference"));			
+			$this->_message('admin', __("CF_delete_vid"), 'success',site_url("vid/list_video_conference").'/'.$this->_data['lang']);			
 		}
 		else
 		{
-			$this->_message('admin', __("CF_error_occurred"), 'error', site_url("vid/list_video_conference"));			
+			$this->_message('admin', __("CF_error_occurred"), 'error', site_url("vid/list_video_conference").'/'.$this->_data['lang']);			
 		}		
 	}	
 	
@@ -258,7 +261,7 @@ class Vid extends Admin_controller {
 					'is_resize' => $this->input->post('is_resize')
 				);		
 				$this->video_upload_lib->set_video_setting($save_data);
-				$this->_message('admin','Your video setting has been saved', 'success',site_url("vid/list_video_conference"));
+				$this->_message('admin','Your video setting has been saved', 'success',site_url("vid/list_video_conference").'/'.$this->_data['lang']);
 			}			
 		}
 		else
@@ -271,6 +274,11 @@ class Vid extends Admin_controller {
 	
 	function do_upload_ajax()
 	{
+		if (! is_admin(FALSE)) 
+		{
+			echo '0';
+			return;
+		}		
 		$this->video_upload_lib->init();
 		$this->video_upload_lib->do_upload_ajax();
 	}
