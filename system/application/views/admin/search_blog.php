@@ -14,17 +14,18 @@
 </script>
 <?php $this->load->view("admin/admin_menu_blog");?>
 <br />
-<br />  
-<!-- /.content_item -->
-<div class="content_item">
-<div class="input text">
-    <label>Display language</label>        
-    <?php choose_your_language($lg);?>
-</div>
+<br />
+<h3><?php echo __("CF_Blog_search")?></h3> 
+<div id="content_item">
+      <?php if(isset($error)):?>
+      <p class="not_warning"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
+      <?php else:?>
+      <!-- /.content_item -->
+      <div class="content_item">
 <div class="sidebar_item" id="search">
     <form action="<?php echo site_url('blog/search/'.$lang)?>" method="post">
         <input name="search_field_blog" type="text" class="short">
-        <input name="search_field" type="submit" class="submit"  value="<?php echo __("CF_search")?>">
+        <input name="search_field" type="submit" class="submit"  value="<?php echo __("CF_submit")?>">
     </form>
     <!-- #search form -->
 </div>      
@@ -73,5 +74,5 @@
         </td>
     </tr> 
     </table>
-
-    
+    <?php endif?>
+  </div>  

@@ -5,7 +5,7 @@ class Mblog extends Model{
         parent::Model();
         $this->load->database();
     }
-    function get_all_blog($offset,$num)
+    function get_all_blog($lg,$offset,$num)
     {
         $this->db->select("
         tblblog.ID,
@@ -20,7 +20,8 @@ class Mblog extends Model{
         tbladmin.Name");
         $this->db->from('tblblog');
         $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
-        $this->db->order_by("tblblog.Date", "desc"); 
+        $this->db->order_by("tblblog.Date", "desc");
+        $this->db->where('tblblog.Lang ', $lg); 
         $this->db->limit($num,$offset);
         $query = $this->db->get();
         return $query->result_array();
@@ -49,9 +50,9 @@ class Mblog extends Model{
         $query = $this->db->get_where('tblblog',array('Title'=>$title));
         return $query;
     }
-    function get_most_blog()
+    function get_most_blog($lg)
     {
-        $query = $this->db->query('SELECT 
+        $this->db->select("
         tblblog.ID,
         tblblog.Date,
         tblblog.Title,
@@ -61,11 +62,14 @@ class Mblog extends Model{
         tblblog.Link,
         tblblog.CountView,
         tblblog.CountComment,          
-        tbladmin.Name
-        FROM tblblog
-        INNER JOIN tbladmin on tbladmin.ID = tblblog.Author 
-        Where tblblog.ID in (Select max(tblblog.ID) from tblblog)');
-        return $query->result_array();
+        tbladmin.Name");
+        $this->db->from('tblblog');
+        $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
+        $this->db->order_by("tblblog.ID", "desc");
+        $this->db->where('tblblog.Lang ', $lg);
+        $this->db->limit('1'); 
+        $query = $this->db->get();
+        return $query->result_array();   
     }
     function get_most_blog_date()
     {
@@ -84,7 +88,7 @@ class Mblog extends Model{
         $query = $this->db->get();
         return $query->result_array();
     }
-    function get_most_blog_post()
+    function get_most_blog_post($lg)
     {
         $this->db->select("
         tblblog.ID,
@@ -98,11 +102,12 @@ class Mblog extends Model{
         $this->db->from('tblblog');
         $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
         $this->db->order_by("tblblog.CountComment", "desc");
+        $this->db->where('tblblog.Lang ', $lg); 
         $this->db->limit(8);
         $query = $this->db->get();
         return $query->result_array(); 
     }
-    function get_most_blog_view()
+    function get_most_blog_view($lg)
     {
         $this->db->select("
         tblblog.ID,
@@ -116,6 +121,7 @@ class Mblog extends Model{
         $this->db->from('tblblog');
         $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
         $this->db->order_by("tblblog.CountView", "desc");
+        $this->db->where('tblblog.Lang ', $lg);
         $this->db->limit(8);
         $query = $this->db->get();
         return $query->result_array(); 
@@ -133,11 +139,11 @@ class Mblog extends Model{
         $this->db->from('tblblog');
         $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
         $this->db->where('tbladmin.Name',$author);
-		$this->db->group_by('tbladmin.Name');
+        $this->db->group_by('tbladmin.Name');
         $query = $this->db->get();
         return $query->result_array();                   
     }
-    function edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$Link,$about)         
+    function edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$Link,$about,$Lang)         
     {
         $data = array(
         'Author'=>$Author,
@@ -147,11 +153,12 @@ class Mblog extends Model{
         'Keywords'=>$Keywords,
         'Text'=>$Text,
         'Link'=>$Link,
-        'About'=>$about       
+        'About'=>$about,
+        'Lang'=>$Lang       
         );
         $this->db->update('tblblog',$data,array('ID'=>$id));
     }
-    function add_blog($Author,$Date,$Title,$Subject,$Keywords,$Text,$Link,$about)
+    function add_blog($Author,$Date,$Title,$Subject,$Keywords,$Text,$Link,$about,$Lang)
     {
         $data = array(
         'Author'=>$Author,
@@ -163,7 +170,8 @@ class Mblog extends Model{
         'Link'=>$Link,
         'CountView'=>0,
         'CountComment'=>0,
-        'About'=>$about       
+        'About'=>$about,
+        'Lang'=>$Lang       
         );
         $this->db->insert('tblblog',$data);
         return TRUE; 
@@ -195,7 +203,7 @@ class Mblog extends Model{
         $this->db->delete('tblcomment',array('Blog'=>$id));
         return TRUE;        
     }
-    function search_blog($num,$offset,$Keywords)
+    function search_blog($lg,$num,$offset,$Keywords)
     {
         try
         {
@@ -214,6 +222,75 @@ class Mblog extends Model{
             $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
             $this->db->like('Keywords',$Keywords,'both') ;                    
             $this->db->order_by("tblblog.Date", "desc");
+            $this->db->where('tblblog.Lang ', $lg);
+            $this->db->limit($num,$offset);
+            $query_search = $this->db->get();
+            if($query_search)
+            {
+                return $query_search;
+
+            }
+            return 0;            
+        }
+        catch(Exception $e)
+        {
+            return 0;
+        }
+    }    
+    function search_blog_by_title($lg,$num,$offset,$Title)
+    {
+        try
+        {
+            $this->db->select("
+            tblblog.ID,
+            tblblog.Date,
+            tblblog.Title,
+            tblblog.Subject,
+            tblblog.Text,
+            tblblog.Link,
+            tblblog.CountView,
+            tblblog.Keywords,          
+            tblblog.CountComment,
+            tbladmin.Name");
+            $this->db->from('tblblog');
+            $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
+            $this->db->like('Title',$Title,'both') ;                    
+            $this->db->order_by("tblblog.Date", "desc");
+            $this->db->where('tblblog.Lang ', $lg);
+            $this->db->limit($num,$offset);
+            $query_search = $this->db->get();
+            if($query_search)
+            {
+                return $query_search;
+
+            }
+            return 0;            
+        }
+        catch(Exception $e)
+        {
+            return 0;
+        }
+    }    
+    function search_blog_by_date($lg,$num,$offset,$Date)
+    {
+        try
+        {
+            $this->db->select("
+            tblblog.ID,
+            tblblog.Date,
+            tblblog.Title,
+            tblblog.Subject,
+            tblblog.Text,
+            tblblog.Link,
+            tblblog.CountView,
+            tblblog.Keywords,          
+            tblblog.CountComment,
+            tbladmin.Name");
+            $this->db->from('tblblog');
+            $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
+            $this->db->where('Date',$Date) ;      
+            $this->db->where('tblblog.Lang ', $lg);              
+            $this->db->order_by("tblblog.Date", "desc");
             $this->db->limit($num,$offset);
             $query_search = $this->db->get();
             if($query_search)
@@ -230,10 +307,31 @@ class Mblog extends Model{
     }
     function count_record($Keywords)
     {
-      $this->db->from('tblblog');
-      $this->db->where(array('Keywords'=>$Keywords));
-      $query = $this->db->count_all_results();
-      return $query;
+        $this->db->from('tblblog');
+        $this->db->where(array('Keywords'=>$Keywords));
+        $query = $this->db->count_all_results();
+        return $query;
+    }    
+    function count_record_date($Date)
+    {
+        $this->db->from('tblblog');
+        $this->db->where(array('Date'=>$Date));
+        $query = $this->db->count_all_results();
+        return $query;
+    }    
+    function count_record_blog($lg)
+    {
+        $this->db->from('tblblog');
+        $this->db->where(array('Lang'=>$lg));
+        $query = $this->db->count_all_results();
+        return $query;
+    }
+    function count_record_blog_title($title)
+    {
+        $this->db->from('tblblog');
+        $this->db->where(array('Title'=>$title));
+        $query = $this->db->count_all_results();
+        return $query;
     }
     function add_comment($Comment,$Blog,$Date,$Author,$Website,$Email,$Status,$CountComment)
     {        
@@ -289,9 +387,9 @@ class Mblog extends Model{
         tblblog.CountComment");
         $this->db->from('tblcomment');
         $this->db->join('tblblog','tblcomment.Blog = tblblog.ID');  
-            $this->db->where('tblcomment.Status', 1);
-            $query = $this->db->get();
-            return $query->result_array(); 
+        $this->db->where('tblcomment.Status', 1);
+        $query = $this->db->get();
+        return $query->result_array(); 
     }
     function show_comment_not_agree()
     {
@@ -307,9 +405,9 @@ class Mblog extends Model{
         tblblog.CountComment");
         $this->db->from('tblcomment');
         $this->db->join('tblblog','tblcomment.Blog = tblblog.ID');  
-            $this->db->where('tblcomment.Status', 0);
-            $query = $this->db->get();
-            return $query->result_array(); 
+        $this->db->where('tblcomment.Status', 0);
+        $query = $this->db->get();
+        return $query->result_array(); 
     }
     function update_comment($id,$Status,$CountComment,$idblog)
     {
@@ -323,7 +421,7 @@ class Mblog extends Model{
         $dataBlog = array('CountComment'=>$CountComment); 
         $this->db->update('tblblog',$dataBlog,array('ID'=>$idblog));
         $this->db->delete('tblcomment',array('ID'=>$id));
-//        return TRUE;        
+        //        return TRUE;        
     }
     function count_comment($title)
     {

@@ -567,5 +567,7 @@ $lang['CF_blog_not_approved'] = 'Not Approved Comment';
 $lang['CF_mess_approved'] = 'Do you really wish to approved comment?';
 $lang['CF_mess_not_approved'] = 'Do you really wish to not approved comment?';
 $lang['CF_mess_comment'] = 'Your articles will be approved by Admin !';
-
+$lang['CF_addblog_success'] = 'Add New Blog Success !';
+$lang['CF_editblog_success'] = 'Edit Blog Success !';
+$lang['CF_delete_blog'] = 'Blog has been deleted!'; 
 

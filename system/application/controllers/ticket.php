@@ -5,8 +5,7 @@
       parent::Speaker_controller();
       $this->_container = 'container';        
       $this->load->model('Mticket');        
-      $this->load->helper('date');     
-      //$this->load->model('Remember_me');					
+      $this->load->helper('date');     					
 	  $this->load->model('send_mail');
       $this->load->model('Mshopproduct','mshopproduct');
     }

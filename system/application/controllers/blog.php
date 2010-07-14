@@ -31,31 +31,8 @@ class Blog extends Admin_controller {
 
     function index()
     { 
-        $this->_data['path'][] = array(
-        'name' => __("CF_blog_list"),
-        'link' => '#'
-        );                        
-        $this->_data['query_most_blog'] = $this->Mblog->get_most_blog();
-        $config['base_url'] = base_url().'index.php/blog/index/';
-        $config['total_rows'] = $this->db->count_all('tblblog');
-        $config['per_page']='5';
-
-        $config['full_tag_open'] = '<li>';        
-        $config['full_tag_close'] = '</li>'; 
-        $config['next_link'] = 'Next >';
-        $config['prev_link'] = '< Previous';
-        $config['last_link'] = 'Last >>';
-        $config['first_link'] = '<< First';
-
-        $this->pagination->initialize($config);
-        $num = $this->uri->segment(3);
-        $this->_data['query'] = $this->Mblog->get_all_blog($num,$config['per_page']);
-        $this->_data['pagination'] = $this->pagination->create_links();                
-        $this->_data['page_title'] = __("CF_Blog_Title"); 
-        $this->_load_view('admin/blog_view_admin'); 
+        redirect(site_url('blog/blog_list'.'/'.$this->_data['lang'])); 
     }            
-
-
 
     function blog_list()
     {
@@ -65,25 +42,36 @@ class Blog extends Admin_controller {
         }
         else
         {
+            $lg = $this->uri->segment(3);
+            //$lg=$this->_data['lang'];    
+            if (! $lg) return;
+            if (lang_name_by_short_key($lg,TRUE)==FALSE)
+            {
+                $this->_message('blog', 'Invaild language', 'error',site_url("blog/blog_list").'/'.$this->_data['lang']);
+            }   
+
             $this->_data['path'][] = array(
             'name' => __("CF_blog_list"),
             'link' => '#'
             ); 
-            $config['base_url'] = base_url().'index.php/blog/blog_list/';
-            $config['total_rows'] = $this->db->count_all('tblblog');
-            $config['per_page']='5';
+
+            $this->_data['lg'] = $lg;
+            $config['base_url'] = base_url().'index.php/blog/blog_list/'.$lg;
+            $config['total_rows'] = $this->Mblog->count_record_blog($lg);
+            $config['per_page']=5;
 
             $config['full_tag_open'] = '<li>';    
             $config['full_tag_close'] = '</li>';
-            $config['next_link'] = 'Next >';
-            $config['prev_link'] = '< Previous';
-            $config['last_link'] = 'Last >>';
-            $config['first_link'] = '<< First';
+            $config['next_link'] = __("CF_next");
+            $config['prev_link'] = __("CF_previous");
+            $config['last_link'] = __("CF_last");
+            $config['first_link'] = __("CF_first");
+            $config['uri_segment'] = 4;
 
             $this->pagination->initialize($config);
-            $this->_data['query'] = $this->Mblog->get_all_blog($this->uri->segment(3),$config['per_page']);
+            $this->_data['query'] = $this->Mblog->get_all_blog($lg,$this->uri->segment(4),$config['per_page']);
             $this->_data['pagination'] = $this->pagination->create_links();
-            $this->_data['query_most_blog'] = $this->Mblog->get_most_blog();                               
+            //$this->_data['query_most_blog'] = $this->Mblog->get_most_blog();                               
             $this->_load_view('admin/blog_view_admin'); 
         }
     }     
@@ -100,7 +88,7 @@ class Blog extends Admin_controller {
             $id = $this->uri->segment(3);
             if($this->Mblog->del_blog($id) == TRUE)
             {
-                redirect('blog/blog_list');
+                $this->_message('blog', __("CF_delete_blog"), 'success', site_url("blog/blog_list/".$this->_data['lang']));
             }
         }
     }
@@ -143,6 +131,14 @@ class Blog extends Admin_controller {
             'name' => __("CF_add_new_blog"),
             'link' => '#'
             );
+
+            $lg = $this->input->post('lg');
+            if (! $lg)
+            {
+                $lg = $this->_data['lang'];
+            }
+
+            $this->_data['lg'] = $lg;
             $this->image_upload_lib->init();  
             if($this->input->post('btnsubmit'))
             { 
@@ -172,10 +168,9 @@ class Blog extends Admin_controller {
                 }
                 else
                 {                              
-                    if($this->Mblog->add_blog($Author,$Date,$Title,$Subject,$Keywords,$Text,$this->_data['uname'],$about)==TRUE)
-                    {
-                        //redirect('blog_frontend/blog_content_admin/'.$FirstName.'/'.$Title);  
-                        $this->blog_list();
+                    if($this->Mblog->add_blog($Author,$Date,$Title,$Subject,$Keywords,$Text,$this->_data['uname'],$about,$lg)==TRUE)
+                    { 
+                        $this->_message('blog', __("CF_addblog_success"), 'success', site_url("blog/blog_list"));
                     }
                 }
             }else
@@ -229,15 +224,16 @@ class Blog extends Admin_controller {
                     $this->_data['page_title'] = $Title;
                     $edit_image=$this->input->post('edit_image');
                     $this->_data['uname'] = $this->input->post('uname');
+                    $lang_temp = $this->input->post('lg');
                     if (strlen($this->_data['uname'])>1)
                     {
                         $this->image_upload_lib->remove_image_from_db($id,'ID','Link','tblblog'); 
-                        $data = $this->Mblog->edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$this->_data['uname'],$about);
-                        redirect('blog_frontend/blog_content_admin/'.$FirstName.'/'.$Title);  
+                        $data = $this->Mblog->edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$this->_data['uname'],$about,$lang_temp);
+                        $this->_message('blog', __("CF_editblog_success"), 'success', site_url("blog/blog_list/".$this->_data['lang']));  
                     }else
                     {
-                        $data = $this->Mblog->edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$edit_image,$about);
-                        redirect('blog_frontend/blog_content_admin/'.$FirstName.'/'.$Title);
+                        $data = $this->Mblog->edit_blog($id,$Author,$Date,$Title,$Subject,$Keywords,$Text,$edit_image,$about,$lang_temp);
+                        $this->_message('blog', __("CF_editblog_success"), 'success', site_url("blog/blog_list/".$this->_data['lang']));
                     }
                 }
             }            
@@ -277,34 +273,46 @@ class Blog extends Admin_controller {
     //Search
     function search()
     {
-        $Keywords = $this->input->post('search_field_blog');
+        $lg = $this->uri->segment(3);
+        //$lg=$this->_data['lang'];    
+        if (! $lg) return;
+        if (lang_name_by_short_key($lg,TRUE)==FALSE)
+        {
+            $this->_message('blog', 'Invaild language', 'error',site_url("blog/blog_list").'/'.$this->_data['lang']);
+        }   
+
+        $this->_data['path'][] = array(
+        'name' => __("CF_Blog_search"),
+        'link' => '#'
+        );
+        $this->_data['lg'] = $lg;
+        $title = $this->input->post('search_field_blog');
         $config['base_url'] = base_url().'blog/search/';
-        $config['total_rows'] = $this->Mblog->count_record($Keywords);
-        $config['per_page']='3';
+        $config['total_rows'] = $this->Mblog->count_record_blog_title($title);
+        $config['per_page']=3;
 
         $config['full_tag_open'] = '<li>';
         $config['full_tag_close'] = '</li>'; 
-        $config['next_link'] = 'Next >';
-        $config['prev_link'] = '< Previous';
-        $config['last_link'] = 'Last >>';
-        $config['first_link'] = '<< First';
-
+        $config['next_link'] = __("CF_next");
+        $config['prev_link'] = __("CF_previous");
+        $config['last_link'] = __("CF_last");
+        $config['first_link'] = __("CF_first");
+        $config['uri_segment'] = 4;
+        
         $this->pagination->initialize($config);
-        $num = !is_nan((double)$this->uri->segment(3))?0:$this->uri->segment(3);
-        $query_search = $this->Mblog->search_blog($this->uri->segment(3),$config['per_page'],$Keywords);
+        $num = !is_nan((double)$this->uri->segment(4))?0:$this->uri->segment(4);
+        $query_search = $this->Mblog->search_blog_by_title($lg,$this->uri->segment(4),$config['per_page'],$title);
         $this->_data['page_title'] = __("CF_Blog_search");
         if($query_search->num_rows()>0)
         {
             $this->_data['pagination'] = $this->pagination->create_links(); 
             $this->_data['query'] =  $query_search->result_array();
-            $this->_load_view('blog/search_blog');                             
-
+            $this->_load_view('admin/search_blog');                             
         }
         else
         {
             $this->_data['error']=__("CF_mess_no_search");
-            $this->_data['query_most_blog_post'] = $this->Mblog->get_most_blog_post();
-            $this->_load_view('blog/search_blog');
+            $this->_load_view('admin/search_blog');
         }
 
     }    

@@ -14,9 +14,13 @@
         <p>
             <label for="date"><?php echo __("CF_date")?>: <?php echo mdate($datestring,$time);?> </label>
         </p>
+        <div class="input text">
+            <label>Display language</label>        
+            <?php choose_your_language($lg);?>
+        </div>
         <p>
-        <label><?php echo __("CF_blog_thum")?> :</label>                 
-        <?php $this->load->view('image_upload');?>
+            <label><?php echo __("CF_blog_thum")?> :</label>                 
+            <?php $this->load->view('image_upload');?>
         </p>
         <br />
         <br />
