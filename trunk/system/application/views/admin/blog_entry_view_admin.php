@@ -75,13 +75,13 @@
                         <br />
                         <!-- BreakLine -->
                         <?php echo $comment?> 
-                    </p>
+                    </p><?php if($status==1){?>
+                    <p style="width:10px">&nbsp;</p>
+                    <?php }else{?>
+                    <p ><a href="<?php echo site_url('blog/comment_not_agree')?>" target="_blank" ><label><h4 style="color: red"><?php echo __("CF_approved").'&nbsp;?' ?></h4></label></a></p>    
+                    <?php }?>
                     <!-- Content -->
-                    <?php if($status==0){?>
-                        <a href="<?php echo site_url('blog/edit_comment'.'/'.$titletemp.'/'.$id.'/'.$idtemp.'/'.$countcommenttemp.'/'.$authortemp)?>"onclick="return confirm('Do you really wish to show comment?')"><b><?php echo __("CF_show_comment")?></b></a>
-                        <?php }?>
-                    <br />
-                <a href="<?php echo site_url('blog/delete_comment'.'/'.$titletemp.'/'.$id.'/'.$idtemp.'/'.$countcommenttemp.'/'.$authortemp)?>"onclick="return confirm('Do you really wish to delete?')"  ><b><?php echo __("CF_delete_comment")?></b></a> </li>
+                 </li>
                 <!-- /#comments ol li -->
             </ol>
             <!-- /#comments ol -->

@@ -12,7 +12,7 @@
       </div>
       <!-- /.sidebar_item #search -->
       <div class="sidebar_item">
-        <div id="datepicker"></div>
+        <div id="datepicker_blog"></div>
       </div>
       <div class="sidebar_item">
         <ul id="tabs">

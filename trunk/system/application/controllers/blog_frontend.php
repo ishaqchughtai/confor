@@ -20,12 +20,12 @@ class Blog_frontend extends Frontend_controller {
         if ($this->blog_sidebar == 'most_post') 
         {
             $side_bar['page'] = "blog/sidebar_pop";    
-            $side_bar['pop'] = $this->Mblog->get_most_blog_post();        
+            $side_bar['pop'] = $this->Mblog->get_most_blog_post($this->_data['lang']);        
         }
         else 
         {
             $side_bar['page'] = "blog/sidebar_bill";                
-            $side_bar['bill'] = $this->Mblog->get_most_blog_view();                                
+            $side_bar['bill'] = $this->Mblog->get_most_blog_view($this->_data['lang']);                                
         }
         $side_bar['categories'] = $this->Mhome->get_category();
         $side_bar['dates'] = $this->Mhome->get_dates();
@@ -34,21 +34,29 @@ class Blog_frontend extends Frontend_controller {
     }
     function index()
     {                        
-        $this->_data['query_most_blog'] = $this->Mblog->get_most_blog();
+        $lg=$this->_data['lang'];    
+        if (! $lg) return;
+        if (lang_name_by_short_key($lg,TRUE)==FALSE)
+        {
+            $this->_message('blog', 'Invaild language', 'error',site_url("blog/blog_list").'/'.$this->_data['lang']);
+        }   
+
+        $this->_data['lg'] = $lg;
+        $this->_data['query_most_blog'] = $this->Mblog->get_most_blog($this->_data['lang']);
         $config['base_url'] = base_url().'index.php/blog_frontend/index/';
-        $config['total_rows'] = $this->db->count_all('tblblog');
+        $config['total_rows'] = $this->Mblog->count_record_blog($lg);
         $config['per_page']='3';
 
         $config['full_tag_open'] = '<li>';        
         $config['full_tag_close'] = '</li>'; 
-        $config['next_link'] = 'Next >';
-        $config['prev_link'] = '< Previous';
-        $config['last_link'] = 'Last >>';
-        $config['first_link'] = '<< First';
+        $config['next_link'] = __("CF_next");
+        $config['prev_link'] = __("CF_previous");
+        $config['last_link'] = __("CF_last");
+        $config['first_link'] = __("CF_first");
 
         $this->pagination->initialize($config);
         $num = $this->uri->segment(3);
-        $this->_data['query'] = $this->Mblog->get_all_blog($num,$config['per_page']);
+        $this->_data['query'] = $this->Mblog->get_all_blog($lg,$num,$config['per_page']);
         $this->_data['pagination'] = $this->pagination->create_links();                
         $this->_data['page_title'] = 'Blog confor';                 
         $this->_load_view('blog/blog_view'); 
@@ -76,7 +84,7 @@ class Blog_frontend extends Frontend_controller {
             $this->_load_view('blog/blog_entry_view');
         }else
         {
-            redirect(site_url('blog'));
+            redirect(site_url('blog_frontend'));
         }
     }
     function blog_content_admin($author='', $title='')
@@ -106,30 +114,28 @@ class Blog_frontend extends Frontend_controller {
                 $this->_load_view('admin/blog_entry_view_admin');               
             }else
             {
-                redirect(site_url('blog'));
+                redirect(site_url('blog_frontend'));
             }
-
         }
     }
-     
+
     //Search
     function search()
     {
         $Keywords = $this->input->post('search_field_blog');
         $config['base_url'] = base_url().'index.php/blog_frontend/search/';
         $config['total_rows'] = $this->Mblog->count_record($Keywords);
-        $config['per_page']='3';
+        $config['per_page']=3;
 
         $config['full_tag_open'] = '<li>';
         $config['full_tag_close'] = '</li>'; 
-        $config['next_link'] = 'Next >';
-        $config['prev_link'] = '< Previous';
-        $config['last_link'] = 'Last >>';
-        $config['first_link'] = '<< First';
+        $config['next_link'] = __("CF_next");
+        $config['prev_link'] = __("CF_previous");
+        $config['last_link'] = __("CF_last");
+        $config['first_link'] = __("CF_first");
 
         $this->pagination->initialize($config);
-        //$num = !is_nan((double)$this->uri->segment(3))?0:$this->uri->segment(3);
-        $query_search = $this->Mblog->search_blog($this->uri->segment(3),$config['per_page'],$Keywords);
+        $query_search = $this->Mblog->search_blog($this->_data['lang'],$this->uri->segment(3),$config['per_page'],$Keywords);
         $this->_data['page_title'] = __("CF_Blog_search");
         if($query_search->num_rows()>0)
         {
@@ -141,26 +147,27 @@ class Blog_frontend extends Frontend_controller {
         else
         {
             $this->_data['error']=__("CF_mess_no_search");
-            $this->_data['query_most_blog_post'] = $this->Mblog->get_most_blog_post();
+            $this->_data['query_most_blog_post'] = $this->Mblog->get_most_blog_post($this->_data['lang']);
             $this->_load_view('blog/search_blog');
         }
 
     }    
     function search_keyword($Keywords='')
     {
+
         $config['base_url'] = base_url().'index.php/blog_frontend/search/';
         $config['total_rows'] = $this->Mblog->count_record($Keywords);
         $config['per_page']='3';
 
         $config['full_tag_open'] = '<li>';
         $config['full_tag_close'] = '</li>'; 
-        $config['next_link'] = 'Next >';
-        $config['prev_link'] = '< Previous';
-        $config['last_link'] = 'Last >>';
-        $config['first_link'] = '<< First';
+        $config['next_link'] = __("CF_next");
+        $config['prev_link'] = __("CF_previous");
+        $config['last_link'] = __("CF_last");
+        $config['first_link'] = __("CF_first");
 
         $this->pagination->initialize($config);
-        $query_search = $this->Mblog->search_blog($config['per_page'],$this->uri->segment(3),$Keywords);
+        $query_search = $this->Mblog->search_blog($this->_data['lang'],$config['per_page'],$this->uri->segment(3),$Keywords);
         $this->_data['page_title'] = __("CF_Blog_search");
         if($query_search->num_rows()>0)
         {
@@ -172,9 +179,41 @@ class Blog_frontend extends Frontend_controller {
         else
         {
             $this->_data['error']=__("CF_mess_no_search");
-            $this->_data['query_most_blog_post'] = $this->Mblog->get_most_blog_post();
+            $this->_data['query_most_blog_post'] = $this->Mblog->get_most_blog_post($this->_data['lang']);
             $this->_load_view('blog/search_blog');
         } 
+    }
+    function search_blog_by_date()
+    {
+        $Date = $this->uri->segment(3);
+        $config['base_url'] = base_url().'index.php/blog_frontend/search_blog_by_date/'.$Date.'/';
+        $config['total_rows'] = $this->Mblog->count_record_date($Date);
+        $config['per_page']=5;
+
+        $config['full_tag_open'] = '<li>';
+        $config['full_tag_close'] = '</li>'; 
+        $config['next_link'] = __("CF_next");
+        $config['prev_link'] = __("CF_previous");
+        $config['last_link'] = __("CF_last");
+        $config['first_link'] = __("CF_first");
+
+        $this->pagination->initialize($config);
+        $query_search = $this->Mblog->search_blog_by_date($this->_data['lang'],$this->uri->segment(4),$config['per_page'],$Date);
+        $this->_data['page_title'] = __("CF_Blog_search");
+        if($query_search->num_rows()>0)
+        {
+            $this->_data['pagination'] = $this->pagination->create_links(); 
+            $this->_data['query'] =  $query_search->result_array();
+            $this->_load_view('blog/search_blog');                             
+
+        }
+        else
+        {
+            $this->_data['error']=__("CF_mess_no_search");
+            $this->_data['query_most_blog_post'] = $this->Mblog->get_most_blog_post($this->_data['lang']);
+            $this->_load_view('blog/search_blog');
+        }
+                
     }
     //Add comment
     function add_comment()
