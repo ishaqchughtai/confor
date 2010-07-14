@@ -20,7 +20,7 @@
                     <h3> <?php echo __("CF_vid_update")?> </h3>
                     <?php echo form_open('vspeaker/edit_video_conference/'.$id);?> 
 
-					<?php $this->load->view('vid/lang_category_selector');?>					
+					<?php $this->load->view('vid/lang_category_selector',array("video_cate"=>$selected_cate));?>					
 					
                     <p>
                         <label for="title"><?php echo __("CF_title")?>:</label>
