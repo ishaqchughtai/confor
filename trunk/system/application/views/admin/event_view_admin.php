@@ -20,7 +20,7 @@
     <br />
         <h3><?php echo __("CF_list_event")?></h3><br />
 <div class="input text">
-		<label>Display language</label>		
+		<label><?php echo __("CF_dis_lang")?></label>		
 		<?php choose_your_language($lg);?>
 	</div>
         <table border="1" width="100%">

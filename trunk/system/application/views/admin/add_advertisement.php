@@ -15,9 +15,15 @@
 	</script>
 				<div class="content_item">
 				
+                <ul class="link_conttrol">
+        <li><a class="icon_list" href="<?php echo site_url('advertisement/advertisement_list')?>"><?php echo __("CF_adv_list")?></a></li>
+    </ul><br />
+
 					<h3><?php echo __("CF_add_new_adv")?></h3>
+                    
+                    
 					<?php
-						$data=array('name' => 'event','id' => 'event-form'); 
+						$data=array('name' => 'advertisement','id' => 'adv-form'); 
 						echo form_open('advertisement/add',$data);
 					?>
 						<p>						
@@ -55,11 +61,11 @@
 						<p>
 						
 							<label for="image_link"><?php echo __("CF_image_link")?></label>
-							<input class="short" name="image_link" id="image_link" value="<?php if(isset($_POST['image_link'])){ echo $_POST['image_link'];}?>" onclick="window.open('<?php echo site_url('advertisement/do_upload')?>','_blank','height=150,width=300,top=350, left=400')" readonly="true"/>
-				        <?php echo form_error('image_link')?></p>
+							<?php $this->load->view('image_upload');?>
+				        </p>
 				  <p>
 						
-							<input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_send")?>" />
+							<input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_post")?>" />
 							<input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />
 						
 				  </p>

@@ -1,33 +1,61 @@
-    
-    <?php foreach($query as $row) {
-                                $id = $row['ID'];
-                                $date_beginning = date("F jS Y", strtotime($row['DateBeginning']));
-                                $date_expiry = date("F jS Y", strtotime($row['DateExpiry']));
-                                $advertiser_name = $row['AdvertiserName'];
-                                $advertiser_email = $row['AdvertiserEmail'];
-                                $url = $row['URL'];
-                                $text_tips = $row['TextTips'];                           
-                                $image_link = $row['ImageLink']; ?>
-    <div class="content_item">
-    <h5><?php echo __("CF_adv_date_begin")?>: <?php echo $date_beginning?> \ <?php echo __("CF_adv_date_ex")?>: <?php echo $date_expiry?></h5>
-    <h5><?php echo __("CF_advertisement_name")?>: <?php echo $advertiser_name?></h5>
-    <h5><?php echo __("CF_advertisement_email")?>: <?php echo $advertiser_email?></h5>
-    <p><a href="<?php echo $url;?>"><img src="<?php echo base_url().'assets/uploads/adv/'.$image_link ?>" width="200" height="200" /></a><?php echo $text_tips?></p>
-    <p>
-    <form id="contactform" action="<?php echo site_url('advertisement/get_advertisement'.'/'.$id)?>" method="post" enctype="multipart/form-data" class="global">
-      <input name="btnedit" type="submit" class="submit" value="<?php echo __("CF_edit")?>" />
-    </form>
-    <form id="contactform" action="<?php echo site_url('advertisement/delete'.'/'.$id)?>" method="post" enctype="multipart/form-data" class="global">
-    <input name="btndelete" type="submit" class="submit" value="<?php echo __("CF_del")?>" onclick="return confirm('Do you really wish to delete?')" />
-	</form>
-    </p>
-    </div>
-    <?php }?>
-	
-    <!-- /.content_item -->
-    <!-- /.content_item -->
-    <ul id="pagination">
-      <li><?php echo $pagination?></li>
+<?php $page = 5;?>          
+    <div id="content">
+       	<ul class="link_conttrol">
+        <li><a class="icon_add" href="<?php echo site_url('advertisement/add')?>"><?php echo __("CF_add_new_adv")?></a></li>
     </ul>
-    <!-- /#pagination -->
+    <br />
+        <h3><?php echo __("CF_list_event")?></h3><br />
+        <table border="1" width="100%">
+            <tr align="left">
+                <th width="86"><?php echo __("CF_pre")?></th>
+                <th width="140"><?php echo __("CF_adv_date_begin")?></th>
+                <th width="138"><?php echo __("CF_adv_date_ex")?></th>
+                <th width="119"><?php echo __("CF_advertisement_name")?></th>
+                <th width="77"><?php echo __("CF_advertisement_email")?></th>
+                <th width="77"><?php echo __("CF_url")?></th>
+                <th width="70"><?php echo __("CF_text_tips")?></th>
+                <th width="159" align="center"><?php echo mb_strtoupper(__("CF_action"))?></th>
+            </tr>
+            
+            <?php foreach($query as $row):?>
+            <?php 					
+						$id = $row['ID'];
+						$date_beginning = date("M jS Y", strtotime($row['DateBeginning']));
+						$date_expiry = date("M jS Y", strtotime($row['DateExpiry']));
+						$advertiser_name = $row['AdvertiserName'];
+						$advertiser_email = $row['AdvertiserEmail'];
+						$url = $row['URL'];
+						$text_tips = $row['TextTips'];                           
+						$image_link = $row['ImageLink']; 					
+			?>
+                <tr>
+                    <td><img src="<?php echo base_url().'assets/uploads/image/'.$image_link ?>" width="81" height="81" />                    </td>
+                    <td><?php echo $date_beginning?></td>
+                    <td><?php echo $date_expiry?></td>     
+                    <td><?php echo $advertiser_name?></td>
+                    <td><?php echo $advertiser_email?></td>
+                    <td><?php echo $url?></td>
+                    <td><?php echo _substr($text_tips,100)?></td>
+                    <td width="159"><a href="<?php echo site_url('advertisement/get_advertisement'.'/'.$id)?>"><?php echo mb_strtoupper(__("CF_modify"))?></a> | 
+                  <a href="<?php echo site_url('advertisement/delete'.'/'.$id)?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
+                </tr>
+                <?php endforeach;?>
+        </table>
+        <!-- /.x2 - represents a half windows size div -->
+        <!-- /.x2 - represents a half windows size div -->
+        <!--                  -->
+        <!-- END OF .x2 CLASS -->
+        <!--                  -->
+        <!-- /.divider -->
+        <!-- /.x4 - represents a fourth windows size div -->
+        <div>
+            <ul id="pagination">
+                    <li><?php echo $pagination?></li>
+                </ul>
+        </div>
+    <!-- /#content -->
+    <!-- /#content -->
+    <!-- /#content -->
+    <!-- /#content -->
+        </div>
     
