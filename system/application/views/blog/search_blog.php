@@ -1,3 +1,4 @@
+<?php $page = 5;?>
 <div id="left">
       <?php if(isset($error)):?>
       <p class="not_warning"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
@@ -22,7 +23,7 @@
         <h3><a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$title); ?>"><?php echo $title ?></a></h3>
         <h5><?php echo __("CF_by")?> <?php echo $author ?> <?php echo __("CF_in")?> :
           <?php for($i=0;$i<count($key);$i++){?>
-          <a href="<?php echo site_url('blog_frontend/search_keyword').'/'.$key[$i]?>"><?php echo $key[$i]?></a>
+          <a href="<?php echo site_url('blog_frontend/search_keyword').'/'.$key[$i].'/'.$page?>"><?php echo $key[$i]?></a>
           <?php if ($i<count($key)-1) echo ','?>
           <?php ;}?>
           // <?php echo $final_date ?></h5>
@@ -34,7 +35,7 @@
       <h3><a href="<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$title); ?>"><?php echo $title ?></a></h3>
       <h5><?php echo __("CF_by")?> <?php echo $author ?> <?php echo __("CF_in")?> :
         <?php for($i=0;$i<count($key);$i++){?>
-        <a href="<?php echo site_url('blog_frontend/search_keyword').'/'.$key[$i]?>"><?php echo $key[$i]?></a>
+        <a href="<?php echo site_url('blog_frontend/search_keyword').'/'.$key[$i].'/'.$page?>"><?php echo $key[$i]?></a>
         <?php if ($i<count($key)-1) echo ','?>
         <?php ;}?>
         // <?php echo $final_date ?></h5>
@@ -46,8 +47,11 @@
     <?php }?>
     <!-- /.content_item -->
     <ul id="pagination">
-      <li class="selected"><?php echo $pagination?></li>
-    </ul>
+                    <li>
+                    <?php echo $pagination?>
+                    
+                    </li>
+              </ul>
     <!-- /#pagination -->
     <?php endif?>
   </div>  

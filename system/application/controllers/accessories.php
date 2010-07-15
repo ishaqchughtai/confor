@@ -44,21 +44,28 @@
         'name' => __("CF_rules"),
         'link' => site_url("accessories/show_element/".$ElementName)
         );
-        $StrElementName = 'The rules';    
-      }elseif($ElementName == 'training')
+        $StrElementName = 'The rules';
+      }elseif($ElementName == 'how_fr')
       {
         $this->_data['path'][] = array(
-        'name' => __("CF_training"),
+        'name' => __("CF_about_us"),
         'link' => site_url("accessories/show_element/".$ElementName)
         );
-        $StrElementName = 'Training';   
-      }elseif($ElementName == 'office')
+        $StrElementName = 'About us';
+      }elseif($ElementName == 'how_fr')
       {
         $this->_data['path'][] = array(
-        'name' => __("CF_conference_office"),
+        'name' => __("CF_how"),
         'link' => site_url("accessories/show_element/".$ElementName)
         );
-        $StrElementName = 'Conference Office';   
+        $StrElementName = 'How it works';    
+      }elseif($ElementName == 'rules_fr')
+      {
+        $this->_data['path'][] = array(
+        'name' => __("CF_rules"),
+        'link' => site_url("accessories/show_element/".$ElementName)
+        );
+        $StrElementName = 'The rules';       
       }else
       {
         $StrElementName = '';

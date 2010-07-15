@@ -20,12 +20,12 @@
                                 $date = $row['Date'];
                                 $about = $row['About'];
                                 $countcomment = $row['CountComment'] ;
-                                $countcommenttemp = $countcomment;      
+                                $countcommenttemp = $countcomment;     
                             ?>
         <h3><a href="#"><?php echo $title?></a></h3>
         <h5><?php echo $subject ?></h5>
         <a href="#comments" class="comments_balloon"><?php echo $countcommenttemp;?></a>
-        <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="610" height="169" alt="Confor.ca" /></p>
+        <p><img src="<?php echo base_url().'assets/uploads/image/'.$linktemp ?>" width="610" height="169" alt="Confor.ca" /></p>
         <p><?php echo $text ?></p>
       </div>
       <!-- /.content_item -->

@@ -122,21 +122,28 @@ class Blog_frontend extends Frontend_controller {
     //Search
     function search()
     {
-        $Keywords = $this->input->post('search_field_blog');
-        $config['base_url'] = base_url().'index.php/blog_frontend/search/';
-        $config['total_rows'] = $this->Mblog->count_record($Keywords);
-        $config['per_page']=3;
+        $this->_data['page_title'] = __("CF_Blog_search");
+        $Title = $this->input->post('search_field_blog');
+        $Title = $this->uri->segment(3);
+        $per_page = $this->uri->segment(4);
+        $offset = $this->uri->segment(5);
 
+        $this->_data['path'][] = array(
+        'name' => __("CF_Blog_search"),
+        'link' => '#'
+        );
+        $config['uri_segment'] = 5; 
+        $config['base_url'] = base_url().'index.php/blog_frontend/search/'.$Title.'/'.$per_page;
+        $config['total_rows'] = $this->Mblog->count_record_blog_title($this->_data['lang'],$Title);
+        $config['per_page']=$per_page;
         $config['full_tag_open'] = '<li>';
         $config['full_tag_close'] = '</li>'; 
         $config['next_link'] = __("CF_next");
         $config['prev_link'] = __("CF_previous");
         $config['last_link'] = __("CF_last");
         $config['first_link'] = __("CF_first");
-
         $this->pagination->initialize($config);
-        $query_search = $this->Mblog->search_blog($this->_data['lang'],$this->uri->segment(3),$config['per_page'],$Keywords);
-        $this->_data['page_title'] = __("CF_Blog_search");
+        $query_search = $this->Mblog->search_blog($this->_data['lang'],$offset,$per_page,$Title);
         if($query_search->num_rows()>0)
         {
             $this->_data['pagination'] = $this->pagination->create_links(); 
@@ -154,11 +161,20 @@ class Blog_frontend extends Frontend_controller {
     }    
     function search_keyword($Keywords='')
     {
+        $Keywords = $this->uri->segment(3);
+        $per_page = $this->uri->segment(4);
+        $offset = $this->uri->segment(5);
 
-        $config['base_url'] = base_url().'index.php/blog_frontend/search/';
-        $config['total_rows'] = $this->Mblog->count_record($Keywords);
-        $config['per_page']='3';
-
+        $this->_data['path'][] = array(
+        'name' => __("CF_Blog_search"),
+        'link' => '#'
+        );
+        $config['uri_segment'] = 5;
+        $config['base_url'] = base_url().'index.php/blog_frontend/search_keyword/'.$Keywords.'/'.$per_page;
+        $config['total_rows'] = $this->Mblog->count_record($this->_data['lang'],$Keywords);
+        $config['per_page']=$per_page;
+       // echo $config['total_rows'];
+//        return;
         $config['full_tag_open'] = '<li>';
         $config['full_tag_close'] = '</li>'; 
         $config['next_link'] = __("CF_next");
@@ -167,7 +183,7 @@ class Blog_frontend extends Frontend_controller {
         $config['first_link'] = __("CF_first");
 
         $this->pagination->initialize($config);
-        $query_search = $this->Mblog->search_blog($this->_data['lang'],$config['per_page'],$this->uri->segment(3),$Keywords);
+        $query_search = $this->Mblog->search_blog($this->_data['lang'],$offset,$per_page,$Keywords);
         $this->_data['page_title'] = __("CF_Blog_search");
         if($query_search->num_rows()>0)
         {
@@ -185,20 +201,25 @@ class Blog_frontend extends Frontend_controller {
     }
     function search_blog_by_date()
     {
+        $this->_data['path'][] = array(
+        'name' => __("CF_Blog_search"),
+        'link' => '#'
+        );
         $Date = $this->uri->segment(3);
-        $config['base_url'] = base_url().'index.php/blog_frontend/search_blog_by_date/'.$Date.'/';
-        $config['total_rows'] = $this->Mblog->count_record_date($Date);
-        $config['per_page']=5;
-
+        $per_page = $this->uri->segment(4);
+        $offset = $this->uri->segment(5);
+        $config['base_url'] = base_url().'index.php/blog_frontend/search_blog_by_date/'.$Date.'/'.$per_page;
+        $config['total_rows'] = $this->Mblog->count_record_date($this->_data['lang'],$Date);
+        $config['per_page']=$per_page;
+        $config['uri_segment'] = 5;
         $config['full_tag_open'] = '<li>';
         $config['full_tag_close'] = '</li>'; 
         $config['next_link'] = __("CF_next");
         $config['prev_link'] = __("CF_previous");
         $config['last_link'] = __("CF_last");
         $config['first_link'] = __("CF_first");
-
         $this->pagination->initialize($config);
-        $query_search = $this->Mblog->search_blog_by_date($this->_data['lang'],$this->uri->segment(4),$config['per_page'],$Date);
+        $query_search = $this->Mblog->search_blog_by_date($this->_data['lang'],$offset,$per_page,$Date);
         $this->_data['page_title'] = __("CF_Blog_search");
         if($query_search->num_rows()>0)
         {
@@ -213,7 +234,7 @@ class Blog_frontend extends Frontend_controller {
             $this->_data['query_most_blog_post'] = $this->Mblog->get_most_blog_post($this->_data['lang']);
             $this->_load_view('blog/search_blog');
         }
-                
+
     }
     //Add comment
     function add_comment()
@@ -230,6 +251,10 @@ class Blog_frontend extends Frontend_controller {
         $Author=$this->input->post('name');                                          
         $Email=$this->input->post('email');
         $Website=$this->input->post('url');
+        if($Website==NULL)
+        {
+            $Website="http://conferences-formations.com";   
+        }
         $Website=prep_url($Website);
         $Comment=$this->input->post('msg');
         $Blog=$this->input->post('blog');
