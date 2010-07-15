@@ -2,7 +2,7 @@
 
 class Video extends Frontend_controller 
 {
-
+	var $num_per_page = 10;
 	function Video()
 	{
 		parent::Frontend_controller();
