@@ -1,48 +1,31 @@
-<script type="text/javascript">
-    $(function(){       
-        $('#lg').change(function()
-        {
-            $('#lg :selected').each(function(i, selected){                           
-                var lg = $(selected).val();                
-                var cate = $('#vid_cate option:selected').val();                
-                gogo = XEMMEX.baseUrl + "admin/get_element/" + lg;    
-                window.location = gogo;            
-            });    
-        });    
-    });    
-    //-->
-</script>
-<h3><?php echo __("CF_accessories")?></h3>
-<?php $this->load->view("admin/admin_menu_accessories");?>
-<p>&nbsp;    </p>
-<div class="input text">
-    <label>Display language</label>        
-    <?php choose_your_language($lg);?>
-</div>
 <?php foreach($query as $row){
                             $StrElementName = '';                               
                             $ElementName = $row['ElementName'];
                             $ElementContent = $row['ElementContent'];
                             if($ElementName == 'About')
                             {
-                                $StrElementName = 'About us';
+                                $StrElementName = __("CF_about_us");
                             }elseif($ElementName == 'How')
                             {
-                                $StrElementName = 'How it works';    
+                                $StrElementName = __("CF_how");    
                             }elseif($ElementName == 'Rules')
                             {
-                                $StrElementName = 'The rules';    
+                                $StrElementName = __("CF_rules");    
                             }elseif($ElementName == 'About_fr')
                             {
-                                $StrElementName = 'About us';   
+                                $StrElementName = __("CF_about_us");   
                             }elseif($ElementName == 'How_fr')
                             {
-                                $StrElementName = 'How it works';   
+                                $StrElementName = __("CF_how");   
                             }elseif($ElementName == 'Rules_fr')
                             {
-                                $StrElementName = 'The rules';   
+                                $StrElementName = __("CF_rules");   
                             }
-}?>
+}?> 
+<h3><?php echo __("CF_accessories")?></h3>
+<?php $this->load->view("admin/admin_menu_accessories");?>
+<p>&nbsp;    </p>
+
 <div class="content_item">                 
     <form id="contactform" action="<?php echo site_url("admin/update_element/".$ElementName)?>" method="post" enctype="multipart/form-data" class="global">                   
         <p>
@@ -61,8 +44,7 @@
         </p>
 
         <p>                    
-            <input name="" type="submit" class="submit" value="<?php echo __("CF_submit")?>"onclick="return confirm('Do you really wish to update?')" />
-            <input name="" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />                        
+            <input name="" type="submit" class="submit" value="<?php echo __("CF_submit")?>"onclick="return confirm('<?php echo __("CF_mess_update")?>')" />                       
         </p>
 
     </form>    

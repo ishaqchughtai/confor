@@ -344,7 +344,7 @@
                         $save_data['last_ip'] = '';            
                         $save_data['password'] = $this->user_lib->_encode($this->input->post('password'));                                                                                
                         $this->MUser->add($save_data);
-                
+
                         $this->session->set_flashdata('msg', 'Register succesfull');
                         $this->session->set_flashdata('class_msg', 'success');            
                         redirect('admin/list_user');
@@ -637,7 +637,7 @@
             $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
             $this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 
             $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-			$this->_data['query']=$this->Mvconference->get_video_info_by_id($id);
+            $this->_data['query']=$this->Mvconference->get_video_info_by_id($id);
             //$this->_data['category']=$this->Mvconference->get_category();
             $this->_data['error'] ="";
 
@@ -652,7 +652,7 @@
                 {												
                     $data = array(
                     'title'=>$this->input->post('title'),
-					'mem_id'=>$this->input->post('speaker'),
+                    'mem_id'=>$this->input->post('speaker'),
                     'description'=>$this->input->post('description'),
                     'category'=>$this->input->post('video_cate'),
                     'tags'=>$this->input->post('keywords'),					
@@ -821,54 +821,42 @@
         }
 
         //Accessories
-
-        function show_element($ElementName)
-        {   
-            $admin_data = is_admin(FALSE);
-            $query = $this->Maccessories->get_element($ElementName); 
-            if($query->num_rows()==1)
-            {
-                if ($admin_data == FALSE) 
-                {
-                    $this->login();              
-                }else
-                {
-                    $this->_data['page_title'] = $this->convert_element_name($ElementName);
-                    $this->_data['query'] = $query->result_array();
-                    $this->_load_view('admin/page_admin');    
-                }
-            }else
-            {
-                redirect('admin/index');
-            }      
-        }
         function get_element($ElementName)
         {
             is_admin();
-            $StrElementName = $this->convert_element_name($ElementName);
+            if($this->_data['lang']=='fr')
+            {
+                $lgtemp='_fr';
+            }            
             $this->_data['path'][] = array(
             'name' => __("CF_accessories"),
-            'link' => site_url('admin/show_element/about')
-            );                                
+            'link' => site_url('admin/get_element/About'.$lgtemp)
+            );
+            $StrElementName = $this->convert_element_name($ElementName);
+
             $query = $this->Maccessories->get_element($ElementName);
             $this->_data['query'] = $query->result_array();
-            $this->_data['page_title'] = $this->convert_element_name($ElementName);
+            $this->_data['page_title'] = $StrElementName;
             $this->_load_view('admin/add_new_page');
         }    
         function update_element($ElementName)
         {
             is_admin();
             $StrElementName = $this->convert_element_name($ElementName);
+            if($this->_data['lang']=='fr')
+            {
+                $lgtemp='_fr';
+            }            
             $this->_data['path'][] = array(
             'name' => __("CF_accessories"),
-            'link' => site_url('admin/show_element/about')
+            'link' => site_url('admin/get_element/About'.$lgtemp)
             );
             $this->form_validation->set_rules('ElementContent',__("CF_element_content"),'required');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
             $query = $this->Maccessories->get_element($ElementName);
             $this->_data['query'] = $query->result_array();                                          
             $ElementContent=$this->input->post('ElementContent');
-            $this->_data['page_title'] = $this->convert_element_name($ElementName);
+            $this->_data['page_title'] = $StrElementName;
             if($this->form_validation->run()==FALSE)
             {
                 $this->_load_view('admin/add_new_page'); 
@@ -877,75 +865,75 @@
             {
                 if($this->Maccessories->update_element($ElementName,$ElementContent)==TRUE)
                 {
-                    redirect(site_url('admin/show_element/'.$ElementName));  
+                    $this->_message('admin', __("CF_update").' '.$StrElementName.' '. __("CF_success"), 'success', site_url('admin/get_element/About'.$lgtemp));
                 }
             }        
         }
-    function convert_element_name($ElementName)
-    {
-      if($ElementName == 'about')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_about_us"),
-        'link' => site_url("accessories/show_element/".$ElementName)
-        );
-        $StrElementName = 'About us';
-      }elseif($ElementName == 'how')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_how"),
-        'link' => site_url("accessories/show_element/".$ElementName)
-        );
-        $StrElementName = 'How it works';    
-      }elseif($ElementName == 'rules')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_rules"),
-        'link' => site_url("accessories/show_element/".$ElementName)
-        );
-        $StrElementName = 'The rules';
-      }elseif($ElementName == 'how_fr')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_about_us"),
-        'link' => site_url("accessories/show_element/".$ElementName)
-        );
-        $StrElementName = 'About us';
-      }elseif($ElementName == 'how_fr')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_how"),
-        'link' => site_url("accessories/show_element/".$ElementName)
-        );
-        $StrElementName = 'How it works';    
-      }elseif($ElementName == 'rules_fr')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_rules"),
-        'link' => site_url("accessories/show_element/".$ElementName)
-        );
-        $StrElementName = 'The rules';       
-      }else
-      {
-        $StrElementName = '';
-      }
-      return $StrElementName;    
+        function convert_element_name($ElementName)
+        {
+            if($ElementName == 'About')
+            {
+                $this->_data['path'][] = array(
+                'name' => __("CF_about_us").' (English)',
+                'link' => '#'
+                );
+                $StrElementName = __("CF_about_us");
+            }elseif($ElementName == 'How')
+            {
+                $this->_data['path'][] = array(
+                'name' => __("CF_how").' (English)',
+                'link' => '#'
+                );
+                $StrElementName = __("CF_how");    
+            }elseif($ElementName == 'Rules')
+            {
+                $this->_data['path'][] = array(
+                'name' => __("CF_rules").' (English)',
+                'link' => '#'
+                );
+                $StrElementName = __("CF_rules");
+            }elseif($ElementName == 'About_fr')
+            {
+                $this->_data['path'][] = array(
+                'name' => __("CF_about_us").' (French)',
+                'link' => '#'
+                );
+                $StrElementName = __("CF_about_us");
+            }elseif($ElementName == 'How_fr')
+            {
+                $this->_data['path'][] = array(
+                'name' => __("CF_how").' (French)',
+                'link' => '#'
+                );
+                $StrElementName = __("CF_how");    
+            }elseif($ElementName == 'Rules_fr')
+            {
+                $this->_data['path'][] = array(
+                'name' => __("CF_rules").' (French)',
+                'link' => '#'
+                );
+                $StrElementName = __("CF_rules");       
+            }else
+            {
+                $StrElementName = '';
+            }
+            return $StrElementName;    
+        }
+
+        function keyword_check($Keywords)
+        {
+            $Key = explode(" ", $Keywords);					
+            if(count($Key)>4)
+            {
+                $this->form_validation->set_message('keyword_check', __("CF_the").'%s'.__("CF_field_max")); 
+                return FALSE ;           
+            }
+            else
+            {
+                return TRUE ;
+            }
+        }		
     }
-		
-		function keyword_check($Keywords)
-		{
-			$Key = explode(" ", $Keywords);					
-			if(count($Key)>4)
-			{
-				$this->form_validation->set_message('keyword_check', __("CF_the").'%s'.__("CF_field_max")); 
-				return FALSE ;           
-			}
-			else
-			{
-				return TRUE ;
-			}
-		}		
-    }
-					
-	
+
+
 ?>

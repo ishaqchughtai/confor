@@ -574,4 +574,6 @@ $lang['CF_delete_blog'] = 'Blog has been deleted!';
 
 /*key added on 15/07/2010*/
 $lang['CF_post'] = 'POST'; 
-
+$lang['CF_mess_update'] = 'Do you really wish to update?';
+$lang['CF_update'] = 'Update';
+$lang['CF_success'] = 'Success !';
