@@ -6,7 +6,7 @@
       parent::Model();
       $this->load->database();
     }
-
+    
     //get all advertisement
     function get_advertisement($offset,$num)
     {
