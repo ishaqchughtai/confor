@@ -4,19 +4,22 @@
                             $ElementContent = $row['ElementContent'];
                             if($ElementName == 'About')
                             {
-                                $StrElementName = 'About us';
+                                $StrElementName = __("CF_about_us");
                             }elseif($ElementName == 'How')
                             {
-                                $StrElementName = 'How it works';    
+                                $StrElementName = __("CF_how");    
                             }elseif($ElementName == 'Rules')
                             {
-                                $StrElementName = 'The rules';    
-                            }elseif($ElementName == 'Training')
+                                $StrElementName = __("CF_rules");    
+                            }elseif($ElementName == 'About_fr')
                             {
-                                $StrElementName = 'Training';   
-                            }elseif($ElementName == 'Office')
+                                $StrElementName = __("CF_about_us");   
+                            }elseif($ElementName == 'How_fr')
                             {
-                                $StrElementName = 'Conference Office';   
+                                $StrElementName = __("CF_how");   
+                            }elseif($ElementName == 'Rules_fr')
+                            {
+                                $StrElementName = __("CF_rules");   
                             }
                         ?>
 <div class="content_item">

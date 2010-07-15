@@ -529,36 +529,39 @@ $lang['CF_up_profile'] = 'f_Your profile has been updated';
 
 $lang['CF_upgrade_mem'] = 'f_Please upgrade your membership to use this function';
 
-$lang['CF_you_have_paid'] = 'You have paid $';
+$lang['CF_you_have_paid'] = 'f_You have paid $';
 
-$lang['CF_for_this'] = 'for this subcription';
+$lang['CF_for_this'] = 'f_for this subcription';
 
 $lang['CF_day'] = ' day.';
 
-$lang['CF_expired'] = 'Expired';
+$lang['CF_expired'] = 'f_Expired';
 
-$lang['CF_old_pass_incorrect'] = 'Your Old Password was incorrect';
+$lang['CF_old_pass_incorrect'] = 'f_Your Old Password was incorrect';
 
 //new key 09-07
-$lang['CF_Blog_Title'] = 'Blog confor';
-$lang['CF_Blog_search'] = 'Blog search';
+$lang['CF_Blog_Title'] = 'f_Blog confor';
+$lang['CF_Blog_search'] = 'f_Blog search';
 $lang['CF_next'] = 'f_Next >';
 $lang['CF_previous'] = '< f_Previous';
 $lang['CF_last'] = 'f_Last >>';
 $lang['CF_first'] = '<< f_First';
 /*new key on 13rd Jul 2010*/
 $lang['CF_new_speaker'] = 'Nouvel Conf&eacute;rencier';
-$lang['CF_blog_list'] = 'Blog List';
-$lang['CF_blog_comment'] = 'Comments';
-$lang['CF_blog_approved'] = 'Approved';
+$lang['CF_blog_list'] = 'f_Blog List';
+$lang['CF_blog_comment'] = 'f_Comments';
+$lang['CF_blog_approved'] = 'f_Approved';
 /*key added on 14/07/2010*/ 
-$lang['CF_dis_lang'] = 'Display language';
-$lang['CF_blog_not_approved'] = 'Not Approved';
-$lang['CF_mess_approved'] = 'Do you really wish to approved comment?';
-$lang['CF_mess_not_approved'] = 'Do you really wish to not approved comment?';
-$lang['CF_mess_comment'] = 'Your articles will be approved by Admin !'; 
-$lang['CF_addblog_success'] = 'Add New Blog Success !'; 
-$lang['CF_editblog_success'] = 'Edit Blog Success !';
+$lang['CF_dis_lang'] = 'f_Display language';
+$lang['CF_blog_not_approved'] = 'f_Not Approved';
+$lang['CF_mess_approved'] = 'f_Do you really wish to approved comment?';
+$lang['CF_mess_not_approved'] = 'f_Do you really wish to not approved comment?';
+$lang['CF_mess_comment'] = 'f_Your articles will be approved by Admin !'; 
+$lang['CF_addblog_success'] = 'f_Add New Blog Success !'; 
+$lang['CF_editblog_success'] = 'f_Edit Blog Success !';
 
 /*key added on 15/07/2010*/
-$lang['CF_post'] = 'POST';
+$lang['CF_post'] = 'f_POST';
+$lang['CF_mess_update'] = 'f_Do you really wish to update?';
+$lang['CF_update'] = 'Update';
+$lang['CF_success'] = 'Success !';

@@ -22,55 +22,55 @@
         redirect('home/index');
       }      
     }
-    function convert_element_name($ElementName)
-    {
-      if($ElementName == 'about')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_about_us"),
-        'link' => site_url("accessories/show_element/".$ElementName)
-        );
-        $StrElementName = 'About us';
-      }elseif($ElementName == 'how')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_how"),
-        'link' => site_url("accessories/show_element/".$ElementName)
-        );
-        $StrElementName = 'How it works';    
-      }elseif($ElementName == 'rules')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_rules"),
-        'link' => site_url("accessories/show_element/".$ElementName)
-        );
-        $StrElementName = 'The rules';
-      }elseif($ElementName == 'how_fr')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_about_us"),
-        'link' => site_url("accessories/show_element/".$ElementName)
-        );
-        $StrElementName = 'About us';
-      }elseif($ElementName == 'how_fr')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_how"),
-        'link' => site_url("accessories/show_element/".$ElementName)
-        );
-        $StrElementName = 'How it works';    
-      }elseif($ElementName == 'rules_fr')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_rules"),
-        'link' => site_url("accessories/show_element/".$ElementName)
-        );
-        $StrElementName = 'The rules';       
-      }else
-      {
-        $StrElementName = '';
-      }
-      return $StrElementName;    
-    }
+        function convert_element_name($ElementName)
+        {
+            if($ElementName == 'About')
+            {
+                $this->_data['path'][] = array(
+                'name' => __("CF_about_us"),
+                'link' => '#'
+                );
+                $StrElementName = __("CF_about_us");
+            }elseif($ElementName == 'How')
+            {
+                $this->_data['path'][] = array(
+                'name' => __("CF_how"),
+                'link' => '#'
+                );
+                $StrElementName = __("CF_how");    
+            }elseif($ElementName == 'Rules')
+            {
+                $this->_data['path'][] = array(
+                'name' => __("CF_rules"),
+                'link' => '#'
+                );
+                $StrElementName = __("CF_rules");
+            }elseif($ElementName == 'About_fr')
+            {
+                $this->_data['path'][] = array(
+                'name' => __("CF_about_us"),
+                'link' => '#'
+                );
+                $StrElementName = __("CF_about_us");
+            }elseif($ElementName == 'How_fr')
+            {
+                $this->_data['path'][] = array(
+                'name' => __("CF_how"),
+                'link' => '#'
+                );
+                $StrElementName = __("CF_how");    
+            }elseif($ElementName == 'Rules_fr')
+            {
+                $this->_data['path'][] = array(
+                'name' => __("CF_rules"),
+                'link' => '#'
+                );
+                $StrElementName = __("CF_rules");       
+            }else
+            {
+                $StrElementName = '';
+            }
+            return $StrElementName;    
+        }
   } 
 ?>

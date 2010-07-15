@@ -1,7 +1,8 @@
  <ul class="link_conttrol">
-                        <li><a class="icon_list" href="<?php echo site_url('admin/show_element/about')?>"><?php echo __("CF_about_us")?></a></li>
-                        <li><a class="icon_list" href="<?php echo site_url('admin/show_element/how')?>"><?php echo __("CF_how")?></a></li>
-                        <li><a class="icon_list" href="<?php echo site_url('admin/show_element/rules')?>"><?php echo __("CF_rules")?></a></li>
-                        <li><a class="icon_list" href="<?php echo site_url('admin/show_element/training')?>"><?php echo __("CF_training")?></a></li>
-                        <li><a class="icon_list" href="<?php echo site_url('admin/show_element/office')?>"><?php echo __("CF_conference_office")?></a></li>
+                        <li><a class="icon_list" href="<?php echo site_url('admin/get_element/About')?>"><?php echo __("CF_about_us")?> (English)</a></li>
+                        <li><a class="icon_list" href="<?php echo site_url('admin/get_element/About_fr')?>"><?php echo __("CF_about_us")?> (French)</a></li>
+                        <li><a class="icon_list" href="<?php echo site_url('admin/get_element/How')?>"><?php echo __("CF_how")?> (English)</a></li>
+                        <li><a class="icon_list" href="<?php echo site_url('admin/get_element/How_fr')?>"><?php echo __("CF_how")?> (French)</a></li>
+                        <li><a class="icon_list" href="<?php echo site_url('admin/get_element/Rules')?>"><?php echo __("CF_rules")?> (English)</a></li>
+                        <li><a class="icon_list" href="<?php echo site_url('admin/get_element/Rules_fr')?>"><?php echo __("CF_rules")?> (French)</a></li>
                     </ul>
