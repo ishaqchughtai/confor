@@ -379,4 +379,43 @@ class Video extends Frontend_controller
         $this->_data['keyword'] = $keywords_to_search;
         $this->_load_view('home/search'); 
     }
+	
+	function list_archives()
+	{		
+		$year = $this->uri->segment(3);
+		$month = $this->uri->segment(4);
+		$page_offset = $this->uri->segment(5);
+				
+		$this->db->where('lang',$this->_data['lang']);
+		$this->db->where('MONTH(FROM_UNIXTIME(date))',$month);
+		$this->db->where('YEAR(FROM_UNIXTIME(date))',$year);	
+		$this->db->from('videos');
+		$config['total_rows'] = $this->db->count_all_results();
+		
+		$config['uri_segment'] = 5;
+		$config['base_url'] = site_url('test/list_archives').'/'.$year.'/'.$month;
+		
+		$config['per_page'] = $this->num_per_page;
+
+		$config['full_tag_open'] = '<li>';        
+		$config['full_tag_close'] = '</li>'; 
+		$config['next_link'] = 'Next >';
+		$config['prev_link'] = '< Previous';
+		$config['last_link'] = 'Last >>';
+		$config['first_link'] = '<< First';				
+		$this->pagination->initialize($config);
+		$this->_data['pagination'] = $this->pagination->create_links();				
+		
+		$this->db->select('videos.*, users.username');
+		$this->db->where('lang',$this->_data['lang']);
+		$this->db->where('MONTH(FROM_UNIXTIME(date))',$month);
+		$this->db->where('YEAR(FROM_UNIXTIME(date))',$year);	
+		$this->db->limit($this->num_per_page, $page_offset);
+		$this->db->from('videos');		
+		$this->db->join('users','users.id=videos.mem_id');
+		$query = $this->db->get();
+		$this->_data['archives'] = $query->result_array();				
+		$this->_load_view('home/archive_list');		
+	}		
+	
 }
