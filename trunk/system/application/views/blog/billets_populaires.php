@@ -8,8 +8,8 @@
         <ul class="popular_posts_content">
 
             <?php
-             $total = (count($bill)-1>3)?3:count($bill)-1;
-             for($i=0;$i<=$total;$i++){
+                $total = (count($bill)-1>3)?3:count($bill)-1;
+                for($i=0;$i<=$total;$i++){
                     $row = $bill[$i];                               
                     $link = $row['Link'];
                     $title = $row['Title'];
@@ -42,8 +42,8 @@
 
         <ul class="popular_posts_content">
             <?php
-            $total = (count($bill)-1>7)?7:count($bill)-1;
-            for($i=4;$i<=$total;$i++){
+                $total = (count($bill)-1>7)?7:count($bill)-1;
+                for($i=4;$i<=$total;$i++){
                     $row = $bill[$i];                               
                     $link = $row['Link'];
                     $title = $row['Title'];

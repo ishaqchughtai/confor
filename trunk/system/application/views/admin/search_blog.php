@@ -10,8 +10,17 @@
             });    
         });    
     });    
-    //-->
+    //-->   
 </script>
+<script type="text/javascript">
+function search_click(){
+ title = $('#title').val();
+ gogo = XEMMEX.baseUrl + "blog/search/<?php echo $lang?>/" + title + "/5";
+ window.location = gogo;
+ return false;
+}
+</script>
+<?php $page = 5;?> 
 <?php $this->load->view("admin/admin_menu_blog");?>
 <br />
 <br />
@@ -24,7 +33,7 @@
       <div class="content_item">
 <div class="sidebar_item" id="search">
     <form action="<?php echo site_url('blog/search/'.$lang)?>" method="post">
-        <input name="search_field_blog" type="text" class="short">
+        <input name="search_field_blog_admin" type="text" class="short" id="title">
         <input name="search_field" type="submit" class="submit"  value="<?php echo __("CF_submit")?>">
     </form>
     <!-- #search form -->

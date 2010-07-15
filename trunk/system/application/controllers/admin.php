@@ -881,69 +881,56 @@
                 }
             }        
         }
-        function convert_element_name($ElementName)
-        {
-            if($ElementName == 'about')
-            {
-                $this->_data['path'][] = array(
-                'name' => __("CF_accessories"),
-                'link' => site_url('admin/show_element/about')
-                );
-                $this->_data['path'][] = array(
-                'name' => __("CF_about_us"),
-                'link' => '#' 
-                );
-                $StrElementName = 'About us';
-            }elseif($ElementName == 'how')
-            {
-                $this->_data['path'][] = array(
-                'name' => __("CF_accessories"),
-                'link' => site_url('admin/show_element/about')
-                );
-                $this->_data['path'][] = array(
-                'name' => __("CF_how"),
-                'link' => '#' 
-                );
-                $StrElementName = 'How it works';    
-            }elseif($ElementName == 'rules')
-            {
-                $this->_data['path'][] = array(
-                'name' => __("CF_accessories"),
-                'link' => site_url('admin/show_element/about')
-                );
-                $this->_data['path'][] = array(
-                'name' => __("CF_rules"),
-                'link' => '#' 
-                );
-                $StrElementName = 'The rules';    
-            }elseif($ElementName == 'training')
-            {
-                $this->_data['path'][] = array(
-                'name' => __("CF_accessories"),
-                'link' => site_url('admin/show_element/about')
-                );
-                $this->_data['path'][] = array(
-                'name' => __("CF_training"),
-                'link' => '#'
-                );
-                $StrElementName = 'Training';   
-            }elseif($ElementName == 'office')
-            {
-                $this->_data['path'][] = array(
-                'name' => __("CF_accessories"),
-                'link' => site_url('admin/show_element/about')
-                );
-                $this->_data['path'][] = array(
-                'name' => __("CF_conference_office"),
-                'link' => '#' 
-                );
-                $StrElementName = 'Office';   
-            }else
-            {
-                $StrElementName = '';
-            }
-            return $StrElementName;    
-        }
+    function convert_element_name($ElementName)
+    {
+      if($ElementName == 'about')
+      {
+        $this->_data['path'][] = array(
+        'name' => __("CF_about_us"),
+        'link' => site_url("accessories/show_element/".$ElementName)
+        );
+        $StrElementName = 'About us';
+      }elseif($ElementName == 'how')
+      {
+        $this->_data['path'][] = array(
+        'name' => __("CF_how"),
+        'link' => site_url("accessories/show_element/".$ElementName)
+        );
+        $StrElementName = 'How it works';    
+      }elseif($ElementName == 'rules')
+      {
+        $this->_data['path'][] = array(
+        'name' => __("CF_rules"),
+        'link' => site_url("accessories/show_element/".$ElementName)
+        );
+        $StrElementName = 'The rules';
+      }elseif($ElementName == 'how_fr')
+      {
+        $this->_data['path'][] = array(
+        'name' => __("CF_about_us"),
+        'link' => site_url("accessories/show_element/".$ElementName)
+        );
+        $StrElementName = 'About us';
+      }elseif($ElementName == 'how_fr')
+      {
+        $this->_data['path'][] = array(
+        'name' => __("CF_how"),
+        'link' => site_url("accessories/show_element/".$ElementName)
+        );
+        $StrElementName = 'How it works';    
+      }elseif($ElementName == 'rules_fr')
+      {
+        $this->_data['path'][] = array(
+        'name' => __("CF_rules"),
+        'link' => site_url("accessories/show_element/".$ElementName)
+        );
+        $StrElementName = 'The rules';       
+      }else
+      {
+        $StrElementName = '';
+      }
+      return $StrElementName;    
+    }
 		
 		function keyword_check($Keywords)
 		{

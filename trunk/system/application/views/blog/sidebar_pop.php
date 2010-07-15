@@ -1,12 +1,20 @@
+<script type="text/javascript">
+function search_click(){
+ title = $('#title').val();
+ gogo = XEMMEX.baseUrl + "blog_frontend/search/" + title + "/5";
+ window.location = gogo;
+ return false;
+}
+</script>
 </div>  
     <!-- /#content #left - left side of main content -->
     <div id="right">
       <h3><?php echo __("CF_search")?></h3>
       <h5><?php echo __("CF_blog_search")?></h5>
       <div class="sidebar_item" id="search">
-        <form action="<?php echo site_url('blog_frontend/search')?>" method="post">
-          <input name="search_field_blog" type="text" class="search_field">
-          <input name="search_field" type="submit" class="search_submit" value="">
+        <form action="<?php echo site_url('blog_frontend/search/')?>" method="post">
+          <input name="search_field_blog" type="text" class="search_field" id="title">
+          <input name="search_field" type="submit" class="search_submit" value=""  onclick="return search_click()">
         </form>
         <!-- #search form -->
       </div>

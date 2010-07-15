@@ -203,7 +203,7 @@ class Mblog extends Model{
         $this->db->delete('tblcomment',array('Blog'=>$id));
         return TRUE;        
     }
-    function search_blog($lg,$num,$offset,$Keywords)
+    function search_blog($lg,$offset,$num,$Title)
     {
         try
         {
@@ -220,7 +220,7 @@ class Mblog extends Model{
             tbladmin.Name");
             $this->db->from('tblblog');
             $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
-            $this->db->like('Keywords',$Keywords,'both') ;                    
+            $this->db->like('Title',$Title,'both') ;                    
             $this->db->order_by("tblblog.Date", "desc");
             $this->db->where('tblblog.Lang ', $lg);
             $this->db->limit($num,$offset);
@@ -229,15 +229,14 @@ class Mblog extends Model{
             {
                 return $query_search;
 
-            }
-            return 0;            
+            }            
         }
         catch(Exception $e)
         {
             return 0;
         }
     }    
-    function search_blog_by_title($lg,$num,$offset,$Title)
+    function search_blog_by_title($lg,$offset,$num,$Title)
     {
         try
         {
@@ -271,7 +270,7 @@ class Mblog extends Model{
             return 0;
         }
     }    
-    function search_blog_by_date($lg,$num,$offset,$Date)
+    function search_blog_by_date($lg,$offset,$num,$Date)
     {
         try
         {
@@ -305,17 +304,19 @@ class Mblog extends Model{
             return 0;
         }
     }
-    function count_record($Keywords)
+    function count_record($lg,$Keywords)
     {
         $this->db->from('tblblog');
-        $this->db->where(array('Keywords'=>$Keywords));
+        $this->db->like('Keywords',$Keywords,'both');
+        $this->db->where(array('Lang'=>$lg));        
         $query = $this->db->count_all_results();
         return $query;
-    }    
-    function count_record_date($Date)
+    }      
+    function count_record_date($lg,$Date)
     {
         $this->db->from('tblblog');
-        $this->db->where(array('Date'=>$Date));
+        $this->db->like('Date',$Date);
+        $this->db->where(array('Lang'=>$lg));        
         $query = $this->db->count_all_results();
         return $query;
     }    
@@ -326,10 +327,11 @@ class Mblog extends Model{
         $query = $this->db->count_all_results();
         return $query;
     }
-    function count_record_blog_title($title)
+    function count_record_blog_title($lg,$Title)
     {
         $this->db->from('tblblog');
-        $this->db->where(array('Title'=>$title));
+        $this->db->like('Title',$Title);
+        $this->db->where(array('Lang'=>$lg));
         $query = $this->db->count_all_results();
         return $query;
     }
