@@ -769,5 +769,26 @@ function getDifference($startDate, $endDate, $format = 6)
 	}
 }
 
+function get_archives()
+{
+	$CI =& get_instance();
+	$CI->db->select('COUNT(vid_id) as vcount, date');
+	$CI->db->where('lang',$CI->_data['lang']);
+	$CI->db->group_by('MONTH(FROM_UNIXTIME(date))');
+	$CI->db->from('videos');
+	$result = $CI->db->get();
+	$archives = array();
+	foreach ($result->result_array() as $item)
+	{
+		$month = mdate("%m", $item['date']);
+		$year = mdate("%o", $item['date']);
+		$archives[] = array(
+			'title'=> mdate("%F %Y", $item['date']).' ('.$item['vcount'].')',
+			'link'=>site_url('video/list_archives').'/'.$year.'/'.$month
+		);						
+	}				
+	return $archives;
+}
+
 /* End of file xemmex_helper.php */ 
 /* Location: ./system/application/helpers/xemmex_helper.php */ 
