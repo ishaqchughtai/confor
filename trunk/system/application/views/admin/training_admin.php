@@ -30,7 +30,7 @@
                 <tr>
                 <td><?php echo date("F jS Y", strtotime($row['Date']))?></td>
                 	<td><?php echo $row['Title']?></td>     
-                    <td width="17"><a href="#"><?php echo mb_strtoupper(__("CF_modify"))?></a></td>
+                    <td width="17"><a href="<?php echo site_url('training/get_training_admin').'/'.$row['ID']?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></td>
                     <td width="17"><a href="<?php echo site_url('training/delete_article').'/'.$row['ID']?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
                 </tr>
                 <?php endforeach;?>

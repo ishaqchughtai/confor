@@ -119,12 +119,7 @@
     function edit($id)
     {   
       is_admin();
-      $query = $this->Mcoffice->get_data_to_form($id);   
-      foreach($query as $row)    
-      {
-        $lg = $row->lang;
-      }
-      if($this->input->post('btnedit'))
+      if($this->input->post('btnsubmit'))
       {
         $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
         $this->form_validation->set_rules('content',strtolower(__("CF_content")),'trim|required');
