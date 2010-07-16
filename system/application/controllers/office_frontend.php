@@ -4,23 +4,13 @@
     var $office_per_page = 5;
     function Office_frontend()
     {
-      parent::Frontend_controller();
-      $this->_container = 'container';    
-      $this->load->model('Mcoffice');    
-      $this->load->helper('date');    
-      $this->load->model('Mshopproduct','mshopproduct');    
-      $this->_data['adv']['category'] = 'event';
-    }
-    
-    function _before_render() 
-    {
-      $side_bar['page'] = "event/sidebar";    
-      $side_bar['popular_video'] = $this->Mhome->get_popular_video();
-      $side_bar['recent_video'] = $this->Mhome->get_recent_video();  
-      $side_bar['categories'] = $this->Mhome->get_category($this->_data['lang']);
-      $side_bar['dates'] = $this->Mhome->get_dates(); 
-      $side_bar['top_speaker'] = $this->Mhome->get_top_speaker();     
-      $this->_data['side_bar'] = $side_bar;    
+     parent::Frontend_controller();
+        $this->load->helper('date');
+        $this->load->library('email');
+        $this->load->model('Mcoffice');
+        $this->load->model('Mshowroom');
+        $this->load->model('Mshopproduct','mshopproduct');
+        $this->load->helper('url');
     }
     
     function office()
