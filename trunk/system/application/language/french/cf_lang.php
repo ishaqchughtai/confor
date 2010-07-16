@@ -590,3 +590,7 @@ $lang['CF_please_browse'] = 'f_Please browse files for upload';
 $lang['CF_upload_video'] = 'f_Upload video'; 
 $lang['CF_delete_ar'] = 'f_Article has been deleted!';
 $lang['CF_add_new_article'] = 'f_Add new Article'; 
+
+$lang['CF_list_ar'] = 'f_List Article';
+$lang['CF_edit_ar'] = 'f_Edit Article';
+$lang['CF_conference_office_content'] = 'f_Conference Office Content';

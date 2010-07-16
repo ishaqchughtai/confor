@@ -603,7 +603,11 @@ $lang['CF_upload_video'] = 'Upload video';
 $lang['CF_delete_ar'] = 'Article has been deleted!';
 $lang['CF_add_new_article'] = 'Add new Article';
 $lang['CF_addarticle_success'] = 'Add New Article Success !'; 
-$lang['CF_editarticle_success'] = 'Edit Article Success !'; 
+$lang['CF_editarticle_success'] = 'Edit Article Success !';
+$lang['CF_list_ar'] = 'List Article'; 
+$lang['CF_edit_ar'] = 'Edit Article';
+$lang['CF_conference_office_content'] = 'Conference Office Content';
+ 
 
 
 

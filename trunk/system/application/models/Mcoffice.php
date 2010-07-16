@@ -28,40 +28,61 @@
       $query = $this->db->get();
       return $query->result_array();
     }
-    function get_video_by_id($id)
-    {
-      $query=$this->db->query('Select 
-      vid_id,title ,tags,description,vhash,mem_id,shash
-      from videos Where vid_id= '.$id);
-      return $query;
-    }
-    function count_video_confernce() 
-    {
-      $this->db->get('videos');
-      return $this->db->count_all_results();
-    }
 
-    function list_conference_office($offset,$num ) 
+    function add_conference_office($date,$title,$content,$lg)
+    {                    
+      try
+      {
+        $data = array(
+        'date'=>$date,
+        'title'=>$title,                                          
+        'content'=>$content,
+        'lang'=>$lg
+        );    
+        $this->db->insert('tbloffice',$data);
+        return TRUE;
+      }
+      catch(Exception $ex)
+      {
+        return FALSE;    
+      }
+    }
+    
+    //get_data_to_form
+    function get_data_to_form($id)
+    {
+      $query = $this->db->get_where('tbloffice',array('id'=>$id));
+      return $query->result();
+    }
+    
+    function edit_office($id,$title,$content,$lg)
+    {
+      $data = array(
+      'title'=>$title,                                          
+      'content'=>$content,
+      'lang'=>$lg
+      );
+      $this->db->update('tbloffice',$data,array('id'=>$id));
+    }
+    
+    function delete($id)
+    {
+      $this->db->delete('tbloffice',array('id'=>$id));
+    }
+    
+    function get_office_by_id($id)
     {
       $this->db->select('
-      users.username,
-      videos.vid_id,
-      videos.date,
-      videos.title,
-      videos.tags,
-      videos.description,
-      videos.viewed,
-      videos.vhash,
-      videos.mem_id,
-      videos.shash,
-      videos.category
+      tbloffice.id,
+      tbloffice.title,
+      tbloffice.content,
+      tbloffice.date,
+      tbloffice.lang
       ');
-      $this->db->from('videos');
-      $this->db->join('users','videos.mem_id = users.id');
-      $this->db->order_by('Viewed','desc');
-      $this->db->limit($num,$offset);
+      $this->db->from('tbloffice');
+      $this->db->where(array('tbloffice.id'=>$id));
       $query = $this->db->get();
-      return $query->result_array();
+      return $query->result_array();    
     }
   }
 ?>
