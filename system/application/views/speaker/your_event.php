@@ -5,14 +5,14 @@
             $('#lg :selected').each(function(i, selected){ 		  				
 				var lg = $(selected).val();				
 				var cate = $('#lg option:selected').val();				
-                gogo = XEMMEX.baseUrl + "manage_event/your_event/" + lg +"/5";	
+                gogo = XEMMEX.baseUrl + "manage_event/your_event/" + lg +"/10";	
                 window.location = gogo;			
             });	
         });	
     });	
     //-->
 </script>
-<?php $page = 5;?>
+<?php $page = 10;?>
 <br /> 
     <div id="content">
        	<ul class="link_conttrol">

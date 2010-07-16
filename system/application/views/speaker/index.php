@@ -1,3 +1,4 @@
+<?php $page = 10;?>  
 <div id="content">			
 			<div class="x3">			
 				<h3><?php echo __('CF_edit_admin');?></h3>				
@@ -39,7 +40,7 @@
 			<div class="x3">			
 				<h3>Your events</h3>								
 				<ul class="link_conttrol">
-					<li><a href="<?php echo site_url('manage_event/your_event/en/5')?>"><?php echo __("CF_list_event")?></a></li>
+					<li><a href="<?php echo site_url('manage_event/your_event/'.$lang.'/'.$page)?>"><?php echo __("CF_list_event")?></a></li>
 					<li><a href="<?php echo site_url('manage_event/add')?>"><?php echo __("CF_add_event")?></a></li>
 				</ul>	
 			</div>

@@ -1,4 +1,4 @@
-
+<?php $page = 10;?>
 	<?php
 		
 		$this->load->view('admin/speaker_selector');
@@ -20,7 +20,7 @@
 			
 				<div class="content_item">
 				<ul class="link_conttrol">
-        <li><a class="icon_list" href="<?php echo site_url('event/event_list'.'/'.$lg.'/5')?>"><?php echo __("CF_admin_event_list")?></a></li>
+        <li><a class="icon_list" href="<?php echo site_url('event/event_list'.'/'.$lg.'/'.$page)?>"><?php echo __("CF_admin_event_list")?></a></li>
         <li><a class="icon_add" href="<?php echo site_url('event/add_event')?>"><?php echo __("CF_admin_new_event")?></a></li>
     </ul>
     <br />
