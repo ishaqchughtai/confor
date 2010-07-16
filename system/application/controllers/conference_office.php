@@ -1,7 +1,6 @@
 <?php
   class Conference_office extends Admin_controller {
-    var $blog_sidebar = 'most_post';
-    //var $per_page = 2;
+    var $office_per_page = 10;
     function Conference_office()
     {
       parent::Admin_controller();
@@ -14,10 +13,10 @@
     }    
 
     //function index()
-//    {              
-//      $this->_data['page_title'] = 'Conference Office';                
-//      $this->_load_view('conference_office/conference_office_view'); 
-//    }
+    //    {              
+    //      $this->_data['page_title'] = 'Conference Office';                
+    //      $this->_load_view('conference_office/conference_office_view'); 
+    //    }
 
     function get_all()
     {
@@ -55,6 +54,107 @@
         $this->_data['pagination'] = $this->pagination->create_links();        
         $this->_load_view('admin/office_view_admin');    
       } 
+    }
+
+    //add new conference office
+    function add()
+    {
+      is_admin();
+      $lg = $this->_data['lang'];
+      $this->_data['path'][] = array(
+      'name' => __("CF_list_ar"),
+      'link' => '#'
+      );
+      $this->_data['lg'] = $lg;
+      if($this->input->post('btnsubmit'))
+      {
+        $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
+        $this->form_validation->set_rules('content',strtolower(__("CF_content")),'trim|required');
+        $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+        if($this->form_validation->run()==FALSE)
+        {
+          $this->_load_view('admin/add_conference_office');
+        }
+        else
+        {    
+          $date = date('Y-m-d');
+          $title = $this->input->post('title');
+          $content = $this->input->post('content');
+          $lg = $this->input->post('lg');
+          if($this->Mcoffice->add_conference_office($date,$title,$content,$lg)==TRUE)
+          {
+            redirect('conference_office/get_all/'.$this->_data['lang'].'/'.$this->office_per_page);
+          }
+        }  
+      } 
+      else
+      {
+        $this->_load_view('admin/add_conference_office');    
+      }   
+    }
+
+    //get office admin
+    function get_office_admin($id)
+    { 
+      is_admin();
+      $query = $this->Mcoffice->get_data_to_form($id);   
+      foreach($query as $row)    
+      {
+        $lg = $row->lang;
+      }
+      $this->_data['path'][] = array(
+      'name' => __("CF_list_ar"),
+      'link' => site_url("conference_office/get_all/".$lg.'/'.$this->office_per_page)
+      ); 
+
+      $this->_data['path'][] = array(
+      'name' => __("CF_edit_ar"),
+      'link' => '#'
+      );      
+      $this->_data['query'] = $this->Mcoffice->get_data_to_form($id);
+      $this->_load_view('admin/get_office_admin');    
+    }
+
+
+    function edit($id)
+    {   
+      is_admin();
+      $query = $this->Mcoffice->get_data_to_form($id);   
+      foreach($query as $row)    
+      {
+        $lg = $row->lang;
+      }
+      if($this->input->post('btnedit'))
+      {
+        $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
+        $this->form_validation->set_rules('content',strtolower(__("CF_content")),'trim|required');
+        $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+        if($this->form_validation->run()==FALSE)
+        {
+          $this->get_office_admin($id);
+        }
+        else
+        {
+          $title = $this->input->post('title');
+          $content = $this->input->post('content');
+          $lg = $this->input->post('lg');
+          $data = $this->Mcoffice->edit_event($id,$title,$content,$lg);
+          redirect('conference_office/get_all/'.$lg.'/'.$this->office_per_page);
+        }   
+      }
+    }
+
+    //Delete office admin
+    function delete($id)
+    {
+      $query = $this->Mcoffice->get_data_to_form($id);
+      foreach($query as $row)    
+      {
+        $lg = $row->lang;
+      }
+      is_admin();
+      $this->Mcoffice->delete($id);
+      redirect('conference_office/get_all/'.$lg.'/'.$this->office_per_page);    
     }
 
   }
