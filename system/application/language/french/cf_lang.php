@@ -588,3 +588,5 @@ $lang['CF_vid_conf'] = 'f_Video Conference';
 $lang['CF_converting'] = 'f_Saving'; 
 $lang['CF_please_browse'] = 'f_Please browse files for upload'; 
 $lang['CF_upload_video'] = 'f_Upload video'; 
+$lang['CF_delete_ar'] = 'f_Article has been deleted!';
+$lang['CF_add_new_article'] = 'f_Add new Article'; 
