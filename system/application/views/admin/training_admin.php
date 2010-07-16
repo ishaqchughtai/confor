@@ -12,12 +12,9 @@
     });	
     //-->
 </script>				          
+    <?php $this->load->view("admin/admin_menu_training");?> 
     <div id="content">
-       	<ul class="link_conttrol">
-        <li><a class="icon_add" href="<?php echo site_url('conference_office/add')?>"><?php echo __("CF_new_office")?></a></li>
-    </ul>
-    <br />
-        <h3><?php echo __("CF_list_event")?></h3><br />
+
 <div class="input text">
 		<label><?php echo __("CF_dis_lang")?></label>		
 		<?php choose_your_language($lg);?>

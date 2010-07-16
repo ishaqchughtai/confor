@@ -48,4 +48,22 @@ class Mtraining extends Model{
         $query = $this->db->get();
         return $query->result_array(); 
     }
+    function add_training($date,$title,$content,$lg)
+    {                    
+        try
+        {
+            $data = array(
+            'Date'=>$date,
+            'Title'=>$title,                                          
+            'Content'=>$content,
+            'Lang'=>$lg
+            );    
+            $this->db->insert('tbltraining',$data);
+            return TRUE;
+        }
+        catch(Exception $ex)
+        {
+            return FALSE;    
+        }
+    }
 }

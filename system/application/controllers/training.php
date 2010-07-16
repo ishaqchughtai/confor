@@ -64,60 +64,42 @@ class Training extends Admin_controller {
     //Add Article
     function add_article()
     {
-        if($this->session->userdata('admin')==FALSE)
-        {
-            redirect(site_url("admin"));
-        }
-        else
-        {
-            $this->_data['path'][] = array(
-            'name' => __("CF_add_new_article"),
-            'link' => '#'
-            );
-
-            $lg = $this->input->post('lg');
-            if (! $lg)
-            {
+        is_admin();
+        $lg = $this->_data['lang'];
+        $this->_data['path'][] = array(
+        'name' => __("CF_training"),
+        'link' => site_url('training/index').'/'.$this->_data['lang']
+        );
                 $lg = $this->_data['lang'];
-            }
-            $this->_data['lg'] = $lg; 
-            if($this->input->post('btnsubmit'))
-            { 
-
-                $this->form_validation->set_rules('txtTitle',strtolower(__("CF_title")),'trim|required|callback_title_check|max_length[50]');
-                $this->form_validation->set_rules('txtSubject',strtolower(__("CF_subject")),'trim|required|max_length[50]');
-                $this->form_validation->set_rules('txtKeywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
-                $this->form_validation->set_rules('txtBody',strtolower(__("CF_blog_body")),'required');
-                $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
-
-                $Author=$this->session->userdata('admin_id');
-                $FirstName = $this->session->userdata('admin_name'); 
-                $datestring = "%Y-%m-%d";
-                $time = time();
-                $Date=mdate($datestring,$time);
-                $Title=$this->input->post('txtTitle');
-                $Title=strip_quotes($Title);
-
-                $Subject=$this->input->post('txtSubject');
-                $Keywords=$this->input->post('txtKeywords');
-                $Text=$this->input->post('txtBody');
-                $about=$this->input->post('about'); 
-                if($this->form_validation->run()==FALSE)
-                {
-                    $this->_load_view('admin/add_training');        
-                }
-                else
-                {                              
-                    if($this->Mblog->add_blog($Author,$Date,$Title,$Subject,$Keywords,$Text,$about,$lg)==TRUE)
-                    { 
-                        $this->_message('training', __("CF_editarticle_success"), 'success', site_url("training/index").'/'.$lg);
-                    }
-                }
-            }else
+        $this->_data['path'][] = array(
+        'name' => __("CF_add_new_article"),
+        'link' => '#'
+        );
+        $this->_data['lg'] = $lg;
+        if($this->input->post('btnsubmit'))
+        {
+            $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
+            $this->form_validation->set_rules('content',strtolower(__("CF_content")),'trim|required');
+            $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+            if($this->form_validation->run()==FALSE)
             {
                 $this->_load_view('admin/add_training');
-            } 
-        }
+            }
+            else
+            {    
+                $date = date('Y-m-d');
+                $title = $this->input->post('title');
+                $content = $this->input->post('content');
+                $lg = $this->input->post('lg');
+                if($this->Mtraining->add_training($date,$title,$content,$lg)==TRUE)
+                {
+                    $this->_message('training', __("CF_editarticle_success"), 'success', site_url("training/index").'/'.$lg);
+                }
+            }
+        }else
+        {
+            $this->_load_view('admin/add_training');    
+        }  
     }
 
 
