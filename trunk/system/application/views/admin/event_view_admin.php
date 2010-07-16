@@ -5,14 +5,14 @@
             $('#lg :selected').each(function(i, selected){ 		  				
 				var lg = $(selected).val();				
 				var cate = $('#lg option:selected').val();				
-                gogo = XEMMEX.baseUrl + "event/event_list/" + lg +"/5";	
+                gogo = XEMMEX.baseUrl + "event/event_list/" + lg +"/10";	
                 window.location = gogo;			
             });	
         });	
     });	
     //-->
 </script>				
-	<?php $page = 5;?>          
+	<?php $page = 10;?>          
     <div id="content">
        	<ul class="link_conttrol">
         <li><a class="icon_add" href="<?php echo site_url('event/add_event')?>"><?php echo __("CF_admin_new_event")?></a></li>
@@ -56,8 +56,8 @@
                     </td>                    
                     <td><?php echo _substr($description,100)?></td>
                     <td><?php if((int)$row['Status']=='0'){echo __("CF_shop_deac");}else{echo __("CF_shop_ac");} ?></td>
-                    <td width="19"><a href="<?php echo site_url('event/get_event_admin'.'/'.$row['ID'])?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></td>
-                    <td width="21"><a href="<?php echo site_url('event/delete_event_admin'.'/'.$row['ID'])?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
+                    <td width="19"><a href="<?php echo site_url('event/get_event_admin'.'/'.$row['ID'])?>"><?php echo mb_strtoupper(__("CF_modify"))?></a> | 
+                    <a href="<?php echo site_url('event/delete_event_admin'.'/'.$row['ID'])?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
                 </tr>
                 <?php endforeach;?>
         </table>

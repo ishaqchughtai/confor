@@ -1,4 +1,4 @@
-<?php $page = 5;?>
+<?php $page = 10;?>
       <div class="content_item">
         <?php foreach($query as $row)
    				{

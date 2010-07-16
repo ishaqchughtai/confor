@@ -1,7 +1,7 @@
 <?php
 
 class Event extends Admin_controller {
-  //var $blog_sidebar = 'most_post';
+  var $event_per_page = 10;
   function Event()
   {
     parent::Admin_controller();
@@ -79,13 +79,17 @@ class Event extends Admin_controller {
 
   //get event of admin
   function get_event_admin($id)
-  {
-    $lg = $this->uri->segment(3);
-    $this->_data['lg'] = $lg; 
+  { 
+    $query = $this->MEvent->get_data_to_form_admin($id);   
+    foreach($query as $row)    
+    {
+      $lg = $row->lang;
+    }
     $this->_data['path'][] = array(
-    'name' => __("CF_admin_event_list"),
-    'link' => site_url("event/event_list/".$this->_data['lang'].'/5')
-    );
+      'name' => __("CF_admin_event_list"),
+      'link' => site_url("event/event_list/".$lg.'/'.$this->event_per_page)
+      ); 
+    
     $this->_data['path'][] = array(
     'name' => __("CF_edit_event"),
     'link' => '#'
@@ -99,6 +103,11 @@ class Event extends Admin_controller {
   function edit_event_admin($id)
   {   
     is_admin();
+    $query = $this->MEvent->get_data_to_form_admin($id);   
+    foreach($query as $row)    
+    {
+      $lg = $row->lang;
+    }
     if($this->input->post('btnedit'))
     {
       $this->form_validation->set_rules('speaker_name',strtolower(__("CF_one_speaker")),'required');
@@ -121,7 +130,7 @@ class Event extends Admin_controller {
         $status = $this->input->post('status');
         $lg = $this->input->post('lg');
         $data = $this->MEvent->edit_event($id,$speaker_id,$title,$subject,$keywords,$description,$status,$lg);
-        redirect('event/event_list/'.$this->_data['lang'].'/5');
+        redirect('event/event_list/'.$lg.'/'.$this->event_per_page);
       }   
     }
   }
@@ -129,9 +138,14 @@ class Event extends Admin_controller {
   //Delete Event admin
   function delete_event_admin($id)
   {
+    $query = $this->MEvent->get_data_to_form_admin($id);   
+    foreach($query as $row)    
+    {
+      $lg = $row->lang;
+    }
     is_admin();
     $this->MEvent->delete($id);
-    redirect('event/event_list/'.$this->_data['lang'].'/5');    
+    redirect('event/event_list/'.$lg.'/'.$this->event_per_page);    
   }	
 
   //Add new event of admin
@@ -168,7 +182,7 @@ class Event extends Admin_controller {
         $lg = $this->input->post('lg');
         if($this->MEvent->add_event($speaker,$date,$title,$subject,$keywords,$description,$status,$lg)==TRUE)
         {
-          redirect('event/event_list/'.$this->_data['lang'].'/5');
+          redirect('event/event_list/'.$this->_data['lang'].'/'.$this->event_per_page);
         }
       }  
     } 
@@ -217,7 +231,7 @@ class Event extends Admin_controller {
     $this->_data['lg'] = $lg;
     $this->_data['path'][] = array(
     'name' => __("CF_admin_event_list"),
-    'link' => site_url("event/event_list/".$lg.'/5')
+    'link' => site_url("event/event_list/".$lg.'/'.$this->event_per_page)
     );
     $this->_data['path'][] = array(
     'name' => __("CF_search_event"),

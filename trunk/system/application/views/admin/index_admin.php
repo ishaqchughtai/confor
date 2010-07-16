@@ -1,3 +1,4 @@
+<?php $page = 10?>
 <?php 
     $admin_id=$this->session->userdata('admin_id');
     $admin_right=(int)$this->session->userdata('right');  
@@ -15,8 +16,9 @@
             <?php }?>
         <li><a class="icon_profile" href="<?php echo site_url('admin/edit_profile/'.$admin_id);?>"><?php echo __("CF_edit_admin")?></a></li>
         <li><a class="icon_key" href="<?php echo site_url('admin/change_pass/'.$admin_id);?>"><?php echo __("CF_change_pass")?></a></li>
-        <li><a class="icon_paypal" href="<?php echo base_url().'pay/admin';?>"><?php echo __("CF_paypal_man")?></a></li>
         <li><a class="icon_text" href="<?php echo site_url('admin/get_element/About'.$lgtemp);?>"><?php echo __("CF_accessories")?></a></li>
+        <li><a class="icon_list" href="<?php echo site_url('conference_office/traning');?>"><?php echo __("CF_training")?></a></li>
+        <li><a class="icon_list" href="<?php echo site_url('conference_office/get_all/en/'.$page);?>"><?php echo __("CF_conference_office")?></a></li>
     </ul>	    
     <div class="frame_bottom"></div>	
 </div>
@@ -28,6 +30,11 @@
     <ul class="link_conttrol">
         <li><a class="icon_list" href="<?php echo site_url('admin/list_user')?>"><?php echo __("CF_speaker_list")?></a></li>
         <li><a class="icon_user_add" href="<?php echo site_url('admin/new_speaker')?>"><?php echo __("CF_new_speaker")?></a></li>
+        <li><a class="icon_paypal" href="<?php echo base_url().'pay/admin';?>"><?php echo __("CF_paypal_man")?></a></li>
+        <li><br /></li>
+        <li><br /></li>
+        <li><br /></li>
+        <li><br /></li>
     </ul>    
     <div class="frame_bottom"></div>		
 </div>
@@ -48,8 +55,11 @@
 <div class="x2 frame no_margin">
     <h3><?php echo __("CF_event_con")?> </h3>
     <ul class="link_conttrol">
-        <li><a class="icon_list" href="<?php echo site_url('event/event_list/en/5')?>"><?php echo __("CF_admin_event_list")?></a></li>
-        <li><a class="icon_add" href="<?php echo site_url('event/add_event/en/5')?>"><?php echo __("CF_admin_new_event")?></a></li>
+        <li><a class="icon_list" href="<?php echo site_url('event/event_list/'.$lang.'/'.$page)?>"><?php echo __("CF_admin_event_list")?></a></li>
+        <li><a class="icon_add" href="<?php echo site_url('event/add_event/')?>"><?php echo __("CF_admin_new_event")?></a></li>
+        <li><br /></li>
+        <li><br /></li>
+        <li><br /></li>
     </ul>    
     <div class="frame_bottom"></div>		
 </div>
@@ -83,6 +93,7 @@
     <ul class="link_conttrol">
         <li><a class="icon_list" href="<?php echo site_url('advertisement/advertisement_list')?>"><?php echo __("CF_adv_list")?></a></li>
         <li><a class="icon_add" href="<?php echo site_url('advertisement/add')?>"><?php echo __("CF_new_adv")?></a></li>
+                <li><br /></li>
     </ul>    
     <div class="frame_bottom"></div>		
 </div>

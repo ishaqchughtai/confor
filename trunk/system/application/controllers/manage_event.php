@@ -1,6 +1,7 @@
 <?php
   class Manage_event extends Speaker_controller
   {
+    var $event_per_page = 10;
     function Manage_event()  {
       parent::Speaker_controller();
       $this->load->helper(array('date', 'JSON'));  
@@ -104,11 +105,14 @@
     //Get Event To form
     function get_event($author, $id)
     {
-      $lg = $this->_data['lang'];
-      $this->_data['lg'] = $lg;
+      $query = $this->MEvent->get_data_to_form_admin($id);   
+      foreach($query as $row)    
+      {
+        $lg = $row->lang;
+      }
       $this->_data['path'][] = array(
       'name' => __("CF_yr_event"),
-      'link' => site_url("manage_event/your_event/".$lg."/5")
+      'link' => site_url("manage_event/your_event/".$lg."/".$this->event_per_page)
       );
 
       $this->_data['path'][] = array(
@@ -128,7 +132,11 @@
     //Edit Event of speaker
     function edit_event($author, $id)
     {
-      $lg = $this->_data['lang'];
+      $query = $this->MEvent->get_data_to_form_admin($id);   
+      foreach($query as $row)    
+      {
+        $lg = $row->lang;
+      }
       $this->_data['lg'] = $lg;   
       $userData = is_speaker();
       $speaker_id= $userData['speaker_id'];   
@@ -153,7 +161,7 @@
           $keywords = $this->input->post('keywords');
           $description = $this->input->post('description');
           $data = $this->MEvent->edit($id,$title,$subject,$keywords,$description);
-          redirect('manage_event/your_event/'.$lg.'/5');
+          redirect('manage_event/your_event/'.$lg.'/'.$this->event_per_page);
         }   
       }
     }
@@ -161,13 +169,17 @@
     //delete event
     function delete_event($author, $id)
     {
-      $lg = $this->_data['lang'];
+      $query = $this->MEvent->get_data_to_form_admin($id);   
+      foreach($query as $row)    
+      {
+        $lg = $row->lang;
+      }
       $this->_data['lg'] = $lg;
       $userData = is_speaker();
       $speaker_id= $userData['speaker_id'];   
       if ($speaker_id != $author) redirect('/');  
       $this->MEvent->delete($id);
-      redirect('manage_event/your_event/'.$lg.'/5');    
+      redirect('manage_event/your_event/'.$lg.'/'.$this->event_per_page);    
     }
 
     //Keyword check
