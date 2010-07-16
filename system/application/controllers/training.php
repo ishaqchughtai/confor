@@ -70,7 +70,7 @@ class Training extends Admin_controller {
         'name' => __("CF_training"),
         'link' => site_url('training/index').'/'.$this->_data['lang']
         );
-                $lg = $this->_data['lang'];
+        $lg = $this->_data['lang'];
         $this->_data['path'][] = array(
         'name' => __("CF_add_new_article"),
         'link' => '#'
@@ -102,6 +102,45 @@ class Training extends Admin_controller {
         }  
     }
 
+    function edit_article($id='')
+    {   
+        is_admin();
+            $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
+            $this->form_validation->set_rules('content',strtolower(__("CF_content")),'trim|required');
+            $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+            if($this->form_validation->run()==FALSE)
+            {
+                $this->get_training_admin($id);
+            }
+            else
+            {
+                $title = $this->input->post('title');
+                $content = $this->input->post('content');
+                $lg = $this->input->post('lg');
+                $data = $this->Mtraining->edit_training($id,$title,$content,$lg);
+                $this->_message('training', __("CF_editarticle_success"), 'success', site_url("training/index/".$this->_data['lang']));
+            }   
+    }
+        //get training admin
+    function get_training_admin($id='')
+    { 
+      is_admin();
+      $query = $this->Mtraining->get_data_to_form($id);   
+      foreach($query as $row)    
+      {
+        $lg = $row->Lang;
+      }
+      $this->_data['path'][] = array(
+      'name' => __("CF_list_ar"),
+      'link' => site_url('training/index').'/'.$this->_data['lang']
+      ); 
 
+      $this->_data['path'][] = array(
+      'name' => __("CF_edit_ar"),
+      'link' => '#'
+      );      
+      $this->_data['query'] = $this->Mtraining->get_data_to_form($id);
+      $this->_load_view('admin/edit_training');    
+    }
 }
 

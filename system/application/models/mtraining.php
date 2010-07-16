@@ -66,4 +66,19 @@ class Mtraining extends Model{
             return FALSE;    
         }
     }
+    function edit_training($id,$title,$content,$lg)
+    {
+        $data = array(
+        'Title'=>$title,                                          
+        'Content'=>$content,
+        'Lang'=>$lg
+        );
+        $this->db->update('tbltraining',$data,array('ID'=>$id));
+    }
+    //get_data_to_form
+    function get_data_to_form($id)
+    {
+        $query = $this->db->get_where('tbltraining',array('ID'=>$id));
+        return $query->result();
+    }
 }
