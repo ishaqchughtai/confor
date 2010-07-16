@@ -1,12 +1,10 @@
 				<div class="content_item">
-				<ul class="link_conttrol">
-        <li><a class="icon_list" href="<?php echo site_url('conference_office/get_all'.'/'.$lg.'/5')?>"><?php echo __("CF_list_ar")?></a></li>
-    </ul>
+     <?php $this->load->view("admin/admin_menu_training");?>
     <br>
-					<h3><?php echo __("CF_add_office")?></h3>
+					<h3><?php echo __("CF_add_new_article")?></h3>
 					<?php
-						$data=array('name' => 'office-form','id' => 'office-form'); 
-						echo form_open('conference_office/add',$data);
+						$data=array('name' => 'training-form','id' => 'training-form'); 
+						echo form_open('training/add_article',$data);
 					?>
                     <div class="input text">
 						<label><?php echo __("CF_dis_lang")?></label>		
@@ -51,12 +49,5 @@
 					<?php echo form_close();?>
 					
 				</div>
-				<!-- /.content_item -->
-				<!-- /.content_item -->
-				<!-- /.content_item -->
-				<!-- /#pagination -->
 				<div id="left">
-			  <!-- /.content_item -->
-						
-						<p>
 			  </div>			
