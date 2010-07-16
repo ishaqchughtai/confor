@@ -567,5 +567,24 @@ $lang['CF_update'] = 'Update';
 $lang['CF_success'] = 'Success !';
 
 /*key added on 16/07/2010*/
- $lang['CF_content'] = 'CONTENT';
- $lang['CF_new_office'] = 'New Conference Office';
+$lang['CF_content'] = 'CONTENT';
+$lang['CF_new_office'] = 'New Conference Office';
+$lang['CF_upload_expired'] = 'Your uploaded file is expried. Please upload another file!';
+/*Video settings*/
+$lang['CF_video_setting'] = 'f_Video configuration';
+$lang['CF_allowed_ext'] = 'f_Allowed extensions';
+$lang['CF_resize_w'] = 'f_Resize width';
+$lang['CF_resize_h'] = 'f_Resize height';
+$lang['CF_thumb_w'] = 'f_Thumbnail width';
+$lang['CF_thumb_h'] = 'f_Thumbnail height';
+$lang['CF_max_size'] = 'f_Max upload size';
+$lang['CF_save_setting'] = 'f_The video setting has been saved!';
+$lang['CF_invaild_lang'] = 'f_Invaild language';
+$lang['CF_rss_recent_blogs'] = 'f_Recent blogs from CONFOR.CA';
+$lang['CF_rss_blog_name'] = 'f_Confor.ca - Blog RSS'; 
+$lang['CF_rss_recent_videos'] = 'f_Recent videos from CONFOR.CA';
+$lang['CF_rss_video_name'] = 'f_Confor.ca - Video Conference RSS'; 
+$lang['CF_vid_conf'] = 'f_Video Conference'; 
+$lang['CF_converting'] = 'f_Saving'; 
+$lang['CF_please_browse'] = 'f_Please browse files for upload'; 
+$lang['CF_upload_video'] = 'f_Upload video'; 

@@ -12,7 +12,7 @@
 ?>   
               <div class="x2">
 
-                    <h3><?php echo __("CF_add_vid")?></h3>
+                    <h3><?php echo __("CF_vid_conf")?></h3>
 					<?php $this->load->view("vid/menu_video_admin");?>
                     <p>&nbsp;	</p>					
 				
@@ -47,7 +47,7 @@
                     </p>
                     
 					<p>
-					<label for="vidupload">Upload video</label>
+					<label for="vidupload"><?php echo __("CF_upload_video")?></label>
 					</p>
 					
 							<?php $this->load->view('vid/vid_uploader');?>

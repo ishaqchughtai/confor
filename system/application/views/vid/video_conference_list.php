@@ -35,13 +35,13 @@
     //-->
 </script>
 <div class="">
-    <h3>Video menu</h3>
+    <h3><?php echo __("CF_vid_conf")?></h3>
     <?php $this->load->view("vid/menu_video_admin");?>				
     <p>&nbsp;	</p>
     <h3><?php echo __("CF_admin_vid_list")?> (<?php echo lang_name_by_short_key($lg)?>)</h3>
 
 	<div class="input text">
-		<label>Display language</label>		
+		<label><?php echo __("CF_dis_lang")?></label>		
 		<?php choose_your_language($lg);?>
 	</div>	
     <label><?php echo __("CF_cate_vid")?></label>

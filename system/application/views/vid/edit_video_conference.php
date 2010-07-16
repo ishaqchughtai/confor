@@ -13,7 +13,7 @@
 		$lg = $row->lang;		
 ?>   
               <div class="x2">
-					<h3>Video menu</h3>
+					<h3><?php echo __("CF_vid_conf")?></h3>
 					<?php $this->load->view("vid/menu_video_admin",array("lg"=>$lg));?>
                     <br />
                     <h3> <?php echo __("CF_vid_update")?> </h3>

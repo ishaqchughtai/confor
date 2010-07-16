@@ -1,4 +1,12 @@
 <?php
+/**
+ * Vid Class
+ *
+ * @package		Confor
+ * @subpackage	Controllers
+ * @category	Admin Video
+ * @author		Nguyen Hai Dang - XEMMEX developer
+ */
 class Vid extends Admin_controller {
 	var $vid_per_page = 10;
 	
@@ -7,8 +15,7 @@ class Vid extends Admin_controller {
 		parent::Admin_controller();		
 		$this->load->library('video_upload_lib');
 		$this->load->model('Mvid'); 
-		$this->load->helper('date');
-		//$this->load->helper('text');
+		$this->load->helper('date');		
 		$this->video_upload_lib->ajax_link = site_url('vid/do_upload_ajax');
 	}
 	
@@ -28,7 +35,7 @@ class Vid extends Admin_controller {
 		}
 		if (lang_name_by_short_key($lg,TRUE)==FALSE)
 		{
-			$this->_message('admin', 'Invaild language', 'error',site_url("vid/list_video_conference").'/'.$this->_data['lang']);
+			$this->_message('admin', __("CF_invaild_lang"), 'error',site_url("vid/list_video_conference").'/'.$this->_data['lang']);
 		}
 		
 		$this->_data['path'][] = array(
@@ -49,10 +56,10 @@ class Vid extends Admin_controller {
 		$config['base_url'] = base_url().'index.php/vid/list_video_conference/'.$lg.'/'.$category.'/';
 		$config['full_tag_open'] = '<li>';        
 		$config['full_tag_close'] = '</li>'; 
-		$config['next_link'] = 'Next >';
-		$config['prev_link'] = '< Previous';
-		$config['last_link'] = 'Last >>';
-		$config['first_link'] = '<< First';	
+		$config['next_link'] = __("CF_next");
+		$config['prev_link'] = __("CF_previous");
+		$config['last_link'] = __("CF_last");
+		$config['first_link'] = __("CF_first");	
 		$config['uri_segment'] = 5;
 		$config['per_page']=$this->vid_per_page;
 		// $config['cur_tag_open'] = '<li class="selected">';
@@ -85,7 +92,7 @@ class Vid extends Admin_controller {
 		
 		// if (lang_name_by_short_key($lg,TRUE)==FALSE)
 		// {
-			// $this->_message('admin', 'Invaild language', 'error',site_url("vid/list_video_conference"));
+			// $this->_message('admin', __("CF_invaild_lang"), 'error',site_url("vid/list_video_conference"));
 		// }
 		
 		$this->_data['path'][] = array(
@@ -144,7 +151,7 @@ class Vid extends Admin_controller {
 				}
 				else
 				{
-					$this->_data['error'] = "Your uploaded file is expried. Please upload another file!";
+					$this->_data['error'] = __("CF_upload_expired");					
 					$this->_load_view('vid/new_video_admin');
 					return;
 				}
@@ -163,8 +170,7 @@ class Vid extends Admin_controller {
 		$this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');		
 		$this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 		
 		$this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
-		$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-		//$this->_data['query']=$this->Mvid->get_info_by_id($id);
+		$this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');	
 		
 		$query=$this->Mvid->get_info_by_id($id);		
 		if($query->num_rows()>0)
@@ -229,18 +235,18 @@ class Vid extends Admin_controller {
 		);
 		
 		$this->_data['path'][] = array(
-		'name' => "Video configuration",
+		'name' => __("CF_video_setting"),		
 		'link' => '#'
 		);
 
 		$this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
-		$this->form_validation->set_rules('allowed_ext','Allowed extensions','required');
-		$this->form_validation->set_rules('resize_w','(Resize width)','required|numeric');
-		$this->form_validation->set_rules('resize_h','(Resize height)','required|numeric');
-		$this->form_validation->set_rules('thumb_w','(Thumbnail width)','required|numeric');
-		$this->form_validation->set_rules('thumb_h','(Thumbnail height)','required|numeric');
+		$this->form_validation->set_rules('allowed_ext','('.__("CF_allowed_ext").')','required');
+		$this->form_validation->set_rules('resize_w','('.__("CF_resize_w").')','required|numeric');
+		$this->form_validation->set_rules('resize_h','('.__("CF_resize_h").')','required|numeric');
+		$this->form_validation->set_rules('thumb_w','('.__("CF_thumb_w").')','required|numeric');
+		$this->form_validation->set_rules('thumb_h','('.__("CF_thumb_h").')','required|numeric');
 		
-		$this->form_validation->set_rules('max_upload_size','(Max upload size)','required|numeric');		
+		$this->form_validation->set_rules('max_upload_size','('.__("CF_max_size").')','required|numeric');		
 		$this->form_validation->set_rules('vbrate','(vbrate)','required|numeric');
 		$this->form_validation->set_rules('sbrate','(sbrate)','required|numeric');
 		$this->form_validation->set_rules('srate','(srate)','required|numeric');
@@ -271,7 +277,7 @@ class Vid extends Admin_controller {
 					'is_resize' => $this->input->post('is_resize')
 				);		
 				$this->video_upload_lib->set_video_setting($save_data);
-				$this->_message('admin','Your video setting has been saved', 'success',site_url("vid/list_video_conference").'/'.$this->_data['lang']);
+				$this->_message('admin',__("CF_save_setting"), 'success',site_url("vid/list_video_conference").'/'.$this->_data['lang']);
 			}			
 		}
 		else

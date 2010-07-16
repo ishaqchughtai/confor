@@ -20,9 +20,9 @@ class Feed extends Frontend_controller
 	
 	function video()
 	{
-		 $data['feed_name'] = 'Confor.ca - Video Conference';  		 
+		 $data['feed_name'] = __("CF_rss_video_name");	 
 		 $data['feed_url'] = site_url('feed/video');
-		 $data['page_description'] = 'Recent video conferences from CONFOR.CA';  
+		 $data['page_description'] = __("CF_rss_recent_videos");
 		 $data['page_language'] = $this->_data['lang'];		 
 		 
 		 $category = $this->uri->segment(3);
@@ -39,9 +39,9 @@ class Feed extends Frontend_controller
 	
 	function blog()
 	{
-		 $data['feed_name'] = 'Confor.ca - Blog'; 
-		 $data['feed_url'] = site_url('feed/blog');
-		 $data['page_description'] = 'Recent blogs from CONFOR.CA'; 
+		 $data['feed_name'] = __("CF_rss_blog_name");
+		 $data['feed_url'] = site_url('feed/blog').'.rss';
+		 $data['page_description'] = __("CF_rss_recent_blogs");
 		 $data['page_language'] = $this->_data['lang'];
 		 
 		 $data['blogs'] = $this->MRss->get_blog_rss(10, $this->_data['lang']);
