@@ -80,8 +80,8 @@ function search_click_speaker (){
 							    <?php foreach($popular_video as $row):?>
 								<li>
 								
-									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
+									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
+									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
 									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
 								
 								</li>
@@ -108,9 +108,9 @@ function search_click_speaker (){
                                 <?php if($count>3){?>
                                 <li>
 								
-									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
+									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
+									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
+									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
 								
 								</li>
                                 <?php }?>
@@ -152,9 +152,9 @@ function search_click_speaker (){
 							    <?php foreach($recent_video as $rows):?>
 								<li>
 								
-									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
-									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>" class="title"><?php echo $rows['title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><?php echo __("CF_view")?></a>
+									<a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
+									<a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>" class="title"><?php echo $rows['title']?></a>
+									<a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>"><?php echo __("CF_view")?></a>
 								
 								</li><br /><br />
                                 <?php endforeach?>
