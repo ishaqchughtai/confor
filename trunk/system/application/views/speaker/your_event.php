@@ -27,12 +27,12 @@
 	</div>
         <table border="1" width="1000px">
             <tr align="left">
-                <th width="111"><?php echo __("CF_date")?></th>
-                <th width="157"><?php echo __("CF_title")?></th>
-                <th width="84"><?php echo __("CF_subject")?></th>
-                <th width="123"><?php echo __("CF_key")?></th>
-                <th width="412"><?php echo __("CF_des")?></th>
-                <th width="19" align="center"><?php echo mb_strtoupper(__("CF_action"))?></th>
+                <th width="114"><?php echo __("CF_date")?></th>
+                <th width="161"><?php echo __("CF_title")?></th>
+                <th width="86"><?php echo __("CF_subject")?></th>
+                <th width="126"><?php echo __("CF_key")?></th>
+                <th width="432"><?php echo __("CF_des")?></th>
+                <th width="17" align="center"><?php echo mb_strtoupper(__("CF_action"))?></th>
             </tr>
             
             <?php foreach($your_event as $row):?>
@@ -55,8 +55,8 @@
                       <?php ;}?>
                     </td>                    
                     <td><?php echo _substr($description,100)?></td>
-                    <td width="19"><a href="<?php echo site_url('manage_event/get_event'.'/'.$row['Speaker'].'/'.$row['ID'])?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></td>
-                    <td width="23"><a href="<?php echo site_url('manage_event/delete_event'.'/'.$row['Speaker'].'/'.$row['ID'])?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
+                    <td width="17"><a href="<?php echo site_url('manage_event/get_event'.'/'.$row['Speaker'].'/'.$row['ID'])?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></td> 
+                    <td width="18"><a href="<?php echo site_url('manage_event/delete_event'.'/'.$row['Speaker'].'/'.$row['ID'])?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
                 </tr>
                 <?php endforeach;?>
         </table>

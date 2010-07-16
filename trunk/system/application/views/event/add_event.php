@@ -38,6 +38,7 @@
 						<p>
 						
 							<label for="description"><?php echo __("CF_des")?>:</label>
+                            <p>
 							<?php 
 									
                                     if ( ! isset($_POST['description']))
@@ -55,6 +56,7 @@
                                     echo form_fckeditor($data);
 									echo form_error('description');
                                     ?>
+                                    </p>
 						</p>
 						
 						<p>

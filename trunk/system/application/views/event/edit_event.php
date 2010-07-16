@@ -43,6 +43,7 @@
 						<p>
 						
 							<label for="description"><?php echo __("CF_des")?>:</label>
+                            <p>
 							<?php 
 									
                                     if ( ! isset($_POST['description']))
@@ -61,12 +62,13 @@
                                     echo form_fckeditor($data);
 									echo form_error('description');
                                     ?>
+                                    </p>
 						
 						</p>
 						
 						<p>
 						
-							<input name="btnedit" type="submit" class="submit" value="<?php echo __("CF_edit")?>" />
+							<input name="btnedit" type="submit" class="submit" value="<?php echo __("CF_edit")?>" onclick="return confirm('<?php echo __("CF_mess_update")?>');"/>
 							<input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />
 						
 						</p>
