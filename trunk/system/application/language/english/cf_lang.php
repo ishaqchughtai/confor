@@ -600,6 +600,11 @@ $lang['CF_vid_conf'] = 'Video Conference';
 $lang['CF_converting'] = 'Saving'; 
 $lang['CF_please_browse'] = 'Please browse files for upload'; 
 $lang['CF_upload_video'] = 'Upload video'; 
+$lang['CF_delete_ar'] = 'Article has been deleted!';
+$lang['CF_add_new_article'] = 'Add new Article';
+$lang['CF_addarticle_success'] = 'Add New Article Success !'; 
+$lang['CF_editarticle_success'] = 'Edit Article Success !'; 
+
 
 
  
