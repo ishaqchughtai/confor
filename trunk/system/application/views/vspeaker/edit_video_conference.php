@@ -1,7 +1,5 @@
 <?php 
-	if(isset($row)):
-	
-		//$row=$vid_edit->row();                      
+	if(isset($row)):			           
 		$id=$row->vid_id;
 		$title=$row->title;							
 		$selected_cate = $row->category;
@@ -13,7 +11,7 @@
 		$lg = $row->lang;	
 ?>
               <div class="x2">
-					<h3>Video menu</h3>
+					<h3><?php echo __("CF_vid_conf")?></h3>
 					<?php $this->load->view("vspeaker/sub_menu",array("lg"=>$lg));?>                  
                     <br />
 

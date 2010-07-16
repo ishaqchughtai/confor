@@ -37,7 +37,7 @@
 	{		
 		var upload_url = "<?php echo $CI->video_upload_lib->ajax_link;?>";
 		
-		$('#upload_button').val('saving...');
+		$('#upload_button').val('<?php echo __("CF_converting")?>...');
 		$.ajax({
 			type: "POST",
 			url: upload_url,
@@ -48,11 +48,10 @@
 			dataType: 'text',
 			success: function(data){				
 				$('#uname').val(data.toString());								
-				$('#upload_button').val('Upload');
+				$('#upload_button').val('<?php echo __("CF_up")?>');
 				if (data!=0) 
 				{
-					alert('Your file has been uploaded');
-					//$('#uname2').val(data);
+					alert("<?php echo __("CF_success_upload")?>");										
 					$('#preview_img').attr('src','<?php echo base_url()?>'+'temp/'+data+'.jpg');
 				}
 				else
@@ -73,7 +72,7 @@
 		}
 		else
 		{
-			alert("Please browse files for upload");
+			alert("<?php echo __("CF_please_browse")?>");
 		}					
 		return false;
 	}

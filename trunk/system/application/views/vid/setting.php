@@ -75,7 +75,7 @@
 	$keep_ratio = isset($keep_ratio)?$keep_ratio:1;
 	
 ?>
-                    <h3><?php echo __("CF_add_vid")?></h3>
+                    <h3><?php echo __("CF_vid_conf")?></h3>
 					<?php $this->load->view("vid/menu_video_admin");?>
                     <p>&nbsp;	</p>
 

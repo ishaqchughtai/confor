@@ -1,6 +1,6 @@
 <?php
 /**
- * Speaker Class
+ * VSpeaker Class
  *
  * @package		Confor
  * @subpackage	Controllers
@@ -43,7 +43,7 @@ class VSpeaker extends Speaker_controller
 		
 		if (lang_name_by_short_key($lg,TRUE)==FALSE)
 		{
-			$this->_message('vspeaker', 'Invaild language', 'error',site_url("vspeaker/list_video_conference").'/'.$this->_data['lang']);
+			$this->_message('vspeaker', __("CF_invaild_lang"), 'error',site_url("vspeaker/list_video_conference").'/'.$this->_data['lang']);
 		}		
 		
 		$this->_data['path'][] = array(
@@ -59,13 +59,15 @@ class VSpeaker extends Speaker_controller
 			$category = 0;							
 		}
 
-		$config['base_url'] = base_url().'index.php/vspeaker/list_video_conference/'.$lg.'/'.$category.'/';
+		$config['base_url'] = site_url('vspeaker/list_video_conference').'/'.$lg.'/'.$category.'/';
+		//base_url().'index.php/vspeaker/list_video_conference/'.$lg.'/'.$category.'/';
 		$config['full_tag_open'] = '<li>';        
-		$config['full_tag_close'] = '</li>'; 
-		$config['next_link'] = 'Next >';
-		$config['prev_link'] = '< Previous';
-		$config['last_link'] = 'Last >>';
-		$config['first_link'] = '<< First';	
+		$config['full_tag_close'] = '</li>'; 	
+		$config['next_link'] = __("CF_next");
+		$config['prev_link'] = __("CF_previous");
+		$config['last_link'] = __("CF_last");
+		$config['first_link'] = __("CF_first");		
+		
 		$config['uri_segment'] = 5;
 		$config['per_page']=$this->vid_per_page;
 		// $config['cur_tag_open'] = '<li class="selected">';
@@ -100,7 +102,7 @@ class VSpeaker extends Speaker_controller
 		
 		if (lang_name_by_short_key($lg,TRUE)==FALSE)
 		{
-			$this->_message('vspeaker', 'Invaild language', 'error',site_url("vspeaker/list_video_conference"));
+			$this->_message('vspeaker', __("CF_invaild_lang"), 'error',site_url("vspeaker/list_video_conference"));
 		}
 		
 		$this->_data['path'][] = array(
@@ -156,7 +158,7 @@ class VSpeaker extends Speaker_controller
 				}
 				else
 				{
-					$this->_data['error'] = "Your uploaded file is expried. Please upload another file!";
+					$this->_data['error'] = __("CF_upload_expired");
 					$this->_load_view('vspeaker/new_video');
 					return;
 				}

@@ -47,7 +47,7 @@
 </script>
 
 <div class="input text">
-	<label>Display language</label>		
+	<label><?php echo __("CF_dis_lang")?></label>
 	<?php choose_your_language($lg);?>
 </div>								
 
