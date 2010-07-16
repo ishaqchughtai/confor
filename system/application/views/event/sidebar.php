@@ -43,9 +43,10 @@ function search_click_speaker (){
 				    <!-- /#ctabs item -->
 				    <li>
 				      <ul class="ctabs_content">
-				        <?php foreach($dates as $row):?>
-				        <li>
-                        <a href="#"><?php echo mdate('%F %Y',$row['month_yy']);?></a>
+				       <?php $archives = get_archives();?>
+                      <?php foreach($archives as $item):?>
+				        <li>                        
+						<a href="<?php echo $item['link'];?>"><?php echo $item['title'];?> </a>                        
                         </li>
                       <?php endforeach?>
 			          </ul>
