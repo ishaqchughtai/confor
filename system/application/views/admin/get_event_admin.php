@@ -101,7 +101,7 @@
 						
 						<p>
 						
-							<input name="btnedit" type="submit" class="submit" value="<?php echo __("CF_edit")?>" />
+							<input name="btnedit" type="submit" class="submit" value="<?php echo __("CF_edit")?>" onclick="return confirm('<?php echo __("CF_mess_update")?>');" />
 							<input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />
 						
 						</p>

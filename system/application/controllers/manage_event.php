@@ -12,8 +12,11 @@
     //List envent of speaker
     function your_event()  
     {
+
       $userData = is_speaker();
       $id = $userData['speaker_id'];
+      $this->_data['side_bar']['page'] = '/speaker/sidebar_empty';
+      $this->_data['header']['page'] = '/speaker/header_panel';
       $lg = $this->uri->segment(3);  
       if (! $lg) return;
       if (lang_name_by_short_key($lg,TRUE)==FALSE)
@@ -49,6 +52,8 @@
     //Add new event of speaker
     function add()
     {
+      $this->_data['side_bar']['page'] = '/speaker/sidebar_empty';
+      $this->_data['header']['page'] = '/speaker/header_panel';
       $lg = $this->_data['lang'];
       $this->_data['path'][] = array(
       'name' => __("CF_add_event"),
@@ -105,6 +110,8 @@
     //Get Event To form
     function get_event($author, $id)
     {
+      $this->_data['side_bar']['page'] = '/speaker/sidebar_empty';
+      $this->_data['header']['page'] = '/speaker/header_panel';
       $query = $this->MEvent->get_data_to_form_admin($id);   
       foreach($query as $row)    
       {
