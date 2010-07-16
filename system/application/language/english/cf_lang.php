@@ -577,3 +577,7 @@ $lang['CF_post'] = 'POST';
 $lang['CF_mess_update'] = 'Do you really wish to update?';
 $lang['CF_update'] = 'Update';
 $lang['CF_success'] = 'Success !';
+
+/*key added on 16/07/2010*/
+ $lang['CF_content'] = 'CONTENT';
+ $lang['CF_new_office'] = 'New Conference Office';
