@@ -23,7 +23,7 @@ class Feed extends Frontend_controller
 		 $data['feed_name'] = 'Confor.ca - Video Conference';  		 
 		 $data['feed_url'] = site_url('feed/video');
 		 $data['page_description'] = 'Recent video conferences from CONFOR.CA';  
-		 $data['page_language'] = 'en-'.$this->_data['lang'];		 
+		 $data['page_language'] = $this->_data['lang'];		 
 		 
 		 $category = $this->uri->segment(3);
 		 if (! $category) $category=0;
@@ -42,7 +42,7 @@ class Feed extends Frontend_controller
 		 $data['feed_name'] = 'Confor.ca - Blog'; 
 		 $data['feed_url'] = site_url('feed/blog');
 		 $data['page_description'] = 'Recent blogs from CONFOR.CA'; 
-		 $data['page_language'] = 'en-'.$this->_data['lang'];
+		 $data['page_language'] = $this->_data['lang'];
 		 
 		 $data['blogs'] = $this->MRss->get_blog_rss(10, $this->_data['lang']);
 		 header("Content-Type: application/rss+xml");

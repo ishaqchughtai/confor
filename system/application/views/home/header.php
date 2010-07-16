@@ -23,7 +23,7 @@
 	</div>
 	
 	<div class="right">
-		<?php $feed = isset($feed_link)?$feed_link:'blog';?>
+		<?php $feed = isset($feed_link)?$feed_link:'blog.rss';?>
 		<a href="<?php echo site_url('feed').'/'.$feed?>" class="rss"><?php echo __("CF_subscribe")?></a>
 	</div>	
 
