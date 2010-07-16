@@ -9,7 +9,7 @@
     ?>
 
     <div class = "content_item">
-        <h3><a href = "#"><?php echo $title ?></a></h3>
+        <h3><a href = "<?php echo site_url('training_frontend/training_content').'/'.$title?>"><?php echo $title ?></a></h3>
         <h5> <?php echo $final_date ?></h5> 
         <p>
             <?php echo word_limiter(strip_tags($content), 100); ?>
