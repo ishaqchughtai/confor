@@ -81,7 +81,7 @@
 						<?php $this->load->view('image_upload',array('edit_image'=>$imageLink));?>
 				  <p>
 						
-							<input name="btnedit" type="submit" class="submit" id="btnedit" value="<?php echo __("CF_save")?>" />
+							<input name="btnedit" type="submit" class="submit" id="btnedit" value="<?php echo __("CF_save")?>" onclick="return confirm('<?php echo __("CF_mess_update")?>');" />
 							<input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />
 						
 				  </p>

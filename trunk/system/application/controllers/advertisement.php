@@ -75,11 +75,10 @@ class Advertisement extends Admin_controller {
 
     $config['full_tag_open'] = '<li>';        
     $config['full_tag_close'] = '</li>'; 
-    $config['next_link'] = 'Next >';
-    $config['prev_link'] = '< Previous';
-    $config['last_link'] = 'Last >>';
-    $config['first_link'] = '<< First';
-
+    $config['next_link'] = __("CF_next");
+    $config['prev_link'] = __("CF_previous");
+    $config['last_link'] = __("CF_last");
+    $config['first_link'] = __("CF_first");
     $this->pagination->initialize($config);
     $this->_data['query'] = $this->MAdvertisement->get_advertisement($config['per_page'], $this->uri->segment(3));
     $this->_data['pagination'] = $this->pagination->create_links();
@@ -97,7 +96,7 @@ class Advertisement extends Admin_controller {
     if($this->input->post('btnsubmit'))
     {
       $this->form_validation->set_rules('advertiser_name','Advertiser Name','trim|required|max_length[50]');
-      $this->form_validation->set_rules('advertiser_email','Advertiser Email','valid_email|callback_check_email');
+      $this->form_validation->set_rules('advertiser_email','Advertiser Email','required|valid_email|callback_check_email');
       $this->form_validation->set_rules('url','URL','prep_url|required');
       $this->form_validation->set_rules('text_tips','Text Tips','trim|required|max_length[50]');
       $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
@@ -129,7 +128,7 @@ class Advertisement extends Admin_controller {
 
   function get_advertisement($id)
   {
-    
+
     $this->_data['path'][] = array(
     'name' => __("CF_adv_list"),
     'link' => site_url('advertisement/advertisement_list')
@@ -216,7 +215,7 @@ class Advertisement extends Admin_controller {
     $this->pagination->initialize($config);
     $this->_data['pagination'] = $this->pagination->create_links();
     $this->_load_view('admin/search_advertisement');
-  }
+  } 
 
 
 }

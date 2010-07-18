@@ -119,6 +119,11 @@
     function edit($id)
     {   
       is_admin();
+      $query = $this->Mcoffice->get_data_to_form($id);   
+      foreach($query as $row)    
+      {
+        $lg = $row->lang;
+      }
       if($this->input->post('btnsubmit'))
       {
         $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
@@ -133,7 +138,7 @@
           $title = $this->input->post('title');
           $content = $this->input->post('content');
           $lg = $this->input->post('lg');
-          $data = $this->Mcoffice->edit_event($id,$title,$content,$lg);
+          $data = $this->Mcoffice->edit_office($id,$title,$content,$lg);
           redirect('conference_office/get_all/'.$lg.'/'.$this->office_per_page);
         }   
       }

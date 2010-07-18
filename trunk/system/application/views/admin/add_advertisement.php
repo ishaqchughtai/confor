@@ -12,6 +12,16 @@
 		$("#format").change(function() { 
 		$('#datepicker').datepicker('option', {dateFormat: $(this).val()}); });
 	});
+	
+	function check()
+	{
+		if (Date.parse(advertisement.date_expiry.value) <= Date.now())
+		{
+			alert("Ngày nhận hàng phải lớn hơn ngày bán")
+			advertisement.date_expiry.focus()
+			return false
+		}
+	}
 	</script>
 				<div class="content_item">
 				
@@ -28,8 +38,7 @@
 					?>
 						<p>						
 							<label for="date_expiry"><?php echo __("CF_adv_date_ex")?></label>
-							<input name="date_expiry" class="short" id="datepicker" value="<?php if(isset($_POST['date_expiry'])){ echo $_POST['date_expiry'];}?>" />
-							<?php echo form_error('date_expiry')?>						
+							<input name="date_expiry" class="short" id="datepicker" value="<?php if(isset($_POST['date_expiry'])){ echo $_POST['date_expiry'];}?>" />						
 						</p>
 						
 						<p>						
@@ -65,7 +74,7 @@
 				        </p>
 				  <p>
 						
-							<input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_post")?>" />
+							<input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_post")?>" onclick="return check()" />
 							<input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />
 						
 				  </p>

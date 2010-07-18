@@ -17,7 +17,7 @@
 					<h3><?php echo __("CF_add_office")?></h3>
 					<?php
 						$data=array('name' => 'office-form','id' => 'office-form'); 
-						echo form_open('conference_office/add',$data);
+						echo form_open('conference_office/edit/'.$id,$data);
 					?>
                     <div class="input text">
 						<label><?php echo __("CF_dis_lang")?></label>		
@@ -57,7 +57,7 @@
                                     </p>
 						</p>						
 						<p>						
-							<input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_submit")?>" />
+							<input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_save")?>" onclick="return confirm('<?php echo __("CF_mess_update")?>');" />
 							<input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />						
 						</p>
 					<?php echo form_close();?>
