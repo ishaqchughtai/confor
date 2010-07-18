@@ -6,7 +6,7 @@
       parent::Model();
       $this->load->database();
     }
-    
+
     //get all advertisement
     function get_advertisement($offset,$num)
     {
@@ -26,16 +26,19 @@
       $query = $this->db->get();
       return $query->result_array();
     }
-	
-	function get_random_by_category($category, $limit) 
-	{
-		// bo sung category trong database
-		$this->db->from('tbladvertisement');
-		//$this->db->where('category', $category);
-		$this->db->order_by("RAND()");
-		$this->db->limit($limit);
-		return $this->db->get();
-	}
+
+    function get_random_by_category($category, $limit) 
+    {
+      $query = $this->db->query("SELECT * FROM (`tbladvertisement`) WHERE `tbladvertisement`.`DateExpiry` >= now() ORDER BY RAND() LIMIT ".$limit);
+      // bo sung category trong database
+      //$this->db->from('tbladvertisements');
+      //$this->db->where('category', $category);
+//      $this->db->where('tbladvertisement.DateExpiry >= ',NOW());
+//      $this->db->order_by("RAND()");
+//      $this->db->limit($limit);
+      //return $this->db->get();
+      return $query;
+    }
 
     function get_data_to_form($id)
     {
@@ -91,29 +94,29 @@
     //count record
     function count_record($keywords)
     {
-        $this->db->from('tbladvertisement');
-        $this->db->like('AdvertiserName',$keywords,'both');
-        $query = $this->db->count_all_results();
-        return $query;
+      $this->db->from('tbladvertisement');
+      $this->db->like('AdvertiserName',$keywords,'both');
+      $query = $this->db->count_all_results();
+      return $query;
     }
     // search advertisement
     function search($keywords,$per_page,$offset)
     {
-        $this->db->select('
-        tbladvertisement.ID,
-        tbladvertisement.DateBeginning,
-        tbladvertisement.DateExpiry,
-        tbladvertisement.AdvertiserName,
-        tbladvertisement.AdvertiserEmail,
-        tbladvertisement.URL,
-        tbladvertisement.TextTips,
-        tbladvertisement.ImageLink
-        ');
-        $this->db->from('tbladvertisement');
-        $this->db->like('AdvertiserName',$keywords,'both');
-        $this->db->limit($per_page,$offset);
-        $query = $this->db->get();
-        $adv=FALSE; 
+      $this->db->select('
+      tbladvertisement.ID,
+      tbladvertisement.DateBeginning,
+      tbladvertisement.DateExpiry,
+      tbladvertisement.AdvertiserName,
+      tbladvertisement.AdvertiserEmail,
+      tbladvertisement.URL,
+      tbladvertisement.TextTips,
+      tbladvertisement.ImageLink
+      ');
+      $this->db->from('tbladvertisement');
+      $this->db->like('AdvertiserName',$keywords,'both');
+      $this->db->limit($per_page,$offset);
+      $query = $this->db->get();
+      $adv=FALSE; 
       foreach ($query->result_array() as $row_adv)
       {                    
         $adv[] = $row_adv;
@@ -121,17 +124,27 @@
       $query->free_result();  
       return $adv;
     }
-    
+
     // Check email
     function check_email_model($email)
     {
-        $email = addslashes($email);
-        $query = $this->db->query("select AdvertiserEmail from tbladvertisement where AdvertiserEmail='".$email."'");
-        if($query->num_rows()>0)
-        {
-            return TRUE;
-        }
-        return FALSE;
+      $email = addslashes($email);
+      $query = $this->db->query("select AdvertiserEmail from tbladvertisement where AdvertiserEmail='".$email."'");
+      if($query->num_rows()>0)
+      {
+        return TRUE;
+      }
+      return FALSE;
     } 
+
+    //function check_expiry_date()
+//    {
+//      $query = $this->db->query("select DateExpiry from tbladvertisement where DateExpiry >= now()");
+//      if($query->num_rows()>0)
+//      {
+//        return TRUE;
+//      }
+//      return FALSE;
+//    }
   }
 ?>

@@ -82,7 +82,7 @@ function search_click_speaker (){
 								
 									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
 									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
-									<a href="<?php echo site_url('home/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
+									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
 								
 								</li>
                                 <?php
