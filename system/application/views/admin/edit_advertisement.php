@@ -18,7 +18,7 @@
 {
 	$id = $row['ID'];
 	$dateBeginning = $row['DateBeginning'];
-	$dateExpiry = $row['DateExpiry'];
+	$dateExpiry = date("Y/m/d", strtotime($row['DateExpiry']));
 	$advertiserName = $row['AdvertiserName'];
 	$advertiserEmail = $row['AdvertiserEmail'];
 	$url = $row['URL'];
@@ -33,9 +33,10 @@
     </ul><br />
 					<h3><?php echo __("CF_edit_adv")?> </h3>
                     <?php
-						$data=array('name' => 'event','id' => 'event-form'); 
+						$data=array('name' => 'advertisement','id' => 'advertisement-form'); 
 						echo form_open('advertisement/edit/'.$id,$data);
 					?>
+                    <input name="edit_image" id="edit_image" type="hidden" value="<?php echo $imageLink;?>"/>
 						<p>
 						
 							<label for="date_expiry"><?php echo __("CF_adv_date_ex")?>:</label>

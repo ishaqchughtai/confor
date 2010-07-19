@@ -595,3 +595,7 @@ $lang['CF_editarticle_success'] = 'Article modifi&eacute; avec succ&egrave;s!';
 $lang['CF_list_ar'] = 'Liste des Articles';
 $lang['CF_edit_ar'] = 'Modifier article';
 $lang['CF_conference_office_content'] = 'Contenu de Bureau de conf&eacute;rence';
+
+/*key added on 19/07/2010*/
+$lang['CF_adv_suc'] = 'f_This advertisement have been changed';
+$lang['check_date_expiry'] = 'f_Expiration date must be greater than or equal to the current day';

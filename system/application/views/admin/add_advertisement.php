@@ -12,16 +12,6 @@
 		$("#format").change(function() { 
 		$('#datepicker').datepicker('option', {dateFormat: $(this).val()}); });
 	});
-	
-	function check()
-	{
-		if (Date.parse(advertisement.date_expiry.value) <= Date.now())
-		{
-			alert("Ngày nhận hàng phải lớn hơn ngày bán")
-			advertisement.date_expiry.focus()
-			return false
-		}
-	}
 	</script>
 				<div class="content_item">
 				
@@ -31,14 +21,11 @@
 
 					<h3><?php echo __("CF_add_new_adv")?></h3>
                     
-                    
-					<?php
-						$data=array('name' => 'advertisement','id' => 'adv-form'); 
-						echo form_open('advertisement/add',$data);
-					?>
+                    <form action="<?php echo site_url('advertisement/add')?>" method="post" enctype="multipart/form-data" class="global" name="advertisement">
 						<p>						
 							<label for="date_expiry"><?php echo __("CF_adv_date_ex")?></label>
-							<input name="date_expiry" class="short" id="datepicker" value="<?php if(isset($_POST['date_expiry'])){ echo $_POST['date_expiry'];}?>" />						
+							<input name="date_expiry" class="short" id="datepicker" value="<?php if(isset($_POST['date_expiry'])){ echo $_POST['date_expiry'];}?>" />
+                            <?php echo form_error('date_expiry')?>						
 						</p>
 						
 						<p>						
@@ -74,11 +61,11 @@
 				        </p>
 				  <p>
 						
-							<input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_post")?>" onclick="return check()" />
+							<input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_post")?>" />
 							<input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />
 						
 				  </p>
-					<?php echo form_close();?>
+					</form>
 					
 				</div>
 				<!-- /.content_item -->

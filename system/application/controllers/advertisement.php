@@ -95,10 +95,11 @@ class Advertisement extends Admin_controller {
     $this->image_upload_lib->init();  
     if($this->input->post('btnsubmit'))
     {
-      $this->form_validation->set_rules('advertiser_name','Advertiser Name','trim|required|max_length[50]');
-      $this->form_validation->set_rules('advertiser_email','Advertiser Email','required|valid_email|callback_check_email');
-      $this->form_validation->set_rules('url','URL','prep_url|required');
-      $this->form_validation->set_rules('text_tips','Text Tips','trim|required|max_length[50]');
+      $this->form_validation->set_rules('date_expiry',strtolower(__("CF_adv_date_ex")),'trim|required|callback_check_date_expiry');
+      $this->form_validation->set_rules('advertiser_name',strtolower(__("CF_advertiser_name")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('advertiser_email',strtolower(__("CF_advertiser_email")),'required|valid_email|callback_check_email');
+      $this->form_validation->set_rules('url',strtolower(__("CF_url")),'prep_url|required');
+      $this->form_validation->set_rules('text_tips',strtolower(__("CF_text_tips")),'trim|required|max_length[50]');
       $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
@@ -150,10 +151,11 @@ class Advertisement extends Admin_controller {
     $this->image_upload_lib->init();   
     if($this->input->post('btnedit'))
     {
-      $this->form_validation->set_rules('advertiser_name','Advertiser Name','trim|required|max_length[50]');
-      $this->form_validation->set_rules('advertiser_email','Advertiser Email','valid_email');
-      $this->form_validation->set_rules('url','URL','prep_url|valid_url');
-      $this->form_validation->set_rules('text_tips','Text Tips','trim|required|max_length[50]');
+      $this->form_validation->set_rules('date_expiry',strtolower(__("CF_adv_date_ex")),'trim|required|callback_check_date_expiry');
+      $this->form_validation->set_rules('advertiser_name',strtolower(__("CF_advertiser_name")),'trim|required|max_length[50]');
+      $this->form_validation->set_rules('advertiser_email',strtolower(__("CF_advertiser_email")),'required|valid_email|callback_check_email');
+      $this->form_validation->set_rules('url',strtolower(__("CF_url")),'prep_url|required');
+      $this->form_validation->set_rules('text_tips',strtolower(__("CF_text_tips")),'trim|required|max_length[50]');
       $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
       if($this->form_validation->run()==FALSE)
       {
@@ -166,10 +168,24 @@ class Advertisement extends Admin_controller {
         $advertiserEmail = $this->input->post('advertiser_email');
         $url = $this->input->post('url');
         $textTips = $this->input->post('text_tips'); 
-        $imageLink = $this->input->post('image_link');
+        $imageLink = $this->input->post('edit_image');
+        //echo $imageLink;
+//        return;
         $this->_data['uname'] = $this->input->post('uname');
-        $data = $this->MAdvertisement->edit_advertisement($id,$dateExpiry,$advertiserEmail,$url,$textTips,$this->_data['uname']);
-        redirect('advertisement/advertisement_list');          
+        //$data = $this->MAdvertisement->edit_advertisement($id,$dateExpiry,$advertiserEmail,$url,$textTips,$this->_data['uname']);
+//        redirect('advertisement/advertisement_list');
+
+        if (strlen($this->_data['uname'])>1)
+        {
+          $this->image_upload_lib->remove_image_from_db($id,'ID','ImageLink','tbladvertisement'); 
+          $data = $this->MAdvertisement->edit_advertisement($id,$dateExpiry,$advertiserEmail,$url,$textTips,$this->_data['uname']);
+          $this->_message('advertisement', __("CF_adv_suc"), 'success', site_url("advertisement/advertisement_list/"));
+        }
+        else
+        {
+          $data = $this->MAdvertisement->edit_advertisement($id,$dateExpiry,$advertiserEmail,$url,$textTips,$imageLink);
+          $this->_message('advertisement', __("CF_adv_suc"), 'success', site_url("advertisement/advertisement_list/"));
+        }          
       }   
     }
     else
@@ -215,7 +231,21 @@ class Advertisement extends Admin_controller {
     $this->pagination->initialize($config);
     $this->_data['pagination'] = $this->pagination->create_links();
     $this->_load_view('admin/search_advertisement');
-  } 
+  }
+  
+  function check_date_expiry($dateExpiry) 
+  {
+    //echo date('Y-m-d'); 
+     if($dateExpiry < date('Y/m/d'))
+     {
+         $this->form_validation->set_message('check_date_expiry', 'Expiration date must be greater than or equal to the current day');
+         return FALSE;
+     }
+     else 
+     {
+         return TRUE;
+     }
+  }
 
 
 }
