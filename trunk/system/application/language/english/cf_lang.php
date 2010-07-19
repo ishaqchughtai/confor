@@ -77,7 +77,7 @@ $lang['CF_by'] = 'By';
 $lang['CF_in'] = 'in';
 $lang['CF_views'] = 'views';
 $lang['CF_here'] = 'here';
-$lang['CF_date'] = 'here';
+$lang['CF_date'] = 'date';
 
 //blog
 $lang['CF_has_written'] = 'has written';
@@ -610,7 +610,10 @@ $lang['CF_conference_office_content'] = 'Conference Office Content';
  
 /*key added on 19/07/2010*/
 $lang['CF_adv_suc'] = 'This advertisement have been changed';
-$lang['check_date_expiry'] = 'Expiration date must be greater than or equal to the current day';
+$lang['CF_check_date_expiry'] = 'Expiration date must be greater than or equal to the current day';
+$lang['CF_click'] = 'Click';
+$lang['CF_to_continue'] = 'to continue';
+$lang['CF_go_to'] = 'Go to';
 
 
  

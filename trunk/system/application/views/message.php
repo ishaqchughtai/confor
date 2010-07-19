@@ -13,14 +13,14 @@
 <?php endif;?>
 
 </br>
-<?php if ( $msg_link):?>
+<?php if ($msg_link):?>
 	<?php if ($msg_link_name):?>
 	<p>
 		Go to : <a href="<?php echo $msg_link;?>"><?php echo $msg_link_name;?></a>
 	</p>
-	<?else:?>
+	<?php else:?>
 	<p>
-		Click <a href="<?php echo $msg_link;?>">here</a> to continue.
+		<?php echo __("CF_click")?> <a href="<?php echo $msg_link;?>"><?php echo __("CF_here")?></a> <?php echo __("CF_to_continue")?>.
 	</p>
 	<?php endif;?>	
 <?php endif;?>
