@@ -346,11 +346,11 @@ if ( ! function_exists('get_random_top_adv'))
 }
 if ( ! function_exists('get_random_top_video'))
 {
-	function get_random_top_video($category=FALSE)
+	function get_random_top_video($category=FALSE,$lg)
 	{
 		$CI =& get_instance();
 		$CI->load->model('Mhome');
-		$items = $CI->Mhome->get_random_by_video($category, 8);
+		$items = $CI->Mhome->get_random_by_video($category, 8,$lg);
 		return $items->result_array();
 		//....
 	}

@@ -1,5 +1,5 @@
 <?php $this->load->view($side_bar['page'], $side_bar);
-    $ramdomvideo = get_random_top_video($category);
+    $ramdomvideo = get_random_top_video($category,$lang);
 ?> 
 	<div id="footer" style="width:100%">
 	
