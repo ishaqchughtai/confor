@@ -7,13 +7,14 @@
         <h3><?php echo __("CF_list_event")?></h3><br />
         <table border="1" width="100%">
             <tr align="left">
-                <th width="85"><?php echo __("CF_pre")?></th>
-                <th width="150"><?php echo __("CF_adv_date_begin")?></th>
-                <th width="150"><?php echo __("CF_adv_date_ex")?></th>
-                <th width="83"><?php echo __("CF_advertisement_name")?></th>
-                <th width="74"><?php echo __("CF_advertisement_email")?></th>
-                <th width="130"><?php echo __("CF_url")?></th>
-                <th width="153"><?php echo __("CF_text_tips")?></th>
+                <th width="84"><?php echo __("CF_pre")?></th>
+                <th width="127"><?php echo __("CF_adv_date_begin")?></th>
+                <th width="127"><?php echo __("CF_adv_date_ex")?></th>
+                <th width="71"><?php echo __("CF_advertisement_name")?></th>
+                <th width="64"><?php echo __("CF_advertisement_email")?></th>
+                <th width="111"><?php echo __("CF_url")?></th>
+                <th width="224"><?php echo __("CF_text_tips")?></th>
+                <th width="17"><?php echo __("CF_viewed")?></th>
                 <th width="17" align="center"><?php echo mb_strtoupper(__("CF_action"))?></th>
             </tr>
             
@@ -26,7 +27,8 @@
 						$advertiser_email = $row['AdvertiserEmail'];
 						$url = $row['URL'];
 						$text_tips = $row['TextTips'];                           
-						$image_link = $row['ImageLink']; 					
+						$image_link = $row['ImageLink'];
+						$viewed = $row['Viewed']; 					
 			?>
                 <tr>
                     <td><img src="<?php echo base_url().'assets/uploads/image/'.$image_link ?>" width="81" height="81" />                    </td>
@@ -34,10 +36,11 @@
                     <td><?php echo $date_expiry?></td>     
                     <td><?php echo $advertiser_name?></td>
                     <td><?php echo $advertiser_email?></td>
-                    <td><?php echo $url?></td>
+                    <td><?php echo $url?></td> 
                     <td><?php echo _substr($text_tips,100)?></td>
+                    <td><?php echo $viewed?></td>
                     <td width="17"><a href="<?php echo site_url('advertisement/get_advertisement'.'/'.$id)?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></td> 
-                  <td width="18"><a href="<?php echo site_url('advertisement/delete'.'/'.$id)?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
+                  <td width="21"><a href="<?php echo site_url('advertisement/delete'.'/'.$id)?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
                 </tr>
                 <?php endforeach;?>
         </table>

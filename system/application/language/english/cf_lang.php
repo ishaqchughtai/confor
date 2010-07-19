@@ -614,6 +614,7 @@ $lang['CF_check_date_expiry'] = 'Expiration date must be greater than or equal t
 $lang['CF_click'] = 'Click';
 $lang['CF_to_continue'] = 'to continue';
 $lang['CF_go_to'] = 'Go to';
+$lang['CF_add_adv_suc'] = 'New advertisement successfully added';
 
 
  
