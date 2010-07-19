@@ -598,4 +598,7 @@ $lang['CF_conference_office_content'] = 'Contenu de Bureau de conf&eacute;rence'
 
 /*key added on 19/07/2010*/
 $lang['CF_adv_suc'] = 'f_This advertisement have been changed';
-$lang['check_date_expiry'] = 'f_Expiration date must be greater than or equal to the current day';
+$lang['CF_check_date_expiry'] = 'f_Expiration date must be greater than or equal to the current day';
+$lang['CF_click'] = 'f_Click';
+$lang['CF_to_continue'] = 'f_to continue';
+$lang['CF_go_to'] = 'f_Go to';
