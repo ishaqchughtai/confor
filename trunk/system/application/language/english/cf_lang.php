@@ -608,7 +608,9 @@ $lang['CF_list_ar'] = 'List Article';
 $lang['CF_edit_ar'] = 'Edit Article';
 $lang['CF_conference_office_content'] = 'Conference Office Content';
  
-
+/*key added on 19/07/2010*/
+$lang['CF_adv_suc'] = 'This advertisement have been changed';
+$lang['check_date_expiry'] = 'Expiration date must be greater than or equal to the current day';
 
 
  
