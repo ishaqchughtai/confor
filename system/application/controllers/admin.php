@@ -740,7 +740,7 @@
 
                 }
                 $this->Madmin->delete_category($catid);
-                redirect('admin/list_category');
+                redirect('admin/list_category/'.$this->_data['lang']);
             }
         }
         function modify_category($cateid)
@@ -772,7 +772,7 @@
                         'Name'=>$this->input->post('txtCateName'),
                         );
                         $this->Madmin->modify_category($cateid,$data);
-                        redirect('admin/list_category');  
+                        redirect('admin/list_category/'.$this->_data['lang']);  
                     }
                 }
                 else
@@ -811,7 +811,7 @@
                     'lang'=>$lg
                     );
                     $this->Madmin->add_new_category($data);
-                    redirect('admin/list_category');
+                    redirect('admin/list_category/'.$this->_data['lang']);
                 }
             }
             else
