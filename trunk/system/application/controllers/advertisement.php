@@ -30,37 +30,6 @@ class Advertisement extends Admin_controller {
     $this->image_upload_lib->do_upload_ajax();
   }
 
-  //function do_upload()
-  //        {
-  //            if($this->session->userdata('admin')==FALSE)
-  //            {
-  //                redirect(site_url("admin"));
-  //            }
-  //            else
-  //            {
-  //                $config['upload_path'] = './assets/uploads/image/';
-  //                $config['allowed_types'] = 'jpg';
-  //                $config['max_size']    = '300';
-  //                $config['max_width']  = '1024';
-  //                $config['max_height']  = '768';
-  //                $config['overwrite']  = 'TRUE';
-  //                $this->load->library('upload', $config);
-
-  //                if ( ! $this->upload->do_upload())
-  //                {
-  //                    $error = array('error' => $this->upload->display_errors());
-  //                    $this->load->view('admin/upload_form_showroom', $error);
-  //                }    
-  //                else
-  //                {
-  //                    $data = array('upload_data' => $this->upload->data());
-  //                    $data['Link_full'] = $this->upload->file_name;
-  //                    $this->load->view('admin/upload_success_showroom', $data);
-  //                }
-  //            }  
-  //        }
-
-
   //list advertisement
   function advertisement_list()
   {
@@ -112,11 +81,12 @@ class Advertisement extends Admin_controller {
         $advertiserName = $this->input->post('advertiser_name');
         $advertiserEmail = $this->input->post('advertiser_email');
         $url = $this->input->post('url');
-        $textTips = $this->input->post('text_tips'); 
+        $textTips = $this->input->post('text_tips');
+        $viewed = 0; 
         $this->_data['uname'] = $this->input->post('uname');
-        if($this->MAdvertisement->add_advertisement($dateBeginning,$dateExpiry,$advertiserName,$advertiserEmail,$url,$textTips,$this->_data['uname'])==TRUE)
+        if($this->MAdvertisement->add_advertisement($dateBeginning,$dateExpiry,$advertiserName,$advertiserEmail,$url,$textTips,$this->_data['uname'],$viewed)==TRUE)
         {
-          $this->_message('advertisement', __("CF_add_image_suc"), 'success',site_url("advertisement/add"));
+          $this->_message('advertisement', __("CF_add_adv_suc"), 'success',site_url("advertisement/advertisement_list/"));
         }
       }  
     } 
@@ -169,12 +139,7 @@ class Advertisement extends Admin_controller {
         $url = $this->input->post('url');
         $textTips = $this->input->post('text_tips'); 
         $imageLink = $this->input->post('edit_image');
-        //echo $imageLink;
-//        return;
         $this->_data['uname'] = $this->input->post('uname');
-        //$data = $this->MAdvertisement->edit_advertisement($id,$dateExpiry,$advertiserEmail,$url,$textTips,$this->_data['uname']);
-//        redirect('advertisement/advertisement_list');
-
         if (strlen($this->_data['uname'])>1)
         {
           $this->image_upload_lib->remove_image_from_db($id,'ID','ImageLink','tbladvertisement'); 
@@ -232,19 +197,32 @@ class Advertisement extends Admin_controller {
     $this->_data['pagination'] = $this->pagination->create_links();
     $this->_load_view('admin/search_advertisement');
   }
-  
+
   function check_date_expiry($dateExpiry) 
+  { 
+    if($dateExpiry < date('Y/m/d'))
+    {
+      $this->form_validation->set_message('check_date_expiry', __("CF_check_date_expiry"));
+      return FALSE;
+    }
+    else 
+    {
+      return TRUE;
+    }
+  }
+
+  function go_to($id = '')
   {
-    //echo date('Y-m-d'); 
-     if($dateExpiry < date('Y/m/d'))
-     {
-         $this->form_validation->set_message('check_date_expiry', 'Expiration date must be greater than or equal to the current day');
-         return FALSE;
-     }
-     else 
-     {
-         return TRUE;
-     }
+    $query = $this->MAdvertisement->get_advertisement_by_id($id);   
+    if($query->num_rows()>0)
+    {
+      $row=$query->row();
+      $url = $row->URL;
+      $last_viewed = $row->Viewed;
+      $viewed=$last_viewed+1;
+      $this->MAdvertisement->update_view_time($id,$viewed);
+    }
+    redirect($url);
   }
 
 

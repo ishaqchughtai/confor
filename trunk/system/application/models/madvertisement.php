@@ -18,7 +18,8 @@
       tbladvertisement.AdvertiserEmail,
       tbladvertisement.URL,
       tbladvertisement.TextTips,
-      tbladvertisement.ImageLink
+      tbladvertisement.ImageLink,
+      tbladvertisement.Viewed
       ');
       $this->db->from('tbladvertisement');
       $this->db->order_by("ID", "desc");
@@ -29,7 +30,7 @@
 
     function get_random_by_category($category, $limit) 
     {
-      $query = $this->db->query("SELECT * FROM (`tbladvertisement`) WHERE `tbladvertisement`.`DateExpiry` >= now() ORDER BY RAND() LIMIT ".$limit);
+      $query = $this->db->query("SELECT * FROM (`tbladvertisement`) WHERE `tbladvertisement`.`DateExpiry` >= CURDATE() ORDER BY RAND() LIMIT ".$limit);
       // bo sung category trong database
       //$this->db->from('tbladvertisements');
       //$this->db->where('category', $category);
@@ -47,7 +48,7 @@
     }
 
     //add new advertisement
-    function add_advertisement($dateBeginning,$dateExpiry,$advertiserName,$advertiserEmail,$url,$textTips,$imageLink)
+    function add_advertisement($dateBeginning,$dateExpiry,$advertiserName,$advertiserEmail,$url,$textTips,$imageLink,$viewed)
     {
       try
       {
@@ -58,7 +59,8 @@
         'AdvertiserEmail'=>$advertiserEmail,
         'URL'=>$url,
         'TextTips'=>$textTips,
-        'ImageLink'=>$imageLink
+        'ImageLink'=>$imageLink,
+        'Viewed'=>$viewed,
         );    
         $this->db->insert('tbladvertisement',$data);
         return TRUE;
@@ -137,14 +139,15 @@
       return FALSE;
     } 
 
-    //function check_expiry_date()
-//    {
-//      $query = $this->db->query("select DateExpiry from tbladvertisement where DateExpiry >= now()");
-//      if($query->num_rows()>0)
-//      {
-//        return TRUE;
-//      }
-//      return FALSE;
-//    }
+    function get_advertisement_by_id($id)
+    {
+      $query=$this->db->query('Select URL,Viewed from tbladvertisement WHERE tbladvertisement.ID = '.$id);
+      return $query;
+    }
+    function update_view_time($id,$viewed)
+    {
+      $data = array('Viewed'=>$viewed);
+      $this->db->update('tbladvertisement',$data,array('ID'=>$id));
+    }
   }
 ?>
