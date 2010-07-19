@@ -4,7 +4,7 @@
       parent::Model();
       $this->load->database();
     }
-    function get_top_viewed_video()
+    function get_top_viewed_video($lg)
     {
       $query=$this->db->query("SELECT 
       videos.vid_id,
@@ -18,12 +18,21 @@
       videos.shash,
       videos.viewed,
       videos.approved,
+      videos.lang,
       users.username
-      FROM videos ,users 
+      FROM videos ,users  
       WHERE videos.mem_id = users.id
       AND videos.approved='1'  
+      AND videos.lang='".$lg."'  
       order by videos.viewed DESC LIMIT 1");
-      return $query;
+      if($query->num_rows()>0)
+      {
+          return $query;
+      }
+      else
+      {
+          return false;
+      }
     }
     function search_conference($keyword_to_search)
     {
@@ -198,10 +207,11 @@
       return $query->result_array();
     }
 
-    function get_random_by_video($category, $limit) 
+    function get_random_by_video($category, $limit,$lg) 
     {
       $this->db->from('videos');
       $this->db->where('approved', '1');
+      $this->db->where('lang',$lg);
       $this->db->order_by("RAND()");
       $this->db->limit($limit);
       return $this->db->get();

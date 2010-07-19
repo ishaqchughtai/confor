@@ -24,8 +24,8 @@
   }
   elseif(!$this->uri->segment(3))
   {
-      $get_one_video = $this->Mhome->get_top_viewed_video();
-      if ($get_one_video->num_rows() > 0)
+      $get_one_video = $this->Mhome->get_top_viewed_video($CI->_data['lang']);
+      if ($get_one_video)
       {
           $get_one_video = $get_one_video->row(); 
           $title_video_shop = $get_one_video->title;
