@@ -520,78 +520,78 @@ $lang['CF_list_cate'] = 'Liste des cat&eacute;gories';
 $lang['CF_modify_cate'] = 'Modifier la cat&eacute;gorie';
 
 //date
-$lang['CF_month_name_array'] = "'Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'";
+$lang['CF_month_name_array'] = "'Janvier','F&eacute;vrier','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','D&eacute;cembre'";
 
 //new key 7-6
 $lang['CF_invalid_username_password_message'] = 'Nom d\'utilisateur ou mot de passe invalide';
 
-$lang['CF_up_profile'] = 'f_Your profile has been updated';
+$lang['CF_up_profile'] = 'Votre profil &agrave; &eacute;t&eacute; mis &agrave; jour';
 
-$lang['CF_upgrade_mem'] = 'f_Please upgrade your membership to use this function';
+$lang['CF_upgrade_mem'] = 'pour utiliser cette fonction, vous devez mettre &agrave; jour votre adh&eacute;sion';
 
-$lang['CF_you_have_paid'] = 'f_You have paid $';
+$lang['CF_you_have_paid'] = 'Vouz avez pay&eacute; $';
 
-$lang['CF_for_this'] = 'f_for this subcription';
+$lang['CF_for_this'] = 'pour cette adh&eacute;sion';
 
-$lang['CF_day'] = ' day.';
+$lang['CF_day'] = ' jour.';
 
-$lang['CF_expired'] = 'f_Expired';
+$lang['CF_expired'] = 'Exipir&eacute;';
 
-$lang['CF_old_pass_incorrect'] = 'f_Your Old Password was incorrect';
+$lang['CF_old_pass_incorrect'] = 'Votre ancien mot de passe est incorrect';
 
 //new key 09-07
-$lang['CF_Blog_Title'] = 'f_Blog confor';
-$lang['CF_Blog_search'] = 'f_Blog search';
-$lang['CF_next'] = 'f_Next >';
-$lang['CF_previous'] = '< f_Previous';
-$lang['CF_last'] = 'f_Last >>';
-$lang['CF_first'] = '<< f_First';
+$lang['CF_Blog_Title'] = 'Blogue confor';
+$lang['CF_Blog_search'] = 'Recherche Blogue';
+$lang['CF_next'] = 'Suivant >';
+$lang['CF_previous'] = '< Pr&eacute;c&egrave;dent';
+$lang['CF_last'] = 'Dernier >>';
+$lang['CF_first'] = '<< Premier';
 /*new key on 13rd Jul 2010*/
-$lang['CF_new_speaker'] = 'Nouvel Conf&eacute;rencier';
-$lang['CF_blog_list'] = 'f_Blog List';
-$lang['CF_blog_comment'] = 'f_Comments';
-$lang['CF_blog_approved'] = 'f_Approved';
+$lang['CF_new_speaker'] = 'Nouveau Conf&eacute;rencier';
+$lang['CF_blog_list'] = 'Liste des Blogues';
+$lang['CF_blog_comment'] = 'Commentaires';
+$lang['CF_blog_approved'] = 'Aprouv&eacute;';
 /*key added on 14/07/2010*/ 
-$lang['CF_dis_lang'] = 'f_Display language';
-$lang['CF_blog_not_approved'] = 'f_Not Approved';
-$lang['CF_mess_approved'] = 'f_Do you really wish to approved comment?';
-$lang['CF_mess_not_approved'] = 'f_Do you really wish to not approved comment?';
-$lang['CF_mess_comment'] = 'f_Your articles will be approved by Admin !'; 
-$lang['CF_addblog_success'] = 'f_Add New Blog Success !'; 
-$lang['CF_editblog_success'] = 'f_Edit Blog Success !';
+$lang['CF_dis_lang'] = 'Langage d\'affichage';
+$lang['CF_blog_not_approved'] = 'Non approuv&eacute;';
+$lang['CF_mess_approved'] = 'Souhaitez-vous vraiment approuver ce commentaire?';
+$lang['CF_mess_not_approved'] = 'Souhaitez-vous vraiment d&eacute;sapprouver ce commentaire?';
+$lang['CF_mess_comment'] = 'Votre article sera soumis &agrave; l\'approbation de l\'administrateur!'; 
+$lang['CF_addblog_success'] = 'Le Blogue &agrave; &eacute;t&eacute; ajout&eacute; avec succ&egrave;s!'; 
+$lang['CF_editblog_success'] = 'Le Blogue &agrave; &eacute;t&eacute; modifi&eacute; avec succ&egrave;s!';
 
 /*key added on 15/07/2010*/
-$lang['CF_post'] = 'f_POST';
-$lang['CF_mess_update'] = 'f_Do you really wish to update?';
-$lang['CF_update'] = 'Update';
-$lang['CF_success'] = 'Success !';
-$lang['CF_select'] = 'Please select !';
+$lang['CF_post'] = 'Billet';
+$lang['CF_mess_update'] = 'Voulez-vous vraiment faire la mise &agrave; jour?';
+$lang['CF_update'] = 'Mise &agrave; jour';
+$lang['CF_success'] = 'Succ&egrave;s !';
+$lang['CF_select'] = 'Veuillez s&eacute;lectionner !';
 /*key added on 16/07/2010*/
-$lang['CF_content'] = 'CONTENT';
-$lang['CF_new_office'] = 'New Conference Office';
-$lang['CF_upload_expired'] = 'Your uploaded file is expried. Please upload another file!';
+$lang['CF_content'] = 'CONTENU';
+$lang['CF_new_office'] = 'Nouveau Billet - Bureau de Conf&eacute;renciers';
+$lang['CF_upload_expired'] = 'Votre fichier &agrave; &ecirc;tre t&eacute;l&eacute;vers&eacute; est expir&eacute;. Veuillez t&eacute;l&eacute;verser un autre fichier!';
 /*Video settings*/
-$lang['CF_video_setting'] = 'f_Video configuration';
-$lang['CF_allowed_ext'] = 'f_Allowed extensions';
-$lang['CF_resize_w'] = 'f_Resize width';
-$lang['CF_resize_h'] = 'f_Resize height';
-$lang['CF_thumb_w'] = 'f_Thumbnail width';
-$lang['CF_thumb_h'] = 'f_Thumbnail height';
-$lang['CF_max_size'] = 'f_Max upload size';
-$lang['CF_save_setting'] = 'f_The video setting has been saved!';
-$lang['CF_invaild_lang'] = 'f_Invaild language';
-$lang['CF_rss_recent_blogs'] = 'f_Recent blogs from CONFOR.CA';
-$lang['CF_rss_blog_name'] = 'f_Confor.ca - Blog RSS'; 
-$lang['CF_rss_recent_videos'] = 'f_Recent videos from CONFOR.CA';
-$lang['CF_rss_video_name'] = 'f_Confor.ca - Video Conference RSS'; 
-$lang['CF_vid_conf'] = 'f_Video Conference'; 
-$lang['CF_converting'] = 'f_Saving'; 
-$lang['CF_please_browse'] = 'f_Please browse files for upload'; 
-$lang['CF_upload_video'] = 'f_Upload video'; 
-$lang['CF_delete_ar'] = 'f_Article has been deleted!';
-$lang['CF_add_new_article'] = 'f_Add new Article'; 
-$lang['CF_addarticle_success'] = 'Add New Article Success !'; 
-$lang['CF_editarticle_success'] = 'Edit Article Success !';
-$lang['CF_list_ar'] = 'f_List Article';
-$lang['CF_edit_ar'] = 'f_Edit Article';
-$lang['CF_conference_office_content'] = 'f_Conference Office Content';
+$lang['CF_video_setting'] = 'Configuration vid&eacute;o';
+$lang['CF_allowed_ext'] = 'Extensions autoris&eacute;es';
+$lang['CF_resize_w'] = 'Redimensionner en largeur';
+$lang['CF_resize_h'] = 'Redimensionner en hauteur';
+$lang['CF_thumb_w'] = 'Miniature largeur';
+$lang['CF_thumb_h'] = 'Miniature hauteur';
+$lang['CF_max_size'] = 'Format maximum de t&eacute;l&eacute;versement';
+$lang['CF_save_setting'] = 'Les param&egrave;tres vid&eacute;o ont &eacute;t&eacute; enregistr&eacute;s!';
+$lang['CF_invaild_lang'] = 'Langage invalide';
+$lang['CF_rss_recent_blogs'] = 'Blogues r&eacute;cents de CONFOR.CA';
+$lang['CF_rss_blog_name'] = 'Confor.ca - RSS Blogue'; 
+$lang['CF_rss_recent_videos'] = 'Vid&eacute;os r&eacute;centes de CONFOR.CA';
+$lang['CF_rss_video_name'] = 'Confor.ca - RSS Vid&eacute;o Conf&eacute;rence'; 
+$lang['CF_vid_conf'] = 'Vid&eacute;o Conf&eacute;rence'; 
+$lang['CF_converting'] = 'Sauvegarde'; 
+$lang['CF_please_browse'] = 'Veuillez parcourir les fichiers pour le t&eacute;l&eacute;versement'; 
+$lang['CF_upload_video'] = 'T&eacute;l&eacute;versement vid&eacute;o'; 
+$lang['CF_delete_ar'] = 'L\'article &agrave; &eacute;t&eacute; supprim&eacute;!';
+$lang['CF_add_new_article'] = 'Ajouter un article'; 
+$lang['CF_addarticle_success'] = 'Article ajout&eacute; avec succ&egrave;s!'; 
+$lang['CF_editarticle_success'] = 'Article modifi&eacute; avec succ&egrave;s!';
+$lang['CF_list_ar'] = 'Liste des Articles';
+$lang['CF_edit_ar'] = 'Modifier article';
+$lang['CF_conference_office_content'] = 'Contenu de Bureau de conf&eacute;rence';
