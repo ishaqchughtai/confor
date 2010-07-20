@@ -28,7 +28,8 @@ define('FFMPEG_TYPE', 'static');
 
 class Video_upload_lib {
 	
-	var $videoObj;
+	//var $videoObj;
+	var $_media_data = FALSE;
 	var $ajax_link = '';
 	var $uploader;
 	
@@ -50,6 +51,7 @@ class Video_upload_lib {
 		'srate' => 22050,
 		'ratio' => "4:3",
 		'thumb_frame' => 20,
+		'thumb_time_get' => 10,
 		'is_resize' => 1,
 		'keep_ratio' => 1
 	);
@@ -182,16 +184,24 @@ class Video_upload_lib {
 		$uname = $this->CI->input->post('uname');
 		$is_convert = TRUE;
 		
-		if (strtolower($ext) == 'flv')
+		// if (strtolower($ext) == 'flv')
+		// {
+			// $temp_name = $this->temp_path.$new_name;
+			// $cname = $this->temp_path.$new_name.'.flv';
+			// copy($temp_name,$cname);			
+			// $this->create_thumb($this->temp_path, $new_name);
+			// unlink($this->temp_path.$new_name);
+			// $is_convert = FALSE;
+		// }
+		
+		
+		$this->video_settings['thumb_time_get'] = 10;
+		if ($this->get_video_info($this->temp_path.$new_name))
 		{
-			$temp_name = $this->temp_path.$new_name;
-			$cname = $this->temp_path.$new_name.'.flv';
-			copy($temp_name,$cname);			
-			$this->create_thumb($this->temp_path, $new_name);
-			unlink($this->temp_path.$new_name);
-			$is_convert = FALSE;
-		}
-				
+			if ($this->_media_data['duration']['seconds']>0)
+			$this->video_settings['thumb_time_get'] = round($this->_media_data['duration']['seconds']/2);
+		}		
+		
 		if ($is_convert)
 		{
 			$this->convert_to_flv($new_name);
@@ -295,6 +305,7 @@ class Video_upload_lib {
 	
 	function add_new_video($data, $uname)
 	{
+		$this->remove_temp_expired(time()-$this->temp_expiration);
 		if (file_exists($this->temp_path.$uname.'.flv') && (filesize($this->temp_path.$uname.'.flv')>0))
 		{			
 			$data['vhash'] = $uname.'.flv';
@@ -340,10 +351,7 @@ class Video_upload_lib {
 	{				
 		$temp_name = $this->temp_path.$fname;
 		$cname = $this->temp_path.$fname.'.flv';
-		//copy($temp_name,$cname);
-		//$cmd = FFMPEG_BINARY . " -i " . $temp_name  . " -ar ".SRATE." -ab ".SBRATE." -f flv -s ".R_WIDTH."x".R_HEIGHT." " . $cname;
-		//exec($cmd);
-		
+			
 		$this->set_video_input($temp_name);
 		$this->set_audio_sample_frequency();
 		$this->set_audio_bitrate();		
@@ -355,9 +363,9 @@ class Video_upload_lib {
 		//$this->set_video_frame_rate(25);
 		$this->set_video_output($cname);
 		
-		exec($this->convert_cmd);
-		
+		exec($this->convert_cmd);		
 		$this->add_meta_to_flv($cname);
+		
 		$this->create_thumb($this->temp_path, $fname);
 	}		
 	
@@ -390,7 +398,33 @@ class Video_upload_lib {
 	{
 		if ($this->video_settings['is_resize']==1)
 		{	
-			$this->convert_cmd .= ' -s '.$this->video_settings['resize_w'].'x'.$this->video_settings['resize_h'];
+		
+			if ($this->_media_data == FALSE)
+			{
+				$this->convert_cmd .= ' -s '.$this->video_settings['resize_w'].'x'.$this->video_settings['resize_h'];
+				return;
+			}
+			$scale = "";
+			$original_width = $this->_media_data['video']['dimensions']['width'];
+			$original_height = $this->_media_data['video']['dimensions']['height'];			
+			if( $original_width > $original_height ) {
+				if( $original_width > $this->video_settings['resize_w'] ) {
+					$ratio = $this->video_settings['resize_w'] / $original_width;
+					$new_height = round( $original_height * $ratio );
+					$scale = " -s ".$this->video_settings['resize_w']."x".$new_height;
+				}
+			} else {
+				if( $original_height > $this->video_settings['resize_h'] ) {
+					$ratio = $this->video_settings['resize_h'] / $original_height;
+					$new_width = round( $original_width * $ratio );
+					$scale = " -s ".$new_width."x".$this->video_settings['resize_h'];
+				}
+			}
+	
+			if ($scale!="")
+			{
+				$this->convert_cmd .= $scale;
+			}			
 		}
 	}
 	
@@ -432,15 +466,12 @@ class Video_upload_lib {
 	{
 		$src = $path.$fname.'.flv';
 		$dest = $path.$fname.'.jpg';
-		$cmd = FFMPEG_BINARY . " -i ". $src. " -vframes ".$this->video_settings['thumb_frame']." -an ";
+		//$cmd = FFMPEG_BINARY . " -i ". $src. " -vframes ".$this->video_settings['thumb_frame']." -an ";
+		$cmd = FFMPEG_BINARY . " -i ". $src. " -vframes 1 -ss ".$this->video_settings['thumb_time_get']." -an ";
 		$cmd .= "-s ".$this->video_settings['thumb_w']."x".$this->video_settings['thumb_h']." ";
 		$cmd .= $dest;
 		exec($cmd);
 	}
-	
-	function get_video_info($path)
-	{				
-	}		
 	
 	// --------------------------------------------------------------------
 	// Used in the convertion pricess!
@@ -450,55 +481,420 @@ class Video_upload_lib {
 		return ($sType == "integer") ? $value : ($value-1);
 	}	
 
-	function start_encoding( $parameters, $source_info, $lockfile ) {
-		$ffmpeg = FFMPEG_BINARY;
-
-		$p = & $parameters;
-		$i = & $source_info;
-
-		$opt_av = " -y ";
-		$p['video_codec'];
-		// Prepare the ffmpeg command to execute
-		if(isset($p['extra_options']))
-		$opt_av .= " -y {$p['extra_options']} ";
-
-		// file format
-		if(isset($p['format']))
-		$opt_av .= " -f {$p['format']} ";
-		// video codec, frame rate and bitrate
-		$video_rate = min( $p['video_max_rate'], $i['video_rate'] );
-		$opt_av .= " -vcodec {$p['video_codec']} -b {$p['video_bitrate']} -r $video_rate ";
-
-		// video size, aspect and padding
-		$this->calculate_size_padding( $p, $i, $width, $height, $ratio, $pad_top, $pad_bottom, $pad_left, $pad_right );
-		$opt_av .= " -s {$width}x{$height} -aspect $ratio -padcolor 000000 -padtop $pad_top -padbottom $pad_bottom -padleft $pad_left -padright $pad_right ";
-		
-		// audio codec, rate and bitrate
-		if(!empty($p['audio_codec']) && $p['audio_codec'] != 'None'){
-			$opt_av .= " -acodec {$p['audio_codec']}";
-		}
-		// audio codec, rate and bitrate
-		$opt_av .= " -ar {$p['audio_rate']} -ab {$p['audio_bitrate']} ";
-		
-		if(!isset($output))
-		$output = "";
-		//$lockfile = BASEDIR . "/files/temp/lock.tmp";
-		// execute ffmpeg, send output to the log file, run in background, with low priority (niced)	
-		//$this->exec("echo $ffmpeg -i {$p['path_source']} $opt_av {$p['path_target']} >> {$p['path_log']} ");
-		$this->exec( "$ffmpeg -i '{$p['path_source']}' $opt_av '{$p['path_target']}' &> '{$p['path_log']}'" );
-		
-		// Adding FLVtool2 for addin video meta deta
-		if(!empty($p['flvtool2'])){
-			$this->exec( "{$p['flvtool2']} -U {$p['path_target']} >> '{$p['path_log']}'" );
-			$opt_av .= " {$p['flvtool2']} -U {$p['path_target']} >> '{$p['path_log']}'";
-		}
-		
-		$this->exec( "echo $ffmpeg -i {$p['path_source']} $opt_av {$p['path_target']} >> '{$p['path_log']}'" );
-	}	
-
 	function make_unique_name()
 	{
 		return xm_generateRandStr(16).time();
 		//return uniqid('v_'.time().'_');
 	}
+		
+	function get_video_info($path)
+	{	
+		exec(FFMPEG_BINARY.' -i '.$path.' 2>&1', $buffer);
+		$buffer = implode("\r\n", $buffer);	
+		$data = array();
+		preg_match_all('/Duration: (.*)/', $buffer, $matches);
+		if(count($matches) > 0)
+		{
+			$parts 								= explode(', ', trim($matches[1][0]));
+			$data['duration']					= array();
+			$timecode					 		= $parts[0];
+			$data['duration']['seconds'] 		= $this->timecodeToSeconds($timecode);
+			$data['bitrate']  					= intval(ltrim($parts[2], 'bitrate: '));
+			$data['duration']['start']  		= ltrim($parts[1], 'start: ');
+			$data['duration']['timecode']		= array();
+			$data['duration']['timecode']['rounded'] = substr($timecode, 0, 8);
+			$data['duration']['timecode']['seconds'] = array();
+			$data['duration']['timecode']['seconds']['exact']   = $timecode;
+			$data['duration']['timecode']['seconds']['excess']  = intval(substr($timecode, 9));
+		}
+		
+		preg_match('/Stream(.*): Video: (.*)/', $buffer, $matches);
+		if(count($matches) > 0)
+		{
+			$data['video'] 						= array();
+			preg_match('/([0-9]{1,5})x([0-9]{1,5})/', $matches[2], $dimensions_matches);
+			// 					print_r($dimensions_matches);
+			$dimensions_value = $dimensions_matches[0];
+			$data['video']['dimensions'] 	= array(
+			'width' 					=> floatval($dimensions_matches[1]),
+			'height' 					=> floatval($dimensions_matches[2])
+			);
+			// 					get the framerate
+			preg_match('/([0-9\.]+) (fps|tb)\(r\)/', $matches[0], $fps_matches);
+			$data['video']['frame_rate'] 	= floatval($fps_matches[1]);
+			$fps_value = $fps_matches[0];
+			// 					get the ratios
+			preg_match('/\[PAR ([0-9\:\.]+) DAR ([0-9\:\.]+)\]/', $matches[0], $ratio_matches);
+			if(count($ratio_matches))
+			{
+				$data['video']['pixel_aspect_ratio'] 	= $ratio_matches[1];
+				$data['video']['display_aspect_ratio'] 	= $ratio_matches[2];
+			}
+			// 					work out the number of frames
+			if(isset($data['duration']) && isset($data['video']))
+			{
+				// 						set the total frame count for the video
+				$data['video']['frame_count'] 						= ceil($data['duration']['seconds'] * $data['video']['frame_rate']);
+				// 						set the framecode
+				$frames												= ceil($data['video']['frame_rate']*($data['duration']['timecode']['seconds']['excess']/10));
+				$data['duration']['timecode']['frames'] 			= array();
+				$data['duration']['timecode']['frames']['exact']  	= $data['duration']['timecode']['rounded'].'.'.$frames;
+				$data['duration']['timecode']['frames']['excess'] 	= $frames;
+				$data['duration']['timecode']['frames']['total'] 	= $data['video']['frame_count'];
+			}
+			// 					formats should be anything left over, let me know if anything else exists
+			$parts 							= explode(',', $matches[2]);
+			$other_parts 					= array($dimensions_value, $fps_value);
+			$formats = array();
+			foreach($parts as $key=>$part)
+			{
+				$part = trim($part);
+				if(!in_array($part, $other_parts))
+				{
+					array_push($formats, $part);
+				}
+			}
+			$data['video']['pixel_format'] 	= $formats[1];
+			$data['video']['codec'] 		= $formats[0];
+		}
+		
+		// 				match the audio stream info
+		preg_match('/Stream(.*): Audio: (.*)/', $buffer, $matches);
+		if(count($matches) > 0)
+		{
+			// 					setup audio values
+			$data['audio'] = array(
+			'stereo'		=> -1, 
+			'sample_rate'	=> -1, 
+			'sample_rate'	=> -1
+			);
+			$other_parts = array();
+			// 					get the stereo value
+			preg_match('/(stereo|mono)/i', $matches[0], $stereo_matches);
+			if(count($stereo_matches))
+			{
+				$data['audio']['stereo'] 		= $stereo_matches[0];
+				array_push($other_parts, $stereo_matches[0]);
+			}
+			// 					get the sample_rate
+			preg_match('/([0-9]{3,6}) Hz/', $matches[0], $sample_matches);
+			if(count($sample_matches))
+			{
+				$data['audio']['sample_rate'] 	= count($sample_matches) ? floatval($sample_matches[1]) : -1;
+				array_push($other_parts, $sample_matches[0]);
+			}
+			// 					get the bit rate
+			preg_match('/([0-9]{1,3}) kb\/s/', $matches[0], $bitrate_matches);
+			if(count($bitrate_matches))
+			{
+				$data['audio']['bitrate'] 		= count($bitrate_matches) ? floatval($bitrate_matches[1]) : -1;
+				array_push($other_parts, $bitrate_matches[0]);
+			}
+			// 					formats should be anything left over, let me know if anything else exists
+			$parts 							= explode(',', $matches[2]);
+			$formats = array();
+			foreach($parts as $key=>$part)
+			{
+				$part = trim($part);
+				if(!in_array($part, $other_parts))
+				{
+					array_push($formats, $part);
+				}
+			}
+			$data['audio']['codec'] 		= $formats[0];
+		}		
+
+		if(!count($data))
+		{
+			$data = FALSE;
+		}
+		else
+		{
+			$data['_raw_info'] = $buffer;
+		}		
+		$this->_media_data = $data;
+		return $data;		
+	}		
+		
+	/**
+	 * Translates a timecode to the number of seconds.
+	 * NOTE: this is now a depreciated, use formatTimecode() instead.
+	 *
+	 * @depreciated Use formatTimecode() instead.
+	 * @access public
+	 * @uses PHPVideoToolkit::formatTimecode()
+	 * @param integer $input_seconds The number of seconds you want to calculate the timecode for.
+	 */
+	public function timecodeToSeconds($input_timecode='00:00:00')
+	{
+		return $this->formatTimecode($input_timecode, '%hh:%mm:%ss', '%st');
+	}
+	
+	/**
+	 * Translates a timecode to the number of seconds
+	 *
+	 * @access public
+	 * @param integer $input_seconds The number of seconds you want to calculate the timecode for.
+	 * @param integer $input_format The format of the timecode is being given in.
+	 * 		default '%hh:%mm:%ss'
+	 * 			- %hh (hours) representative of hours
+	 * 			- %mm (minutes) representative of minutes
+	 * 			- %ss (seconds) representative of seconds
+	 * 			- %fn (frame number) representative of frames (of the current second, not total frames)
+	 * 			- %ms (milliseconds) representative of milliseconds (of the current second, not total milliseconds) (rounded to 3 decimal places)
+	 * 			- %ft (frames total) representative of total frames (ie frame number)
+	 * 			- %st (seconds total) representative of total seconds (rounded).
+	 * 			- %sf (seconds floored) representative of total seconds (floored).
+	 * 			- %sc (seconds ceiled) representative of total seconds (ceiled).
+	 * 			- %mt (milliseconds total) representative of total milliseconds. (rounded to 3 decimal places)
+	 * 		Thus you could use an alternative, '%hh:%mm:%ss:%ms', or '%hh:%mm:%ss' dependent on your usage.
+	 * @param integer $return_format The format of the timecode to return. The default is
+	 * 		default '%ts'
+	 * 			- %hh (hours) representative of hours
+	 * 			- %mm (minutes) representative of minutes
+	 * 			- %ss (seconds) representative of seconds
+	 * 			- %fn (frame number) representative of frames (of the current second, not total frames)
+	 * 			- %ms (milliseconds) representative of milliseconds (of the current second, not total milliseconds) (rounded to 3 decimal places)
+	 * 			- %ft (frames total) representative of total frames (ie frame number)
+	 * 			- %st (seconds total) representative of total seconds (rounded).
+	 * 			- %sf (seconds floored) representative of total seconds (floored).
+	 * 			- %sc (seconds ceiled) representative of total seconds (ceiled).
+	 * 			- %mt (milliseconds total) representative of total milliseconds. (rounded to 3 decimal places)
+	 * 		Thus you could use an alternative, '%hh:%mm:%ss:%ms', or '%hh:%mm:%ss' dependent on your usage.
+	 * @param mixed|boolean|integer $frames_per_second The number of frames per second to translate for. If left false
+	 * 		the class automagically gets the fps from PHPVideoToolkit::getFileInfo(), but the input has to be set
+	 * 		first for this to work properly.
+	 * @return float Returns the value of the timecode in seconds.
+	 */
+	public function formatTimecode($input_timecode, $input_format='%hh:%mm:%ss', $return_format='%ts', $frames_per_second=false)
+	{
+// 			first we must get the timecode into the current seconds
+		$input_quoted 	= preg_quote($input_format);
+		$placeholders 	= array('%hh', '%mm', '%ss', '%fn', '%ms', '%ft', '%st', '%sf', '%sc', '%mt');
+		$seconds 		= 0;
+		$input_regex 	= str_replace($placeholders, '([0-9]+)', preg_quote($input_format));
+		preg_match('/'.$input_regex.'/', $input_timecode, $matches);
+// 			work out the sort order for the placeholders
+		$sort_table = array();
+		foreach($placeholders as $key=>$placeholder)
+		{
+			if(($pos = strpos($input_format, $placeholder)) !== false)
+			{
+				$sort_table[$pos] = $placeholder;
+			}
+		}
+		ksort($sort_table);
+// 			check to see if frame related values are in the input
+		$has_frames = strpos($input_format, '%fn') !== false;
+		$has_total_frames = strpos($input_format, '%ft') !== false;
+		if($has_frames || $has_total_frames)
+		{
+// 				if the fps is false then we must automagically detect it from the input file
+			// if($frames_per_second === false)
+			// {
+				// $info = $this->getFileInfo();
+				// if($info === false || (!isset($info['video']) || !isset($info['video']['frame_rate'])))
+				// {
+					// return -1;
+				// }
+				// $frames_per_second = $info['video']['frame_rate'];
+			// }
+		}			
+// 			increment the seconds with each placeholder value
+		$key = 1;
+		foreach($sort_table as $placeholder)
+		{
+			if(!isset($matches[$key]))
+			{
+				break;
+			}
+			$value = $matches[$key];
+			switch($placeholder)
+			{
+// 					time related ones
+				case '%hh' : 
+					$seconds += $value * 3600;
+					break;
+				case '%mm' : 
+					$seconds += $value * 60;
+					break;
+				case '%ss' : 
+				case '%sf' :
+				case '%sc' :
+					$seconds += $value;
+					break;
+				case '%ms' : 
+					$seconds += floatval('0.'.$value);
+					break;
+				case '%st' : 
+				case '%mt' :
+					$seconds = $value;
+					break 1;
+					break;
+// 					frame related ones
+				case '%fn' : 
+					$seconds += $value/$frames_per_second;
+					break;
+				case '%ft' : 
+					$seconds = $value/$frames_per_second;
+					break 1;
+					break;
+			}
+			$key += 1;
+		}
+// 			then we just format the seconds
+		return $this->formatSeconds($seconds, $return_format, $frames_per_second);
+	}
+	
+	
+	/**
+	 * Translates a number of seconds to a timecode.
+	 *
+	 * @access public
+	 * @param integer $input_seconds The number of seconds you want to calculate the timecode for.
+	 * @param integer $return_format The format of the timecode to return. The default is
+	 * 		default '%hh:%mm:%ss'
+	 * 			- %hh (hours) representative of hours
+	 * 			- %mm (minutes) representative of minutes
+	 * 			- %ss (seconds) representative of seconds
+	 * 			- %fn (frame number) representative of frames (of the current second, not total frames)
+	 * 			- %ms (milliseconds) representative of milliseconds (of the current second, not total milliseconds) (rounded to 3 decimal places)
+	 * 			- %ft (frames total) representative of total frames (ie frame number)
+	 * 			- %st (seconds total) representative of total seconds (rounded).
+	 * 			- %sf (seconds floored) representative of total seconds (floored).
+	 * 			- %sc (seconds ceiled) representative of total seconds (ceiled).
+	 * 			- %mt (milliseconds total) representative of total milliseconds. (rounded to 3 decimal places)
+	 * 		Thus you could use an alternative, '%hh:%mm:%ss:%ms', or '%hh:%mm:%ss' dependent on your usage.
+	 * @param mixed|boolean|integer $frames_per_second The number of frames per second to translate for. If left false
+	 * 		the class automagically gets the fps from PHPVideoToolkit::getFileInfo(), but the input has to be set
+	 * 		first for this to work properly.
+	 * @return string|integer Returns the timecode, but if $frames_per_second is not set and a frame rate lookup is required 
+	 * 		but can't be reached then -1 will be returned.
+	 */
+	public function formatSeconds($input_seconds, $return_format='%hh:%mm:%ss', $frames_per_second=false)
+	{
+		$timestamp 		= mktime(0, 0, $input_seconds, 0, 0);
+		$floored 		= floor($input_seconds);
+		$hours  		= date('H', $timestamp);
+		$mins	  		= date('i', $timestamp);
+		$searches 		= array();
+		$replacements 	= array();
+// 			these ones are the simple replacements
+// 			replace the hours
+		$using_hours = strpos($return_format, '%hh') !== false;
+		if($using_hours)
+		{
+			array_push($searches, '%hh');
+			array_push($replacements, $hours);
+		}
+// 			replace the minutes
+		$using_mins = strpos($return_format, '%mm') !== false;
+		if($using_mins)
+		{
+			array_push($searches, '%mm');
+// 				check if hours are being used, if not and hours are required enable smart minutes
+			if(!$using_hours && $hours > 0)
+			{
+				$value = ($hours * 60) + $mins;
+			}
+			else
+			{
+				$value = $mins;
+			}
+			array_push($replacements, $value);
+		}
+// 			replace the seconds
+		if(strpos($return_format, '%ss') !== false)
+		{
+// 				check if hours are being used, if not and hours are required enable smart minutes
+			if(!$using_mins && !$using_hours && $hours > 0)
+			{
+				$mins = ($hours * 60) + $mins;
+			}
+// 				check if mins are being used, if not and hours are required enable smart minutes
+			if(!$using_mins && $mins > 0)
+			{
+				$value = ($mins * 60) + date('s', $timestamp);
+			}
+			else
+			{
+				$value = date('s', $timestamp);
+			}
+			array_push($searches, '%ss');
+			array_push($replacements, $value);
+		}
+// 			replace the milliseconds
+		if(strpos($return_format, '%ms') !== false)
+		{
+			$milli = round($input_seconds - $floored, 3);
+			$milli = substr($milli, 2);
+			$milli = empty($milli) ? '0' : $milli;
+			array_push($searches, '%ms');
+			array_push($replacements, $milli);
+		}
+// 			replace the total seconds (rounded)
+		if(strpos($return_format, '%st') !== false)
+		{
+			array_push($searches, '%st');
+			array_push($replacements, round($input_seconds));
+		}
+// 			replace the total seconds (floored)
+		if(strpos($return_format, '%sf') !== false)
+		{
+			array_push($searches, '%sf');
+			array_push($replacements, floor($input_seconds));
+		}
+// 			replace the total seconds (ceiled)
+		if(strpos($return_format, '%sc') !== false)
+		{
+			array_push($searches, '%sc');
+			array_push($replacements, ceil($input_seconds));
+		}
+// 			replace the total seconds
+		if(strpos($return_format, '%mt') !== false)
+		{
+			array_push($searches, '%mt');
+			array_push($replacements, round($input_seconds, 3));
+		}
+// 			these are the more complicated as they depend on $frames_per_second / frames per second of the current input
+		$has_frames = strpos($return_format, '%fn') !== false;
+		$has_total_frames = strpos($return_format, '%ft') !== false;
+		if($has_frames || $has_total_frames)
+		{
+// 				if the fps is false then we must automagically detect it from the input file
+			// if($frames_per_second === false)
+			// {
+				// $info = $this->getFileInfo();
+				// if($info === false || (!isset($info['video']) || !isset($info['video']['frame_rate'])))
+				// {
+					// return -1;
+				// }
+				// $frames_per_second = $info['video']['frame_rate'];
+			// }
+// 				replace the frames
+			$excess_frames = false;
+			if($has_frames)
+			{
+				$excess_frames = ceil(($input_seconds - $floored) * $frames_per_second);
+// 			print_r(array($input_seconds, $excess_frames));
+				array_push($searches, '%fn');
+				array_push($replacements, $excess_frames);
+			}
+// 				replace the total frames (ie frame number)
+			if($has_total_frames)
+			{
+				$round_frames = $floored * $frames_per_second;
+				if(!$excess_frames)
+				{
+					$excess_frames = ceil(($input_seconds - $floored) * $frames_per_second);
+				}
+				array_push($searches, '%ft');
+				array_push($replacements, $round_frames + $excess_frames);
+			}
+		}
+// 			print_r(array($searches, $replacements, $return_format));
+// 			print_r(array($input_seconds, $timestamp, $return_format, str_replace($searches, $replacements, $return_format)));
+		return str_replace($searches, $replacements, $return_format);
+	}
+	
 }

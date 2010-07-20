@@ -27,6 +27,13 @@
 	cursor:pointer;
 	margin-right:0px
 }
+
+#converting span{
+	color:#999;
+	margin-left:10px;
+}
+
+
 </style>
 
 <script>
@@ -35,9 +42,9 @@
 
 	function CuteWebUI_AjaxUploader_OnPostback()
 	{		
-		var upload_url = "<?php echo $CI->video_upload_lib->ajax_link;?>";
-		
-		$('#upload_button').val('<?php echo __("CF_converting")?>...');
+		var upload_url = "<?php echo $CI->video_upload_lib->ajax_link;?>";				
+		$('#upload_button').hide();
+		$('#converting').show();
 		$.ajax({
 			type: "POST",
 			url: upload_url,
@@ -47,8 +54,10 @@
 			},		
 			dataType: 'text',
 			success: function(data){				
-				$('#uname').val(data.toString());								
-				$('#upload_button').val('<?php echo __("CF_up")?>');
+				$('#uname').val(data.toString());												
+				$('#upload_button').show();
+				$('#converting').hide();
+		
 				if (data!=0) 
 				{
 					alert("<?php echo __("CF_success_upload")?>");										
@@ -80,7 +89,13 @@
 	
 	<p><?php $CI->video_upload_lib->uploader->Render();?></p>	
 	<p></p>
-	<p><input id="upload_button" type="submit" onclick="return doUpload()" value="<?php echo __("CF_up")?>" /></p>
+	<p>
+	<input id="upload_button" type="submit" onclick="return doUpload()" value="<?php echo __("CF_up")?>" />
+	<div id="converting" class="hidden">
+		<img align="left" src="<?php echo base_url()?>assets/img/indicator_arrows_black.gif"/>
+		<span><?php echo __("CF_converting")?>..</span>
+	</div>
+	</p>
 	<input id="uname" type="hidden" name="uname" value="<?php echo $uname?>"/>
 	<p>
 		<?php if ($uname=='0'):?>
