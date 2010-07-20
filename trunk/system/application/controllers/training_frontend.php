@@ -12,7 +12,13 @@ class Training_frontend extends Frontend_controller {
 
     function index()
     {
-        $lg = $this->uri->segment(3);    
+        $this->show();       
+    }
+
+    function show()
+    {
+        //$lg = $this->uri->segment(3);    
+        $lg =$this->_data['lang'];
         if (! $lg) return;
         if (lang_name_by_short_key($lg,TRUE)==FALSE)
         {
@@ -40,9 +46,8 @@ class Training_frontend extends Frontend_controller {
         $this->pagination->initialize($config);
         $this->_data['query'] = $this->Mtraining->get_all_training($lg,$this->uri->segment(4),$config['per_page']);
         $this->_data['pagination'] = $this->pagination->create_links();                               
-        $this->_load_view('home/training_view');    
+        $this->_load_view('home/training_view');     
     }
-
     function training_content($title='')
     {
         $this->_data['path'][] = array(

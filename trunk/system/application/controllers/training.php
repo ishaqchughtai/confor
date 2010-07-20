@@ -11,9 +11,14 @@ class Training extends Admin_controller {
 
     function index()
     {
+        $this->show();
+    }
+
+    function show()
+    {
         is_admin();
-        $lg = $this->uri->segment(3);
-        //$lg=$this->_data['lang'];    
+        //$lg = $this->uri->segment(3);
+        $lg=$this->_data['lang'];    
         if (! $lg) return;
         if (lang_name_by_short_key($lg,TRUE)==FALSE)
         {
@@ -41,9 +46,8 @@ class Training extends Admin_controller {
         $this->pagination->initialize($config);
         $this->_data['query'] = $this->Mtraining->get_all_training($lg,$this->uri->segment(4),$config['per_page']);
         $this->_data['pagination'] = $this->pagination->create_links();                               
-        $this->_load_view('admin/training_admin');    
+        $this->_load_view('admin/training_admin');       
     }
-
     //Delete Training
     function delete_article($id)
     {
