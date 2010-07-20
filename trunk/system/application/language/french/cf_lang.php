@@ -597,9 +597,9 @@ $lang['CF_edit_ar'] = 'Modifier article';
 $lang['CF_conference_office_content'] = 'Contenu de Bureau de conf&eacute;rence';
 
 /*key added on 19/07/2010*/
-$lang['CF_adv_suc'] = 'f_This advertisement have been changed';
-$lang['CF_check_date_expiry'] = 'f_Expiration date must be greater than or equal to the current day';
-$lang['CF_click'] = 'f_Click';
-$lang['CF_to_continue'] = 'f_to continue';
-$lang['CF_go_to'] = 'f_Go to';
-$lang['CF_add_adv_suc'] = 'f_New advertisement successfully added';
+$lang['CF_adv_suc'] = 'Cette annonce &agrave; &eacute;t&eacute; modifi&eacute;';
+$lang['CF_check_date_expiry'] = 'La date de p&eacute;remption doit être sup&eacute;rieur ou &eacute;gal &agrave; la journ&eacute;e en cours';
+$lang['CF_click'] = 'Clic';
+$lang['CF_to_continue'] = 'pour continuer';
+$lang['CF_go_to'] = 'aller &agrave;';
+$lang['CF_add_adv_suc'] = 'Nouvelle annonce ajout&eacute; avec succ&egrave;s';
