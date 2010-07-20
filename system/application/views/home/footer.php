@@ -1,5 +1,10 @@
 <?php $this->load->view($side_bar['page'], $side_bar);
     $ramdomvideo = get_random_top_video($category,$lang);
+    $lgtemp='';
+    if($lang=='fr')
+    {
+        $lgtemp='_fr';
+    }
 ?> 
 	<div id="footer" style="width:100%">
 	
@@ -13,9 +18,9 @@
 					
 				  <ul>
 					
-					  <li><a href="<?php echo site_url("conference_office") ?>"><?php echo __("CF_conference_office")?></a></li>
+					  <li><a href="<?php echo site_url("office_frontend/office/5") ?>"><?php echo __("CF_conference_office")?></a></li>
 					
-                      <li><a href="<?php echo site_url("accessories/show_element/training") ?>"><?php echo __("CF_formation")?></a></li>
+                      <li><a href="<?php echo site_url("training_frontend/index/".$lang) ?>"><?php echo __("CF_formation")?></a></li>
 					
 				  </ul>
 				  <!-- /ul -->
@@ -33,7 +38,7 @@
 					
 						<li><a href="#"><?php echo __("CF_tel_sales")?></a></li>
 					
-						<li><a href="<?php echo site_url("accessories/show_element/how") ?>" ><?php echo __("CF_how_to")?></li>
+						<li><a href="<?php echo site_url("accessories/show_element/How".$lgtemp) ?>" ><?php echo __("CF_how_to")?></li>
 					
 						<li><a href="#"><?php echo __("CF_email_form")?></a></li>
 					
@@ -100,9 +105,9 @@
 			
 				<li><a href="<?php echo base_url()?>"><?php echo __("CF_home")?></a></li>
 			
-				<li><a href="<?php echo site_url("accessories/show_element/about") ?>"><?php echo __("CF_about")?></a></li>
+				<li><a href="<?php echo site_url("accessories/show_element/About".$lgtemp) ?>"><?php echo __("CF_about")?></a></li>
 			
-				<li><a href="<?php echo site_url("blog") ?>"><?php echo __("CF_blog")?></a></li>
+				<li><a href="<?php echo site_url("blog_frontend") ?>"><?php echo __("CF_blog")?></a></li>
 			
 				<li><a href="<?php echo site_url("shop") ?>"><?php echo __("CF_shop")?></a></li>
                 
