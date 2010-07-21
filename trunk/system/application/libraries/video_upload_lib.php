@@ -9,8 +9,8 @@ require_once "phpuploader/include_phpuploader.php";
 * @author		Nguyen Hai Dang - XEMMEX developer
 */
 
-//define('FFMPEG_BINARY', '/usr/local/bin/ffmpeg');
-//define('FFMPEG_FLVTOOLS_BINARY', '/usr/bin/flvtool2');
+// define('FFMPEG_BINARY', '/usr/local/bin/ffmpeg');
+// define('FFMPEG_FLVTOOLS_BINARY', '/usr/bin/flvtool2');
 define('FFMPEG_BINARY', 'c:/ffmpeg/ffmpeg.exe');
 define('FFMPEG_FLVTOOLS_BINARY', 'c:/ffmpeg/flvtool2.exe');
 define('FFMPEG_TYPE', 'static');
@@ -184,15 +184,15 @@ class Video_upload_lib {
 		$uname = $this->CI->input->post('uname');
 		$is_convert = TRUE;
 		
-		// if (strtolower($ext) == 'flv')
-		// {
-			// $temp_name = $this->temp_path.$new_name;
-			// $cname = $this->temp_path.$new_name.'.flv';
-			// copy($temp_name,$cname);			
-			// $this->create_thumb($this->temp_path, $new_name);
-			// unlink($this->temp_path.$new_name);
-			// $is_convert = FALSE;
-		// }
+		if (strtolower($ext) == 'flv')
+		{
+			$temp_name = $this->temp_path.$new_name;
+			$cname = $this->temp_path.$new_name.'.flv';
+			copy($temp_name,$cname);			
+			$this->create_thumb($this->temp_path, $new_name);
+			unlink($this->temp_path.$new_name);
+			$is_convert = FALSE;
+		}
 		
 		
 		$this->video_settings['thumb_time_get'] = 10;

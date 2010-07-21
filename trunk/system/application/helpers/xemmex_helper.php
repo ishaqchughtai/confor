@@ -288,11 +288,19 @@ function is_speaker($go_after_login=TRUE)
 	return $CI->user_lib->is_speaker(FALSE, $go_after_login);	
 }
 
-function check_membership($memberships=FALSE, $go_after_login=TRUE)
+function check_membership($memberships=FALSE, $go_after_login=TRUE, $auto_detect_url=TRUE)
 {
 	$CI =& get_instance();
-	if (($CI->_memberships) && ($membership==FALSE))
+	
+	if ($auto_detect_url==TRUE) 
 	{
+		$c = $CI->uri->segment(1);
+		$a = $CI->uri->segment(2);
+		$CI->_memberships = $CI->MUser->get_membership_by_function(FALSE,$c.'/'.$a);
+	}
+	
+	if (($CI->_memberships) && ($membership==FALSE))
+	{		
 		$memberships = $CI->_memberships;
 	}
 	return $CI->user_lib->is_speaker($memberships, $go_after_login);
