@@ -7,7 +7,7 @@
         visibility: hidden;
         z-index: 100;
         /*Remove below line to remove shadow. Below line should always appear last within this CSS*/
-        progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);
+        filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);
     }
 </style>
 <div id="dhtmltooltip"></div>
@@ -85,7 +85,7 @@
                 <th width="20%"><?php echo __("CF_name")?></th>
                 <th width="30%"><?php echo __("CF_email")?></th>
                 <th width="10%"><?php echo __("CF_status_acc")?> </th>
-                <th width="30%">Details</th>
+                <th width="30%"><?php echo __("CF_details")?> </th>
                 <th width="10%"><?php echo __("CF_action")?></th>
             </tr>
             <?php foreach($query as $row):?>
@@ -95,7 +95,7 @@
                     <td><?php if((int)$row['status']=='0'){echo 'suspended';}else{echo 'activate';} ?></td>
                     <td><a href="#"onMouseover="ddrivetip(
                         '<p><b><?php echo __("CF_company")?>:</b> <?php echo $row['company_name']?><br><b><?php echo __("CF_country")?>:</b> <?php echo $row['name']?><br><b><?php echo __("CF_des")?>:</b> <?php echo  $row['description']?>',
-                        'white', 300)"; onMouseout="hideddrivetip()">View Details</a>
+                        'white', 300)"; onMouseout="hideddrivetip()"><?php echo __("CF_view_details")?></a>
                     </td>
                     <td>
                         <ul>

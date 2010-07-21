@@ -624,3 +624,5 @@ $lang['CF_target']='Target';
 $lang['CF_target'] = 'Target';
 $lang['CF_new_win'] = 'New Window';
 $lang['CF_same_win'] = 'Same Window';
+$lang['CF_details']='Details';
+$lang['CF_view_details']='View Details';
