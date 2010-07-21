@@ -1,4 +1,4 @@
-<?php
+z<?php
     class Ticket extends Speaker_controller {
         function Ticket()
         {
@@ -36,8 +36,8 @@
             //$speaker_data = is_speaker();
 			$speaker_data = check_membership();
 			
-            $this->form_validation->set_rules('title',__('CON_title'),'required');
-            $this->form_validation->set_rules('message',__('CON_your_meesage'),'required');
+            $this->form_validation->set_rules('title',__('CF_title'),'required');
+            $this->form_validation->set_rules('message',__('CF_your_meesage'),'required');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
             if($this->form_validation->run()==FALSE)
             {
@@ -55,11 +55,10 @@
                 if($this->Mticket->add_ticket_by_speaker($Date,$Status,$Title,$Message,$Is_answered,$SpeakerID)==TRUE)
                 {
                     $from = $speaker_data["speaker_email"];
-                    //$name_from = $speaker_data["speaker_email"];
                     $name_from ='';
-                    $content = sprintf(__('CON_ticket_content_email_to_admin'),$Title,$Message);
+                    $content = sprintf(__('CF_ticket_content_email_to_admin'),$Title,$Message);
                     $to = 'admin@conferences-formations.com';
-                    $subject=__('CON_ticket_title_email').$this->input->post('title');
+                    $subject=__('CF_ticket_title_email').$this->input->post('title');
 
                     $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);
                     redirect(site_url("ticket/send_ticket_speaker_succ"));
@@ -69,7 +68,7 @@
 
         function send_ticket_speaker_succ()
         {
-            $this->_data['error']= __('CON_ticket_send_success');
+            $this->_data['error']= __('CF_ticket_send_success');
             $this->_load_view('home/ticket');
         }
 
@@ -79,8 +78,8 @@
 
             $this->_data['side_bar']['page'] = '/speaker/sidebar_empty';
             $this->_data['header']['page'] = '/speaker/header_panel';
-            $this->form_validation->set_rules('title',__('CON_title'),'required');
-            $this->form_validation->set_rules('message',__('CON_your_meesage'),'required');
+            $this->form_validation->set_rules('title',__('CF_title'),'required');
+            $this->form_validation->set_rules('message',__('CF_your_meesage'),'required');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
             if($this->form_validation->run()==FALSE)
             {
@@ -117,14 +116,10 @@
                     if($to!='')
                     {
                         $from = 'admin@conferences-formations.com';
-                        //$name_from = 'admin@conferences-formations.com';
                         $name_from = '';
-                        $content = sprintf(__('CON_ticket_content_email_to_speaker'),$name_speaker,$Title,$Message);
-
-                        $subject=__('CON_ticket_title_email').$this->input->post('title');
-                        //echo $from.'-'.$name_from.'-'.$to.'-'.$subject.'-'.$content;
+                        $content = sprintf(__('CF_ticket_content_email_to_speaker'),$name_speaker,$Title,$Message);
+                        $subject=__('CF_ticket_title_email').$this->input->post('title');
                         $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);    
-                        //var_dump($this->send_mail->send('text',$from , $name_from, $to, $subject, $content));
                     }                    
 
                     $this->Mticket->update_ticket_by_admin($Ticket,$Is_answered);
