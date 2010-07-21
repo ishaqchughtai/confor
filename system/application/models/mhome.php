@@ -5,26 +5,40 @@
       $this->load->database();
     }
     function get_top_viewed_video($lg)
-    {
-      $query=$this->db->query("SELECT 
-      videos.vid_id,
-      videos.mem_id,
-      videos.title,
-      videos.description,
-      videos.category,
-      videos.tags,
-      videos.`date`,
-      videos.vhash,
-      videos.shash,
-      videos.viewed,
-      videos.approved,
-      videos.lang,
-      users.username
-      FROM videos ,users  
-      WHERE videos.mem_id = users.id
-      AND videos.approved='1'  
-      AND videos.lang='".$lg."'  
-      order by videos.viewed DESC LIMIT 1");
+    {	
+        $this->db->select('
+			videos.*,
+			users.username,
+			tblcategory.Name as category_name
+        ');
+		$this->db->from('videos');		
+		$this->db->where('videos.approved','1');
+		$this->db->where('videos.lang',$lg);		
+		$this->db->join('tblcategory','videos.category = tblcategory.id');
+		$this->db->join('users','videos.mem_id = users.id');
+		$this->db->order_by('videos.viewed','desc');
+		$this->db->limit(1);
+		$query = $this->db->get();
+		
+      // $query=$this->db->query("SELECT 
+      // videos.vid_id,
+      // videos.mem_id,
+      // videos.title,
+      // videos.description,
+      // videos.category,
+      // videos.tags,
+      // videos.`date`,
+      // videos.vhash,
+      // videos.shash,
+      // videos.viewed,
+      // videos.approved,
+      // videos.lang,
+      // users.username
+      // FROM videos ,users  
+      // WHERE videos.mem_id = users.id
+      // AND videos.approved='1'  
+      // AND videos.lang='".$lg."'  
+      // order by videos.viewed DESC LIMIT 1");
       if($query->num_rows()>0)
       {
           return $query;
@@ -47,12 +61,12 @@
 			videos.*,			
 			users.username,
 			tblcategory.Name as category_name
-      ');
-      $this->db->from('videos');
-      $this->db->where('videos.vid_id',$id);
-	  $this->db->join('tblcategory','videos.category = tblcategory.id');
-	  $this->db->join('users','videos.mem_id = users.id');
-	  return $this->db->get();
+       ');
+		$this->db->from('videos');
+		$this->db->where('videos.vid_id',$id);
+		$this->db->join('tblcategory','videos.category = tblcategory.id');
+		$this->db->join('users','videos.mem_id = users.id');
+		return $this->db->get();
       // $query=$this->db->query('SELECT
       // videos.vid_id,
       // videos.mem_id,

@@ -16,6 +16,8 @@
                 $viewed=$row->viewed;
                 $lg=$row->lang;
                 $description=$row->description;
+				$category_id=$row->category;
+				$category_name = $row->category_name;
             }
         }
     ?>        
@@ -34,6 +36,7 @@
             <?php ;}?>
         //
     <?php echo mdate('%F %j%S %Y', $date)?></h5>              
+	<h5><b><?php echo __("CF_cate_name")?>: <a href="<?php echo site_url('category/get_category/').'/'.$category_id.'/5'?>"><?php echo $category_name?></a></b></h5>
     <h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>
 <?php }?>
 <?php $linktopvideo=$video_path?base_url().'videos/'.$top_view_video:"";
