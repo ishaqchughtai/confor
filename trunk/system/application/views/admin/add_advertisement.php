@@ -59,6 +59,15 @@
 							<label for="image_link"><?php echo __("CF_image_link")?></label>
 							<?php $this->load->view('image_upload');?>
 				        </p>
+                        
+                        <p>
+						
+							<label for="target"><?php echo __("CF_target")?></label>
+							<select class="short" name="target">
+								<option value="1" selected="selected"><?php echo __("CF_new_win")?></option>
+								<option value="0"><?php echo __("CF_same_win")?></option>
+							</select>
+				        </p>
 				  <p>
 						
 							<input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_post")?>" />
