@@ -46,7 +46,7 @@ class Blog_frontend extends Frontend_controller {
         $this->_data['query_most_blog'] = $this->Mblog->get_most_blog($this->_data['lang']);
         $config['base_url'] = base_url().'index.php/blog_frontend/index/';
         $config['total_rows'] = $this->Mblog->count_record_blog($lg);
-        $config['per_page']='3';
+        $config['per_page']=$this->_setting['num_per_page_blog'];
 
         $config['full_tag_open'] = '<li>';        
         $config['full_tag_close'] = '</li>'; 

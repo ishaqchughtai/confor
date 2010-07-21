@@ -20,7 +20,9 @@ class Mblog extends Model{
         tbladmin.Name");
         $this->db->from('tblblog');
         $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
-        $this->db->order_by("tblblog.Date", "desc");
+        //$this->db->order_by("tblblog.Date", "desc");
+		set_order_from_setting('tblblog','order_blog_field','order_blog_sort','Date');
+		
         $this->db->where('tblblog.Lang ', $lg); 
         $this->db->limit($num,$offset);
         $query = $this->db->get();

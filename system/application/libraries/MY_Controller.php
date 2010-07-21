@@ -6,15 +6,6 @@ class MY_controller extends Controller {
 	var $_container = 'container';	
 	var $_memberships = FALSE;
 	var $_setting = FALSE;
-	var $_default_video_settings = array(
-		'num_per_page_video' => 7,
-		'num_per_page_conf' => 7,
-		'num_per_page_blog' => 7,
-		'order_conf_field' => 'date',
-		'order_video_field' => 'date',
-		'order_blog_field' => 'date',
-		'site_off' => 0
-	);	
 	/**
 * Constructor
 *
@@ -23,25 +14,14 @@ class MY_controller extends Controller {
 	function MY_controller()
 	{	
 		parent::Controller();
-		$this->_data['lang'] = xemmex_language();		
-		
-		// get system setting
-		$this->db->limit(1);
-		$query = $this->db->get('system_settings');
-		if ($query->num_rows()<1) 
-		{
-			$this->_setting = $this->_default_video_settings;
-		}
-		else 
-		{
-			$this->_setting = $query->row_array();			
-		}			
-						
+		$this->_data['lang'] = xemmex_language();
+		$this->load->model('MSystem');
+		$this->_setting = $this->MSystem->get_setting();						
 		$this->_data['system_setting'] = $this->_setting;
 		$this->_data['path'] = '';
 	}
 
-	function _load_view($path) {	
+	function _load_view($path) {
 		if ($this->_setting['site_off']==1) redirect('home/siteoff');
 		$this->_before_render();
 		$this->_data['load_page'] = $path;
@@ -172,8 +152,13 @@ class Admin_controller extends MY_controller {
 		$this->_data['path'][0] = array(
 		'name' => __("CF_admin"),
 		'link' => site_url("/admin")
-		);			
+		);					
 	}		
+	function _load_view($path) {	
+		$this->_before_render();
+		$this->_data['load_page'] = $path;
+		$this->load->view($this->_container, $this->_data);
+	}	
 }
 
 /* End of file MY_Controller.php */ 

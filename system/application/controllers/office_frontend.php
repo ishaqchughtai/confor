@@ -17,14 +17,14 @@
     {
       $lg = $this->_data['lang'];
       $this->_data['lg'] = $lg;
-      $per_page = $this->uri->segment(3);
+      //$per_page = $this->uri->segment(3);
       $offset = $this->uri->segment(4);
 
       $this->_data['path'][] = array(
       'name' => __("CF_conference_office"),
       'link' => "#"
       );
-
+	  $per_page = $this->_setting['num_per_page_conf'];
       $config['uri_segment'] = 4;
       $config['base_url'] = base_url().'index.php/office_frontend/office/'.$per_page;
       $config['total_rows'] = $this->Mcoffice->count_office_by_lang($lg);

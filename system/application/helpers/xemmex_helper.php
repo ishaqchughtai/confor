@@ -459,6 +459,19 @@ if ( ! function_exists('dropdown_data'))
 	}	 
 }
 
+function set_order_from_setting($table_name, $field_key, $sort_key, $date_field=FALSE)
+{
+	$CI =& get_instance();
+	$CI->db->order_by($table_name.'.'.$CI->_setting[$field_key], $CI->_setting[$sort_key]);	
+	if ($date_field!=FALSE)
+	{
+		if ($CI->_setting[$field_key]!=$date_field)
+		{			
+			$CI->db->order_by($table_name.'.'.$date_field, "desc");
+		}			
+	}
+
+}
 
 function get_languages( $feature, $spare='' )
 {

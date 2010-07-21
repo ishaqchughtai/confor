@@ -194,7 +194,7 @@ class Video extends Frontend_controller
 		$config['uri_segment'] = 5;
 		$config['base_url'] = site_url('video/list_archives').'/'.$year.'/'.$month;
 		
-		$config['per_page'] = $this->num_per_page;
+		$config['per_page'] = $this->_setting['num_per_page_video'];
 
 		$config['full_tag_open'] = '<li>';        
 		$config['full_tag_close'] = '</li>'; 
@@ -209,9 +209,10 @@ class Video extends Frontend_controller
 		$this->db->where('lang',$this->_data['lang']);
 		$this->db->where('MONTH(FROM_UNIXTIME(date))',$month);
 		$this->db->where('YEAR(FROM_UNIXTIME(date))',$year);	
-		$this->db->limit($this->num_per_page, $page_offset);
+		$this->db->limit($config['per_page'], $page_offset);
 		$this->db->from('videos');		
 		$this->db->join('users','users.id=videos.mem_id');
+		set_order_from_setting('videos','order_video_field','order_video_sort','date');
 		$query = $this->db->get();
 		$this->_data['archives'] = $query->result_array();				
 		$this->_load_view('home/archive_list');		

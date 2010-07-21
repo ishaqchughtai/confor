@@ -14,10 +14,10 @@
     function get_category($id)
     {
       $id = $this->uri->segment(3);
-      $per_page = $this->uri->segment(4);
+      //$per_page = $this->uri->segment(4);
       $offset = $this->uri->segment(5);
 
-
+	  $per_page = $this->_setting['num_per_page_video'];
       $config['uri_segment'] = 5;
       $config['base_url'] = base_url().'index.php/category/get_category/'.$id.'/'.$per_page;
       $config['total_rows'] = $this->MCategory->count_record($id);

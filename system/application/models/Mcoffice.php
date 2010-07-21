@@ -23,8 +23,10 @@
       ");
       $this->db->from('tbloffice');
       $this->db->where(array('lang'=>$lg));
-      $this->db->order_by("tbloffice.ID", "desc");
-      $this->db->limit($offset,$num);
+      
+	  //$this->db->order_by("tbloffice.ID", "desc");
+      set_order_from_setting('tbloffice','order_conf_field','order_conf_sort','date');
+	  $this->db->limit($offset,$num);
       $query = $this->db->get();
       return $query->result_array();
     }

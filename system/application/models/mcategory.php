@@ -39,6 +39,7 @@
       $this->db->join('users','videos.mem_id = users.id');
       $this->db->where(array('videos.category'=>$id));
       $this->db->limit($per_page,$offset);
+	  set_order_from_setting('videos','order_video_field','order_video_sort','date');
       $video_cate = $this->db->get();
       return $video_cate->result_array();
     }
