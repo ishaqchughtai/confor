@@ -1,28 +1,34 @@
 <?php
-  class Accessories extends Frontend_controller {
-    var $blog_sidebar = 'most_post';
-    function Accessories()
-    {
-      parent::Frontend_controller();
-      $this->_container = 'container';        
-      $this->load->model('Maccessories');        
-      $this->load->helper('date');
-      $this->load->model('Mshopproduct','mshopproduct');           
-    }        
-    function show_element($ElementName)
-    {   
-      $query = $this->Maccessories->get_element($ElementName); 
-      if($query->num_rows()==1)
-      {
-          $this->_data['page_title'] = $this->convert_element_name($ElementName); 
-          $this->_data['query'] = $query->result_array();
-          $this->_load_view('home/page');               
-      }else
-      {
-        redirect('home/index');
-      }      
-    }
-        function convert_element_name($ElementName)
+    class Accessories extends Frontend_controller {
+        var $blog_sidebar = 'most_post';
+        function Accessories()
+        {
+            parent::Frontend_controller();
+            $this->_container = 'container';        
+            $this->load->model('Maccessories');        
+            $this->load->helper('date');
+            $this->load->model('Mshopproduct','mshopproduct');           
+        }        
+        function show_element($ElementName='')
+        {
+            if(!$ElementName)
+            {
+                redirect('home/index');
+            }else
+            {
+                $query = $this->Maccessories->get_element($ElementName); 
+                if($query->num_rows()==1)
+                {
+                    $this->_data['page_title'] = $this->convert_element_name($ElementName); 
+                    $this->_data['query'] = $query->result_array();
+                    $this->_load_view('home/page');               
+                }else
+                {
+                    redirect('home/index');
+                }
+            }         
+        }
+        function convert_element_name($ElementName='')
         {
             if($ElementName == 'About')
             {
@@ -72,5 +78,5 @@
             }
             return $StrElementName;    
         }
-  } 
+    } 
 ?>

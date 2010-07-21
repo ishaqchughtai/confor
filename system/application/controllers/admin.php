@@ -821,23 +821,29 @@
         }
 
         //Accessories
-        function get_element($ElementName)
+        function get_element($ElementName='')
         {
             is_admin();
-            if($this->_data['lang']=='fr')
+            if(!$ElementName)
             {
-                $lgtemp='_fr';
-            }            
-            $this->_data['path'][] = array(
-            'name' => __("CF_accessories"),
-            'link' => site_url('admin/get_element/About'.$lgtemp)
-            );
-            $StrElementName = $this->convert_element_name($ElementName);
+                redirect('admin/index');
+            }else
+            {
+                if($this->_data['lang']=='fr')
+                {
+                    $lgtemp='_fr';
+                }            
+                $this->_data['path'][] = array(
+                'name' => __("CF_accessories"),
+                'link' => site_url('admin/get_element/About'.$lgtemp)
+                );
+                $StrElementName = $this->convert_element_name($ElementName);
 
-            $query = $this->Maccessories->get_element($ElementName);
-            $this->_data['query'] = $query->result_array();
-            $this->_data['page_title'] = $StrElementName;
-            $this->_load_view('admin/add_new_page');
+                $query = $this->Maccessories->get_element($ElementName);
+                $this->_data['query'] = $query->result_array();
+                $this->_data['page_title'] = $StrElementName;
+                $this->_load_view('admin/add_new_page');
+            }
         }    
         function update_element($ElementName)
         {
