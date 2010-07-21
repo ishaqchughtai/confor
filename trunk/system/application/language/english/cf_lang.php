@@ -626,3 +626,9 @@ $lang['CF_new_win'] = 'New Window';
 $lang['CF_same_win'] = 'Same Window';
 $lang['CF_details']='Details';
 $lang['CF_view_details']='View Details';
+
+$lang['CF_order_by'] = 'Order By';
+$lang['CF_add_off_suc'] = 'New conference office successfully added';
+$lang['CF_edit_off_suc'] = 'This conference office have been changed';
+$lang['CF_add_event_suc'] = 'New event successfully added';
+$lang['CF_edit_event_suc'] = 'This event have been changed';
