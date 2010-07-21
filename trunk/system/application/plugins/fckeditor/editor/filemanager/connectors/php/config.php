@@ -50,7 +50,7 @@ $Config['SecureImageUploads'] = true;
 $Config['ConfigAllowedCommands'] = array('QuickUpload', 'FileUpload', 'GetFolders', 'GetFoldersAndFiles', 'CreateFolder') ;
 
 // Allowed Resource Types.
-$Config['ConfigAllowedTypes'] = array('File', 'Image', 'Flash', 'Media') ;
+$Config['ConfigAllowedTypes'] = array('Image') ;
 
 // For security, HTML is allowed in the first Kb of data for files having the
 // following extensions only.
