@@ -40,7 +40,7 @@ function search_click(){
 <table width="100%" border="1">
     <tr align="left">
         <th width="10%"><?php echo __("CF_your_name")?></th>   
-        <th width="30%"><?php echo __("CF_title")?></th>    
+        <th width="50%"><?php echo __("CF_title")?></th>    
         <th width="15%"><?php echo __("CF_date")?></th>
         <th width="10%"><?php echo __("CF_blog_comment")?></th>
         <th width="15%"><?php echo __("CF_action")?></th>
@@ -75,7 +75,7 @@ function search_click(){
         </tr>
         <?php }?>
     <tr>
-        <td colspan="8" valign="center">               
+        <td colspan="8" height="50" valign="midle">               
             <ul id="pagination">
                 <?php echo $pagination?>
             </ul>

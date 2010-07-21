@@ -10,11 +10,11 @@
 <div class="content_item">     
     <table width="100%" border="1">
         <tr align="left">
-            <th width="10%"><?php echo __("CF_your_name")?></th>   
-            <th width="30%"><?php echo __("CF_blog_body")?></th>    
-            <th width="15%"><?php echo __("CF_date")?></th>
+            <th width="15%"><?php echo __("CF_your_name")?></th>   
+            <th width="50%"><?php echo __("CF_blog_body")?></th>    
+            <th width="10%"><?php echo __("CF_date")?></th>
             <th width="15%"><?php echo __("CF_approved")?></th>
-            <th width="15%"><?php echo __("CF_action")?></th>
+            <th width="10%"><?php echo __("CF_action")?></th>
         </tr>
                 <?php foreach($query_show_comment_agree as $row){                               
                                 $id = $row['ID'];
