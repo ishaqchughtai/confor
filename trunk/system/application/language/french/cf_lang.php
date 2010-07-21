@@ -603,3 +603,7 @@ $lang['CF_click'] = 'Clic';
 $lang['CF_to_continue'] = 'pour continuer';
 $lang['CF_go_to'] = 'aller &agrave;';
 $lang['CF_add_adv_suc'] = 'Nouvelle annonce ajout&eacute; avec succ&egrave;s';
+
+//Key added on 21/07/2010
+$lang['CF_your_meesage'] = 'Your Message';
+$lang['CF_contact_title'] = 'CONTACT';

@@ -615,6 +615,8 @@ $lang['CF_click'] = 'Click';
 $lang['CF_to_continue'] = 'to continue';
 $lang['CF_go_to'] = 'Go to';
 $lang['CF_add_adv_suc'] = 'New advertisement successfully added';
-
+//Key added on 21/07/2010
+$lang['CF_your_meesage'] = 'Your Message';
+$lang['CF_contact_title'] = 'CONTACT'; 
 
  
