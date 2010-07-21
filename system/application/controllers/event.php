@@ -130,7 +130,7 @@ class Event extends Admin_controller {
         $status = $this->input->post('status');
         $lg = $this->input->post('lg');
         $data = $this->MEvent->edit_event($id,$speaker_id,$title,$subject,$keywords,$description,$status,$lg);
-        redirect('event/event_list/'.$lg.'/'.$this->event_per_page);
+        $this->_message('event', __("CF_edit_event_suc"), 'success', site_url('event/event_list/'.$lg.'/'.$this->event_per_page));
       }   
     }
   }
@@ -182,7 +182,7 @@ class Event extends Admin_controller {
         $lg = $this->input->post('lg');
         if($this->MEvent->add_event($speaker,$date,$title,$subject,$keywords,$description,$status,$lg)==TRUE)
         {
-          redirect('event/event_list/'.$this->_data['lang'].'/'.$this->event_per_page);
+          $this->_message('event', __("CF_add_event_suc"), 'success', site_url('event/event_list/'.$this->_data['lang'].'/'.$this->event_per_page));
         }
       }  
     } 

@@ -612,3 +612,9 @@ $lang['CF_comment_content_email_to_speaker'] = 'Dear %s!'.chr(13).chr(10).'You h
 $lang['CF_target']='Target';
 $lang['CF_details']='Details';
 $lang['CF_view_details']='View Details';
+
+$lang['CF_order_by'] = 'Order By';
+$lang['CF_add_off_suc'] = 'New conference office successfully added';
+$lang['CF_edit_off_suc'] = 'This conference office have been changed';
+$lang['CF_add_event_suc'] = 'New event successfully added';
+$lang['CF_edit_event_suc'] = 'This event have been changed';

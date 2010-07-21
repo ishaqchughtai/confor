@@ -1,87 +1,144 @@
-<style type="text/css">#dhtmltooltip{
-position: absolute;
-width: 150px;
-border: 2px solid black;
-padding: 2px;
-background-color: lightyellow;
-visibility: hidden;
-z-index: 100;
-/*Remove below line to remove shadow. Below line should always appear last within this CSS*/
-filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);
-}</style>
-<div id="dhtmltooltip"></div>
-<script type="text/javascript">
-var offsetxpoint=-60 //Customize x offset of tooltip
-var offsetypoint=20 //Customize y offset of tooltip
-var ie=document.all
-var ns6=document.getElementById && !document.all
-var enabletip=false
-if (ie||ns6)
-var tipobj=document.all? document.all["dhtmltooltip"] : document.getElementById? document.getElementById("dhtmltooltip") : ""
+<script language="javascript" type="text/javascript">
+function ToolTip(id,isAnimated,aniSpeed)
+{ var isInit = -1;
+  var div,divWidth,divHeight;
+  var xincr=10,yincr=10;
+  var animateToolTip =false;
+  var html;
+  
+  function Init(id)
+  {
+   div = document.getElementById(id);
+   if(div==null) return;
+   
+   if((div.style.width=="" || div.style.height==""))
+   {alert("Both width and height must be set");
+   return;}
+   
+   divWidth = parseInt(div.style.width);
+   divHeight= parseInt(div.style.height);
+   if(div.style.overflow!="hidden")div.style.overflow="hidden";
+   if(div.style.display!="none")div.style.display="none";
+   if(div.style.position!="absolute")div.style.position="absolute";
+   
+   if(isAnimated && aniSpeed>0)
+   {xincr = parseInt(divWidth/aniSpeed);
+    yincr = parseInt(divHeight/aniSpeed);
+    animateToolTip = true;
+    }
+        
+   isInit++; 
+   
+  }
+  
+    
+  this.Show =  function(e,strHTML)
+  {
+    if(isInit<0) return;
+    
+    var newPosx,newPosy,height,width;
+    if(typeof( document.documentElement.clientWidth ) == 'number' ){
+    width = document.body.clientWidth;
+    height = document.body.clientHeight;}
+    else
+    {
+    width = parseInt(window.innerWidth);
+    height = parseInt(window.innerHeight);
+    
+    }
+    var curPosx = (e.x)?parseInt(e.x):parseInt(e.clientX);
+    var curPosy = (e.y)?parseInt(e.y):parseInt(e.clientY);
+    
+    if(strHTML!=null)
+    {html = strHTML;
+     div.innerHTML=html;}
+    
+    if((curPosx+divWidth+10)< width)
+    newPosx= curPosx+10;
+    else
+    newPosx = curPosx-divWidth;
 
-function ietruebody(){
-return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+    if((curPosy+divHeight)< height)
+    newPosy= curPosy;
+    else
+    newPosy = curPosy-divHeight-10;
+
+   if(window.pageYOffset)
+   { newPosy= newPosy+ window.pageYOffset-200;
+     newPosx = newPosx + window.pageXOffset-200;}
+   else
+   { newPosy= newPosy+ document.body.scrollTop;
+     newPosx = newPosx + document.body.scrollLeft;}
+
+    div.style.display='block';
+    //debugger;
+    //alert(document.body.scrollTop);
+    div.style.top= newPosy + "px";
+    div.style.left= newPosx+ "px";
+
+    div.focus();
+    if(animateToolTip){
+    div.style.height= "0px";
+    div.style.width= "0px";
+    ToolTip.animate(div.id,divHeight,divWidth);}
+      
+    
+    }
+
+    
+
+   this.Hide= function(e)
+    {div.style.display='none';
+    if(!animateToolTip)return;
+    div.style.height= "0px";
+    div.style.width= "0px";}
+    
+   this.SetHTML = function(strHTML)
+   {html = strHTML;
+    div.innerHTML=html;} 
+    
+    ToolTip.animate = function(a,iHeight,iWidth)
+  { a = document.getElementById(a);
+         
+   var i = parseInt(a.style.width)+xincr ;
+   var j = parseInt(a.style.height)+yincr;  
+   
+   if(i <= iWidth)
+   {a.style.width = i+"px";}
+   else
+   {a.style.width = iWidth+"px";}
+   
+   if(j <= iHeight)
+   {a.style.height = j+"px";}
+   else
+   {a.style.height = iHeight+"px";}
+   
+   if(!((i > iWidth) && (j > iHeight)))      
+   setTimeout( "ToolTip.animate('"+a.id+"',"+iHeight+","+iWidth+")",1);
+    }
+    
+   Init(id);
 }
-
-function ddrivetip(thetext, thecolor, thewidth){
-if (ns6||ie){
-if (typeof thewidth!="undefined") tipobj.style.width=thewidth+"px"
-if (typeof thecolor!="undefined" && thecolor!="") tipobj.style.backgroundColor=thecolor
-tipobj.innerHTML=thetext
-enabletip=true
-return false
-}
-}
-
-function positiontip(e){
-if (enabletip){
-var curX=(ns6)?e.pageX : event.clientX+ietruebody().scrollLeft;
-var curY=(ns6)?e.pageY : event.clientY+ietruebody().scrollTop;
-//Find out how close the mouse is to the corner of the window
-var rightedge=ie&&!window.opera? ietruebody().clientWidth-event.clientX-offsetxpoint : window.innerWidth-e.clientX-offsetxpoint-20
-var bottomedge=ie&&!window.opera? ietruebody().clientHeight-event.clientY-offsetypoint : window.innerHeight-e.clientY-offsetypoint-20
-
-var leftedge=(offsetxpoint<0)? offsetxpoint*(-1) : -1000
-
-//if the horizontal distance isn't enough to accomodate the width of the context menu
-if (rightedge<tipobj.offsetWidth)
-//move the horizontal position of the menu to the left by it's width
-tipobj.style.left=ie? ietruebody().scrollLeft+event.clientX-tipobj.offsetWidth+"px" : window.pageXOffset+e.clientX-tipobj.offsetWidth+"px"
-else if (curX<leftedge)
-tipobj.style.left="5px"
-else
-//position the horizontal position of the menu where the mouse is positioned
-tipobj.style.left=curX+offsetxpoint+"px"
-
-//same concept with the vertical position
-if (bottomedge<tipobj.offsetHeight)
-tipobj.style.top=ie? ietruebody().scrollTop+event.clientY-tipobj.offsetHeight-offsetypoint+"px" : window.pageYOffset+e.clientY-tipobj.offsetHeight-offsetypoint+"px"
-else
-tipobj.style.top=curY+offsetypoint+"px"
-tipobj.style.visibility="visible"
-}
-}
-
-function hideddrivetip(){
-if (ns6||ie){
-enabletip=false
-tipobj.style.visibility="hidden"
-tipobj.style.left="-1000px"
-tipobj.style.backgroundColor=''
-tipobj.style.width=''
-}
-}
-
-document.onmousemove=positiontip
-
 </script>
+
+<body onload=init()>
+
 
 <?php $page = 5;?>          
     <div id="content">
        	<ul class="link_conttrol">
+        
         <li><a class="icon_add" href="<?php echo site_url('advertisement/add')?>"><?php echo __("CF_add_new_adv")?></a></li>
     </ul>
     <br />
+<script>
+var t1=null;
+var l1="<p><b><?php echo __("CF_adv_date_begin")?>:</b> <?php echo $date_beginning?><br><b><?php echo __("CF_adv_date_ex")?>:</b> <?php echo $date_expiry?><br><b><?php echo __("CF_advertisement_name")?>:</b> <?php echo $advertiser_name?><br><b><?php echo __("CF_adv_email")?>:</b> <?php echo $advertiser_email?><br><b><?php echo ucwords(strtolower(__("CF_url")))?>:</b> <?php echo $url?><br><b><?php echo ucwords(strtolower(__("CF_text_tips")))?>:</b> <?php echo $text_tips?><br><b><?php echo ucwords(strtolower(__("CF_viewed")))?>:</b> <?php echo $viewed?></p>";
+function init()
+{
+ t1 = new ToolTip("a",true,40);
+}
+</script>
         <h3><?php echo __("CF_list_event")?></h3><br />
         <table border="1" width="100%">
             <tr align="left">
@@ -106,17 +163,24 @@ document.onmousemove=positiontip
 						$image_link = $row['ImageLink'];
 						$viewed = $row['Viewed']; 					
 			?>
+            <script>
+var t1=null;
+var l1="<p><b><?php echo __("CF_adv_date_begin")?>:</b> <?php echo $date_beginning?><br><b><?php echo __("CF_adv_date_ex")?>:</b> <?php echo $date_expiry?><br><b><?php echo __("CF_advertisement_name")?>:</b> <?php echo $advertiser_name?><br><b><?php echo __("CF_adv_email")?>:</b> <?php echo $advertiser_email?><br><b><?php echo ucwords(strtolower(__("CF_url")))?>:</b> <?php echo $url?><br><b><?php echo ucwords(strtolower(__("CF_text_tips")))?>:</b> <?php echo $text_tips?><br><b><?php echo ucwords(strtolower(__("CF_viewed")))?>:</b> <?php echo $viewed?></p>";
+function init()
+{
+ t1 = new ToolTip("a",true,40);
+}
+</script>
                 <tr>
-                    <td><img src="<?php echo base_url().'assets/uploads/image/'.$image_link ?>" width="81" height="81" onMouseover="ddrivetip(
-                    '<p><b><?php echo __("CF_adv_date_begin")?>:</b> <?php echo $date_beginning?><br><b><?php echo __("CF_adv_date_ex")?>:</b> <?php echo $date_expiry?><br><b><?php echo __("CF_advertisement_name")?>:</b> <?php echo $advertiser_name?><br><b><?php echo __("CF_adv_email")?>:</b> <?php echo $advertiser_email?><br><b><?php echo ucwords(strtolower(__("CF_url")))?>:</b> <?php echo $url?><br><b><?php echo ucwords(strtolower(__("CF_text_tips")))?>:</b> <?php echo $text_tips?><br><b><?php echo ucwords(strtolower(__("CF_viewed")))?>:</b> <?php echo $viewed?></p>',
-                    'white', 300)"; onMouseout="hideddrivetip()" />                    </td>
+                
+                    <td><img src="<?php echo base_url().'assets/uploads/image/'.$image_link ?>" width="81" height="81" onmouseover=if(t1)t1.Show(event,l1) onmouseout=if(t1)t1.Hide(event) />                    </td>
                     <td><?php echo $date_beginning?></td>
                     <td><?php echo $date_expiry?></td>     
                     <td><?php echo $advertiser_name?></td>
                     <td><a href="mailto:<?php echo $advertiser_email?>"><?php echo $advertiser_email?></a></td>
                     <td><?php echo $viewed?></td>
                     <td width="32"><a href="<?php echo site_url('advertisement/get_advertisement'.'/'.$id)?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></td> 
-                  <td width="47"><a href="<?php echo site_url('advertisement/delete'.'/'.$id)?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
+                  <td width="47"><a href="<?php echo site_url('advertisement/delete'.'/'.$id)?>" onClick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
                 </tr>
                 <?php endforeach;?>
         </table>
@@ -132,9 +196,12 @@ document.onmousemove=positiontip
                     <li><?php echo $pagination?></li>
                 </ul>
         </div>
+        <div id="a" style="background-color:ivory;width:300px; height:200px; border: solid 1px gray; text-align: left;">
+</div>
     <!-- /#content -->
     <!-- /#content -->
     <!-- /#content -->
     <!-- /#content -->
         </div>
+        </body>
     
