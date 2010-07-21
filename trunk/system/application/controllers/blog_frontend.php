@@ -8,6 +8,7 @@ class Blog_frontend extends Frontend_controller {
         $this->load->model('Mblog');        
         $this->load->helper('date');
         $this->load->helper('string');
+        $this->load->model('send_mail');        
         $this->_data['adv']['category'] = 'blog';        
         $this->load->model('Mshopproduct','mshopproduct');
         $this->_data['path'][] = array(
@@ -173,8 +174,8 @@ class Blog_frontend extends Frontend_controller {
         $config['base_url'] = base_url().'index.php/blog_frontend/search_keyword/'.$Keywords.'/'.$per_page;
         $config['total_rows'] = $this->Mblog->count_record($this->_data['lang'],$Keywords);
         $config['per_page']=$per_page;
-       // echo $config['total_rows'];
-//        return;
+        // echo $config['total_rows'];
+        //        return;
         $config['full_tag_open'] = '<li>';
         $config['full_tag_close'] = '</li>'; 
         $config['next_link'] = __("CF_next");
@@ -287,10 +288,16 @@ class Blog_frontend extends Frontend_controller {
                 {
                     if($this->session->userdata('admin'))
                     {
-                        redirect('blog_frontend/blog_content_admin'.'/'.$Name.'/'.$Title);    
+                        redirect('blog_frontend/blog_content_admin'.'/'.$Name.'/'.$Title.'#comments');    
                     }else
                     {
-                        redirect('blog_frontend/blog_content'.'/'.$Name.'/'.$Title); 
+                        $from = 'admin@conferences-formations.com';
+                        $name_from = '';
+                        $to=$Email;
+                        $subject=__("CF_subject_comment").$Title;
+                        $content=sprintf(__('CF_comment_content_email_to_speaker'),$Author,$Title,$Comment);
+                        $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);
+                        redirect('blog_frontend/blog_content'.'/'.$Name.'/'.$Title.'#comments'); 
                     }  
                 } 
             }  
