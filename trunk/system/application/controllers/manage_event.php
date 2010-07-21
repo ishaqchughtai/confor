@@ -60,7 +60,10 @@
       'link' => "#"
       );    
       $this->_data['lg'] = $lg;
-      $userData = is_speaker();
+	  
+      //$userData = is_speaker();
+	  $userData = check_membership();
+	  
       $id = $userData['speaker_id'];
       if($this->input->post('btnsubmit'))
       {
