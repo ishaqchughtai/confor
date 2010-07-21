@@ -24,6 +24,7 @@
 	$url = $row['URL'];
 	$textTips = $row['TextTips'];
 	$imageLink = $row['ImageLink'];
+	$target = $row['Target'];
 	}?>
 					
 				<div class="content_item">
@@ -81,6 +82,15 @@
 						<label><?php echo __("CF_image_link")?></label>
 						<?php $this->load->view('image_upload',array('edit_image'=>$imageLink));?>
 				  <p>
+                  
+                  <p>
+						
+							<label for="target"><?php echo __("CF_target")?>:</label>
+							<select class="short" name="target">
+								<option value="1" <?php if($target==1) echo 'selected="selected"';?>><?php echo __("CF_new_win")?></option>
+								<option value="0" <?php if($target==0) echo 'selected="selected"';?>><?php echo __("CF_same_win")?></option>
+							</select>
+						</p>
 						
 							<input name="btnedit" type="submit" class="submit" id="btnedit" value="<?php echo __("CF_save")?>" onclick="return confirm('<?php echo __("CF_mess_update")?>');" />
 							<input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />

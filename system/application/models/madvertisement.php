@@ -48,7 +48,7 @@
     }
 
     //add new advertisement
-    function add_advertisement($dateBeginning,$dateExpiry,$advertiserName,$advertiserEmail,$url,$textTips,$imageLink,$viewed)
+    function add_advertisement($dateBeginning,$dateExpiry,$advertiserName,$advertiserEmail,$url,$textTips,$imageLink,$viewed,$target)
     {
       try
       {
@@ -61,6 +61,7 @@
         'TextTips'=>$textTips,
         'ImageLink'=>$imageLink,
         'Viewed'=>$viewed,
+        'Target'=>$target
         );    
         $this->db->insert('tbladvertisement',$data);
         return TRUE;
@@ -72,7 +73,7 @@
     }
 
     //edit advertisement
-    function edit_advertisement($id,$dateExpiry,$advertiserEmail,$url,$textTips,$imageLink)
+    function edit_advertisement($id,$dateExpiry,$advertiserEmail,$url,$textTips,$imageLink,$target)
     {
       $data = array(
       'ID'=>$id,
@@ -80,7 +81,8 @@
       'AdvertiserEmail'=>$advertiserEmail,
       'URL'=>$url,
       'TextTips'=>$textTips,
-      'ImageLink'=>$imageLink
+      'ImageLink'=>$imageLink,
+      'Target'=>$target
       );
       $this->db->update('tbladvertisement',$data,array('ID'=>$id));
     }

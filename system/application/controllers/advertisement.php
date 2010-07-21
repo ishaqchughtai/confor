@@ -84,7 +84,8 @@ class Advertisement extends Admin_controller {
         $textTips = $this->input->post('text_tips');
         $viewed = 0; 
         $this->_data['uname'] = $this->input->post('uname');
-        if($this->MAdvertisement->add_advertisement($dateBeginning,$dateExpiry,$advertiserName,$advertiserEmail,$url,$textTips,$this->_data['uname'],$viewed)==TRUE)
+        $target = $this->input->post('target');
+        if($this->MAdvertisement->add_advertisement($dateBeginning,$dateExpiry,$advertiserName,$advertiserEmail,$url,$textTips,$this->_data['uname'],$viewed,$target)==TRUE)
         {
           $this->_message('advertisement', __("CF_add_adv_suc"), 'success',site_url("advertisement/advertisement_list/"));
         }
@@ -140,15 +141,16 @@ class Advertisement extends Admin_controller {
         $textTips = $this->input->post('text_tips'); 
         $imageLink = $this->input->post('edit_image');
         $this->_data['uname'] = $this->input->post('uname');
+        $target = $this->input->post('target');
         if (strlen($this->_data['uname'])>1)
         {
           $this->image_upload_lib->remove_image_from_db($id,'ID','ImageLink','tbladvertisement'); 
-          $data = $this->MAdvertisement->edit_advertisement($id,$dateExpiry,$advertiserEmail,$url,$textTips,$this->_data['uname']);
+          $data = $this->MAdvertisement->edit_advertisement($id,$dateExpiry,$advertiserEmail,$url,$textTips,$this->_data['uname'],$target);
           $this->_message('advertisement', __("CF_adv_suc"), 'success', site_url("advertisement/advertisement_list/"));
         }
         else
         {
-          $data = $this->MAdvertisement->edit_advertisement($id,$dateExpiry,$advertiserEmail,$url,$textTips,$imageLink);
+          $data = $this->MAdvertisement->edit_advertisement($id,$dateExpiry,$advertiserEmail,$url,$textTips,$imageLink,$target);
           $this->_message('advertisement', __("CF_adv_suc"), 'success', site_url("advertisement/advertisement_list/"));
         }          
       }   
