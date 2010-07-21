@@ -17,6 +17,7 @@
         $name=$row->username;
         $video_title=$row->title;
         $video_image=$row->shash;
+		$category_name = $row->category_name;
     }
 ?>
 <h3><?php echo $video_title?></h3>
@@ -30,6 +31,7 @@
         <?php ;}?>
     //
 <?php echo mdate('%F %j%S %Y', $date)?></h5>              
+<h5><b><?php echo __("CF_cate_name")?>: <a href="<?php echo site_url('category/get_category/').'/'.$category.'/5'?>"><?php echo $category_name?></a></b></h5>
 <h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>
 <p><a href="<?php echo base_url()?>videos/<?php echo $video_link?>" style="display:block;width:621px;height:380px;"id="player"></a></p>                  
 <?php echo $description?>

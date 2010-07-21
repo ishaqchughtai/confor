@@ -43,23 +43,16 @@
     }
     function get_video_by_id($id)
     { 
-      $query=$this->db->query('SELECT
-      videos.vid_id,
-      videos.mem_id,
-      videos.title,
-      videos.description,
-      videos.category,
-      videos.tags,
-      videos.`date`,
-      videos.vhash,
-      videos.shash,
-      videos.viewed,
-      users.username
-      FROM
-      users
-      Inner Join videos ON users.id = videos.mem_id
-      Where vid_id= '.$id);
-      return $query;
+        $this->db->select('
+            videos.*,
+			users.username,
+			tblcategory.Name as category_name
+      ');
+      $this->db->from('videos');
+      $this->db->where('videos.vid_id',$id);
+	  $this->db->join('tblcategory','videos.mem_id = tblcategory.id');
+	  $this->db->join('users','videos.mem_id = users.id');
+	  return $this->db->get(); 
     }
     function get_video_by_category($catid,$offset,$per_page)
     {
