@@ -607,5 +607,6 @@ $lang['CF_add_adv_suc'] = 'Nouvelle annonce ajout&eacute; avec succ&egrave;s';
 //Key added on 21/07/2010
 $lang['CF_your_meesage'] = 'Your Message';
 $lang['CF_contact_title'] = 'CONTACT';
+$lang['CF_subject_comment'] = 'You have just posted a comment on :';
 $lang['CF_comment_content_email_to_speaker'] = 'Dear %s!'.chr(13).chr(10).'You have just posted a comment.'.chr(13).chr(10).'Blog Title: %s'.chr(13).chr(10).'Content: %s.'.chr(13).chr(10).chr(13).chr(10); 
 $lang['CF_target']='Target';
