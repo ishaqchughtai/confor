@@ -33,7 +33,9 @@
             'link' => '#'
             );
 
-            $speaker_data = is_speaker();
+            //$speaker_data = is_speaker();
+			$speaker_data = check_membership();
+			
             $this->form_validation->set_rules('title',__('CON_title'),'required');
             $this->form_validation->set_rules('message',__('CON_your_meesage'),'required');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');

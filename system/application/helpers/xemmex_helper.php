@@ -299,7 +299,7 @@ function check_membership($memberships=FALSE, $go_after_login=TRUE, $auto_detect
 		$CI->_memberships = $CI->MUser->get_membership_by_function(FALSE,$c.'/'.$a);
 	}
 	
-	if (($CI->_memberships) && ($membership==FALSE))
+	if (($CI->_memberships) && ($memberships==FALSE))
 	{		
 		$memberships = $CI->_memberships;
 	}
