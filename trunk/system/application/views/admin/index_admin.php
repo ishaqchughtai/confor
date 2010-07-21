@@ -19,6 +19,7 @@
         <li><a class="icon_text" href="<?php echo site_url('admin/get_element/About'.$lgtemp);?>"><?php echo __("CF_accessories")?></a></li>
         <li><a class="icon_list" href="<?php echo site_url('training/index').'/'.$lang;?>"><?php echo __("CF_training")?></a></li>
         <li><a class="icon_list" href="<?php echo site_url('conference_office/get_all/en/'.$page);?>"><?php echo __("CF_conference_office")?></a></li>
+		<li><a class="icon_setting" href="<?php echo site_url('system')?>">Global settings</a></li>
     </ul>	    
     <div class="frame_bottom"></div>	
 </div>
@@ -35,6 +36,7 @@
         <li><br /></li>
         <li><br /></li>
         <li><br /></li>
+		<li><br /></li>
     </ul>    
     <div class="frame_bottom"></div>		
 </div>
