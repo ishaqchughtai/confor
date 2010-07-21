@@ -91,3 +91,16 @@
 .icon_cart {
 	background: url(img/cart.png) no-repeat top left;	
 }
+
+.icon_1_left_arrow {
+	background: url(img/1leftarrow.png) no-repeat top left;	
+}
+.icon_1_right_arrow {
+	background: url(img/1rightarrow.png) no-repeat top left;	
+}
+.icon_2_left_arrow {
+	background: url(img/2leftarrow.png) no-repeat top left;	
+}
+.icon_2_right_arrow {
+	background: url(img/2rightarrow.png) no-repeat top left;	
+}

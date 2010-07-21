@@ -99,6 +99,8 @@ class User_lib
 			$speaker_data['payment_date_expire'] = $this->CI->session->userdata('payment_date_expire');	
 			
 			if ($memberships==FALSE) return $speaker_data;
+			// if membership has (Bronze free)
+			if (in_array(1, $memberships)) return $speaker_data;
 			
 			if (in_array($speaker_data['membership_id'], $memberships))
 			{			
@@ -123,12 +125,14 @@ class User_lib
 				if ($is_using_cookie) 
 				{
 					if ($memberships==FALSE) return $is_using_cookie;
-					
+					// if membership has (Bronzes free)
+					if (in_array(1, $memberships)) return $is_using_cookie;
+			
 					if (in_array($is_using_cookie['membership_id'], $memberships))
 					{
 						if ($is_using_cookie['payment_id'] > 0)
 						{						
-							if ($is_using_cookie['payment_date_expire']>0) return $is_using_cookie;					
+							if ($is_using_cookie['payment_date_expire']>0) return $is_using_cookie;				
 						}
 					} 
 					$this->_please_upgrade();
@@ -761,6 +765,27 @@ class User_lib
 		return md5($password);
   	}	
 	
+	// function get_membership_by_function($function_id, $function_url=FALSE)
+	// {
+		// $this->CI->db->where('function_id',$function_id);
+		
+		
+		// $query = $this->CI->db->get('membership_functions');
+		// $ret = array();
+		// if ($query->num_rows()>0)
+		// {
+			// foreach ($query->result() as $item)
+			// {
+				// $ret[] = $item->membership_id;
+			// }
+			// $this->CI->_memberships = $ret;
+			// return TRUE;
+		// }
+		// else
+		// {
+			// return FALSE;
+		// }		
+	// }
 }
 
 /* End of file user_lib.php */ 

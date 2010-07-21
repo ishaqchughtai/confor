@@ -252,11 +252,41 @@ class MUser extends Model
 		$this->db->update('users', $data);
 	}		
 	
-	// --------------------------------------------------------------------
-
-	function get_subcription_by_user($username)
+	
+	function get_function_id_by_url($url)
 	{
+		$query = $this->db->get_where('functions', array('url' => $url),1);
+		if ($query->num_rows()>0)
+		{
+			$row = $query->row();
+			return $row->id;
+		}
+		else return FALSE;		
+	}
+	
+	function get_membership_by_function($function_id, $function_url=FALSE)
+	{
+		if ($function_url!=FALSE)
+		{
+			$function_id = $this->get_function_id_by_url($function_url);
+			if ($function_id==FALSE) return FALSE;
+		}
 		
+		$this->db->where('function_id',$function_id);
+		$query = $this->db->get('membership_functions');
+		$ret = array();
+		if ($query->num_rows()>0)
+		{
+			foreach ($query->result() as $item)
+			{
+				$ret[] = $item->membership_id;
+			}			
+			return $ret;
+		}
+		else
+		{
+			return FALSE;
+		}		
 	}
 	
 	// --------------------------------------------------------------------

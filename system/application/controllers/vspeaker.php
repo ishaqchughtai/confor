@@ -18,7 +18,7 @@ class VSpeaker extends Speaker_controller
 		$this->load->library('video_upload_lib');
 		$this->load->model('Mvid');
 		$this->video_upload_lib->ajax_link = site_url('vspeaker/do_upload_ajax');
-		$this->_memberships = array(2,3);
+		//$this->_memberships = array(2,3);
 	}	  
 	
 	function index() 
@@ -29,7 +29,7 @@ class VSpeaker extends Speaker_controller
 	
 	function list_video_conference()
 	{
-		$user_data = is_speaker();   
+		$user_data = is_speaker();
 		
 		$this->_data['side_bar']['page'] = '/speaker/sidebar_empty';
 		$this->_data['header']['page'] = '/speaker/header_panel';		
@@ -91,7 +91,6 @@ class VSpeaker extends Speaker_controller
 		
 	function new_video_conference()
 	{
-		//is_speaker();	
 		$user_data = check_membership();
 		$lg = $this->input->post('lg');
 		if (! $lg)
@@ -171,8 +170,8 @@ class VSpeaker extends Speaker_controller
 	}
 		
 	function edit_video_conference($id)
-	{
-		$user_data = check_membership();							
+	{		
+		$user_data = check_membership();					
 				
 		$this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');		
 		$this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 		
@@ -223,7 +222,8 @@ class VSpeaker extends Speaker_controller
 	}	
 	
 	function delete_video_conference($id){
-		$user_data = is_speaker();				
+		//$user_data = is_speaker();				
+		$user_data = check_membership();
 		if ($this->video_upload_lib->remove_video_by_vid_id($id, $user_data['speaker_id']))
 		{			
 			$this->_message('vspeaker', __("CF_delete_vid"), 'success',site_url("vspeaker/list_video_conference"));			
@@ -235,7 +235,7 @@ class VSpeaker extends Speaker_controller
 	}	
 	
 	function do_upload_ajax()
-	{
+	{		
 		if (! is_speaker(FALSE)) 
 		{
 			echo '0';
@@ -247,11 +247,11 @@ class VSpeaker extends Speaker_controller
 	
 	function keyword_check($Keywords)
 	{
-		$Key = explode(" ", $Keywords);					
+		$Key = explode(" ", $Keywords);	
 		if(count($Key)>4)
 		{
 			$this->form_validation->set_message('keyword_check', __("CF_the").'%s'.__("CF_field_max")); 
-			return FALSE ;           
+			return FALSE ;
 		}
 		else
 		{
