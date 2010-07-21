@@ -31,8 +31,7 @@
         <li><a class="icon_list" href="<?php echo site_url('admin/list_user')?>"><?php echo __("CF_speaker_list")?></a></li>
         <li><a class="icon_user_add" href="<?php echo site_url('admin/new_speaker')?>"><?php echo __("CF_new_speaker")?></a></li>
         <li><a class="icon_paypal" href="<?php echo base_url().'pay/admin';?>"><?php echo __("CF_paypal_man")?></a></li>
-		<li><a class="icon_setting" href="<?php echo site_url('membership')?>">Membership functions</a></li>		
-        <li><br /></li>
+		<li><a class="icon_setting" href="<?php echo site_url('membership')?>">Membership functions</a></li>		        
         <li><br /></li>
         <li><br /></li>
         <li><br /></li>
