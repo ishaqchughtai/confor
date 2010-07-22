@@ -52,7 +52,7 @@
 				<?php echo form_input($firstNameInput);?>			
 			</div>					
 			<?php echo form_error('first_name');?>			
-			<div class="input text"><label><?php echo __("CF_profile");?></label>
+			<div class="input text"><label><?php echo __("CF_Company_name");?></label>
 				<?php echo form_input($companyNameInput);?>
 			</div>
 			<?php echo form_error('company_name');?>
