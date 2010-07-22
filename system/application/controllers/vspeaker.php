@@ -59,19 +59,10 @@ class VSpeaker extends Speaker_controller
 			$category = 0;							
 		}
 
-		$config['base_url'] = site_url('vspeaker/list_video_conference').'/'.$lg.'/'.$category.'/';
-		//base_url().'index.php/vspeaker/list_video_conference/'.$lg.'/'.$category.'/';
-		$config['full_tag_open'] = '<li>';        
-		$config['full_tag_close'] = '</li>'; 	
-		$config['next_link'] = __("CF_next");
-		$config['prev_link'] = __("CF_previous");
-		$config['last_link'] = __("CF_last");
-		$config['first_link'] = __("CF_first");		
-		
+		$config['base_url'] = site_url('vspeaker/list_video_conference').'/'.$lg.'/'.$category.'/';		
+		$config += config_pagination_style();		
 		$config['uri_segment'] = 5;
-		$config['per_page']=$this->vid_per_page;
-		// $config['cur_tag_open'] = '<li class="selected">';
-		// $config['cur_tag_close'] = '</li>'; 
+		$config['per_page']=$this->vid_per_page; 
 
 		if($category == 0)
 		{
