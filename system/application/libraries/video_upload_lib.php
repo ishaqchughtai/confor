@@ -183,7 +183,14 @@ class Video_upload_lib {
 		$this->remove_temp_expired(time()-$this->temp_expiration);
 		$this->add_temp($new_name);
 		$uname = $this->CI->input->post('uname');
-		$is_convert = TRUE;
+		$is_convert = TRUE;				
+		
+		$this->video_settings['thumb_time_get'] = 10;
+		if ($this->get_video_info($this->temp_path.$new_name))
+		{
+			if ($this->_media_data['duration']['seconds']>0)
+			$this->video_settings['thumb_time_get'] = round($this->_media_data['duration']['seconds']/2);
+		}		
 		
 		if (strtolower($ext) == 'flv')
 		{
@@ -193,14 +200,6 @@ class Video_upload_lib {
 			$this->create_thumb($this->temp_path, $new_name);
 			unlink($this->temp_path.$new_name);
 			$is_convert = FALSE;
-		}
-		
-		
-		$this->video_settings['thumb_time_get'] = 10;
-		if ($this->get_video_info($this->temp_path.$new_name))
-		{
-			if ($this->_media_data['duration']['seconds']>0)
-			$this->video_settings['thumb_time_get'] = round($this->_media_data['duration']['seconds']/2);
 		}		
 		
 		if ($is_convert)
