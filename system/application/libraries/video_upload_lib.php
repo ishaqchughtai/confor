@@ -36,7 +36,7 @@ class Video_upload_lib {
 	var $temp_path = './temp/';
 	var $upload_folder = './videos/';
 	var $upload_folder_thumb = './thumbs/';	
-	var $temp_expiration = 300;
+	var $temp_expiration = 3600;
 	var $convert_cmd = FFMPEG_BINARY;
 		
 	var $default_video_settings = array(
@@ -132,6 +132,7 @@ class Video_upload_lib {
 	{    
 		$this->CI =& get_instance();
 		$this->load_setting_from_db();
+		set_time_limit(3600);
 	}
 	
 	function load_setting_from_db()
