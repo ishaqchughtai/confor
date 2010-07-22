@@ -1,84 +1,130 @@
-<style type="text/css">#dhtmltooltip{
-        position: absolute;
-        width: 150px;
-        border: 2px solid black;
-        padding: 2px;
-        background-color: lightyellow;
-        visibility: hidden;
-        z-index: 100;
-        /*Remove below line to remove shadow. Below line should always appear last within this CSS*/
-        filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135);
+<script language="javascript" type="text/javascript">
+function ToolTip(id,isAnimated,aniSpeed)
+{ var isInit = -1;
+  var div,divWidth,divHeight;
+  var xincr=10,yincr=10;
+  var animateToolTip =false;
+  var html;
+  
+  function Init(id)
+  {
+   div = document.getElementById(id);
+   if(div==null) return;
+   
+   if((div.style.width=="" || div.style.height==""))
+   {alert("Both width and height must be set");
+   return;}
+   
+   divWidth = parseInt(div.style.width);
+   divHeight= parseInt(div.style.height);
+   if(div.style.overflow!="hidden")div.style.overflow="hidden";
+   if(div.style.display!="none")div.style.display="none";
+   if(div.style.position!="absolute")div.style.position="absolute";
+   
+   if(isAnimated && aniSpeed>0)
+   {xincr = parseInt(divWidth/aniSpeed);
+    yincr = parseInt(divHeight/aniSpeed);
+    animateToolTip = true;
     }
-</style>
-<div id="dhtmltooltip"></div>
-<script type="text/javascript">
-    var offsetxpoint=-60 //Customize x offset of tooltip
-    var offsetypoint=20 //Customize y offset of tooltip
-    var ie=document.all
-    var ns6=document.getElementById && !document.all
-    var enabletip=false
-    if (ie||ns6)
-        var tipobj=document.all? document.all["dhtmltooltip"] : document.getElementById? document.getElementById("dhtmltooltip") : ""
+        
+   isInit++; 
+   
+  }
+  
+    
+  this.Show =  function(e,strHTML)
+  {
+    if(isInit<0) return;
+    
+    var newPosx,newPosy,height,width;
+    if(typeof( document.documentElement.clientWidth ) == 'number' ){
+    width = document.body.clientWidth;
+    height = document.body.clientHeight;}
+    else
+    {
+    width = parseInt(window.innerWidth);
+    height = parseInt(window.innerHeight);
+    
+    }
+    var curPosx = (e.x)?parseInt(e.x):parseInt(e.clientX);
+    var curPosy = (e.y)?parseInt(e.y):parseInt(e.clientY);
+    
+    if(strHTML!=null)
+    {html = strHTML;
+     div.innerHTML=html;}
+    
+    if((curPosx+divWidth+10)< width)
+    newPosx= curPosx+10;
+    else
+    newPosx = curPosx-divWidth;
 
-    function ietruebody(){
-        return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+    if((curPosy+divHeight)< height)
+    newPosy= curPosy;
+    else
+    newPosy = curPosy-divHeight-10;
+
+   if(window.pageYOffset)
+   { newPosy= newPosy+ window.pageYOffset-200;
+     newPosx = newPosx + window.pageXOffset-200;}
+   else
+   { newPosy= newPosy+ document.body.scrollTop;
+     newPosx = newPosx + document.body.scrollLeft;}
+
+    div.style.display='block';
+    //debugger;
+    //alert(document.body.scrollTop);
+    div.style.top= newPosy + "px";
+    div.style.left= newPosx+ "px";
+
+    div.focus();
+    if(animateToolTip){
+    div.style.height= "0px";
+    div.style.width= "0px";
+    ToolTip.animate(div.id,divHeight,divWidth);}
+      
+    
     }
 
-    function ddrivetip(thetext, thecolor, thewidth){
-        if (ns6||ie){
-            if (typeof thewidth!="undefined") tipobj.style.width=thewidth+"px"
-            if (typeof thecolor!="undefined" && thecolor!="") tipobj.style.backgroundColor=thecolor
-            tipobj.innerHTML=thetext
-            enabletip=true
-            return false
-        }
+    
+
+   this.Hide= function(e)
+    {div.style.display='none';
+    if(!animateToolTip)return;
+    div.style.height= "0px";
+    div.style.width= "0px";}
+    
+   this.SetHTML = function(strHTML)
+   {html = strHTML;
+    div.innerHTML=html;} 
+    
+    ToolTip.animate = function(a,iHeight,iWidth)
+  { a = document.getElementById(a);
+         
+   var i = parseInt(a.style.width)+xincr ;
+   var j = parseInt(a.style.height)+yincr;  
+   
+   if(i <= iWidth)
+   {a.style.width = i+"px";}
+   else
+   {a.style.width = iWidth+"px";}
+   
+   if(j <= iHeight)
+   {a.style.height = j+"px";}
+   else
+   {a.style.height = iHeight+"px";}
+   
+   if(!((i > iWidth) && (j > iHeight)))      
+   setTimeout( "ToolTip.animate('"+a.id+"',"+iHeight+","+iWidth+")",1);
     }
-
-    function positiontip(e){
-        if (enabletip){
-            var curX=(ns6)?e.pageX : event.clientX+ietruebody().scrollLeft;
-            var curY=(ns6)?e.pageY : event.clientY+ietruebody().scrollTop;
-            //Find out how close the mouse is to the corner of the window
-            var rightedge=ie&&!window.opera? ietruebody().clientWidth-event.clientX-offsetxpoint : window.innerWidth-e.clientX-offsetxpoint-20
-            var bottomedge=ie&&!window.opera? ietruebody().clientHeight-event.clientY-offsetypoint : window.innerHeight-e.clientY-offsetypoint-20
-
-            var leftedge=(offsetxpoint<0)? offsetxpoint*(-1) : -1000
-
-            //if the horizontal distance isn't enough to accomodate the width of the context menu
-            if (rightedge<tipobj.offsetWidth)
-                //move the horizontal position of the menu to the left by it's width
-                tipobj.style.left=ie? ietruebody().scrollLeft+event.clientX-tipobj.offsetWidth+"px" : window.pageXOffset+e.clientX-tipobj.offsetWidth+"px"
-            else if (curX<leftedge)
-                tipobj.style.left="5px"
-            else
-                //position the horizontal position of the menu where the mouse is positioned
-                tipobj.style.left=curX+offsetxpoint+"px"
-
-            //same concept with the vertical position
-            if (bottomedge<tipobj.offsetHeight)
-                tipobj.style.top=ie? ietruebody().scrollTop+event.clientY-tipobj.offsetHeight-offsetypoint+"px" : window.pageYOffset+e.clientY-tipobj.offsetHeight-offsetypoint+"px"
-            else
-                tipobj.style.top=curY+offsetypoint+"px"
-            tipobj.style.visibility="visible"
-        }
-    }
-
-    function hideddrivetip(){
-        if (ns6||ie){
-            enabletip=false
-            tipobj.style.visibility="hidden"
-            tipobj.style.left="-1000px"
-            tipobj.style.backgroundColor=''
-            tipobj.style.width=''
-        }
-    }
-
-    document.onmousemove=positiontip
-
+    
+   Init(id);
+}
 </script>
+<body onload=init()>
 <div id="content">
 
     <div class="">
+    
         <h3><?php echo __("CF_user_list")?></h3>
         <table border="1" width="100%">
             <tr align="left">
@@ -89,17 +135,23 @@
                 <th width="10%"><?php echo __("CF_action")?></th>
             </tr>
             <?php foreach($query as $row):?>
+            <script>
+var t1=null;
+var l1="<p><b><?php echo __("CF_company")?>:</b> <?php echo $row['company_name']?><br><b><?php echo __("CF_country")?>:</b> <?php echo $row['name']?><br><b><?php echo __("CF_des")?>:</b> <?php echo  $row['description']?>";
+function init()
+{
+ t1 = new ToolTip("a",true,40);
+}
+</script>
                 <tr>
                     <td><?php echo $row['username']?></td>
                     <td><?php echo $row['email']?></td>
                     <td><?php if((int)$row['status']=='0'){echo 'suspended';}else{echo 'activate';} ?></td>
-                    <td><a href="#"onMouseover="ddrivetip(
-                        '<p><b><?php echo __("CF_company")?>:</b> <?php echo $row['company_name']?><br><b><?php echo __("CF_country")?>:</b> <?php echo $row['name']?><br><b><?php echo __("CF_des")?>:</b> <?php echo  $row['description']?>',
-                        'white', 300)"; onMouseout="hideddrivetip()"><?php echo __("CF_view_details")?></a>
+                    <td><a href="#" onmouseover=if(t1)t1.Show(event,l1) onmouseout=if(t1)t1.Hide(event)><?php echo __("CF_view_details")?></a>
                     </td>
                     <td>
                         <ul>
-                            <li><a href="<?php echo site_url("admin/modify_user/".$row['id'])?>"><?php echo __("CF_modify")?></a></li>
+                            <li><a href="<?php echo site_url("admin/modify_user/".$row['id'])?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></li>
                             <li><a href="<?php echo site_url("/admin/delete_user/".$row['id'])?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></li>
                         </ul>
                     </td>
@@ -121,11 +173,14 @@
         <div class="divider"></div>
         <!-- /.divider -->
         <!-- /.x4 - represents a fourth windows size div -->
-
+</div>
+        <div id="a" style="background-color:ivory;width:300px; height:200px; border: solid 1px gray; text-align: left;">
+</div>
     </div>
     <!-- /#content -->
     <!-- /#content -->
     <!-- /#content -->
     <!-- /#content -->
         </div>
+        </body>
    
