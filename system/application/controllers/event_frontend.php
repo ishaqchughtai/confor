@@ -42,12 +42,7 @@
       //      return;
       $config['per_page']=$per_page;
 
-      $config['full_tag_open'] = '<li>';        
-      $config['full_tag_close'] = '</li>'; 
-      $config['next_link'] = __("CF_next");
-      $config['prev_link'] = __("CF_previous");
-      $config['last_link'] = __("CF_last");
-      $config['first_link'] = __("CF_first");
+      $config += config_pagination_style();
 
       $this->pagination->initialize($config);
       $this->_data['events'] = $this->MEvent->get_event_by_date($lg,$date,$per_page,$offset);
@@ -102,12 +97,7 @@
       $config['total_rows'] = $this->MEvent->count_record_by_title($keywords,$lg);
       $config['per_page']=$per_page;
 
-      $config['full_tag_open'] = '<li>';        
-      $config['full_tag_close'] = '</li>'; 
-      $config['next_link'] = __("CF_next");
-      $config['prev_link'] = __("CF_previous");
-      $config['last_link'] = __("CF_last");
-      $config['first_link'] = __("CF_first");
+      $config += config_pagination_style();
       $this->_data['events'] = $this->MEvent->search_event($keywords,$lg,$per_page,$offset); 
       $this->pagination->initialize($config);
       $this->_data['pagination'] = $this->pagination->create_links();
@@ -138,12 +128,7 @@
       $config['total_rows'] = $this->MEvent->count_record_by_keywords($keywords,$lg);
       $config['per_page']=$per_page;
 
-      $config['full_tag_open'] = '<li>';        
-      $config['full_tag_close'] = '</li>'; 
-      $config['next_link'] = __("CF_next");
-      $config['prev_link'] = __("CF_previous");
-      $config['last_link'] = __("CF_last");
-      $config['first_link'] = __("CF_first");
+      $config += config_pagination_style();
       $this->_data['events'] = $this->MEvent->search_event_by_keyword($keywords,$lg,$per_page,$offset); 
       $this->pagination->initialize($config);
       $this->_data['pagination'] = $this->pagination->create_links();

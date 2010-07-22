@@ -64,12 +64,7 @@ class Event extends Admin_controller {
       $config['per_page']=$per_page;
       $this->_data['lang'];
       $config['uri_segment'] = 5;
-      $config['full_tag_open'] = '<li>';        
-      $config['full_tag_close'] = '</li>'; 
-      $config['next_link'] = __("CF_next");
-      $config['prev_link'] = __("CF_previous");
-      $config['last_link'] = __("CF_last");
-      $config['first_link'] = __("CF_first");
+      $config += config_pagination_style();
       $this->pagination->initialize($config);
       $this->_data['query'] = $this->MEvent->get_all_event($lg,$per_page, $page_offset);
       $this->_data['pagination'] = $this->pagination->create_links();        
@@ -211,12 +206,7 @@ class Event extends Admin_controller {
     $config['total_rows'] = $this->MEvent->count_record_by_title($keywords);
     $config['per_page']=$per_page;
 
-    $config['full_tag_open'] = '<li>';        
-    $config['full_tag_close'] = '</li>'; 
-    $config['next_link'] = __("CF_next");
-    $config['prev_link'] = __("CF_previous");
-    $config['last_link'] = __("CF_last");
-    $config['first_link'] = __("CF_first");
+    $config += config_pagination_style();
     $this->_data['events'] = $this->MEvent->search_event($keywords,$per_page,$offset); 
     $this->pagination->initialize($config);
     $this->_data['pagination'] = $this->pagination->create_links();
@@ -249,12 +239,7 @@ class Event extends Admin_controller {
     $config['total_rows'] = $this->MEvent->count_record_by_keywords($keywords,$lg);
     $config['per_page']=$per_page;
 
-    $config['full_tag_open'] = '<li>';        
-    $config['full_tag_close'] = '</li>'; 
-    $config['next_link'] = __("CF_next");
-    $config['prev_link'] = __("CF_previous");
-    $config['last_link'] = __("CF_last");
-    $config['first_link'] = __("CF_first");
+    $config += config_pagination_style();
     $this->_data['events'] = $this->MEvent->search_event_by_keyword($keywords,$lg,$per_page,$offset); 
     $this->pagination->initialize($config);
     $this->_data['pagination'] = $this->pagination->create_links();
