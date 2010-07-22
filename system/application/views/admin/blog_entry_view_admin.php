@@ -31,7 +31,7 @@
     <!-- /.content_item -->
     <div class="content_item">
         <h3><?php echo __("CF_about_au")?>:</h3>
-        <div class="about_author"> <img src="<?php echo base_url().'assets/img/about_author.gif'?>" width="80" height="80" alt="XemmeX" class="alignleft" />
+        <div class="about_author"> <img src="<?php echo base_url().'assets/img/about_author.png'?>" width="80" height="80" alt="XemmeX" class="alignleft" />
             <?php
                 foreach($query_show_author as $row)
                 {
@@ -61,7 +61,7 @@
                 $blog =$row['Blog'];      
             ?>
             <ol>
-                <li> <img src="<?php echo base_url().'assets/img/about_author.gif'?>" alt="XemmeX" width="80" height="80" class="comment_image" />
+                <li> <img src="<?php echo base_url().'assets/img/about_author.png'?>" alt="XemmeX" width="80" height="80" class="comment_image" />
                     <!-- Author Image -->
                     <p class="content" style="width:500px"> <a href="<?php echo $site?>" class="author"target="_blank"><?php echo $author?></a>
                         <!-- Author -->
