@@ -1,4 +1,4 @@
-z<?php
+<?php
     class Ticket extends Speaker_controller {
         function Ticket()
         {
