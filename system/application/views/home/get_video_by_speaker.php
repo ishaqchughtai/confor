@@ -3,7 +3,7 @@
     <?php $keyword = explode(" ", $rows['tags']);?>
     <div class="content_item">
 
-        <h3><a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><?php echo $rows['title'];?></a></h3>
+        <h3><a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>"><?php echo $rows['title'];?></a></h3>
 
         <h5><?php echo __("CF_by")?> <?php echo $rows['username']?> <?php echo __("CF_in")?> : 
 
@@ -18,14 +18,14 @@
         </div>
 
         <p>
-            <a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="202" height="90" alt="" class="alignleft" /></a>
+            <a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="202" height="90" alt="" class="alignleft" /></a>
         </p>
 
         <p>
             <?php echo _substr($rows['description'],200);?>
         </p>
 
-        <a href="<?php echo site_url('home/play').'/'.$rows['vid_id']?>" class="read_more"><?php echo __("CF_view")?></a>
+        <a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>" class="read_more"><?php echo __("CF_view")?></a>
 
     </div>		  
 

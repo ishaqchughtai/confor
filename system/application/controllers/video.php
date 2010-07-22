@@ -26,12 +26,7 @@ class Video extends Frontend_controller
 		$config['total_rows'] = $this->Mvconference->count_record_speaker($id);
 		$config['per_page']=$per_page;
 
-		$config['full_tag_open'] = '<li>';        
-		$config['full_tag_close'] = '</li>'; 
-		$config['next_link'] = __("CF_next");
-		$config['prev_link'] = __("CF_previous");
-		$config['last_link'] = __("CF_last");
-		$config['first_link'] = __("CF_first");		
+		$config += config_pagination_style();	
 		$this->_data['video_speaker'] = $this->Mvconference->get_video_by_speaker($id,$per_page,$offset); 
 		$this->pagination->initialize($config);
 		$this->_data['pagination'] = $this->pagination->create_links();
@@ -80,14 +75,7 @@ class Video extends Frontend_controller
             $config['per_page']='4';
             $config['uri_segment'] = 5;
 
-            $config['full_tag_open'] = '<li class="selected">';    
-            $config['full_tag_close'] = '</li>';
-            $config['cur_tag_open'] = '<li class="selected">';
-            $config['cur_tag_close'] = '<li>'; 
-			$config['next_link'] = __("CF_next");
-			$config['prev_link'] = __("CF_previous");
-			$config['last_link'] = __("CF_last");
-			$config['first_link'] = __("CF_first");		
+			$config += config_pagination_style();
 
             $this->pagination->initialize($config);
             $this->_data['pagination'] = $this->pagination->create_links();
@@ -115,12 +103,7 @@ class Video extends Frontend_controller
             {                
                 $num_per_page = 5;    
                 $keyword=$this->input->post('search_field');   
-                $config['full_tag_open'] = '<li>';        
-                $config['full_tag_close'] = '</li>'; 
-				$config['next_link'] = __("CF_next");
-				$config['prev_link'] = __("CF_previous");
-				$config['last_link'] = __("CF_last");
-				$config['first_link'] = __("CF_first");		
+				$config += config_pagination_style();	
           
 
                 $config['per_page'] = $num_per_page;
@@ -158,13 +141,7 @@ class Video extends Frontend_controller
 
         if ($offset == FALSE) $offset=0;
 
-        $config['full_tag_open'] = '<li>';        
-        $config['full_tag_close'] = '</li>'; 
-		$config['next_link'] = __("CF_next");
-		$config['prev_link'] = __("CF_previous");
-		$config['last_link'] = __("CF_last");
-		$config['first_link'] = __("CF_first");		
- 
+		$config += config_pagination_style(); 
 
         $config['base_url'] = site_url('home/search_paging').'/'.$keywords_to_search.'/'.$num_per_page.'/';        
         $config['per_page'] = $num_per_page;
