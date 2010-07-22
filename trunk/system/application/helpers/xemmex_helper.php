@@ -473,6 +473,27 @@ function set_order_from_setting($table_name, $field_key, $sort_key, $date_field=
 
 }
 
+function config_pagination_style()
+{
+	$config['cur_tag_open'] = '<li class="selected"><a href="#">';
+	$config['cur_tag_close'] = '</a></li>';	  
+	$config['next_tag_open'] = '<li>';
+	$config['next_tag_close'] = '</li>';	  
+	$config['prev_tag_open'] = '<li>';
+	$config['prev_tag_close'] = '</li>';	  
+	$config['first_tag_open'] = '<li>';
+	$config['first_tag_close'] = '</li>';	  
+	$config['last_tag_open'] = '<li>';
+	$config['last_tag_close'] = '</li>';	  	
+	$config['num_tag_open'] = '<li>';
+	$config['num_tag_close'] = '</li>';
+	$config['next_link'] = __("CF_next");
+	$config['prev_link'] = __("CF_previous");
+	$config['last_link'] = __("CF_last");
+	$config['first_link'] = __("CF_first");	
+	return $config;
+}
+
 function get_languages( $feature, $spare='' )
 {
 	// get the languages

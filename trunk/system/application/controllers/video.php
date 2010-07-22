@@ -195,13 +195,8 @@ class Video extends Frontend_controller
 		$config['base_url'] = site_url('video/list_archives').'/'.$year.'/'.$month;
 		
 		$config['per_page'] = $this->_setting['num_per_page_video'];
-
-		$config['full_tag_open'] = '<li>';        
-		$config['full_tag_close'] = '</li>'; 
-		$config['next_link'] = __("CF_next");
-		$config['prev_link'] = __("CF_previous");
-		$config['last_link'] = __("CF_last");
-		$config['first_link'] = __("CF_first");				
+		$config += config_pagination_style();
+		
 		$this->pagination->initialize($config);
 		$this->_data['pagination'] = $this->pagination->create_links();				
 		

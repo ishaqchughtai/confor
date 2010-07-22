@@ -32,8 +32,6 @@
     <?php endforeach?>
 
 
-<ul id="pagination">
+<ul id="pagination"><?php echo $pagination?></ul>				
 
-    <?php echo $pagination?>		
-
-				</ul>				
+				
