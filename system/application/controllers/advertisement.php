@@ -109,6 +109,23 @@ class Advertisement extends Admin_controller {
     $this->image_upload_lib->init();
     $this->_data['query'] = $this->MAdvertisement->get_data_to_form($id);
     $this->_load_view('admin/edit_advertisement');
+  }
+  function get_adv($id)
+  {
+
+    $this->_data['path'][] = array(
+    'name' => __("CF_adv_list"),
+    'link' => site_url('advertisement/advertisement_list')
+    );
+
+    $this->_data['path'][] = array(
+    'name' => __("CF_avd_details"),
+    'link' => '#'
+    );
+    is_admin();
+    $this->image_upload_lib->init();
+    $this->_data['query'] = $this->MAdvertisement->get_data_to_form($id);
+    $this->_load_view('admin/view_advertisement');
   }	
 
   function edit($id)

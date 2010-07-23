@@ -632,3 +632,6 @@ $lang['CF_add_off_suc'] = 'New conference office successfully added';
 $lang['CF_edit_off_suc'] = 'This conference office have been changed';
 $lang['CF_add_event_suc'] = 'New event successfully added';
 $lang['CF_edit_event_suc'] = 'This event have been changed';
+
+//Key added on 23/07/2010
+$lang['CF_avd_details'] = 'Advertisement Details';
