@@ -10,7 +10,10 @@
 						<label><?php echo __("CF_dis_lang")?></label>		
 						<?php choose_your_language($lg);?>
 					</div>
-						
+					        <p>
+            <label><?php echo __("CF_blog_thum")?> :</label>                 
+            <?php $this->load->view('image_upload');?>
+        </p>	
 						<p>
 						
 							<label for="title"><?php echo __("CF_title")?>:</label>

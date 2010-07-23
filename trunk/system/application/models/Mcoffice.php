@@ -19,7 +19,8 @@
       tbloffice.title,
       tbloffice.content,
       tbloffice.date,
-      tbloffice.lang
+      tbloffice.lang,
+        tbloffice.Image
       ");
       $this->db->from('tbloffice');
       $this->db->where(array('lang'=>$lg));
@@ -31,7 +32,7 @@
       return $query->result_array();
     }
 
-    function add_conference_office($date,$title,$content,$lg)
+    function add_conference_office($date,$title,$content,$lg,$image)
     {                    
       try
       {
@@ -39,7 +40,8 @@
         'date'=>$date,
         'title'=>$title,                                          
         'content'=>$content,
-        'lang'=>$lg
+        'lang'=>$lg,
+        'Image'=>$image
         );    
         $this->db->insert('tbloffice',$data);
         return TRUE;
@@ -56,13 +58,21 @@
       $query = $this->db->get_where('tbloffice',array('id'=>$id));
       return $query->result();
     }
-    
-    function edit_office($id,$title,$content,$lg)
+        function count_record_image($id)
+    {
+        $this->db->from('tbloffice');
+        $this->db->where(array('ID'=>$id));
+        $this->db->where(array('Image'=>'thumb_noimage.gif'));
+        $query_search = $this->db->get();
+        return $query_search;
+    }
+    function edit_office($id,$title,$content,$lg,$image)
     {
       $data = array(
       'title'=>$title,                                          
       'content'=>$content,
-      'lang'=>$lg
+      'lang'=>$lg,
+            'Image'=>$image
       );
       $this->db->update('tbloffice',$data,array('id'=>$id));
     }
@@ -79,7 +89,8 @@
       tbloffice.title,
       tbloffice.content,
       tbloffice.date,
-      tbloffice.lang
+      tbloffice.lang,
+        tbloffice.Image
       ');
       $this->db->from('tbloffice');
       $this->db->where(array('tbloffice.id'=>$id));

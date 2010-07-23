@@ -6,9 +6,20 @@ class Training extends Admin_controller {
         $this->_container = 'container';        
         $this->load->model('Mtraining');        
         $this->load->helper('date');
-        $this->load->helper('string');        
+        $this->load->helper('string');
+        $this->load->library('image_upload_lib');
+        $this->image_upload_lib->ajax_link = site_url('blog/do_upload_ajax');        
     }
-
+    function do_upload_ajax()
+    {
+        if (! is_admin(FALSE)) 
+        {
+            echo '0';
+            return;
+        }
+        $this->image_upload_lib->init();
+        $this->image_upload_lib->do_upload_ajax();
+    }
     function index()
     {
         $this->show();
@@ -80,6 +91,7 @@ class Training extends Admin_controller {
         'link' => '#'
         );
         $this->_data['lg'] = $lg;
+        $this->image_upload_lib->init();
         if($this->input->post('btnsubmit'))
         {
             $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
@@ -95,7 +107,10 @@ class Training extends Admin_controller {
                 $title = $this->input->post('title');
                 $content = $this->input->post('content');
                 $lg = $this->input->post('lg');
-                if($this->Mtraining->add_training($date,$title,$content,$lg)==TRUE)
+                $this->_data['uname'] = $this->input->post('uname');
+                if(!$this->_data['uname']) 
+                    $this->_data['uname']='noimage.gif';
+                if($this->Mtraining->add_training($date,$title,$content,$lg,$this->_data['uname'])==TRUE)
                 {
                     $this->_message('training', __("CF_editarticle_success"), 'success', site_url("training/index").'/'.$lg);
                 }
@@ -109,42 +124,64 @@ class Training extends Admin_controller {
     function edit_article($id='')
     {   
         is_admin();
-            $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
-            $this->form_validation->set_rules('content',strtolower(__("CF_content")),'trim|required');
-            $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
-            if($this->form_validation->run()==FALSE)
+        $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
+        $this->form_validation->set_rules('content',strtolower(__("CF_content")),'trim|required');
+        $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+        if($this->form_validation->run()==FALSE)
+        {
+            $this->get_training_admin($id);
+        }
+        else
+        {
+            $title = $this->input->post('title');
+            $content = $this->input->post('content');
+            $lg = $this->input->post('lg');
+            $edit_image=$this->input->post('edit_image'); 
+            $this->_data['uname'] = $this->input->post('uname');
+            if (strlen($this->_data['uname'])>1)
             {
-                $this->get_training_admin($id);
-            }
-            else
+                $query_search= $this->Mtraining->count_record_image($id);
+                if($query_search->num_rows()>0)
+                {
+                    $data = $this->Mtraining->edit_training($id,$title,$content,$lg,$this->_data['uname']);
+                    $this->_message('training', __("CF_editarticle_success"), 'success', site_url("training/index/".$this->_data['lang']));
+                }else
+                {
+                    $this->image_upload_lib->remove_image_from_db($id,'ID','Image','tbltraining');
+                    $data = $this->Mtraining->edit_training($id,$title,$content,$lg,$this->_data['uname']);
+                    $this->_message('training', __("CF_editarticle_success"), 'success', site_url("training/index/".$this->_data['lang']));    
+                }
+
+            }else
             {
-                $title = $this->input->post('title');
-                $content = $this->input->post('content');
-                $lg = $this->input->post('lg');
-                $data = $this->Mtraining->edit_training($id,$title,$content,$lg);
+                $data = $this->Mtraining->edit_training($id,$title,$content,$lg,$edit_image);
                 $this->_message('training', __("CF_editarticle_success"), 'success', site_url("training/index/".$this->_data['lang']));
-            }   
+
+            }
+
+        }   
     }
-        //get training admin
+    //get training admin
     function get_training_admin($id='')
     { 
-      is_admin();
-      $query = $this->Mtraining->get_data_to_form($id);   
-      foreach($query as $row)    
-      {
-        $lg = $row->Lang;
-      }
-      $this->_data['path'][] = array(
-      'name' => __("CF_list_ar"),
-      'link' => site_url('training/index').'/'.$this->_data['lang']
-      ); 
+        is_admin();
+        $query = $this->Mtraining->get_data_to_form($id); 
+        $this->image_upload_lib->init();  
+        foreach($query as $row)    
+        {
+            $lg = $row->Lang;
+        }
+        $this->_data['path'][] = array(
+        'name' => __("CF_list_ar"),
+        'link' => site_url('training/index').'/'.$this->_data['lang']
+        ); 
 
-      $this->_data['path'][] = array(
-      'name' => __("CF_edit_ar"),
-      'link' => '#'
-      );      
-      $this->_data['query'] = $this->Mtraining->get_data_to_form($id);
-      $this->_load_view('admin/edit_training');    
+        $this->_data['path'][] = array(
+        'name' => __("CF_edit_ar"),
+        'link' => '#'
+        );      
+        $this->_data['query'] = $this->Mtraining->get_data_to_form($id);
+        $this->_load_view('admin/edit_training');    
     }
 }
 

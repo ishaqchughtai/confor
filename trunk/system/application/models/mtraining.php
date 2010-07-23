@@ -13,7 +13,8 @@ class Mtraining extends Model{
         tbltraining.Date,
         tbltraining.Title,
         tbltraining.Content,
-        tbltraining.Lang");
+        tbltraining.Lang,
+        tbltraining.Image");
         $this->db->from('tbltraining');
         $this->db->order_by("tbltraining.Date", "desc");
         $this->db->where('tbltraining.Lang ', $lg); 
@@ -29,6 +30,15 @@ class Mtraining extends Model{
         $query = $this->db->count_all_results();
         return $query;
     }
+    
+    function count_record_image($id)
+    {
+        $this->db->from('tbltraining');
+        $this->db->where(array('ID'=>$id));
+        $this->db->where(array('Image'=>'thumb_noimage.gif'));
+        $query_search = $this->db->get();
+        return $query_search;
+    }
     function del_article($id)
     {
         $this->db->delete('tbltraining',array('ID'=>$id));
@@ -42,13 +52,14 @@ class Mtraining extends Model{
         tbltraining.Date,
         tbltraining.Title,
         tbltraining.Content,
-        tbltraining.Lang");
+        tbltraining.Lang,
+        tbltraining.Image");
         $this->db->from('tbltraining');
         $this->db->where('tbltraining.Title',$title);
         $query = $this->db->get();
         return $query->result_array(); 
     }
-    function add_training($date,$title,$content,$lg)
+    function add_training($date,$title,$content,$lg,$image)
     {                    
         try
         {
@@ -56,7 +67,8 @@ class Mtraining extends Model{
             'Date'=>$date,
             'Title'=>$title,                                          
             'Content'=>$content,
-            'Lang'=>$lg
+            'Lang'=>$lg,
+            'Image'=>$image
             );    
             $this->db->insert('tbltraining',$data);
             return TRUE;
@@ -66,12 +78,13 @@ class Mtraining extends Model{
             return FALSE;    
         }
     }
-    function edit_training($id,$title,$content,$lg)
+    function edit_training($id,$title,$content,$lg,$image)
     {
         $data = array(
         'Title'=>$title,                                          
         'Content'=>$content,
-        'Lang'=>$lg
+        'Lang'=>$lg,
+        'Image'=>$image
         );
         $this->db->update('tbltraining',$data,array('ID'=>$id));
     }
