@@ -6,7 +6,8 @@
 			$date =  $row->date;
 			$title = $row->title;
 			$content = $row->content;
-			$lg = $row->lang;						
+			$lg = $row->lang;
+            $images=$row->Image;						
 		}
 	?>	
     			<div class="content_item">
@@ -19,11 +20,15 @@
 						$data=array('name' => 'office-form','id' => 'office-form'); 
 						echo form_open('conference_office/edit/'.$id,$data);
 					?>
+                    <input name="edit_image" id="edit_image" type="hidden" value="<?php echo $images;?>"/>
                     <div class="input text">
 						<label><?php echo __("CF_dis_lang")?></label>		
 						<?php choose_your_language($lg);?>
 					</div>
-						
+					<p>
+            <label><?php echo __("CF_blog_thum")?> :</label>
+            <?php $this->load->view('image_upload',array('edit_image'=>$images));?>
+        </p>  	
 						<p>
 						
 							<label for="title"><?php echo __("CF_title")?>:</label>
