@@ -102,13 +102,11 @@ class Video extends Frontend_controller
             if($this->input->post('search'))
             {                
                 $num_per_page = 5;    
-                $keyword=$this->input->post('search_field');   
-				$config += config_pagination_style();	
-          
-
+                $keyword=$this->input->post('search_field');   				          
                 $config['per_page'] = $num_per_page;
                 $config['uri_segment'] = 5;            
                 $config['total_rows'] = $this->Mhome->count_video_search($keyword);
+				$config += config_pagination_style();	
                 $this->_data['search_results']=$this->Mhome->search_paging($keyword, $num_per_page, 0);
 
                 if (($keyword) && strlen($keyword)>0)
@@ -140,12 +138,11 @@ class Video extends Frontend_controller
         $offset = $this->uri->segment(5);      
 
         if ($offset == FALSE) $offset=0;
-
-		$config += config_pagination_style(); 
-
+		
         $config['base_url'] = site_url('home/search_paging').'/'.$keywords_to_search.'/'.$num_per_page.'/';        
         $config['per_page'] = $num_per_page;
         $config['uri_segment'] = 6;
+		$config += config_pagination_style(); 
         if ($keywords_to_search == '_') $keywords_to_search = '';
         $config['total_rows'] = $this->Mhome->count_video_search($keywords_to_search);
         $this->pagination->initialize($config);
