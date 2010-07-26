@@ -97,6 +97,14 @@
 	background: url(img/cart.png) no-repeat top left;	
 }
 
+.icon_1_up_arrow {
+	background: url(img/1uparrow.png) no-repeat top left;	
+}
+
+.icon_1_down_arrow {
+	background: url(img/1downarrow.png) no-repeat top left;	
+}
+
 .icon_1_left_arrow {
 	background: url(img/1leftarrow.png) no-repeat top left;	
 }

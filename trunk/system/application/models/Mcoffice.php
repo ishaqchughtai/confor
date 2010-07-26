@@ -97,5 +97,23 @@
       $query = $this->db->get();
       return $query->result_array();    
     }
+	
+	function swap($id1, $isUp=0)
+	{
+		
+	}
+
+    function list_all($lg, $offset, $num)
+    {
+      $this->db->from('tbloffice');
+      $this->db->where(array('lang'=>$lg));      
+	  $this->db->order_by("tbloffice.sort", "asc");
+      set_order_from_setting('tbloffice','order_conf_field','order_conf_sort','date');
+	  $this->db->limit($offset,$num);
+      $query = $this->db->get();
+      return $query->result_array();
+    }
+	
+	
   }
 ?>
