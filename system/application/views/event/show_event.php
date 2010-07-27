@@ -18,10 +18,7 @@
 					<div class="content_item">
 						<h3><a href="<?php echo site_url('event_frontend/event_content/'.$id)?>"><?php echo $title?></a></h3>
                         <h5><?php echo $subject ?></h5>
-					<?php
-					    //$date = "%F %j%S %Y";
-						//$time = time();
-					?>
+
 					<h5><?php echo __("CF_by")?> <?php echo $speaker?> <?php echo __("CF_in")?> : 
 					<?php for($i=0;$i<count($keyword);$i++){?>
           <a href="<?php echo site_url('event_frontend/search_keyword').'/'.$keyword[$i].'/'.$page?>"><?php echo $keyword[$i]?></a>
