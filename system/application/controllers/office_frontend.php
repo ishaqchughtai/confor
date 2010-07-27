@@ -46,7 +46,7 @@
       $config['first_link'] = __("CF_first");
 
       $this->pagination->initialize($config);
-      $this->_data['query'] = $this->Mcoffice->get_all_office($lg,$per_page,$offset);
+      $this->_data['query'] = $this->Mcoffice->get_all_by_order($lg,$per_page,$offset);
 
       $this->_data['pagination'] = $this->pagination->create_links();
       $this->_load_view('home/office_view');
