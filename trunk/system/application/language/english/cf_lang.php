@@ -627,7 +627,7 @@ $lang['CF_same_win'] = 'Same Window';
 $lang['CF_details']='Details';
 $lang['CF_view_details']='View Details';
 
-$lang['CF_order_by'] = 'Order By';
+$lang['CF_order'] = 'Order';
 $lang['CF_add_off_suc'] = 'New conference office successfully added';
 $lang['CF_edit_off_suc'] = 'This conference office have been changed';
 $lang['CF_add_event_suc'] = 'New event successfully added';
@@ -635,3 +635,15 @@ $lang['CF_edit_event_suc'] = 'This event have been changed';
 
 //Key added on 23/07/2010
 $lang['CF_avd_details'] = 'Advertisement Details';
+
+//Key added on 26/07/2010
+$lang['CF_golbal_set'] = 'Global settings';
+$lang['CF_mem_function'] = 'Membership functions';
+
+
+//Key added on 27/07/2010
+$lang['CF_today_events'] = 'Today events';
+$lang['CF_week_events'] = 'This week events';
+$lang['CF_month_events'] = 'This month events';
+$lang['CF_mess_no_week_event'] = "There isn't event in this week";
+$lang['CF_mess_no_month_event'] = "There isn't event in this month";

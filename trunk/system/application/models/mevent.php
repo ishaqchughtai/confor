@@ -286,5 +286,63 @@
       $your_event = $this->db->get();
       return $your_event->result_array();
     }
+
+    function count_event_by_week($week,$lg)
+    {
+      $this->db->from('tblevent');
+      $this->db->where(array('WEEKOFYEAR(Date)'=>$week,'lang'=>$lg));
+      $count_event_week = $this->db->count_all_results();
+      return $count_event_week;
+    }
+
+    function get_event_by_week($lg,$week,$per_page,$offset)
+    {
+      $this->db->select("
+      tblevent.ID,
+      tblevent.Title,
+      tblevent.Status,
+      ");
+      $this->db->from('tblevent');
+      $this->db->where(array('WEEKOFYEAR(Date)'=>$week,'Status'=>1,'lang'=>$lg));
+      $this->db->order_by('ID','desc');
+      $this->db->limit($per_page,$offset);
+      $query = $this->db->get();
+      $week_events=FALSE;
+      foreach ($query->result_array() as $row_event)
+      {                    
+        $week_events[] = $row_event;
+      }
+      $query->free_result();  
+      return $week_events;
+    }
+
+    function count_event_by_month($month,$lg)
+    {
+      $this->db->from('tblevent');
+      $this->db->where(array('MONTH(Date)'=>$month,'lang'=>$lg));
+      $count_event_month = $this->db->count_all_results();
+      return $count_event_month;
+    }
+
+    function get_event_by_month($lg,$month,$per_page,$offset)
+    {
+      $this->db->select("
+      tblevent.ID,
+      tblevent.Title,
+      tblevent.Status,
+      ");
+      $this->db->from('tblevent');
+      $this->db->where(array('MONTH(Date)'=>$month,'Status'=>1,'lang'=>$lg));
+      $this->db->order_by('ID','desc');
+      $this->db->limit($per_page,$offset);
+      $query = $this->db->get();
+      $month_events=FALSE;
+      foreach ($query->result_array() as $row_event)
+      {                    
+        $month_events[] = $row_event;
+      }
+      $query->free_result();  
+      return $month_events;
+    }
   }
 ?>

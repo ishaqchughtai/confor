@@ -133,6 +133,91 @@
       $this->pagination->initialize($config);
       $this->_data['pagination'] = $this->pagination->create_links();
       $this->_load_view('event/search_event');    
-    }  
+    }
+
+    function today_event()
+    {
+      $lg = $this->_data['lang'];
+      $this->_data['lg'] = $lg;
+      $date = $this->uri->segment(3);
+      $per_page = $this->uri->segment(4);
+      $offset = $this->uri->segment(5);
+
+      $this->_data['path'][] = array(
+      'name' => __("CF_event"),
+      'link' => "#"
+      );
+
+      $config['uri_segment'] = 5;
+      $config['base_url'] = base_url().'index.php/event_frontend/today_event/'.'/'.$date.'/'.$per_page;
+      $config['total_rows'] = $this->MEvent->count_record_by_date($date,$lg);
+      //echo $config['total_rows'];
+      //      return;
+      $config['per_page']=$per_page;
+
+      $config += config_pagination_style();
+
+      $this->pagination->initialize($config);
+      $this->_data['events'] = $this->MEvent->get_event_by_date($lg,$date,$per_page,$offset);
+
+      $this->_data['pagination'] = $this->pagination->create_links();
+      $this->_load_view('event/today_event');  
+    }
+
+    function week_event()  
+    {
+      $lg = $this->_data['lang'];
+      $this->_data['lg'] = $lg;
+      $week = $this->uri->segment(3);
+      $per_page = $this->uri->segment(4);
+      $offset = $this->uri->segment(5);
+
+      $this->_data['path'][] = array(
+      'name' => __("CF_week_events"),
+      'link' => "#"
+      );
+
+      $config['uri_segment'] = 5;
+      $config['base_url'] = base_url().'index.php/event_frontend/week_event/'.'/'.$week.'/'.$per_page;
+      $config['total_rows'] = $this->MEvent->count_event_by_week($week,$lg);
+      $config['per_page']=$per_page;
+      //echo  $config['total_rows'];
+//      return; 
+      $config += config_pagination_style();
+      $this->pagination->initialize($config);
+      $this->_data['week_events'] = $this->MEvent->get_event_by_week($lg,$week,$per_page,$offset);
+
+      $this->_data['pagination'] = $this->pagination->create_links();
+      $this->_load_view('event/week_event');
+    }
+
+    function month_event()
+    {
+      $lg = $this->_data['lang'];
+      $this->_data['lg'] = $lg;
+      $month = $this->uri->segment(3);
+      $per_page = $this->uri->segment(4);
+      $offset = $this->uri->segment(5);
+
+      $this->_data['path'][] = array(
+      'name' => __("CF_month_events"),
+      'link' => "#"
+      );
+
+      $config['uri_segment'] = 5;
+      $config['base_url'] = base_url().'index.php/event_frontend/month_event/'.'/'.$month.'/'.$per_page;
+      $config['total_rows'] = $this->MEvent->count_event_by_month($month,$lg);
+      //echo $config['total_rows'];
+      //      return;
+      $config['per_page']=$per_page;
+
+      $config += config_pagination_style();
+
+      $this->pagination->initialize($config);
+      $this->_data['month_events'] = $this->MEvent->get_event_by_month($lg,$month,$per_page,$offset);
+
+      $this->_data['pagination'] = $this->pagination->create_links();
+      $this->_load_view('event/month_event');
+    }
   }
 ?>

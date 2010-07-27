@@ -74,11 +74,11 @@
     flowplayer("player", 
     "<?php echo base_url();?>flowplayer/flowplayer.commercial-3.2.2.swf",
     {// product key
-        key: '#$7163ea352c072a8b4f2' ,
+        key: '#@fbc4ccc0d3f30d1d937' ,
 
         // logo initially has zero opacity
     logo: {   
-        url: 'http://conferences-formations.com/flowplayer/logo.png',   
+        url: 'http://confor.us/flowplayer/logo.png',   
         fullscreenOnly: false,   
         top: 10, 
         left: 10,

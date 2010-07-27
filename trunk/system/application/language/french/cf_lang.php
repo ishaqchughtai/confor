@@ -615,11 +615,22 @@ $lang['CF_same_win'] = 'f_Same Window';
 $lang['CF_details']='f_Details';
 $lang['CF_view_details']='f_View Details';
 
-$lang['CF_order_by'] = 'f_Order By';
+$lang['CF_order'] = 'f_Order';
 $lang['CF_add_off_suc'] = 'f_New conference office successfully added';
 $lang['CF_edit_off_suc'] = 'f_This conference office have been changed';
 $lang['CF_add_event_suc'] = 'f_New event successfully added';
 $lang['CF_edit_event_suc'] = 'f_This event have been changed';
 
 //Key added on 23/07/2010
-$lang['CF_avd_details'] = 'Advertisement Details';
+$lang['CF_avd_details'] = 'f_Advertisement Details';
+
+//Key added on 26/07/2010
+$lang['CF_golbal_set'] = 'f_Global settings';
+$lang['CF_mem_function'] = 'f_Membership functions';
+
+//Key added on 27/07/2010
+$lang['CF_today_events'] = 'f_Today events';
+$lang['CF_week_events'] = 'f_This week events';
+$lang['CF_month_events'] = 'f_This month events';
+$lang['CF_mess_no_week_event'] = "f_There isn't event in this week";
+$lang['CF_mess_no_month_event'] = "f_There isn't event in this month";
