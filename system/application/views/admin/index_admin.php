@@ -18,8 +18,8 @@
         <li><a class="icon_key" href="<?php echo site_url('admin/change_pass/'.$admin_id);?>"><?php echo __("CF_change_pass")?></a></li>
         <li><a class="icon_text" href="<?php echo site_url('admin/get_element/About'.$lgtemp);?>"><?php echo __("CF_accessories")?></a></li>
         <li><a class="icon_list" href="<?php echo site_url('training/index').'/'.$lang;?>"><?php echo __("CF_training")?></a></li>
-        <li><a class="icon_list" href="<?php echo site_url('conference_office/get_all/en/'.$page);?>"><?php echo __("CF_conference_office")?></a></li>
-		<li><a class="icon_setting" href="<?php echo site_url('system')?>">Global settings</a></li>
+        <li><a class="icon_list" href="<?php echo site_url('conference_office/list_all');?>"><?php echo __("CF_conference_office")?></a></li>
+		<li><a class="icon_setting" href="<?php echo site_url('system')?>"><?php echo __("CF_golbal_set")?></a></li>
     </ul>	    
     <div class="frame_bottom"></div>	
 </div>
@@ -32,7 +32,7 @@
         <li><a class="icon_list" href="<?php echo site_url('admin/list_user')?>"><?php echo __("CF_speaker_list")?></a></li>
         <li><a class="icon_user_add" href="<?php echo site_url('admin/new_speaker')?>"><?php echo __("CF_new_speaker")?></a></li>
         <li><a class="icon_paypal" href="<?php echo base_url().'pay/admin';?>"><?php echo __("CF_paypal_man")?></a></li>
-		<li><a class="icon_setting" href="<?php echo site_url('membership')?>">Membership functions</a></li>		        
+		<li><a class="icon_setting" href="<?php echo site_url('membership')?>"><?php echo __("CF_mem_function")?></a></li>		        
         <li><br /></li>
         <li><br /></li>
         <li><br /></li>

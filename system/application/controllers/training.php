@@ -120,7 +120,7 @@ class Training extends Admin_controller {
                     $this->_data['uname']='noimage.gif';
                 if($this->Mtraining->add_training($date,$title,$content,$lg,$this->_data['uname'],$no_temp)==TRUE)
                 {
-                    $this->_message('training', __("CF_editarticle_success"), 'success', site_url("training/index").'/'.$lg);
+                    $this->_message('training', __("CF_addarticle_success"), 'success', site_url("training/index").'/'.$lg);
                 }
             }
         }else

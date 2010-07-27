@@ -4,13 +4,19 @@
     var $office_per_page = 5;
     function Office_frontend()
     {
-     parent::Frontend_controller();
+        parent::Frontend_controller();
         $this->load->helper('date');
         $this->load->library('email');
         $this->load->model('Mcoffice');
         $this->load->model('Mshowroom');
         $this->load->model('Mshopproduct','mshopproduct');
         $this->load->helper('url');
+    }
+    
+    function _before_render() 
+    {
+      $side_bar['page'] = "home/sidebar_office";         
+      $this->_data['side_bar'] = $side_bar;    
     }
     
     function office()

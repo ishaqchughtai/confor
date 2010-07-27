@@ -290,7 +290,7 @@
     function count_event_by_week($week,$lg)
     {
       $this->db->from('tblevent');
-      $this->db->where(array('WEEKOFYEAR(Date)'=>$week,'lang'=>$lg));
+      $this->db->where(array('WEEKOFYEAR(Date)'=>$week,'Status'=>1,'lang'=>$lg));
       $count_event_week = $this->db->count_all_results();
       return $count_event_week;
     }
@@ -319,7 +319,7 @@
     function count_event_by_month($month,$lg)
     {
       $this->db->from('tblevent');
-      $this->db->where(array('MONTH(Date)'=>$month,'lang'=>$lg));
+      $this->db->where(array('MONTH(Date)'=>$month,'Status'=>1,'lang'=>$lg));
       $count_event_month = $this->db->count_all_results();
       return $count_event_month;
     }

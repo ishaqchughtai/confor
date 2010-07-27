@@ -207,8 +207,6 @@
       $config['uri_segment'] = 5;
       $config['base_url'] = base_url().'index.php/event_frontend/month_event/'.'/'.$month.'/'.$per_page;
       $config['total_rows'] = $this->MEvent->count_event_by_month($month,$lg);
-      //echo $config['total_rows'];
-      //      return;
       $config['per_page']=$per_page;
 
       $config += config_pagination_style();

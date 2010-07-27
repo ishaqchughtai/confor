@@ -102,7 +102,7 @@
                         $this->_data['uname']='noimage.gif';
                     if($this->Mcoffice->add_conference_office($date,$title,$content,$lg,$this->_data['uname'],$no_temp)==TRUE)
                     {
-                        redirect('conference_office/get_all/'.$this->_data['lang'].'/'.$this->office_per_page);
+                       $this->_message('conference_office', __("CF_addarticle_success"), 'success', site_url('conference_office/list_all/'.$this->_data['lang']));
                     }
                 }  
             } 
@@ -124,7 +124,7 @@
             }
             $this->_data['path'][] = array(
             'name' => __("CF_list_ar"),
-            'link' => site_url("conference_office/get_all/".$lg.'/'.$this->office_per_page)
+            'link' => site_url("conference_office/list_all/".$lg.'/'.$this->office_per_page)
             ); 
 
             $this->_data['path'][] = array(
@@ -158,7 +158,6 @@
                 {
                     $title = $this->input->post('title');
                     $content = $this->input->post('content');
-                    $lg = $this->input->post('lg');
                     $edit_image=$this->input->post('edit_image'); 
                     $this->_data['uname'] = $this->input->post('uname');
                     if (strlen($this->_data['uname'])>1)
@@ -166,19 +165,19 @@
                         $query_search= $this->Mcoffice->count_record_image($id);
                         if($query_search->num_rows()>0)
                         {
-                            $data = $this->Mcoffice->edit_office($id,$title,$content,$lg,$this->_data['uname']);
-                            redirect('conference_office/get_all/'.$lg.'/'.$this->office_per_page);
+                            $data = $this->Mcoffice->edit_office($id,$title,$content,$this->_data['uname']);
+                            $this->_message('conference_office', __("CF_editarticle_success"), 'success', site_url('conference_office/list_all/'.$lg));                            
                         }else
                         {
                             $this->image_upload_lib->remove_image_from_db($id,'ID','Image','tbloffice');                    
-                            $data = $this->Mcoffice->edit_office($id,$title,$content,$lg,$this->_data['uname']);
-                            redirect('conference_office/get_all/'.$lg.'/'.$this->office_per_page);                    
+                            $data = $this->Mcoffice->edit_office($id,$title,$content,$this->_data['uname']);
+                            $this->_message('conference_office', __("CF_editarticle_success"), 'success', site_url('conference_office/list_all/'.$lg));
 
                         }
                     }else
                     {
-                        $data = $this->Mcoffice->edit_office($id,$title,$content,$lg,$edit_image);
-                        redirect('conference_office/get_all/'.$lg.'/'.$this->office_per_page);                
+                        $data = $this->Mcoffice->edit_office($id,$title,$content,$edit_image);
+                        $this->_message('conference_office', __("CF_editarticle_success"), 'success', site_url('conference_office/list_all/'.$lg));
 
                     }
                 }   
@@ -195,7 +194,7 @@
             }
             is_admin();
             $this->Mcoffice->delete($id);
-            redirect('conference_office/get_all/'.$lg.'/'.$this->office_per_page);    
+            $this->_message('conference_office', __("CF_delete_ar"), 'success', site_url('conference_office/list_all/'.$lg));
         }
 
         function list_all()
