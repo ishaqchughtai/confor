@@ -75,12 +75,11 @@
             $query_search = $this->db->get();
             return $query_search;
         }
-        function edit_office($id,$title,$content,$lg,$image)
+        function edit_office($id,$title,$content,$image)
         {
             $data = array(
             'title'=>$title,                                          
             'content'=>$content,
-            'lang'=>$lg,
             'Image'=>$image
             );
             $this->db->update('tbloffice',$data,array('id'=>$id));

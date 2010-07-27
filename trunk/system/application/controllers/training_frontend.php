@@ -10,6 +10,12 @@ class Training_frontend extends Frontend_controller {
         $this->load->model('Mshopproduct','mshopproduct');       
     }
 
+    function _before_render() 
+    {
+      $side_bar['page'] = "home/sidebar_office";         
+      $this->_data['side_bar'] = $side_bar;    
+    }
+    
     function index()
     {
         $this->show();       
