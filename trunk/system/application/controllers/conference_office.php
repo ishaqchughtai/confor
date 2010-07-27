@@ -13,11 +13,10 @@
             $this->image_upload_lib->ajax_link = site_url('blog/do_upload_ajax');   
         }    
 
-        //function index()
-        //    {              
-        //      $this->_data['page_title'] = 'Conference Office';                
-        //      $this->_load_view('conference_office/conference_office_view'); 
-        //    }
+        function index()
+        {              
+            $this->list_all();
+        }
         function do_upload_ajax()
         {
             if (! is_admin(FALSE)) 
@@ -93,9 +92,15 @@
                     $content = $this->input->post('content');
                     $lg = $this->input->post('lg');
                     $this->_data['uname'] = $this->input->post('uname');
+                    $query = $this->Mcoffice->get_no($lg);
+                    foreach($query as $row)
+                    {
+                        $no = $row->max_no;
+                    }
+                    $no_temp=$no+1;
                     if(!$this->_data['uname']) 
                         $this->_data['uname']='noimage.gif';
-                    if($this->Mcoffice->add_conference_office($date,$title,$content,$lg,$this->_data['uname'])==TRUE)
+                    if($this->Mcoffice->add_conference_office($date,$title,$content,$lg,$this->_data['uname'],$no_temp)==TRUE)
                     {
                         redirect('conference_office/get_all/'.$this->_data['lang'].'/'.$this->office_per_page);
                     }
@@ -192,48 +197,78 @@
             $this->Mcoffice->delete($id);
             redirect('conference_office/get_all/'.$lg.'/'.$this->office_per_page);    
         }
-		
-		function list_all()
-		{
-			is_admin();
-			$lg = $this->uri->segment(3);	
-			if (! $lg)
-			{
-				$lg = $this->_data['lang'];
-			}
-			if (lang_name_by_short_key($lg,TRUE)==FALSE)
-			{
-				$this->_message('admin', __("CF_invaild_lang"), 'error',site_url("vid/list_video_conference").'/'.$this->_data['lang']);
-			}
-			$this->_data['path'][] = array(
-			'name' => __("CF_conference_office"),
-			'link' => '#'
-			);			
-			$this->_data['lg'] = $lg;
-			
-			$page_offset = $this->uri->segment(4);			
-			if (!$page_offset) $page_offset = 0;
-						
-			$config['base_url'] = site_url('conference_office/list_all').'/'.$lg.'/';		
-			$config['uri_segment'] = 4;
-			$config['per_page']=$this->office_per_page;
-			$config['total_rows'] = $this->Mcoffice->count_office_by_lang($lg); 
-			$config += config_pagination_style();		
-			$this->pagination->initialize($config);
-			$this->_data['pagination'] = $this->pagination->create_links();        			
-			$this->_data['articles'] = $this->Mcoffice->list_all($lg,$this->office_per_page, $page_offset);
-						
-			$is_first_page = FALSE;
-			$is_last_page = FALSE;						
-			if ($page_offset==0) $is_first_page = TRUE;
-			if (($config['total_rows']-$page_offset)<=$this->office_per_page) $is_last_page = TRUE;
-			
-			$this->_data['is_first_page'] = $is_first_page;
-			$this->_data['is_last_page'] = $is_last_page;
-			
-			$this->_load_view('admin/office_list');
-			
-		}
 
+        function list_all()
+        {
+            is_admin();
+            $lg = $this->uri->segment(3);	
+            if (! $lg)
+            {
+                $lg = $this->_data['lang'];
+            }
+            if (lang_name_by_short_key($lg,TRUE)==FALSE)
+            {
+                $this->_message('admin', __("CF_invaild_lang"), 'error',site_url("vid/list_video_conference").'/'.$this->_data['lang']);
+            }
+            $this->_data['path'][] = array(
+            'name' => __("CF_conference_office"),
+            'link' => '#'
+            );			
+            $this->_data['lg'] = $lg;
+
+            $page_offset = $this->uri->segment(4);			
+            if (!$page_offset) $page_offset = 0;
+
+            $config['base_url'] = site_url('conference_office/list_all').'/'.$lg.'/';		
+            $config['uri_segment'] = 4;
+            $config['per_page']=$this->office_per_page;
+            $config['total_rows'] = $this->Mcoffice->count_office_by_lang($lg); 
+            $config += config_pagination_style();		
+            $this->pagination->initialize($config);
+            $this->_data['pagination'] = $this->pagination->create_links();        			
+            $this->_data['articles'] = $this->Mcoffice->get_all_by_order($lg,$page_offset,$config['per_page']);
+
+            $is_first_page = FALSE;
+            $is_last_page = FALSE;						
+            if ($page_offset==0) $is_first_page = TRUE;
+            if (($config['total_rows']-$page_offset)<=$this->office_per_page) $is_last_page = TRUE;
+
+            $this->_data['is_first_page'] = $is_first_page;
+            $this->_data['is_last_page'] = $is_last_page;
+
+            $this->_load_view('admin/office_list');
+
+        }
+
+        //order
+        function order_by_no($no_temp_1='',$no_temp_2='',$lg)
+        {
+            // $lg = $this->uri->segment(3);
+            if($this->Mcoffice->update_one($no_temp_2,$lg)==TRUE)
+            {
+                if($this->Mcoffice->update_temp($no_temp_1,$no_temp_2,$lg)==TRUE)
+                {
+                    if($this->Mcoffice->update_two($no_temp_1,$lg)==TRUE)
+                    {
+                        redirect(site_url('conference_office/index'.'/'.$lg));    
+                    }   
+                }    
+            }
+        }
+        //Delete Training
+        function delete_article($id,$no,$lg)
+        {
+            if($this->session->userdata('admin')==FALSE)
+            {
+                redirect(site_url("admin"));
+            }
+            else
+            {
+                if($this->Mcoffice->del_article($id,$no,$lg) == TRUE)
+                {
+                    redirect('conference_office/index/'.$lg.'/');
+                }
+            }
+        }
     }
 ?>

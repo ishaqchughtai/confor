@@ -1,5 +1,6 @@
 <?php
 class Training extends Admin_controller {
+    
     function Training()
     {
         parent::Admin_controller();
@@ -22,15 +23,15 @@ class Training extends Admin_controller {
     }
     function index()
     {
-        $this->show();
+        $this->show_order();
     }
 
     function show()
     {
         is_admin();
-        //$lg = $this->uri->segment(3);
-        $lg=$this->_data['lang'];    
-        if (! $lg) return;
+        $lg = $this->uri->segment(3);
+        //$lg=$this->_data['lang'];    
+        if (! $lg) $lg=$this->_data['lang'];    
         if (lang_name_by_short_key($lg,TRUE)==FALSE)
         {
             $this->_message('training', 'Invaild language', 'error',site_url("training/index").'/'.$this->_data['lang']);
@@ -44,23 +45,25 @@ class Training extends Admin_controller {
         $this->_data['lg'] = $lg;
         $config['base_url'] = base_url().'index.php/training/index/'.$lg;
         $config['total_rows'] = $this->Mtraining->count_record($lg);
-        $config['per_page']=5;
+        $config['per_page']=3;
 
-        $config['full_tag_open'] = '<li>';    
-        $config['full_tag_close'] = '</li>';
-        $config['next_link'] = __("CF_next");
-        $config['prev_link'] = __("CF_previous");
-        $config['last_link'] = __("CF_last");
-        $config['first_link'] = __("CF_first");
+        $config += config_pagination_style();
         $config['uri_segment'] = 4;
 
         $this->pagination->initialize($config);
-        $this->_data['query'] = $this->Mtraining->get_all_training($lg,$this->uri->segment(4),$config['per_page']);
-        $this->_data['pagination'] = $this->pagination->create_links();                               
+        $this->_data['articles'] = $this->Mtraining->get_all_training($lg,$this->uri->segment(4),$config['per_page']);
+        $this->_data['pagination'] = $this->pagination->create_links(); 
+        $is_first_page = FALSE;
+        $is_last_page = FALSE;                        
+        if ($page_offset==0) $is_first_page = TRUE;
+        if (($config['total_rows']-$page_offset)<=$this->office_per_page) $is_last_page = TRUE;
+
+        $this->_data['is_first_page'] = $is_first_page;
+        $this->_data['is_last_page'] = $is_last_page;                              
         $this->_load_view('admin/training_admin');       
     }
     //Delete Training
-    function delete_article($id)
+    function delete_article($id,$no,$lg)
     {
         if($this->session->userdata('admin')==FALSE)
         {
@@ -68,8 +71,7 @@ class Training extends Admin_controller {
         }
         else
         {
-            //$id = $this->uri->segment(3);
-            if($this->Mtraining->del_article($id) == TRUE)
+            if($this->Mtraining->del_article($id,$no,$lg) == TRUE)
             {
                 $this->_message('training', __("CF_delete_ar"), 'success', site_url("training/index/".$this->_data['lang']));
             }
@@ -108,9 +110,15 @@ class Training extends Admin_controller {
                 $content = $this->input->post('content');
                 $lg = $this->input->post('lg');
                 $this->_data['uname'] = $this->input->post('uname');
+                $query = $this->Mtraining->get_no($lg);
+                foreach($query as $row)
+                {
+                    $no = $row->max_no;
+                }
+                $no_temp=$no+1;    
                 if(!$this->_data['uname']) 
                     $this->_data['uname']='noimage.gif';
-                if($this->Mtraining->add_training($date,$title,$content,$lg,$this->_data['uname'])==TRUE)
+                if($this->Mtraining->add_training($date,$title,$content,$lg,$this->_data['uname'],$no_temp)==TRUE)
                 {
                     $this->_message('training', __("CF_editarticle_success"), 'success', site_url("training/index").'/'.$lg);
                 }
@@ -135,7 +143,7 @@ class Training extends Admin_controller {
         {
             $title = $this->input->post('title');
             $content = $this->input->post('content');
-            $lg = $this->input->post('lg');
+            //$lg = $this->input->post('lg');
             $edit_image=$this->input->post('edit_image'); 
             $this->_data['uname'] = $this->input->post('uname');
             if (strlen($this->_data['uname'])>1)
@@ -143,12 +151,12 @@ class Training extends Admin_controller {
                 $query_search= $this->Mtraining->count_record_image($id);
                 if($query_search->num_rows()>0)
                 {
-                    $data = $this->Mtraining->edit_training($id,$title,$content,$lg,$this->_data['uname']);
+                    $data = $this->Mtraining->edit_training($id,$title,$content,$this->_data['uname']);
                     $this->_message('training', __("CF_editarticle_success"), 'success', site_url("training/index/".$this->_data['lang']));
                 }else
                 {
                     $this->image_upload_lib->remove_image_from_db($id,'ID','Image','tbltraining');
-                    $data = $this->Mtraining->edit_training($id,$title,$content,$lg,$this->_data['uname']);
+                    $data = $this->Mtraining->edit_training($id,$title,$content,$this->_data['uname']);
                     $this->_message('training', __("CF_editarticle_success"), 'success', site_url("training/index/".$this->_data['lang']));    
                 }
 
@@ -183,5 +191,59 @@ class Training extends Admin_controller {
         $this->_data['query'] = $this->Mtraining->get_data_to_form($id);
         $this->_load_view('admin/edit_training');    
     }
+    
+    //order
+    function order_by_no($no_temp_1='',$no_temp_2='',$lg)
+    {
+       // $lg = $this->uri->segment(3);
+           if($this->Mtraining->update_one($no_temp_2,$lg)==TRUE)
+           {
+                if($this->Mtraining->update_temp($no_temp_1,$no_temp_2,$lg)==TRUE)
+               {
+                    if($this->Mtraining->update_two($no_temp_1,$lg)==TRUE)
+                   {
+                        redirect(site_url('training/index'.'/'.$lg));    
+                   }   
+               }    
+           }
+    }
+    //Show all by order    
+    function show_order()
+    {
+        is_admin();
+        $lg = $this->uri->segment(3);
+        //$this->_data['Lang_temp']=$lg;
+        //$lg=$this->_data['lang'];    
+        if (! $lg) $lg=$this->_data['lang'];    
+        if (lang_name_by_short_key($lg,TRUE)==FALSE)
+        {
+            $this->_message('training', 'Invaild language', 'error',site_url("training/index").'/'.$this->_data['lang']);
+        }   
+
+        $this->_data['path'][] = array(
+        'name' => __("CF_training"),
+        'link' => '#'
+        ); 
+         $page_offset=$this->uri->segment(4);
+        $this->_data['lg'] = $lg;
+        $config['base_url'] = base_url().'index.php/training/index/'.$lg;
+        $config['total_rows'] = $this->Mtraining->count_record($lg);
+        $config['per_page']=5;
+
+        $config += config_pagination_style();
+        $config['uri_segment'] = 4;
+
+        $this->pagination->initialize($config);
+        $this->_data['articles'] = $this->Mtraining->get_all_by_order($lg,$page_offset,$config['per_page']);
+        $this->_data['pagination'] = $this->pagination->create_links(); 
+        $is_first_page = FALSE;
+        $is_last_page = FALSE;                        
+        if ($page_offset==0) $is_first_page = TRUE;
+        if (($config['total_rows']-$page_offset)<=$config['per_page']) $is_last_page = TRUE;
+        $this->_data['is_first_page'] = $is_first_page;
+        $this->_data['is_last_page'] = $is_last_page;                              
+        $this->_load_view('admin/training_admin');       
+    }
+    
 }
 
