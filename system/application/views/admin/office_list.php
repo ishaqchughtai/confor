@@ -44,25 +44,33 @@
             
 			<?php 
 			$total = count($articles);
+            $strNo='';
+                if($lg == 'fr')
+                {
+                    $strNo='No_temp';
+                }else
+                {
+                    $strNo='No';
+                }
 			for($i=0; $i<$total;$i++):				
+                            $no_temp_1 = $articles[$i][$strNo]+1;    
+                $no_temp_2 = $articles[$i][$strNo]-1; 
 			?>
 			            
 			<tr>
 				<td><?php echo date("d-m-Y", strtotime($articles[$i]['date']))?></td>
 				<td>					
 					<?php if ((!$is_first_page)||($i>0)):?>
-					<a href="#" class="up_button icon_1_up_arrow">&nbsp;</a>
+					<a href="<?php echo site_url("conference_office/order_by_no").'/'.$articles[$i][$strNo].'/'.$no_temp_1.'/'.$lg?>" class="up_button icon_1_up_arrow">&nbsp;</a>
 					<?php endif;?>
 					<?php if ((!$is_last_page)||($i<$total-1)):?>
-					<a href="#" class="up_button icon_1_down_arrow">&nbsp;</a>
+					<a href="<?php echo site_url("conference_office/order_by_no").'/'.$articles[$i][$strNo].'/'.$no_temp_2.'/'.$lg?>" class="up_button icon_1_down_arrow">&nbsp;</a>
 					<?php endif;?>
-					<span style="float:right"><?php echo $articles[$i]['sort']?></span>
+					<span style="float:right"><?php echo $articles[$i][$strNo]?></span>
 				</td>  
-				<td>
-				</td>
 				<td><?php echo $articles[$i]['title']?></td>     				
 				<td width="17"><a href="<?php echo site_url('conference_office/get_office_admin'.'/'.$articles[$i]['id'])?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></td>
-				<td width="17"><a href="<?php echo site_url('conference_office/delete'.'/'.$articles[$i]['id'])?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
+				<td width="17"><a href="<?php echo site_url('conference_office/delete_article').'/'.$articles[$i]['id'].'/'.$articles[$i][$strNo].'/'.$lg?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
 			</tr>
 			<?php endfor;?>			
 			

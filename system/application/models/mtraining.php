@@ -6,15 +6,38 @@ class Mtraining extends Model{
         $this->load->database();
     }
 
+    //Select No
+    //function strNo($lg)
+    //    {
+    //        $strNo='';
+    //        if($lg == 'fr')
+    //        {
+    //            $strNo='No_temp';
+    //        }else
+    //        {
+    //            $strNo='No';
+    //        }
+    //        return $strNo;    
+    //    }
+
     function get_all_training($lg,$offset,$num)
     {
+        $strNo='';
+        if($lg == 'fr')
+        {
+            $strNo='tbltraining.No_temp';
+        }else
+        {
+            $strNo='tbltraining.No';
+        }
         $this->db->select("
         tbltraining.ID,
         tbltraining.Date,
         tbltraining.Title,
         tbltraining.Content,
         tbltraining.Lang,
-        tbltraining.Image");
+        tbltraining.Image,"
+        .$strNo);
         $this->db->from('tbltraining');
         $this->db->order_by("tbltraining.Date", "desc");
         $this->db->where('tbltraining.Lang ', $lg); 
@@ -30,7 +53,7 @@ class Mtraining extends Model{
         $query = $this->db->count_all_results();
         return $query;
     }
-    
+
     function count_record_image($id)
     {
         $this->db->from('tbltraining');
@@ -39,9 +62,17 @@ class Mtraining extends Model{
         $query_search = $this->db->get();
         return $query_search;
     }
-    function del_article($id)
+    function del_article($id,$no,$lg)
     {
-        $this->db->delete('tbltraining',array('ID'=>$id));
+        if($lg == 'fr')
+        {
+            $sql = "CALL swap_training_fr(".$id.", ".$no.")";
+            $this->db->query($sql);
+        }else
+        {
+            $sql = "CALL swap_training_en(".$id.", ".$no.")";
+            $this->db->query($sql);
+        }  
         return TRUE; 
     }
 
@@ -59,16 +90,25 @@ class Mtraining extends Model{
         $query = $this->db->get();
         return $query->result_array(); 
     }
-    function add_training($date,$title,$content,$lg,$image)
+    function add_training($date,$title,$content,$lg,$image,$no)
     {                    
         try
         {
+            $strNo='';
+            if($lg == 'fr')
+            {
+                $strNo='No_temp';
+            }else
+            {
+                $strNo='No';
+            }
             $data = array(
             'Date'=>$date,
             'Title'=>$title,                                          
             'Content'=>$content,
             'Lang'=>$lg,
-            'Image'=>$image
+            'Image'=>$image,
+            $strNo=>$no
             );    
             $this->db->insert('tbltraining',$data);
             return TRUE;
@@ -78,12 +118,11 @@ class Mtraining extends Model{
             return FALSE;    
         }
     }
-    function edit_training($id,$title,$content,$lg,$image)
+    function edit_training($id,$title,$content,$image)
     {
         $data = array(
         'Title'=>$title,                                          
         'Content'=>$content,
-        'Lang'=>$lg,
         'Image'=>$image
         );
         $this->db->update('tbltraining',$data,array('ID'=>$id));
@@ -93,5 +132,99 @@ class Mtraining extends Model{
     {
         $query = $this->db->get_where('tbltraining',array('ID'=>$id));
         return $query->result();
+    }
+    //get Max No
+    function get_no($lg)
+    {
+        $strNo='';
+        if($lg == 'fr')
+        {
+            $strNo='No_temp';
+        }else
+        {
+            $strNo='No';
+        }
+        $this->db->select_max($strNo,'max_no');
+        $query = $this->db->get('tbltraining');
+        return $query->result();
+    }
+
+    //update one
+    function update_one($no_one,$lg)
+    {
+        $strNo='';
+        if($lg == 'fr')
+        {
+            $strNo='No_temp';
+        }else
+        {
+            $strNo='No';
+        }
+        $data=array(
+        $strNo=>0
+        );
+        $this->db->update('tbltraining',$data,array($strNo=>$no_one));
+        return TRUE;
+    }    
+
+    //update two
+    function update_two($no_tow,$lg)
+    {
+        $strNo='';
+        if($lg == 'fr')
+        {
+            $strNo='No_temp';
+        }else
+        {
+            $strNo='No';
+        }
+        $data=array(
+        $strNo=>$no_tow
+        );
+        $this->db->update('tbltraining',$data,array($strNo=>0));
+        return TRUE;
+    }
+    //update temp
+    function update_temp($no_temp_1,$no_temp_2,$lg)
+    {
+        $strNo='';
+        if($lg == 'fr')
+        {
+            $strNo='No_temp';
+        }else
+        {
+            $strNo='No';
+        }
+        $data=array(
+        $strNo=>$no_temp_2
+        );
+        $this->db->update('tbltraining',$data,array($strNo=>$no_temp_1));
+        return TRUE;
+    }
+    //get_all_by_order
+    function get_all_by_order($lg,$offset,$num)
+    {
+        $strNo='';
+        if($lg == 'fr')
+        {
+            $strNo='tbltraining.No_temp';
+        }else
+        {
+            $strNo='tbltraining.No';
+        }
+        $this->db->select("
+        tbltraining.ID,
+        tbltraining.Date,
+        tbltraining.Title,
+        tbltraining.Content,
+        tbltraining.Lang,
+        tbltraining.Image,"
+        .$strNo);
+        $this->db->from('tbltraining');
+        $this->db->order_by($strNo, "desc");
+        $this->db->where('tbltraining.Lang ', $lg); 
+        $this->db->limit($num,$offset);
+        $query = $this->db->get();
+        return $query->result_array();
     }
 }

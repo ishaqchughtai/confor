@@ -270,52 +270,6 @@ class Blog extends Admin_controller {
         }
     }    
 
-    //Search
-    //function search()
-    //    {
-    //        $lg = $this->uri->segment(3);
-    //$lg=$this->_data['lang'];    
-    //        if (! $lg) return;
-    //        if (lang_name_by_short_key($lg,TRUE)==FALSE)
-    //        {
-    //            $this->_message('blog', 'Invaild language', 'error',site_url("blog/blog_list").'/'.$this->_data['lang']);
-    //        }   
-
-    //        $this->_data['path'][] = array(
-    //        'name' => __("CF_Blog_search"),
-    //        'link' => '#'
-    //        );
-    //        $this->_data['lg'] = $lg;
-    //        $title = $this->input->post('search_field_blog');
-    //        $config['base_url'] = base_url().'index.php/blog/search/'.$lg.'/';
-    //        $config['total_rows'] = $this->Mblog->count_record_blog_title($title);
-    //        $config['per_page']=3;
-
-    //        $config['full_tag_open'] = '<li>';
-    //        $config['full_tag_close'] = '</li>'; 
-    //        $config['next_link'] = __("CF_next");
-    //        $config['prev_link'] = __("CF_previous");
-    //        $config['last_link'] = __("CF_last");
-    //        $config['first_link'] = __("CF_first");
-    //        $config['uri_segment'] = 4;
-    //        
-    //        $this->pagination->initialize($config);
-    //        $num = !is_nan((double)$this->uri->segment(4))?0:$this->uri->segment(4);
-    //        $query_search = $this->Mblog->search_blog_by_title($lg,$num,$config['per_page'],$title);
-    //        $this->_data['page_title'] = __("CF_Blog_search");
-    //        if($query_search->num_rows()>0)
-    //        {
-    //            $this->_data['pagination'] = $this->pagination->create_links(); 
-    //            $this->_data['query'] =  $query_search->result_array();
-    //            $this->_load_view('admin/search_blog');                             
-    //        }
-    //        else
-    //        {
-    //            $this->_data['error']=__("CF_mess_no_search");
-    //            $this->_load_view('admin/search_blog');
-    //        }
-
-    //    }    
     function search()
     {
 
