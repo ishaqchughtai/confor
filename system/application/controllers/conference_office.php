@@ -93,16 +93,24 @@
                     $lg = $this->input->post('lg');
                     $this->_data['uname'] = $this->input->post('uname');
                     $query = $this->Mcoffice->get_no($lg);
-                    foreach($query as $row)
+                    $query_count_no = $this->Mcoffice->count_no($lg);
+                    if($query_count_no->num_rows()>0)                   
                     {
-                        $no = $row->max_no;
+                        $query = $this->Mcoffice->get_no($lg);
+                        foreach($query as $row)
+                        {
+                            $no = $row->max_no;
+                        }
+                        $no_temp=$no+1;    
+                    }else
+                    {
+                        $no_temp=1;        
                     }
-                    $no_temp=$no+1;
                     if(!$this->_data['uname']) 
                         $this->_data['uname']='noimage.gif';
                     if($this->Mcoffice->add_conference_office($date,$title,$content,$lg,$this->_data['uname'],$no_temp)==TRUE)
                     {
-                       $this->_message('conference_office', __("CF_addarticle_success"), 'success', site_url('conference_office/list_all/'.$this->_data['lang']));
+                        $this->_message('conference_office', __("CF_addarticle_success"), 'success', site_url('conference_office/list_all/'.$this->_data['lang']));
                     }
                 }  
             } 
@@ -224,6 +232,12 @@
             $config['total_rows'] = $this->Mcoffice->count_office_by_lang($lg); 
             $config += config_pagination_style();		
             $this->pagination->initialize($config);
+            $query = $this->Mcoffice->get_no($lg);
+            foreach($query as $row)
+            {
+                $no = $row->max_no;
+            }
+            $this->_data['max_no']=$no;
             $this->_data['pagination'] = $this->pagination->create_links();        			
             $this->_data['articles'] = $this->Mcoffice->get_all_by_order($lg,$page_offset,$config['per_page']);
 

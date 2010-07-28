@@ -66,7 +66,7 @@
 					<?php if ((!$is_last_page)||($i<$total-1)):?>
 					<a href="<?php echo site_url("conference_office/order_by_no").'/'.$articles[$i][$strNo].'/'.$no_temp_2.'/'.$lg?>" class="up_button icon_1_down_arrow">&nbsp;</a>
 					<?php endif;?>
-					<span style="float:right"><?php echo $articles[$i][$strNo]?></span>
+					<span style="float:right"><?php echo $max_no-($articles[$i][$strNo]-1)?></span> 
 				</td>  
 				<td><?php echo $articles[$i]['title']?></td>     				
 				<td width="17"><a href="<?php echo site_url('conference_office/get_office_admin'.'/'.$articles[$i]['id'])?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></td>

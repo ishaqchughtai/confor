@@ -1,6 +1,6 @@
 <?php
 class Training extends Admin_controller {
-    
+
     function Training()
     {
         parent::Admin_controller();
@@ -50,7 +50,7 @@ class Training extends Admin_controller {
         $config += config_pagination_style();
         $config['uri_segment'] = 4;
 
-        $this->pagination->initialize($config);
+        $this->pagination->initialize($config);     
         $this->_data['articles'] = $this->Mtraining->get_all_training($lg,$this->uri->segment(4),$config['per_page']);
         $this->_data['pagination'] = $this->pagination->create_links(); 
         $is_first_page = FALSE;
@@ -73,7 +73,7 @@ class Training extends Admin_controller {
         {
             if($this->Mtraining->del_article($id,$no,$lg) == TRUE)
             {
-                $this->_message('training', __("CF_delete_ar"), 'success', site_url("training/index/".$this->_data['lang']));
+                redirect('training/index/'.$lg.'/');
             }
         }
     }
@@ -110,12 +110,20 @@ class Training extends Admin_controller {
                 $content = $this->input->post('content');
                 $lg = $this->input->post('lg');
                 $this->_data['uname'] = $this->input->post('uname');
-                $query = $this->Mtraining->get_no($lg);
-                foreach($query as $row)
+                $query_count_no = $this->Mtraining->count_no($lg);
+                if($query_count_no->num_rows()>0)                   
                 {
-                    $no = $row->max_no;
+                    $query = $this->Mtraining->get_no($lg);
+                    foreach($query as $row)
+                    {
+                        $no = $row->max_no;
+                    }
+                    $no_temp=$no+1;    
+                }else
+                {
+                    $no_temp=1;        
                 }
-                $no_temp=$no+1;    
+
                 if(!$this->_data['uname']) 
                     $this->_data['uname']='noimage.gif';
                 if($this->Mtraining->add_training($date,$title,$content,$lg,$this->_data['uname'],$no_temp)==TRUE)
@@ -191,21 +199,21 @@ class Training extends Admin_controller {
         $this->_data['query'] = $this->Mtraining->get_data_to_form($id);
         $this->_load_view('admin/edit_training');    
     }
-    
+
     //order
     function order_by_no($no_temp_1='',$no_temp_2='',$lg)
     {
-       // $lg = $this->uri->segment(3);
-           if($this->Mtraining->update_one($no_temp_2,$lg)==TRUE)
-           {
-                if($this->Mtraining->update_temp($no_temp_1,$no_temp_2,$lg)==TRUE)
-               {
-                    if($this->Mtraining->update_two($no_temp_1,$lg)==TRUE)
-                   {
-                        redirect(site_url('training/index'.'/'.$lg));    
-                   }   
-               }    
-           }
+        // $lg = $this->uri->segment(3);
+        if($this->Mtraining->update_one($no_temp_2,$lg)==TRUE)
+        {
+            if($this->Mtraining->update_temp($no_temp_1,$no_temp_2,$lg)==TRUE)
+            {
+                if($this->Mtraining->update_two($no_temp_1,$lg)==TRUE)
+                {
+                    redirect(site_url('training/index'.'/'.$lg));    
+                }   
+            }    
+        }
     }
     //Show all by order    
     function show_order()
@@ -224,7 +232,7 @@ class Training extends Admin_controller {
         'name' => __("CF_training"),
         'link' => '#'
         ); 
-         $page_offset=$this->uri->segment(4);
+        $page_offset=$this->uri->segment(4);
         $this->_data['lg'] = $lg;
         $config['base_url'] = base_url().'index.php/training/index/'.$lg;
         $config['total_rows'] = $this->Mtraining->count_record($lg);
@@ -232,7 +240,12 @@ class Training extends Admin_controller {
 
         $config += config_pagination_style();
         $config['uri_segment'] = 4;
-
+        $query = $this->Mtraining->get_no($lg);
+        foreach($query as $row)
+        {
+            $no = $row->max_no;
+        }
+        $this->_data['max_no']=$no;   
         $this->pagination->initialize($config);
         $this->_data['articles'] = $this->Mtraining->get_all_by_order($lg,$page_offset,$config['per_page']);
         $this->_data['pagination'] = $this->pagination->create_links(); 
@@ -244,6 +257,6 @@ class Training extends Admin_controller {
         $this->_data['is_last_page'] = $is_last_page;                              
         $this->_load_view('admin/training_admin');       
     }
-    
+
 }
 

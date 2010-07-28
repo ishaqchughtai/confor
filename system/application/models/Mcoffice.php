@@ -132,7 +132,21 @@
             $query = $this->db->get('tbloffice');
             return $query->result();
         }
-
+        //Count No
+        function count_no($lg)
+        {
+            $strNo='';
+            if($lg == 'fr')
+            {
+                $strNo='No_temp';
+            }else
+            {
+                $strNo='No';
+            }
+            $this->db->select($strNo);
+            $query = $this->db->get('tbloffice');
+            return $query;
+        }
         //update one
         function update_one($no_one,$lg)
         {
@@ -216,12 +230,12 @@
         {
             if($lg == 'fr')
             {
-                $sql = "CALL swap_tbloffice_fr(".$id.", ".$no.")";
-                $this->db->query($sql);
+                $this->db->delete('tbloffice',array('id'=>$id));
+                $this->db->query("update tbloffice set No_temp=No_temp-1 where No_temp > ".$no);
             }else
             {
-                $sql = "CALL swap_tbloffice_en(".$id.", ".$no.")";
-                $this->db->query($sql);
+                $this->db->delete('tbloffice',array('id'=>$id));
+                $this->db->query("update tbloffice set No=No-1 where No > ".$no);
             }  
             return TRUE; 
         }
