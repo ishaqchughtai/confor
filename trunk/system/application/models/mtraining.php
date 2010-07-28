@@ -62,16 +62,17 @@ class Mtraining extends Model{
         $query_search = $this->db->get();
         return $query_search;
     }
+
     function del_article($id,$no,$lg)
     {
         if($lg == 'fr')
         {
-            $sql = "CALL swap_training_fr(".$id.", ".$no.")";
-            $this->db->query($sql);
+            $this->db->delete('tbltraining',array('ID'=>$id));
+            $this->db->query("update tbltraining set No_temp=No_temp-1 where No_temp > ".$no);
         }else
         {
-            $sql = "CALL swap_training_en(".$id.", ".$no.")";
-            $this->db->query($sql);
+            $this->db->delete('tbltraining',array('ID'=>$id));
+            $this->db->query("update tbltraining set No=No-1 where No > ".$no);
         }  
         return TRUE; 
     }
@@ -147,6 +148,21 @@ class Mtraining extends Model{
         $this->db->select_max($strNo,'max_no');
         $query = $this->db->get('tbltraining');
         return $query->result();
+    }
+    //Count No
+    function count_no($lg)
+    {
+        $strNo='';
+        if($lg == 'fr')
+        {
+            $strNo='No_temp';
+        }else
+        {
+            $strNo='No';
+        }
+        $this->db->select($strNo);
+        $query = $this->db->get('tbltraining');
+        return $query;
     }
 
     //update one
