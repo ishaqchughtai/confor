@@ -48,12 +48,7 @@ class Blog_frontend extends Frontend_controller {
         $config['total_rows'] = $this->Mblog->count_record_blog($lg);
         $config['per_page']=$this->_setting['num_per_page_blog'];
 
-        $config['full_tag_open'] = '<li>';        
-        $config['full_tag_close'] = '</li>'; 
-        $config['next_link'] = __("CF_next");
-        $config['prev_link'] = __("CF_previous");
-        $config['last_link'] = __("CF_last");
-        $config['first_link'] = __("CF_first");
+          $config += config_pagination_style();
 
         $this->pagination->initialize($config);
         $num = $this->uri->segment(3);
@@ -137,12 +132,7 @@ class Blog_frontend extends Frontend_controller {
         $config['base_url'] = base_url().'index.php/blog_frontend/search/'.$Title.'/'.$per_page;
         $config['total_rows'] = $this->Mblog->count_record_blog_title($this->_data['lang'],$Title);
         $config['per_page']=$per_page;
-        $config['full_tag_open'] = '<li>';
-        $config['full_tag_close'] = '</li>'; 
-        $config['next_link'] = __("CF_next");
-        $config['prev_link'] = __("CF_previous");
-        $config['last_link'] = __("CF_last");
-        $config['first_link'] = __("CF_first");
+        $config += config_pagination_style();
         $this->pagination->initialize($config);
         $query_search = $this->Mblog->search_blog($this->_data['lang'],$offset,$per_page,$Title);
         if($query_search->num_rows()>0)

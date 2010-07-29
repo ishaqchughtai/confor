@@ -152,12 +152,7 @@
             $config['total_rows'] = $this->Mticket->count_record_open();
             $config['per_page']='6';
 
-            $config['full_tag_open'] = '<li>';        
-            $config['full_tag_close'] = '</li>'; 
-            $config['next_link'] = __("CF_next");
-            $config['prev_link'] = __("CF_previous");
-            $config['last_link'] = __("CF_last");
-            $config['first_link'] = __("CF_first");
+             $config += config_pagination_style();
 
             $this->pagination->initialize($config);
             $this->_data['open_tickets'] = $this->Mticket->show_open_tickets($this->uri->segment(3),$config['per_page']);
@@ -191,11 +186,7 @@
             $config['total_rows'] = $this->Mticket->count_record_closed();
             $config['per_page']='6';
 
-            $config['full_tag_open'] = '<li>';        
-            $config['full_tag_close'] = '</li>'; 
-            $config['prev_link'] = __("CF_previous");
-            $config['last_link'] = __("CF_last");
-            $config['first_link'] = __("CF_first");
+             $config += config_pagination_style();
 
             $this->pagination->initialize($config);
             $this->_data['closed_tickets'] = $this->Mticket->show_closed_tickets($this->uri->segment(3),$config['per_page']);
@@ -221,12 +212,7 @@
             $config['total_rows'] = $this->Mticket->count_record_open_speaker($SpeakerID);
             $config['per_page']='6';
 
-            $config['full_tag_open'] = '<li>';        
-            $config['full_tag_close'] = '</li>'; 
-            $config['next_link'] = __("CF_next");
-            $config['prev_link'] = __("CF_previous");
-            $config['last_link'] = __("CF_last");
-            $config['first_link'] = __("CF_first");
+            $config += config_pagination_style();
 
             $this->pagination->initialize($config);
             $this->_data['open_tickets_speaker'] = $this->Mticket->show_open_tickets_speaker($this->uri->segment(3),$config['per_page'],$SpeakerID);
@@ -251,12 +237,7 @@
             $config['total_rows'] = $this->Mticket->count_record_closed_speaker($SpeakerID);
             $config['per_page']='6';
 
-            $config['full_tag_open'] = '<li>';        
-            $config['full_tag_close'] = '</li>'; 
-            $config['next_link'] = __("CF_next");
-            $config['prev_link'] = __("CF_previous");
-            $config['last_link'] = __("CF_last");
-            $config['first_link'] = __("CF_first");
+             $config += config_pagination_style();
 
             $this->pagination->initialize($config);            
             $this->_data['closed_tickets_speaker'] = $this->Mticket->show_closed_tickets_speaker($this->uri->segment(3),$config['per_page'],$SpeakerID);
