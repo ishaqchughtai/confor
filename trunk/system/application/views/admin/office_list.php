@@ -66,7 +66,13 @@
 					<?php if ((!$is_last_page)||($i<$total-1)):?>
 					<a href="<?php echo site_url("conference_office/order_by_no").'/'.$articles[$i][$strNo].'/'.$no_temp_2.'/'.$lg?>" class="up_button icon_1_down_arrow">&nbsp;</a>
 					<?php endif;?>
-					<span style="float:right"><?php echo $max_no-($articles[$i][$strNo]-1)?></span> 
+					<span style="float:right">
+                    <form name="order_from" method="post" action="<?php echo site_url("conference_office/swap_by_no").'/'.$lg?>" enctype="multipart/form-data">
+                    <input name="order_input_temp2" class="short" type="text" id="order_input_temp2" value="<?php echo $max_no-($articles[$i][$strNo]-1)?>"/> 
+                    <input name="order_input_temp1" type="hidden" id="order_input_temp1" value="<?php echo $articles[$i][$strNo]?>"/> 
+                    <input name="btnsubmit" type="submit" value="<?php echo __("CF_save_order")?>" title="<?php echo __("CF_save_order")?>" class="submit"/>
+                    </form>
+                    </span> 
 				</td>  
 				<td><?php echo $articles[$i]['title']?></td>     				
 				<td width="17"><a href="<?php echo site_url('conference_office/get_office_admin'.'/'.$articles[$i]['id'])?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></td>

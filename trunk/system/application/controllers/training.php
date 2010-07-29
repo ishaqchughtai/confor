@@ -214,6 +214,46 @@ class Training extends Admin_controller {
                 }   
             }    
         }
+    }    
+
+    function swap_by_no($lg)
+    {
+        // $lg = $this->uri->segment(3);
+        is_admin();
+        $this->form_validation->set_rules('order_input_temp2',"Order",'required|numeric|trim');
+        $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+        $no_temp_1=$this->input->post('order_input_temp1');
+        $no_temp_2=$this->input->post('order_input_temp2');
+        if($this->form_validation->run()==FALSE)
+        {
+            $this->show_order();       
+        }
+        else
+        {
+            if($no_temp_2<=0)
+            {
+                $this->show_order();    
+            }else
+            {
+                $query = $this->Mtraining->get_no($lg);
+                foreach($query as $row)
+                {
+                    $max_no = $row->max_no;
+                }
+                $no_temp_2=$max_no-($no_temp_2-1);
+                if($this->Mtraining->update_one($no_temp_2,$lg)==TRUE)
+                {
+                    if($this->Mtraining->update_temp($no_temp_1,$no_temp_2,$lg)==TRUE)
+                    {
+                        if($this->Mtraining->update_two($no_temp_1,$lg)==TRUE)
+                        {
+                            redirect(site_url('training/index'.'/'.$lg));    
+                        }   
+                    }    
+                }   
+            }
+
+        }
     }
     //Show all by order    
     function show_order()

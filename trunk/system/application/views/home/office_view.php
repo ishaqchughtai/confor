@@ -17,7 +17,7 @@
         </div>
         <br/>
         <p>
-            <?php echo word_limiter($content, 100); ?>
+            <?php echo word_limiter(strip_tags($content), 100); ?>
         </p>    
         <a href = "<?php echo site_url('office_frontend/office_content/'.$id)?>" class = "read_more"><?php echo __("CF_continue") ?></a>
     </div>

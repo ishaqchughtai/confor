@@ -263,6 +263,45 @@
                 }    
             }
         }
+        function swap_by_no($lg)
+        {
+            // $lg = $this->uri->segment(3);
+            is_admin();
+            $this->form_validation->set_rules('order_input_temp2',"Order",'required|numeric|trim');
+            $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+            $no_temp_1=$this->input->post('order_input_temp1');
+            $no_temp_2=$this->input->post('order_input_temp2');
+            if($this->form_validation->run()==FALSE)
+            {
+                $this->list_all();       
+            }
+            else
+            {
+                if($no_temp_2<=0)
+                {
+                    $this->list_all();    
+                }else
+                {
+                    $query = $this->Mcoffice->get_no($lg);
+                    foreach($query as $row)
+                    {
+                        $max_no = $row->max_no;
+                    }
+                    $no_temp_2=$max_no-($no_temp_2-1);
+                    if($this->Mcoffice->update_one($no_temp_2,$lg)==TRUE)
+                    {
+                        if($this->Mcoffice->update_temp($no_temp_1,$no_temp_2,$lg)==TRUE)
+                        {
+                            if($this->Mcoffice->update_two($no_temp_1,$lg)==TRUE)
+                            {
+                                redirect(site_url('conference_office/index'.'/'.$lg));    
+                            }   
+                        }    
+                    }   
+                }
+
+            }
+        }
         //Delete Training
         function delete_article($id,$no,$lg)
         {
