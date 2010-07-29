@@ -141,12 +141,7 @@
                 $config['base_url'] = base_url().'index.php/admin/list_admin/'.$num_per_page.'/';
                 $config['uri_segment'] = 4;
                 $config['per_page']='10';
-                $config['full_tag_open'] = '<li >';        
-                $config['full_tag_close'] = '</li>'; 
-                $config['next_link'] = 'Next >';
-                $config['prev_link'] = '< Previous';
-                $config['last_link'] = 'Last >>';
-                $config['first_link'] = '<< First';
+                $config += config_pagination_style();
 
                 $config['total_rows'] = $this->db->count_all('tbladmin'); 
                 $this->_data['query'] = $this->Madmin->get_all_admin($num_per_page,$page_offset);
@@ -428,12 +423,7 @@
             $config['base_url'] = base_url().'index.php/admin/list_user/'.$num_per_page.'/';
             $config['uri_segment'] = 4;
             $config['per_page']='10';
-            $config['full_tag_open'] = '<li >';        
-            $config['full_tag_close'] = '</li>'; 
-            $config['next_link'] = 'Next >';
-            $config['prev_link'] = '< Previous';
-            $config['last_link'] = 'Last >>';
-            $config['first_link'] = '<< First';
+            $config += config_pagination_style();
 
             $config['total_rows'] = $this->db->count_all('users'); 
             $this->_data['query'] = $this->Madmin->get_all_speaker($num_per_page,$page_offset);
@@ -528,12 +518,7 @@
             }
 
             $config['base_url'] = base_url().'index.php/admin/list_video_conference/'.$category.'/';
-            $config['full_tag_open'] = '<li>';        
-            $config['full_tag_close'] = '</li>'; 
-            $config['next_link'] = 'Next >';
-            $config['prev_link'] = '< Previous';
-            $config['last_link'] = 'Last >>';
-            $config['first_link'] = '<< First';	
+            $config += config_pagination_style();	
             $config['uri_segment'] = 4;
             $config['per_page']=$this->vid_per_page;
             // $config['cur_tag_open'] = '<li class="selected">';
