@@ -60,7 +60,7 @@ body {
   <div class="header"> <img src="<?php echo $preview_img?>" />
     <div>
       <h2><?php echo $row->title;?></h2>
-      <span class="click_text">Click<a href="<?php echo $link_play?>"> here </a> to play this video</span> </div>
+      <span class="click_text">Click<a href="<?php echo $link_play?>" target="_blank"> here </a> to play this video</span> </div>
   </div>
   <div class="desc">
     <h2>Description</h2>
