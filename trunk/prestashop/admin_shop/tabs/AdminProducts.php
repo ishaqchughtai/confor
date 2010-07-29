@@ -1565,7 +1565,7 @@ class AdminProducts extends AdminTab
 	{
 		$.ajaxFileUpload (
 			{
-				url:'./uploadProductFile.php?id_product=<?php echo $_GET['id_product'];?>',
+				url:'./uploadProductFile.php',
 				secureuri:false,
 				fileElementId:'virtual_product_file',
 				dataType: 'xml',

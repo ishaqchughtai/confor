@@ -35,7 +35,7 @@ class MOrdershop extends Model
 	function get_product_id_by_code($code)
 	{
 		$this->db->select('id_product');		
-		$this->db->where('display_filename',$code.'.html');
+		$this->db->where('physically_filename',$code);
 		$this->db->limit(1);
 		$query = $this->db->get('presshop_product_download');
 		
