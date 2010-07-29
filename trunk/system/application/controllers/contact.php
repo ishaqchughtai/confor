@@ -34,7 +34,7 @@
                 $from = $this->input->post('email');
                 $name_from = $this->input->post('name');
                 $content = $this->input->post('message');
-                $to = 'admin@conferences-formations.com';
+                $to = $this->_setting['email'];
                 $subject=__('CF_your_contact_mail').$name_from;
                 $content=$this->input->post('message');
 
