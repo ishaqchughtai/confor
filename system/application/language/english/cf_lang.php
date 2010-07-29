@@ -647,3 +647,16 @@ $lang['CF_week_events'] = 'This week events';
 $lang['CF_month_events'] = 'This month events';
 $lang['CF_mess_no_week_event'] = "There isn't event in this week";
 $lang['CF_mess_no_month_event'] = "There isn't event in this month";
+
+//Key added on 29/07/2010
+$lang['CF_frontend_setting']="Frontend settings";
+$lang['CF_Conferences_per_page']="Conferences per page";
+$lang['CF_Video_per_page']="Videos per page";
+$lang['CF_Blog_per_page']="Blogs per page";
+$lang['CF_Conference_order_by_field']="Conference : Order by field";
+$lang['CF_Video_order_by_field']="Video : Order by field";
+$lang['CF_Blog_order_by_field']="Blog : Order by field";
+$lang['CF_site_offline']="Site offline";
+$lang['CF_Admin_email']="Admin Email";
+$lang['CF_system_settings']="System settings";
+$lang['CF_your_setting_saved']="Your setting has been saved";

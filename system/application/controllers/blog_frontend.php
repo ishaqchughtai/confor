@@ -166,12 +166,7 @@ class Blog_frontend extends Frontend_controller {
         $config['per_page']=$per_page;
         // echo $config['total_rows'];
         //        return;
-        $config['full_tag_open'] = '<li>';
-        $config['full_tag_close'] = '</li>'; 
-        $config['next_link'] = __("CF_next");
-        $config['prev_link'] = __("CF_previous");
-        $config['last_link'] = __("CF_last");
-        $config['first_link'] = __("CF_first");
+        $config += config_pagination_style();
 
         $this->pagination->initialize($config);
         $query_search = $this->Mblog->search_blog($this->_data['lang'],$offset,$per_page,$Keywords);
@@ -203,12 +198,7 @@ class Blog_frontend extends Frontend_controller {
         $config['total_rows'] = $this->Mblog->count_record_date($this->_data['lang'],$Date);
         $config['per_page']=$per_page;
         $config['uri_segment'] = 5;
-        $config['full_tag_open'] = '<li>';
-        $config['full_tag_close'] = '</li>'; 
-        $config['next_link'] = __("CF_next");
-        $config['prev_link'] = __("CF_previous");
-        $config['last_link'] = __("CF_last");
-        $config['first_link'] = __("CF_first");
+        $config += config_pagination_style();
         $this->pagination->initialize($config);
         $query_search = $this->Mblog->search_blog_by_date($this->_data['lang'],$offset,$per_page,$Date);
         $this->_data['page_title'] = __("CF_Blog_search");
@@ -244,7 +234,7 @@ class Blog_frontend extends Frontend_controller {
         $Website=$this->input->post('url');
         if($Website==NULL)
         {
-            $Website="http://conferences-formations.com";   
+            $Website="http://confor.us";   
         }
         $Website=prep_url($Website);
         $Comment=$this->input->post('msg');
@@ -281,7 +271,7 @@ class Blog_frontend extends Frontend_controller {
                         redirect('blog_frontend/blog_content_admin'.'/'.$Name.'/'.$Title.'#comments');    
                     }else
                     {
-                        $from = 'admin@conferences-formations.com';
+                        $from =$this->_setting['email'];
                         $name_from = '';
                         $to=$Email;
                         $subject=__("CF_subject_comment").$Title;

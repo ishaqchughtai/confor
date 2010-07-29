@@ -57,7 +57,7 @@
                     $from = $speaker_data["speaker_email"];
                     $name_from ='';
                     $content = sprintf(__('CF_ticket_content_email_to_admin'),$Title,$Message);
-                    $to = 'admin@conferences-formations.com';
+                    $to = $this->_setting['email']; 
                     $subject=__('CF_ticket_title_email').$this->input->post('title');
 
                     $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);
@@ -115,7 +115,7 @@
 
                     if($to!='')
                     {
-                        $from = 'admin@conferences-formations.com';
+                        $from = $this->_setting['email']; 
                         $name_from = '';
                         $content = sprintf(__('CF_ticket_content_email_to_speaker'),$name_speaker,$Title,$Message);
                         $subject=__('CF_ticket_title_email').$this->input->post('title');

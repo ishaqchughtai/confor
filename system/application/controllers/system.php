@@ -31,12 +31,14 @@ class System extends Admin_controller {
 		
 		$this->_data['order_conf_option'] = $this->MSystem->list_fields('tbloffice');
 		$this->_data['order_video_option'] = $this->MSystem->list_fields('videos');
-		$this->_data['order_blog_option'] = $this->MSystem->list_fields('tblblog');
+        $this->_data['order_blog_option'] = $this->MSystem->list_fields('tblblog');
+		$this->_data['email'] = $this->_setting['email'];
 
 		$this->form_validation->set_error_delimiters('<p class="not_error large"><span class="img"></span>','<span class="close"></span></p>');
 		$this->form_validation->set_rules('num_per_page_video','('.'Videos per page'.')','required|numeric');
 		$this->form_validation->set_rules('num_per_page_conf','('.'Conference per page'.')','required|numeric');
-		$this->form_validation->set_rules('num_per_page_blog','('.'Blog per page'.')','required|numeric');		
+        $this->form_validation->set_rules('num_per_page_blog','('.'Blog per page'.')','required|numeric');        
+		$this->form_validation->set_rules('email','('.'Email'.')','required|valid_email|trim');		
 		
 		if($this->input->post('update'))
 		{
@@ -60,10 +62,11 @@ class System extends Admin_controller {
 					'order_blog_field' => $this->input->post('order_blog_field'),
 					'order_conf_sort' => $this->input->post('order_conf_sort'),
 					'order_video_sort' => $this->input->post('order_video_sort'),
-					'order_blog_sort' => $this->input->post('order_blog_sort')
+                    'order_blog_sort' => $this->input->post('order_blog_sort'),
+					'email' => $this->input->post('email')
 				);		
 				$this->MSystem->save($save_data);
-				$this->_message('admin',"Your setting has been saved", 'success',site_url("system/setting"));
+				$this->_message('admin',__("CF_your_setting_saved"), 'success',site_url("system/setting"));
 			}			
 		}
 		else
