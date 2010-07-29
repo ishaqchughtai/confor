@@ -647,7 +647,7 @@ $lang['CF_site_offline']="f_Site offline";
 $lang['CF_Admin_email']="f_Admin Email";
 $lang['CF_system_settings']="f_System settings";
 $lang['CF_your_setting_saved']="f_Your setting has been saved";
-
+$lang['CF_save_order']="f_Save Order";
 $lang['CF_edit_meta']="f_Edit Metadata Information";
 $lang['CF_author']="f_AUTHOR";
 $lang['CF_edit_meta_suc']="f_Metadata information have been changed";

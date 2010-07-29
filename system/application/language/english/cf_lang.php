@@ -660,7 +660,7 @@ $lang['CF_site_offline']="Site offline";
 $lang['CF_Admin_email']="Admin Email";
 $lang['CF_system_settings']="System settings";
 $lang['CF_your_setting_saved']="Your setting has been saved";
-
+$lang['CF_save_order']="Save Order";
 $lang['CF_edit_meta']="Edit Metadata Information";
 $lang['CF_author']="AUTHOR";
 $lang['CF_edit_meta_suc']="Metadata information have been changed";
