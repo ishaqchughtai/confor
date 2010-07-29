@@ -32,7 +32,28 @@ class Payvideo extends Frontend_controller {
 		* @return 2 if the user dont login at prestashop
 		* @return 3 if the user logged but they dont have payment
 		*/		
-		$id_product = $this->MOrdershop->get_product_id_by_code($code);	
+		//$id_product = $this->MOrdershop->get_product_id_by_code($code);	
+		$physically_filename = $this->uri->segment(4);
+		if (!$physically_filename)
+		{
+			is_admin();
+			$this->db->where('code',$code);
+			$this->db->limit(1);
+			$query = $this->db->get('payvideos');
+			
+			if ($query->num_rows()>0)
+			{			
+				$this->_data['row'] = $query->row();
+				$this->_load_view('vid/payvideo_play');		
+			}
+			else
+			{
+				$this->_message('payvideo', "This file does not exist or has been deleted!", 'error');
+			}		
+			return;
+		}
+		
+		$id_product = $this->MOrdershop->get_product_id_by_code($physically_filename);	
 				
 		if ($id_product==0)
 		{								

@@ -65,3 +65,7 @@ else
 }
 
 ?>
+="big error" filename="'.ProductDownload::getNewFilename().'" />';
+}
+
+?>
