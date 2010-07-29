@@ -299,12 +299,13 @@
     {
       $this->db->select("
       tblevent.ID,
+      tblevent.Date,
       tblevent.Title,
       tblevent.Status,
       ");
       $this->db->from('tblevent');
       $this->db->where(array('WEEKOFYEAR(Date)'=>$week,'Status'=>1,'lang'=>$lg));
-      $this->db->order_by('ID','desc');
+      $this->db->order_by('Date','desc');
       $this->db->limit($per_page,$offset);
       $query = $this->db->get();
       $week_events=FALSE;
@@ -328,12 +329,13 @@
     {
       $this->db->select("
       tblevent.ID,
+      tblevent.Date,
       tblevent.Title,
       tblevent.Status,
       ");
       $this->db->from('tblevent');
       $this->db->where(array('MONTH(Date)'=>$month,'Status'=>1,'lang'=>$lg));
-      $this->db->order_by('ID','desc');
+      $this->db->order_by('Date','desc');
       $this->db->limit($per_page,$offset);
       $query = $this->db->get();
       $month_events=FALSE;

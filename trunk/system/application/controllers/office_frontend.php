@@ -30,7 +30,7 @@
       'name' => __("CF_conference_office"),
       'link' => "#"
       );
-	  $per_page = $this->_setting['num_per_page_conf'];
+	    $per_page = $this->_setting['num_per_page_conf'];      
       $config['uri_segment'] = 4;
       $config['base_url'] = base_url().'index.php/office_frontend/office/'.$per_page;
       $config['total_rows'] = $this->Mcoffice->count_office_by_lang($lg);
@@ -38,15 +38,10 @@
       //      return;
       $config['per_page']=$per_page;
 
-      $config['full_tag_open'] = '<li>';        
-      $config['full_tag_close'] = '</li>'; 
-      $config['next_link'] = __("CF_next");
-      $config['prev_link'] = __("CF_previous");
-      $config['last_link'] = __("CF_last");
-      $config['first_link'] = __("CF_first");
+      $config += config_pagination_style();
 
       $this->pagination->initialize($config);
-      $this->_data['query'] = $this->Mcoffice->get_all_by_order($lg,$per_page,$offset);
+      $this->_data['query'] = $this->Mcoffice->get_all_by_order($lg,$offset,$per_page);
 
       $this->_data['pagination'] = $this->pagination->create_links();
       $this->_load_view('home/office_view');
