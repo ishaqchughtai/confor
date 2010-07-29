@@ -146,7 +146,7 @@ $lang['CF_pop_vid'] = 'Liste des utilisateurs';
 $lang['CF_search_vid'] = 'Rechercher dans toutes les conf&eacute;rences';
 $lang['CF_cate'] = 'Cat&eacute;gories';
 $lang['CF_arch'] = 'Archives';
-$lang['CF_view'] = 'APPER&Ccedil;U';
+$lang['CF_view'] = 'APER&Ccedil;U';
 $lang['CF_pop_vid'] = 'Vid&eacute;os Populaires';
 $lang['CF_recent_vid'] = 'Vid&eacute;os r&eacute;&ccedil;ents';
 $lang['CF_event'] = '&Eacute;v&eacute;nements';
@@ -328,7 +328,7 @@ $lang['CF_showroom'] = 'Contr&ocirc;le d\'images Showroom';
 	$lang['CF_add_showroom'] = 'Ajouter une image au Showroom';
 $lang['CF_admin_vid_list'] = 'Liste des vid&eacute;os conf&eacute;rences';
 	$lang['CF_list_vid'] = 'Liste des vid&eacute;os';
-	$lang['CF_pre'] = 'APPER&Ccedil;U';
+	$lang['CF_pre'] = 'APER&Ccedil;U';
 	$lang['CF_date'] = 'DATE';
 	$lang['CF_viewed'] = 'VISIONN&Eacute;';	
 $lang['CF_admin_new_vid'] = 'Nouvelle vid&eacute;o conf&eacute;rence';
@@ -598,42 +598,42 @@ $lang['CF_conference_office_content'] = 'Contenu de Bureau de conf&eacute;rence'
 
 /*key added on 19/07/2010*/
 $lang['CF_adv_suc'] = 'Cette annonce &agrave; &eacute;t&eacute; modifi&eacute;';
-$lang['CF_check_date_expiry'] = 'La date de p&eacute;remption doit être sup&eacute;rieur ou &eacute;gal &agrave; la journ&eacute;e en cours';
+$lang['CF_check_date_expiry'] = 'La date de p&eacute;remption doit &ecirc;tre sup&eacute;rieur ou &eacute;gal &agrave; la journ&eacute;e en cours';
 $lang['CF_click'] = 'Clic';
 $lang['CF_to_continue'] = 'pour continuer';
 $lang['CF_go_to'] = 'aller &agrave;';
 $lang['CF_add_adv_suc'] = 'Nouvelle annonce ajout&eacute; avec succ&egrave;s';
 
 //Key added on 21/07/2010
-$lang['CF_your_meesage'] = 'Your Message';
+$lang['CF_your_meesage'] = 'Votre Message';
 $lang['CF_contact_title'] = 'CONTACT';
-$lang['CF_subject_comment'] = 'You have just posted a comment on :';
-$lang['CF_comment_content_email_to_speaker'] = 'Dear %s!'.chr(13).chr(10).'You have just posted a comment.'.chr(13).chr(10).'Blog Title: %s'.chr(13).chr(10).'Content: %s.'.chr(13).chr(10).chr(13).chr(10); 
-$lang['CF_target']='f_Target';
-$lang['CF_new_win'] = 'f_New Window';
-$lang['CF_same_win'] = 'f_Same Window';
-$lang['CF_details']='f_Details';
-$lang['CF_view_details']='f_View Details';
+$lang['CF_subject_comment'] = 'Vous venez de poster un commentaire sur :';
+$lang['CF_comment_content_email_to_speaker'] = 'Cher(e) %s!'.chr(13).chr(10).'Vous venez de poster un commentaire.'.chr(13).chr(10).'Titre Blogue : %s'.chr(13).chr(10).'Contenu : %s.'.chr(13).chr(10).chr(13).chr(10); 
+$lang['CF_target']='Pointer';
+$lang['CF_new_win'] = 'Nouvelle fen&ecirc;tre';
+$lang['CF_same_win'] = 'M&ecirc;me fen&ecirc;tre';
+$lang['CF_details']='D&eacute;tails';
+$lang['CF_view_details']='Voir D&eacute;tails';
 
-$lang['CF_order'] = 'f_Order';
-$lang['CF_add_off_suc'] = 'f_New conference office successfully added';
-$lang['CF_edit_off_suc'] = 'f_This conference office have been changed';
-$lang['CF_add_event_suc'] = 'f_New event successfully added';
-$lang['CF_edit_event_suc'] = 'f_This event have been changed';
+$lang['CF_order'] = 'Ordre';
+$lang['CF_add_off_suc'] = 'Nouveau bureau de conf&eacute;rencier ajout&eacute;';
+$lang['CF_edit_off_suc'] = 'Bureau de conf&eacute;rencier modifi&eacute;';
+$lang['CF_add_event_suc'] = 'Nouvel &eacute;v&eacute;nement ajout&eacute;';
+$lang['CF_edit_event_suc'] = 'Cet &eacute;v&eacute;nement a &eacute;t&eacute; chang&eacute;';
 
 //Key added on 23/07/2010
-$lang['CF_avd_details'] = 'f_Advertisement Details';
+$lang['CF_avd_details'] = 'D&eacute;tail de l\'annonce';
 
 //Key added on 26/07/2010
-$lang['CF_golbal_set'] = 'f_Global settings';
-$lang['CF_mem_function'] = 'f_Membership functions';
+$lang['CF_golbal_set'] = 'Param&egrave;tres globaux';
+$lang['CF_mem_function'] = 'Fonctions de souscription';
 
 //Key added on 27/07/2010
-$lang['CF_today_events'] = 'f_Today events';
-$lang['CF_week_events'] = 'f_This week events';
-$lang['CF_month_events'] = 'f_This month events';
-$lang['CF_mess_no_week_event'] = "f_There isn't event in this week";
-$lang['CF_mess_no_month_event'] = "f_There isn't event in this month";
+$lang['CF_today_events'] = 'Aujourd\'hui';
+$lang['CF_week_events'] = 'Cette semaine';
+$lang['CF_month_events'] = 'Ce mois-ci';
+$lang['CF_mess_no_week_event'] = 'Il n\'y a aucun &eacute;v&eacute;nement cette semaine';
+$lang['CF_mess_no_month_event'] = 'Il n\'y a aucun &eacute;v&eacute;nement ce mois-ci';
 
 //Key added on 29/07/2010
 $lang['CF_frontend_setting']="f_Frontend settings";
