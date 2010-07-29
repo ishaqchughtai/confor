@@ -101,7 +101,7 @@ class Video extends Frontend_controller
       );    
             if($this->input->post('search'))
             {                
-                $num_per_page = 5;    
+                $num_per_page = $this->_setting['num_per_page_video'];
                 $keyword=$this->input->post('search_field');   				          
                 $config['per_page'] = $num_per_page;
                 $config['uri_segment'] = 5;            
@@ -111,10 +111,10 @@ class Video extends Frontend_controller
 
                 if (($keyword) && strlen($keyword)>0)
                 {
-                    $config['base_url'] = site_url('home/search_paging').'/'.$keyword.'/'.$num_per_page.'/';  
+                    $config['base_url'] = site_url('video/search_paging').'/'.$keyword.'/'.$num_per_page.'/';  
                 } else {
                     $keyword = '_';
-                    $config['base_url'] = site_url('home/search_paging').'/'.$keyword.'/'.$num_per_page.'/';
+                    $config['base_url'] = site_url('video/search_paging').'/'.$keyword.'/'.$num_per_page.'/';
                 }
 
                 $this->pagination->initialize($config);  
@@ -136,22 +136,40 @@ class Video extends Frontend_controller
       );          
         $this->load->library('pagination');
         $offset = $this->uri->segment(5);      
-
-        if ($offset == FALSE) $offset=0;
-		
-        $config['base_url'] = site_url('home/search_paging').'/'.$keywords_to_search.'/'.$num_per_page.'/';        
-        $config['per_page'] = $num_per_page;
-        $config['uri_segment'] = 6;
+        if ($offset == FALSE) $offset=0;		
+        $config['base_url'] = site_url('video/search_paging').'/'.$keywords_to_search.'/'.$num_per_page.'/';        
+        $config['per_page'] = $this->_setting['num_per_page_video'];	
+        $config['uri_segment'] = 5;
 		$config += config_pagination_style(); 
         if ($keywords_to_search == '_') $keywords_to_search = '';
-        $config['total_rows'] = $this->Mhome->count_video_search($keywords_to_search);
+        $config['total_rows'] = $this->Mhome->count_video_search($keywords_to_search);		
         $this->pagination->initialize($config);
-        $istitle = $this->uri->segment(6);
-        $this->_data['search_results']=$this->Mhome->search_paging($keywords_to_search, $num_per_page, $offset,$istitle);     
+        $this->_data['search_results']=$this->Mhome->search_paging($keywords_to_search, $config['per_page'], $offset);     
         $this->_data['link_html'] = $this->pagination->create_links();
         $this->_data['keyword'] = $keywords_to_search;
         $this->_load_view('home/search'); 
     }
+	
+	function search_tag()
+	{
+		$keyword = $this->uri->segment(3);
+		$offset = $this->uri->segment(4);
+		$config['per_page'] = $this->_setting['num_per_page_video'];				
+		$config['uri_segment'] = 4;
+		$config['base_url'] = base_url().'index.php/video/search_tag/'.$keyword.'/';
+		
+		if ($keyword == '_') $keyword = '';
+		$config += config_pagination_style();					
+		
+		$config['total_rows'] = $this->Mhome->count_video_search($keyword,true);
+		$this->_data['search_results'] = $this->Mhome->search_paging($keyword, $config['per_page'], $offset, true);     
+		
+		$this->pagination->initialize($config);
+		$this->_data['link_html'] = $this->pagination->create_links();
+		$this->_data['keyword'] = $keyword;
+		$this->_load_view('home/search'); 
+	}	
+	
 	
 	function list_archives()
 	{		

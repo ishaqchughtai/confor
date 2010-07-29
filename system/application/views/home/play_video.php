@@ -94,7 +94,7 @@ $("div.scrollable").scrollable({easing: 'custom', speed: 700, circular: true});
 
         // logo initially has zero opacity
         logo: {   
-            url: 'http://conferences-formations.com/flowplayer/logo.png',   
+            url: '<?php echo base_url()?>/flowplayer/logo.png',   
             fullscreenOnly: false,   
             top: 10, 
             left: 10,

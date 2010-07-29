@@ -115,16 +115,28 @@
       return $total_rows;
     }
     
-    function count_video_search($keyword) 
-    {
-      $this->db->like('title', $keyword);
+    function count_video_search($keyword, $is_tag=false) 
+    {      
+	  $this->db->select('users.username, videos.*');
       $this->db->from('videos');
+      $this->db->where('videos.approved ', '1');
+      $this->db->join('users','videos.mem_id = users.id');
+      if($is_tag)
+      {
+			$this->db->like('tags', $keyword);
+      }
+      else
+      {          
+		  $this->db->like('title', $keyword);
+		  $this->db->or_like('tags', $keyword);
+		  $this->db->or_like('users.username', $keyword);		  
+      }
       return $this->db->count_all_results();
     }
 
-    function search_paging($keyword, $num, $offset,$istitle=true) {
+    function search_paging($keyword, $num, $offset,$is_tag=false) {
       $this->db->select('
-      users.username,      
+      users.username,
       videos.vid_id,
       videos.date,
       videos.title,
@@ -139,13 +151,15 @@
       $this->db->from('videos');
       $this->db->where('videos.approved ', '1');
       $this->db->join('users','videos.mem_id = users.id');
-      if($istitle)
+      if($is_tag)
       {
-          $this->db->like('title', $keyword);
+			$this->db->like('tags', $keyword);
       }
       else
-      {
-          $this->db->like('tags', $keyword);
+      {          
+		  $this->db->like('title', $keyword);
+		  $this->db->or_like('tags', $keyword);
+		  $this->db->or_like('users.username', $keyword);		  
       }
 
       $this->db->order_by('viewed','desc');
