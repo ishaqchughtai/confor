@@ -57,3 +57,51 @@
 [08-Jul-2010 18:55:17] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
 [08-Jul-2010 18:55:17] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
 [08-Jul-2010 18:55:17] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[13-Jul-2010 21:49:42] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[13-Jul-2010 21:49:42] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[13-Jul-2010 21:49:42] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[13-Jul-2010 21:50:37] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[13-Jul-2010 21:50:37] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[13-Jul-2010 21:50:37] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[13-Jul-2010 22:20:28] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[13-Jul-2010 22:20:28] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[13-Jul-2010 22:20:28] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[13-Jul-2010 22:37:39] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[13-Jul-2010 22:37:39] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[13-Jul-2010 22:37:39] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[13-Jul-2010 22:52:13] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[13-Jul-2010 22:52:13] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[13-Jul-2010 22:52:13] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[13-Jul-2010 22:53:12] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[13-Jul-2010 22:53:12] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[13-Jul-2010 22:53:12] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[13-Jul-2010 22:57:11] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[13-Jul-2010 22:57:11] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[13-Jul-2010 22:57:11] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[13-Jul-2010 23:14:42] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[13-Jul-2010 23:14:42] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[13-Jul-2010 23:14:42] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[15-Jul-2010 14:38:42] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[15-Jul-2010 14:38:42] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[15-Jul-2010 14:38:42] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[15-Jul-2010 15:06:28] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[15-Jul-2010 15:06:28] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[15-Jul-2010 15:06:28] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[16-Jul-2010 09:20:23] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[16-Jul-2010 09:20:23] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[16-Jul-2010 09:20:23] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[16-Jul-2010 09:34:17] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[16-Jul-2010 09:34:17] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[16-Jul-2010 09:34:17] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[16-Jul-2010 10:00:52] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[16-Jul-2010 10:00:52] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[16-Jul-2010 10:00:52] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[16-Jul-2010 10:48:59] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[16-Jul-2010 10:48:59] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[16-Jul-2010 10:48:59] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[16-Jul-2010 11:08:24] PHP Warning:  finfo_open() [<a href='function.finfo-open'>function.finfo-open</a>]: Failed to load magic database at '/usr/share/misc/magic'. in /home/conferen/public_html/prestashop/images.inc.php on line 75
+[16-Jul-2010 11:08:24] PHP Warning:  finfo_file(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 76
+[16-Jul-2010 11:08:24] PHP Warning:  finfo_close(): supplied argument is not a valid file_info resource in /home/conferen/public_html/prestashop/images.inc.php on line 77
+[29-Jul-2010 00:35:54] PHP Warning:  chmod() [<a href='function.chmod'>function.chmod</a>]: No such file or directory in /home/conforus/public_html/prestashop/admin_shop/uploadProductFile.php on line 29
+[29-Jul-2010 00:35:54] PHP Warning:  file_get_contents(/home/conforus/public_html/prestashop/download//tmp/phpgWdFsj.htm) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /home/conforus/public_html/prestashop/admin_shop/uploadProductFile.php on line 30
+[29-Jul-2010 00:39:04] PHP Warning:  file_get_contents(/home/conforus/public_html/prestashop/download//tmp/phpCjBFOz) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /home/conforus/public_html/prestashop/admin_shop/uploadProductFile.php on line 30
