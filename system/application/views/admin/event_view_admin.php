@@ -25,14 +25,12 @@
 	</div>
         <table border="1" width="100%">
             <tr align="left">
-                <th width="124"><?php echo __("CF_date")?></th>
-                <th width="54"><?php echo __("CF_user_name")?></th>
-                <th width="119"><?php echo __("CF_title")?></th>
-                <th width="68"><?php echo __("CF_subject")?></th>
-                <th width="145"><?php echo __("CF_key")?></th>
-                <th width="299"><?php echo __("CF_des")?></th>
-                <th width="17"><?php echo mb_strtoupper(__("CF_status"))?> </th>
-                <th width="17" align="center"><?php echo mb_strtoupper(__("CF_action"))?></th>
+                <th width="135"><?php echo __("CF_date")?></th>
+                <th width="180"><?php echo __("CF_user_name")?></th>
+                <th width="284"><?php echo __("CF_title")?></th>
+                <th width="201"><?php echo __("CF_subject")?></th>                
+                <th width="26"><?php echo mb_strtoupper(__("CF_status"))?> </th>
+                <th width="26" align="center"><?php echo mb_strtoupper(__("CF_action"))?></th>
             </tr>
             
             <?php foreach($query as $row):?>
@@ -41,23 +39,15 @@
 						$subject = $row['Subject'];
 						$description = $row['Description'];					
 			?>
-            <?php $keyword = explode(" ", $row['Keywords']); ?>
                 <tr>
                     <td><?php echo date("F jS Y", strtotime($row['Date']))?></td>
                     <td><?php echo $row['username']?></td>     
                     <td><a href="<?php echo site_url('event_frontend/event_content/'.$row['ID'])?>" target="_blank"><?php echo $title?></a></td>                   
                     
-                    <td><?php echo $subject?></td>
-                    <td>
-					<?php for($i=0;$i<count($keyword);$i++){?>
-                      <a href="<?php echo site_url('event/search_keyword_admin').'/'.$keyword[$i].'/'.$lg.'/'.$page?>"><?php echo $keyword[$i]?></a>
-                      <?php if ($i<count($keyword)-1) echo ','?>
-                      <?php ;}?>
-                    </td>                    
-                    <td><?php echo _substr($description,100)?></td>
+                    <td><?php echo $subject?></td>                   
                     <td><?php if((int)$row['Status']=='0'){echo __("CF_shop_deac");}else{echo __("CF_shop_ac");} ?></td>
-                    <td width="17"><a href="<?php echo site_url('event/get_event_admin'.'/'.$row['ID'])?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></td> 
-                    <td width="17"><a href="<?php echo site_url('event/delete_event_admin'.'/'.$row['ID'])?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
+                    <td width="26"><a href="<?php echo site_url('event/get_event_admin'.'/'.$row['ID'])?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></td> 
+                    <td width="29"><a href="<?php echo site_url('event/delete_event_admin'.'/'.$row['ID'])?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
                 </tr>
                 <?php endforeach;?>
         </table>

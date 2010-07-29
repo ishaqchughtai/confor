@@ -660,3 +660,11 @@ $lang['CF_site_offline']="Site offline";
 $lang['CF_Admin_email']="Admin Email";
 $lang['CF_system_settings']="System settings";
 $lang['CF_your_setting_saved']="Your setting has been saved";
+
+$lang['CF_edit_meta']="Edit Metadata Information";
+$lang['CF_author']="AUTHOR";
+$lang['CF_edit_meta_suc']="Metadata information have been changed";
+$lang['CF_not_meta']="Not available metadata information";
+$lang['CF_to_add_meta']="to add metadata information";
+$lang['CF_add_meta']="Add metadata information";
+$lang['CF_add_meta_suc']="New metadata information successfully added";
