@@ -100,3 +100,12 @@
     <div class="frame_bottom"></div>		
 </div>
 <div class="divider"></div>
+<div class="x2 frame">
+    <h3>Paying Video Control</h3>
+    <ul class="link_conttrol">
+        <li><a class="icon_list" href="<?php echo site_url('payvid')?>">Paying videos list</a></li>        
+        <li><a class="icon_add" href="<?php echo site_url('payvid/new_payvideo')?>">New paying video</a></li>
+    </ul>    
+    <div class="frame_bottom"></div>		
+</div>
+<div class="divider"></div>
