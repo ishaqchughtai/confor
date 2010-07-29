@@ -22,6 +22,7 @@
 				<ul class="link_conttrol">
         <li><a class="icon_list" href="<?php echo site_url('event/event_list'.'/'.$lg.'/'.$page)?>"><?php echo __("CF_admin_event_list")?></a></li>
         <li><a class="icon_add" href="<?php echo site_url('event/add_event')?>"><?php echo __("CF_admin_new_event")?></a></li>
+         <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata/event/'.$id)?>"><?php echo __("CF_edit_meta")?></a></li>
     </ul>
     <br />
 					<h3><?php echo __("CF_edit_event")?></h3>

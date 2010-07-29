@@ -13,6 +13,7 @@
     			<div class="content_item">
 				<ul class="link_conttrol">
         <li><a class="icon_list" href="<?php echo site_url('conference_office/get_all'.'/'.$lg.'/'.$page)?>"><?php echo __("CF_list_ar")?></a></li>
+         <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata/office/'.$id)?>"><?php echo __("CF_edit_meta")?></a></li>
     </ul>
     <br>
 					<h3><?php echo __("CF_add_office")?></h3>

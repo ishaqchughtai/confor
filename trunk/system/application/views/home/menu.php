@@ -24,7 +24,7 @@
 			</ul>
 		</li>
 		
-		<li><a href="<?php echo site_url("office_frontend/office/5") ?>"><?php echo __("CF_conference_office")?></a>
+		<li><a href="<?php echo site_url("office_frontend/office") ?>"><?php echo __("CF_conference_office")?></a>
 		
         	<!--<li><a href="<?php echo site_url("office_frontend/office/5") ?>"><?php echo __("CF_conference_office")?></a>
         		<ul>
