@@ -38,6 +38,7 @@ class Video_upload_lib {
 	var $upload_folder_thumb = './thumbs/';	
 	var $temp_expiration = 3600;
 	var $convert_cmd = FFMPEG_BINARY;
+	var $video_table_name = 'videos';
 		
 	var $default_video_settings = array(
 		'allowed_ext' => "*.avi,*.mp4,*.flv,*.mpg,*.asf,*.3gp,*.mmv,*.mpe,*.mpeg,*.ogv,*.rm,*.wmv,*.ts",
@@ -313,7 +314,7 @@ class Video_upload_lib {
 			copy($this->temp_path.$uname.'.flv',$this->upload_folder.$uname.'.flv');
 			copy($this->temp_path.$uname.'.jpg',$this->upload_folder_thumb.$uname.'.jpg');
 			$this->remove_temp($uname);
-			$this->CI->db->insert('videos', $data);
+			$this->CI->db->insert($this->video_table_name, $data);
 			return TRUE;
 		}
 		else
@@ -325,7 +326,7 @@ class Video_upload_lib {
 	function remove_video_by_vid_id($vid_id, $speaker_id=0)
 	{
 		$this->CI->db->select('vhash,shash');
-		$this->CI->db->from('videos');
+		$this->CI->db->from($this->video_table_name);
 		$this->CI->db->limit(1);
 		$this->CI->db->where('vid_id', $vid_id);
 		if ($speaker_id > 0) $this->CI->db->where('mem_id', $speaker_id);
@@ -342,7 +343,7 @@ class Video_upload_lib {
 			if (file_exists($video)) unlink($video);
 			if (file_exists($thumb)) unlink($thumb);
 			$this->CI->db->where('vid_id', $vid_id);
-			$this->CI->db->delete('videos');
+			$this->CI->db->delete($this->video_table_name);
 			return TRUE;
 		}							
 	}
