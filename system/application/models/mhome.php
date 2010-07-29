@@ -115,11 +115,12 @@
       return $total_rows;
     }
     
-    function count_video_search($keyword, $is_tag=false) 
+    function count_video_search($lg, $keyword, $is_tag=false) 
     {      
 	  $this->db->select('users.username, videos.*');
       $this->db->from('videos');
       $this->db->where('videos.approved ', '1');
+	  $this->db->where('videos.lang',$lg);
       $this->db->join('users','videos.mem_id = users.id');
       if($is_tag)
       {
@@ -134,7 +135,7 @@
       return $this->db->count_all_results();
     }
 
-    function search_paging($keyword, $num, $offset,$is_tag=false) {
+    function search_paging($lg, $keyword, $num, $offset,$is_tag=false) {
       $this->db->select('
       users.username,
       videos.vid_id,
@@ -150,6 +151,7 @@
       ');
       $this->db->from('videos');
       $this->db->where('videos.approved ', '1');
+	  $this->db->where('videos.lang',$lg);
       $this->db->join('users','videos.mem_id = users.id');
       if($is_tag)
       {
