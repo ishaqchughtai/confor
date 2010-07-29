@@ -118,7 +118,11 @@ if (Tools::isSubmit('submitAccount'))
 						$cookie->passwd = $customer->passwd;
 						$cookie->logged = 1;
 						$cookie->email = $customer->email;
-						Module::hookExec('createAccount', array(
+                        
+                        @session_start();
+                        $_SESSION['chk_login_download_video'] = intval($customer->id);
+						
+                        Module::hookExec('createAccount', array(
 							'_POST' => $_POST,
 							'newCustomer' => $customer
 						));
@@ -161,6 +165,15 @@ if (Tools::isSubmit('SubmitLogin'))
 			$cookie->logged = 1;
 			$cookie->passwd = $customer->passwd;
 			$cookie->email = $customer->email;
+            @session_start();
+            $_SESSION['chk_login_download_video'] = $cookie->id_customer;
+            //ini_set('session.cookie_secure',true); 
+           // var_dump(setcookie('chk_login_download_video','100',(time() + 1728000)));            
+            //echo 'Value of cookie: '.$HTTP_COOKIE_VARS['chk_login_download_video'];
+            //echo '<pre>';
+            //print_r($_COOKIE);
+           // echo '</pre>';
+            //$_COOKIE['chk_login_download_video'];
 			if (Configuration::get('PS_CART_FOLLOWING') AND (empty($cookie->id_cart) OR Cart::getNbProducts($cookie->id_cart) == 0))
 				$cookie->id_cart = intval(Cart::lastNoneOrderedCart(intval($customer->id)));
 			Module::hookExec('authentication');

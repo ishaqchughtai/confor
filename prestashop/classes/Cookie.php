@@ -177,6 +177,11 @@ class	Cookie
 		$this->_content = array();
 		$this->_setcookie();
 		unset($_COOKIE[$this->_name]);
+        @session_start();  
+        if(isset($_SESSION['chk_login_download_video'])) 
+        {
+            unset($_SESSION['chk_login_download_video']);
+        }
 	}
 
 	/**
@@ -196,6 +201,11 @@ class	Cookie
 		unset($this->_content['id_cart']);
 		unset($this->_content['id_address_invoice']);
 		unset($this->_content['id_address_delivery']);
+        @session_start();  
+        if(isset($_SESSION['chk_login_download_video'])) 
+        {
+            unset($_SESSION['chk_login_download_video']);
+        }
 		$this->write();
 	}
 	
