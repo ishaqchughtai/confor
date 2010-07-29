@@ -105,9 +105,9 @@ class Video extends Frontend_controller
                 $keyword=$this->input->post('search_field');   				          
                 $config['per_page'] = $num_per_page;
                 $config['uri_segment'] = 5;            
-                $config['total_rows'] = $this->Mhome->count_video_search($keyword);
+                $config['total_rows'] = $this->Mhome->count_video_search($this->_data['lang'],$keyword);
 				$config += config_pagination_style();	
-                $this->_data['search_results']=$this->Mhome->search_paging($keyword, $num_per_page, 0);
+                $this->_data['search_results']=$this->Mhome->search_paging($this->_data['lang'],$keyword, $num_per_page, 0);
 
                 if (($keyword) && strlen($keyword)>0)
                 {
@@ -142,9 +142,9 @@ class Video extends Frontend_controller
         $config['uri_segment'] = 5;
 		$config += config_pagination_style(); 
         if ($keywords_to_search == '_') $keywords_to_search = '';
-        $config['total_rows'] = $this->Mhome->count_video_search($keywords_to_search);		
+        $config['total_rows'] = $this->Mhome->count_video_search($this->_data['lang'],$keywords_to_search);		
         $this->pagination->initialize($config);
-        $this->_data['search_results']=$this->Mhome->search_paging($keywords_to_search, $config['per_page'], $offset);     
+        $this->_data['search_results']=$this->Mhome->search_paging($this->_data['lang'],$keywords_to_search, $config['per_page'], $offset);     
         $this->_data['link_html'] = $this->pagination->create_links();
         $this->_data['keyword'] = $keywords_to_search;
         $this->_load_view('home/search'); 
@@ -161,8 +161,8 @@ class Video extends Frontend_controller
 		if ($keyword == '_') $keyword = '';
 		$config += config_pagination_style();					
 		
-		$config['total_rows'] = $this->Mhome->count_video_search($keyword,true);
-		$this->_data['search_results'] = $this->Mhome->search_paging($keyword, $config['per_page'], $offset, true);     
+		$config['total_rows'] = $this->Mhome->count_video_search($this->_data['lang'],$keyword,true);
+		$this->_data['search_results'] = $this->Mhome->search_paging($this->_data['lang'],$keyword, $config['per_page'], $offset, true);     
 		
 		$this->pagination->initialize($config);
 		$this->_data['link_html'] = $this->pagination->create_links();
