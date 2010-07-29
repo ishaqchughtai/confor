@@ -61,7 +61,7 @@
         <?php foreach ($videos as $row):?>
         <?php 
             $user_name=$row['first_name'].' '.$row['name'];
-            $preview_img=base_url().thumbs.'/'.$row['shash'];
+            $preview_img=base_url().'thumbs/'.$row['shash'];
             $upload_date=mdate("%d-%m-%Y", $row['date']);
 			$appr = ($row['approved']==1)?__("CF_yes"):__("CF_No");
         ?>

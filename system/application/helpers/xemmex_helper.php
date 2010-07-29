@@ -832,5 +832,28 @@ function get_archives()
 	return $archives;
 }
 
+/*
+* Check view video file
+* @return 1 if all information is right
+* @return 2 if the user dont login at prestashop
+* @return 3 if the user logged but they dont have payment
+*/
+if ( ! function_exists('chk_view_video_shop'))
+{
+    function chk_view_video_shop($id_product)
+    {
+        @session_start();
+        if(isset($_SESSION['chk_login_download_video']) && !empty($_SESSION['chk_login_download_video']) && is_numeric($_SESSION['chk_login_download_video']))
+        {
+             $CI =& get_instance();
+             //$CI->load->model('MOrdershop');			 
+             if($CI->MOrdershop->get_order_customer($id_product, $_SESSION['chk_login_download_video'])) return 1;
+             //$CI->uri->segment(4), $_SESSION['chk_login_download_video'] ==== $id_product, $id_customer
+             //example link: http://localhost/confor/index.php/payvideo/play/FNSSyExf7TFUSlyV1280337337/31 ==>31 is $id_product             
+             return 3;
+        }    
+        return 2;
+    }
+}
 /* End of file xemmex_helper.php */ 
 /* Location: ./system/application/helpers/xemmex_helper.php */ 
