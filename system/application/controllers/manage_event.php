@@ -37,12 +37,7 @@
       $config['total_rows'] = $this->MEvent->count_event_by_speaker($id,$lg);
       $config['per_page']=$per_page;
 
-      $config['full_tag_open'] = '<li>';        
-      $config['full_tag_close'] = '</li>'; 
-      $config['next_link'] = __("CF_next");
-      $config['prev_link'] = __("CF_previous");
-      $config['last_link'] = __("CF_last");
-      $config['first_link'] = __("CF_first");
+      $config += config_pagination_style();
       $this->_data['your_event'] = $this->MEvent->list_event_by_speaker($id,$lg,$per_page,$offset); 
       $this->pagination->initialize($config);
       $this->_data['pagination'] = $this->pagination->create_links();

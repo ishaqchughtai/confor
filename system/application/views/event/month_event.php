@@ -5,13 +5,14 @@
    				{
 					$id = $row['ID'];
 					$title = $row['Title'];
+					$date = date("F jS Y", strtotime($row['Date']));
 					$status = $row['Status'];
 					?>
 					
 					
 					<?php if($status==1):?>
 					
-						<li><h5><a href="<?php echo site_url('event_frontend/event_content/'.$id)?>"><?php echo $title?></a></h5></li>
+						<li><h5><a href="<?php echo site_url('event_frontend/event_content/'.$id)?>"><?php echo $title?>(<?php echo $date?>)</a></h5></li>
 						
 					<?php else:?>
 					<?php endif;?>
