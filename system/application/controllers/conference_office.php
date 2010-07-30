@@ -263,30 +263,24 @@
                 }    
             }
         }
-        function swap_by_no($lg)
+        function swap_by_no($no_temp_1,$no_temp_2,$lg)
         {
-            // $lg = $this->uri->segment(3);
             is_admin();
-            $this->form_validation->set_rules('order_input_temp2',"Order",'required|numeric|trim');
-            $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
-            $no_temp_1=$this->input->post('order_input_temp1');
-            $no_temp_2=$this->input->post('order_input_temp2');
-            if($this->form_validation->run()==FALSE)
+            if($no_temp_2<=0 || !is_numeric($no_temp_2))
             {
-                $this->list_all();       
-            }
-            else
+                $this->_message('training', __("CF_Invaild_format"), 'error',site_url("conference_office/index").'/'.$lg);   
+            }else
             {
-                if($no_temp_2<=0)
+                $query = $this->Mcoffice->get_no($lg);
+                foreach($query as $row)
                 {
-                    $this->list_all();    
+                    $max_no = $row->max_no;
+                }
+                if($no_temp_2>$max_no)
+                {
+                    $this->_message('training', __("CF_Invaild_format"), 'error',site_url("conference_office/index").'/'.$lg);
                 }else
                 {
-                    $query = $this->Mcoffice->get_no($lg);
-                    foreach($query as $row)
-                    {
-                        $max_no = $row->max_no;
-                    }
                     $no_temp_2=$max_no-($no_temp_2-1);
                     if($this->Mcoffice->update_one($no_temp_2,$lg)==TRUE)
                     {
@@ -298,8 +292,7 @@
                             }   
                         }    
                     }   
-                }
-
+                }   
             }
         }
         //Delete Training
