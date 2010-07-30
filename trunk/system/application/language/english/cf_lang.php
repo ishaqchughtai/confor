@@ -668,3 +668,4 @@ $lang['CF_not_meta']="Not available metadata information";
 $lang['CF_to_add_meta']="to add metadata information";
 $lang['CF_add_meta']="Add metadata information";
 $lang['CF_add_meta_suc']="New metadata information successfully added";
+$lang['CF_Invaild_format']="Invaild format";
