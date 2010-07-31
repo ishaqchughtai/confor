@@ -8,7 +8,7 @@
 ?>   
               <div class="x2">					
 					<?php $this->load->view("vid/payvideo_menu",array("lg"=>$lg));?>                    
-                    <h3> Update video for sale </h3>
+                    <h3><?php echo __("CF_pay_vid_edit")?></h3>
                     <?php echo form_open('payvid/edit_payvideo/'.$id);?> 										
                     <p>
                         <label for="title"><?php echo __("CF_title")?>:</label>

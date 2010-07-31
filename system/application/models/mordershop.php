@@ -2,19 +2,19 @@
 
 /**
 
- * MOrdershop Model Class
+* MOrdershop Model Class
 
- *
+*
 
- * @package		Confor
+* @package		Confor
 
- * @subpackage	Models
+* @subpackage	Models
 
- * @category	Shopping
+* @category	Shopping
 
- * @author		Tham - XEMMEX developer
+* @author		Tham - XEMMEX developer
 
- */
+*/
 
 
 
@@ -32,17 +32,14 @@ class MOrdershop extends Model
 
 	}	
 	
-	function get_product_id_by_code($code)
-	{
-		$this->db->select('id_product');		
+	function get_product_by_code($code)
+	{		
 		$this->db->where('physically_filename',$code);
 		$this->db->limit(1);
-		$query = $this->db->get('presshop_product_download');
-		
+		$query = $this->db->get('presshop_product_download');		
 		if ($query->num_rows()>0)
-		{
-			$r = $query->row();
-			return $r->id_product;
+		{			
+			return $query->row();
 		}
 		else
 		{	
@@ -50,48 +47,137 @@ class MOrdershop extends Model
 		}
 	}
 	
+	// function get_product_id_by_code($code)
+	// {
+		// $this->db->select('id_product');		
+		// $this->db->where('physically_filename',$code);
+		// $this->db->limit(1);
+		// $query = $this->db->get('presshop_product_download');
+		
+		// if ($query->num_rows()>0)
+		// {
+			// $r = $query->row();
+			// return $r->id_product;
+		// }
+		// else
+		// {	
+			// return 0;
+		// }
+	// }
+	
 	// --------------------------------------------------------------------
 	/**
 
-     * Get order information according to id_product and id customer
+	* Get order information according to id_product and id customer
 
-     *
+	*
 
-     * @access    public
+	* @access    public
 
-     * @return    boolean true if it had paid, else
+	* @return    boolean true if it had paid, else
 
-     */        
+	*/        
 
-    function get_order_customer($id_product, $id_customer)
-    {
-       $sql = 'SELECT o.id_order,download_nb 
-               FROM presshop_orders o 
-               INNER JOIN presshop_order_detail od ON o.id_order=od.id_order 
-               WHERE od.product_id = '.intval($id_product).' 
-               AND o.id_customer = '.intval($id_customer).' 
-               AND o.valid > 0
-               AND od.download_nb >0
-               AND od.download_deadline >=\''.date('Y-m-d').' 00:00:00\' 
-               GROUP BY o.id_order';
-       $rst = $this->db->query($sql);
-       $num_row_rc = $rst->num_rows();
-       if($num_row_rc>0)
-       {
-            $this->db->select('nb_downloadable');
-            $this->db->from('presshop_product_download');
-            $this->db->where(array('id_product'=>$id_product,'nb_downloadable >'=>0,'active'=>1));
-            $this->db->limit(1);
-            $row_down = $this->db->get();
+	// function get_order_customer($id_product, $id_customer)
+	// {
+		// $sql = 'SELECT o.id_order,download_nb 
+			// FROM presshop_orders o 
+			// INNER JOIN presshop_order_detail od ON o.id_order=od.id_order 
+			// WHERE od.product_id = '.intval($id_product).' 
+			// AND o.id_customer = '.intval($id_customer).' 
+			// AND o.valid > 0
+			// AND od.download_nb >0
+			// AND od.download_deadline >=\''.date('Y-m-d').' 00:00:00\' 
+			// GROUP BY o.id_order';
+		// $rst = $this->db->query($sql);
+		// $num_row_rc = $rst->num_rows();
+		// if($num_row_rc>0)
+		// {
+			// $this->db->select('nb_downloadable');
+			// $this->db->from('presshop_product_download');
+			// $this->db->where(array('id_product'=>$id_product,'nb_downloadable >'=>0,'active'=>1));
+			// $this->db->limit(1);
+			// $row_down = $this->db->get();
+			// $row_down = $row_down->row();			
+			// $row = $rst->row();
+			// if(intval($row->download_nb)>intval($row_down->nb_downloadable)) return false;					            			
+			// $upview['download_nb'] = intval($row->download_nb)+1;
+			// $this->db->update('presshop_order_detail',$upview, array('id_order'=>$row->id_order));						
+			// return true;
+		// }       
+		// return false; 
+	// }
+	
+	// function get_order_by_customer($id_product, $id_customer)
+	// {
+		// $sql = 'SELECT o.id_order,download_nb 
+			// FROM presshop_orders o 
+			// INNER JOIN presshop_order_detail od ON o.id_order=od.id_order 
+			// WHERE od.product_id = '.intval($id_product).' 
+			// AND o.id_customer = '.intval($id_customer).' 
+			// AND o.valid > 0
+			// AND od.download_nb >0
+			// AND od.download_deadline >=\''.date('Y-m-d').' 00:00:00\' 
+			// GROUP BY o.id_order';
+		// $rst = $this->db->query($sql);
+		// $num_row_rc = $rst->num_rows();
+		// if($num_row_rc>0)
+		// {
+			// $this->db->select('nb_downloadable');
+			// $this->db->from('presshop_product_download');
+			// $this->db->where(array('id_product'=>$id_product,'nb_downloadable >'=>0,'active'=>1));
+			// $this->db->limit(1);
+			// $row_down = $this->db->get();
+			// $row_down = $row_down->row();			
+			// $row = $rst->row();
+			// if(intval($row->download_nb)>intval($row_down->nb_downloadable)) return -1;					            			
+			// $upview['download_nb'] = intval($row->download_nb)+1;
+			// $this->db->update('presshop_order_detail',$upview, array('id_order'=>$row->id_order));						
+			// return $upview['download_nb'];
+		// }       
+		// return 0; 
+	// }	
+	
+	function get_order($id_product, $id_customer)
+	{	
+		$ret['result'] = 0;
+		$ret['order'] = FALSE;
+		//$ret['product'] = FALSE;
+		
+		$sql = 'SELECT o.id_order,download_nb,od.download_deadline 
+			FROM presshop_orders o 
+			INNER JOIN presshop_order_detail od ON o.id_order=od.id_order 
+			WHERE od.product_id = '.intval($id_product).' 
+			AND o.id_customer = '.intval($id_customer).' 
+			AND o.valid > 0
+			AND od.download_nb >0
+			AND od.download_deadline >=\''.date('Y-m-d').' 00:00:00\' 
+			GROUP BY o.id_order';
+		$rst = $this->db->query($sql);
+		$num_row_rc = $rst->num_rows();
+		if($num_row_rc>0)
+		{
+			$this->db->select('nb_downloadable');
+			$this->db->from('presshop_product_download');
+			$this->db->where(array('id_product'=>$id_product,'nb_downloadable >'=>0,'active'=>1));
+			$this->db->limit(1);
+			$row_down = $this->db->get();
 			$row_down = $row_down->row();			
 			$row = $rst->row();
-			if(intval($row->download_nb)>intval($row_down->nb_downloadable)) return false;					            			
+			if(intval($row->download_nb)>intval($row_down->nb_downloadable)) {
+				$ret['result'] = -1;					    
+				return $ret;
+			}
 			$upview['download_nb'] = intval($row->download_nb)+1;
 			$this->db->update('presshop_order_detail',$upview, array('id_order'=>$row->id_order));						
-            return true;
-       }       
-       return false; 
-    }
+			$ret['order'] = $row;
+			//$ret['product'] = $row_down;
+			$ret['result'] = 1;
+			return $ret;				
+		}       
+		return $ret;
+	}	
+	
 }
 
 

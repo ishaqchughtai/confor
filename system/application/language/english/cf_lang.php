@@ -610,8 +610,8 @@ $lang['CF_conference_office_content'] = 'Conference Office Content';
  
 /*key added on 19/07/2010*/
 $lang['CF_adv_suc'] = 'This advertisement have been changed';
-$lang['CF_check_date_expiry'] = 'Expiration date must be greater than or equal to the current day';
 $lang['CF_click'] = 'Click';
+$lang['CF_check_date_expiry'] = 'Expiration date must be greater than or equal to the current day';
 $lang['CF_to_continue'] = 'to continue';
 $lang['CF_go_to'] = 'Go to';
 $lang['CF_add_adv_suc'] = 'New advertisement successfully added';
@@ -669,3 +669,23 @@ $lang['CF_to_add_meta']="to add metadata information";
 $lang['CF_add_meta']="Add metadata information";
 $lang['CF_add_meta_suc']="New metadata information successfully added";
 $lang['CF_Invaild_format']="Invaild format";
+
+//Key added on 31/07/2010
+$lang['CF_pay_vid']="Paying video";
+$lang['CF_pay_vid_con']="Paying video control";
+$lang['CF_pay_vid_list']="Paying video list";
+$lang['CF_pay_vid_new']="Create paying video";
+$lang['CF_pay_vid_edit']="Update paying video";
+
+$lang['CF_pay_vid_detail']="Paying video details";
+$lang['CF_pay_vid_expire']="Expiration date";
+$lang['CF_pay_vid_max_view']="Max number of views";
+$lang['CF_pay_vid_viewed']="Number of your views";
+
+$lang['CF_pay_vid_must_login']="You must login the Shop to view this file";
+$lang['CF_pay_vid_must_pay']="You must pay money for viewing this file";
+$lang['CF_pay_vid_reach_limit']="You have reached the maximum viewable of this video.";
+$lang['CF_pay_vid_not_belong']="This video does not belong to any product";
+$lang['CF_pay_vid_not_exist']="This file does not exist or has been deleted!";
+
+$lang['CF_to_play'] = "to play this video";

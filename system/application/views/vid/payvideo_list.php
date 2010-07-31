@@ -1,6 +1,6 @@
 <div class="">    
     <?php $this->load->view("vid/payvideo_menu");?>
-    <h3>Paying video list</h3>
+    <h3><?php echo __("CF_pay_vid_list")?></h3>
     <table border="0" cellpadding="0" cellspacing="1" style="width:100%">
         <tr>
             <th width="65"><?php echo __("CF_action")?></th>	        

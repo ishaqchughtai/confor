@@ -1,7 +1,7 @@
               <div class="x2">                    
 					<?php $this->load->view("vid/payvideo_menu");?>                   
 				
-                    <h3>Create paying video</h3> 
+                    <h3><?php echo __("CF_pay_vid_new")?></h3> 
 					<?php echo form_open('payvid/new_payvideo/');?>
 													
 					<p>

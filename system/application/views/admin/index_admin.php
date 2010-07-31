@@ -101,10 +101,10 @@
 </div>
 <div class="divider"></div>
 <div class="x2 frame">
-    <h3>Paying Video Control</h3>
+    <h3><?php echo __("CF_pay_vid_con")?></h3>
     <ul class="link_conttrol">
-        <li><a class="icon_list" href="<?php echo site_url('payvid')?>">Paying videos list</a></li>        
-        <li><a class="icon_add" href="<?php echo site_url('payvid/new_payvideo')?>">New paying video</a></li>
+        <li><a class="icon_list" href="<?php echo site_url('payvid')?>"><?php echo __("CF_pay_vid_list")?></a></li>        
+        <li><a class="icon_add" href="<?php echo site_url('payvid/new_payvideo')?>"><?php echo __("CF_pay_vid_new")?></a></li>
     </ul>    
     <div class="frame_bottom"></div>		
 </div>
