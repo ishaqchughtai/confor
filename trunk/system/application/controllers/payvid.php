@@ -208,9 +208,13 @@ class Payvid extends Admin_controller {
 	function save_as_html($code)
 	{
 		is_admin();
-		header("Content-Type: application/octet-stream;");
-		header("Content-Transfer-Encoding: binary");
-		header('Content-Disposition: filename="'.$code.'.html"');
+		// header("Content-Type: application/octet-stream;");
+		// header("Content-Transfer-Encoding: binary");
+		// header('Content-Disposition: filename="'.$code.'.html"');
+		header('Content-Transfer-Encoding: binary');		
+		header('Content-Type: text/html');
+		//header('Content-Length: '.filesize($file));
+		header('Content-Disposition: attachment; filename="'.$code.'.html"');
 		$data['row'] = $this->MPayvid->get_by_code($code);
 		$this->load->view('vid/payvideo_html',$data);
 	}

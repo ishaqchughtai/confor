@@ -656,3 +656,23 @@ $lang['CF_to_add_meta']="f_to add metadata information";
 $lang['CF_add_meta']="f_Add metadata information";
 $lang['CF_add_meta_suc']="f_New metadata information successfully added";
 $lang['CF_Invaild_format']="f_Invaild format";
+
+//Key added on 31/07/2010
+$lang['CF_pay_vid']="f_Paying video";
+$lang['CF_pay_vid_con']="f_Paying video control";
+$lang['CF_pay_vid_list']="f_Paying video list";
+$lang['CF_pay_vid_new']="f_Create paying video";
+$lang['CF_pay_vid_edit']="f_Update paying video";
+
+$lang['CF_pay_vid_detail']="f_Paying video details";
+$lang['CF_pay_vid_expire']="f_Expiration date";
+$lang['CF_pay_vid_max_view']="f_Max number of views";
+$lang['CF_pay_vid_viewed']="f_Number of your views";
+
+$lang['CF_pay_vid_must_login']="f_You must login the Shop to view this file";
+$lang['CF_pay_vid_must_pay']="f_You must pay money for viewing this file";
+$lang['CF_pay_vid_reach_limit']="f_You have reached the maximum viewable of this video.";
+$lang['CF_pay_vid_not_belong']="f_This video does not belong to any product";
+$lang['CF_pay_vid_not_exist']="f_This file does not exist or has been deleted!";
+
+$lang['CF_to_play'] = "f_to play this video";

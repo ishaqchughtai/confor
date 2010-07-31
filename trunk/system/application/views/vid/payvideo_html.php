@@ -1,12 +1,12 @@
 <?php	
 	$preview_img=base_url().'thumbs/'.$row->shash;
-	$upload_date=mdate("%d-%m-%Y", $row->date);	
+	//$upload_date=mdate("%d-%m-%Y", $row->date);	
 	$link_play = site_url('payvideo/play/'.$row->code);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Confor.ca - Pay video - <?php echo $row->title;?></title>
+<title><?php echo $row->code;?></title>
 </head>
 <head>
 <style type="text/css">
@@ -59,11 +59,11 @@ body {
 <div class="box">
   <div class="header"> <img src="<?php echo $preview_img?>" />
     <div>
-      <h2><?php echo $row->title;?></h2>
-      <span class="click_text">Click<a href="<?php echo $link_play?>"> here </a> to play this video</span> </div>
+      <h2><?php echo $row->title;?></h2>	  
+      <span class="click_text"><?php echo __("CF_click")?><a href="<?php echo $link_play?>"> <?php echo __("CF_here")?> </a> <?php echo __("CF_to_play")?></span> </div>
   </div>
   <div class="desc">
-    <h2>Description</h2>
+    <h2><?php echo __("CF_des")?></h2>
 	<?php echo $row->description;?>
 </div>
 </div>

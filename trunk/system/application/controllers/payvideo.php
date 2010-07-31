@@ -20,7 +20,7 @@ class Payvideo extends Frontend_controller {
 	function play($code)
 	{        
         $this->_data['path'][] = array(
-        'name' => 'Paying video',
+        'name' => __("CF_pay_vid"),
         'link' => '#'
         );    
  
@@ -44,37 +44,63 @@ class Payvideo extends Frontend_controller {
 			if ($query->num_rows()>0)
 			{			
 				$this->_data['row'] = $query->row();
-				$this->_load_view('vid/payvideo_play');		
+				// $this->_load_view('vid/payvideo_play');		
+				//$data['row'] = $query->row();
+				$this->load->view('vid/payvideo_play', $this->_data);						
 			}
 			else
 			{
-				$this->_message('payvideo', "This file does not exist or has been deleted!", 'error');
+				$this->_message('payvideo', __("CF_pay_vid_not_exist"), 'error');
 			}		
 			return;
 		}
 		
-		$id_product = $this->MOrdershop->get_product_id_by_code($physically_filename);	
-				
+		//$id_product = $this->MOrdershop->get_product_id_by_code($physically_filename);	
+		$product = $this->MOrdershop->get_product_by_code($physically_filename);	
+		$id_product = $product->id_product;
+		
 		if ($id_product==0)
 		{								
-			$this->_message('payvideo', "This video does not belong to any product", 'warning');
+			$this->_message('payvideo', __("CF_pay_vid_not_belong"), 'warning');
 		}		
 		
-		$check = chk_view_video_shop($id_product);
-		
-		// put function of Tham for checking permission in shop side
-		
+		//$check = chk_view_video_shop($id_product);
+		$check = 2; // must login
+		$result = 0;
+        @session_start();
+        if(isset($_SESSION['chk_login_download_video']) && !empty($_SESSION['chk_login_download_video']) && is_numeric($_SESSION['chk_login_download_video']))
+		{
+			$ret = $this->MOrdershop->get_order($id_product, $_SESSION['chk_login_download_video']);
+			$result = $ret['result'];
+			$check = 1;
+			switch ($result)
+			{
+				case 0: 
+					$check=3; // must pay
+					break;
+				case -1:
+					$check=4; // view limit
+					break;
+			}
+		}
+						
 		if ($check==2)
 		{		
 			$link_shop_login = base_url().'prestashop/authentication.php';
-			$this->_message('payvideo', "You must login Prestashop to view this file", 'warning',$link_shop_login);
+			$this->_message('payvideo', __("CF_pay_vid_must_login"), 'warning',$link_shop_login);
 		}
 		
 		if ($check==3)
 		{
 			$link_pay = base_url().'prestashop/product.php?id_product='.$id_product;
-			$this->_message('payvideo', "You must pay money for viewing this file", 'warning',$link_pay);			
+			$this->_message('payvideo', __("CF_pay_vid_must_pay"), 'warning',$link_pay);			
 		}
+
+		if ($check==4)
+		{
+			$link_pay = base_url().'prestashop/product.php?id_product='.$id_product;
+			$this->_message('payvideo', __("CF_pay_vid_reach_limit"), 'warning',$link_pay);			
+		}		
 				
 		$this->db->where('code',$code);
 		$this->db->limit(1);
@@ -83,11 +109,16 @@ class Payvideo extends Frontend_controller {
 		if ($query->num_rows()>0)
 		{			
 			$this->_data['row'] = $query->row();
-			$this->_load_view('vid/payvideo_play');		
+			$this->_data['product'] = $product;
+			$this->_data['order'] = $ret['order'];
+			// $this->_load_view('vid/payvideo_play');		
+			//$data['row'] = $query->row();
+			$this->load->view('vid/payvideo_play',$this->_data);					
 		}
+		
 		else
 		{
-			$this->_message('payvideo', "This file does not exist or has been deleted!", 'error');
+			$this->_message('payvideo', __("CF_pay_vid_not_exist"), 'error');
 		}		
 	}  	
 	
