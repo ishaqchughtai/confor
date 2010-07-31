@@ -22,7 +22,7 @@
             $this->load->library('validation'); 
             $this->load->helper('date');
             $this->load->helper('text');
-            $this->load->library('vid_lib');
+            //$this->load->library('vid_lib');
             $this->load->model('MShop');
             $this->load->model('Maccessories');		
         }                       
@@ -404,6 +404,7 @@
         }
         function list_user()
         {
+			is_admin();
             $this->_data['path'][] = array(
             'name' => __("CF_speaker_list"),
             'link' => '#'
@@ -417,8 +418,7 @@
             if($page_offset=='') 
             {
                 $page_offset=0;
-            }
-
+            }			
 
             $config['base_url'] = base_url().'index.php/admin/list_user/'.$num_per_page.'/';
             $config['uri_segment'] = 4;
@@ -498,174 +498,7 @@
                 }
             }
         }
-
-        /*Video Conference*/
-        function list_video_conference()
-        {
-            is_admin();            
-            $this->_data['path'][] = array(
-            'name' => __("CF_list_vid"),
-            'link' => site_url("admin/list_video_conference")
-            );   
-
-            $category = $this->uri->segment(3);
-            //$num_per_page = $this->uri->segment(4);
-            $page_offset = $this->uri->segment(4);           
-
-            if (!$category)
-            {
-                $category = 0;				
-            }
-
-            $config['base_url'] = base_url().'index.php/admin/list_video_conference/'.$category.'/';
-            $config += config_pagination_style();	
-            $config['uri_segment'] = 4;
-            $config['per_page']=$this->vid_per_page;
-            // $config['cur_tag_open'] = '<li class="selected">';
-            // $config['cur_tag_close'] = '</li>'; 
-
-            if($category == 0)
-            {
-                $config['total_rows'] = $this->db->count_all('videos'); 
-                $this->_data['query'] = $this->Mvconference->get_all_video_conference($this->vid_per_page,$page_offset,0);                  
-            }
-            else
-            {
-                $config['total_rows'] = $this->Mvconference->count_video_Category($category);
-                $this->_data['query'] = $this->Mvconference->get_video_conference_by_category($category,$this->vid_per_page,$page_offset,0);
-            } 
-            $this->pagination->initialize($config);
-            //$this->_data['video_categories'] = $this->Mvconference->get_category();
-            $this->_data['pagination'] = $this->pagination->create_links();
-            $this->_data['video_cate'] = $category;
-            $this->_load_view('admin/video_conference_list'); 
-
-        }
-
-        function do_upload_ajax()
-        {
-            $this->vid_lib->init_uploader();
-            $this->vid_lib->do_upload_ajax_admin();	
-        }
-
-        function new_video_conference()
-        {
-            $this->_data['path'][] = array(
-            'name' => __("CF_admin_new_vid"),
-            'link' => '#'
-            );
-            is_admin();
-            $this->vid_lib->init_uploader();
-
-            $this->form_validation->set_rules('speaker_email',strtolower(__("CF_one_speaker")),'required');
-            $this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');
-            $this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 
-            $this->form_validation->set_rules('video_cate',strtolower(__("CF_cate_vid")),'required');
-            $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
-            $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-            $this->_data['query']=$this->Mvconference->get_category();
-
-            if($this->input->post('submit'))
-            {				
-                $this->_data['vname'] = $this->input->post('vname');
-                $this->_data['video_cate'] = $this->input->post('video_cate');
-                $this->_data['speaker_id'] = $this->input->post('speaker');
-
-                if($this->form_validation->run()==FALSE)
-                {
-                    $this->_data['error'] = __("CF_cant_update");							
-                    $this->_load_view('admin/new_video_conference'); 			
-                }
-                else
-                {
-                    $vname = $this->input->post('vname');		
-                    if (strlen($vname) <= 1)
-                    {
-                        $this->_data['error'] = __("CF_havent_upload");
-                        $this->_load_view('admin/new_video_conference'); 			
-                        return;
-                    }				
-                    $dateupload= NOW();
-                    $data = array(
-                    'mem_id'=>$this->input->post('speaker'),
-                    'title'=>$this->input->post('title'),
-                    'description'=>$this->input->post('description'),
-                    'category'=>$this->input->post('video_cate'),
-                    'tags'=>$this->input->post('keywords'),
-                    'Date'=>$dateupload,
-                    'vhash'=>$vname.'.flv',
-                    'shash'=>$vname.'.jpg',
-                    'approved'=>'1',
-                    'viewed'=>0
-                    );
-                    $this->Mvconference->add_new_video($data);
-                    //$this->list_video_conference();	
-                    $this->_message('admin', __("CF_upload_success"), 'success',site_url("admin/list_video_conference"));
-                }
-            }
-            else
-            {	
-                $this->_load_view('admin/new_video_conference');
-            }						           
-        }
-
-
-        function edit_video_conference($id)
-        {
-            $this->_data['path'][] = array(
-            'name' => __("CF_edit_video_admin"),
-            'link' => '#'
-            );
-            is_admin();
-            if(is_nan((float)$id)) redirect(site_url("admin"));
-            $this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');
-            $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
-            $this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 
-            $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');
-            $this->_data['query']=$this->Mvconference->get_video_info_by_id($id);
-            //$this->_data['category']=$this->Mvconference->get_category();
-            $this->_data['error'] ="";
-
-            if($this->input->post('submit')){
-                //$this->_data['video_cate'] = $this->input->post('video_cate');
-
-                if($this->form_validation->run()==FALSE)
-                {				
-                    $this->_load_view('admin/edit_video_conference');
-                }
-                else
-                {												
-                    $data = array(
-                    'title'=>$this->input->post('title'),
-                    'mem_id'=>$this->input->post('speaker'),
-                    'description'=>$this->input->post('description'),
-                    'category'=>$this->input->post('video_cate'),
-                    'tags'=>$this->input->post('keywords'),					
-                    'approved'=>$this->input->post('approved')
-                    );
-                    $this->Mvconference->update_conference($data,$id);									
-                    $this->_message('admin', __("CF_save_info"), 'success',site_url("admin/list_video_conference"));
-                }
-            }
-            else
-            {
-                $this->_load_view('admin/edit_video_conference');
-            }		 
-        }
-        function delete_video_conference($id){
-            is_admin();		
-            $delete_data = $this->Mvconference->delete_video($id);
-            if ($delete_data)
-            {
-                $this->vid_lib->delete_old_data($delete_data['vhash'],$delete_data['shash']);			
-                $this->_message('admin', __("CF_delete_vid"), 'success',site_url("admin/list_video_conference"));			
-            }
-            else
-            {
-                $this->_message('admin', __("CF_error_occurred"), 'error', site_url("admin/list_video_conference"));			
-            }
-            //redirect('admin/list_video_conference');
-        }
+          
         //this is the Category!
         function category_managing()
         {
