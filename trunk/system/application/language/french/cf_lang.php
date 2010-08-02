@@ -639,3 +639,4 @@ $lang['CF_to_play'] = 'pour lire cette vid&eacute;o';
 //Key added on 02/08/2010
 $lang['CF_pop_bill'] = 'f_Billets Populaires';
 $lang['CF_user_details'] = "f_User Details";
+$lang['CF_account_suspended'] = "f_Your account has been suspended";

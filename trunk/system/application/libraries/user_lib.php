@@ -198,7 +198,12 @@ class User_lib
 				$query = $this->CI->MUser->get_user_for_login($username, $this->_encode($password));
 				if ($query->num_rows() == 1) 
 				{
-					$row = $query->row();					
+					$row = $query->row();			
+					if ($row->status==0)
+					{
+						$result['error'] = __("CF_account_suspended");
+						return $result;
+					}
 					$speaker_data['speaker_id'] = $row->id;
 					$speaker_data['speaker_email'] = $row->email;
 					$speaker_data['speaker_name'] = $row->name;
@@ -286,7 +291,11 @@ class User_lib
 					
 					if ($query->num_rows() == 1)
 					{
-						$row = $query->row();				
+						$row = $query->row();		
+						if ($row->status==0)
+						{							
+							$this->CI->_message('payvideo', __("CF_account_suspended"), 'warning');
+						}						
 						//$speaker_data['id'] = $row->id;
 						$speaker_data['speaker_id'] = $row->id;
 						$speaker_data['speaker_email'] = $row->email;
