@@ -246,13 +246,10 @@ $lang['CF_new_pass'] = 'NOUVEAU MOT DE PASSE';
 $lang['CF_confirm_pass'] = 'CONFIRM LE MOT DE PASSE';
 $lang['CF_update'] = 'MISE &Agrave; JOUR';
 
-
 //Add new contact
 $lang['CF_yr_mes'] = 'VOTRE MESSAGE';
 $lang['CF_yr_email'] = 'VOTRE COURRIEL';
 $lang['CF_yr_name'] = 'VOTRE NOM';
-
-
 
 //------------------------------------------------------------------
 //HOME FRONTEND
@@ -279,8 +276,6 @@ $lang['CF_mess'] = 'MESSAGE';
 $lang['CF_warning'] = 'S.V.P., GARDEZ VOS COMMENTAIRES PROPRES. MAX 400 CARACT&Egrave;RES';
 
 
-
-
 //------------------------------------------------------------------
 
 //------------------------------------------------------------------
@@ -300,41 +295,41 @@ $lang['CF_admin_pass'] = 'MOT DE PASSE';
 $lang['CF_admin'] = 'Admin';
 $lang['CF_admin_panel'] = 'Panneau Administrateur';
 $lang['CF_admin_list'] = 'Liste d\'administrateurs';
-	$lang['CF_paypal'] = 'Courriel du compte Paypal';
+$lang['CF_paypal'] = 'Courriel du compte Paypal';
 		
 $lang['CF_new_admin'] = 'Nouvel Administrateur';
-	$lang['CF_add_admin'] = 'Ajouter un Administrateur';
+$lang['CF_add_admin'] = 'Ajouter un Administrateur';
 $lang['CF_admin_login'] = 'Connexion Admin';
 $lang['CF_edit_admin'] = 'Modifier le Profil';
 $lang['CF_edit_ad'] = 'Midifier Admin';
-	$lang['CF_udpate_admin'] = 'Mise &agrave; jour des donn&eacute;es Administrateur';	
+$lang['CF_udpate_admin'] = 'Mise &agrave; jour des donn&eacute;es Administrateur';	
 
 //speaker
 $lang['CF_control_panel'] = 'Panneau de Contr&ocirc;le';
 $lang['CF_speaker_con'] = 'Contr&ocirc;le conf&eacute;renciers';
 $lang['CF_speaker_list'] = 'Liste des conf&eacute;renciers';
-	$lang['CF_user_list'] = 'Liste des utilisateurs';
-	$lang['CF_sup'] = 'Abonnement';
-	$lang['CF_status_acc'] = '&Eacute;tats de compte';
-	$lang['CF_modify'] = 'Modifier';
-		$lang['CF_modify_speaker'] = 'Modifer Conf&eacute;rencier';
-		$lang['CF_active'] = 'ACTIV&Eacute;';
-		$lang['CF_suspended'] = 'SUSPENDU';
+$lang['CF_user_list'] = 'Liste des utilisateurs';
+$lang['CF_sup'] = 'Abonnement';
+$lang['CF_status_acc'] = '&Eacute;tats de compte';
+$lang['CF_modify'] = 'Modifier';
+$lang['CF_modify_speaker'] = 'Modifer Conf&eacute;rencier';
+$lang['CF_active'] = 'ACTIV&Eacute;';
+$lang['CF_suspended'] = 'SUSPENDU';
 
 
 //conference
 $lang['CF_vid_con'] = 'Contr&ocirc;le conf&eacute;rences';
 $lang['CF_showroom'] = 'Contr&ocirc;le d\'images Showroom';
-	$lang['CF_add_showroom'] = 'Ajouter une image au Showroom';
+$lang['CF_add_showroom'] = 'Ajouter une image au Showroom';
 $lang['CF_admin_vid_list'] = 'Liste des vid&eacute;os conf&eacute;rences';
-	$lang['CF_list_vid'] = 'Liste des vid&eacute;os';
-	$lang['CF_pre'] = 'APER&Ccedil;U';
-	$lang['CF_date'] = 'DATE';
-	$lang['CF_viewed'] = 'VISIONN&Eacute;';	
+$lang['CF_list_vid'] = 'Liste des vid&eacute;os';
+$lang['CF_pre'] = 'APER&Ccedil;U';
+$lang['CF_date'] = 'DATE';
+$lang['CF_viewed'] = 'VISIONN&Eacute;';	
 $lang['CF_admin_new_vid'] = 'Nouvelle vid&eacute;o conf&eacute;rence';
-	$lang['CF_add_vid'] = 'Ajouter une vid&eacute;o conf&eacute;rence';
-	$lang['CF_cate_man'] = 'Gestion des cat&eacute;gories';
-	$lang['CF_search_video'] = 'R&eacute;sultat de la recherche vid&eacute;o';
+$lang['CF_add_vid'] = 'Ajouter une vid&eacute;o conf&eacute;rence';
+$lang['CF_cate_man'] = 'Gestion des cat&eacute;gories';
+$lang['CF_search_video'] = 'R&eacute;sultat de la recherche vid&eacute;o';
 
 //event
 $lang['CF_event_search'] = 'Rechercher dans tous les messages';
@@ -360,7 +355,7 @@ $lang['CF_blog_search'] = 'Rechercher dans tous les messages';
 $lang['CF_blog_con'] = 'Contr&ocirc;le blogue';
 $lang['CF_admin_blog_list'] = 'Liste des blogues';
 $lang['CF_admin_new_blog'] = 'Nouveau blogue';
-	$lang['CF_add_new_blog'] = 'Ajouter un blogue';
+$lang['CF_add_new_blog'] = 'Ajouter un blogue';
 
 
 //edit blog
@@ -374,9 +369,9 @@ $lang['CF_blog_body'] = 'BODY';
 $lang['CF_adv_search'] = 'Rechercher dans toutes les annonces';
 $lang['CF_adv_con'] = 'Contr&ocirc;le des annonces payantes';
 $lang['CF_adv_list'] = 'Liste des annonces';
-	$lang['CF_adv_date_begin'] = 'Date de d&eacute;but';
-	$lang['CF_adv_date_ex'] = 'Date d\'expiration';
-	$lang['CF_adv_email'] = 'Courriel de publicit&eacute;';
+$lang['CF_adv_date_begin'] = 'Date de d&eacute;but';
+$lang['CF_adv_date_ex'] = 'Date d\'expiration';
+$lang['CF_adv_email'] = 'Courriel de publicit&eacute;';
 	
 $lang['CF_new_adv'] = 'Nouvelle annonce';
 $lang['CF_edit_adv'] = 'Modifier l\'annonce';
@@ -462,61 +457,33 @@ $lang['CF_save_info'] = 'Vos informations vid&eacute;o ont &eacute;t&eacute; sau
 
 //message when you delete video
 $lang['CF_delete_vid'] = 'Votre vid&eacute;o &agrave; &eacute;t&eacute; supprim&eacute;';
-
 $lang['CF_contact_error'] = 'Le message ne peut &ecirc;tre envoy&eacute;! Essayez encore!';
-
 $lang['CF_contact_successfully'] = 'Message envoy&eacute; avec succ&egrave;s!';
-
 $lang['CF_your_contact_mail'] = 'Formulaire de contact';
-
 $lang['CF_element_content'] = 'Contenu &eacute;l&eacute;ments';
-
 $lang['CF_event_content'] = 'Contenu &eacute;v&eacute;nements';
-
 $lang['CF_the'] = 'Le';
-
 $lang['CF_already_exist'] = 'existe d&eacute;j&agrave;';
-
 $lang['CF_field_max'] = 'maximum de ce champ est de 4 mots';
-
 $lang['CF_invalid_code'] = 'Code invalide';
-
 $lang['CF_add_image_suc'] = 'Image ajout&eacute; avec succ&egrave;s!';
-
 $lang['CF_only_admin'] = 'Seul l\'administrateur peut avoir acc&egrave;s &agrave; cette fonction!';
-
 $lang['CF_reslult_search'] = 'Votre recherche ne correspond &agrave; aucune ligne';
-
 $lang['CF_row'] = 'Les ligne de chaque page doivent &ecirc;tre > 0';
-
 $lang['CF_edit_image_suc'] = 'Image modif&eacute; avec succ&egrave;s';
-
 $lang['CF_showroom_menu'] = 'Menu Showroom';
-
 $lang['CF_ad_menu_showroom'] = 'Liste d\'images';
-
 $lang['CF_vid_from_'] = 'Vid&eacute;o des conf&eacute;renciers';
-
 $lang['CF_show'] = 'Vid&eacute;o des conf&eacute;renciers';
-
 $lang['CF_paypal_man'] = 'Gestion Paypal';
-
 $lang['CF_cate_man'] = 'Gestion des cat&eacute;gories vid&eacute;o';
-
 $lang['CF_list_vid_cate'] = 'Liste des cat&eacute;gories vid&eacute;o';
-
 $lang['CF_cate_name'] = 'Nom de cat&eacute;gogie';
-
 $lang['CF_new_cate'] = 'Nouvelle cat&eacute;gogie';
-
 $lang['CF_cate_update'] = 'Cat&eacute;gogie mise &agrave; jour';
-
 $lang['CF_edit_image'] = 'Modifier les images';
-
 $lang['CF_add_cate'] = 'Ajouter une nouvelle cat&eacute;gorie';
-
 $lang['CF_list_cate'] = 'Liste des cat&eacute;gories';
-
 $lang['CF_modify_cate'] = 'Modifier la cat&eacute;gorie';
 
 //date
@@ -524,19 +491,12 @@ $lang['CF_month_name_array'] = "'Janvier','F&eacute;vrier','Mars','Avril','Mai',
 
 //new key 7-6
 $lang['CF_invalid_username_password_message'] = 'Nom d\'utilisateur ou mot de passe invalide';
-
 $lang['CF_up_profile'] = 'Votre profil &agrave; &eacute;t&eacute; mis &agrave; jour';
-
 $lang['CF_upgrade_mem'] = 'pour utiliser cette fonction, vous devez mettre &agrave; jour votre adh&eacute;sion';
-
 $lang['CF_you_have_paid'] = 'Vouz avez pay&eacute; $';
-
 $lang['CF_for_this'] = 'pour cette adh&eacute;sion';
-
 $lang['CF_day'] = ' jour.';
-
 $lang['CF_expired'] = 'Exipir&eacute;';
-
 $lang['CF_old_pass_incorrect'] = 'Votre ancien mot de passe est incorrect';
 
 //new key 09-07
@@ -658,21 +618,21 @@ $lang['CF_add_meta_suc']='Nouvelle information META ajout&eacute;';
 $lang['CF_Invaild_format']='Format invalide';
 
 //Key added on 31/07/2010
-$lang['CF_pay_vid']="f_Paying video";
-$lang['CF_pay_vid_con']="f_Paying video control";
-$lang['CF_pay_vid_list']="f_Paying video list";
-$lang['CF_pay_vid_new']="f_Create paying video";
-$lang['CF_pay_vid_edit']="f_Update paying video";
+$lang['CF_pay_vid']='Vid&eacute;os Payantes';
+$lang['CF_pay_vid_con']='Contr&ocirc;le des vid&eacute;os payantes';
+$lang['CF_pay_vid_list']='Liste des vid&eacute;os payantes';
+$lang['CF_pay_vid_new']='Cr&eacute;er un video payante';
+$lang['CF_pay_vid_edit']='Mise a jour vid&eacute;o payante';
 
-$lang['CF_pay_vid_detail']="f_Paying video details";
-$lang['CF_pay_vid_expire']="f_Expiration date";
-$lang['CF_pay_vid_max_view']="f_Max number of views";
-$lang['CF_pay_vid_viewed']="f_Number of your views";
+$lang['CF_pay_vid_detail']='D&eacute;tail de la vid&eacute;o payante';
+$lang['CF_pay_vid_expire']='Date d\'expiration';
+$lang['CF_pay_vid_max_view']='Visionnement maximum';
+$lang['CF_pay_vid_viewed']='Nombre de visionnements';
 
-$lang['CF_pay_vid_must_login']="f_You must login the Shop to view this file";
-$lang['CF_pay_vid_must_pay']="f_You must pay money for viewing this file";
-$lang['CF_pay_vid_reach_limit']="f_You have reached the maximum viewable of this video.";
-$lang['CF_pay_vid_not_belong']="f_This video does not belong to any product";
-$lang['CF_pay_vid_not_exist']="f_This file does not exist or has been deleted!";
+$lang['CF_pay_vid_must_login']='Vous devez &ecirc;tre connect&eacute; &agrave; la boutique pour afficher ce fichier.';
+$lang['CF_pay_vid_must_pay']='Vous devez payer via la boutique pour voir ce fichier.';
+$lang['CF_pay_vid_reach_limit']='Vous avez atteint le maximum de visionnement sur cette vid&eacute;o.';
+$lang['CF_pay_vid_not_belong']='Cette vid&eacute;o n\'appartient &agrave; aucun produit.';
+$lang['CF_pay_vid_not_exist']='Ce fichier n\'existe pas ou a &eacute;t&eacute; supprim&eacute;!';
 
-$lang['CF_to_play'] = "f_to play this video";
+$lang['CF_to_play'] = 'pour lire cette vid&eacute;o';
