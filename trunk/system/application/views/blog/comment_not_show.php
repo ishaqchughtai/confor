@@ -31,7 +31,7 @@
                                     $str_status=__("CF_No");
                                 }
                                 $title = $row['Title'];
-                                $final_date=date("F jS Y", strtotime($date));      
+                                $final_date=date("d-m-Y", strtotime($date));      
         ?>    
             <tr>
                 <td><?php echo $author?></td>

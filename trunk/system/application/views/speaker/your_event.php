@@ -43,7 +43,7 @@
 			?>
             <?php $keyword = explode(" ", $row['Keywords']); ?>
                 <tr>
-                    <td><?php echo date("F jS Y", strtotime($row['Date']))?></td>     
+                    <td><?php echo date("d-m-Y", strtotime($row['Date']))?></td>     
                     <td><a href="<?php echo site_url('event_frontend/event_content/'.$row['ID'])?>" target="_blank"><?php echo $title?></a></td>                   
                     
                     <td><?php echo $subject?></td>

@@ -64,7 +64,7 @@
         $CountView   =$row['CountView'];
         $author      =$row['Name'];
         $date        =$row['Date'];
-        $final_date  =date("F jS Y", strtotime($date));
+        $final_date  =date("d-m-Y", strtotime($date));
         $countcomment=$row['CountComment'];
     ?>
 

@@ -12,7 +12,7 @@
                 <?php if ($i<count($keyword)-1) echo ','?>
                 <?php ;}?>
 
-            // <?php echo mdate('%F %j%S %Y', $rows['date'])?></h5>
+            // <?php echo mdate("%d-%m-%Y", $rows['date'])?></h5>
 
         <div class="rate_balloon"><?php $SimpleRatings->create($rows['vid_id']);?>  
         </div>

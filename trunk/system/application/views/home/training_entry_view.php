@@ -4,7 +4,7 @@
         {
             $id          = $row['ID'];
             $date        =$row['Date'];
-            $final_date  =date("F jS Y", strtotime($date));
+            $final_date  =date("d-m-Y", strtotime($date));
             $title       =$row['Title'];
             $content     =$row['Content'];
             $image = $row['Image'];     

@@ -5,7 +5,7 @@
    				{
 					$id = $row['ID'];
 					$title = $row['Title'];
-					$date = date("F jS Y", strtotime($row['Date']));
+					$date = date("d-m-Y", strtotime($row['Date']));
 					$status = $row['Status'];
 					?>
 					

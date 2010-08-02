@@ -22,7 +22,7 @@
             <label for="name"><?php echo __("CF_your_name")?>: <?php echo $this->session->userdata('admin')?></label>
         </p>
         <?php 
-            $datestring = "%F %j%S %Y";
+            $datestring = "%d-%m-%Y";
             $time = time();?>
         <p>
             <label for="date"><?php echo __("CF_date")?>: <?php echo mdate($datestring,$time);?> </label>
