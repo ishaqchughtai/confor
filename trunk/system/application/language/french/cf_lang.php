@@ -636,26 +636,26 @@ $lang['CF_mess_no_week_event'] = 'Il n\'y a aucun &eacute;v&eacute;nement cette 
 $lang['CF_mess_no_month_event'] = 'Il n\'y a aucun &eacute;v&eacute;nement ce mois-ci';
 
 //Key added on 29/07/2010
-$lang['CF_frontend_setting']="f_Frontend settings";
-$lang['CF_Conferences_per_page']="f_Conferences per page";
-$lang['CF_Video_per_page']="f_Videos per page";
-$lang['CF_Blog_per_page']="f_Blogs per page";
-$lang['CF_Conference_order_by_field']="f_Conference : Order by field";
-$lang['CF_Video_order_by_field']="f_Video : Order by field";
-$lang['CF_Blog_order_by_field']="f_Blog : Order by field";
-$lang['CF_site_offline']="f_Site offline";
-$lang['CF_Admin_email']="f_Admin Email";
-$lang['CF_system_settings']="f_System settings";
-$lang['CF_your_setting_saved']="f_Your setting has been saved";
+$lang['CF_frontend_setting']='Param&egrave;tres de l\'interface';
+$lang['CF_Conferences_per_page']='Conf&eacute;rences par page';
+$lang['CF_Video_per_page']='Vid&eacute;os par page';
+$lang['CF_Blog_per_page']='Blogues par page';
+$lang['CF_Conference_order_by_field']='Conf&eacute;rence : Ordre par champ';
+$lang['CF_Video_order_by_field']='Vid&eacute;o : Ordre par champ';
+$lang['CF_Blog_order_by_field']='Blogue : Ordre par champ';
+$lang['CF_site_offline']='Site hors ligne';
+$lang['CF_Admin_email']='Courriel administrateur';
+$lang['CF_system_settings']='R&eacute;glages du syst&egrave;me';
+$lang['CF_your_setting_saved']='Vos param&egrave;tres ont &eacute;t&eacute; sauvegard&eacute;es';
 $lang['CF_save_order']="f_Save Order";
-$lang['CF_edit_meta']="f_Edit Metadata Information";
-$lang['CF_author']="f_AUTHOR";
-$lang['CF_edit_meta_suc']="f_Metadata information have been changed";
-$lang['CF_not_meta']="f_Not available metadata information";
-$lang['CF_to_add_meta']="f_to add metadata information";
-$lang['CF_add_meta']="f_Add metadata information";
-$lang['CF_add_meta_suc']="f_New metadata information successfully added";
-$lang['CF_Invaild_format']="f_Invaild format";
+$lang['CF_edit_meta']='Modifier les informations META';
+$lang['CF_author']='AUTEUR';
+$lang['CF_edit_meta_suc']='Les informations META ont &eacute;t&eacute; modifi&eacute;es';
+$lang['CF_not_meta']='Aucune informations META disponibles';
+$lang['CF_to_add_meta']='pour ajouter des META';
+$lang['CF_add_meta']='ajouter des informations META';
+$lang['CF_add_meta_suc']='Nouvelle information META ajout&eacute;';
+$lang['CF_Invaild_format']='Format invalide';
 
 //Key added on 31/07/2010
 $lang['CF_pay_vid']="f_Paying video";
