@@ -8,6 +8,12 @@
 	<!-- Title of page -->
 	<title><?php echo isset($page_title)?$page_title:'Confor.ca'?></title>	
 	<!-- Main CSS Stylesheet -->
+	<?php
+		if (isset($meta))
+		{
+			$this->load->view('home/meta');
+		}
+	?>
 	<script>
 		XEMMEX = {
 			baseUrl: '<?php echo site_url("/")?>',
