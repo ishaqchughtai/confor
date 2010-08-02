@@ -9,6 +9,7 @@
       $this->load->helper('date');    
       $this->load->model('Mshopproduct','mshopproduct');    
       $this->_data['adv']['category'] = 'event';
+	  $this->load->model('Mmetadata');
     }
 
     function _before_render() 
@@ -48,6 +49,8 @@
       $this->_data['events'] = $this->MEvent->get_event_by_date($lg,$date,$per_page,$offset);
 
       $this->_data['pagination'] = $this->pagination->create_links();
+	  $meta = $this->Mmetadata->out_meta();
+	  if ($meta!=FALSE) $this->_data['meta'] = $meta;
       $this->_load_view('event/show_event');
     }
 

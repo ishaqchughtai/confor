@@ -7,6 +7,17 @@
       $this->load->database();
     }
 
+	function out_meta($type_resource,$id_resource)
+	{
+		$this->db->from('tblmetadata');   
+		$this->db->where('id_resource',$id_resource);
+		$this->db->where('type_resource',$type_resource);
+		$this->db->limit(1);
+		$query = $this->db->get();
+		if ($query->num_rows()<1) return FALSE;
+		return $query->row();
+	}
+	
     function get_to_form($type_resource,$id_resource)
     {
       $this->_data['path'][] = array(
