@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Database Error</title>
+<title>Directory access is forbidden</title>
 <style type="text/css">
 
 body {
@@ -27,8 +27,7 @@ margin: 			0 0 4px 0;
 </head>
 <body>
 	<div id="content">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
+		<p>Directory access is forbidden.</p>
 	</div>
 </body>
 </html>

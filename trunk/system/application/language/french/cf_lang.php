@@ -636,3 +636,5 @@ $lang['CF_pay_vid_not_belong']='Cette vid&eacute;o n\'appartient &agrave; aucun 
 $lang['CF_pay_vid_not_exist']='Ce fichier n\'existe pas ou a &eacute;t&eacute; supprim&eacute;!';
 
 $lang['CF_to_play'] = 'pour lire cette vid&eacute;o';
+//Key added on 31/07/2010
+$lang['CF_pop_bill'] = 'f_Billets Populaires';
