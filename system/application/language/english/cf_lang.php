@@ -692,3 +692,4 @@ $lang['CF_to_play'] = "to play this video";
 
 //Key added on 02/08/2010
 $lang['CF_user_details'] = "User Details";
+$lang['CF_account_suspended'] = "Your account has been suspended";

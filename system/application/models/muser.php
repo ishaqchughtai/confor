@@ -198,11 +198,11 @@ class MUser extends Model
 	// --------------------------------------------------------------------
 	
 	function get_user_for_login($username, $password) {
-		$this->db->select("id,username,email,name,cookie_id,language,userlevel,membership_id");
+		$this->db->select("id,username,email,name,cookie_id,language,userlevel,membership_id,status");
 		$this->db->from('users');
 		$this->db->where('username', $username);		
 		$this->db->where('password', $password);
-		$this->db->where('status', 1);
+		//$this->db->where('status', 1);
 		$this->db->limit(1);
 		return $this->db->get();
 	}
