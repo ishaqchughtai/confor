@@ -11,6 +11,7 @@
 	<?php
 		if (isset($meta))
 		{
+      //print_r($meta);
 			$this->load->view('home/meta');
 		}
 	?>

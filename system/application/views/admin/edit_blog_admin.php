@@ -1,8 +1,7 @@
 <?php $this->load->view("admin/admin_menu_blog");?>
-<br />
-<br />    
+    
 <div class="content_item">
-    <h3><?php echo __("CF_edit_blog")?></h3>
+    
     <?php
         foreach($query as $row){                               
             $id = $row->ID;
@@ -16,6 +15,11 @@
             $lg = $row->Lang;
         }
     ?>
+    <ul class="link_conttrol">
+                    <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata/blog/'.$id)?>"><?php echo __("CF_edit_meta")?></a></li>
+                    </ul><br />
+
+                    <h3><?php echo __("CF_edit_blog")?></h3>
     <form action="<?php echo site_url('blog/edit_blog_submit').'/'.$id?>" method="post" enctype="multipart/form-data" class="global" name="blog">
         <input name="edit_image" id="edit_image" type="hidden" value="<?php echo $images;?>"/>
         <p>

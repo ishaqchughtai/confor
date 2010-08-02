@@ -10,6 +10,9 @@
         }
     ?>    
     <?php $this->load->view("admin/admin_menu_training");?> 
+    <ul class="link_conttrol">
+                    <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata/formation/'.$id)?>"><?php echo __("CF_edit_meta")?></a></li>
+                    </ul>
                 <div class="content_item">
     <br>
                     <h3><?php echo __("CF_edit_ar")?></h3>
