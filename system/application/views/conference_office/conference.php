@@ -39,7 +39,7 @@
                         <?php if ($i<count($tags)-1) echo ','?>
                         <?php ;}?>
                     //
-                <?php echo mdate('%F %j%S %Y', $date)?></h5>              
+                <?php echo mdate("d - m - Y", $date)?></h5>              
                 <h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>
                 <?php }?>
             <p><a href="<?php echo base_url().'videos/'.$top_view_video;?>" style="display:block;width:621px;height:380px;"id="player"></a></p>
@@ -68,7 +68,7 @@
                             <?php if ($i<count($tags)-1) echo ','?>
                             <?php ;}?>
                         //
-                    <?php echo mdate('%F %j%S %Y', $date)?></h5>
+                    <?php echo mdate("d - m - Y", $date)?></h5>
                     <div class="rate_balloon"><?php $SimpleRatings->create($rows['vid_id']);?>  
                     </div> 
 

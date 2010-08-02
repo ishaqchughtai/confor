@@ -271,8 +271,8 @@ class Blog extends Admin_controller {
         $this->_data['page_title'] = __("CF_Blog_search");
         $Title = $this->input->post('search_field_blog_admin');
         $lg = $this->uri->segment(3);
-        $lg=$this->_data['lang'];    
-        if (! $lg) return;
+            
+        if (! $lg) return;$lg=$this->_data['lang'];
         if (lang_name_by_short_key($lg,TRUE)==FALSE)
         {
             $this->_message('blog', 'Invaild language', 'error',site_url("blog/blog_list").'/'.$this->_data['lang']);

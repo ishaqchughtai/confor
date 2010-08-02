@@ -30,7 +30,7 @@
         <?php if ($i<count($tags)-1) echo ','?>
         <?php ;}?>
     //
-<?php echo mdate('%F %j%S %Y', $date)?></h5>              
+<?php echo mdate("%d-%m-%Y", $date)?></h5>              
 <h5><b><?php echo __("CF_cate_name")?>: <a href="<?php echo site_url('category/get_category/').'/'.$category.'/5'?>"><?php echo $category_name?></a></b></h5>
 <h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>
 <p><a href="<?php echo base_url()?>videos/<?php echo $video_link?>" style="display:block;width:621px;height:380px;"id="player"></a></p>                  
@@ -94,7 +94,7 @@ $("div.scrollable").scrollable({easing: 'custom', speed: 700, circular: true});
 
         // logo initially has zero opacity
         logo: {   
-            url: '<?php echo base_url()?>/flowplayer/logo.png',   
+            url: 'http://confor.us/flowplayer/logo.png',   
             fullscreenOnly: false,   
             top: 10, 
             left: 10,

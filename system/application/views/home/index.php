@@ -35,7 +35,7 @@
             <?php if ($i<count($tags)-1) echo ','?>
             <?php ;}?>
         //
-    <?php echo mdate('%F %j%S %Y', $date)?></h5>              
+    <?php echo mdate("%d-%m-%Y", $date)?></h5>              
 	<h5><b><?php echo __("CF_cate_name")?>: <a href="<?php echo site_url('category/get_category/').'/'.$category_id.'/5'?>"><?php echo $category_name?></a></b></h5>
     <h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>
 <?php }?>

@@ -14,7 +14,7 @@
         $Status = $row['Status'];
         $Email = $row['Email'];
         $Is_answered = $row['Is_answered'];
-        $final_date=date("F jS Y", strtotime($date));
+        $final_date=date("d-m-Y", strtotime($date));
         if($Is_answered==1)
         {
             $Answer =base_url().'/assets/img/not_success_img.gif'; 

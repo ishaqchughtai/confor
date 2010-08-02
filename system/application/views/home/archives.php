@@ -10,7 +10,7 @@
                       <a href="#"><?php echo $keyword[$i]?></a>
                       <?php if ($i<count($keyword)-1) echo ','?>
                       <?php ;}?>
-                     // <?php echo date("F jS Y", strtotime($rows['Date']))?></h5>
+                     // <?php echo date("d-m-Y", strtotime($rows['Date']))?></h5>
 					
 					<div class="rate_balloon"><img src="images/rElements.png" style="border:none" alt="rate" />
 					<img src="images/rElements.png" style="border:none" alt="rate" />

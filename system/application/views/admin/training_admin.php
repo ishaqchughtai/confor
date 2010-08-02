@@ -61,7 +61,7 @@
                 $no_temp_2 = $articles[$i][$strNo]-1;    
             ?>
             <tr>
-                <td><?php echo date("d / m / Y", strtotime($articles[$i]['Date']))?></td>
+                <td><?php echo date("d-m-Y", strtotime($articles[$i]['Date']))?></td>
                 <td>                    
                     <?php if ((!$is_first_page)||($i>0)):?>
                         <a href="<?php echo site_url("training/order_by_no").'/'.$articles[$i][$strNo].'/'.$no_temp_1.'/'.$lg?>" class="up_button icon_1_up_arrow">&nbsp;</a>

@@ -7,7 +7,7 @@
    				{
 					$id = $row['ID'];
 					$speaker = $row['first_name'].' '.$row['name'];
-					$date = date("F jS Y", strtotime($row['Date']));
+					$date = date("d-m-Y", strtotime($row['Date']));
 					$title = $row['Title'];
 					$subject = $row['Subject'];
 					$keyword = explode(" ", $row['Keywords']);

@@ -4,8 +4,8 @@
       <?php else:?>
 	<?php foreach($adv as $row) {
                                 $id = $row['ID'];
-                                $date_beginning = date("F jS Y", strtotime($row['DateBeginning']));
-                                $date_expiry = date("F jS Y", strtotime($row['DateExpiry']));
+                                $date_beginning = date("d-m-Y", strtotime($row['DateBeginning']));
+                                $date_expiry = date("d-m-Y", strtotime($row['DateExpiry']));
                                 $advertiser_name = $row['AdvertiserName'];
                                 $advertiser_email = $row['AdvertiserEmail'];
                                 $url = $row['URL'];

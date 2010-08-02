@@ -32,7 +32,7 @@
             
             <?php foreach($query as $row):?>
                 <tr>
-                <td><?php echo date("F jS Y", strtotime($row['date']))?></td>
+                <td><?php echo date("d-m-Y", strtotime($row['date']))?></td>
                 	<td><?php echo $row['title']?></td>     
                     <td width="17"><a href="<?php echo site_url('conference_office/get_office_admin'.'/'.$row['id'])?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></td>
                     <td width="17"><a href="<?php echo site_url('conference_office/delete'.'/'.$row['id'])?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
