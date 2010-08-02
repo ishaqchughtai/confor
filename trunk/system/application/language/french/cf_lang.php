@@ -488,7 +488,7 @@ $lang['CF_modify_cate'] = 'Modifier la cat&eacute;gorie';
 
 //date
 $lang['CF_month_name_array'] = "'Janvier','F&eacute;vrier','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','D&eacute;cembre'";
-
+$lang['CF_day_name_array'] = "'Li', 'Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa'";
 //new key 7-6
 $lang['CF_invalid_username_password_message'] = 'Nom d\'utilisateur ou mot de passe invalide';
 $lang['CF_up_profile'] = 'Votre profil &agrave; &eacute;t&eacute; mis &agrave; jour';
