@@ -25,7 +25,7 @@
           <?php if ($i<count($keyword)-1) echo ','?>
           <?php ;}?> // 
 		  			<?php echo $date;?></h5>
-					<p> <?php echo _substr($description,200)?></p>
+					<p> <?php echo word_limiter(strip_tags($description),200)?></p>
 					
 					<a href="<?php echo site_url('event_frontend/event_content/'.$id)?>" class="read_more"><?php echo __("CF_continue")?></a>
 					</div>	
