@@ -689,3 +689,6 @@ $lang['CF_pay_vid_not_belong']="This video does not belong to any product";
 $lang['CF_pay_vid_not_exist']="This file does not exist or has been deleted!";
 
 $lang['CF_to_play'] = "to play this video";
+
+//Key added on 02/08/2010
+$lang['CF_user_details'] = "User Details";

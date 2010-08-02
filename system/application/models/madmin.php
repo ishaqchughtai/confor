@@ -113,9 +113,11 @@
             users.company_name,
             users.description,
             users.country,
+            geo_countries.name as country_name,
             users.status
             ");
             $this->db->from('users');
+            $this->db->join('geo_countries','users.country = geo_countries.con_id');
             $this->db->where('id',$id);
             //$this->db->limit(1);
             $query = $this->db->get();
