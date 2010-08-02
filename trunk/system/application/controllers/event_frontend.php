@@ -49,7 +49,7 @@
       $this->_data['events'] = $this->MEvent->get_event_by_date($lg,$date,$per_page,$offset);
 
       $this->_data['pagination'] = $this->pagination->create_links();
-	  $meta = $this->Mmetadata->out_meta();
+	  $meta = $this->Mmetadata->out_meta($type_resource,$id_resource);
 	  if ($meta!=FALSE) $this->_data['meta'] = $meta;
       $this->_load_view('event/show_event');
     }
@@ -63,6 +63,8 @@
       'link' => site_url("event_frontend/show_event/".date('Y-m-d')."/5")
       );
 
+      
+      $this->_data['meta'] = 'sdfdsf';
       $this->_data['path'][] = array(
       'name' => __("CF_event_content"),
       'link' => '#'
