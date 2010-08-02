@@ -4,21 +4,22 @@
     var $office_per_page = 5;
     function Office_frontend()
     {
-        parent::Frontend_controller();
-        $this->load->helper('date');
-        $this->load->library('email');
-        $this->load->model('Mcoffice');
-        $this->load->model('Mshowroom');
-        $this->load->model('Mshopproduct','mshopproduct');
-        $this->load->helper('url');
+      parent::Frontend_controller();
+      $this->load->helper('date');
+      $this->load->library('email');
+      $this->load->model('Mcoffice');
+      $this->load->model('Mmetadata');
+      $this->load->model('Mshowroom');
+      $this->load->model('Mshopproduct','mshopproduct');
+      $this->load->helper('url');
     }
-    
+
     function _before_render() 
     {
       $side_bar['page'] = "home/sidebar_office";         
       $this->_data['side_bar'] = $side_bar;    
     }
-    
+
     function office()
     {
       $lg = $this->_data['lang'];
@@ -30,7 +31,7 @@
       'name' => __("CF_conference_office"),
       'link' => "#"
       );
-	    $per_page = $this->_setting['num_per_page_conf'];      
+      $per_page = $this->_setting['num_per_page_conf'];      
       $config['uri_segment'] = 4;
       $config['base_url'] = base_url().'index.php/office_frontend/office/'.$per_page;
       $config['total_rows'] = $this->Mcoffice->count_office_by_lang($lg);
@@ -46,7 +47,7 @@
       $this->_data['pagination'] = $this->pagination->create_links();
       $this->_load_view('home/office_view');
     }
-    
+
     //Content's office of user
     function office_content($id='') 
     {
@@ -64,6 +65,8 @@
       if(is_nan($id)==FALSE && $id > 0)
       {
         $this->_data['query'] = $this->Mcoffice->get_office_by_id($id);
+        $meta = $this->Mmetadata->out_meta('office',$id);
+        if ($meta!=FALSE) $this->_data['meta'] = $meta;
         $this->_load_view('home/office_entry_view');  
       }
       else
@@ -72,5 +75,5 @@
       }
     }
   }
-  
+
 ?>

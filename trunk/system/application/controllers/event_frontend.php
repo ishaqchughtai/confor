@@ -9,7 +9,7 @@
       $this->load->helper('date');    
       $this->load->model('Mshopproduct','mshopproduct');    
       $this->_data['adv']['category'] = 'event';
-	  $this->load->model('Mmetadata');
+      $this->load->model('Mmetadata');
     }
 
     function _before_render() 
@@ -49,8 +49,7 @@
       $this->_data['events'] = $this->MEvent->get_event_by_date($lg,$date,$per_page,$offset);
 
       $this->_data['pagination'] = $this->pagination->create_links();
-	  $meta = $this->Mmetadata->out_meta($type_resource,$id_resource);
-	  if ($meta!=FALSE) $this->_data['meta'] = $meta;
+
       $this->_load_view('event/show_event');
     }
 
@@ -63,8 +62,6 @@
       'link' => site_url("event_frontend/show_event/".date('Y-m-d')."/5")
       );
 
-      
-      $this->_data['meta'] = 'sdfdsf';
       $this->_data['path'][] = array(
       'name' => __("CF_event_content"),
       'link' => '#'
@@ -73,6 +70,8 @@
       if(is_nan($id)==FALSE && $id > 0)
       {
         $this->_data['query'] = $this->MEvent->get_event_by_id($id);
+        $meta = $this->Mmetadata->out_meta('event',$id);
+        if ($meta!=FALSE) $this->_data['meta'] = $meta;
         $this->_load_view('event/event_content');  
       }
       else
@@ -106,6 +105,8 @@
       $this->_data['events'] = $this->MEvent->search_event($keywords,$lg,$per_page,$offset); 
       $this->pagination->initialize($config);
       $this->_data['pagination'] = $this->pagination->create_links();
+      $meta = $this->Mmetadata->out_meta('event',$id);
+      if ($meta!=FALSE) $this->_data['meta'] = $meta;
       $this->_load_view('event/search_event');    
     }
 
@@ -137,6 +138,8 @@
       $this->_data['events'] = $this->MEvent->search_event_by_keyword($keywords,$lg,$per_page,$offset); 
       $this->pagination->initialize($config);
       $this->_data['pagination'] = $this->pagination->create_links();
+      $meta = $this->Mmetadata->out_meta('event',$id);
+      if ($meta!=FALSE) $this->_data['meta'] = $meta;
       $this->_load_view('event/search_event');    
     }
 
@@ -187,7 +190,7 @@
       $config['total_rows'] = $this->MEvent->count_event_by_week($week,$lg);
       $config['per_page']=$per_page;
       //echo  $config['total_rows'];
-//      return; 
+      //      return; 
       $config += config_pagination_style();
       $this->pagination->initialize($config);
       $this->_data['week_events'] = $this->MEvent->get_event_by_week($lg,$week,$per_page,$offset);
