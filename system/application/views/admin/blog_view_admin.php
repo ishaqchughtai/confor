@@ -62,7 +62,7 @@ function search_click(){
         ?>
         <tr>
             <td><?php echo $author?></td>
-            <td><a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$title); ?>" class="read_more" target="_blank"><?php echo $title?></a></td>
+            <td><a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title); ?>" class="read_more" target="_blank"><?php echo $title?></a></td>
             <td><?php echo $final_date?></td>
             <td><?php echo $countcomment;?></td>
             <td><li style="list-style-type:none">

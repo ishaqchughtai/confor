@@ -28,6 +28,7 @@ margin: 			0 0 4px 0;
 <body>
 	<div id="content">
 		<p>Directory access is forbidden.</p>
+        <p><?php echo $message; ?></p>
 	</div>
 </body>
 </html>

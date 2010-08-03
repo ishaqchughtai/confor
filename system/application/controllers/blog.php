@@ -165,7 +165,7 @@ class Blog extends Admin_controller {
                 {                              
                     if($this->Mblog->add_blog($Author,$Date,$Title,$Subject,$Keywords,$Text,$this->_data['uname'],$about,$lg)==TRUE)
                     { 
-                        $this->_message('blog', __("CF_addblog_success"), 'success', site_url("blog/blog_list"));
+                        $this->_message('blog', __("CF_addblog_success"), 'success', site_url("blog/blog_list".'/'.$lg));
                     }
                 }
             }else

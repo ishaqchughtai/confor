@@ -16,18 +16,19 @@
                     $title = $row['Title'];
                     $CountView = $row['CountView'];
                     $countcomment = $row['CountComment'];
-                    $author = $row['Name'];                                                  
+                    $author = $row['Name'];       
+                    $id = $row['ID'];                                           
                 ?>
                 <li>
                     <?php if($is_admin):?>                                
                         <img src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
-                        <a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
+                        <a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
+                        <a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php else:?>
                         <img src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
-                        <a href="<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
+                        <a href="<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
+                        <a href="<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php endif;?>
                 </li>
                 <?php }?>
@@ -51,18 +52,19 @@
                     $CountView = $row['CountView'];
                     $countcomment = $row['CountComment'];
                     $author = $row['Name'];                               
+                    $id=$row['ID'];
                 ?>
                 <li>
                     <?php if($is_admin):?>                                
                         <img src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
-                        <a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
+                        <a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
+                        <a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php else:?>
                         <img src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
-                        <a href="<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
+                        <a href="<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
+                        <a href="<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php endif;?>
                 </li>
                 <?php }?>

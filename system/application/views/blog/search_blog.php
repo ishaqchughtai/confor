@@ -15,12 +15,12 @@
                                 $CountView = $row['CountView'];
                                 $author = $row['Name'];
                                 $date = $row['Date'] ;
-                                $final_date=date("F jS Y", strtotime($date));
+                                $final_date=date("d-m-Y", strtotime($date));
                                 $countcomment = $row['CountComment'];      
                             ?>
       <div class="content_item">
         <?php if($this->session->userdata('admin')==TRUE):?>
-        <h3><a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$title); ?>"><?php echo $title ?></a></h3>
+        <h3><a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title); ?>"><?php echo $title ?></a></h3>
         <h5><?php echo __("CF_by")?> <?php echo $author ?> <?php echo __("CF_in")?> :
           <?php for($i=0;$i<count($key);$i++){?>
           <a href="<?php echo site_url('blog_frontend/search_keyword').'/'.$key[$i].'/'.$page?>"><?php echo $key[$i]?></a>
@@ -30,9 +30,9 @@
         <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="202" height="90" alt="Confor.ca" class="alignleft" /></p>
         <?php echo word_limiter(strip_tags($text), 100); ?><br/>
         <br/>
-        <a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$title); ?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
+        <a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title); ?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
       <?php else:?>
-      <h3><a href="<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$title); ?>"><?php echo $title ?></a></h3>
+      <h3><a href="<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title); ?>"><?php echo $title ?></a></h3>
       <h5><?php echo __("CF_by")?> <?php echo $author ?> <?php echo __("CF_in")?> :
         <?php for($i=0;$i<count($key);$i++){?>
         <a href="<?php echo site_url('blog_frontend/search_keyword').'/'.$key[$i].'/'.$page?>"><?php echo $key[$i]?></a>
@@ -42,7 +42,7 @@
       <p><img src="<?php echo base_url().'assets/uploads/image/'.$link ?>" width="202" height="90" alt="Confor.ca" class="alignleft" /></p>
       <?php echo word_limiter(strip_tags($text), 100); ?><br/>
       <br/>
-      <a href="<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$title); ?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
+      <a href="<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title); ?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
     <?php endif;?>
     <?php }?>
     <!-- /.content_item -->
