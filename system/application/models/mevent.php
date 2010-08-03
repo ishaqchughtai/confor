@@ -194,7 +194,6 @@
     {
       $this->db->from('tblevent');
       $this->db->like('Keywords', $keywords);
-      $this->db->where(array('lang'=>$lg));
       $this->db->where(array('tblevent.Status'=>1,'lang'=>$lg));
       $query = $this->db->count_all_results();
       return $query;

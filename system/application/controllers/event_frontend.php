@@ -107,8 +107,6 @@
       $this->_data['events'] = $this->MEvent->search_event($keywords,$lg,$per_page,$offset); 
       $this->pagination->initialize($config);
       $this->_data['pagination'] = $this->pagination->create_links();
-      $meta = $this->Mmetadata->out_meta('event',$id);
-      if ($meta!=FALSE) $this->_data['meta'] = $meta;
       $this->_load_view('event/search_event');    
     }
 
@@ -140,8 +138,6 @@
       $this->_data['events'] = $this->MEvent->search_event_by_keyword($keywords,$lg,$per_page,$offset); 
       $this->pagination->initialize($config);
       $this->_data['pagination'] = $this->pagination->create_links();
-      $meta = $this->Mmetadata->out_meta('event',$id);
-      if ($meta!=FALSE) $this->_data['meta'] = $meta;
       $this->_load_view('event/search_event');    
     }
 
