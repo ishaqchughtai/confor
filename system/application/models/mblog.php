@@ -17,7 +17,8 @@ class Mblog extends Model{
         tblblog.Link,
         tblblog.CountView,
         tblblog.CountComment,          
-        tbladmin.Name");
+        tbladmin.Name,
+        tbladmin.FirstName");
         $this->db->from('tblblog');
         $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
         //$this->db->order_by("tblblog.Date", "desc");
@@ -40,7 +41,8 @@ class Mblog extends Model{
         tblblog.CountView,
         tblblog.CountComment,
         tblblog.About,          
-        tbladmin.Name");
+        tbladmin.Name,
+        tbladmin.FirstName");
         $this->db->from('tblblog');
         $this->db->where('tblblog.Title',$title);
         $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
@@ -59,7 +61,8 @@ class Mblog extends Model{
         tblblog.CountView,
         tblblog.CountComment,
         tblblog.About,          
-        tbladmin.Name");
+        tbladmin.Name,
+        tbladmin.FirstName");
         $this->db->from('tblblog');
         $this->db->where('tblblog.ID',$id);
         $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
@@ -88,7 +91,8 @@ class Mblog extends Model{
         tblblog.Link,
         tblblog.CountView,
         tblblog.CountComment,          
-        tbladmin.Name");
+        tbladmin.Name,
+        tbladmin.FirstName");
         $this->db->from('tblblog');
         $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
         $this->db->order_by("tblblog.ID", "desc");
@@ -243,7 +247,8 @@ class Mblog extends Model{
             tblblog.CountView,
             tblblog.Keywords,          
             tblblog.CountComment,
-            tbladmin.Name");
+            tbladmin.Name,
+            tbladmin.FirstName");
             $this->db->from('tblblog');
             $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
             $this->db->like('Title',$Title,'both') ;                    
@@ -276,7 +281,8 @@ class Mblog extends Model{
             tblblog.CountView,
             tblblog.Keywords,          
             tblblog.CountComment,
-            tbladmin.Name");
+            tbladmin.Name,
+            tbladmin.FirstName");
             $this->db->from('tblblog');
             $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
             $this->db->like('Title',$Title,'both') ;                    
@@ -310,7 +316,8 @@ class Mblog extends Model{
             tblblog.CountView,
             tblblog.Keywords,          
             tblblog.CountComment,
-            tbladmin.Name");
+            tbladmin.Name,
+            tbladmin.FirstName");
             $this->db->from('tblblog');
             $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
             $this->db->where('Date',$Date) ;      

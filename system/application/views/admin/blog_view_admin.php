@@ -56,12 +56,13 @@ function search_click(){
             $text = $row['Text'];
             $CountView = $row['CountView'];                          
             $author = $row['Name'];
+            $author_name = $row['FirstName'];
             $date = $row['Date'];
             $final_date=date("d-m-Y", strtotime($date));
             $countcomment = $row['CountComment'];     
         ?>
         <tr>
-            <td><?php echo $author?></td>
+            <td><?php echo $author_name?></td>
             <td><a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title); ?>" class="read_more" target="_blank"><?php echo $title?></a></td>
             <td><?php echo $final_date?></td>
             <td><?php echo $countcomment;?></td>
