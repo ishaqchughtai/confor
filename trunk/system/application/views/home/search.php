@@ -10,7 +10,7 @@
 
         <h3><a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>"><?php echo $rows['title'];?></a></h3>
 
-        <h5><?php echo __("CF_by")?> <a href="<?php echo site_url('video/speaker').'/'.$rows['mem_id'].'/'.$page?>"><b><?php echo $rows['username']?></b></a> <?php echo __("CF_in")?> : 
+        <h5><?php echo __("CF_by")?> <a href="<?php echo site_url('video/speaker').'/'.$rows['mem_id'].'/'.$page?>"><b><?php echo $rows['first_name'].' '.$rows['name']?></b></a> <?php echo __("CF_in")?> : 
 
             <?php for($i=0;$i<count($keyword);$i++){?>
             <a href="<?php echo site_url('video/search_tag/'.$keyword[$i].'/')?>"><?php echo $keyword[$i]?></a>

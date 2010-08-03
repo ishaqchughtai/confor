@@ -166,7 +166,6 @@ class Video extends Frontend_controller
 
     $config['total_rows'] = $this->Mhome->count_video_search($this->_data['lang'],$keyword,true);
     $this->_data['search_results'] = $this->Mhome->search_paging($this->_data['lang'],$keyword, $config['per_page'], $offset, true);     
-
     $this->pagination->initialize($config);
     $this->_data['link_html'] = $this->pagination->create_links();
     $this->_data['keyword'] = $keyword;
@@ -195,7 +194,7 @@ class Video extends Frontend_controller
     $this->pagination->initialize($config);
     $this->_data['pagination'] = $this->pagination->create_links();				
 
-    $this->db->select('videos.*, users.username');
+    $this->db->select('videos.*, users.*');
     $this->db->where('lang',$this->_data['lang']);
     $this->db->where('MONTH(FROM_UNIXTIME(date))',$month);
     $this->db->where('YEAR(FROM_UNIXTIME(date))',$year);	

@@ -5,10 +5,10 @@
 
         <h3><a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>"><?php echo $rows['title'];?></a></h3>
 
-        <h5><?php echo __("CF_by")?> <?php echo $rows['username']?> <?php echo __("CF_in")?> : 
+        <h5><?php echo __("CF_by")?> <?php echo $rows['first_name'].' '.$rows['name']?> <?php echo __("CF_in")?> : 
 
             <?php for($i=0;$i<count($keyword);$i++){?>
-                <a href="#"><?php echo $keyword[$i]?></a>
+                <a href="<?php echo site_url('video/search_paging/'.$keyword[$i].'/false')?>"><?php echo $keyword[$i]?></a>
                 <?php if ($i<count($keyword)-1) echo ','?>
                 <?php ;}?>
 
