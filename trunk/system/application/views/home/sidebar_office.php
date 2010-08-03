@@ -14,8 +14,12 @@
 						<input name="search" type="submit" class="search_submit" value="&nbsp">
 					<?php echo form_close();?>
 					<!-- #search form -->
-				
+				<?php
+					foreach(range('A', 'Z') as $letter):?>
+						<a href="<?php echo site_url('office_frontend/search/'.$letter)?>"><?php echo $letter.' '; ?></a>
+					<?php endforeach;?>
 				</div>
+                
 				<!-- /.sidebar_item #search -->
                 <div class="sidebar_item">
 					<h3><?php echo __("CF_event")?></h3>
