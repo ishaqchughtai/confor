@@ -16,6 +16,7 @@
                                 $text = $row['Text'];
                                 $CountView = $row['CountView'];                           
                                 $author = $row['Name'];
+                                $author_name = $row['FirstName'];
                                 $authortemp = $author;
                                 $date = $row['Date'];
                                 $about = $row['About'];
@@ -38,7 +39,7 @@
         $written = $row['written'];
     
 ?>
-          <p><a href="#" class="author_link"><?php echo $author?></a> <?php echo __("CF_has_written")?> <?php echo $written;?> <?php echo __("CF_articles_for")?> Confor.ca.</p>
+          <p><a href="#" class="author_link"><?php echo $author_name?></a> <?php echo __("CF_has_written")?> <?php echo $written;?> <?php echo __("CF_articles_for")?> Confor.ca.</p>
           <?php echo $about?> </div>
         <?php }?>
       </div>

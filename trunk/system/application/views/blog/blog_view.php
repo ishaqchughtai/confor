@@ -10,6 +10,7 @@
         $text        =$row['Text'];
         $CountView   =$row['CountView'];
         $author      =$row['Name'];
+        $author_name      =$row['FirstName'];
         $date        =$row['Date'];
         $countcomment=$row['CountComment'];
         $is_admin = $this->session->userdata('admin');
@@ -74,7 +75,7 @@
     <?php else:?>
         <h3><a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title); ?>"><?php echo $title ?></a></h3>
     <?php endif;?>
-        <h5><?php echo __("CF_by") ?> <?php echo $author ?> <?php echo __("CF_in") ?> : 
+        <h5><?php echo __("CF_by") ?> <?php echo $author_name ?> <?php echo __("CF_in") ?> : 
             <?php
                 for ($i=0; $i < count($key); $i++)
                 {

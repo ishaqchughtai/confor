@@ -13,6 +13,7 @@
                                 $key = explode(" ", $keywords);
                                 $text = $row['Text'];
                                 $CountView = $row['CountView'];
+                                $author_name = $row['FirstName'];
                                 $author = $row['Name'];
                                 $date = $row['Date'] ;
                                 $final_date=date("d-m-Y", strtotime($date));
@@ -21,7 +22,7 @@
       <div class="content_item">
         <?php if($this->session->userdata('admin')==TRUE):?>
         <h3><a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title); ?>"><?php echo $title ?></a></h3>
-        <h5><?php echo __("CF_by")?> <?php echo $author ?> <?php echo __("CF_in")?> :
+        <h5><?php echo __("CF_by")?> <?php echo $author_name ?> <?php echo __("CF_in")?> :
           <?php for($i=0;$i<count($key);$i++){?>
           <a href="<?php echo site_url('blog_frontend/search_keyword').'/'.$key[$i].'/'.$page?>"><?php echo $key[$i]?></a>
           <?php if ($i<count($key)-1) echo ','?>
@@ -33,7 +34,7 @@
         <a href="<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title); ?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
       <?php else:?>
       <h3><a href="<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title); ?>"><?php echo $title ?></a></h3>
-      <h5><?php echo __("CF_by")?> <?php echo $author ?> <?php echo __("CF_in")?> :
+      <h5><?php echo __("CF_by")?> <?php echo $author_name ?> <?php echo __("CF_in")?> :
         <?php for($i=0;$i<count($key);$i++){?>
         <a href="<?php echo site_url('blog_frontend/search_keyword').'/'.$key[$i].'/'.$page?>"><?php echo $key[$i]?></a>
         <?php if ($i<count($key)-1) echo ','?>
