@@ -1,13 +1,18 @@
 XEMMEX.eventDays = 0;
 
 function get_event_in_month(year,month,isRefresh)
-{
+{	
+	var ajaxUrl = XEMMEX.baseUrl + 'home/get_event_in_month/'+year+'/'+month;
+	//alert(ajaxUrl);
 	$.ajax({
-		url: XEMMEX.baseUrl + 'home/get_event_in_month/'+year+'/'+month,
-		dataType: "json",
+		type: "GET",
+		url: ajaxUrl,
+		//dataType: "json",
 		success: function(ed)
 		{					
-			XEMMEX.eventDays = ed;		
+			if (ed==null) {ed=0};			
+			//alert(ed);
+			XEMMEX.eventDays = eval(ed);					
 			if (isRefresh) 
 			{
 				$('#datepicker').datepicker("refresh");
