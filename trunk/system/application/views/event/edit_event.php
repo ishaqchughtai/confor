@@ -1,9 +1,24 @@
-					<?php
+	<script type="text/javascript">
+	$(function() {
+		$("#datepicker").datepicker({
+				dateFormat: 'yy/mm/dd',
+				onSelect: function(dateText, inst) {   
+					 //$('#datepicker').val(dateText);
+					 gogo = dateText;
+					 //alert(gogo);
+				}				
+			}
+		);
+		$("#format").change(function() { 
+		$('#datepicker').datepicker('option', {dateFormat: $(this).val()}); });
+	});
+	</script>
+    				<?php
 						foreach($query as $row)
 						{
 							$id = $row->ID;
 							$speaker_id = $row->Speaker;
-							$date =  $row->Date;
+							$date =  date("Y/m/d", strtotime($row->Date));
 							$title = $row->Title;
 							$subject = $row->Subject;
 							$keywords = $row->Keywords;
@@ -16,6 +31,12 @@
 						<?php
 						echo form_open('manage_event/edit_event/'.$speaker_id.'/'.$id);
 						?>
+                        <p>						
+							<label for="date"><?php echo __("CF_date")?></label>
+							<input name="date" class="short" id="datepicker" value="<?php echo $date?>"/>
+                            <?php echo form_error('date')?>
+						</p>
+                        
 						<p>
 						
 							<label for="title"><?php echo __("CF_title")?>:</label>

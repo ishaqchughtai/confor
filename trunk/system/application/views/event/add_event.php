@@ -1,3 +1,18 @@
+<script type="text/javascript">
+	$(function() {
+		$("#datepicker").datepicker({
+				dateFormat: 'yy/mm/dd',
+				onSelect: function(dateText, inst) {   
+					 //$('#datepicker').val(dateText);
+					 gogo = dateText;
+					 //alert(gogo);
+				}				
+			}
+		);
+		$("#format").change(function() { 
+		$('#datepicker').datepicker('option', {dateFormat: $(this).val()}); });
+	});
+	</script>
 				<div class="content_item">
 				<ul class="link_conttrol">
         <li><a class="icon_list" href="<?php echo site_url('manage_event/your_event'.'/'.$lg.'/5')?>"><?php echo __("CF_admin_event_list")?></a></li>
@@ -10,7 +25,13 @@
 						//echo $error;
 						//echo $notify;
 					?>
-						
+						<p>						
+							<label for="date"><?php echo __("CF_date")?></label>
+							<input name="date" class="short" id="datepicker" value="<?php echo date('Y/m/d')?>"/>
+                            <?php echo form_error('date')?>
+						</p>
+                        
+                        
 						<p>
 						
 							<label for="title"><?php echo __("CF_title")?>:</label>

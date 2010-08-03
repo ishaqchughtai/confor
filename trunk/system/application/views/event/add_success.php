@@ -1,4 +1,4 @@
-			
+<div id="content">			
 				<p class="not_success"><span class="img"></span><?php echo __("CF_mess_add_event")?><span class="close"></span></p>
 			  <div id="left">
 			  <!-- /.content_item -->
@@ -16,6 +16,12 @@
 			<?php else:?>
 			<?php endif;?>			
 					</form>
+                    <br />
+<br />
+<br />
+<br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
 		  </div>
 				<!-- /.content_item -->
 				<!-- /.content_item -->
@@ -23,4 +29,4 @@
 
 				<!-- /#pagination -->
 				<!-- /#content #left - left side of main content -->
-	
+	</div>

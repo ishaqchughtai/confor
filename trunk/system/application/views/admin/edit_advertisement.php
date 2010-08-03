@@ -18,7 +18,7 @@
 {
 	$id = $row['ID'];
 	$dateBeginning = $row['DateBeginning'];
-	$dateExpiry = date("d-m-Y", strtotime($row['DateExpiry']));
+	$dateExpiry = date("Y/m/d", strtotime($row['DateExpiry']));
 	$advertiserName = $row['AdvertiserName'];
 	$advertiserEmail = $row['AdvertiserEmail'];
 	$url = $row['URL'];

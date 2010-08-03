@@ -28,7 +28,7 @@
       $this->db->from('tblevent');
       $this->db->join('users','tblevent.Speaker = users.ID');
       $this->db->where(array('lang'=>$lg));
-      $this->db->order_by("tblevent.ID", "desc");
+      $this->db->order_by("tblevent.date", "desc");
       $this->db->limit($offset,$num);
       $query = $this->db->get();
       return $query->result_array();
@@ -146,10 +146,11 @@
     }
 
     //Edit event of speaker
-    function edit($id,$title,$subject,$keywords,$description)
+    function edit($id,$title,$date,$subject,$keywords,$description)
     {
       $data = array(
-      'Title'=>$title,                                          
+      'Title'=>$title,
+      'Date'=>$date,                                          
       'Subject'=>$subject,
       'Keywords'=>$keywords,
       'Description'=>$description
@@ -158,11 +159,12 @@
     }
 
     //Edit event of admin    
-    function edit_event($id,$speaker_id,$title,$subject,$keywords,$description,$status,$lg)
+    function edit_event($id,$speaker_id,$title,$date,$subject,$keywords,$description,$status,$lg)
     {
       $data = array(
       'Speaker'=>$speaker_id,
       'Title'=>$title,                                          
+      'Date'=>$date,
       'Subject'=>$subject,
       'Keywords'=>$keywords,
       'Description'=>$description,

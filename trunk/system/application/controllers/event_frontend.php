@@ -1,6 +1,8 @@
 <?php
+
   class Event_frontend extends Frontend_controller
   {
+    var $event_per_page = 5; 
     function Event_frontend()
     {
       parent::Frontend_controller();
@@ -59,7 +61,7 @@
 
       $this->_data['path'][] = array(
       'name' => __("CF_event"),
-      'link' => site_url("event_frontend/show_event/".date('Y-m-d')."/5")
+      'link' => site_url("event_frontend/show_event/".date('Y-m-d').'/'.$this->event_per_page)
       );
 
       $this->_data['path'][] = array(
