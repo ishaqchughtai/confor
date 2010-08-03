@@ -73,6 +73,7 @@
         {
             $this->db->select('
             users.username,
+            users.first_name,
             users.name,
             videos.*
             ');
@@ -143,6 +144,8 @@
         {
             $this->db->select('
             users.username,
+            users.first_name,
+            users.name,
             videos.vid_id,
             videos.date,
             videos.title,
@@ -174,6 +177,8 @@
         {
             $this->db->select('
             users.username,
+            users.first_name,
+            users.name,
             videos.vid_id,
             videos.date,
             videos.title,

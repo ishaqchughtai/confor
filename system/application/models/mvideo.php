@@ -73,6 +73,7 @@
       tblvideoconference.VideoLink,
       tblvideoconference.Ticket,
       users.Name as speaker_name,
+      users.first_name,
       tblvideoconference.ImagesLink,
       tblvideoconference.Category
       ");

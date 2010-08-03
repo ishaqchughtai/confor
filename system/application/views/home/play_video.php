@@ -15,6 +15,8 @@
         $date=$row->date;
         $viewed=$row->viewed;
         $name=$row->username;
+        $first_name=$row->first_name;
+        $name_name=$row->name;
         $video_title=$row->title;
         $video_image=$row->shash;
 		$category_name = $row->category_name;
@@ -23,10 +25,10 @@
 <h3><?php echo $video_title?></h3>
 <h5><?php echo __("CF_by")?>
 
-    <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $name?></b></a> 
+    <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $first_name.' '.$name_name?></b></a> 
     <?php echo __("CF_in")?> 
     <?php for($i=0;$i<count($tags);$i++){?>
-        <a href="<?php echo site_url('home/search_paging/'.$tags[$i].'/false')?>"><?php echo $tags[$i]?></a>
+        <a href="<?php echo site_url('video/search_paging/'.$tags[$i].'/false')?>"><?php echo $tags[$i]?></a>
         <?php if ($i<count($tags)-1) echo ','?>
         <?php ;}?>
     //

@@ -24,6 +24,8 @@
       videos.vid_id,
       videos.mem_id,
       users.username,
+      users.first_name,
+      users.name,
       videos.date,
       videos.title,
       videos.tags,
