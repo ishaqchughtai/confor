@@ -63,6 +63,7 @@
       if($this->input->post('btnsubmit'))
       {
         $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
+        $this->form_validation->set_rules('date',strtolower(__("CF_date")),'required|callback_check_date');
         $this->form_validation->set_rules('subject',strtolower(__("CF_subject")),'trim|required|max_length[50]');
         $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
         $this->form_validation->set_rules('description',strtolower(__("CF_des")),'trim|required');
@@ -74,7 +75,7 @@
         else
         {   
           $speaker = $id;
-          $date = date('Y-m-d');          
+          $date = $this->input->post('date');          
           $title = $this->input->post('title');                                                      
           $subject = $this->input->post('subject');            
           $description = $this->input->post('description');
@@ -150,6 +151,7 @@
       if($this->input->post('btnedit'))
       {
         $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
+        $this->form_validation->set_rules('date',strtolower(__("CF_date")),'required|callback_check_date');
         $this->form_validation->set_rules('subject',strtolower(__("CF_subject")),'trim|required|max_length[50]');
         $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
         $this->form_validation->set_rules('description',strtolower(__("CF_des")),'trim|required');
@@ -161,11 +163,12 @@
         else
         {
 
-          $title = $this->input->post('title');                                          
+          $title = $this->input->post('title');
+          $date = $this->input->post('date');                                          
           $subject = $this->input->post('subject');
           $keywords = $this->input->post('keywords');
           $description = $this->input->post('description');
-          $data = $this->MEvent->edit($id,$title,$subject,$keywords,$description);
+          $data = $this->MEvent->edit($id,$title,$date,$subject,$keywords,$description);
           redirect('manage_event/your_event/'.$lg.'/'.$this->event_per_page);
         }   
       }
@@ -204,5 +207,17 @@
         return TRUE ;
       }
     }
+    function check_date($date) 
+  { 
+    if($date < date('Y/m/d'))
+    {
+      $this->form_validation->set_message('check_date', __("CF_check_date"));
+      return FALSE;
+    }
+    else 
+    {
+      return TRUE;
+    }
+  }
   }
 ?>

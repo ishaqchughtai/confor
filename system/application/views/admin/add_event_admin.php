@@ -1,3 +1,18 @@
+<script type="text/javascript">
+	$(function() {
+		$("#datepicker").datepicker({
+				dateFormat: 'yy/mm/dd',
+				onSelect: function(dateText, inst) {   
+					 //$('#datepicker').val(dateText);
+					 gogo = dateText;
+					 //alert(gogo);
+				}				
+			}
+		);
+		$("#format").change(function() { 
+		$('#datepicker').datepicker('option', {dateFormat: $(this).val()}); });
+	});
+	</script>
 <?php
 	$this->load->view('admin/speaker_selector');
 ?>
@@ -22,6 +37,12 @@
                         <?php echo form_error('speaker_name')?>
 						</p>
 						
+                        <p>						
+							<label for="date"><?php echo __("CF_date")?></label>
+							<input name="date" class="short" id="datepicker" value="<?php echo date('Y/m/d')?>"/>
+                            <?php echo form_error('date')?>
+						</p>
+                        
 						<p>
 						
 							<label for="title"><?php echo __("CF_title")?>:</label>

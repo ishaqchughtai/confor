@@ -22,15 +22,15 @@
         <h3><?php echo __("CF_list_event")?></h3><br /><br/>
         
         <div class="input text">
-		<label>Display language</label>		
+		<label><?php echo __("CF_dis_lang")?></label>		
 		<?php choose_your_language($lg);?>
 	</div>
         <table border="1" width="1000px">
             <tr align="left">
-                <th width="208"><?php echo __("CF_date")?></th>
-                <th width="292"><?php echo __("CF_title")?></th>
-                <th width="158"><?php echo __("CF_subject")?></th>
-                <th width="268"><?php echo __("CF_key")?></th>
+                <th width="130"><?php echo __("CF_date")?></th>
+                <th width="401"><?php echo __("CF_title")?></th>
+                <th width="401"><?php echo __("CF_subject")?></th>
+                <th width="26"><?php echo mb_strtoupper(__("CF_status"))?> </th>
                 <th width="17" align="center"><?php echo mb_strtoupper(__("CF_action"))?></th>
             </tr>
             
@@ -41,18 +41,12 @@
 						$subject = $row['Subject'];
 						$description = $row['Description'];					
 			?>
-            <?php $keyword = explode(" ", $row['Keywords']); ?>
                 <tr>
                     <td><?php echo date("d-m-Y", strtotime($row['Date']))?></td>     
                     <td><a href="<?php echo site_url('event_frontend/event_content/'.$row['ID'])?>" target="_blank"><?php echo $title?></a></td>                   
                     
                     <td><?php echo $subject?></td>
-                    <td>
-					<?php for($i=0;$i<count($keyword);$i++){?>
-                      <?php echo $keyword[$i]?>
-                      <?php if ($i<count($keyword)-1) echo ','?>
-                      <?php ;}?>
-                    </td>                    
+                    <td><?php if((int)$row['Status']=='0'){echo __("CF_shop_deac");}else{echo __("CF_shop_ac");} ?>                    
                     <td width="17"><a href="<?php echo site_url('manage_event/get_event'.'/'.$row['Speaker'].'/'.$row['ID'])?>"><?php echo mb_strtoupper(__("CF_modify"))?></a></td> 
                     <td width="17"><a href="<?php echo site_url('manage_event/delete_event'.'/'.$row['Speaker'].'/'.$row['ID'])?>" onclick="return confirm('<?php echo __("CF_mess_delete")?>');"><?php echo __("CF_del")?></a></td>
                 </tr>

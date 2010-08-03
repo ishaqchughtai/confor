@@ -106,6 +106,7 @@ class Event extends Admin_controller {
     if($this->input->post('btnedit'))
     {
       $this->form_validation->set_rules('speaker_name',strtolower(__("CF_one_speaker")),'required');
+      $this->form_validation->set_rules('date',strtolower(__("CF_date")),'required|callback_check_date');
       $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
       $this->form_validation->set_rules('subject',strtolower(__("CF_subject")),'trim|required|max_length[50]');   
       $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
@@ -118,13 +119,14 @@ class Event extends Admin_controller {
       else
       {
         $speaker_id = $this->input->post('speaker');
-        $title = $this->input->post('title');      
+        $title = $this->input->post('title');
+        $date = $this->input->post('date');      
         $subject = $this->input->post('subject');      
         $keywords = $this->input->post('keywords');
         $description = $this->input->post('description');
         $status = $this->input->post('status');
         $lg = $this->input->post('lg');
-        $data = $this->MEvent->edit_event($id,$speaker_id,$title,$subject,$keywords,$description,$status,$lg);
+        $data = $this->MEvent->edit_event($id,$speaker_id,$title,$date,$subject,$keywords,$description,$status,$lg);
         $this->_message('event', __("CF_edit_event_suc"), 'success', site_url('event/event_list/'.$lg.'/'.$this->event_per_page));
       }   
     }
@@ -156,6 +158,7 @@ class Event extends Admin_controller {
     if($this->input->post('btnsubmit'))
     {
       $this->form_validation->set_rules('speaker_name',strtolower(__("CF_one_speaker")),'required');
+      $this->form_validation->set_rules('date',strtolower(__("CF_date")),'required|callback_check_date');
       $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
       $this->form_validation->set_rules('subject',strtolower(__("CF_subject")),'trim|required|max_length[50]');   
       $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
@@ -168,7 +171,7 @@ class Event extends Admin_controller {
       else
       {    
         $speaker = $this->input->post('speaker');
-        $date = date('Y-m-d');
+        $date = $this->input->post('date');
         $title = $this->input->post('title');
         $subject = $this->input->post('subject');
         $keywords = $this->input->post('keywords');
@@ -244,6 +247,19 @@ class Event extends Admin_controller {
     $this->pagination->initialize($config);
     $this->_data['pagination'] = $this->pagination->create_links();
     $this->_load_view('admin/search_event');    
+  }
+  
+  function check_date($date) 
+  { 
+    if($date < date('Y/m/d'))
+    {
+      $this->form_validation->set_message('check_date', __("CF_check_date"));
+      return FALSE;
+    }
+    else 
+    {
+      return TRUE;
+    }
   }
 
 }
