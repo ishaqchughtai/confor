@@ -199,4 +199,23 @@ class Home extends Frontend_controller {
     {
         $this->_data['query'] = $this->Mshowroom->get_show_room();
     }   
+	
+	function get_event_in_month($year,$month)
+	{
+		$ed = $this->Mhome->get_event_in_month($this->_data['lang'],$month,$year);
+		if ($ed==FALSE) 
+		{ 
+			echo 0;
+			return;
+		}
+		$num = count($ed);
+		$out = '[';
+		for ($i=0; $i<$num; $i++)
+		{
+			if ($i>0) $out .= ',';
+			$out .= $ed[$i]['edate'];
+		}
+		$out .= ']';
+		echo $out;
+	}
 }

@@ -283,5 +283,24 @@
       }	
       return true;
     }
+	
+	function get_event_in_month($lg,$month,$year)
+	{
+		$this->db->distinct();
+		$this->db->select('DAY(Date) as edate');
+		$this->db->from('tblevent');
+		$this->db->where('MONTH(Date)',intval($month));
+		$this->db->where('YEAR(Date)',intval($year));
+		$this->db->where('lang',$lg);
+		$this->db->where('Status',1);
+		$this->db->order_by('Date','asc');
+		$query = $this->db->get();
+		if ($query->num_rows()>0)
+		{
+			return $query->result_array();
+		}
+		return FALSE;
+	}
+	
   }
 ?>

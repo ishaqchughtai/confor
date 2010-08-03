@@ -1,5 +1,27 @@
+XEMMEX.eventDays = 0;
 
-$(function(){
+function get_event_in_month(year,month,isRefresh)
+{
+	$.ajax({
+		url: XEMMEX.baseUrl + 'home/get_event_in_month/'+year+'/'+month,
+		dataType: "json",
+		success: function(ed)
+		{					
+			XEMMEX.eventDays = ed;		
+			if (isRefresh) 
+			{
+				$('#datepicker').datepicker("refresh");
+			}	
+			else
+			{
+				init_event_date();
+			}
+		}
+	});	
+}
+
+function init_event_date()
+{
 	$('#datepicker').datepicker({
 		inline: true,				
 		dateFormat: 'yy-mm-dd',
@@ -9,8 +31,38 @@ $(function(){
 			gogo = XEMMEX.baseUrl + "event_frontend/show_event/" + dateText + "/5";
 			//alert(gogo);
 			window.location = gogo;
-		}
-	});	
+		},
+		onChangeMonthYear: function(year, month, inst) 
+		{
+			get_event_in_month(year,month,true);
+			// $.ajax({
+				// url: XEMMEX.baseUrl + 'home/get_event_in_month/'+year+'/'+month,
+				// dataType: "json",
+				// success: function(ed)
+				// {					
+					// XEMMEX.eventDays = ed;								
+					// $('#datepicker').datepicker("refresh");
+				// }
+			// });			
+		},					
+        beforeShowDay: function (date){
+			if (XEMMEX.eventDays==0) return [true, ""];
+			
+			for (i = 0; i < XEMMEX.eventDays.length; i++) {
+				if (date.getDate() == XEMMEX.eventDays[i]) {			
+					return [true,"ui-state-hover",""]; 
+				}
+			}
+			return [true, ""];
+		}           		
+	});
+}
+
+$(function(){
+	// var t = new Date().getTime();
+	 var d = new Date();
+	// alert(d.getMonth());
+	get_event_in_month(d.getFullYear(),d.getMonth()+1,false);	
     
 	$('#datepicker_blog').datepicker({
         inline: true,                
