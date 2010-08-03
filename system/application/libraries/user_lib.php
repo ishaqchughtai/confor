@@ -722,7 +722,7 @@ class User_lib
 		$config['uri_segment'] = 4;
 		$this->CI->db->where("users.userlevel <>", "9"); 
 		if (($keyword)&&(strlen($keyword)>0)) {
-			$this->CI->db->like("users.user", $keyword);
+			$this->CI->db->like("users.username", $keyword);
 			$this->CI->db->from('users');
 			$config['total_rows'] =  $this->CI->db->count_all_results();
 		} else {
