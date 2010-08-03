@@ -16,9 +16,9 @@
     ?>
     <div class = "content_item">
     <?php if($is_admin):?>
-        <h3><a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$title);?>"><?php echo $title; ?></a></h3> 
+        <h3><a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title);?>"><?php echo $title; ?></a></h3> 
         <h5><?php echo $subject; ?></h5>
-        <a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$title)?>#comments" class = "comments_balloon"><?php echo $countcomment; ?></a>
+        <a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title)?>#comments" class = "comments_balloon"><?php echo $countcomment; ?></a>
 
         <p>
             <img src = "<?php echo base_url().'assets/uploads/image/'.$link ?>" width = "610" height = "169" alt = "Confor.ca"/>
@@ -26,13 +26,13 @@
 
         <p><?php echo word_limiter(strip_tags($text), 100); ?></p>
 
-        <a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$title);?>" class = "read_more">
+        <a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title);?>" class = "read_more">
             <?php echo __("CF_continue"); ?>
         </a>
     <?php else:?>
-        <h3><a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$title);?>"><?php echo $title; ?></a></h3> 
+        <h3><a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title);?>"><?php echo $title; ?></a></h3> 
         <h5><?php echo $subject; ?></h5>
-        <a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$title)?>#comments" class = "comments_balloon"><?php echo $countcomment; ?></a>
+        <a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title)?>#comments" class = "comments_balloon"><?php echo $countcomment; ?></a>
 
         <p>
             <img src = "<?php echo base_url().'assets/uploads/image/'.$link ?>" width = "610" height = "169" alt = "Confor.ca"/>
@@ -40,7 +40,7 @@
 
         <p><?php echo word_limiter(strip_tags($text), 100); ?></p>
 
-        <a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$title);?>" class = "read_more">
+        <a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title);?>" class = "read_more">
             <?php echo __("CF_continue"); ?>
         </a>    
     <?php endif;?> 
@@ -70,9 +70,9 @@
 
     <div class = "content_item">
     <?php if($is_admin):?>
-        <h3><a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$title); ?>"><?php echo $title ?></a></h3>
+        <h3><a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title); ?>"><?php echo $title ?></a></h3>
     <?php else:?>
-        <h3><a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$title); ?>"><?php echo $title ?></a></h3>
+        <h3><a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title); ?>"><?php echo $title ?></a></h3>
     <?php endif;?>
         <h5><?php echo __("CF_by") ?> <?php echo $author ?> <?php echo __("CF_in") ?> : 
             <?php
@@ -88,9 +88,9 @@
             // <?php echo $final_date ?> 
         </h5>
         <?php if($is_admin):?>
-            <a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$title)?>#comments" class = "comments_balloon"><?php echo $countcomment ?></a>
+            <a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title)?>#comments" class = "comments_balloon"><?php echo $countcomment ?></a>
         <?php else:?>
-            <a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$title)?>#comments" class = "comments_balloon"><?php echo $countcomment ?></a>
+            <a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title)?>#comments" class = "comments_balloon"><?php echo $countcomment ?></a>
         <?php endif;?>
         <p>
             <img src = "<?php echo base_url().'assets/uploads/image/'.$link ?>" width = "202" height = "90" alt = "Confor.ca" class = "alignleft"/>
@@ -100,9 +100,9 @@
             <?php echo word_limiter(strip_tags($text), 100); ?>
         </p>    
         <?php if($is_admin):?> 
-            <a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$title); ?>" class = "read_more"><?php echo __("CF_continue") ?></a>
+            <a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title); ?>" class = "read_more"><?php echo __("CF_continue") ?></a>
         <?php else:?>
-            <a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$title); ?>" class = "read_more"><?php echo __("CF_continue") ?></a>
+            <a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title); ?>" class = "read_more"><?php echo __("CF_continue") ?></a>
         <?php endif;?>
     </div>
 

@@ -47,9 +47,33 @@ class Mblog extends Model{
         $query = $this->db->get();
         return $query->result_array(); 
     }
+    function get_blog_id($id)
+    {
+        $this->db->select("
+        tblblog.ID,
+        tblblog.Date,
+        tblblog.Title,
+        tblblog.Subject,
+        tblblog.Text,
+        tblblog.Link,
+        tblblog.CountView,
+        tblblog.CountComment,
+        tblblog.About,          
+        tbladmin.Name");
+        $this->db->from('tblblog');
+        $this->db->where('tblblog.ID',$id);
+        $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
+        $query = $this->db->get();
+        return $query->result_array(); 
+    }
     function get_blog_by_title_countview($title)
     {
         $query = $this->db->get_where('tblblog',array('Title'=>$title));
+        return $query;
+    }
+    function get_blog_by_id_countview($id)
+    {
+        $query = $this->db->get_where('tblblog',array('ID'=>$id));
         return $query;
     }
     function get_most_blog($lg)
