@@ -25,7 +25,7 @@
         <h3><?php echo __("CF_modify_speaker")?></h3> 
         <?php echo form_open('admin/modify_user/'.$id); ?>
         <label for="name"><?php echo __("CF_name")?>:</label>
-        <input class="medium" name="txtName" id="name" value="<?php echo $name?>" /><?php echo form_error("txtName"); ?>
+        <input class="medium" name="txtName" id="name" value="<?php echo $name?>" onblur="alert('<?php echo __("CF_check_update_user")?>');"/><?php echo form_error("txtName"); ?>
         <label for="CompanyName"><?php echo __("CF_Company_name")?>:</label>
         <input class="medium" name="txtCompanyName" id="companyName" value="<?php echo $company?>" /><?php echo form_error("txtCompanyName"); ?>
         <label for="email"><?php echo __("CF_admin_email")?>:</label>
@@ -55,7 +55,7 @@
 
             <?php }?>
 
-        <p><input name="submit" type="submit" class="submit" value="<?php echo __("CF_save")?>" /></p>
+        <p><input name="submit" type="submit" class="submit" value="<?php echo __("CF_save")?>"></p>
         <?php form_close();?>
     </div>
     <!-- /.x2 - represents a half windows size div -->

@@ -644,3 +644,6 @@ $lang['CF_account_suspended'] = "f_Your account has been suspended";
 //Key added on 03/08/2010
 $lang['CF_check_date'] = 'f_Date must be greater than or equal to the current day';
 $lang['CF_delete_blog'] = 'f_Blog has been deleted!';
+
+//Key added on 04/08/2010
+$lang['CF_check_update_user']='f_Your first name will be appear on the website, please enter your name correctly !';
