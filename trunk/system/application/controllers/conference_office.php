@@ -10,7 +10,9 @@
             $this->load->model('Mcoffice');
             $this->load->model('Mshopproduct','mshopproduct');
             $this->load->library('image_upload_lib');
-            $this->image_upload_lib->ajax_link = site_url('blog/do_upload_ajax');   
+            $this->image_upload_lib->thumb_w =130; 
+            $this->image_upload_lib->thumb_h =130;
+            $this->image_upload_lib->ajax_link = site_url('conference_office/do_upload_ajax');   
         }    
 
         function index()
@@ -70,7 +72,7 @@
             'link' => '#'
             );
             $this->_data['lg'] = $lg;
-            $this->image_upload_lib->init(); 
+            $this->image_upload_lib->init();
             if($this->input->post('btnsubmit'))
             {
                 $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
@@ -120,7 +122,8 @@
         { 
             is_admin();
             $query = $this->Mcoffice->get_data_to_form($id);   
-            $this->image_upload_lib->init(); 
+            $this->image_upload_lib->init();
+            
             foreach($query as $row)    
             {
                 $lg = $row->lang;
