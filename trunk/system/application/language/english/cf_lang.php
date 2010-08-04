@@ -699,3 +699,7 @@ $lang['CF_check_date'] = 'Date must be greater than or equal to the current day'
 
 //Key added on 04/08/2010
 $lang['CF_check_update_user']='Your first name will be appear on the website, please enter your name correctly !';
+$lang['CF_comment_content_email_to_admin'] = 'Dear Administrator!'.chr(13).chr(10).'Your comment was send by %s.You need to check in Blog Control'.chr(13).chr(10).'Title: %s'.chr(13).chr(10).'Content: %s.'.chr(13).chr(10).chr(13).chr(10).'Thank your for your attention!';
+$lang['CF_subject_comment_send_admin']='Your comment was send by %s at %s';
+$lang['CF_addcommentbyadmin_success'] = 'Add New Comment Success !';
+$lang['CF_addcomment_success'] = 'Add New Comment Success ! Please wait for admin approval ! ';

@@ -8,6 +8,7 @@ class Blog_frontend extends Frontend_controller {
         $this->load->model('Mblog');
         $this->load->model('Mmetadata');        
         $this->load->helper('date');
+        $this->load->helper('xemmex');
         $this->load->helper('string');
         $this->load->model('send_mail');        
         $this->_data['adv']['category'] = 'blog';        
@@ -272,17 +273,20 @@ class Blog_frontend extends Frontend_controller {
                 if($this->Mblog->add_comment($Comment,$Blog,$Date,$Author,$Website,$Email,$Status,$CountComment)==TRUE)
                 {
                     if($this->session->userdata('admin'))
-                    {
-                        redirect('blog_frontend/blog_content_admin'.'/'.$Name.'/'.$Blog.'/'.$Title.'#comments');    
+                    {                         
+                        $this->_message('blog', __("CF_addcommentbyadmin_success"), 'success', site_url('blog_frontend/blog_content_admin'.'/'.$Name.'/'.$Blog.'/'.$Title.'#comments'));
                     }else
                     {
                         $from =$this->_setting['email'];
                         $name_from = '';
                         $to=$Email;
                         $subject=__("CF_subject_comment").$Title;
+                        $subject_send_admin=sprintf(__("CF_subject_comment_send_admin"),$Author,$Title);
                         $content=sprintf(__('CF_comment_content_email_to_speaker'),$Author,$Title,$Comment);
+                        $content_send_admin=sprintf(__('CF_comment_content_email_to_admin'),$Author,$Title,$Comment);
                         $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);
-                        redirect('blog_frontend/blog_content'.'/'.$Name.'/'.$Blog.'/'.$Title.'#comments'); 
+                        $this->send_mail->send('text',$to , $name_from, $from, $subject_send_admin, $content_send_admin); 
+                        $this->_message('blog', __("CF_addcomment_success"), 'success', site_url('blog_frontend/blog_content'.'/'.$Name.'/'.$Blog.'/'.$Title.'#comments'));
                     }  
                 } 
             }  
