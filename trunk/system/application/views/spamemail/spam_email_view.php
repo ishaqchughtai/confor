@@ -1,5 +1,6 @@
 <?php $this->load->view("spamemail/admin_menu_spam_menu.php");?>  
   <!-- /.content_item -->
+  <h2><?php echo __("CF_spamemail_list")?></h2>
 <div class="content_item">     
     <table width="100%" border="1">
         <tr align="left">

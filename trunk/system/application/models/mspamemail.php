@@ -34,5 +34,10 @@ class Mspamemail extends Model{
         $query = $this->db->count_all_results();
         return $query;
     }
+    function check_spamemail($email)
+    {
+        $query = $this->db->get_where('tblspamemail',array('Email'=>$email));
+        return $query;
+    }
 }
 
