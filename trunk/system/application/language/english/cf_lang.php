@@ -696,3 +696,6 @@ $lang['CF_account_suspended'] = "Your account has been suspended";
 
 //Key added on 03/08/2010
 $lang['CF_check_date'] = 'Date must be greater than or equal to the current day';
+
+//Key added on 04/08/2010
+$lang['CF_check_update_user']='Your first name will be appear on the website, please enter your name correctly !';
