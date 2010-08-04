@@ -6,7 +6,8 @@ class Blog_frontend extends Frontend_controller {
         parent::Frontend_controller();
         $this->_container = 'container';        
         $this->load->model('Mblog');
-        $this->load->model('Mmetadata');        
+        $this->load->model('Mmetadata');       
+        $this->load->model('Mspamemail'); 
         $this->load->helper('date');
         $this->load->helper('xemmex');
         $this->load->helper('string');
@@ -270,6 +271,12 @@ class Blog_frontend extends Frontend_controller {
                 }                         
             }else
             {
+                $query=$this->Mspamemail->check_spamemail($Email);
+                if($query->num_rows()>0)
+                {
+                    $this->_message('blog_frontend',sprintf(__("CF_checkspamemail_success"),$this->_setting['email']), 'error', site_url('blog_frontend'));
+                }else
+                {
                 if($this->Mblog->add_comment($Comment,$Blog,$Date,$Author,$Website,$Email,$Status,$CountComment)==TRUE)
                 {
                     if($this->session->userdata('admin'))
@@ -289,6 +296,7 @@ class Blog_frontend extends Frontend_controller {
                         $this->_message('blog', __("CF_addcomment_success"), 'success', site_url('blog_frontend/blog_content'.'/'.$Name.'/'.$Blog.'/'.$Title.'#comments'));
                     }  
                 } 
+                }   
             }  
         }
     } 

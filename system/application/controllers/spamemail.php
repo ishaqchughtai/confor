@@ -22,7 +22,7 @@ class Spamemail extends Admin_controller {
 
         $config['base_url'] = base_url().'index.php/spamemail/index/';
         $config['total_rows'] = $this->Mspamemail->count_record_email();
-        $config['per_page']=1;
+        $config['per_page']=7;
 
         $config += config_pagination_style();
         $config['uri_segment'] = 3;
@@ -42,10 +42,10 @@ class Spamemail extends Admin_controller {
         if($this->input->post('btnsubmit'))
         { 
 
-            $this->form_validation->set_rules('spampemail',__("CF_spamemail"),'trim|required|valid_email');
+            $this->form_validation->set_rules('spamemail',__("CF_spamemail"),'trim|required|valid_email');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
 
-            $Email=$this->input->post('spampemail');
+            $Email=$this->input->post('spamemail');
             if($this->form_validation->run()==FALSE)
             {
                 $this->_load_view('spamemail/add_spam_email');        

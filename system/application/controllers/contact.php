@@ -5,6 +5,7 @@
         {
             parent::Frontend_controller();
             $this->load->helper('date');
+            $this->load->model('Mspamemail');
             $this->load->model('send_mail');
             $this->load->helper('xemmex');
             $this->load->model('Mshopproduct','mshopproduct');
@@ -12,7 +13,7 @@
             $this->_data['path'][] = array(
             'name' => __("CF_contact_title"),
             'link' => site_url("contact")
-        );
+            );
         }
 
         function index()
@@ -25,31 +26,38 @@
             $this->form_validation->set_rules('name',__("CF_yr_name"),'required');//'Name'
             $this->form_validation->set_rules('email',__("CF_yr_email"),'required|valid_email');//'Email'
             $this->form_validation->set_rules('message',__("CF_yr_mes"),'required');//'Message'
-            $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>'); 
-            if($this->form_validation->run()===FALSE)
+            $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+            $query=$this->Mspamemail->check_spamemail($this->input->post('email'));
+            if($query->num_rows()>0)
             {
-                $this->_load_view('home/contact');
+                $this->_message('contact',sprintf(__("CF_checkspamemail_success"),$this->_setting['email']), 'error', site_url('contact'));
             }else
-            {
-                $from = $this->input->post('email');
-                $name_from = $this->input->post('name');
-                $content = $this->input->post('message');
-                $to = $this->_setting['email'];
-                $subject=__('CF_your_contact_mail').$name_from;
-                $content=$this->input->post('message');
-
-                if($this->send_mail->send('text',$from , $name_from, $to, $subject, $content)==TRUE)
+            { 
+                if($this->form_validation->run()===FALSE)
                 {
-                	redirect(site_url("contact/contacts"));
+                    $this->_load_view('home/contact');
                 }else
                 {
-                	$this->_data['error']=__("CF_contact_error");
-                    $this->_load_view('home/contact');
+                    $from = $this->input->post('email');
+                    $name_from = $this->input->post('name');
+                    $content = $this->input->post('message');
+                    $to = $this->_setting['email'];
+                    $subject=__('CF_your_contact_mail').$name_from;
+                    $content=$this->input->post('message');
+
+                    if($this->send_mail->send('text',$from , $name_from, $to, $subject, $content)==TRUE)
+                    {
+                        redirect(site_url("contact/contacts"));
+                    }else
+                    {
+                        $this->_data['error']=__("CF_contact_error");
+                        $this->_load_view('home/contact');
+                    }
+
                 }
-                
             }
         }
-        
+
         function contacts()
         {
             $this->_data['error']=__("CF_contact_successfully");
