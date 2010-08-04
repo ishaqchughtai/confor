@@ -687,6 +687,8 @@
         $query = $this->Maccessories->get_element($ElementName);
         $this->_data['query'] = $query->result_array();
         $this->_data['page_title'] = $StrElementName;
+        $type_source = $this->uri->segment(3);
+        $this->_data['type_source'] = $type_source;
         $this->_load_view('admin/add_new_page');
       }
     }    
