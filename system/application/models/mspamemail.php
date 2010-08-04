@@ -1,0 +1,38 @@
+<?php
+class Mspamemail extends Model{
+    function Mspamemail()
+    {
+        parent::Model();
+        $this->load->database();
+    }
+    function show_spam_email($offset,$num)
+    {
+        $this->db->select("
+        tblspamemail.ID,
+        tblspamemail.Email
+        ");
+        $this->db->from('tblspamemail');
+        $this->db->limit($num,$offset);
+        $query = $this->db->get();
+        return $query->result_array();    
+    }
+    function add_spam_email($Email)
+    {
+        $data = array(
+        'Email'=>$Email
+        );       
+        $this->db->insert('tblspamemail',$data);
+        return TRUE;
+    }
+    function del_spam_email($id)
+    {
+        $this->db->delete('tblspamemail',array('ID'=>$id));
+    }
+    function count_record_email()
+    {
+        $this->db->from('tblspamemail');
+        $query = $this->db->count_all_results();
+        return $query;
+    }
+}
+
