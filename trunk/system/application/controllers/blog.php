@@ -6,7 +6,8 @@ class Blog extends Admin_controller {
     {
         parent::Admin_controller();
         $this->_container = 'container';        
-        $this->load->model('Mblog');        
+        $this->load->model('Mblog');   
+        $this->load->model('Mspamemail');     
         $this->load->helper('date');
         $this->load->helper('string');
         $this->_data['adv']['category'] = 'blog';        
@@ -271,7 +272,7 @@ class Blog extends Admin_controller {
         $this->_data['page_title'] = __("CF_Blog_search");
         $Title = $this->input->post('search_field_blog_admin');
         $lg = $this->uri->segment(3);
-            
+
         if (! $lg) return;$lg=$this->_data['lang'];
         if (lang_name_by_short_key($lg,TRUE)==FALSE)
         {
@@ -372,5 +373,14 @@ class Blog extends Admin_controller {
         $this->_data['query_show_comment_not_agree'] = $this->Mblog->show_comment_not_agree();
         $this->_load_view('blog/comment_not_show');
     }
-
+    function comment_entry($id)
+    {
+        is_admin();
+        $this->_data['path'][] = array(
+        'name' => __("CF_cm_entry"),
+        'link' => '#'
+        );
+        $this->_data['query_comment_entry']=$this->Mblog->select_comment_admin($id);
+        $this->_load_view("blog/comment_entry");    
+    }
 }
