@@ -39,5 +39,23 @@ class Mspamemail extends Model{
         $query = $this->db->get_where('tblspamemail',array('Email'=>$email));
         return $query;
     }
+    function update_check_spamemail_comment($email,$Spamemail)
+    {
+        $data = array( 
+        'Spamemail'=>$Spamemail
+        );
+        $this->db->update('tblcomment',$data,array('Email'=>$email));
+        return TRUE;
+    }
+    function check_spamemail_comment()
+    {
+        $this->db->select("
+        tblspamemail.ID,
+        tblspamemail.Email
+        ");
+        $this->db->from('tblspamemail');
+        $query = $this->db->get();
+        return $query->result_array(); 
+    }
 }
 

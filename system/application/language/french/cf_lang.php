@@ -658,3 +658,6 @@ $lang['CF_spamemail_add_confirm']='f_You really want to add this email list Spam
 $lang['CF_addspamemail_success']='f_Add New Spam Email Success'; 
 $lang['CF_checkspamemail_success']='f_Email has been blacklisted ! please contact administrator! Email: %s'; 
 $lang['CF_spamemail_con']="f_Spam Email control";  
+$lang['CF_spamemail_added']="f_Email %s was added to the blacklist";
+$lang['CF_remove_spamemail']="f_Delete Spam Email";
+$lang['CF_cm_entry'] = 'f_Comment Entry'; 

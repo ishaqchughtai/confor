@@ -15,7 +15,7 @@
                 <td><?php echo $Email?></td>
                 <td>
                     <li style="list-style-type:none">
-                        <div align="center"><label><a href="<?php echo site_url('spamemail/delete_spam_email').'/'.$id?>"onclick="return confirm('<?php echo __("CF_mess_delete")?>')"><?php echo __("CF_remove")?></a></label></div>
+                        <div align="center"><label><a href="<?php echo site_url('spamemail/delete_spam_email').'/'.$id.'/'.$Email?>"onclick="return confirm('<?php echo __("CF_mess_delete")?>')"><?php echo __("CF_remove")?></a></label></div>
                     </li>
                 </td> 
             </tr>

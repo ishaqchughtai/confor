@@ -46,26 +46,59 @@ class Spamemail extends Admin_controller {
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
 
             $Email=$this->input->post('spamemail');
-            if($this->form_validation->run()==FALSE)
+            $query=$this->Mspamemail->check_spamemail($Email);
+            if($query->num_rows()>0)
             {
-                $this->_load_view('spamemail/add_spam_email');        
-            }
-            else
-            {                              
-                if($this->Mspamemail->add_spam_email($Email)==TRUE)
-                { 
-                    $this->_message('spamemail', __("CF_addspamemail_success"), 'success', site_url("spamemail/index"));
+                $this->_message('spamemail',sprintf(__("CF_spamemail_added"),$Email), 'error', site_url('spamemail/index'));
+            }else
+            {            
+                if($this->form_validation->run()==FALSE)
+                {
+                    $this->_load_view('spamemail/add_spam_email');        
+                }
+                else
+                {                              
+                    if($this->Mspamemail->add_spam_email($Email)==TRUE)
+                    { 
+                        $this->_message('spamemail', __("CF_addspamemail_success"), 'success', site_url("spamemail/index"));
+                    }
                 }
             }
+
         }else
         {
             $this->_load_view('spamemail/add_spam_email');
         }
     }
-    function delete_spam_email($id)
+    function add_spam_email_comment($email)
     {
         is_admin();
-        $data = $this->Mspamemail->del_spam_email($id);
+        $query=$this->Mspamemail->check_spamemail($email);
+        if($query->num_rows()>0)
+        {
+            $this->_message('blog',sprintf(__("CF_spamemail_added"),$email), 'error', site_url('blog/comment_not_agree'));
+        }else
+        {                             
+            if($this->Mspamemail->add_spam_email($email)==TRUE)
+            { 
+                if($this->Mspamemail->update_check_spamemail_comment($email,1)==TRUE)
+                {
+                    $this->_message('blog', __("CF_addspamemail_success"), 'success', site_url("blog/comment_not_agree"));   
+                }       
+                $this->_message('blog', __("CF_addspamemail_success"), 'success', site_url("blog/comment_not_agree"));
+            }
+        }
+    }
+    function delete_spam_email($id,$email)
+    {
+        is_admin();
+        if($this->Mspamemail->update_check_spamemail_comment($email,0)==TRUE)
+        {
+            $data = $this->Mspamemail->del_spam_email($id);    
+        }else
+        {
+            $data = $this->Mspamemail->del_spam_email($id);
+        }
         redirect("spamemail/index");
     }
 }

@@ -393,7 +393,8 @@ class Mblog extends Model{
         tblcomment.Author,
         tblcomment.Website,
         tblcomment.Email,
-        tblcomment.Status");
+        tblcomment.Status,
+        tblcomment.Spamemail");
         $this->db->from('tblcomment');
         $this->db->join('tblblog','tblcomment.Blog = tblblog.ID');  
         $this->db->where('tblblog.Title', $titletemp);
@@ -419,7 +420,8 @@ class Mblog extends Model{
         tblcomment.Website,
         tblcomment.Email,
         tblcomment.Status,
-        tblblog.CountComment");
+        tblblog.CountComment,
+        tblcomment.Spamemail");
         $this->db->from('tblcomment');
         $this->db->join('tblblog','tblcomment.Blog = tblblog.ID');  
         $this->db->where('tblcomment.Status', 1);
@@ -437,7 +439,8 @@ class Mblog extends Model{
         tblcomment.Website,
         tblcomment.Email,
         tblcomment.Status,
-        tblblog.CountComment");
+        tblblog.CountComment,
+        tblcomment.Spamemail");
         $this->db->from('tblcomment');
         $this->db->join('tblblog','tblcomment.Blog = tblblog.ID');  
         $this->db->where('tblcomment.Status', 0);
@@ -467,6 +470,11 @@ class Mblog extends Model{
         $this->db->group_by('tblcomment.Blog');
         $query = $this->db->get();
         return $query->result_array();    
+    }
+    function select_comment_admin($id)
+    {
+        $query = $this->db->get_where('tblcomment', array('ID' => $id));
+        return $query->result();       
     }
 }
 /* End of file mblog.php */
