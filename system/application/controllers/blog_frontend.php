@@ -57,7 +57,7 @@ class Blog_frontend extends Frontend_controller {
         $num = $this->uri->segment(3);
         $this->_data['query'] = $this->Mblog->get_all_blog($lg,$num,$config['per_page']);
         $this->_data['pagination'] = $this->pagination->create_links();                
-        $this->_data['page_title'] = 'Blog confor';
+        $this->_data['page_title'] = 'Blog confor - confor.tv';
         $this->_load_view('blog/blog_view'); 
     }
     function blog_content($author='',$id='')
