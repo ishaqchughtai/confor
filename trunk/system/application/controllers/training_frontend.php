@@ -49,6 +49,8 @@ class Training_frontend extends Frontend_controller {
     //$this->_data['query'] = $this->Mtraining->get_all_training($lg,$this->uri->segment(4),$config['per_page']);
     $this->_data['query'] = $this->Mtraining->get_all_by_order($lg,$this->uri->segment(4),$config['per_page']);
     $this->_data['pagination'] = $this->pagination->create_links();
+    $title = __("CF_training").' - confor.tv';
+    $this->_data['page_title'] = $title;
     $this->_load_view('home/training_view');     
   }
   function training_content($title='')
@@ -68,8 +70,8 @@ class Training_frontend extends Frontend_controller {
       $id = $row['ID'];
       $meta = $this->Mmetadata->out_meta('formation',$id);
       if ($meta!=FALSE) $this->_data['meta'] = $meta;         
-      $this->_load_view('home/training_entry_view');
     }
-    $this->_data['page_title'] = $title;  
+    $this->_data['page_title'] = $title.' - confor.tv';
+    $this->_load_view('home/training_entry_view');  
   }
 }

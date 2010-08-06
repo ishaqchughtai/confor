@@ -80,7 +80,7 @@ class Blog_frontend extends Frontend_controller {
             $this->_data['query'] = $this->Mblog->get_blog_id($id);
             $this->_data['query_show_comment'] = $this->Mblog->show_comment($title);
             $this->_data['query_show_author'] = $this->Mblog->written($author);
-            $this->_data['page_title'] = $title;
+            $this->_data['page_title'] = $title.' - confor.tv';
             $meta = $this->Mmetadata->out_meta('blog',$id);
             if ($meta!=FALSE) $this->_data['meta'] = $meta;         
             $this->_load_view('blog/blog_entry_view');
