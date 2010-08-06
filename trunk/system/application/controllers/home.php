@@ -17,7 +17,7 @@ class Home extends Frontend_controller {
     function index()
     {
         // home page has image banner
-        $this->_data['page_title'] = 'Confor.ca - homepage';
+        $this->_data['page_title'] = 'Confor.tv - homepage';
         $this->_data['video_path'] = $this->Mhome->get_top_viewed_video($this->_data['lang']);
         $this->_data['header']['page'] = '/home/home_header';	
         $this->show_room_image(); 
