@@ -57,7 +57,7 @@ function search_click_speaker (){
 				    <li>
 				      <ul class="ctabs_content">
 				        <?php foreach($top_speaker as $row):?>
-				        <li><a href="<?php echo site_url('video/speaker').'/'.$row['mem_id'].'/'.$page?>"><?php echo $row['username']?></a></li>
+				        <li><a href="<?php echo site_url('video/speaker').'/'.$row['mem_id'].'/'.$page?>"><?php echo $row['first_name'].' '.$row['name']?></a></li>
                       <?php endforeach?>
 			          </ul>
 				      <!-- /.ctabs_content -->
