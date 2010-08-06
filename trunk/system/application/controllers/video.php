@@ -102,8 +102,14 @@ class Video extends Frontend_controller
     'name' => __("CF_search_video"),
     'link' => '#'
     );    
-    if($this->input->post('search'))
-    {                
+	$keyword = '_';
+	if($this->input->post('search'))
+	{
+		$keyword=$this->input->post('search_field');
+	}
+	
+    //if($this->input->post('search'))
+    //{                
       $num_per_page = $this->_setting['num_per_page_video'];
       $keyword=$this->input->post('search_field');   				          
       $config['per_page'] = $num_per_page;
@@ -124,11 +130,11 @@ class Video extends Frontend_controller
       $this->_data['link_html'] = $this->pagination->create_links();  
       $this->_data['keyword'] = $keyword; 
       $this->_load_view('home/search');                         
-    }
-    else
-    {                
-      $this->_load_view('home/search');   
-    }
+    //}
+    // else
+    // {                
+      // $this->_load_view('home/search');   
+    // }
   }
 
   function search_paging($keywords_to_search, $num_per_page) 
