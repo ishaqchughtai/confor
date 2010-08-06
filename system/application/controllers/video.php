@@ -68,7 +68,7 @@ class Video extends Frontend_controller
         $last_viewed=$row->viewed;
         $viewed=$last_viewed+1;
         $this->Mhome->update_view_time($id,$viewed);
-        $this->_data['page_title'] = $row->title;
+        $this->_data['page_title'] = $row->title . ' - confor.tv';
         $catid=$row->category;
         $page_offset=$this->uri->segment(5);
         $config['base_url'] = base_url().'index.php/video/play/'.$id.'/4/';

@@ -45,6 +45,8 @@
       $this->_data['query'] = $this->Mcoffice->get_all_by_order($lg,$offset,$per_page);
 
       $this->_data['pagination'] = $this->pagination->create_links();
+      $title = __("CF_conference_office").' - confor.tv';
+      $this->_data['page_title'] = $title;
       $this->_load_view('home/office_view');
     }
 
@@ -64,9 +66,15 @@
       $id = (double)$id;
       if(is_nan($id)==FALSE && $id > 0)
       {
+        $query =  $this->Mcoffice->get_office_by_id($id); 
         $this->_data['query'] = $this->Mcoffice->get_office_by_id($id);
         $meta = $this->Mmetadata->out_meta('office',$id);
         if ($meta!=FALSE) $this->_data['meta'] = $meta;
+        foreach($query as $row)
+        {
+          $title = $row['title'].' - confor.tv';
+        }
+        $this->_data['page_title'] = $title;
         $this->_load_view('home/office_entry_view');  
       }
       else

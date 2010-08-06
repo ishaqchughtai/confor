@@ -41,6 +41,8 @@
       $this->_data['your_event'] = $this->MEvent->list_event_by_speaker($id,$lg,$per_page,$offset); 
       $this->pagination->initialize($config);
       $this->_data['pagination'] = $this->pagination->create_links();
+      $title = __("CF_yr_event").' - confor.tv';
+      $this->_data['page_title'] = $title;
       $this->_load_view('speaker/your_event');
     }
 
@@ -55,10 +57,11 @@
       'link' => "#"
       );    
       $this->_data['lg'] = $lg;
-	  
+
       //$userData = is_speaker();
-	  $userData = check_membership();
-	  
+      $userData = check_membership();
+      $title = __("CF_add_event").' - confor.tv';
+      $this->_data['page_title'] = $title;
       $id = $userData['speaker_id'];
       if($this->input->post('btnsubmit'))
       {
@@ -102,6 +105,7 @@
       else
       {
         $this->_load_view('event/add_event');
+
       }
     }
 
@@ -132,6 +136,8 @@
       if ($speaker_id != $author) redirect('/');
 
       $this->_data['query'] = $this->MEvent->get_data_to_form($id);
+      $title = __("CF_edit_event").' - confor.tv';
+      $this->_data['page_title'] = $title;
       $this->_load_view('event/edit_event');
     }
 
@@ -147,7 +153,6 @@
       $userData = is_speaker();
       $speaker_id= $userData['speaker_id'];   
       if ($speaker_id != $author) redirect('/');
-
       if($this->input->post('btnedit'))
       {
         $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
@@ -208,16 +213,16 @@
       }
     }
     function check_date($date) 
-  { 
-    if($date < date('Y/m/d'))
-    {
-      $this->form_validation->set_message('check_date', __("CF_check_date"));
-      return FALSE;
+    { 
+      if($date < date('Y/m/d'))
+      {
+        $this->form_validation->set_message('check_date', __("CF_check_date"));
+        return FALSE;
+      }
+      else 
+      {
+        return TRUE;
+      }
     }
-    else 
-    {
-      return TRUE;
-    }
-  }
   }
 ?>

@@ -51,6 +51,8 @@
       $this->_data['events'] = $this->MEvent->get_event_by_date($lg,$date,$per_page,$offset);
 
       $this->_data['pagination'] = $this->pagination->create_links();
+      $title = __("CF_event").' - confor.tv';
+      $this->_data['page_title'] = $title;
 
       $this->_load_view('event/show_event');
     }
@@ -71,9 +73,15 @@
       $id = (double)$id;
       if(is_nan($id)==FALSE && $id > 0)
       {
+        $query =  $this->MEvent->get_event_by_id($id);
         $this->_data['query'] = $this->MEvent->get_event_by_id($id);
         $meta = $this->Mmetadata->out_meta('event',$id);
         if ($meta!=FALSE) $this->_data['meta'] = $meta;
+        foreach($query as $row)
+        {
+          $title = $row['Title'].' - confor.tv';
+        }
+        $this->_data['page_title'] = $title;
         $this->_load_view('event/event_content');  
       }
       else
@@ -107,6 +115,8 @@
       $this->_data['events'] = $this->MEvent->search_event($keywords,$lg,$per_page,$offset); 
       $this->pagination->initialize($config);
       $this->_data['pagination'] = $this->pagination->create_links();
+      $title = __("CF_search_event").' - confor.tv';
+      $this->_data['page_title'] = $title;
       $this->_load_view('event/search_event');    
     }
 
@@ -138,6 +148,8 @@
       $this->_data['events'] = $this->MEvent->search_event_by_keyword($keywords,$lg,$per_page,$offset); 
       $this->pagination->initialize($config);
       $this->_data['pagination'] = $this->pagination->create_links();
+      $title = __("CF_search_event").' - confor.tv';
+      $this->_data['page_title'] = $title;
       $this->_load_view('event/search_event');    
     }
 
@@ -150,7 +162,7 @@
       $offset = $this->uri->segment(5);
 
       $this->_data['path'][] = array(
-      'name' => __("CF_event"),
+      'name' => __("CF_today_events"),
       'link' => "#"
       );
 
@@ -167,6 +179,8 @@
       $this->_data['events'] = $this->MEvent->get_event_by_date($lg,$date,$per_page,$offset);
 
       $this->_data['pagination'] = $this->pagination->create_links();
+      $title = __("CF_today_events").' - confor.tv';
+      $this->_data['page_title'] = $title;
       $this->_load_view('event/today_event');  
     }
 
@@ -194,6 +208,8 @@
       $this->_data['week_events'] = $this->MEvent->get_event_by_week($lg,$week,$per_page,$offset);
 
       $this->_data['pagination'] = $this->pagination->create_links();
+      $title = __("CF_week_events").' - confor.tv';
+      $this->_data['page_title'] = $title;
       $this->_load_view('event/week_event');
     }
 
@@ -221,6 +237,8 @@
       $this->_data['month_events'] = $this->MEvent->get_event_by_month($lg,$month,$per_page,$offset);
 
       $this->_data['pagination'] = $this->pagination->create_links();
+       $title = __("CF_month_events").' - confor.tv';
+      $this->_data['page_title'] = $title;
       $this->_load_view('event/month_event');
     }
   }
