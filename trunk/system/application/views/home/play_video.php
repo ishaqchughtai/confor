@@ -92,7 +92,7 @@ $("div.scrollable").scrollable({easing: 'custom', speed: 700, circular: true});
     flowplayer("player", 
     "<?php echo base_url();?>flowplayer/flowplayer.commercial-3.2.2.swf",
     {// product key
-        key: '#@fbc4ccc0d3f30d1d937' ,
+        key: '#@7fce71ac6b428079f85' ,
 
         // logo initially has zero opacity
         logo: {   
