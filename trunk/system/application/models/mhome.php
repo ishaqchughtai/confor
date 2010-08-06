@@ -134,7 +134,7 @@
             }
             else
             {          
-$this->db->where("(`title` LIKE '%".$keyword."%' OR `tags` LIKE '%".$keyword."%' OR `users`.`username` LIKE '%".$keyword."%')");                
+$this->db->where("(`title` LIKE '%".$keyword."%' OR `tags` LIKE '%".$keyword."%' OR CONCAT(`users`.`first_name`,' ',`users`.`name`) LIKE '%".$keyword."%')");                
 //                $this->db->like('title', $keyword);
 //                $this->db->or_like('tags', $keyword);
 //                $this->db->or_like('users.username', $keyword);		  
@@ -168,7 +168,7 @@ $this->db->where("(`title` LIKE '%".$keyword."%' OR `tags` LIKE '%".$keyword."%'
             }
             else
             {          
-            $this->db->where("(`title` LIKE '%".$keyword."%' OR `tags` LIKE '%".$keyword."%' OR `users`.`username` LIKE '%".$keyword."%')");                
+            $this->db->where("(`title` LIKE '%".$keyword."%' OR `tags` LIKE '%".$keyword."%' OR CONCAT(`users`.`first_name`,' ',`users`.`name`) LIKE '%".$keyword."%')");                
 //                $this->db->like('title', $keyword);
 //                $this->db->or_like('tags', $keyword);
 //                $this->db->or_like('users.username', $keyword);		  
