@@ -55,7 +55,7 @@ function init_event_date()
 			
 			for (i = 0; i < XEMMEX.eventDays.length; i++) {
 				if (date.getDate() == XEMMEX.eventDays[i]) {			
-					return [true,"ui-state-hover",""]; 
+					return [true,"has_event",""]; 
 				}
 			}
 			return [true, ""];
