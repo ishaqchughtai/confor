@@ -70,7 +70,7 @@ class Frontend_controller extends MY_controller {
 		$this->_data['header'] = $header;		
 		$this->_data['adv'] = $adv;
 		$this->_data['footer'] = $footer;
-
+        $this->_data['page_title'] = "Confor.tv";
 		$this->_data['path'][0] = array(
 		'name' => __("CF_home"),
 		'link' => site_url("/")
@@ -152,7 +152,8 @@ class Admin_controller extends MY_controller {
 		$this->_data['path'][0] = array(
 		'name' => __("CF_admin"),
 		'link' => site_url("/admin")
-		);					
+		);
+        $this->_data['page_title'] = "Confor.tv";
 	}		
 	function _load_view($path) {	
 		$this->_before_render();
