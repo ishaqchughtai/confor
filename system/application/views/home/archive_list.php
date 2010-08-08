@@ -15,7 +15,7 @@
         <div class="rate_balloon"><?php $SimpleRatings->create($rows['vid_id']);?> 
         </div>					
     <p>
-        <a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="180" height="90" alt="" class="alignleft" /></a>
+        <a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="160" height="90" alt="" class="alignleft" /></a>
     </p>
 
     <p>
