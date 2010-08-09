@@ -53,7 +53,7 @@ class Training_frontend extends Frontend_controller {
     $this->_data['page_title'] = $title;
     $this->_load_view('home/training_view');     
   }
-  function training_content($title='')
+  function training_content($id='',$title='')
   {
     $this->_data['path'][] = array(
     'name' => __("CF_training"),
@@ -63,8 +63,8 @@ class Training_frontend extends Frontend_controller {
     'name' => $title,
     'link' => '#'
     );        
-    $this->_data['query'] = $this->Mtraining->get_training_by_title($title);
-    $query_meta = $this->Mtraining->get_training_by_title($title);
+    $this->_data['query'] = $this->Mtraining->get_training_by_id($id);
+    $query_meta = $this->Mtraining->get_training_by_id($id);
     foreach($query_meta as $row)
     {
       $id = $row['ID'];
