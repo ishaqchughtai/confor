@@ -14,9 +14,7 @@
                 <?php if ($i<count($keyword)-1) echo ','?>
                 <?php ;}?>
 
-            // <?php echo mdate("%d-%m-%Y", $rows['date'])?></h5>                     
-        <div class="rate_balloon"><?php $SimpleRatings->create($rows['vid_id']);?>  
-        </div>					
+            // <?php echo mdate("%d-%m-%Y", $rows['date'])?></h5>                     				
     <p>
         <a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="160" height="90" alt="" class="alignleft" /></a>
     </p>
