@@ -34,6 +34,7 @@
     <h3><?php echo __("CF_conference_office")?></h3>	
     <ul class="link_conttrol">
         <li><a class="icon_add" href="<?php echo site_url('conference_office/add')?>"><?php echo __("CF_add_new_article")?></a></li>
+        <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata/office_list/1')?>"><?php echo __("CF_edit_meta")?></a></li>
     </ul>
     <br />
     <h3><?php echo __("CF_list_ar")?></h3><br />

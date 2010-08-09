@@ -51,6 +51,8 @@ class Training_frontend extends Frontend_controller {
     $this->_data['pagination'] = $this->pagination->create_links();
     $title = __("CF_training").' - confor.tv';
     $this->_data['page_title'] = $title;
+    $meta = $this->Mmetadata->out_meta('blog_list',1);
+    if ($meta!=FALSE) $this->_data['meta'] = $meta;
     $this->_load_view('home/training_view');     
   }
   function training_content($id='',$title='')

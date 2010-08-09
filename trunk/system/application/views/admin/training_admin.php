@@ -31,12 +31,17 @@
     }
     //-->
 </script>				          
-<?php $this->load->view("admin/admin_menu_training");?> 
+<?php $this->load->view("admin/admin_menu_training");?>
+<ul class="link_conttrol">
+         <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata/formation_list/1')?>"><?php echo __("CF_edit_meta")?></a></li>
+    </ul>
+    <br /> 
 <div id="content">
 
     <div class="input text">
         <label><?php echo __("CF_dis_lang")?></label>		
         <?php choose_your_language($lg);?>
+        <br />
     </div>
     <table border="1" width="100%">
         <tr align="left">
