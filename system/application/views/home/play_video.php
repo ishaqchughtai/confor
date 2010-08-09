@@ -34,10 +34,11 @@
     //
 <?php echo mdate("%d-%m-%Y", $date)?></h5>              
 <h5><b><?php echo __("CF_cate_name")?>: <a href="<?php echo site_url('category/get_category/').'/'.$category.'/5'?>"><?php echo $category_name?></a></b></h5>
-<h5><b><?php echo $viewed?> <?php echo __("CF_views")?></b></h5>
+<b><?php echo $viewed?> <?php echo __("CF_views")?></b>
 <div style="float: right" align="right"><?php $SimpleRatings->create($vid_id);?></div>                                                                                        
-<p><a href="<?php echo base_url()?>videos/<?php echo $video_link?>" style="display:block;width:621px;height:380px;"id="player"></a></p>                  
-<?php echo $description?>
+<p><a href="<?php echo base_url()?>videos/<?php echo $video_link?>" style="display:block;width:621px;height:380px;"id="player"></a></p>
+<p>&nbsp;</p>                  
+<p><?php echo $description?></p>
 <p></p>
 <a class="prev browse left"></a>
 
