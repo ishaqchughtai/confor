@@ -255,7 +255,7 @@ $this->db->where("(`title` LIKE '%".$keyword."%' OR `tags` LIKE '%".$keyword."%'
             users.Name
             ORDER BY
             videos.viewed DESC
-            LIMIT 5
+            LIMIT 10
             ");
             return $query->result_array();
         }

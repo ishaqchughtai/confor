@@ -47,6 +47,8 @@
       $this->_data['pagination'] = $this->pagination->create_links();
       $title = __("CF_conference_office").' - confor.tv';
       $this->_data['page_title'] = $title;
+      $meta = $this->Mmetadata->out_meta('office_list',1);
+      if ($meta!=FALSE) $this->_data['meta'] = $meta;
       $this->_load_view('home/office_view');
     }
 
