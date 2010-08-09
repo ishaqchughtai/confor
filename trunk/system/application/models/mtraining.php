@@ -5,21 +5,6 @@ class Mtraining extends Model{
         parent::Model();
         $this->load->database();
     }
-
-    //Select No
-    //function strNo($lg)
-    //    {
-    //        $strNo='';
-    //        if($lg == 'fr')
-    //        {
-    //            $strNo='No_temp';
-    //        }else
-    //        {
-    //            $strNo='No';
-    //        }
-    //        return $strNo;    
-    //    }
-
     function get_all_training($lg,$offset,$num)
     {
         $strNo='';
@@ -88,6 +73,20 @@ class Mtraining extends Model{
         tbltraining.Image");
         $this->db->from('tbltraining');
         $this->db->where('tbltraining.Title',$title);
+        $query = $this->db->get();
+        return $query->result_array(); 
+    }
+    function get_training_by_id($id)
+    {
+        $this->db->select("
+        tbltraining.ID,
+        tbltraining.Date,
+        tbltraining.Title,
+        tbltraining.Content,
+        tbltraining.Lang,
+        tbltraining.Image");
+        $this->db->from('tbltraining');
+        $this->db->where('tbltraining.ID',$id);
         $query = $this->db->get();
         return $query->result_array(); 
     }

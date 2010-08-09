@@ -10,7 +10,7 @@
     ?>
 
     <div class = "content_item">
-        <h3><a href = "<?php echo site_url('training_frontend/training_content').'/'.$title?>"><?php echo $title ?></a></h3>
+        <h3><a href = "<?php echo site_url('training_frontend/training_content').'/'.$id.'/'.$title?>"><?php echo $title ?></a></h3>
         <h5> <?php echo $final_date ?></h5>
         <div>
             <img src="<?php echo base_url().'assets/uploads/image/thumb_'.$image?>" alt="XemmeX" width="130" height="130" class="alignleft" />  
