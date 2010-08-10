@@ -36,8 +36,25 @@
 				
                     <p>
                         <label for="description"><?php echo __("CF_des")?></label>
-                        <textarea name="description" id="description" rows="4" cols=""><?php echo set_value('description');?></textarea>
-                        <?php echo form_error('description')?>
+                        <p>
+							<?php 
+									
+                                    if ( ! isset($_POST['description']))
+                                    {
+                                        $something = FALSE;
+                                    }
+                                    else
+                                    {
+                                        $something = $_POST['description'];
+                                    }
+                                    $data = array('name' => 'description',
+                                    'id' => 'description',
+                                    'width' => '600',
+                                    'height' => '400');
+                                    echo form_fckeditor($data);
+									echo form_error('description');
+                                    ?>
+                                    </p>
                     </p>
 					
                     <p>
