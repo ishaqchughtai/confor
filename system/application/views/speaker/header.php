@@ -20,12 +20,6 @@
 		<?php endfor;?>			
 	</div>
 
-	<div class="right">
-
-		<a href="#" class="rss"><?php echo __("CF_subscribe")?></a>
-
-	</div>
-
 </div>
 </div>
 <!-- /#header_info -->			
