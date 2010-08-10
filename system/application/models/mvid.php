@@ -124,7 +124,7 @@ class Mvid extends Model{
 		$this->db->where('approved','1');
 		$this->db->where('lang',$lg);
 		$this->db->order_by('viewed','desc');
-		$this->db->limit(8);
+		$this->db->limit(16);
 		$query = $this->db->get('videos');
 		return $query->result_array();
     }
