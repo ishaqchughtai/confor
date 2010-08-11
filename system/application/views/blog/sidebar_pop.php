@@ -1,3 +1,6 @@
+<?php
+echo script('xemmex.blog.js');
+?>
 <script type="text/javascript">
 function search_click(){
  title = $('#title').val();

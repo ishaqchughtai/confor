@@ -222,4 +222,24 @@ class Home extends Frontend_controller {
     $out .= ']';
     echo $out;
   }
+  
+  function get_blog_in_month($year,$month)
+  {
+    $ed = $this->Mhome->get_blog_in_month($this->_data['lang'],$month,$year);
+    if ($ed==FALSE) 
+    { 
+      echo 0;
+      return;
+    }
+    $num = count($ed);
+    $out = '[';
+    for ($i=0; $i<$num; $i++)
+    {
+      if ($i>0) $out .= ',';
+      $out .= $ed[$i]['edate'];
+    }
+    $out .= ']';
+    echo $out;
+  }  
+  
 }

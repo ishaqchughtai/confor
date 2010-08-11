@@ -315,5 +315,23 @@ $this->db->where("(`title` LIKE '%".$keyword."%' OR `tags` LIKE '%".$keyword."%'
             return FALSE;
         }
 
+        function get_blog_in_month($lg,$month,$year)
+        {
+            $this->db->distinct();
+            $this->db->select('DAY(Date) as edate');
+            $this->db->from('tblblog');
+            $this->db->where('MONTH(Date)',intval($month));
+            $this->db->where('YEAR(Date)',intval($year));
+            $this->db->where('lang',$lg);
+            //$this->db->where('Status',1);
+            $this->db->order_by('Date','asc');
+            $query = $this->db->get();
+            if ($query->num_rows()>0)
+            {
+                return $query->result_array();
+            }
+            return FALSE;
+        }		
+		
     }
 ?>
