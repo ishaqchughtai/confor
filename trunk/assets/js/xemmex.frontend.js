@@ -69,17 +69,16 @@ $(function(){
 	// alert(d.getMonth());
 	get_event_in_month(d.getFullYear(),d.getMonth()+1,false);	
     
-	$('#datepicker_blog').datepicker({
-        inline: true,                
-        dateFormat: 'yy-mm-dd',
-        monthNames: XEMMEX.monthNames,
-		dayNamesMin: XEMMEX.dayNames,
-        onSelect: function(dateText, inst) {                                                                                
-            gogo = XEMMEX.baseUrl + "blog_frontend/search_blog_by_date/" + dateText+ "/5";
-            //alert(gogo);
-            window.location = gogo;
-        }
-    });	
+	// $('#datepicker_blog').datepicker({
+        // inline: true,                
+        // dateFormat: 'yy-mm-dd',
+        // monthNames: XEMMEX.monthNames,
+		// dayNamesMin: XEMMEX.dayNames,
+        // onSelect: function(dateText, inst) {                                                                                
+            // gogo = XEMMEX.baseUrl + "blog_frontend/search_blog_by_date/" + dateText+ "/5";            
+            // window.location = gogo;
+        // }
+    // });	
 	$("#login_link a").click(function () { 
 		$('#message_holder').empty();
 	});
