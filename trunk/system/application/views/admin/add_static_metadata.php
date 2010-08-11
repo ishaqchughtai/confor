@@ -5,12 +5,12 @@
 						?>
 							<p>			
 							<label for="title"><?php echo __("CF_title")?>:</label>
-							<input class="short" name="title" id="title"/>						
+							<input class="medium" name="title" id="title"/>						
 						</p>
                         
                         <p>			
 							<label for="description"><?php echo __("CF_des")?>:</label>
-							<input class="short" name="description" id="description"/>
+							<textarea class="medium" name="description" id="description" rows="5"></textarea>
 													
 						</p>
 						
@@ -18,14 +18,14 @@
 						<p>
 						
 							<label for="keywords"><?php echo __("CF_key")?>:</label>
-							<input class="short" name="keywords" id="keywords"/>
+							<input class="medium" name="keywords" id="keywords"/>
 													
 						</p>
                         
                         <p>
 						
 							<label for="author"><?php echo __("CF_author")?>:</label>
-							<input class="short" name="author" id="author"/>
+							<input class="medium" name="author" id="author"/>
 													
 						</p>
 						
