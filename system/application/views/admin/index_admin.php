@@ -20,7 +20,7 @@
         <li><a class="icon_list" href="<?php echo site_url('training/index').'/'.$lang;?>"><?php echo __("CF_training")?></a></li>
         <li><a class="icon_list" href="<?php echo site_url('conference_office/list_all');?>"><?php echo __("CF_conference_office")?></a></li>
         <li><a class="icon_setting" href="<?php echo site_url('system')?>"><?php echo __("CF_golbal_set")?></a></li>
-        <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata_static/home/'.$lang)?>"><?php echo __("CF_edit_meta")?></a></li>
+        <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata_static/home/'.$lang)?>"><?php echo __("CF_edit_home_meta")?></a></li>
     </ul>	    
     <div class="frame_bottom"></div>	
 </div>

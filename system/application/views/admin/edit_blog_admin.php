@@ -16,7 +16,7 @@
         }
     ?>
     <ul class="link_conttrol">
-                    <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata/blog/'.$id)?>"><?php echo __("CF_edit_meta")?></a></li>
+                    <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata/blog/'.$id)?>"><?php echo __("CF_edit_blog_ar_meta")?></a></li>
                     </ul><br />
 
                     <h3><?php echo __("CF_edit_blog")?></h3>
