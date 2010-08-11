@@ -23,7 +23,7 @@ function search_click(){
 <?php $page = 5;?> 
 <?php $this->load->view("admin/admin_menu_blog");?>
 <ul class="link_conttrol">
-         <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata_static/blog_list/'.$lg)?>"><?php echo __("CF_edit_meta")?></a></li>
+         <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata_static/blog_list/'.$lg)?>"><?php echo __("CF_edit_blog_meta")?></a></li>
     </ul>
 <br />
 <br />  

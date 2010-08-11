@@ -661,3 +661,13 @@ $lang['CF_spamemail_con']="f_Spam Email control";
 $lang['CF_spamemail_added']="f_Email %s was added to the blacklist";
 $lang['CF_remove_spamemail']="f_Delete Spam Email";
 $lang['CF_cm_entry'] = 'f_Comment Entry'; 
+
+//Key added on 11/08/2010
+$lang['CF_edit_home_meta']="f_Edit Home Page Metadata Information";
+$lang['CF_edit_training_meta']="f_Edit Training Metadata Information";
+$lang['CF_edit_conference_meta']="f_Edit Conference Office Metadata Information";
+$lang['CF_edit_article_meta']="f_Edit Article Metadata Information";
+$lang['CF_edit_video_meta']="f_Edit Video Metadata Information";
+$lang['CF_edit_event_meta']="f_Edit Event Metadata Information";
+$lang['CF_edit_blog_meta']="f_Edit Blog Metadata Information";
+$lang['CF_edit_blog_ar_meta']="f_Edit Blog Article Metadata Information";

@@ -16,7 +16,7 @@
 					<h3><?php echo __("CF_vid_conf")?></h3>
 					<?php $this->load->view("vid/menu_video_admin",array("lg"=>$lg));?>
                     <ul class="link_conttrol">
-                    <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata/video/'.$id)?>"><?php echo __("CF_edit_meta")?></a></li>
+                    <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata/video/'.$id)?>"><?php echo __("CF_edit_video_meta")?></a></li>
                     </ul>
                     <br />
                     <h3> <?php echo __("CF_vid_update")?> </h3>

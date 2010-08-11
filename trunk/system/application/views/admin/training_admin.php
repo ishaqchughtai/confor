@@ -33,7 +33,7 @@
 </script>				          
 <?php $this->load->view("admin/admin_menu_training");?>
 <ul class="link_conttrol">
-         <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata_static/formation_list/'.$lg)?>"><?php echo __("CF_edit_meta")?></a></li>
+         <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata_static/formation_list/'.$lg)?>"><?php echo __("CF_edit_training_meta")?></a></li>
     </ul>
     <br /> 
 <div id="content">
