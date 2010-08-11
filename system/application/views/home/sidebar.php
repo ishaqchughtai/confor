@@ -125,9 +125,6 @@
 						</li>
 						<!-- /.popular_posts li - popular posts slider item -->
                         
-                        </li>
-                        <!-- /.popular_posts li - popular posts slider item -->
-                    
                         <li>
                         
                             <ul class="popular_posts_content">
@@ -154,10 +151,6 @@
                         
                         </li>
                         <!-- /.popular_posts li - popular posts slider item -->
-                        
-                        </li>
-                        <!-- /.popular_posts li - popular posts slider item -->
-                    
                         <li>
                         
                             <ul class="popular_posts_content">

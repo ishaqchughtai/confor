@@ -117,6 +117,9 @@ function search_click_speaker (){
                                 <?php }?>
                                 <?php
                                     $count++;
+                                    if($count==8){
+                                        break;
+                                    }
                                 ?>
 								<?php endforeach?>
 							</ul>
@@ -124,7 +127,55 @@ function search_click_speaker (){
 						
 						</li>
 						<!-- /.popular_posts li - popular posts slider item -->
-					
+					     <li>
+                        
+                            <ul class="popular_posts_content">
+                                <?php $count=0;?>
+                                <?php foreach($popular_video as $row):?>
+                                <?php if($count>7){?>
+                                <li>
+                                
+                                    <a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
+                                    <a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
+                                    <a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
+                                
+                                </li>
+                                <?php }?>
+                                <?php
+                                    $count++;
+                                    if($count==12){
+                                        break;
+                                    }
+                                ?>
+                                <?php endforeach?>
+                            </ul>
+                            <!-- /.popular_posts_content -->
+                        
+                        </li>
+                        <!-- /.popular_posts li - popular posts slider item -->
+                        <li>
+                        
+                            <ul class="popular_posts_content">
+                                <?php $count=0;?>
+                                <?php foreach($popular_video as $row):?>
+                                <?php if($count>12){?>
+                                <li>
+                                
+                                    <a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
+                                    <a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
+                                    <a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
+                                
+                                </li>
+                                <?php }?>
+                                <?php
+                                    $count++;
+                                ?>
+                                <?php endforeach?>
+                            </ul>
+                            <!-- /.popular_posts_content -->
+                        
+                        </li>
+                        <!-- /.popular_posts li - popular posts slider item -->
 					</ul>
 					<!-- /#popular_posts -->
 					
