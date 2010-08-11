@@ -133,7 +133,7 @@ class Mblog extends Model{
         $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
         $this->db->order_by("tblblog.CountComment", "desc");
         $this->db->where('tblblog.Lang ', $lg); 
-        $this->db->limit(8);
+        $this->db->limit(16);
         $query = $this->db->get();
         return $query->result_array(); 
     }
@@ -152,7 +152,7 @@ class Mblog extends Model{
         $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
         $this->db->order_by("tblblog.CountView", "desc");
         $this->db->where('tblblog.Lang ', $lg);
-        $this->db->limit(8);
+        $this->db->limit(16);
         $query = $this->db->get();
         return $query->result_array(); 
     }    
