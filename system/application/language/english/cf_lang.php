@@ -724,3 +724,4 @@ $lang['CF_edit_video_meta']="Edit Video Metadata Information";
 $lang['CF_edit_event_meta']="Edit Event Metadata Information";
 $lang['CF_edit_blog_meta']="Edit Blog Metadata Information";
 $lang['CF_edit_blog_ar_meta']="Edit Blog Article Metadata Information";
+$lang['CF_edit_editable_meta']="Edit Editable Pages Metadata Information";

@@ -1,4 +1,4 @@
-<?php $page = 10;?>
+<?php $page = 4;?>
 	<?php
 		foreach($query as $row)
 		{
@@ -12,7 +12,7 @@
 	?>	
     			<div class="content_item">
 				<ul class="link_conttrol">
-        <li><a class="icon_list" href="<?php echo site_url('conference_office/get_all'.'/'.$lg.'/'.$page)?>"><?php echo __("CF_list_ar")?></a></li>
+        <li><a class="icon_list" href="<?php echo site_url('conference_office/list_all'.'/'.$lg.'/'.$page)?>"><?php echo __("CF_list_ar")?></a></li>
          <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata/office/'.$id)?>"><?php echo __("CF_edit_article_meta")?></a></li>
     </ul>
     <br>

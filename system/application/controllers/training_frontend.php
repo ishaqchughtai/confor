@@ -48,12 +48,19 @@ class Training_frontend extends Frontend_controller {
     $this->pagination->initialize($config);
     //$this->_data['query'] = $this->Mtraining->get_all_training($lg,$this->uri->segment(4),$config['per_page']);
     $this->_data['query'] = $this->Mtraining->get_all_by_order($lg,$this->uri->segment(4),$config['per_page']);
-    $this->_data['pagination'] = $this->pagination->create_links();
-    $title = __("CF_training").' - confor.tv';
-    $this->_data['page_title'] = $title;
+    $this->_data['pagination'] = $this->pagination->create_links();   
     $lg = $this->_data['lang'];
     $meta = $this->Mmetadata->out_static_meta('formation_list',$lg);
-    if ($meta!=FALSE) $this->_data['meta'] = $meta;
+    if ($meta!=FALSE) 
+    {
+      $title = $meta->title.' - confor.tv';
+      $this->_data['meta'] = $meta; 
+    }
+    else
+    {
+      $title = __("CF_training").' - confor.tv';
+    }
+    $this->_data['page_title'] = $title;
     $this->_load_view('home/training_view');     
   }
   function training_content($id='',$title='')
@@ -72,9 +79,17 @@ class Training_frontend extends Frontend_controller {
     {
       $id = $row['ID'];
       $meta = $this->Mmetadata->out_meta('formation',$id);
-      if ($meta!=FALSE) $this->_data['meta'] = $meta;         
+      if ($meta!=FALSE) 
+      {
+        $title1 = $meta->title.' - confor.tv';
+        $this->_data['meta'] = $meta;          
+      }
+      else
+      {
+         $title1 = $title.' - confor.tv';
+      }
     }
-    $this->_data['page_title'] = $title.' - confor.tv';
+    $this->_data['page_title'] = $title1;
     $this->_load_view('home/training_entry_view');  
   }
 }

@@ -28,7 +28,7 @@
       tblmetadata.id,
       tblmetadata.description,
       tblmetadata.keywords,
-      tblmetadata.title,
+      tblmetadata.title,                             
       tblmetadata.author,
       tblmetadata.type_resource,
       tblmetadata.id_resource,
@@ -123,14 +123,13 @@
     }
     
     //edit metadata
-    function edit_static_meta($id,$title,$keywords,$description,$author,$lg)
+    function edit_static_meta($id,$title,$keywords,$description,$author)
     {
       $data = array(
       'title'=>$title,                                          
       'keywords'=>$keywords,
       'description'=>$description,
-      'author'=>$author,
-      'lang'=>$lg
+      'author'=>$author
       );
       $this->db->update('tblmetadata_static',$data,array('id'=>$id));
     }

@@ -77,11 +77,19 @@
         $query =  $this->MEvent->get_event_by_id($id);
         $this->_data['query'] = $this->MEvent->get_event_by_id($id);
         $meta = $this->Mmetadata->out_meta('event',$id);
-        if ($meta!=FALSE) $this->_data['meta'] = $meta;
-        foreach($query as $row)
+        if ($meta!=FALSE) 
         {
-          $title = $row['Title'].' - confor.tv';
+          $title = $meta->title.' - confor.tv';
+          $this->_data['meta'] = $meta;  
         }
+        else
+        {
+          foreach($query as $row)
+          {
+            $title = $row['Title'].' - confor.tv';
+          }  
+        }
+
         $this->_data['page_title'] = $title;
         $this->_load_view('event/event_content');  
       }
@@ -238,7 +246,7 @@
       $this->_data['month_events'] = $this->MEvent->get_event_by_month($lg,$month,$per_page,$offset);
 
       $this->_data['pagination'] = $this->pagination->create_links();
-       $title = __("CF_month_events").' - confor.tv';
+      $title = __("CF_month_events").' - confor.tv';
       $this->_data['page_title'] = $title;
       $this->_load_view('event/month_event');
     }

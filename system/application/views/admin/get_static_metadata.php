@@ -18,18 +18,14 @@
 						<?php
 						echo form_open('metadata/edit_static/'.$id);
 						?>
-                        <div class="input text">
-						<label><?php echo __("CF_dis_lang")?></label>		
-						<?php choose_your_language($lg);?>
-					</div>
 							<p>			
 							<label for="title"><?php echo __("CF_title")?>:</label>
-							<input class="short" name="title" id="title" value="<?php echo $title?>" />						
+							<input class="medium" name="title" id="title" value="<?php echo $title?>" />						
 						</p>
                         
                         <p>			
 							<label for="description"><?php echo __("CF_des")?>:</label>
-							<input class="short" name="description" id="description" value="<?php echo $description?>" />
+                            <textarea class="medium" name="description" id="description" rows="5"><?php echo $description?></textarea>
 													
 						</p>
 						
@@ -37,14 +33,14 @@
 						<p>
 						
 							<label for="keywords"><?php echo __("CF_key")?>:</label>
-							<input class="short" name="keywords" id="keywords" value="<?php echo $keywords?>" />
+							<input class="medium" name="keywords" id="keywords" value="<?php echo $keywords?>" />
 													
 						</p>
                         
                         <p>
 						
 							<label for="author"><?php echo __("CF_author")?>:</label>
-							<input class="short" name="author" id="author" value="<?php echo $author?>" />
+							<input class="medium" name="author" id="author" value="<?php echo $author?>" />
 													
 						</p>
 						
