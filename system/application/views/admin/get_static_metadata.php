@@ -16,7 +16,7 @@
 				
 					<h3><?php echo __("CF_edit_meta")?></h3>
 						<?php
-						echo form_open('metadata/edit/'.$id);
+						echo form_open('metadata/edit_static/'.$id);
 						?>
                         <div class="input text">
 						<label><?php echo __("CF_dis_lang")?></label>		
@@ -58,7 +58,7 @@
 						echo form_close();
 						?>
                         <?php else:?>
-<p class="not_warning "><span class="img"></span><?php echo __("CF_not_meta")?>. <?php echo __("CF_click")?> <a href="<?php echo site_url('metadata/add/'.$type_sources.'/'.$id_sources)?>"><?php echo __("CF_here")?></a> <?php echo __("CF_to_add_meta")?><span class="close"></span></p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<p class="not_warning "><span class="img"></span><?php echo __("CF_not_meta")?>. <?php echo __("CF_click")?> <a href="<?php echo site_url('metadata/add_static/'.$type_sources.'/'.$lg)?>"><?php echo __("CF_here")?></a> <?php echo __("CF_to_add_meta")?><span class="close"></span></p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <?php endif;?>
 	
 				</div>

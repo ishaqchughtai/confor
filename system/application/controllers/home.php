@@ -22,7 +22,8 @@ class Home extends Frontend_controller {
     $this->_data['video_path'] = $this->Mhome->get_top_viewed_video($this->_data['lang']);
     $this->_data['header']['page'] = '/home/home_header';	
     $this->show_room_image();
-    $meta = $this->Mmetadata->out_meta('home',1);
+    $lg = $this->_data['lang'];
+    $meta = $this->Mmetadata->out_static_meta('home',$lg);
     if ($meta!=FALSE) $this->_data['meta'] = $meta; 
     $this->_load_view('home/index');
   }

@@ -58,7 +58,8 @@ class Blog_frontend extends Frontend_controller {
     $this->_data['query'] = $this->Mblog->get_all_blog($lg,$num,$config['per_page']);
     $this->_data['pagination'] = $this->pagination->create_links();                
     $this->_data['page_title'] = __("CF_blog").'- confor.tv';
-    $meta = $this->Mmetadata->out_meta('blog_list',1);
+    $lg = $this->_data['lang'];
+    $meta = $this->Mmetadata->out_static_meta('blog_list',$lg);
     if ($meta!=FALSE) $this->_data['meta'] = $meta;
     $this->_load_view('blog/blog_view'); 
   }
