@@ -8,7 +8,6 @@
 			$title = $row['title'];
 			$keywords = $row['keywords'];
 			$description = $row['description'];
-			$lang = $row['lang'];
 		}
 	?>
 			
@@ -18,11 +17,7 @@
 						<?php
 						echo form_open('metadata/edit/'.$id);
 						?>
-                        <div class="input text">
-						<label><?php echo __("CF_dis_lang")?></label>		
-						<?php choose_your_language($lg);?>
-					</div>
-							<p>			
+						<p>			
 							<label for="title"><?php echo __("CF_title")?>:</label>
 							<input class="short" name="title" id="title" value="<?php echo $title?>" />						
 						</p>
