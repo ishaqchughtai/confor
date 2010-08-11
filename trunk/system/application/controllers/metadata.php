@@ -77,7 +77,7 @@
         $keywords = $this->input->post('keywords');
         $description = $this->input->post('description');
         $author = $this->input->post('author');
-        $lg = $this->input->post('lg');
+        $lg = $this->uri->segment(4);
         if($this->MMetadata->add_static_meta($title,$keywords,$description,$author,$type_resource,$lg)==TRUE)
         {
           $this->_message('metadata', __("CF_add_meta_suc"), 'success', site_url('/admin'));    
@@ -109,8 +109,7 @@
       $keywords = $this->input->post('keywords');
       $description = $this->input->post('description');
       $author = $this->input->post('author');
-      $lg = $this->input->post('lg');
-      $data = $this->MMetadata->edit_static_meta($id,$title,$keywords,$description,$author,$lg);
+      $data = $this->MMetadata->edit_static_meta($id,$title,$keywords,$description,$author);
       $this->_message('metadata', __("CF_edit_meta_suc"), 'success', site_url('/admin'));    
     }
   }

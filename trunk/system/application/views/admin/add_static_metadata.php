@@ -3,10 +3,6 @@
 						<?php
 						echo form_open('metadata/add_static/'.$type_sources.'/'.$lg);
 						?>
-                        <div class="input text">
-						<label><?php echo __("CF_dis_lang")?></label>		
-						<?php choose_your_language($lg);?>
-					</div>
 							<p>			
 							<label for="title"><?php echo __("CF_title")?>:</label>
 							<input class="short" name="title" id="title"/>						

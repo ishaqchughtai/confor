@@ -57,10 +57,19 @@ class Blog_frontend extends Frontend_controller {
     $num = $this->uri->segment(3);
     $this->_data['query'] = $this->Mblog->get_all_blog($lg,$num,$config['per_page']);
     $this->_data['pagination'] = $this->pagination->create_links();                
-    $this->_data['page_title'] = __("CF_blog").'- confor.tv';
+
     $lg = $this->_data['lang'];
     $meta = $this->Mmetadata->out_static_meta('blog_list',$lg);
-    if ($meta!=FALSE) $this->_data['meta'] = $meta;
+    if ($meta!=FALSE) 
+    {
+      $title = $meta->title.' - confor.tv';
+      $this->_data['meta'] = $meta;  
+    }
+    else
+    {
+      $title = __("CF_blog").' - confor.tv';
+    }
+    $this->_data['page_title'] = $title;
     $this->_load_view('blog/blog_view'); 
   }
   function blog_content($author='',$id='')
@@ -83,9 +92,18 @@ class Blog_frontend extends Frontend_controller {
       $this->_data['query'] = $this->Mblog->get_blog_id($id);
       $this->_data['query_show_comment'] = $this->Mblog->show_comment($title);
       $this->_data['query_show_author'] = $this->Mblog->written($author);
-      $this->_data['page_title'] = $title.' - confor.tv';
+      
       $meta = $this->Mmetadata->out_meta('blog',$id);
-      if ($meta!=FALSE) $this->_data['meta'] = $meta;         
+      if ($meta!=FALSE) 
+      {
+        $title1 = $meta->title.' - confor.tv';
+        $this->_data['meta'] = $meta;          
+      }
+      else
+      {
+          $title1 = $title.' - confor.tv';
+      }
+      $this->_data['page_title'] = $title1;      
       $this->_load_view('blog/blog_entry_view');
     }else
     {

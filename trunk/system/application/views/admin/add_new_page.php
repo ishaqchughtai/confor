@@ -25,7 +25,7 @@
 <h3><?php echo __("CF_accessories")?></h3>
 <?php $this->load->view("admin/admin_menu_accessories");?>
 <ul class="link_conttrol">
-         <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata/'.$type_source.'/1')?>"><?php echo __("CF_edit_meta")?></a></li>
+         <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata/'.$type_source.'/1')?>"><?php echo __("CF_edit_editable_meta")?></a></li>
     </ul>
 <p>&nbsp;    </p>
 

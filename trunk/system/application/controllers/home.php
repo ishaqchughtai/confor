@@ -18,13 +18,22 @@ class Home extends Frontend_controller {
   function index()
   {
     // home page has image banner
-    $this->_data['page_title'] = __("CF_home").' - confor.tv';
+
     $this->_data['video_path'] = $this->Mhome->get_top_viewed_video($this->_data['lang']);
     $this->_data['header']['page'] = '/home/home_header';	
     $this->show_room_image();
     $lg = $this->_data['lang'];
     $meta = $this->Mmetadata->out_static_meta('home',$lg);
-    if ($meta!=FALSE) $this->_data['meta'] = $meta; 
+    if ($meta!=FALSE) 
+    {
+      $title = $meta->title.' - confor.tv';
+      $this->_data['meta'] = $meta;  
+    }
+    else
+    {
+      $title = __("CF_home").' - confor.tv';
+    }
+    $this->_data['page_title'] = $title;
     $this->_load_view('home/index');
   }
 
@@ -222,7 +231,7 @@ class Home extends Frontend_controller {
     $out .= ']';
     echo $out;
   }
-  
+
   function get_blog_in_month($year,$month)
   {
     $ed = $this->Mhome->get_blog_in_month($this->_data['lang'],$month,$year);
@@ -241,5 +250,5 @@ class Home extends Frontend_controller {
     $out .= ']';
     echo $out;
   }  
-  
+
 }

@@ -65,6 +65,7 @@ class Video extends Frontend_controller
       if($query->num_rows()>0)
       {
         $row=$query->row();
+        $title=$row->title;
         $last_viewed=$row->viewed;
         $viewed=$last_viewed+1;
         $this->Mhome->update_view_time($id,$viewed);
@@ -83,7 +84,16 @@ class Video extends Frontend_controller
         $this->_data['video_by_cat'] = $this->Mhome->get_video_by_category($catid,$page_offset,$config['per_page']);
         $this->_data['pagination'] = $this->pagination->create_links();
         $meta = $this->Mmetadata->out_meta('video',$id);
-        if ($meta!=FALSE) $this->_data['meta'] = $meta;
+        if ($meta!=FALSE) 
+        {
+          $title1 = $meta->title.' - confor.tv';
+          $this->_data['meta'] = $meta; 
+        }
+        else
+        {
+          $title1 = $title.' - confor.tv';
+        }
+        $this->_data['page_title'] = $title1;
         $this->_load_view('home/play_video');
       }
       else
@@ -102,38 +112,38 @@ class Video extends Frontend_controller
     'name' => __("CF_search_video"),
     'link' => '#'
     );    
-	$keyword = '_';
-	if($this->input->post('search'))
-	{
-		$keyword=$this->input->post('search_field');
-	}
-	
+    $keyword = '_';
+    if($this->input->post('search'))
+    {
+      $keyword=$this->input->post('search_field');
+    }
+
     //if($this->input->post('search'))
     //{                
-      $num_per_page = $this->_setting['num_per_page_video'];
-      $keyword=$this->input->post('search_field');   				          
-      $config['per_page'] = $num_per_page;
-      $config['uri_segment'] = 5;            
-      $config['total_rows'] = $this->Mhome->count_video_search($this->_data['lang'],$keyword);
-      $config += config_pagination_style();	
-      $this->_data['search_results']=$this->Mhome->search_paging($this->_data['lang'],$keyword, $num_per_page, 0);
+    $num_per_page = $this->_setting['num_per_page_video'];
+    $keyword=$this->input->post('search_field');   				          
+    $config['per_page'] = $num_per_page;
+    $config['uri_segment'] = 5;            
+    $config['total_rows'] = $this->Mhome->count_video_search($this->_data['lang'],$keyword);
+    $config += config_pagination_style();	
+    $this->_data['search_results']=$this->Mhome->search_paging($this->_data['lang'],$keyword, $num_per_page, 0);
 
-      if (($keyword) && strlen($keyword)>0)
-      {
-        $config['base_url'] = site_url('video/search_paging').'/'.$keyword.'/'.$num_per_page.'/';  
-      } else {
-        $keyword = '_';
-        $config['base_url'] = site_url('video/search_paging').'/'.$keyword.'/'.$num_per_page.'/';
-      }
+    if (($keyword) && strlen($keyword)>0)
+    {
+      $config['base_url'] = site_url('video/search_paging').'/'.$keyword.'/'.$num_per_page.'/';  
+    } else {
+      $keyword = '_';
+      $config['base_url'] = site_url('video/search_paging').'/'.$keyword.'/'.$num_per_page.'/';
+    }
 
-      $this->pagination->initialize($config);  
-      $this->_data['link_html'] = $this->pagination->create_links();  
-      $this->_data['keyword'] = $keyword; 
-      $this->_load_view('home/search');                         
+    $this->pagination->initialize($config);  
+    $this->_data['link_html'] = $this->pagination->create_links();  
+    $this->_data['keyword'] = $keyword; 
+    $this->_load_view('home/search');                         
     //}
     // else
     // {                
-      // $this->_load_view('home/search');   
+    // $this->_load_view('home/search');   
     // }
   }
 

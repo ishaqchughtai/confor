@@ -20,11 +20,20 @@
         $query = $this->Maccessories->get_element($ElementName); 
         if($query->num_rows()==1)
         {
-          $this->_data['page_title'] = $this->convert_element_name($ElementName); 
+           
           $this->_data['query'] = $query->result_array();
           $type_source = $this->uri->segment(3);
           $meta = $this->Mmetadata->out_meta($type_source,1);
-          if ($meta!=FALSE) $this->_data['meta'] = $meta;
+          if ($meta!=FALSE) 
+          {
+            $title = $meta->title.' - confor.tv';
+            $this->_data['meta'] = $meta;  
+          }
+          else
+          {
+             $title = $this->convert_element_name($ElementName);
+          }
+          $this->_data['page_title'] = $title;
           $this->_load_view('home/page');               
         }else
         {

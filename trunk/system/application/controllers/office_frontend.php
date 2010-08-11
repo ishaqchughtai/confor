@@ -45,11 +45,20 @@
       $this->_data['query'] = $this->Mcoffice->get_all_by_order($lg,$offset,$per_page);
 
       $this->_data['pagination'] = $this->pagination->create_links();
-      $title = __("CF_conference_office").' - confor.tv';
-      $this->_data['page_title'] = $title;
+
+
       $lg = $this->_data['lang'];
       $meta = $this->Mmetadata->out_static_meta('office_list',$lg);
-      if ($meta!=FALSE) $this->_data['meta'] = $meta;
+      if ($meta!=FALSE) 
+      {
+        $title = $meta->title.' - confor.tv';
+        $this->_data['meta'] = $meta;  
+      }
+      else
+      {
+        $title = __("CF_conference_office").' - confor.tv';
+      }
+      $this->_data['page_title'] = $title;
       $this->_load_view('home/office_view');
     }
 
@@ -72,11 +81,18 @@
         $query =  $this->Mcoffice->get_office_by_id($id); 
         $this->_data['query'] = $this->Mcoffice->get_office_by_id($id);
         $meta = $this->Mmetadata->out_meta('office',$id);
-        if ($meta!=FALSE) $this->_data['meta'] = $meta;
-        foreach($query as $row)
+        if ($meta!=FALSE)
         {
-          $title = $row['title'].' - confor.tv';
+          $title = $meta->title.' - confor.tv';
+          $this->_data['meta'] = $meta;
         }
+        else
+        {
+          foreach($query as $row)
+          {
+            $title = $row['title'].' - confor.tv';
+          }
+        } 
         $this->_data['page_title'] = $title;
         $this->_load_view('home/office_entry_view');  
       }
