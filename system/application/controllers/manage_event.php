@@ -192,6 +192,7 @@
       $speaker_id= $userData['speaker_id'];   
       if ($speaker_id != $author) redirect('/');  
       $this->MEvent->delete($id);
+      remove_meta($id,'event'); 
       redirect('manage_event/your_event/'.$lg.'/'.$this->event_per_page);    
     }
 

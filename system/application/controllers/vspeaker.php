@@ -218,7 +218,8 @@
       //$user_data = is_speaker();				
       $user_data = check_membership();
       if ($this->video_upload_lib->remove_video_by_vid_id($id, $user_data['speaker_id']))
-      {			
+      {
+        remove_meta($id,'video');			
         $this->_message('vspeaker', __("CF_delete_vid"), 'success',site_url("vspeaker/list_video_conference"));			
       }
       else
