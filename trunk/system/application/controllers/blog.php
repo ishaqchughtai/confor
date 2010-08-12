@@ -84,6 +84,7 @@ class Blog extends Admin_controller {
             $id = $this->uri->segment(3);
             if($this->Mblog->del_blog($id) == TRUE)
             {
+                remove_meta($id,'blog');
                 $this->_message('blog', __("CF_delete_blog"), 'success', site_url("blog/blog_list/".$this->_data['lang']));
             }
         }
