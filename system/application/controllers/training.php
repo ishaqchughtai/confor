@@ -75,7 +75,8 @@ class Training extends Admin_controller {
     {
       if($this->Mtraining->del_article($id,$no,$lg) == TRUE)
       {
-        redirect('training/index/'.$lg.'/');
+          remove_meta($id,'formation');
+          redirect('training/index/'.$lg.'/');
       }
     }
   }

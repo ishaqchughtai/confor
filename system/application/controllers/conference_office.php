@@ -190,19 +190,6 @@
             }
         }
 
-        //Delete office admin
-        function delete($id)
-        {
-            $query = $this->Mcoffice->get_data_to_form($id);
-            foreach($query as $row)    
-            {
-                $lg = $row->lang;
-            }
-            is_admin();
-            $this->Mcoffice->delete($id);
-            $this->_message('conference_office', __("CF_delete_ar"), 'success', site_url('conference_office/list_all/'.$lg));
-        }
-
         function list_all()
         {
             is_admin();
@@ -298,7 +285,7 @@
                 }   
             }
         }
-        //Delete Training
+        //Delete office
         function delete_article($id,$no,$lg)
         {
             if($this->session->userdata('admin')==FALSE)
@@ -309,6 +296,7 @@
             {
                 if($this->Mcoffice->del_article($id,$no,$lg) == TRUE)
                 {
+                    remove_meta($id,'office');
                     redirect('conference_office/index/'.$lg.'/');
                 }
             }
