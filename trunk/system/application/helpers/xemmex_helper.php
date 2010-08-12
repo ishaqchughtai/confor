@@ -840,5 +840,13 @@ function remove_meta($id_resource, $type_resource)
 	$CI->db->delete('tblmetadata');	
 }
 
+function get_info_for_adv()
+{
+	$CI =& get_instance();
+	$out['video_blog_title'] = $CI->_data['video_blog_title'];	
+	$out['speaker_name'] = $CI->_data['speaker_name'];	
+	return $out;
+}
+
 /* End of file xemmex_helper.php */ 
 /* Location: ./system/application/helpers/xemmex_helper.php */ 

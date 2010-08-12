@@ -60,7 +60,15 @@ class Video extends Frontend_controller
     $id=(double)$id;
     if(is_nan($id)==FALSE)
     {
+		
       $this->_data['video_url']=$this->Mhome->get_video_by_id($id);
+	  if ( $this->_data['video_url']->num_rows()>0)
+	  {
+		$row = $this->_data['video_url']->row();
+		$this->_data['video_blog_title'] = $row->title;
+		$this->_data['speaker_name'] = $row->first_name.' '.$row->name;
+	  }	  	  
+	  
       $query=$this->Mhome->get_view_by_id($id);
       if($query->num_rows()>0)
       {
@@ -82,6 +90,7 @@ class Video extends Frontend_controller
         $this->pagination->initialize($config);
         $this->_data['pagination'] = $this->pagination->create_links();
         $this->_data['video_by_cat'] = $this->Mhome->get_video_by_category($catid,$page_offset,$config['per_page']);
+		
         $this->_data['pagination'] = $this->pagination->create_links();
         $meta = $this->Mmetadata->out_meta('video',$id);
         if ($meta!=FALSE) 
