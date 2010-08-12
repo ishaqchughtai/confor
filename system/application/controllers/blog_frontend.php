@@ -90,6 +90,14 @@ class Blog_frontend extends Frontend_controller {
       'link' => '#'
       );
       $this->_data['query'] = $this->Mblog->get_blog_id($id);
+	  
+	  if ( count($this->_data['query'])>0)
+	  {
+		$row = $this->_data['query'][0];
+		$this->_data['video_blog_title'] = $row['Title'];
+		//$this->_data['speaker_name'] = $row['FirstName'].' '.$row['Name'];
+	  }	  	  
+	  
       $this->_data['query_show_comment'] = $this->Mblog->show_comment($title);
       $this->_data['query_show_author'] = $this->Mblog->written($author);
 
