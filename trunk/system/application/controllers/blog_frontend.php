@@ -94,7 +94,7 @@ class Blog_frontend extends Frontend_controller {
 	  if ( count($this->_data['query'])>0)
 	  {
 		$row = $this->_data['query'][0];
-		$this->_data['video_blog_title'] = $row['Title'];
+		$this->_data['video_blog_keyword'] = $row['Keywords'];
 		//$this->_data['speaker_name'] = $row['FirstName'].' '.$row['Name'];
 	  }	  	  
 	  

@@ -55,6 +55,7 @@ class Mblog extends Model{
         tblblog.ID,
         tblblog.Date,
         tblblog.Title,
+		tblblog.Keywords,
         tblblog.Subject,
         tblblog.Text,
         tblblog.Link,

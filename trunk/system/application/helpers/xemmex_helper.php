@@ -843,9 +843,10 @@ function remove_meta($id_resource, $type_resource)
 function get_info_for_adv()
 {
 	$CI =& get_instance();
-	$out['video_blog_title'] = $CI->_data['video_blog_title'];	
-	$out['speaker_name'] = $CI->_data['speaker_name'];	
-	return $out;
+	//$out['video_blog_keyword'] = $CI->_data['video_blog_keyword'];	
+	//$out['speaker_name'] = $CI->_data['speaker_name'];	
+	//return $out;
+	return $CI->_data['video_blog_keyword'];
 }
 
 /* End of file xemmex_helper.php */ 

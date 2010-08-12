@@ -65,8 +65,8 @@ class Video extends Frontend_controller
 	  if ( $this->_data['video_url']->num_rows()>0)
 	  {
 		$row = $this->_data['video_url']->row();
-		$this->_data['video_blog_title'] = $row->title;
-		$this->_data['speaker_name'] = $row->first_name.' '.$row->name;
+		$this->_data['video_blog_keyword'] = $row->tags;
+		//$this->_data['speaker_name'] = $row->first_name.' '.$row->name;
 	  }	  	  
 	  
       $query=$this->Mhome->get_view_by_id($id);
