@@ -142,6 +142,7 @@ class Event extends Admin_controller {
     }
     is_admin();
     $this->MEvent->delete($id);
+    remove_meta($id,'event');
     redirect('event/event_list/'.$lg.'/'.$this->event_per_page);    
   }	
 
