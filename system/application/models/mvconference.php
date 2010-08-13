@@ -75,6 +75,7 @@
             users.username,
             users.first_name,
             users.name,
+            users.email,
             videos.*
             ');
             $this->db->from('videos');
