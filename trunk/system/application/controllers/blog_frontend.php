@@ -332,7 +332,7 @@ class Blog_frontend extends Frontend_controller {
               $content_send_admin=sprintf(__('CF_comment_content_email_to_admin'),$Author,$Title,$Comment);
               $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);
               $this->send_mail->send('text',$to , $name_from, $from, $subject_send_admin, $content_send_admin); 
-              $this->_message('blog', __("CF_addcomment_success"), 'success', site_url('blog_frontend/blog_content'.'/'.$Name.'/'.$Blog.'/'.$Title.'#comments'));
+              $this->_message('blog_frontend', __("CF_addcomment_success"), 'success', site_url('blog_frontend/blog_content'.'/'.$Name.'/'.$Blog.'/'.$Title.'#comments'));
             }  
           } 
         }   

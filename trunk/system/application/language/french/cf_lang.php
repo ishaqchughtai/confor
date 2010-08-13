@@ -672,3 +672,9 @@ $lang['CF_edit_event_meta']="f_Edit Event Metadata Information";
 $lang['CF_edit_blog_meta']="f_Edit Blog Metadata Information";
 $lang['CF_edit_blog_ar_meta']="f_Edit Blog Article Metadata Information";
 $lang['CF_edit_editable_meta']="f_Edit Editable Pages Metadata Information";
+
+//Key added on 13/08/2010
+$lang['CF_delete_user'] = 'f_Your Account has been deleted!';
+$lang['CF_delete_user_content'] = 'f_Dear %s %s !'.chr(13).chr(10).' Account %s has been removed from http://confor.tv !'.chr(13).chr(10).' Please contact the administrator via email: %s or register at here %s';
+$lang['CF_delete_video_by_admin'] = 'f_Your Video has been deleted !'; 
+$lang['CF_delete_video_content'] = 'f_Dear %s %s !'.chr(13).chr(10).' Video %s has been removed from http://confor.tv !'.chr(13).chr(10).' Please contact the administrator via email: %s';
