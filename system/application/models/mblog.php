@@ -267,6 +267,40 @@ class Mblog extends Model{
         {
             return 0;
         }
+    }
+    function search_blog_keyword($lg,$offset,$num,$Keywords)
+    {
+        try
+        {
+            $this->db->select("
+            tblblog.ID,
+            tblblog.Date,
+            tblblog.Title,
+            tblblog.Subject,
+            tblblog.Text,
+            tblblog.Link,
+            tblblog.CountView,
+            tblblog.Keywords,          
+            tblblog.CountComment,
+            tbladmin.Name,
+            tbladmin.FirstName");
+            $this->db->from('tblblog');
+            $this->db->join('tbladmin','tbladmin.ID = tblblog.Author');
+            $this->db->like('Keywords',$Keywords,'both') ;                    
+            $this->db->order_by("tblblog.Date", "desc");
+            $this->db->where('tblblog.Lang ', $lg);
+            $this->db->limit($num,$offset);
+            $query_search = $this->db->get();
+            if($query_search)
+            {
+                return $query_search;
+
+            }            
+        }
+        catch(Exception $e)
+        {
+            return 0;
+        }
     }    
     function search_blog_by_title($lg,$offset,$num,$Title)
     {

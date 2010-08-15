@@ -33,7 +33,7 @@
 			<?php $this->load->view('image_upload',array('edit_image'=>$images));?>
         </p>
 
-        <p>&nbsp;    </p>
+        <p><label><?php echo __("CF_approved")?> ?   </label></p>
         <p>
         <select name="show" class="short">
             <option value="1" <?php if($show==1) echo 'selected="selected"';?>><?php echo __("CF_yes")?></option>
