@@ -215,7 +215,7 @@ class Blog_frontend extends Frontend_controller {
     $config += config_pagination_style();
 
     $this->pagination->initialize($config);
-    $query_search = $this->Mblog->search_blog($this->_data['lang'],$offset,$per_page,$Keywords);
+    $query_search = $this->Mblog->search_blog_keyword($this->_data['lang'],$offset,$per_page,$Keywords);
     $this->_data['page_title'] = __("CF_Blog_search");
     if($query_search->num_rows()>0)
     {
