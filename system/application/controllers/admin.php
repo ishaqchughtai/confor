@@ -391,7 +391,7 @@
                 $this->_data['path'][] = array(
                 'name' => __("CF_user_edit"),
                 'link' => '#'
-                );				
+                );                
                 $this->_data['error'] = ""; 
                 $this->form_validation->set_rules('txtName',strtolower(__("CF_name")),'required');
                 $this->form_validation->set_rules('txtCompanyName',strtolower(__("CF_Company_name")),'required');
@@ -408,20 +408,44 @@
                     }
                     else
                     {
-                        $suspension=0;
-                        if((int)$this->input->post('radiobutton')=='1')
-                        {
-                            $suspension=1;
-                        }
+//                        $suspension=0;
+//                        if((int)$this->input->post('radiobutton')=='1')
+//                        {
+//                            $suspension=1;
+//                        }
                         $data = array(
                         'name'=>$this->input->post('txtName'),
                         'company_name'=>$this->input->post('txtCompanyName'),
                         'email' =>$this->input->post('txtEmail'),
                         'country' =>$this->input->post('country'),   
                         'description' =>$this->input->post('txtDescription'),
-                        'status' =>$suspension
+                        'status' =>$this->input->post('approved')
                         );
-                        $this->Madmin->update_user($id,$data);
+                        $query_user = $this->MUser->get_user($id);
+                        foreach($query_user as $row)
+                        {
+                            if($row['status']==0)
+                            {
+                                $this->Madmin->update_user($id,$data);   
+                            }elseif($this->input->post('approved')==0)
+                            {
+                                $username=$row['username'];
+                                $email=$row['email'];
+                                $name=$row['name'];
+                                $first_name=$row['first_name'];
+                                $from = $this->_setting['email'];   
+                                $ar_key = array('[FIRST_NAME]', '[NAME]','[USER_NAME]','[SITE_URL]','[EMAIL_ADMIN]');
+                                $ar_value = array($first_name,$name,$username,'HTTP://CONFOR.TV',$from);
+                                $x = email_template_parse($row['language'],'AS',$ar_key,$ar_value);           
+                                $this->send_mail->send('text',$from , $name_from, $email, $x['subject'], $x['body']); 
+                                $this->Madmin->update_user($id,$data);           
+                            }else
+                            {
+                                $this->Madmin->update_user($id,$data);
+                            }   
+                        }
+
+
                         redirect('admin/list_user');  
                     }
                 }
@@ -481,10 +505,11 @@
                     $from =$this->_setting['email'];
                     $to =$row['email'];
                     $name_from = '';
-                    $subject=__("CF_delete_user");
                     $link=base_url().'index.php/home/register';
-                    $content=sprintf(__('CF_delete_user_content'),$first_name,$name,$username,$from,$link);
-                    $this->send_mail->send('HTML',$from , $name_from, $to, $subject, $content);
+                    $ar_key = array('[FIRST_NAME]', '[NAME]','[USER_NAME]','[SITE_URL]','[EMAIL_ADMIN]','[LINK_REG]');
+                    $ar_value = array($first_name,$name,$username,'HTTP://CONFOR.TV',$from,$link);
+                    $x = email_template_parse($row['language'],'DA',$ar_key,$ar_value);  
+                    $this->send_mail->send('text',$from , $name_from, $to, $x['subject'],$x['body']);  
                 }
                 foreach($query as $row)
                 {

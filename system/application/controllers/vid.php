@@ -164,19 +164,19 @@ class Vid extends Admin_controller {
     {
         is_admin();
 
-        $this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');		
-        $this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 		
+        $this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');        
+        $this->form_validation->set_rules('description',strtolower(__("CF_des")),'required');         
         $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
-        $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');	
+        $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');    
 
-        $query=$this->Mvid->get_info_by_id($id);		
+        $query=$this->Mvid->get_info_by_id($id);        
         if($query->num_rows()>0)
         {
             $this->_data['row'] = $query->row(); 
             $this->_data['path'][] = array(
             'name' => __("CF_list_vid"),
             'link' => site_url("vid/list_video_conference/".$this->_data['row']->lang)
-            );  	
+            );      
         }
 
         $this->_data['path'][] = array(
@@ -186,36 +186,61 @@ class Vid extends Admin_controller {
 
         if($this->input->post('submit')){
             if($this->form_validation->run()==FALSE)
-            {				
+            {                
                 $this->_load_view('vid/edit_video_conference');
             }
             else
-            {												
+            {                                                
                 $data = array(
                 'mem_id'=>$this->input->post('speaker'),
-                'title'=>$this->input->post('title'),					
-                'description'=>$this->input->post('description'),				
+                'title'=>$this->input->post('title'),                    
+                'description'=>$this->input->post('description'),                
                 'category'=>$this->input->post('video_cate'),
-                'tags'=>$this->input->post('keywords'),			
+                'tags'=>$this->input->post('keywords'),            
                 'approved'=>$this->input->post('approved'),
                 'lang'=>$this->input->post('lg')
                 );
-                $this->Mvid->update_conference($data,$id);									
+                $query_users=$this->Mvid->get_user_by_id($id);
+                foreach($query_users as $row)
+                {
+                    if($row['approved']==0)
+                    {
+                        $this->Mvid->update_conference($data,$id);    
+                    }elseif($this->input->post('approved')==0)
+                    {
+                        $video_name=$row['title'];
+                        $username = $row['username'];
+                        $first_name = $row['first_name'];
+                        $name = $row['name'];
+                        $from =$this->_setting['email'];
+                        $to =$row['email'];
+                        $name_from = '';
+                        $lang = $row['lang'];
+                        $ar_key = array('[FIRST_NAME]', '[NAME]','[VIDEO_NAME]','[SITE_URL]','[EMAIL_ADMIN]');
+                        $ar_value = array($first_name,$name,$video_name,'HTTP://CONFOR.TV',$from);
+                        $x = email_template_parse($lang,'VS',$ar_key,$ar_value);
+                        $this->send_mail->send('text',$from , $name_from, $to, $x['subject'], $x['body']);
+                        $this->Mvid->update_conference($data,$id);
+                    }else
+                    {
+                        $this->Mvid->update_conference($data,$id);
+                    }
+                }                                    
                 $this->_message('admin', __("CF_save_info"), 'success',site_url("vid/list_video_conference").'/'.$this->input->post('lg'));
             }
         }
         else
         {
             $this->_load_view('vid/edit_video_conference');
-        }		 
-    }	
+        }         
+    }    
 
     function delete_video_conference($id){
         is_admin();    
         $query_users=$this->Mvid->get_user_by_id($id);            
         if ($this->video_upload_lib->remove_video_by_vid_id($id))
         {
-			remove_meta($id,'video');
+            remove_meta($id,'video');
             foreach($query_users as $row)
             {
                 $video_name=$row['title'];
@@ -225,9 +250,11 @@ class Vid extends Admin_controller {
                 $from =$this->_setting['email'];
                 $to =$row['email'];
                 $name_from = '';
-                $subject=__("CF_delete_video_by_admin");
-                $content=sprintf(__('CF_delete_video_content'),$first_name,$name,$video_name,$from);
-                $this->send_mail->send('HTML',$from , $name_from, $to, $subject, $content);
+                $lang = $row['lang'];
+                $ar_key = array('[FIRST_NAME]', '[NAME]','[VIDEO_NAME]','[SITE_URL]','[EMAIL_ADMIN]');
+                $ar_value = array($first_name,$name,$video_name,'HTTP://CONFOR.TV',$from);
+                $x = email_template_parse($lang,'DV',$ar_key,$ar_value);
+                $this->send_mail->send('text',$from , $name_from, $to, $x['subject'], $x['body']);
             }            
             $this->_message('admin', __("CF_delete_vid"), 'success',site_url("vid/list_video_conference").'/'.$this->_data['lang']);            
         }

@@ -6,7 +6,7 @@
             $this->load->model('Mforgotpassword');   
             $this->load->helper('date');
             $this->load->model('Mshopproduct','mshopproduct');
-             $this->load->model('send_mail');
+            $this->load->model('send_mail');
             $this->load->helper('xemmex');
             $this->load->library('form_validation');
         }
@@ -30,20 +30,19 @@
                     if ( $this->MUser->is_email_exists($Email))
                     {
                         $temppass = random_string('alnum', 200);
-                        $temppass = base_url().'forgot_password/change_pass/'.$temppass ;
+                        $temppass = base_url().'index.php/forgot_password/change_pass/'.$temppass ;
                         $temppass_encode = md5($temppass);
                         if($this->Mforgotpassword->update_temp_pass($temppass_encode ,$Email)==TRUE)
                         {
-                            $from = 'admin@conferences-formations.com';
-                            $name_from = 'admin@conferences-formations.com';
-                            $content = __('CON_forgot_email_content_retrieve_password').$temppass;
-                            $to = $this->input->post('email');
-                            $subject=__('CON_forgot_email_title_retrieve_password');
-                            //$content=$this->input->post('message');
-                            
-                            $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);
+                            $from = $this->_setting['email']; 
+                            $name_from = '';
+                            $to = $this->input->post('email'); 
+                            $ar_key = array('[LINK]','[SITE_URL]');
+                            $ar_value = array($temppass,'HTTP://CONFOR.TV');
+                            $x = email_template_parse($this->_data['lang'],'FGP',$ar_key,$ar_value);
+                            $this->send_mail->send('text',$from , $name_from, $to, $x['subject'], $x['body']);                           
                             redirect(site_url("forgot_password/send_success"));
-                            
+
                         }
                     }else
                     {
@@ -56,13 +55,13 @@
                 $this->_load_view('speaker/form_forgot_password'); 
             }   
         }
-        
+
         function send_success()
         {
             $this->_data['error'] = __('CON_forgot_check_email_to_retrieve');
             $this->_load_view('speaker/form_forgot_password');    
         }
-        
+
         function change_pass($key_password='')
         {
             if($key_password==FALSE) 
@@ -71,7 +70,7 @@
             }
             else
             {
-                $key_password = base_url().'forgot_password/change_pass/'.$key_password ;
+                $key_password = base_url().'index.php/forgot_password/change_pass/'.$key_password ;
                 $key_password = md5($key_password);
                 if($this->Mforgotpassword->is_key_password_exists($key_password)==TRUE)
                 {
@@ -115,10 +114,10 @@
                                     $this->_load_view('speaker/form_change_pw_forgot');                        
                                 }  
                             }else
-		                {
-		                    $this->_data['error'] = __('CON_confirm_password_same_new_pass') ;
-		                    $this->_load_view('speaker/form_change_pw_forgot');     
-		                }                          
+                            {
+                                $this->_data['error'] = __('CON_confirm_password_same_new_pass') ;
+                                $this->_load_view('speaker/form_change_pw_forgot');     
+                            }                          
                         }
                     }
                     else

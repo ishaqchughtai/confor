@@ -122,7 +122,7 @@ $lang['CF_copy_right'] = 'CON&Ccedil;U ET D&Eacute;VELOPP&Eacute; PAR : ';
 //------------------------------------------------------------------
 //MESSAGE
 //there isn't event
-$lang['CF_mess_no_event'] = "Il n'y a pas &eacute;v&eacute;nement en ce jour";
+$lang['CF_mess_no_event'] = 'Il n\'y a pas &eacute;v&eacute;nement en ce jour';
 //add success a event
 $lang['CF_mess_add_event'] = 'Vous avez ajout&eacute; un &eacute;v&eacute;nement avec succ&egrave;s! S.V.P., attendre l\'approbation d\'administrateur';
 //there isn't record when search
@@ -488,7 +488,7 @@ $lang['CF_modify_cate'] = 'Modifier la cat&eacute;gorie';
 
 //date
 $lang['CF_month_name_array'] = "'Janvier','F&eacute;vrier','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','D&eacute;cembre'";
-$lang['CF_day_name_array'] = "'li', 'lu', 'ma', 'me', 'je', 've', 'sa'";
+$lang['CF_day_name_array'] = "'di', 'lu', 'ma', 'me', 'je', 've', 'sa'";
 //new key 7-6
 $lang['CF_invalid_username_password_message'] = 'Nom d\'utilisateur ou mot de passe invalide';
 $lang['CF_up_profile'] = 'Votre profil &agrave; &eacute;t&eacute; mis &agrave; jour';
@@ -607,7 +607,7 @@ $lang['CF_site_offline']='Site hors ligne';
 $lang['CF_Admin_email']='Courriel administrateur';
 $lang['CF_system_settings']='R&eacute;glages du syst&egrave;me';
 $lang['CF_your_setting_saved']='Vos param&egrave;tres ont &eacute;t&eacute; sauvegard&eacute;es';
-$lang['CF_save_order']="f_Save Order";
+$lang['CF_save_order']='Sauvegarder';
 $lang['CF_edit_meta']='Modifier les informations META';
 $lang['CF_author']='AUTEUR';
 $lang['CF_edit_meta_suc']='Les informations META ont &eacute;t&eacute; modifi&eacute;es';
@@ -637,50 +637,56 @@ $lang['CF_pay_vid_not_exist']='Ce fichier n\'existe pas ou a &eacute;t&eacute; s
 
 $lang['CF_to_play'] = 'pour lire cette vid&eacute;o';
 //Key added on 02/08/2010
-$lang['CF_pop_bill'] = 'f_Billets Populaires';
-$lang['CF_user_details'] = "f_User Details";
-$lang['CF_account_suspended'] = "f_Your account has been suspended";
+$lang['CF_pop_bill'] = 'Billets Populaires';
+$lang['CF_user_details'] = 'D&eacute;tails de l\'usager';
+$lang['CF_account_suspended'] = 'Votre compte &agrave; &eacute;t&eacute; suspendu';
 
 //Key added on 03/08/2010
-$lang['CF_check_date'] = 'f_Date must be greater than or equal to the current day';
-$lang['CF_delete_blog'] = 'f_Blog has been deleted!';
+$lang['CF_check_date'] = 'La date doit &ecirc;tre &eacute;gale ou plus grande que celle d\'aujourd\'hui';
+$lang['CF_delete_blog'] = 'Le billet &agrave; &eacute;t&eacute; supprim&eacute;!';
 
 //Key added on 04/08/2010
-$lang['CF_check_update_user']='f_Your first name will be appear on the website, please enter your name correctly !';
-$lang['CF_comment_content_email_to_admin'] = 'f_Dear Administrator!'.chr(13).chr(10).'Your comment was send by %s.You need to check in Blog Control'.chr(13).chr(10).'Title: %s'.chr(13).chr(10).'Content: %s.'.chr(13).chr(10).chr(13).chr(10).'Thank your for your attention!';
-$lang['CF_subject_comment_send_admin']='f_Your comment was send by %s at %s';
-$lang['CF_addcommentbyadmin_success'] = 'f_Add New Comment Success !';
-$lang['CF_addcomment_success'] = 'f_Add New Comment Success ! Please wait for admin approval ! ';
-$lang['CF_spamemail']='f_Spam Email';
-$lang['CF_spamemail_list']='f_List Spam Email';
-$lang['CF_spamemail_add']='f_Add Spam Email';
-$lang['CF_spamemail_add_confirm']='f_You really want to add this email list Spamp Email';  
-$lang['CF_addspamemail_success']='f_Add New Spam Email Success'; 
-$lang['CF_checkspamemail_success']='f_Email has been blacklisted ! please contact administrator! Email: %s'; 
-$lang['CF_spamemail_con']="f_Spam Email control";  
-$lang['CF_spamemail_added']="f_Email %s was added to the blacklist";
-$lang['CF_remove_spamemail']="f_Delete Spam Email";
-$lang['CF_cm_entry'] = 'f_Comment Entry'; 
+$lang['CF_check_update_user']='Veuillez &eacute;crire votre nom complet, car celui-ci sera affich&eacute; sur le portail!';
+$lang['CF_comment_content_email_to_admin'] = 'Cher administrateur!'.chr(13).chr(10).'Un billet du blogue &agrave; &eacute;t&eacute; comment&eacute; par %s. Vous devez v&eacute;rifier dans le Contr&ocirc;le Blogue'.chr(13).chr(10).'Titre : %s'.chr(13).chr(10).'Contenu : %s.'.chr(13).chr(10).chr(13).chr(10).'Merci de votre attention!';
+$lang['CF_subject_comment_send_admin']='Votre billet &agrave; &eacute;t&eacute; comment&eacute; par %s &agrave; %s';
+$lang['CF_addcommentbyadmin_success'] = 'Commentaire ajout&eacute; avec succ&egrave;s !';
+$lang['CF_addcomment_success'] = 'Commentaire ajout&eacute; avec succ&egrave;s ! Attendez l\'approbation administrateur! ';
+$lang['CF_spamemail']='Pourriels';
+$lang['CF_spamemail_list']='Liste de pourriels';
+$lang['CF_spamemail_add']='Ajouter &agrave; la liste de pourriels';
+$lang['CF_spamemail_add_confirm']='D&eacute;sirez-vous vraiment ajouter cette adresse &agrave; la liste de pourriels?';  
+$lang['CF_addspamemail_success']='Pourriel ajout&eacute; avec succ&egrave;s'; 
+$lang['CF_checkspamemail_success']='Votre adresse courriel &agrave; &eacute;t&eacute; identifi&eacute; comme &eacute;tant un pourriel! S.V.P., contactez l\'administrateur! Courriel : %s'; 
+$lang['CF_spamemail_con']='Contr&ocirc;le des'; 
+$lang['CF_spamemail_added']='Le courriel %s &agrave; &eacute;t&eacute; ajout&eacute; &agrave; la blacklist';
+$lang['CF_remove_spamemail']='Suppression du pourriel';
+$lang['CF_cm_entry'] = 'Commentaire'; 
 
 //Key added on 11/08/2010
-$lang['CF_edit_home_meta']="f_Edit Home Page Metadata Information";
-$lang['CF_edit_training_meta']="f_Edit Training Metadata Information";
-$lang['CF_edit_conference_meta']="f_Edit Conference Office Metadata Information";
-$lang['CF_edit_article_meta']="f_Edit Article Metadata Information";
-$lang['CF_edit_video_meta']="f_Edit Video Metadata Information";
-$lang['CF_edit_event_meta']="f_Edit Event Metadata Information";
-$lang['CF_edit_blog_meta']="f_Edit Blog Metadata Information";
-$lang['CF_edit_blog_ar_meta']="f_Edit Blog Article Metadata Information";
-$lang['CF_edit_editable_meta']="f_Edit Editable Pages Metadata Information";
+$lang['CF_edit_home_meta']='Modifier les META de la page d\'Accueil';
+$lang['CF_edit_training_meta']='Modifier les META de la page Formation';
+$lang['CF_edit_conference_meta']='Modifier les META de la page Bureau de conf&eacute;renciers';
+$lang['CF_edit_article_meta']='Modifier les META de l\'article';
+$lang['CF_edit_video_meta']='Modifier les META de la video';
+$lang['CF_edit_event_meta']='Modifier les META de l\'&eacute;v&egrave;nement';
+$lang['CF_edit_blog_meta']='Modifier les META de la page Blogue';
+$lang['CF_edit_blog_ar_meta']='Modifier les META de l\'article du blogue';
+$lang['CF_edit_editable_meta']='Modifier les META des pages modifiable';
 
 //Key added on 13/08/2010
-$lang['CF_delete_user'] = 'f_Your Account has been deleted!';
-$lang['CF_delete_user_content'] = 'f_Dear %s %s !'.chr(13).chr(10).' Account %s has been removed from http://confor.tv !'.chr(13).chr(10).' Please contact the administrator via email: %s or register at here %s';
-$lang['CF_delete_video_by_admin'] = 'f_Your Video has been deleted !'; 
-$lang['CF_delete_video_content'] = 'f_Dear %s %s !'.chr(13).chr(10).' Video %s has been removed from http://confor.tv !'.chr(13).chr(10).' Please contact the administrator via email: %s';
-
+$lang['CF_delete_user'] = 'Votre compte &agrave; &eacute;t&eacute; supprim&eacute;!';
+$lang['CF_delete_user_content'] = 'Cher(e) %s %s !'.chr(13).chr(10).' Le compte %s &agrave; &eacute;t&eacute; retir&eacute; de http://confor.tv !'.chr(13).chr(10).' S.V.P., contactez l\'administrateur par courriel : %s ou enregistrez-vous ici %s';
+$lang['CF_delete_video_by_admin'] = 'Votre vid&eacute;o &agrave; &eacute;t&eacute; supprim&eacute; par l\'administrateur !'; 
+$lang['CF_delete_video_content'] = 'Cher(e) %s %s !'.chr(13).chr(10).' Le vid&eacute;o %s &agrave; &eacute;t&eacute; retir&eacute; de http://confor.tv !'.chr(13).chr(10).' S.V.P., contactez l\'administrateur par courriel : %s';
 //Key added on 16/08/2010
-$lang['CF_result_search_office'] = 'f_Result Search Conference Office';
-$lang['CF_result_search_training'] = 'f_Result Search Traning';
-$lang['CF_search_office'] = 'f_Search through all conferences office';
-$lang['CF_search_training'] = 'f_Search through all training';
+$lang['CF_result_search_office'] = 'R&eacute;sultat de recherche sur Bureau de conf&eacute;renciers';
+$lang['CF_result_search_training'] = 'R&eacute;sultat de recherche sur Formations';
+$lang['CF_search_office'] = 'Chercher parmi tout le Bureau de conf&eacute;renciers';
+$lang['CF_search_training'] = 'Chercher parmi tout Formations';
+$lang['CF_email_tem'] = 'Gestion des mod&egrave;les de courriels';
+$lang['CF_email_tem_name'] = 'Nom de mod&egrave;le'; 
+$lang['CF_edit_email_tem'] = 'Modifier le mod&egrave;le de courriel'; 
+$lang['CF_update_email_tem'] = 'Mettre &agrave; jour le mod&egrave;le de courriel';
+$lang['CF_subject_email_tem'] = 'Sujet du courriel'; 
+$lang['CF_body_email_tem'] = 'Corps de texte du courriel'; 
+$lang['CF_save_info_email_tem'] = 'Les informations du mod&egrave;le de courriel ont &eacute;t&eacute; sauvegard&eacute;!';

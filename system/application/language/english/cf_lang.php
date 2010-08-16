@@ -709,7 +709,7 @@ $lang['CF_spamemail_add']='Add Spam Email';
 $lang['CF_spamemail_add_confirm']='You really want to add this email list Spamp Email';
 $lang['CF_addspamemail_success']='Add New Spam Email Success';
 $lang['CF_checkspamemail_success']='Email has been blacklisted ! please contact administrator! Email: %s';
-$lang['CF_spamemail_con']="Spam Email control"; 
+$lang['CF_spamemail_con']="Email control"; 
 $lang['CF_spamemail_added']="Email %s was added to the blacklist"; 
 $lang['CF_remove_spamemail']="Delete Spam Email"; 
 $lang['CF_cm_entry'] = 'Comment Entry';
@@ -728,12 +728,19 @@ $lang['CF_edit_editable_meta']="Edit Editable Pages Metadata Information";
 
 //Key added on 13/08/2010
 $lang['CF_delete_user'] = 'Your Account has been deleted!';
-$lang['CF_delete_user_content'] = 'Dear %s %s !'.chr(13).chr(10).' Account %s has been removed from http://confor.tv !'.chr(13).chr(10).' Please contact the administrator via email: %s or register at here %s';$lang['CF_delete_user'] = 'Your Account has been deleted!';
+$lang['CF_delete_user_content'] = 'Dear %s %s !'.chr(13).chr(10).' Account %s has been removed from http://confor.tv !'.chr(13).chr(10).' Please contact the administrator via email: %s or register at here %s';
 $lang['CF_delete_video_by_admin'] = 'Your Video has been deleted !'; 
 $lang['CF_delete_video_content'] = 'Dear %s %s !'.chr(13).chr(10).' Video %s has been removed from http://confor.tv !'.chr(13).chr(10).' Please contact the administrator via email: %s';
 
-//Key added on 16/08/2010
+     //Key added on 16/08/2010
 $lang['CF_result_search_office'] = 'Result Search Conference Office';
 $lang['CF_result_search_training'] = 'Result Search Traning';
 $lang['CF_search_office'] = 'Search through all conferences office';
 $lang['CF_search_training'] = 'Search through all training';
+$lang['CF_email_tem'] = 'Manage Email Templates'; 
+$lang['CF_email_tem_name'] = 'Template name'; 
+$lang['CF_edit_email_tem'] = 'Edit Email Template'; 
+$lang['CF_update_email_tem'] = 'Update Email Template'; 
+$lang['CF_subject_email_tem'] = 'Email Subject'; 
+$lang['CF_body_email_tem'] = 'Email Body';
+$lang['CF_save_info_email_tem'] = 'Email Templates information has been saved!';
