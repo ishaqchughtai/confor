@@ -5,7 +5,7 @@
             parent::Speaker_controller();
             $this->_container = 'container';        
             $this->load->model('Mticket');        
-            $this->load->helper('date');     					
+            $this->load->helper('date');                         
             $this->load->model('send_mail');
             $this->load->model('Mshopproduct','mshopproduct');
         }
@@ -20,7 +20,7 @@
             else 
             {
                 redirect(site_url("ticket/open_tickets"));
-            }			
+            }            
         }
         function send_ticket_by_speaker()
         {
@@ -34,8 +34,8 @@
             );
 
             //$speaker_data = is_speaker();
-			$speaker_data = check_membership();
-			
+            $speaker_data = check_membership();
+
             $this->form_validation->set_rules('title',__('CF_title'),'required');
             $this->form_validation->set_rules('message',__('CF_your_meesage'),'required');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
@@ -56,11 +56,11 @@
                 {
                     $from = $speaker_data["speaker_email"];
                     $name_from ='';
-                    $content = sprintf(__('CF_ticket_content_email_to_admin'),$Title,$Message);
                     $to = $this->_setting['email']; 
-                    $subject=__('CF_ticket_title_email').$this->input->post('title');
-
-                    $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);
+                    $ar_key = array('[TITLE]','[SITE_URL]','[BODY]');
+                    $ar_value = array($Title,'HTTP://CONFOR.TV',$Message);
+                    $x = email_template_parse($this->_data['lang'],'TKA',$ar_key,$ar_value);
+                    $this->send_mail->send('text',$from , $name_from, $to, $x['subject'], $x['body']);
                     redirect(site_url("ticket/send_ticket_speaker_succ"));
                 }   
             }            
@@ -73,7 +73,7 @@
         }
 
         function send_ticket_by_admin($Ticket)
-        {				            
+        {                            
             is_admin();
 
             $this->_data['side_bar']['page'] = '/speaker/sidebar_empty';
@@ -110,6 +110,8 @@
                             $row = $query_speaker->row();
                             $to = $row->email;
                             $name_speaker = $row->name;
+                            $firs_name = $row->first_name;
+                            $language = $row->language;
                         }
                     }
 
@@ -117,9 +119,10 @@
                     {
                         $from = $this->_setting['email']; 
                         $name_from = '';
-                        $content = sprintf(__('CF_ticket_content_email_to_speaker'),$name_speaker,$Title,$Message);
-                        $subject=__('CF_ticket_title_email').$this->input->post('title');
-                        $this->send_mail->send('text',$from , $name_from, $to, $subject, $content);    
+                        $ar_key = array('[FIRST_NAME]', '[NAME]','[TITLE]','[SITE_URL]','[BODY]');
+                        $ar_value = array($firs_name,$name_speaker,$Title,'HTTP://CONFOR.TV',$Message);
+                        $x = email_template_parse($language,'TK',$ar_key,$ar_value);
+                        $this->send_mail->send('text',$from , $name_from, $to, $x['subject'], $x['body']);
                     }                    
 
                     $this->Mticket->update_ticket_by_admin($Ticket,$Is_answered);
@@ -146,13 +149,13 @@
             $this->_data['path'][] = array(
             'name' => __("CF_admin_ticket_open_list"),
             'link' => '#'
-            );			
+            );            
 
             $config['base_url'] = base_url().'index.php/ticket/open_tickets/';
             $config['total_rows'] = $this->Mticket->count_record_open();
             $config['per_page']='6';
 
-             $config += config_pagination_style();
+            $config += config_pagination_style();
 
             $this->pagination->initialize($config);
             $this->_data['open_tickets'] = $this->Mticket->show_open_tickets($this->uri->segment(3),$config['per_page']);
@@ -180,13 +183,13 @@
             $this->_data['path'][] = array(
             'name' => __("CF_admin_ticket_closed_list"),
             'link' => '#'
-            );		
+            );        
 
             $config['base_url'] = base_url().'index.php/ticket/closed_tickets/';
             $config['total_rows'] = $this->Mticket->count_record_closed();
             $config['per_page']='6';
 
-             $config += config_pagination_style();
+            $config += config_pagination_style();
 
             $this->pagination->initialize($config);
             $this->_data['closed_tickets'] = $this->Mticket->show_closed_tickets($this->uri->segment(3),$config['per_page']);
@@ -195,7 +198,7 @@
             $this->_data['pagination'] = $this->pagination->create_links();                
             $this->_load_view('admin/closed_tickets'); 
         }
-        
+
         function open_tickets_speaker()
         {
             $this->_data['path'][] = array(
@@ -237,7 +240,7 @@
             $config['total_rows'] = $this->Mticket->count_record_closed_speaker($SpeakerID);
             $config['per_page']='6';
 
-             $config += config_pagination_style();
+            $config += config_pagination_style();
 
             $this->pagination->initialize($config);            
             $this->_data['closed_tickets_speaker'] = $this->Mticket->show_closed_tickets_speaker($this->uri->segment(3),$config['per_page'],$SpeakerID);
@@ -246,7 +249,7 @@
             $this->_data['pagination'] = $this->pagination->create_links();                
             $this->_load_view('home/closed_tickets_speaker'); 
         }
-        
+
         function ticket_content($id)
         {
             is_admin();
@@ -266,7 +269,7 @@
             'name' => __("CF_admin_ticket_open_list"),
             'link' => site_url("ticket/open_tickets")
             );
-            
+
             $this->_data['query'] = $this->Mticket->show_ticket_by_id($id);               
             $this->_load_view('admin/ticket');       
         }        
@@ -292,7 +295,7 @@
             $this->_data['query_feedback'] = $this->Mticket->show_feedback_by_id_ticket($id);      
             $this->_load_view('admin/ticket_content_closed');   
         } 
-               
+
         function ticket_content_speaker($id)
         {
             is_speaker();
@@ -324,7 +327,7 @@
             $this->_data['query_feedback'] = $this->Mticket->show_feedback_by_id_ticket($id);      
             $this->_load_view('home/ticket_content_closed');   
         }
-               
+
         function delete_ticket($id)
         {
             if($this->session->userdata('admin')==FALSE)

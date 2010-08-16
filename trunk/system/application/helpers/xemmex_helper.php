@@ -860,7 +860,8 @@ function email_template_parse($lg, $code, $ar_key, $ar_value)
 	$row = $query->row();
 	// example $ar_key = array('[NAME]', '[USERNAME]', '[PASSWORD]', '[URL]', '[SITE_NAME]')
 	$body = str_replace($ar_key, $ar_value, $row->body);
-	$out['body'] = nl2br($body);
+	//$out['body'] = nl2br($body);
+    $out['body'] = $body;
 	$out['subject'] = $row->subject;
 	return $out;
 }

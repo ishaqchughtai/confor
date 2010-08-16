@@ -36,24 +36,11 @@
         <label for="Description"><?php echo __("CF_des")?>:</label>
         <textarea name="txtDescription" id="txtDescription" rows="4" cols=""><?php echo $description ?></textarea>
         <?php echo form_error("txtDescription"); ?>
-        <?php if((int)$suspend == 1){?>
-
-            <label>(<?php echo __("CF_active")?>,</label>
-            <input name="radiobutton" type="radio" value="1" class="checkbox"  checked="<?php echo 'checked';?>"/>
-
-            <label><?php echo __("CF_suspended")?>)</label>
-            <input name="radiobutton" type="radio" value="0" class="checkbox" />
-
-            <?php }
-            else{?>
-
-            <label>(<?php echo __("CF_active")?>,</label> 
-            <input name="radiobutton" type="radio" value="1" class="checkbox" />
-
-            <label><?php echo __("CF_suspended")?>)</label> 
-            <input name="radiobutton" type="radio" value="0" class="checkbox" checked="<?php echo 'checked';?>"/>
-
-            <?php }?>
+        <label>(<?php echo __("CF_active")?> , <?php echo __("CF_suspended")?>)</label>                   
+            <select name="approved" class="short">
+                <option value="1" <?php if($suspend==1) echo 'selected="selected"';?>><?php echo __("CF_yes")?></option>
+                <option value="0" <?php if($suspend==0) echo 'selected="selected"';?>><?php echo __("CF_No")?></option>
+            </select>
 
         <p><input name="submit" type="submit" class="submit" value="<?php echo __("CF_save")?>"></p>
         <?php form_close();?>
