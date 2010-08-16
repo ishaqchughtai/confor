@@ -17,7 +17,7 @@ class MY_controller extends Controller {
 		$this->_data['lang'] = xemmex_language();
 		
 		$this->_data['video_blog_keyword'] = FALSE;		
-		//$this->_data['speaker_name'] = FALSE;
+		$this->_data['speaker_name'] = FALSE;
 		
 		$this->load->model('MSystem');
 		$this->_setting = $this->MSystem->get_setting();						
