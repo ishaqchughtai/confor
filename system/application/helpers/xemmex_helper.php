@@ -849,5 +849,21 @@ function get_info_for_adv()
 	//return $CI->_data['video_blog_keyword'];
 }
 
+function email_template_parse($lg, $code, $ar_key, $ar_value)
+{
+	$CI =& get_instance();	
+	$CI->db->where('lang',$lg);
+	$CI->db->where('code',$code);
+	//$query = $CI->db->get_where('confor_email_templates',array('id'=>$id));
+	$query = $CI->db->get('confor_email_templates');
+	if ($query->num_rows()<1) return FALSE;
+	$row = $query->row();
+	// example $ar_key = array('[NAME]', '[USERNAME]', '[PASSWORD]', '[URL]', '[SITE_NAME]')
+	$body = str_replace($ar_key, $ar_value, $row->body);
+	$out['body'] = nl2br($body);
+	$out['subject'] = $row->subject;
+	return $out;
+}
+
 /* End of file xemmex_helper.php */ 
 /* Location: ./system/application/helpers/xemmex_helper.php */ 
