@@ -736,5 +736,4 @@ $lang['CF_delete_video_content'] = 'Dear %s %s !'.chr(13).chr(10).' Video %s has
 $lang['CF_result_search_office'] = 'Result Search Conference Office';
 $lang['CF_result_search_training'] = 'Result Search Traning';
 $lang['CF_search_office'] = 'Search through all conferences office';
-$lang['CF_search_training'] = 'Search through all conferences office';
-$lang['CF_edit_editable_meta']="Edit Editable Pages Metadata Information";
+$lang['CF_search_training'] = 'Search through all training';
