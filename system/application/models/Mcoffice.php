@@ -263,5 +263,39 @@
       $query->free_result();  
       return $office;
     }
+    
+    function count_record_by_title($keywords,$lg)
+    {
+      $this->db->from('tbloffice');
+      $this->db->like('title', $keywords);
+      $this->db->where(array('lang'=>$lg));
+      $query = $this->db->count_all_results();
+      return $query;
+    }
+    
+    function search_office($keywords,$lg,$per_page,$offset)
+    {
+      $this->db->select('
+      tbloffice.id,
+      tbloffice.title,
+      tbloffice.content,
+      tbloffice.`date`,
+      tbloffice.lang,
+      tbloffice.Image,
+      ');
+      $this->db->from('tbloffice');
+      $this->db->like('title',$keywords,'both');
+      $this->db->where(array('lang'=>$lg));
+      $this->db->limit($per_page,$offset);
+
+      $query = $this->db->get();
+      $office=FALSE; 
+      foreach ($query->result_array() as $row_event)
+      {                    
+        $office[] = $row_event;
+      }
+      $query->free_result();  
+      return $office;
+    }
   }
 ?>
