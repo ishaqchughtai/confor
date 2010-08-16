@@ -106,12 +106,9 @@
     {
       $lg = $this->_data['lang'];
       $this->_data['lg'] = $lg;
+      
       $this->_data['path'][] = array(
-      'name' => __("CF_event"),
-      'link' => site_url("event_frontend/show_event/".date('Y-m-d')."/5")
-      );
-      $this->_data['path'][] = array(
-      'name' => __("CF_search_event"),
+      'name' => __("CF_result_search_office"),
       'link' => '#'
       );
 
@@ -127,6 +124,33 @@
 
       $config += config_pagination_style();
       $this->_data['office'] = $this->Mcoffice->search_office_by_alphabet($keywords,$lg,$per_page,$offset); 
+      $this->pagination->initialize($config);
+      $this->_data['pagination'] = $this->pagination->create_links();
+      $this->_load_view('home/search_office');
+    }
+    
+    function search_office()
+    {
+      $lg = $this->_data['lang'];
+      $this->_data['lg'] = $lg;
+      
+      $this->_data['path'][] = array(
+      'name' => __("CF_result_search_office"),
+      'link' => '#'
+      );
+
+      $keywords = $this->uri->segment(3);
+      $per_page = $this->uri->segment(4);
+      $offset = $this->uri->segment(5);
+
+
+      $config['uri_segment'] = 5;
+      $config['base_url'] = base_url().'index.php/office_frontend/search_office/'.$keywords.'/'.$per_page;
+      $config['total_rows'] = $this->Mcoffice->count_record_by_title($keywords,$lg);
+      $config['per_page']=$per_page;
+
+      $config += config_pagination_style();
+      $this->_data['office'] = $this->Mcoffice->search_office($keywords,$lg,$per_page,$offset); 
       $this->pagination->initialize($config);
       $this->_data['pagination'] = $this->pagination->create_links();
       $this->_load_view('home/search_office');

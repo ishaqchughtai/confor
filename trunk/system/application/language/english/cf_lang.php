@@ -731,3 +731,10 @@ $lang['CF_delete_user'] = 'Your Account has been deleted!';
 $lang['CF_delete_user_content'] = 'Dear %s %s !'.chr(13).chr(10).' Account %s has been removed from http://confor.tv !'.chr(13).chr(10).' Please contact the administrator via email: %s or register at here %s';$lang['CF_delete_user'] = 'Your Account has been deleted!';
 $lang['CF_delete_video_by_admin'] = 'Your Video has been deleted !'; 
 $lang['CF_delete_video_content'] = 'Dear %s %s !'.chr(13).chr(10).' Video %s has been removed from http://confor.tv !'.chr(13).chr(10).' Please contact the administrator via email: %s';
+
+//Key added on 16/08/2010
+$lang['CF_result_search_office'] = 'Result Search Conference Office';
+$lang['CF_result_search_training'] = 'Result Search Traning';
+$lang['CF_search_office'] = 'Search through all conferences office';
+$lang['CF_search_training'] = 'Search through all conferences office';
+$lang['CF_edit_editable_meta']="Edit Editable Pages Metadata Information";

@@ -242,4 +242,63 @@ class Mtraining extends Model{
         $query = $this->db->get();
         return $query->result_array();
     }
+    
+    function count_record_trainning($keywords,$lg)
+    {
+      $this->db->from('tbltraining');
+      $this->db->like('Title', $keywords,'after');
+      $this->db->where(array('Lang'=>$lg));
+      $query = $this->db->count_all_results();
+      return $query;
+    }
+    function search_training_by_alphabet($letter,$lg,$per_page,$offset)
+    {
+      $this->db->from('tbltraining');
+      $this->db->like('Title',$letter,'after');
+      $this->db->where(array('Lang'=>$lg));
+      $this->db->limit($per_page,$offset);
+      $query = $this->db->get();
+      $training=FALSE; 
+      foreach ($query->result_array() as $row_event)
+      {                    
+        $training[] = $row_event;
+      }
+      $query->free_result();  
+      return $training;
+    }
+    
+    function count_record_by_title($keywords,$lg)
+    {
+      $this->db->from('tbltraining');
+      $this->db->like('Title', $keywords);
+      $this->db->where(array('Lang'=>$lg));
+      $query = $this->db->count_all_results();
+      return $query;
+    }
+    
+    function search_training($keywords,$lg,$per_page,$offset)
+    {
+      $this->db->select('
+      tbltraining.ID,
+      tbltraining.Title,
+      tbltraining.Content,
+      tbltraining.`Date`,
+      tbltraining.Lang,
+      tbltraining.Image,
+      ');
+      $this->db->from('tbltraining');
+      $this->db->like('Title',$keywords,'both');
+      $this->db->where(array('Lang'=>$lg));
+      $this->db->limit($per_page,$offset);
+
+      $query = $this->db->get();
+      $training=FALSE; 
+      foreach ($query->result_array() as $row_event)
+      {                    
+        $training[] = $row_event;
+      }
+      $query->free_result();  
+      return $training;
+    }
+ 
 }

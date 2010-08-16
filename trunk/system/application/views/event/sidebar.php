@@ -18,7 +18,7 @@ function search_click_speaker (){
 					<?php echo form_open('event_frontend/search_event')?>
 					
 						<input name="search_field" type="text" class="search_field" id="keyword">
-				        <input name="btnsubmit" type="submit" class="search_submit" value="" onclick="return search_click_speaker();" />
+				        <input name="btnsubmit" type="submit" class="search_submit" value="&nbsp" onclick="return search_click_speaker();" />
 					<?php echo form_close()?>
 					<!-- #search form -->
 				

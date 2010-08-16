@@ -13,7 +13,7 @@ class Training_frontend extends Frontend_controller {
 
   function _before_render() 
   {
-    $side_bar['page'] = "home/sidebar_office";         
+    $side_bar['page'] = "home/sidebar_training";         
     $this->_data['side_bar'] = $side_bar;    
   }
 
@@ -92,4 +92,58 @@ class Training_frontend extends Frontend_controller {
     $this->_data['page_title'] = $title1;
     $this->_load_view('home/training_entry_view');  
   }
+  
+  function search()
+    {
+      $lg = $this->_data['lang'];
+      $this->_data['lg'] = $lg;
+      
+      $this->_data['path'][] = array(
+      'name' => __("CF_result_search_training"),
+      'link' => '#'
+      );
+
+      $keywords = $this->uri->segment(3);
+      $per_page = 5;
+      $offset = $this->uri->segment(5);
+
+
+      $config['uri_segment'] = 5;
+      $config['base_url'] = base_url().'index.php/training_frontend/search/'.$keywords.'/'.$per_page;
+      $config['total_rows'] = $this->Mtraining->count_record_trainning($keywords,$lg);
+      $config['per_page']=$per_page;
+
+      $config += config_pagination_style();
+      $this->_data['training'] = $this->Mtraining->search_training_by_alphabet($keywords,$lg,$per_page,$offset); 
+      $this->pagination->initialize($config);
+      $this->_data['pagination'] = $this->pagination->create_links();
+      $this->_load_view('home/search_training');
+    }
+    
+    function search_training()
+    {
+      $lg = $this->_data['lang'];
+      $this->_data['lg'] = $lg;
+      
+      $this->_data['path'][] = array(
+      'name' => __("CF_result_search_training"),
+      'link' => '#'
+      );
+
+      $keywords = $this->uri->segment(3);
+      $per_page = $this->uri->segment(4);
+      $offset = $this->uri->segment(5);
+
+
+      $config['uri_segment'] = 5;
+      $config['base_url'] = base_url().'index.php/training_frontend/search_training/'.$keywords.'/'.$per_page;
+      $config['total_rows'] = $this->Mtraining->count_record_by_title($keywords,$lg);
+      $config['per_page']=$per_page;
+
+      $config += config_pagination_style();
+      $this->_data['training'] = $this->Mtraining->search_training($keywords,$lg,$per_page,$offset); 
+      $this->pagination->initialize($config);
+      $this->_data['pagination'] = $this->pagination->create_links();
+      $this->_load_view('home/search_training');
+    }
 }

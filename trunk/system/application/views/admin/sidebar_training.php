@@ -1,7 +1,7 @@
 <script type="text/javascript">
 function search_click(){
  keyword = $('#keyword').val();
- gogo = XEMMEX.baseUrl + "office_frontend/search_office/" + keyword + "/5";
+ gogo = XEMMEX.baseUrl + "training_frontend/search_training/" + keyword + "/5";
  window.location = gogo;
  return false;
 }
@@ -13,10 +13,10 @@ function search_click(){
 			<div id="right">
 			
 				<h3><?php echo __("CF_search")?></h3>
-				<h5><?php echo __("CF_search_office")?></h5>
+				<h5><?php echo __("CF_search_training")?></h5>
 				
 			  <div class="sidebar_item" id="search">				
-					<?php echo form_open(site_url('office_frontend/search_office'));?>					
+					<?php echo form_open(site_url('training_frontend/search_training'));?>					
 						<input name="search_field" type="text" class="search_field" id="keyword">
 						<input name="key" type="text" style="display:none">
 						<input name="search" type="submit" class="search_submit" value="&nbsp" onclick="return search_click();">
