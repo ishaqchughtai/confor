@@ -422,6 +422,7 @@ class User_lib
 				$save_data['status'] = 1;
 				$save_data['notify'] = 1;
 				$save_data['membership_id'] = 1;
+				$save_data['language'] = $this->CI->_data['lang'];
 				$save_data['register_date'] = 'NOW()';				
 				$save_data['last_ip'] = $this->CI->input->ip_address();			
 				$save_data['password'] = $this->_encode($this->CI->input->post('password'));																				

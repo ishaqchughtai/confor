@@ -22,9 +22,9 @@
             $this->load->library('validation'); 
             $this->load->helper('date');
             $this->load->helper('text');
-            $this->load->model('send_mail');
-            $this->load->helper('xemmex');
             $this->load->helper('string');
+            $this->load->helper('xemmex');
+            $this->load->model('send_mail');
             //$this->load->library('vid_lib');
             $this->load->model('MShop');
             $this->load->model('Maccessories');		
@@ -339,7 +339,8 @@
                         $save_data['notify'] = 1;
                         $save_data['membership_id'] = 1;
                         $save_data['register_date'] = 'NOW()';                
-                        $save_data['last_ip'] = '';            
+                        $save_data['last_ip'] = ''; 
+						$save_data['language'] = $this->_data['lang'];
                         $save_data['password'] = $this->user_lib->_encode($this->input->post('password'));                                                                                
                         $this->MUser->add($save_data);
 
@@ -391,7 +392,7 @@
                 $this->_data['path'][] = array(
                 'name' => __("CF_user_edit"),
                 'link' => '#'
-                );                
+                );				
                 $this->_data['error'] = ""; 
                 $this->form_validation->set_rules('txtName',strtolower(__("CF_name")),'required');
                 $this->form_validation->set_rules('txtCompanyName',strtolower(__("CF_Company_name")),'required');
@@ -436,7 +437,7 @@
                                 $from = $this->_setting['email'];   
                                 $ar_key = array('[FIRST_NAME]', '[NAME]','[USER_NAME]','[SITE_URL]','[EMAIL_ADMIN]');
                                 $ar_value = array($first_name,$name,$username,'HTTP://CONFOR.TV',$from);
-                                $x = email_template_parse($row['language'],'AS',$ar_key,$ar_value);           
+                                $x = email_template_parse($row['language'],'AS',$ar_key,$ar_value);
                                 $this->send_mail->send('text',$from , $name_from, $email, $x['subject'], $x['body']); 
                                 $this->Madmin->update_user($id,$data);           
                             }else
@@ -508,7 +509,7 @@
                     $link=base_url().'index.php/home/register';
                     $ar_key = array('[FIRST_NAME]', '[NAME]','[USER_NAME]','[SITE_URL]','[EMAIL_ADMIN]','[LINK_REG]');
                     $ar_value = array($first_name,$name,$username,'HTTP://CONFOR.TV',$from,$link);
-                    $x = email_template_parse($row['language'],'DA',$ar_key,$ar_value);  
+                    $x = email_template_parse($row['language'],'DA',$ar_key,$ar_value);
                     $this->send_mail->send('text',$from , $name_from, $to, $x['subject'],$x['body']);  
                 }
                 foreach($query as $row)
@@ -828,4 +829,6 @@
             }
         }		
     }
+
+
 ?>
