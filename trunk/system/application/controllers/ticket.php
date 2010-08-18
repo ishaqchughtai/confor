@@ -39,6 +39,14 @@
             $this->form_validation->set_rules('title',__('CF_title'),'required');
             $this->form_validation->set_rules('message',__('CF_your_meesage'),'required');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+            $check_ask = $this->uri->segment(3);
+            if($check_ask==TRUE)
+            {
+                $this->_data['check_ask']=TRUE;
+            }else
+            {
+                $this->_data['check_ask']=FALSE;
+            }
             if($this->form_validation->run()==FALSE)
             {
                 $this->_load_view('home/ticket');
