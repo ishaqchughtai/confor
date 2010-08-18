@@ -39,17 +39,9 @@
             $this->form_validation->set_rules('title',__('CF_title'),'required');
             $this->form_validation->set_rules('message',__('CF_your_meesage'),'required');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
-            $check_ask = $this->uri->segment(3);
-            if($check_ask==TRUE)
-            {
-                $this->_data['check_ask']=TRUE;
-            }else
-            {
-                $this->_data['check_ask']=FALSE;
-            }
             if($this->form_validation->run()==FALSE)
             {
-                $this->_load_view('home/ticket');
+                    $this->_load_view('home/ticket');
             }else
             {
                 $datestring = "%Y-%m-%d %h:%m:%s";
@@ -60,16 +52,84 @@
                 $Message=$this->input->post('message'); 
                 $Is_answered=0;
                 $SpeakerID= $speaker_data["speaker_id"];
+                if($Status==0)
+                {
+                    $str_status=__("CF_ticket_nor");
+                }elseif($Status==1)
+                {
+                    $str_status=__("CF_ticket_ur");   
+                }elseif($Status==2)
+                {
+                    $str_status=__("CF_ticket_cri");    
+                }elseif($Status==3)
+                {
+                    $str_status=__("CF_ticket_ask");   
+                }
                 if($this->Mticket->add_ticket_by_speaker($Date,$Status,$Title,$Message,$Is_answered,$SpeakerID)==TRUE)
                 {
                     $from = $speaker_data["speaker_email"];
                     $name_from ='';
                     $to = $this->_setting['email']; 
-                    $ar_key = array('[TITLE]','[SITE_URL]','[BODY]');
-                    $ar_value = array($Title,'HTTP://CONFOR.TV',$Message);
+                    $ar_key = array('[TITLE]','[SITE_URL]','[BODY]','[STATUS]');
+                    $ar_value = array($Title,'HTTP://CONFOR.TV',$Message,$str_status);
                     $x = email_template_parse($this->_data['lang'],'TKA',$ar_key,$ar_value);
                     $this->send_mail->send('text',$from , $name_from, $to, $x['subject'], $x['body']);
                     redirect(site_url("ticket/send_ticket_speaker_succ"));
+                }   
+            }            
+        }function send_ticket_by_speaker_ask()
+        {
+            $this->_data['path'][] = array(
+            'name' => __("CF_list_tic"),
+            'link' => site_url("ticket/open_tickets_speaker")
+            ); 
+            $this->_data['path'][] = array(
+            'name' => __("CF_add_tic"),
+            'link' => '#'
+            );
+
+            //$speaker_data = is_speaker();
+            $speaker_data = check_membership();
+
+            $this->form_validation->set_rules('title',__('CF_title'),'required');
+            $this->form_validation->set_rules('message',__('CF_your_meesage'),'required');
+            $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
+            if($this->form_validation->run()==FALSE)
+            {
+                    $this->_load_view('home/ticket_ask');
+            }else
+            {
+                $datestring = "%Y-%m-%d %h:%m:%s";
+                $time = time();
+                $Date=mdate($datestring,$time);
+                $Title=$this->input->post('title');
+                $Status=$this->input->post('status');
+                $Message=$this->input->post('message'); 
+                $Is_answered=0;
+                $SpeakerID= $speaker_data["speaker_id"];
+                if($Status==0)
+                {
+                    $str_status=__("CF_ticket_nor");
+                }elseif($Status==1)
+                {
+                    $str_status=__("CF_ticket_ur");   
+                }elseif($Status==2)
+                {
+                    $str_status=__("CF_ticket_cri");    
+                }elseif($Status==3)
+                {
+                    $str_status=__("CF_ticket_ask");   
+                }
+                if($this->Mticket->add_ticket_by_speaker($Date,$Status,$Title,$Message,$Is_answered,$SpeakerID)==TRUE)
+                {
+                    $from = $speaker_data["speaker_email"];
+                    $name_from ='';
+                    $to = $this->_setting['email']; 
+                    $ar_key = array('[TITLE]','[SITE_URL]','[BODY]','[STATUS]');
+                    $ar_value = array($Title,'HTTP://CONFOR.TV',$Message,$str_status);
+                    $x = email_template_parse($this->_data['lang'],'TKA',$ar_key,$ar_value);
+                    $this->send_mail->send('text',$from , $name_from, $to, $x['subject'], $x['body']);
+                    redirect(site_url("ticket/send_ticket_speaker_succ_ask"));
                 }   
             }            
         }        
@@ -78,6 +138,11 @@
         {
             $this->_data['error']= __('CF_ticket_send_success');
             $this->_load_view('home/ticket');
+        }
+        function send_ticket_speaker_succ_ask()
+        {
+            $this->_data['error']= __('CF_ticket_send_success');
+            $this->_load_view('home/ticket_ask');
         }
 
         function send_ticket_by_admin($Ticket)

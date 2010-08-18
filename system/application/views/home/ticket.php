@@ -20,16 +20,12 @@
         <p>
             <?php echo form_error('Status');?>
             <label for="Status"><?php echo __('CF_ticket_status')?></label>
-            <?php if($check_ask==TRUE){?>
-            <input name="status" id="status" value="<?php echo __("CF_ticket_ask")?>" readonly="TRUE">
-            <?php }elseif($check_ask==FALSE){?>
             <select id="status" name="status" class="short">
                 <option value="0" selected="selected" ><?php echo __("CF_ticket_nor")?></option>
                 <option value="1"><?php echo __("CF_ticket_ur")?></option>
                 <option value="2"><?php echo __("CF_ticket_cri")?></option>
                 <option value="3"><?php echo __("CF_ticket_ask")?></option>
             </select>
-            <?php }?>
         </p>
 
         <p>    
