@@ -69,112 +69,26 @@
 				
 					<h3><?php echo __("CF_pop_vid")?></h3>
 					
-					<ul id="popular_posts">
-					
-						<li>
-						
-							<ul class="popular_posts_content">
-                                <?php $count=0;?>
-							    <?php foreach($popular_video as $row):?>
-								<li>
-								
-									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
-									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
-									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
-								
-								</li>
-                                <?php
-                                    $count++;
-                                    if($count==4){
-                                        break;
-                                    }
-                                ?>
-                                <?php endforeach?>
-							<!-- /.popular_posts_content li -->
+					<ul id="popular_posts">																	
+							<?php for($i=0;$i<count($popular_video);$i++):
+								$row = $popular_video[$i];
+							?>								
+							<?php if ($i%4==0):?>
+							<li>
+							<ul class="popular_posts_content">						
+							<?php endif;?>
 							
-							</ul>
-							<!-- /.popular_posts_content -->
-						
-						</li>
-						<!-- /.popular_posts li - popular posts slider item -->
-					
-						<li>
-						
-							<ul class="popular_posts_content">
-							    <?php $count=0;?>
-                                <?php foreach($popular_video as $row):?>
-                                <?php if($count>3){?>
-                                <li>
-								
+							<li>
 									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
 									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
-									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
-								
-								</li>
-                                <?php }?>
-                                <?php
-                                    $count++;
-                                    if($count==8){
-                                        break;
-                                    }
-                                ?>
-								<?php endforeach?>
+									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>								
+							</li>
+							
+							<?php if($i%4==3):?>
 							</ul>
-							<!-- /.popular_posts_content -->
-						
-						</li>
-						<!-- /.popular_posts li - popular posts slider item -->
-                        
-                        <li>
-                        
-                            <ul class="popular_posts_content">
-                                <?php $count=0;?>
-                                <?php foreach($popular_video as $row):?>
-                                <?php if($count>7){?>
-                                <li>
-                                
-                                    <a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
-                                    <a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
-                                    <a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
-                                
-                                </li>
-                                <?php }?>
-                                <?php
-                                    $count++;
-                                    if($count==12){
-                                        break;
-                                    }
-                                ?>
-                                <?php endforeach?>
-                            </ul>
-                            <!-- /.popular_posts_content -->
-                        
-                        </li>
-                        <!-- /.popular_posts li - popular posts slider item -->
-                        <li>
-                        
-                            <ul class="popular_posts_content">
-                                <?php $count=0;?>
-                                <?php foreach($popular_video as $row):?>
-                                <?php if($count>12){?>
-                                <li>
-                                
-                                    <a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
-                                    <a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
-                                    <a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
-                                
-                                </li>
-                                <?php }?>
-                                <?php
-                                    $count++;
-                                ?>
-                                <?php endforeach?>
-                            </ul>
-                            <!-- /.popular_posts_content -->
-                        
-                        </li>
-                        <!-- /.popular_posts li - popular posts slider item -->
-					
+							</li>
+							<?php endif;?>															
+							<?php endfor;?>									
 					</ul>
 					<!-- /#popular_posts -->
 					
