@@ -1,3 +1,5 @@
+<script src="<?php echo base_url()?>assets/js/flowplayer.embed-3.0.3.min.js"></script>    
+
 <?php require 'SimpleRatings/rSystem.php';  ?>
 <?php 
         if($video_path){
@@ -47,7 +49,13 @@
 
 ?>
 <p><a href="<?php echo $linktopvideo;?>" style="display:block;width:621px;height:380px;"id="player"></a></p>                       
-</div>
+</div> 
+                  
+<img src="<?php echo base_url().'assets/img/embed.PNG'?>" alt="" style="cursor: pointer;" onclick="javascript:toggle_div('textarea')">
+<!--<div id="embed">
+
+    </div>-->
+<textarea id="textarea" style="float:right;" rows="6" cols="3" onclick="SelectAll('textarea');"></textarea>    
 <p>&nbsp;</p>                   
 <p><?php echo $video_path?$description:''?></p>                                        
 <!-- /.content_item -->
@@ -71,7 +79,7 @@
         <!-- /.content .top_box_block -->
         <?php endfor;?>
         </div>   
-        </body> 
+        </body>           
 <script language="JavaScript">
     flowplayer("player", 
     "<?php echo base_url();?>flowplayer/flowplayer.commercial-3.2.2.swf",
@@ -89,4 +97,24 @@
         clip:{autoPlay: false,autoBuffering: true}
     }        
     );
+var code = $f().embed().getEmbedCode();
+document.getElementById("textarea").innerHTML = code;
+ 
+//var actions = {
+
+//    getCode: function() {
+//        $("#embed").html("<textarea rows='10' cols='3' name='textarea' id='textarea' style='display:none;'>" + $f().getEmbedCode() + "</textarea>");
+//    },
+//}
+</script>     
+<script type="text/javascript">
+function toggle_div(id) {
+     var diq = document.getElementById(id).style;
+     diq.display=(diq.display=="none") ? "" : "none"; 
+}
+function SelectAll(id)
+{
+    document.getElementById(id).focus();
+    document.getElementById(id).select();                                 
+}
 </script>

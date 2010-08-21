@@ -1,3 +1,4 @@
+<script src="<?php echo base_url()?>assets/js/flowplayer.embed-3.0.3.min.js"></script>
 <?php $page = 5;?>
 <?php require 'SimpleRatings/rSystem.php';  ?>
 </style>        
@@ -37,7 +38,11 @@
 <b><?php echo $viewed?> <?php echo __("CF_views")?></b>
 <div style="float: right" align="right"><?php $SimpleRatings->create($vid_id);?></div>                                                                                        
 <p><a href="<?php echo base_url()?>videos/<?php echo $video_link?>" style="display:block;width:621px;height:380px;"id="player"></a></p>
-<p>&nbsp;</p>                  
+
+<img src="<?php echo base_url().'assets/img/embed.PNG'?>" alt="" style="cursor: pointer;" onclick="javascript:toggle_div('textarea')" >
+<textarea id="textarea" style="float:right;" rows="6" cols="3" onclick="SelectAll('textarea');"></textarea>
+<p>&nbsp;</p>    
+              
 <p><?php echo $description?></p>
 <p></p>
 <a class="prev browse left"></a>
@@ -107,4 +112,17 @@ $("div.scrollable").scrollable({easing: 'custom', speed: 700, circular: true});
         clip:{autoPlay: true,autoBuffering: true}
     }        
     );
+var code = $f().embed().getEmbedCode();
+document.getElementById("textarea").innerHTML = code;
+</script>
+<script type="text/javascript">
+function toggle_div(id) {
+     var diq = document.getElementById(id).style;
+     diq.display=(diq.display=="none") ? "" : "none"; 
+}
+function SelectAll(id)
+{
+    document.getElementById(id).focus();
+    document.getElementById(id).select();                                 
+}
 </script>
