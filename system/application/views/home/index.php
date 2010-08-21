@@ -25,7 +25,7 @@
             }
         }
     ?>        
-                
+<body onload="javascript:toggle_div('textarea')">
 <div class="content_item" >
 <?php if($video_path){?>
     <h3><?php echo $video_title?></h3>

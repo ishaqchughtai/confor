@@ -1,7 +1,8 @@
 <script src="<?php echo base_url()?>assets/js/flowplayer.embed-3.0.3.min.js"></script>
 <?php $page = 5;?>
 <?php require 'SimpleRatings/rSystem.php';  ?>
-</style>        
+</style>
+<body onload="javascript:toggle_div('textarea')">
 <div class="content_item">
 <?php 
     if($video_url->num_rows()>0)
@@ -79,7 +80,8 @@
 <!-- javascript coding -->              
   
                      
-</div> 
+</div>
+</body> 
 <?php $this->load->view('home/list_video_by_category',$video_by_cat);?>
 <script language="JavaScript">    
 
