@@ -51,11 +51,11 @@
 <p><a href="<?php echo $linktopvideo;?>" style="display:block;width:621px;height:380px;"id="player"></a></p>                       
 </div> 
                   
-<img src="<?php echo base_url().'assets/img/embed.PNG'?>" alt="" style="cursor: pointer;" onclick="javascript:toggle_div('textarea')">
+<img src="<?php echo base_url().'assets/img/embed.PNG'?>" alt="" style="cursor: pointer;" onclick="javascript:toggle_div('texembed')">
 <!--<div id="embed">
 
     </div>-->
-<textarea id="textarea" style="float:right;" rows="6" cols="3" onclick="SelectAll('textarea');"></textarea>    
+<textarea id="texembed" style="float:right;display:none" rows="6" cols="3" onclick="SelectAll('texembed');"></textarea>    
 <p>&nbsp;</p>                   
 <p><?php echo $video_path?$description:''?></p>                                        
 <!-- /.content_item -->
@@ -98,8 +98,13 @@
     }        
     );
 var code = $f().embed().getEmbedCode();
-document.getElementById("textarea").innerHTML = code;
+code += '<br/><a href="<?php echo site_url()?>">link</a>';
+//document.getElementById("texembed").innerHTML = code;
+$("#texembed").html(code);
  
+ $(document).ready(function() {
+	$("#texembed").hide();
+ });
 //var actions = {
 
 //    getCode: function() {
@@ -114,6 +119,7 @@ function toggle_div(id) {
 }
 function SelectAll(id)
 {
+	
     document.getElementById(id).focus();
     document.getElementById(id).select();                                 
 }
