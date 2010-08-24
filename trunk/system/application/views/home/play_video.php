@@ -2,7 +2,7 @@
 <?php $page = 5;?>
 <?php require 'SimpleRatings/rSystem.php';  ?>
 </style>
-<body onload="javascript:toggle_div('textarea')">
+<body>
 <div class="content_item">
 <?php 
     if($video_url->num_rows()>0)
@@ -40,8 +40,8 @@
 <div style="float: right" align="right"><?php $SimpleRatings->create($vid_id);?></div>                                                                                        
 <p><a href="<?php echo base_url()?>videos/<?php echo $video_link?>" style="display:block;width:621px;height:380px;"id="player"></a></p>
 
-<img src="<?php echo base_url().'assets/img/embed.PNG'?>" alt="" style="cursor: pointer;" onclick="javascript:toggle_div('textarea')" >
-<textarea id="textarea" style="float:right;" rows="6" cols="3" onclick="SelectAll('textarea');"></textarea>
+<img src="<?php echo base_url().'assets/img/embed.PNG'?>" alt="" style="cursor: pointer;" onclick="javascript:toggle_div('texembed')">
+<textarea id="texembed" style="float:right;display:none" rows="6" cols="3" onclick="SelectAll('texembed');"></textarea>
 <p>&nbsp;</p>    
               
 <p><?php echo $description?></p>
@@ -114,8 +114,14 @@ $("div.scrollable").scrollable({easing: 'custom', speed: 700, circular: true});
         clip:{autoPlay: true,autoBuffering: true}
     }        
     );
-var code = $f().embed().getEmbedCode();
-document.getElementById("textarea").innerHTML = code;
+ var code = $f().embed().getEmbedCode();
+code += '<br/><a href="<?php echo site_url().'/video/play/'.$vid_id?>"><?php echo $video_title?>-Confor.tv</a>';
+//document.getElementById("texembed").innerHTML = code;
+$("#texembed").html(code);
+ 
+ $(document).ready(function() {
+    $("#texembed").hide();
+ });
 </script>
 <script type="text/javascript">
 function toggle_div(id) {

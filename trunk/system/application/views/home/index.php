@@ -25,7 +25,7 @@
             }
         }
     ?>        
-<body onload="javascript:toggle_div('textarea')">
+<body>
 <div class="content_item" >
 <?php if($video_path){?>
     <h3><?php echo $video_title?></h3>
@@ -52,9 +52,6 @@
 </div> 
                   
 <img src="<?php echo base_url().'assets/img/embed.PNG'?>" alt="" style="cursor: pointer;" onclick="javascript:toggle_div('texembed')">
-<!--<div id="embed">
-
-    </div>-->
 <textarea id="texembed" style="float:right;display:none" rows="6" cols="3" onclick="SelectAll('texembed');"></textarea>    
 <p>&nbsp;</p>                   
 <p><?php echo $video_path?$description:''?></p>                                        
@@ -98,19 +95,13 @@
     }        
     );
 var code = $f().embed().getEmbedCode();
-code += '<br/><a href="<?php echo site_url()?>">link</a>';
-//document.getElementById("texembed").innerHTML = code;
+code += '<br/><a href="<?php echo site_url().'/video/play/'.$vid_id?>"><?php echo $video_title?>-Confor.tv</a>';
+
 $("#texembed").html(code);
  
  $(document).ready(function() {
 	$("#texembed").hide();
  });
-//var actions = {
-
-//    getCode: function() {
-//        $("#embed").html("<textarea rows='10' cols='3' name='textarea' id='textarea' style='display:none;'>" + $f().getEmbedCode() + "</textarea>");
-//    },
-//}
 </script>     
 <script type="text/javascript">
 function toggle_div(id) {
