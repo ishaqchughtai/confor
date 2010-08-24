@@ -85,7 +85,7 @@
 
         // logo initially has zero opacity
     logo: {   
-        url: 'http://confor.us/flowplayer/logo.png',   
+        url: '<?php echo base_url()?>/flowplayer/logo.png',   
         fullscreenOnly: false,   
         top: 10, 
         left: 10,
