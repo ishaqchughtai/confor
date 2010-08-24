@@ -95,7 +95,7 @@
     }        
     );
 var code = $f().embed().getEmbedCode();
-code += '<br/><a href="<?php echo site_url().'/video/play/'.$vid_id?>"><?php echo $video_title?>-Confor.tv</a>';
+code += '&lt;br /&gt;&lt;a href=&quot;<?php echo site_url().'/video/play/'.$vid_id?>&quot;&gt;<?php echo $video_title?>-Confor.tv&lt;/a&gt;';
 
 $("#texembed").html(code);
  
