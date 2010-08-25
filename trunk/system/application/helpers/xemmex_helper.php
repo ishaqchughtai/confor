@@ -865,6 +865,11 @@ function email_template_parse($lg, $code, $ar_key, $ar_value)
 	$out['subject'] = $row->subject;
 	return $out;
 }
-
+function html2entities($des){
+$des_key = array('<','>');
+$des_value = array('&lt;','&gt;');
+$des = str_replace($des_key, $des_value, $des);
+return $des;
+}
 /* End of file xemmex_helper.php */ 
 /* Location: ./system/application/helpers/xemmex_helper.php */ 
