@@ -690,3 +690,8 @@ $lang['CF_update_email_tem'] = 'Mettre &agrave; jour le mod&egrave;le de courrie
 $lang['CF_subject_email_tem'] = 'Sujet du courriel'; 
 $lang['CF_body_email_tem'] = 'Corps de texte du courriel'; 
 $lang['CF_save_info_email_tem'] = 'Les informations du mod&egrave;le de courriel ont &eacute;t&eacute; sauvegard&eacute;!';
+
+//Key added on 25/08/2010
+$lang['CF_update_sitemap'] = 'f_Update Video Sitemap';
+$lang['CF_update_sitemap_suc'] = 'f_File video sitemap has been updated';
+$lang['CF_down'] = 'f_download';
