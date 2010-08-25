@@ -5,6 +5,7 @@
     {
       parent::Admin_controller();
       $this->_container = 'container';    
+      $this->load->helper('xemmex_helper');
       //$this->load->model('MWritexml');    
       $this->load->model('Mshopproduct','mshopproduct');
     }
