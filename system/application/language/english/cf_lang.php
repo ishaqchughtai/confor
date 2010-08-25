@@ -732,7 +732,7 @@ $lang['CF_delete_user_content'] = 'Dear %s %s !'.chr(13).chr(10).' Account %s ha
 $lang['CF_delete_video_by_admin'] = 'Your Video has been deleted !'; 
 $lang['CF_delete_video_content'] = 'Dear %s %s !'.chr(13).chr(10).' Video %s has been removed from http://confor.tv !'.chr(13).chr(10).' Please contact the administrator via email: %s';
 
-     //Key added on 16/08/2010
+//Key added on 16/08/2010
 $lang['CF_result_search_office'] = 'Result Search Conference Office';
 $lang['CF_result_search_training'] = 'Result Search Traning';
 $lang['CF_search_office'] = 'Search through all conferences office';
@@ -744,3 +744,8 @@ $lang['CF_update_email_tem'] = 'Update Email Template';
 $lang['CF_subject_email_tem'] = 'Email Subject'; 
 $lang['CF_body_email_tem'] = 'Email Body';
 $lang['CF_save_info_email_tem'] = 'Email Templates information has been saved!';
+
+//Key added on 25/08/2010
+$lang['CF_update_sitemap'] = 'Update Video Sitemap';
+$lang['CF_update_sitemap_suc'] = 'File video sitemap has been updated';
+$lang['CF_down'] = 'download';

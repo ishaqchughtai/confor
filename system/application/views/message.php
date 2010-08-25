@@ -16,7 +16,7 @@
 <?php if ($msg_link):?>
 	<?php if ($msg_link_name):?>
 	<p>
-		Go to : <a href="<?php echo $msg_link;?>"><?php echo $msg_link_name;?></a>
+  <?php echo __("CF_click")?> <a href="<?php echo $msg_link;?>"><?php echo __("CF_here")?></a> <?php echo $msg_link_name;?>.
 	</p>
 	<?php else:?>
 	<p>
