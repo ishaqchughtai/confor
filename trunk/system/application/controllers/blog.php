@@ -152,7 +152,7 @@ class Blog extends Admin_controller {
                 $time = time();
                 $Date=mdate($datestring,$time);
                 $Title=$this->input->post('txtTitle');
-                $Title=strip_quotes($Title);
+                //$Title=mysql_escape_string($Title);
 
                 $Subject=$this->input->post('txtSubject');
                 $Keywords=$this->input->post('txtKeywords');
@@ -213,7 +213,7 @@ class Blog extends Admin_controller {
                     $time = time();
                     $Date=mdate($datestring,$time);
                     $Title=$this->input->post('txtTitle');
-                    $Title=quotes_to_entities($Title);                                          
+                    //$Title=mysql_escape_string($Title);                                          
                     $Subject=$this->input->post('txtSubject');
                     $Keywords=$this->input->post('txtKeywords');
                     $Text=$this->input->post('txtBody');

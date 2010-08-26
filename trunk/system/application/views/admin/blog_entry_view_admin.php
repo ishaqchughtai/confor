@@ -12,6 +12,7 @@
             $linktemp = $link;
             $title = $row['Title'];
             $titletemp = $title;
+            $title=mysql_escape_string($title);
             $subject = $row['Subject'];
             $text = $row['Text'];
             $CountView = $row['CountView'];                           
@@ -23,7 +24,7 @@
             $about = $row['About'];
             $countcommenttemp = $countcomment;     
         ?>
-        <h3><a href="#"><?php echo $title ?></a></h3>
+        <h3><a href="#"><?php echo stripcslashes($title) ?></a></h3>
         <h5><?php echo $subject ?></h5>
         <a href="#comments" class="comments_balloon"><?php echo $countcommenttemp?></a>
         <p><img src="<?php echo base_url().'assets/uploads/image/'.$linktemp ?>" width="610" height="169" alt="Confor.ca" /></p>
