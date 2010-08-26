@@ -6,8 +6,8 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
   <url>
     <loc><?php echo 'http://confor.tv/index.php/video/play/'.$row['vid_id']?></loc>
     <video:video>
-      <video:title><?php echo $row['title']?></video:title>
-      <video:description><?php echo html2entities($row['description'])?></video:description>
+      <video:title><![CDATA[<?php echo $row['title']?>]]></video:title>
+      <video:description><![CDATA[<?php echo $row['description']?>]]></video:description>
     </video:video>
   </url>
   <?php endforeach;?>
