@@ -23,7 +23,7 @@
       is_admin();
       $this->_data['query'] = $query->result_array();
       $this->_load_view('admin/write');
-      $this->_message('writexml', __("CF_update_sitemap_suc"), 'success', site_url('writexml/save_as_html'),"download");
+      $this->_message('writexml', __("CF_update_sitemap_suc"), 'success', site_url('writexml/save_as_html'),__("CF_down"));
     }
 
     function save_as_html()
