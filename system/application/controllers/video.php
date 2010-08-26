@@ -66,7 +66,7 @@ class Video extends Frontend_controller
 	  {
 		$row = $this->_data['video_url']->row();
 		$this->_data['video_blog_keyword'] = $row->tags;
-		//$this->_data['speaker_name'] = $row->first_name.' '.$row->name;
+		$this->_data['speaker_name'] = $row->first_name.' '.$row->name;
 	  }	  	  
 	  
       $query=$this->Mhome->get_view_by_id($id);
@@ -130,13 +130,15 @@ class Video extends Frontend_controller
     //if($this->input->post('search'))
     //{                
     $num_per_page = $this->_setting['num_per_page_video'];
-    $keyword=$this->input->post('search_field');   				          
+    //$keyword=$this->input->post('search_field');   				          
+	$keyword=mysql_escape_string($keyword);
+	
     $config['per_page'] = $num_per_page;
     $config['uri_segment'] = 5;            
     $config['total_rows'] = $this->Mhome->count_video_search($this->_data['lang'],$keyword);
     $config += config_pagination_style();	
     $this->_data['search_results']=$this->Mhome->search_paging($this->_data['lang'],$keyword, $num_per_page, 0);
-
+	$keyword=stripcslashes($keyword);
     if (($keyword) && strlen($keyword)>0)
     {
       $config['base_url'] = site_url('video/search_paging').'/'.$keyword.'/'.$num_per_page.'/';  
@@ -146,7 +148,7 @@ class Video extends Frontend_controller
     }
 
     $this->pagination->initialize($config);  
-    $this->_data['link_html'] = $this->pagination->create_links();  
+    $this->_data['link_html'] = $this->pagination->create_links();  	
     $this->_data['keyword'] = $keyword; 
     $this->_load_view('home/search');                         
     //}
@@ -157,7 +159,7 @@ class Video extends Frontend_controller
   }
 
   function search_paging($keywords_to_search, $num_per_page) 
-  {
+  {	
     $this->_data['path'][] = array(
     'name' => __("CF_search_video"),
     'link' => '#'
@@ -169,11 +171,13 @@ class Video extends Frontend_controller
     $config['per_page'] = $this->_setting['num_per_page_video'];	
     $config['uri_segment'] = 5;
     $config += config_pagination_style(); 
-    if ($keywords_to_search == '_') $keywords_to_search = '';
+	$keywords_to_search=mysql_escape_string($keywords_to_search);
+    if ($keywords_to_search == '_') $keywords_to_search = '';	
     $config['total_rows'] = $this->Mhome->count_video_search($this->_data['lang'],$keywords_to_search);		
     $this->pagination->initialize($config);
     $this->_data['search_results']=$this->Mhome->search_paging($this->_data['lang'],$keywords_to_search, $config['per_page'], $offset);     
     $this->_data['link_html'] = $this->pagination->create_links();
+	$keywords_to_search=stripcslashes($keywords_to_search);
     $this->_data['keyword'] = $keywords_to_search;
     $this->_load_view('home/search'); 
   }
@@ -183,9 +187,10 @@ class Video extends Frontend_controller
     $keyword = $this->uri->segment(3);
     $offset = $this->uri->segment(4);
     $config['per_page'] = $this->_setting['num_per_page_video'];				
-    $config['uri_segment'] = 4;
+    $config['uri_segment'] = 4;			
     $config['base_url'] = base_url().'index.php/video/search_tag/'.$keyword.'/';
 
+	$keyword=mysql_escape_string($keyword);
     if ($keyword == '_') $keyword = '';
     $config += config_pagination_style();					
 
@@ -193,6 +198,7 @@ class Video extends Frontend_controller
     $this->_data['search_results'] = $this->Mhome->search_paging($this->_data['lang'],$keyword, $config['per_page'], $offset, true);     
     $this->pagination->initialize($config);
     $this->_data['link_html'] = $this->pagination->create_links();
+	$keyword=stripcslashes($keyword);
     $this->_data['keyword'] = $keyword;
     $this->_load_view('home/search'); 
   }	
