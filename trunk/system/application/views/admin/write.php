@@ -49,5 +49,5 @@
   
   $doc->saveXML();
   
- $doc->save("write.xml")
+ $doc->save("videositemap.xml")
   ?> 
