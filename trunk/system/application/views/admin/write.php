@@ -18,7 +18,7 @@
   
   $r = $doc->createElementNS( 'http://www.sitemaps.org/schemas/sitemap/0.9','urlset' );
   $doc->appendChild( $r );
-  $r->setAttributeNS('http://www.google.com/schemas/sitemap-video/1.0','xmlns:video','http://www.google.com/schemas/sitemap-video/1.0');
+  $r->setAttributeNS('http://www.w3.org/2000/xmlns/','xmlns:video','http://www.google.com/schemas/sitemap-video/1.0');
   foreach( $query as $row )
   {
   
