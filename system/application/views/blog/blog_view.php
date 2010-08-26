@@ -58,6 +58,7 @@
         $id          = $row['ID'];
         $link        =$row['Link'];
         $title       =$row['Title'];
+        //$title=mysql_escape_string($title);
         $subject     =$row['Subject'];
         $keywords    =$row['Keywords'];
         $key         =explode(" ", $keywords);

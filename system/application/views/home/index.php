@@ -43,11 +43,8 @@
 	<h5><b><?php echo __("CF_cate_name")?>: <a href="<?php echo site_url('category/get_category/').'/'.$category_id.'/5'?>"><?php echo $category_name?></a></b></h5>
 <?php }?>
 <b><?php echo $viewed?> <?php echo __("CF_views")?></b>
-<div style="float: right"><?php $SimpleRatings->create($video_path?$vid_id:null);?>  
-    </div>
-<?php $linktopvideo=$video_path?base_url().'videos/'.$top_view_video:"";
-
-?>
+<div style="float: right"><?php $SimpleRatings->create($video_path?$vid_id:null);?></div>      
+<?php $linktopvideo=$video_path?base_url().'videos/'.$top_view_video:"";?>
 <p><a href="<?php echo $linktopvideo;?>" style="display:block;width:621px;height:380px;"id="player"></a></p>                       
 </div> 
                   

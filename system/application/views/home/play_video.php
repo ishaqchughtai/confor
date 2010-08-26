@@ -3,7 +3,7 @@
 <?php require 'SimpleRatings/rSystem.php';  ?>
 </style>
 <body>
-<div class="content_item">
+<div >
 <?php 
     if($video_url->num_rows()>0)
     {
@@ -39,13 +39,11 @@
 <b><?php echo $viewed?> <?php echo __("CF_views")?></b>
 <div style="float: right" align="right"><?php $SimpleRatings->create($vid_id);?></div>                                                                                        
 <p><a href="<?php echo base_url()?>videos/<?php echo $video_link?>" style="display:block;width:621px;height:380px;"id="player"></a></p>
-
 <img src="<?php echo base_url().'assets/img/embed.PNG'?>" alt="" style="cursor: pointer;" onclick="javascript:toggle_div('texembed')">
 <textarea id="texembed" style="float:right;display:none" rows="6" cols="3" onclick="SelectAll('texembed');"></textarea>
 <p>&nbsp;</p>    
               
 <p><?php echo $description?></p>
-<p></p>
 <a class="prev browse left"></a>
 
 <div class="scrollable"> <!--scrollable -->
@@ -115,7 +113,7 @@ $("div.scrollable").scrollable({easing: 'custom', speed: 700, circular: true});
     }        
     );
  var code = $f().embed().getEmbedCode();
-code += '&lt;br /&gt;&lt;a href=&quot;<?php echo site_url().'/video/play/'.$vid_id?>&quot;&gt;<?php echo $video_title?>-Confor.tv&lt;/a&gt;';
+code += '&lt;br /&gt;&lt;a href=&quot;<?php echo site_url().'/video/play/'.$vid_id?>&quot;&gt;<?php echo mysql_escape_string($video_title)?>-Confor.tv&lt;/a&gt;';
 //document.getElementById("texembed").innerHTML = code;
 $("#texembed").html(code);
  
