@@ -1,23 +1,13 @@
-<?php
-    $lgtemp='';
-    if($lang=='fr')
-    {
-        $lgtemp='_fr';
-    }
-?>
 <div id="menu">			
 	<div id="right_bg"></div>			
 	<ul id="nav">
 		<li><a href="<?php echo site_url("") ?>"><?php echo ucfirst(__("CF_home"))?></a>
 			<ul >
-				<!--<li><a href="<?php echo site_url("accessories/show_element/about") ?>" ><?php echo ucfirst(__("CF_about"))?></a></li>
-				<li><a href="<?php echo site_url("accessories/show_element/how") ?>" ><?php echo __("CF_how")?></a></li>
-				<li><a href="<?php echo site_url("accessories/show_element/rules") ?>" ><?php echo __("CF_rules")?></a></li>-->
-				<li>
-					<a id="id_about_showmenu" href="<?php echo site_url("accessories/show_element/About".$lgtemp) ?>"><?php echo ucfirst(__("CF_about"))?></a>
+				<li>    
+                <?php echo out_static_page('About')?>
 					<ul id="showIE7error">
-						<li><a href="<?php echo site_url("accessories/show_element/How".$lgtemp) ?>" ><?php echo __("CF_how")?></a></li>
-						<li><a href="<?php echo site_url("accessories/show_element/Rules".$lgtemp) ?>" ><?php echo __("CF_rules")?></a></li>
+						<li><?php echo out_static_page('How')?></li>
+						<li><?php echo out_static_page('Rules')?></li>
 					</ul>
 				</li>
 				<li><a href="<?php echo site_url("contact")?>"><?php echo __("CF_contact")?></a></li>	

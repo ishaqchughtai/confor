@@ -10,7 +10,7 @@
             
                 <li><a href="<?php echo base_url()?>"><?php echo __("CF_home")?></a></li>
             
-                <li><a href="<?php echo site_url("accessories/show_element/about") ?>"><?php echo __("CF_about")?></a></li>
+                <li><?php echo out_static_page('About')?></li>
             
                 <li><a href="<?php echo site_url("blog") ?>"><?php echo __("CF_blog")?></a></li>
             
