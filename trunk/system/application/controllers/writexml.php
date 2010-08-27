@@ -7,6 +7,7 @@
       $this->_container = 'container';    
       $this->load->helper('xemmex_helper');
       //$this->load->model('MWritexml');    
+      $this->load->helper('date');
       $this->load->model('Mshopproduct','mshopproduct');
     }
 
@@ -15,9 +16,18 @@
       $this->db->select("
       videos.vid_id,
       videos.title,
-      videos.description
+      videos.description,
+      videos.shash,
+      videos.viewed,
+      videos.date,
+      videos.tags,
+      tblcategory.Name,
+      users.name,
+      users.first_name
       ");
       $this->db->from('videos');
+      $this->db->join('tblcategory','videos.category = tblcategory.ID');
+      $this->db->join('users','videos.mem_id = users.id');
       $query = $this->db->get();
       //return $query->result_array();
       is_admin();
@@ -31,9 +41,18 @@
       $this->db->select("
       videos.vid_id,
       videos.title,
-      videos.description
+      videos.description,
+      videos.shash,
+      videos.viewed,
+      videos.date,
+      videos.tags,
+      tblcategory.Name,
+      users.name,
+      users.first_name
       ");
       $this->db->from('videos');
+      $this->db->join('tblcategory','videos.category = tblcategory.ID');
+      $this->db->join('users','videos.mem_id = users.id'); 
       $query = $this->db->get();
       is_admin();
       // header("Content-Type: application/octet-stream;");
