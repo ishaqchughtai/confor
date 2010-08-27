@@ -8,16 +8,22 @@
       $this->load->model('Maccessories');
       $this->load->model('Mmetadata');        
       $this->load->helper('date');
+      $this->load->helper('xemmex');
       $this->load->model('Mshopproduct','mshopproduct');           
     }        
-    function show_element($ElementName='')
-    {
-      if(!$ElementName)
+    function show_element($Code='')
+    {  
+      if(!$Code)
       {
         redirect('home/index');
       }else
       {
-        $query = $this->Maccessories->get_element($ElementName); 
+          $x=out_static_page($Code,FALSE);
+          $this->_data['path'][] = array(
+          'name' => $x['name'],
+          'link' => '#'
+          );
+          $query = $this->Maccessories->get_element($x['name']); 
         if($query->num_rows()==1)
         {
            
@@ -31,65 +37,16 @@
           }
           else
           {
-             $title = $this->convert_element_name($ElementName);
+             $title=$x['name'];
           }
           $this->_data['page_title'] = $title;
+          $this->_data['content'] = $x['body'];
           $this->_load_view('home/page');               
         }else
         {
           redirect('home/index');
         }
       }         
-    }
-    function convert_element_name($ElementName='')
-    {
-      if($ElementName == 'About')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_about_us"),
-        'link' => '#'
-        );
-        $StrElementName = __("CF_about_us");
-      }elseif($ElementName == 'How')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_how"),
-        'link' => '#'
-        );
-        $StrElementName = __("CF_how");    
-      }elseif($ElementName == 'Rules')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_rules"),
-        'link' => '#'
-        );
-        $StrElementName = __("CF_rules");
-      }elseif($ElementName == 'About_fr')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_about_us"),
-        'link' => '#'
-        );
-        $StrElementName = __("CF_about_us");
-      }elseif($ElementName == 'How_fr')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_how"),
-        'link' => '#'
-        );
-        $StrElementName = __("CF_how");    
-      }elseif($ElementName == 'Rules_fr')
-      {
-        $this->_data['path'][] = array(
-        'name' => __("CF_rules"),
-        'link' => '#'
-        );
-        $StrElementName = __("CF_rules");       
-      }else
-      {
-        $StrElementName = '';
-      }
-      return $StrElementName;    
     }
   } 
 ?>

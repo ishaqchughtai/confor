@@ -865,11 +865,51 @@ function email_template_parse($lg, $code, $ar_key, $ar_value)
 	$out['subject'] = $row->subject;
 	return $out;
 }
-function html2entities($des){
-$des_key = array('<','>');
-$des_value = array('&lt;','&gt;');
-$des = str_replace($des_key, $des_value, $des);
-return $des;
+function out_static_page($code, $isMenu=TRUE)
+{
+     $CI =& get_instance(); 
+     $CI->db->where('Lang',$CI->_data['lang']);
+     $CI->db->where('Code',$code);
+     $query = $CI->db->get('tblaccessories');
+     if ($query->num_rows()<1) 
+     {
+          if ($isMenu) return '';
+          return FALSE;
+     }
+     $row = $query->row();
+     $out['link'] = site_url('/').$row->Link;
+     $out['name'] = $row->ElementName;
+     $out['body'] = $row->ElementContent;
+     $out['code'] = $row->Code;
+     if ($isMenu)
+     {
+        return '<a href="'.$out['link'].'" >'.$out['name'].'</a>';
+     }
+     return $out;
+}
+function out_static_page_no_lg($code, $isMenu=TRUE,$lg)
+{
+     $CI =& get_instance(); 
+     $CI->db->where('Lang',$lg);
+     $CI->db->where('Code',$code);
+     $query = $CI->db->get('tblaccessories');
+     if ($query->num_rows()<1) 
+     {
+          if ($isMenu) return '';
+          return FALSE;
+     }
+     $row = $query->row();
+     $out['link'] = site_url('/').'/'.$row->Link;
+     $out['name'] = $row->ElementName;
+     $out['body'] = $row->ElementContent;
+     $out['code'] = $row->Code;
+     $out['ID'] = $row->ID;
+     $out['Lang'] = $row->Lang;
+     if ($isMenu)
+     {
+        return '<a href="'.$out['link'].'" >'.$out['name'].'</a>';
+     }
+     return $out;
 }
 /* End of file xemmex_helper.php */ 
 /* Location: ./system/application/helpers/xemmex_helper.php */ 

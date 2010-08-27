@@ -749,3 +749,6 @@ $lang['CF_save_info_email_tem'] = 'Email Templates information has been saved!';
 $lang['CF_update_sitemap'] = 'Update Video Sitemap';
 $lang['CF_update_sitemap_suc'] = 'File video sitemap has been updated';
 $lang['CF_down'] = 'download';
+
+//Key added on 27/08/2010
+$lang['CF_element_name']="Element Name";

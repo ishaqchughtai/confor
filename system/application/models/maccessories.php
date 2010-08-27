@@ -9,11 +9,16 @@
         {
             $query = $this->db->get_where('tblaccessories',array('ElementName'=>$ElementName));
             return $query;
-        }        
-        function update_element($ElementName,$ElementContent)
+        }
+        function get_all_element()
         {
-            $data = array('ElementContent'=>$ElementContent);
-            $this->db->update('tblaccessories',$data,array('ElementName'=>$ElementName));
+            $query = $this->db->get('tblaccessories');
+            return $query;
+        }        
+        function update_element($ElementName,$ElementContent,$ID)
+        {
+            $data = array('ElementContent'=>$ElementContent,'ElementName'=>$ElementName);
+            $this->db->update('tblaccessories',$data,array('ID'=>$ID));
             return TRUE; 
         }
     }

@@ -695,3 +695,5 @@ $lang['CF_save_info_email_tem'] = 'Les informations du mod&egrave;le de courriel
 $lang['CF_update_sitemap'] = 'f_Update Video Sitemap';
 $lang['CF_update_sitemap_suc'] = 'f_File video sitemap has been updated';
 $lang['CF_down'] = 'f_download';
+//Key added on 27/08/2010
+$lang['CF_element_name']="f_Element Name";

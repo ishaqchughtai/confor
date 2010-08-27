@@ -340,7 +340,7 @@
                         $save_data['membership_id'] = 1;
                         $save_data['register_date'] = 'NOW()';                
                         $save_data['last_ip'] = ''; 
-						$save_data['language'] = $this->_data['lang'];
+                        $save_data['language'] = $this->_data['lang'];
                         $save_data['password'] = $this->user_lib->_encode($this->input->post('password'));                                                                                
                         $this->MUser->add($save_data);
 
@@ -409,11 +409,11 @@
                     }
                     else
                     {
-//                        $suspension=0;
-//                        if((int)$this->input->post('radiobutton')=='1')
-//                        {
-//                            $suspension=1;
-//                        }
+                        //                        $suspension=0;
+                        //                        if((int)$this->input->post('radiobutton')=='1')
+                        //                        {
+                        //                            $suspension=1;
+                        //                        }
                         $data = array(
                         'name'=>$this->input->post('txtName'),
                         'company_name'=>$this->input->post('txtCompanyName'),
@@ -708,112 +708,66 @@
         }
 
         //Accessories
-        function get_element($ElementName='')
+        function get_element($Code='',$lg='')
         {
             is_admin();
-            if(!$ElementName)
+            if(!$Code)
             {
                 redirect('admin/index');
             }else
-            {
-                if($this->_data['lang']=='fr')
+            {                
+                $x=out_static_page_no_lg($Code,FALSE,$lg);
+                $query_check = $this->Maccessories->get_element($x['name']); 
+                if($query_check->num_rows()==1)
                 {
-                    $lgtemp='_fr';
-                }            
-                $this->_data['path'][] = array(
-                'name' => __("CF_accessories"),
-                'link' => site_url('admin/get_element/About'.$lgtemp)
-                );
-                $StrElementName = $this->convert_element_name($ElementName);
-
-                $query = $this->Maccessories->get_element($ElementName);
-                $this->_data['query'] = $query->result_array();
-                $this->_data['page_title'] = $StrElementName;
-                $type_source = $this->uri->segment(3);
-                $this->_data['type_source'] = $type_source;
-                $this->_load_view('admin/add_new_page');
+                    $this->_data['path'][] = array(
+                    'name' => __("CF_accessories"),
+                    'link' => site_url('admin/get_element/About/'.$this->_data['lang'])
+                    );
+                    $this->_data['path'][] = array(
+                    'name' => $x['name'],
+                    'link' => '#'
+                    );            
+                    $query_all = $this->Maccessories->get_all_element();
+                    $this->_data['query_all'] = $query_all->result_array();
+                    $this->_data['page_title'] = $x['name'];
+                    $this->_data['elementContent'] = $x['body'];
+                    $this->_data['ID'] = $x['ID'];
+                    $this->_data['Code'] = $x['code'];
+                    $this->_data['Lang_temp'] = $x['Lang'];
+                    $type_source = $this->uri->segment(3);
+                    $this->_data['type_source'] = $type_source;
+                    $this->_load_view('admin/add_new_page');
+                }else
+                {
+                    redirect('admin/index');
+                }
             }
         }    
-        function update_element($ElementName)
+        function update_element($Code='',$lg='')
         {
             is_admin();
-            $StrElementName = $this->convert_element_name($ElementName);
-            if($this->_data['lang']=='fr')
-            {
-                $lgtemp='_fr';
-            }            
-            $this->_data['path'][] = array(
-            'name' => __("CF_accessories"),
-            'link' => site_url('admin/get_element/About'.$lgtemp)
-            );
+            $x=out_static_page_no_lg($Code,FALSE,$lg);
             $this->form_validation->set_rules('ElementContent',__("CF_element_content"),'required');
-            $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
-            $query = $this->Maccessories->get_element($ElementName);
-            $this->_data['query'] = $query->result_array();                                          
+            $this->form_validation->set_rules('Elementname',__("CF_element_name"),'required|trim');
+            $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');                                         
             $ElementContent=$this->input->post('ElementContent');
-            $this->_data['page_title'] = $StrElementName;
+            $ElementName=$this->input->post('Elementname');
+            $ID=$this->input->post('ID');
+            $this->_data['page_title'] = $ElementName;
             if($this->form_validation->run()==FALSE)
-            {
-                $this->_load_view('admin/add_new_page'); 
+            { 
+                $this->get_element($Code,$lg);
             }
             else
             {
-                if($this->Maccessories->update_element($ElementName,$ElementContent)==TRUE)
+                if($this->Maccessories->update_element($ElementName,$ElementContent,$ID)==TRUE)
                 {
-                    $this->_message('admin', __("CF_update").' '.$StrElementName.' '. __("CF_success"), 'success', site_url('admin/get_element/About'.$lgtemp));
+                    $this->_message('admin', __("CF_update").' '.$ElementName.' '. __("CF_success"), 'success', site_url('admin/get_element/About/'.$this->_data['lang']));
                 }
             }        
         }
-        function convert_element_name($ElementName)
-        {
-            if($ElementName == 'About')
-            {
-                $this->_data['path'][] = array(
-                'name' => __("CF_about_us").' (English)',
-                'link' => '#'
-                );
-                $StrElementName = __("CF_about_us");
-            }elseif($ElementName == 'How')
-            {
-                $this->_data['path'][] = array(
-                'name' => __("CF_how").' (English)',
-                'link' => '#'
-                );
-                $StrElementName = __("CF_how");    
-            }elseif($ElementName == 'Rules')
-            {
-                $this->_data['path'][] = array(
-                'name' => __("CF_rules").' (English)',
-                'link' => '#'
-                );
-                $StrElementName = __("CF_rules");
-            }elseif($ElementName == 'About_fr')
-            {
-                $this->_data['path'][] = array(
-                'name' => __("CF_about_us").' (French)',
-                'link' => '#'
-                );
-                $StrElementName = __("CF_about_us");
-            }elseif($ElementName == 'How_fr')
-            {
-                $this->_data['path'][] = array(
-                'name' => __("CF_how").' (French)',
-                'link' => '#'
-                );
-                $StrElementName = __("CF_how");    
-            }elseif($ElementName == 'Rules_fr')
-            {
-                $this->_data['path'][] = array(
-                'name' => __("CF_rules").' (French)',
-                'link' => '#'
-                );
-                $StrElementName = __("CF_rules");       
-            }else
-            {
-                $StrElementName = '';
-            }
-            return $StrElementName;    
-        }
+
 
         function keyword_check($Keywords)
         {

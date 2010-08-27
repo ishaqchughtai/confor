@@ -34,13 +34,13 @@
 					
 					<ul>
 					
-						<li><a href="#"><?php echo __("CF_onl_sup")?></a></li>
+						<li><?php echo out_static_page('OnlineSupp')?></li>
 					
-						<li><a href="#"><?php echo __("CF_tel_sales")?></a></li>
+						<li><?php echo out_static_page('TelephoneS')?></li>
 					
-						<li><a href="<?php echo site_url("accessories/show_element/How".$lgtemp) ?>" ><?php echo __("CF_how_to")?></li>
+						<li><?php echo out_static_page('How')?></li>
 					
-						<li><a href="#"><?php echo __("CF_email_form")?></a></li>
+						<li><?php echo out_static_page('EmailForm')?></li>
 					
 						<li><a href="<?php echo site_url("contact")?>"><?php echo __("CF_email")?></a></li>
 					
@@ -105,7 +105,7 @@
 			
 				<li><a href="<?php echo base_url()?>"><?php echo __("CF_home")?></a></li>
 			
-				<li><a href="<?php echo site_url("accessories/show_element/About".$lgtemp) ?>"><?php echo __("CF_about")?></a></li>
+				<li><?php echo out_static_page('About')?></li>
 			
 				<li><a href="<?php echo site_url("blog_frontend") ?>"><?php echo __("CF_blog")?></a></li>
 			
