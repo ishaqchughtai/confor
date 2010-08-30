@@ -1,4 +1,9 @@
 <script src="<?php echo base_url()?>assets/js/flowplayer.embed-3.0.3.min.js"></script>    
+<?php if ($lang=='fr'):?>
+<script language="javascript" src="<?php echo base_url()?>/send_to_friend_fr/popup.php?js" type="text/javascript"></script>
+<?php else:?>
+<script language="javascript" src="<?php echo base_url()?>/send_to_friend/popup.php?js" type="text/javascript"></script>
+<?php endif;?>
 
 <?php require 'SimpleRatings/rSystem.php';  ?>
 <?php 
@@ -49,6 +54,11 @@
 </div> 
                   
 <img src="<?php echo base_url().'assets/img/embed.PNG'?>" alt="" style="cursor: pointer;" onclick="javascript:toggle_div('texembed')">
+<?php if ($lang=='fr'):?>
+<a href="<?php echo base_url()?>/send_to_friend_fr/popup.php" title="Send to Friend" class="sendtofriend"><img border="0" src="<?php echo base_url().'assets/img/sendtoafriend.png'?>" /></a>
+<?php else:?>
+<a href="<?php echo base_url()?>/send_to_friend/popup.php" title="Send to Friend" class="sendtofriend"><img border="0" src="<?php echo base_url().'assets/img/sendtoafriend.png'?>" /></a>
+<?php endif;?>
 <textarea id="texembed" style="float:right;display:none" rows="6" cols="3" onclick="SelectAll('texembed');"></textarea>    
 <p>&nbsp;</p>                   
 <p><?php echo $video_path?$description:''?></p>                                        
