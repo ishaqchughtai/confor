@@ -1,4 +1,10 @@
 <script src="<?php echo base_url()?>assets/js/flowplayer.embed-3.0.3.min.js"></script>
+<?php if($lang == "fr"):?>
+<script language="javascript" src="<?php echo base_url()?>send_to_friend/popup.php?js" type="text/javascript"></script>   
+<?php else:?>
+ <script language="javascript" src="<?php echo base_url()?>send_to_friend/popup.php?js" type="text/javascript"></script>   
+
+<?php endif;?>
 <?php $page = 5;?>
 <?php require 'SimpleRatings/rSystem.php';  ?>
 </style>
@@ -39,8 +45,15 @@
 <b><?php echo $viewed?> <?php echo __("CF_views")?></b>
 <div style="float: right" align="right"><?php $SimpleRatings->create($vid_id);?></div>                                                                                        
 <p><a href="<?php echo base_url()?>videos/<?php echo $video_link?>" style="display:block;width:621px;height:380px;"id="player"></a></p>
-<img src="<?php echo base_url().'assets/img/embed.PNG'?>" alt="" style="cursor: pointer;" onclick="javascript:toggle_div('texembed')">
-<textarea id="texembed" style="float:right;display:none" rows="6" cols="3" onclick="SelectAll('texembed');"></textarea>
+
+<img src="<?php echo base_url().'assets/img/embed.PNG'?>" alt="" style="cursor: pointer;" onClick="javascript:toggle_div('texembed')">
+<?php if($lang == "fr"):?>
+<a href="<?php echo base_url().'send_to_friend_fr/popup.php'?>" title="Envoyer à un ami" class="sendtofriend"><img border="0" src="<?php echo base_url()?>assets/img/sendtoafriend.png" /></a>
+<?php else:?>
+<a href="<?php echo base_url().'send_to_friend/popup.php'?>" title="Send to a friend" class="sendtofriend"><img border="0" src="<?php echo base_url()?>assets/img/sendtoafriend.png" /></a>
+<?php endif;?>
+
+<textarea id="texembed" style="float:right;display:none" rows="6" cols="3" onClick="SelectAll('texembed');"></textarea>
 <p>&nbsp;</p>    
               
 <p><?php echo $description?></p>
