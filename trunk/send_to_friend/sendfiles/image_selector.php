@@ -42,9 +42,10 @@ if($image_count >= 1){
 			?>
 			</ul>
 			<span id="images_none" style="display:none;">
-				<input type="checkbox" name="no_image" id="no_image" value="true"> <span>no image</span>
+				<span style="width:70px">&nbsp;</span>				
 			</span>
 		</div>
+		<input type="checkbox" name="no_image" id="no_image" value="true"> <span>no image</span>
 		<input type="hidden" name="image_url" id="image_url" value="<?php echo htmlspecialchars($first_image);?>">
 	</td>
 <?php } 
