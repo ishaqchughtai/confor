@@ -11,6 +11,7 @@ class Video extends Frontend_controller
     $this->load->helper('date');				      
     $this->load->library('email');
     $this->load->model('Mshowroom');
+    $this->load->model('Mhome');
     $this->load->model('Mmetadata');
     $this->load->model('Mshopproduct','mshopproduct');        
     $this->_memberships = array(2,3);
@@ -237,5 +238,22 @@ class Video extends Frontend_controller
     $this->_data['archives'] = $query->result_array();				
     $this->_load_view('home/archive_list');		
   }		
-
+  function xmlvid($id)
+  {
+    header('Content-Transfer-Encoding: binary');    
+    header('Content-Type: text/xml');
+    header('Content-Disposition: filename="config.xml"');
+    $video_path = $this->Mhome->get_video_by_id($id);
+            if($video_path->num_rows()>0)
+            {
+                $row = $video_path->row();
+                $data['vid_id']=$row->vid_id;
+                $data['mem_id']=$row->mem_id;                
+                $data['top_view_video'] = $row->vhash;
+                $data['video_image']=$row->shash;
+                $data['video_title']=$row->title;
+                $data['description']=$row->description;
+            } 
+    $this->load->view('home/xmlvid',$data);
+  }
 }

@@ -249,6 +249,24 @@ class Home extends Frontend_controller {
     }
     $out .= ']';
     echo $out;
+  }
+  
+  function xmlvid($id)
+  {
+    header('Content-Transfer-Encoding: binary');    
+    header('Content-Type: text/xml');
+    header('Content-Disposition: filename="config.xml"');
+    $video_path = $this->Mhome->get_top_viewed_video($this->_data['lang']);
+            if($video_path->num_rows()>0)
+            {
+                $row = $video_path->row();
+                $data['vid_id']=$row->vid_id;
+                $data['top_view_video'] = $row->vhash;
+                $data['video_image']=$row->shash;
+                $data['video_title']=$row->title;
+                $data['description']=$row->description;            
+            } 
+    $this->load->view('home/xmlvidmain',$data);
   }  
 
 }

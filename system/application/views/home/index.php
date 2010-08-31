@@ -1,10 +1,19 @@
-<script src="<?php echo base_url()?>assets/js/flowplayer.embed-3.0.3.min.js"></script>    
+<script type="text/javascript" src="<?php echo base_url()?>resources/js/swfobject.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>resources/js/fixMouseWheel.min.js"></script>
+
+        <style>
+            .mouseWheelFix {
+                width: 100%;
+                height: 380px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
 <?php if ($lang=='fr'):?>
 <script language="javascript" src="<?php echo base_url()?>/send_to_friend_fr/popup.php?js" type="text/javascript"></script>
 <?php else:?>
 <script language="javascript" src="<?php echo base_url()?>/send_to_friend/popup.php?js" type="text/javascript"></script>
 <?php endif;?>
-
 <?php require 'SimpleRatings/rSystem.php';  ?>
 <?php 
         if($video_path){
@@ -29,7 +38,17 @@
 				$category_name = $row->category_name;
             }
         }
-    ?>        
+    ?>  
+<script type="text/javascript">
+            swfobject.embedSWF("<?php base_url()?>playlistPlayer.swf", "showItem", "620", "380", "9.0.0","",{
+                // flash vars
+                "player.xml":"<?php echo site_url('home/xmlvid/'.$vid_id)?>.xml"
+            },{
+                // params
+                bgcolor:"#ffffff",
+                allowfullscreen:"true"
+            });
+        </script>          
 <body>
 <div class="content_item" >
 <?php if($video_path){?>
@@ -50,16 +69,17 @@
 <b><?php echo $viewed?> <?php echo __("CF_views")?></b>
 <div style="float: right"><?php $SimpleRatings->create($video_path?$vid_id:null);?></div>      
 <?php $linktopvideo=$video_path?base_url().'videos/'.$top_view_video:"";?>
-<p><a href="<?php echo $linktopvideo;?>" style="display:block;width:621px;height:380px;"id="player"></a></p>                       
-</div> 
-                  
-<img src="<?php echo base_url().'assets/img/embed.PNG'?>" alt="" style="cursor: pointer;" onclick="javascript:toggle_div('texembed')">
+<div class="mouseWheelFix">
+    <div id="showItem"></div>
+</div>                     
+</div>
+<p>&nbsp;</p>
 <?php if ($lang=='fr'):?>
 <a href="<?php echo base_url()?>/send_to_friend_fr/popup.php" title="Send to Friend" class="sendtofriend"><img border="0" src="<?php echo base_url().'assets/img/sendtoafriend.png'?>" /></a>
 <?php else:?>
 <a href="<?php echo base_url()?>/send_to_friend/popup.php" title="Send to Friend" class="sendtofriend"><img border="0" src="<?php echo base_url().'assets/img/sendtoafriend.png'?>" /></a>
-<?php endif;?>
-<textarea id="texembed" style="float:right;display:none" rows="6" cols="3" onclick="SelectAll('texembed');"></textarea>    
+<?php endif;?>                                                                       
+
 <p>&nbsp;</p>                   
 <p><?php echo $video_path?$description:''?></p>                                        
 <!-- /.content_item -->
@@ -84,41 +104,3 @@
         <?php endfor;?>
         </div>   
         </body>           
-<script language="JavaScript">
-    flowplayer("player", 
-    "<?php echo base_url();?>flowplayer/flowplayer.commercial-3.2.2.swf",
-    {// product key
-        key: '#@7fce71ac6b428079f85' ,
-
-        // logo initially has zero opacity
-    logo: {   
-        url: '<?php echo base_url()?>/flowplayer/logo.png',   
-        fullscreenOnly: false,   
-        top: 10, 
-        left: 10,
-        displayTime: 2000   
-    },
-        clip:{autoPlay: false,autoBuffering: true}
-    }        
-    );
-var code = $f().embed().getEmbedCode();
-code += '&lt;br /&gt;&lt;a href=&quot;<?php echo site_url().'/video/play/'.$vid_id?>&quot;&gt;<?php echo $video_title?>-Confor.tv&lt;/a&gt;';
-
-$("#texembed").html(code);
- 
- $(document).ready(function() {
-	$("#texembed").hide();
- });
-</script>     
-<script type="text/javascript">
-function toggle_div(id) {
-     var diq = document.getElementById(id).style;
-     diq.display=(diq.display=="none") ? "" : "none"; 
-}
-function SelectAll(id)
-{
-	
-    document.getElementById(id).focus();
-    document.getElementById(id).select();                                 
-}
-</script>

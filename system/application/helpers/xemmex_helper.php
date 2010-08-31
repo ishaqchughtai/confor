@@ -365,14 +365,14 @@ if ( ! function_exists('get_random_top_video'))
 }
 if ( ! function_exists('get_random_by_speaker'))
 {
-	function get_random_by_speaker($mem_id=FALSE)
-	{
-		$CI =& get_instance();
-		$CI->load->model('Mhome');
-		$items = $CI->Mhome->get_random_by_speaker($mem_id, 8);
-		return $items->result_array();
-		//....
-	}
+    function get_random_by_speaker($mem_id=FALSE)
+    {
+        $CI =& get_instance();
+        $CI->load->model('Mhome');
+        $items = $CI->Mhome->get_random_by_speaker($mem_id, 8);
+        return $items->result_array();
+        //....
+    }
 }
 if ( ! function_exists('xm_generateRandStr'))
 {
