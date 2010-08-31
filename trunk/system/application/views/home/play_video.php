@@ -1,4 +1,13 @@
-<script src="<?php echo base_url()?>assets/js/flowplayer.embed-3.0.3.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>resources/js/swfobject.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>resources/js/fixMouseWheel.min.js"></script>
+        <style>
+            .mouseWheelFix {
+                width: 100%;
+                height: 380px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
 <?php if($lang == "fr"):?>
 <script language="javascript" src="<?php echo base_url()?>send_to_friend/popup.php?js" type="text/javascript"></script>   
 <?php else:?>
@@ -30,6 +39,17 @@
 		$category_name = $row->category_name;
     }
 ?>
+<script type="text/javascript">
+            swfobject.embedSWF("<?php echo base_url()?>playlistPlayer.swf", "showItem", "620", "380", "9.0.0","",{
+                // flash vars
+                "player.xml":"<?php echo site_url('video/xmlvid/'.$vid_id)?>.xml"
+            },{
+                // params
+                bgcolor:"#ffffff",
+                allowfullscreen:"true"
+                
+            });
+        </script>
 <h3><?php echo $video_title?></h3>
 <h5><?php echo __("CF_by")?>
 
@@ -43,17 +63,17 @@
 <?php echo mdate("%d-%m-%Y", $date)?></h5>              
 <h5><b><?php echo __("CF_cate_name")?>: <a href="<?php echo site_url('category/get_category/').'/'.$category.'/5'?>"><?php echo $category_name?></a></b></h5>
 <b><?php echo $viewed?> <?php echo __("CF_views")?></b>
-<div style="float: right" align="right"><?php $SimpleRatings->create($vid_id);?></div>                                                                                        
-<p><a href="<?php echo base_url()?>videos/<?php echo $video_link?>" style="display:block;width:621px;height:380px;"id="player"></a></p>
-
-<img src="<?php echo base_url().'assets/img/embed.PNG'?>" alt="" style="cursor: pointer;" onClick="javascript:toggle_div('texembed')">
+<div style="float: right" align="right"><?php $SimpleRatings->create($vid_id);?></div>                                                                                       
+<div class="mouseWheelFix">
+    <div id="showItem"></div>
+</div>                     
+<p>&nbsp;</p>
 <?php if($lang == "fr"):?>
 <a href="<?php echo base_url().'send_to_friend_fr/popup.php'?>" title="Envoyer à un ami" class="sendtofriend"><img border="0" src="<?php echo base_url()?>assets/img/sendtoafriend.png" /></a>
 <?php else:?>
 <a href="<?php echo base_url().'send_to_friend/popup.php'?>" title="Send to a friend" class="sendtofriend"><img border="0" src="<?php echo base_url()?>assets/img/sendtoafriend.png" /></a>
 <?php endif;?>
 
-<textarea id="texembed" style="float:right;display:none" rows="6" cols="3" onClick="SelectAll('texembed');"></textarea>
 <p>&nbsp;</p>    
               
 <p><?php echo $description?></p>
@@ -108,40 +128,3 @@ $.easing.custom = function (x, t, b, c, d) {
 // use the custom easing
 $("div.scrollable").scrollable({easing: 'custom', speed: 700, circular: true});
 </script>         
-<script language="JavaScript">
-    flowplayer("player", 
-    "<?php echo base_url();?>flowplayer/flowplayer.commercial-3.2.2.swf",
-    {// product key
-        key: '#@7fce71ac6b428079f85' ,
-
-        // logo initially has zero opacity
-        logo: {   
-            url: '<?php echo base_url()?>flowplayer/logo.png',    
-            fullscreenOnly: false,   
-            top: 10, 
-            left: 10,
-            displayTime: 2000   
-        },
-        clip:{autoPlay: true,autoBuffering: true}
-    }        
-    );
- var code = $f().embed().getEmbedCode();
-code += '&lt;br /&gt;&lt;a href=&quot;<?php echo site_url().'/video/play/'.$vid_id?>&quot;&gt;<?php echo mysql_escape_string($video_title)?>-Confor.tv&lt;/a&gt;';
-//document.getElementById("texembed").innerHTML = code;
-$("#texembed").html(code);
- 
- $(document).ready(function() {
-    $("#texembed").hide();
- });
-</script>
-<script type="text/javascript">
-function toggle_div(id) {
-     var diq = document.getElementById(id).style;
-     diq.display=(diq.display=="none") ? "" : "none"; 
-}
-function SelectAll(id)
-{
-    document.getElementById(id).focus();
-    document.getElementById(id).select();                                 
-}
-</script>
