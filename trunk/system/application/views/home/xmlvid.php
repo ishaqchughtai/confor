@@ -90,6 +90,12 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
             <item type="more"/>
     </share>
     <playlist>
+                   <item
+                        thumb="<?php echo base_url()?>thumbs/<?php echo $video_image?>"
+                        cover="<?php echo base_url()?>thumbs/<?php echo $video_image?>"
+                        resource="<?php echo base_url()?>videos/<?php echo $top_view_video?>"
+                        preview="<?php echo base_url()?>videos/<?php echo $top_view_video?>">   
+                    </item>
             <?php
                 $ramdomvideo = get_random_by_speaker($mem_id);
                 $total = count($ramdomvideo);

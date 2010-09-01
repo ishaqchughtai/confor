@@ -697,3 +697,22 @@ $lang['CF_update_sitemap_suc'] = 'f_File video sitemap has been updated';
 $lang['CF_down'] = 'f_download';
 //Key added on 27/08/2010
 $lang['CF_element_name']="f_Element Name";
+
+//Key added on 01/09/2010
+
+$lang['CF_player_vid_set']="f_Player Video Setting";
+$lang['CF_show_control']="f_Show Control";
+$lang['CF_show_control_hd']="f_Control HD";
+$lang['CF_full_res']="f_Fullscreen Resizable";
+$lang['CF_hide_cur']="f_Hide Cursor";
+$lang['CF_sty_glo']="f_Style Global";
+$lang['CF_embed_show']="f_Embed Show";
+$lang['CF_logo']="f_Logo";
+$lang['CF_always']="f_Always";
+$lang['CF_never']="f_Never";
+$lang['CF_over']="f_Over";
+$lang['CF_light']="f_Light";
+$lang['CF_dark']="f_Dark";
+$lang['CF_seconds']="f_Seconds";
+$lang['CF_editxml_success']="f_Edit Success";
+$lang['CF_check_numbers']="f_You must enter numbers only.";

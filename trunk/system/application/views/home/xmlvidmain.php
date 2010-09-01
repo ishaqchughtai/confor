@@ -94,7 +94,6 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
     <start resource="<?php echo base_url()?>videos/<?php echo $top_view_video?>" cover="<?php echo base_url()?>thumbs/<?php echo $video_image?>">
         <caption><![CDATA[
                   <title><a href="<?php base_url()?>index.php/video/play/<?php echo $vid_id?>"><?php echo $video_title?></a></title>
-                  <description><?php echo $description?></description>
             ]]></caption>
     </start>
 

@@ -11,7 +11,7 @@ class Xmlvideo extends Admin_controller{
     {
         is_admin();
         $this->_data['path'][] = array(
-        'name' => 'Player Video Setting',
+        'name' => __("CF_player_vid_set"),
         'link' => '#'
         );
         $this->_data['query'] = $this->Mxmlvideo->get_xmlvid();
@@ -20,11 +20,7 @@ class Xmlvideo extends Admin_controller{
     function update_setting($id='')
     {
         is_admin();
-        $this->_data['path'][] = array(
-        'name' => 'Player Video Setting',
-        'link' => '#'
-        );
-        $this->form_validation->set_rules('fullscreen_hideCursor',strtolower('Hide Cursor'),'trim|required|max_length[50]');
+        $this->form_validation->set_rules('fullscreen_hideCursor',strtolower(__("CF_hide_cur")),'trim|required|callback_check_is_numeric');
         $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
         if($this->form_validation->run()==FALSE)
         {
@@ -68,7 +64,22 @@ class Xmlvideo extends Admin_controller{
             'embed'=>$embed       
             );
             $this->Mxmlvideo->update_xmlvid($id,$data);
-            $this->_message('xmlvideo', __("CF_editblog_success"), 'success', site_url("xmlvideo/index"));
+            $this->_message('xmlvideo', __("CF_editxml_success"), 'success', site_url("xmlvideo/index"));
         }
     }
+    function check_is_numeric($vt_temp)
+    {
+        if (!is_numeric($vt_temp)) {
+            $this->form_validation->set_message(
+            'check_is_numeric',
+            __("CF_check_numbers")
+            );
+            return FALSE;
+        }
+        else
+        {
+            return TRUE;
+        }
+    }
+
 }
