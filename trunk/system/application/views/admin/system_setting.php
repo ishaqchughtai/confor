@@ -78,6 +78,9 @@
         <div class="input text">
             <label><?php echo __("CF_Blog_order_by_field")?></label>
             <p>
+              <label for="select"></label>
+  <select name="select" id="select">
+  </select>
                 <?php echo form_dropdown('order_blog_field', $order_blog_option, $order_blog_field,'class="order_field"');?>
                 <?php echo form_dropdown('order_blog_sort', $sort_option, $order_blog_sort,'style="width:70px"');?>
             </p>

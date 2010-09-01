@@ -15,6 +15,7 @@ class Video extends Frontend_controller
     $this->load->model('Mmetadata');
     $this->load->model('Mshopproduct','mshopproduct');        
     $this->_memberships = array(2,3);
+    $this->load->model('Mxmlvideo');
   }
 
   function speaker()
@@ -243,6 +244,20 @@ class Video extends Frontend_controller
     header('Content-Transfer-Encoding: binary');    
     header('Content-Type: text/xml');
     header('Content-Disposition: filename="config.xml"');
+    $setting = $this->Mxmlvideo->get_xmlvid();
+    foreach($setting as $row)
+    {
+        $id_setting=$row['id'];
+        $data['watermark_resource']=$row['watermark_resource'];
+        $data['watermark_align_top']=$row['watermark_align_top'];
+        $data['watermark_align_rl']=$row['watermark_align_rl'];
+        $data['controls_show']=$row['controls_show'];
+        $data['controls_hd']=$row['controls_hd'];
+        $data['fullscreen_resizable']=$row['fullscreen_resizable'];
+        $data['fullscreen_hideCursor']=$row['fullscreen_hideCursor'];
+        $data['style_global']=$row['style_global'];
+        $data['embed']=$row['embed'];
+    }
     $video_path = $this->Mhome->get_video_by_id($id);
             if($video_path->num_rows()>0)
             {
