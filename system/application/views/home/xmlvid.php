@@ -2,12 +2,12 @@
 echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
 ?>
 <config>
-    <watermark resource="<?php echo base_url()?>resources/images/watermark.png" align="top,left" alpha="0.9"/>
+    <watermark resource="<?php echo base_url()?>resources/images/<?php echo $watermark_resource?>" align="<?php echo $watermark_align_top;echo ',';echo $watermark_align_rl?>" alpha="0.9"/>
     <controls 
-    hd="false"
-    show="over"/>
-    <fullscreen resizable="true" hideCursor="30" />
-    <style global="light">
+    hd="<?php echo $controls_hd?>"
+    show="<?php echo $controls_show?>"/>
+    <fullscreen resizable="<?php echo $fullscreen_resizable?>" hideCursor="<?php echo $fullscreen_hideCursor?>" />
+    <style global="<?php echo $style_global?>">
         <text><![CDATA[
         title {
         color: #008EB0;
@@ -45,7 +45,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
     
     <share>
         <!-- hide embed code -->
-        <embed show="true" />
+        <embed show="<?php echo $embed?>" />
         <!-- 
             ******** IMPORTANT ********
             
@@ -72,7 +72,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
                     
         </settings>
             <!-- for each item, you can set custom sharing options -->
-            <item type="facebook" embedSwf="true" title="Playlist player" description="here comes a customizable description text" screenshot="http://bitfade.com/images/items/text.light.jpg" width="320" height="240"/>
+            <item type="facebook" embedSwf="true" title="Playlist player" description="here comes a customizable description text" screenshot="<?php echo base_url()?>resources/images/watermark.png" width="320" height="240"/>
             <item type="twitter"/>
             <item type="digg"/>
             <item type="myspace"/>
@@ -89,14 +89,6 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
             <item type="wordpress"/>
             <item type="more"/>
     </share>
-    
-
-    <start resource="<?php echo base_url()?>videos/<?php echo $top_view_video?>" cover="<?php echo base_url()?>thumbs/<?php echo $video_image?>">
-        <caption><![CDATA[
-                  <title><a href="<?php base_url()?>index.php/video/play/<?php echo $vid_id?>"><?php echo $video_title?></a></title>
-                  <description><?php echo $description?></description>
-            ]]></caption>
-    </start>
     <playlist>
             <?php
                 $ramdomvideo = get_random_by_speaker($mem_id);
