@@ -752,3 +752,21 @@ $lang['CF_down'] = 'download';
 
 //Key added on 27/08/2010
 $lang['CF_element_name']="Element Name";
+
+//Key added on 01/09/2010
+$lang['CF_player_vid_set']="Player Video Setting";
+$lang['CF_show_control']="Show Control";
+$lang['CF_show_control_hd']="Control HD";
+$lang['CF_full_res']="Fullscreen Resizable";
+$lang['CF_hide_cur']="Hide Cursor";
+$lang['CF_sty_glo']="Style Global";
+$lang['CF_embed_show']="Embed Show";
+$lang['CF_logo']="Logo";
+$lang['CF_always']="Always";
+$lang['CF_never']="Never";
+$lang['CF_over']="Over";
+$lang['CF_light']="Light";
+$lang['CF_dark']="Dark";
+$lang['CF_seconds']="Seconds";
+$lang['CF_editxml_success']="Edit Success";
+$lang['CF_check_numbers']="You must enter numbers only.";

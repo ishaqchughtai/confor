@@ -35,33 +35,33 @@
 ?>
 <?php echo form_open('xmlvideo/update_setting/'.$id); ?>
 <div class="x2 frame">       
-    <h3><?php echo 'Player Video Setting'?></h3>        
+    <h3><?php echo __("CF_player_vid_set")?></h3>        
     <div class="frame_content">                                                 
-        <label>Control:</label>
+        <label><?php echo __("CF_show_control")?>:</label>
         <select name="controls_show" class="medium">
-            <option value="always" <?php if($controls_show=='always') echo 'selected="selected"';?>>Always</option>
-            <option value="never" <?php if($controls_show=='never') echo 'selected="selected"';?>>Never</option>
-            <option value="over" <?php if($controls_show=='over') echo 'selected="selected"';?>>Over</option>
+            <option value="always" <?php if($controls_show=='always') echo 'selected="selected"';?>><?php echo __("CF_always")?></option>
+            <option value="never" <?php if($controls_show=='never') echo 'selected="selected"';?>><?php echo __("CF_never")?></option>
+            <option value="over" <?php if($controls_show=='over') echo 'selected="selected"';?>><?php echo __("CF_over")?></option>
         </select>
-        <label>Control HD:</label>
+        <label><?php echo __("CF_show_control_hd")?>:</label>
         <select name="controls_hd" class="medium">
             <option value="true" <?php if($controls_hd=='true') echo 'selected="selected"';?>><?php echo __("CF_yes")?></option>
             <option value="false" <?php if($controls_hd=='false') echo 'selected="selected"';?>><?php echo __("CF_No")?></option>
         </select>
-        <label>Fullscreen Resizable:</label>
+        <label><?php echo __("CF_full_res")?>:</label>
         <select name="fullscreen_resizable" class="medium">
             <option value="true" <?php if($fullscreen_resizable=='true') echo 'selected="selected"';?>><?php echo __("CF_yes")?></option>
             <option value="false" <?php if($fullscreen_resizable=='false') echo 'selected="selected"';?>><?php echo __("CF_No")?></option>
         </select>
-        <label>Hide Cursor:</label>
+        <label><?php echo __("CF_hide_cur")?>:(<?php echo __("CF_seconds")?>)</label>
         <input name="fullscreen_hideCursor" type="text" align="left" value="<?php echo $fullscreen_hideCursor?>" class="medium">
         <?php echo form_error("fullscreen_hideCursor"); ?>
-        <label>Style Global:</label>
+        <label><?php echo __("CF_sty_glo")?>:</label>
         <select name="style_global" class="medium">
-            <option value="light" <?php if($style_global=='light') echo 'selected="selected"';?>>Light</option>
-            <option value="dark" <?php if($style_global=='dark') echo 'selected="selected"';?>>Dark</option>
+            <option value="light" <?php if($style_global=='light') echo 'selected="selected"';?>><?php echo __("CF_light")?></option>
+            <option value="dark" <?php if($style_global=='dark') echo 'selected="selected"';?>><?php echo __("CF_dark")?></option>
         </select>
-        <label>Embed Show:</label>
+        <label><?php echo __("CF_embed_show")?>:</label>
         <select name="embed" class="medium">
             <option value="true" <?php if($embed=='true') echo 'selected="selected"';?>><?php echo __("CF_yes")?></option>
             <option value="false" <?php if($embed=='false') echo 'selected="selected"';?>><?php echo __("CF_No")?></option>
@@ -70,9 +70,9 @@
 </div>
 
 <div class="x2 frame no_margin">    
-    <h3><?php echo 'Player Video Setting'?></h3>
+    <h3><?php echo __("CF_player_vid_set")?></h3>
     <div class="frame_content">
-        <label>Logo:</label>
+        <label><?php echo __("CF_logo")?>:</label>
         <table width="202" height="130" border="0" bgcolor="#0000FF">
             <tr>
                 <td width="101" height="65"><input type="radio" name="radio" id="radio2" value="11" <?php if($vt==11)echo 'checked="checked"'?> style="background: white; border: hidden;"  /></td>
