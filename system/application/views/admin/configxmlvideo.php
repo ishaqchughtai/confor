@@ -11,6 +11,7 @@
         $fullscreen_hideCursor=$row['fullscreen_hideCursor'];
         $style_global=$row['style_global'];
         $embed=$row['embed'];
+        $watermark_hidden=$row['watermark_hidden'];
         $vt=0;
         if($watermark_align_top=='top')
         {
@@ -82,7 +83,12 @@
                 <td width="101" height="65"><input type="radio" name="radio" id="radio3" value="21" <?php if($vt==21)echo 'checked="checked"'?> style="background: white; border: hidden;" /></td>
                 <td width="101" height="65"><input type="radio" name="radio" id="radio" value="22" <?php if($vt==22)echo 'checked="checked"'?> style="background: white; border: hidden;" /></td>
             </tr>
-        </table>        
+        </table>
+        <label>Hidden <?php echo __("CF_logo")?>:</label>
+        <select name="watermark_hidden" class="medium">
+            <option value="true" <?php if($watermark_hidden=='true') echo 'selected="selected"';?>><?php echo __("CF_yes")?></option>
+            <option value="false" <?php if($watermark_hidden=='false') echo 'selected="selected"';?>><?php echo __("CF_No")?></option>
+        </select>        
     </div>
 </div>
 <p>&nbsp;</p>
