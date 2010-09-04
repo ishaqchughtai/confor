@@ -770,3 +770,4 @@ $lang['CF_dark']="Dark";
 $lang['CF_seconds']="Seconds";
 $lang['CF_editxml_success']="Edit Success";
 $lang['CF_check_numbers']="You must enter numbers only.";
+$lang['CF_hidden_logo']="Hidden Logo";
