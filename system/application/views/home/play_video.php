@@ -8,12 +8,7 @@
                 margin-right: auto;
             }
         </style>
-<?php if($lang == "fr"):?>
-<script language="javascript" src="<?php echo base_url()?>send_to_friend/popup.php?js" type="text/javascript"></script>   
-<?php else:?>
- <script language="javascript" src="<?php echo base_url()?>send_to_friend/popup.php?js" type="text/javascript"></script>   
 
-<?php endif;?>
 <?php $page = 5;?>
 <?php require 'SimpleRatings/rSystem.php';  ?>
 </style>
@@ -51,6 +46,12 @@
             });
         </script>
 <h3><?php echo $video_title?></h3>
+<div class="mouseWheelFix">
+    <div id="showItem"></div>
+</div>   
+<b><?php echo $viewed?> <?php echo __("CF_views")?></b>
+<div style="float: right" align="right"><?php $SimpleRatings->create($vid_id);?></div>                                                                                       
+
 <h5><?php echo __("CF_by")?>
 
     <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $first_name.' '.$name_name?></b></a> 
@@ -61,21 +62,8 @@
         <?php ;}?>
     //
 <?php echo mdate("%d-%m-%Y", $date)?></h5>              
-<h5><b><?php echo __("CF_cate_name")?>: <a href="<?php echo site_url('category/get_category/').'/'.$category.'/5'?>"><?php echo $category_name?></a></b></h5>
-<b><?php echo $viewed?> <?php echo __("CF_views")?></b>
-<div style="float: right" align="right"><?php $SimpleRatings->create($vid_id);?></div>                                                                                       
-<div class="mouseWheelFix">
-    <div id="showItem"></div>
-</div>                     
-<p>&nbsp;</p>
-<?php if($lang == "fr"):?>
-<a href="<?php echo base_url().'send_to_friend_fr/popup.php'?>" title="Envoyer à un ami" class="sendtofriend"><img border="0" src="<?php echo base_url()?>assets/img/sendtoafriend.png" /></a>
-<?php else:?>
-<a href="<?php echo base_url().'send_to_friend/popup.php'?>" title="Send to a friend" class="sendtofriend"><img border="0" src="<?php echo base_url()?>assets/img/sendtoafriend.png" /></a>
-<?php endif;?>
-
-<p>&nbsp;</p>    
-              
+<h5><b><?php echo __("CF_cate_name")?>: <a href="<?php echo site_url('category/get_category/').'/'.$category.'/5'?>"><?php echo $category_name?></a></b></h5>               
+             
 <p><?php echo $description?></p>
 <a class="prev browse left"></a>
 
@@ -112,7 +100,10 @@
   
                      
 </div>
-</body> 
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <?php $this->load->view('home/list_video_by_category',$video_by_cat);?>
 <script language="JavaScript">    
 
@@ -128,3 +119,5 @@ $.easing.custom = function (x, t, b, c, d) {
 // use the custom easing
 $("div.scrollable").scrollable({easing: 'custom', speed: 700, circular: true});
 </script>         
+</body> 
+

@@ -9,11 +9,7 @@
                 margin-right: auto;
             }
         </style>
-<?php if ($lang=='fr'):?>
-<script language="javascript" src="<?php echo base_url()?>/send_to_friend_fr/popup.php?js" type="text/javascript"></script>
-<?php else:?>
-<script language="javascript" src="<?php echo base_url()?>/send_to_friend/popup.php?js" type="text/javascript"></script>
-<?php endif;?>
+
 <?php require 'SimpleRatings/rSystem.php';  ?>
 <?php 
         if($video_path){
@@ -53,6 +49,14 @@
 <div class="content_item" >
 <?php if($video_path){?>
     <h3><?php echo $video_title?></h3>
+<div class="mouseWheelFix">
+    <div id="showItem"></div>
+</div>   	
+<b><?php echo $viewed?> <?php echo __("CF_views")?></b>
+<div style="float: right"><?php $SimpleRatings->create($video_path?$vid_id:null);?></div>      
+<?php $linktopvideo=$video_path?base_url().'videos/'.$top_view_video:"";?>
+                  
+</div>
     <h5>
         <?php echo __("CF_by")?>
 
@@ -66,21 +70,9 @@
     <?php echo mdate("%d-%m-%Y", $date)?></h5>              
 	<h5><b><?php echo __("CF_cate_name")?>: <a href="<?php echo site_url('category/get_category/').'/'.$category_id.'/5'?>"><?php echo $category_name?></a></b></h5>
 <?php }?>
-<b><?php echo $viewed?> <?php echo __("CF_views")?></b>
-<div style="float: right"><?php $SimpleRatings->create($video_path?$vid_id:null);?></div>      
-<?php $linktopvideo=$video_path?base_url().'videos/'.$top_view_video:"";?>
-<div class="mouseWheelFix">
-    <div id="showItem"></div>
-</div>                     
-</div>
-<p>&nbsp;</p>
-<?php if ($lang=='fr'):?>
-<a href="<?php echo base_url()?>/send_to_friend_fr/popup.php" title="Send to Friend" class="sendtofriend"><img border="0" src="<?php echo base_url().'assets/img/sendtoafriend.png'?>" /></a>
-<?php else:?>
-<a href="<?php echo base_url()?>/send_to_friend/popup.php" title="Send to Friend" class="sendtofriend"><img border="0" src="<?php echo base_url().'assets/img/sendtoafriend.png'?>" /></a>
-<?php endif;?>                                                                       
 
-<p>&nbsp;</p>                   
+
+        
 <p><?php echo $video_path?$description:''?></p>                                        
 <!-- /.content_item -->
 
