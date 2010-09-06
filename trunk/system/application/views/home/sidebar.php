@@ -33,7 +33,7 @@
 				    <li>
 				      <ul class="ctabs_content">
                       <?php foreach($categories as $row):?>
-				        <li><a href="<?php echo site_url('category/get_category/'.$row['ID']).'/'.$page?>"><?php echo $row['Name']?></a></li>
+				        <li><a alt="<?php echo __("CF_arch").' - '.$row['Name']?>" title="<?php echo __("CF_arch").' - '.$row['Name']?>" href="<?php echo site_url('category/get_category/'.$row['ID']).'/'.$page?>"><?php echo $row['Name']?></a></li>
                         <?php endforeach?>
 			          </ul>
 				      <!-- /.ctabs_content -->
@@ -44,7 +44,7 @@
 					  <?php $archives = get_archives();?>
                       <?php foreach($archives as $item):?>
 				        <li>                        
-						<a href="<?php echo $item['link'];?>"><?php echo $item['title'];?> </a>                        
+						<a href="<?php echo $item['link'];?>" alt="Archives - <?php echo $item['title'];?>" title="Archives - <?php echo $item['title'];?>"><?php echo $item['title'];?> </a>                        
                         </li>
                       <?php endforeach?>
 			          </ul>
@@ -54,7 +54,7 @@
 				    <li>
 				      <ul class="ctabs_content">
                       <?php foreach($top_speaker as $row):?>
-				        <li><a href="<?php echo site_url('video/speaker').'/'.$row['mem_id'].'/'.$page?>"><?php echo $row['first_name'].' '.$row['name']?></a></li>
+				        <li><a alt="<?php echo __("CF_speaker").' - '.$row['first_name'].' '.$row['name']?>" title="<?php echo __("CF_speaker").' - '.$row['first_name'].' '.$row['name']?>" href="<?php echo site_url('video/speaker').'/'.$row['mem_id'].'/'.$page?>"><?php echo $row['first_name'].' '.$row['name']?></a></li>
                       <?php endforeach?>
 			          </ul>
 				      <!-- /.ctabs_content -->
