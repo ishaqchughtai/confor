@@ -3,7 +3,7 @@
         <style>
             .mouseWheelFix {
                 width: 100%;
-                height: 380px;
+                height: 400px;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -34,8 +34,14 @@
 		$category_name = $row->category_name;
     }
 ?>
+<?php if($lang=='fr'){
+        $playlistPlayer='playlistPlayer.swf';    
+    }else{
+        $playlistPlayer='playlistPlayer_en.swf';    
+    }
+?>
 <script type="text/javascript">
-            swfobject.embedSWF("<?php echo base_url()?>playlistPlayer.swf", "showItem", "620", "380", "9.0.0","",{
+            swfobject.embedSWF("<?php echo base_url().$playlistPlayer?>", "showItem", "620", "380", "9.0.0","",{
                 // flash vars
                 "player.xml":"<?php echo site_url('video/xmlvid/'.$vid_id)?>.xml"
             },{

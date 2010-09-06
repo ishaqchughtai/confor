@@ -3,6 +3,9 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
 ?>
 <config>
     <watermark resource="<?php echo base_url()?>resources/images/<?php echo $watermark_resource?>" align="<?php echo $watermark_align_top;echo ',';echo $watermark_align_rl?>" alpha="0.9"/>
+    <external font="<?php echo base_url()?>resources/fonts/Arial.swf"
+        buttonFont="<?php echo base_url()?>resources/fonts/ArialBold.swf"
+        />
     <controls 
     hd="<?php echo $controls_hd?>"
     show="<?php echo $controls_show?>"/>
@@ -42,7 +45,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
         }
         ]]></text>
     </style>
-    
+
     <share>
         <!-- hide embed code -->
         <embed show="<?php echo $embed?>" />
@@ -72,6 +75,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
                     
         </settings>
             <!-- for each item, you can set custom sharing options -->
+            <item type="email"/>
             <item type="facebook" embedSwf="true" title="Playlist player" description="here comes a customizable description text" screenshot="<?php echo base_url()?>resources/images/watermark.png" width="320" height="240"/>
             <item type="twitter"/>
             <item type="digg"/>
@@ -80,7 +84,6 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
             <item type="tumblr"/>
             <item type="blogger"/>
             <item type="technorati"/>
-            <item type="email"/>
             <item type="bebo"/>
             <item type="linkedin"/>
             <item type="netvibes"/>

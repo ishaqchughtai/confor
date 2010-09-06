@@ -1,11 +1,14 @@
 <?php
-echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
+    echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
 ?>
 <config>
     <watermark resource="<?php echo base_url()?>resources/images/<?php echo $watermark_resource?>" align="<?php echo $watermark_align_top;echo ',';echo $watermark_align_rl?>" alpha="0.9"/>
+    <external font="<?php echo base_url()?>resources/fonts/Arial.swf"
+        buttonFont="<?php echo base_url()?>resources/fonts/ArialBold.swf"
+        />
     <controls 
-    hd="<?php echo $controls_hd?>"
-    show="<?php echo $controls_show?>"/>
+        hd="<?php echo $controls_hd?>"
+        show="<?php echo $controls_show?>"/>
     <fullscreen resizable="<?php echo $fullscreen_resizable?>" hideCursor="<?php echo $fullscreen_hideCursor?>" />
     <style global="<?php echo $style_global?>">
         <text><![CDATA[
@@ -42,17 +45,17 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
         }
         ]]></text>
     </style>
-    
+
     <share>
         <!-- hide embed code -->
         <embed show="<?php echo $embed?>" />
         <!-- 
-            ******** IMPORTANT ********
-            
-            before enabling embed code features, you'll have to make all paths
-            absolute, please refer to help file
+        ******** IMPORTANT ********
+
+        before enabling embed code features, you'll have to make all paths
+        absolute, please refer to help file
         -->
-        
+
         <!-- global default sharing options -->
         <settings
             embedSwf="true"
@@ -64,36 +67,36 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
             description=""
             screenshot=""
             icons="<?php echo base_url()?>resources/addThis"
-        >
-            
-        <label><![CDATA[
+            >
+
+            <label><![CDATA[
             Partagez cette vidéo <br>(Sélectionnez un réseau social)<br><br>
         ]]></label>
-                    
+
         </settings>
-            <!-- for each item, you can set custom sharing options -->
-            <item type="facebook" embedSwf="true" title="Playlist player" description="here comes a customizable description text" screenshot="<?php echo base_url()?>resources/images/watermark.png" width="320" height="240"/>
-            <item type="twitter"/>
-            <item type="digg"/>
-            <item type="myspace"/>
-            <item type="delicious"/>
-            <item type="tumblr"/>
-            <item type="blogger"/>
-            <item type="technorati"/>
-            <item type="email"/>
-            <item type="bebo"/>
-            <item type="linkedin"/>
-            <item type="netvibes"/>
-            <item type="reddit"/>
-            <item type="virb"/>
-            <item type="wordpress"/>
-            <item type="more"/>
+        <!-- for each item, you can set custom sharing options -->
+        <item type="email"/>
+        <item type="facebook" embedSwf="true" title="Playlist player" description="here comes a customizable description text" screenshot="<?php echo base_url()?>resources/images/watermark.png" width="320" height="240"/>
+        <item type="twitter"/>
+        <item type="digg"/>
+        <item type="myspace"/>
+        <item type="delicious"/>
+        <item type="tumblr"/>
+        <item type="blogger"/>
+        <item type="technorati"/>
+        <item type="bebo"/>
+        <item type="linkedin"/>
+        <item type="netvibes"/>
+        <item type="reddit"/>
+        <item type="virb"/>
+        <item type="wordpress"/>
+        <item type="more"/>
     </share>
-    
+
 
     <start resource="<?php echo base_url()?>videos/<?php echo $top_view_video?>" cover="<?php echo base_url()?>thumbs/<?php echo $video_image?>">
         <caption><![CDATA[
-                  <title><a href="<?php base_url()?>index.php/video/play/<?php echo $vid_id?>"><?php echo $video_title?></a></title>
+                  <title><a href="<?php echo base_url()?>index.php/video/play/<?php echo $vid_id?>"><?php echo $video_title?></a></title>
             ]]></caption>
     </start>
 
