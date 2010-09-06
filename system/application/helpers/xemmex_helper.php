@@ -1,5 +1,4 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-
 // ------------------------------------------------------------------------
 
 /**
@@ -820,12 +819,26 @@ function get_archives()
 	$CI->db->from('videos');
 	$result = $CI->db->get();
 	$archives = array();
+	$month_name_fr = array(
+		'Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'
+	);
+	//setlocale(LC_TIME, 'french');	
 	foreach ($result->result_array() as $item)
 	{
+		
 		$month = mdate("%m", $item['date']);
 		$year = mdate("%o", $item['date']);
+		$title = '';
+		if ($CI->_data['lang']=='fr')
+		{
+			$title = $month_name_fr[intval($month)-1].' '.$year.' ('.$item['vcount'].')';
+		}
+		else
+		{
+			$title = mdate("%F %Y", $item['date']).' ('.$item['vcount'].')';
+		}		
 		$archives[] = array(
-			'title'=> mdate("%F %Y", $item['date']).' ('.$item['vcount'].')',
+			'title'=> $title,
 			'link'=>site_url('video/list_archives').'/'.$year.'/'.$month
 		);						
 	}				
