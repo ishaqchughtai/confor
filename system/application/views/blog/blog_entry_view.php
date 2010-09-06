@@ -10,7 +10,7 @@
                                 $idtemp = $id;
                                 $link = $row['Link'];
                                 $linktemp = $link;
-                                $title = $row['Title'];
+                                $title = stripcslashes($row['Title']);
                                 $titletemp = $title;
                                 $title=mysql_escape_string($title);
                                 $subject = $row['Subject'];
@@ -24,10 +24,10 @@
                                 $countcomment = $row['CountComment'] ;
                                 $countcommenttemp = $countcomment;     
                             ?>
-        <h3><a href="#"><?php echo stripcslashes($title)?></a></h3>
+        <h3><a href="#" alt="<?php echo $title?>" title="<?php echo $title?>"><?php echo $title?></a></h3>
         <h5><?php echo $subject ?></h5>
         <a href="#comments" class="comments_balloon"><?php echo $countcommenttemp;?></a>
-        <p><img src="<?php echo base_url().'assets/uploads/image/'.$linktemp ?>" width="610" height="169" alt="Confor.ca" /></p>
+        <p><img alt="<?php echo $title?>" title="<?php echo $title?>" src="<?php echo base_url().'assets/uploads/image/'.$linktemp ?>" width="610" height="169" alt="Confor.ca" /></p>
         <p><?php echo $text ?></p>
       </div>
       <!-- /.content_item -->
