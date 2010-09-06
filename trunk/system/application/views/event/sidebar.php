@@ -82,9 +82,9 @@ function search_click_speaker (){
 							<?php endif;?>
 							
 							<li>
-									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
-									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
-									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>								
+									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$row['shash'];?>" width="81" height="52" class="alignleft" alt="<?php echo $row['title'].' - '.$row['first_name'].' '.$row['name']?>" title="<?php echo $row['title'].' - '.$row['first_name'].' '.$row['name']?>"></a>
+									<a alt="<?php echo $row['title'].' - '.$row['first_name'].' '.$row['name']?>" title="<?php echo $row['title'].' - '.$row['first_name'].' '.$row['name']?>" href="<?php echo site_url('video/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
+									<a alt="<?php echo $row['title'].' - '.$row['first_name'].' '.$row['name']?>" title="<?php echo $row['title'].' - '.$row['first_name'].' '.$row['name']?>" href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>								
 							</li>
 							
 							<?php if($i%4==3):?>
@@ -117,12 +117,12 @@ function search_click_speaker (){
 					<h3><?php echo __("CF_recent_vid")?></h3>
 
                     <ul class="popular_posts_content">
-							    <?php foreach($recent_video as $rows):?>
+							    <?php foreach($recent_video as $row):?>
 								<li>
 								
-									<a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>"><img src="<?php echo base_url().'thumbs/'.$rows['shash']?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
-									<a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>" class="title"><?php echo $rows['title']?></a>
-									<a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>"><?php echo __("CF_view")?></a>
+									<a href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><img alt="<?php echo $row['title'].' - '.$row['first_name'].' '.$row['name']?>" title="<?php echo $row['title'].' - '.$row['first_name'].' '.$row['name']?>" src="<?php echo base_url().'thumbs/'.$row['shash']?>" width="81" height="52" alt="Popular video" class="alignleft"></a>
+									<a alt="<?php echo $row['title'].' - '.$row['first_name'].' '.$row['name']?>" title="<?php echo $row['title'].' - '.$row['first_name'].' '.$row['name']?>" href="<?php echo site_url('video/play').'/'.$row['vid_id']?>" class="title"><?php echo $row['title']?></a>
+									<a alt="<?php echo $row['title'].' - '.$row['first_name'].' '.$row['name']?>" title="<?php echo $row['title'].' - '.$row['first_name'].' '.$row['name']?>" href="<?php echo site_url('video/play').'/'.$row['vid_id']?>"><?php echo __("CF_view")?></a>
 								
 								</li><br /><br />
                                 <?php endforeach?>
