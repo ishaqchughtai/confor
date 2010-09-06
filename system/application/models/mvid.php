@@ -137,21 +137,36 @@
 
         function get_popular_video($lg = 'en')
         {
+            $this->db->select('           
+            users.first_name,
+            users.name,            
+            videos.*
+            ');				
+			$this->db->from('videos');	
+			$this->db->join('users','videos.mem_id = users.id');				
             $this->db->where('approved','1');
-            $this->db->where('lang',$lg);
+            $this->db->where('videos.lang',$lg);
             $this->db->order_by('viewed','desc');
-            $this->db->limit(16);
-            $query = $this->db->get('videos');
+            $this->db->limit(16);					
+			
+            $query = $this->db->get();
             return $query->result_array();
         }
 
         function get_recent_video($lg = 'en')
         {
+            $this->db->select('           
+            users.first_name,
+            users.name,            
+            videos.*
+            ');				
+			$this->db->from('videos');	
+			$this->db->join('users','videos.mem_id = users.id');			
             $this->db->where('approved','1');
-            $this->db->where('lang',$lg);
+            $this->db->where('videos.lang',$lg);
             $this->db->order_by('date','desc');
             $this->db->limit(4);
-            $query = $this->db->get('videos');
+            $query = $this->db->get();
             return $query->result_array();	
         }	
 
