@@ -345,7 +345,7 @@ $lang['CF_admin_vid_list'] = 'Video Conference List';
 $lang['CF_admin_new_vid'] = 'New Video Conference';
 	$lang['CF_add_vid'] = 'Add video conference ';
 	$lang['CF_cate_man'] = 'Category Management';
-	$lang['CF_search_video'] = 'Result search video';
+	$lang['CF_search_video'] = 'Search Results found for';
 
 //event
 $lang['CF_event_search'] = 'Search through all post';

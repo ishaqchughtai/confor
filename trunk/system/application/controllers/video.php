@@ -152,6 +152,8 @@ class Video extends Frontend_controller
     $this->pagination->initialize($config);  
     $this->_data['link_html'] = $this->pagination->create_links();  	
     $this->_data['keyword'] = $keyword; 
+    $title = $keyword .' - '.__("CF_search_vid").' - confor.tv';
+    $this->_data['page_title'] = $title;
     $this->_load_view('home/search');                         
     //}
     // else
@@ -181,6 +183,8 @@ class Video extends Frontend_controller
     $this->_data['link_html'] = $this->pagination->create_links();
 	$keywords_to_search=stripcslashes($keywords_to_search);
     $this->_data['keyword'] = $keywords_to_search;
+    $title = $keywords_to_search .' - '.__("CF_search_vid").' - confor.tv';
+    $this->_data['page_title'] = $title;
     $this->_load_view('home/search'); 
   }
 

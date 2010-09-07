@@ -124,7 +124,9 @@ class Home extends Frontend_controller {
 
       $this->pagination->initialize($config);  
       $this->_data['link_html'] = $this->pagination->create_links();  
-      $this->_data['keyword'] = $keyword; 
+      $this->_data['keyword'] = $keyword;
+      $title = __("CF_search_video").$keyword.' - confor.tv';
+      $this->_data['page_title'] = $title; 
       $this->_load_view('home/search');                         
     }
     else
@@ -161,6 +163,8 @@ class Home extends Frontend_controller {
     $this->_data['search_results']=$this->Mhome->search_paging($keywords_to_search, $num_per_page, $offset,$istitle);     
     $this->_data['link_html'] = $this->pagination->create_links();
     $this->_data['keyword'] = $keywords_to_search;
+    $title = __("CF_search_video").$keywords_to_search.' - confor.tv';
+    $this->_data['page_title'] = $title;
     $this->_load_view('home/search'); 
   }	
 
