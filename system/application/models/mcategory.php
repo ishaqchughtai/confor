@@ -17,6 +17,14 @@
       return $query;
     }
     
+    function get_category_by_id($id)
+    {
+      $this->db->from('tblcategory');
+      $this->db->where(array('ID'=>$id));
+      $cate = $this->db->get();
+      return $cate->result_array();
+    }
+    
     //get video by category
     function get_video_by_category($id,$per_page,$offset)
     {
