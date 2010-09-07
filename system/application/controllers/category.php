@@ -7,6 +7,7 @@
       $this->load->model('MCategory');
       $this->_container = 'container';    
       $this->load->helper('date');    
+      $this->load->model('Mmetadata');
       //$this->load->model('Remember_me');
       $this->load->model('Mshopproduct','mshopproduct');
     }
@@ -29,10 +30,21 @@
       $this->_data['pagination'] = $this->pagination->create_links();
 
       $query =  $this->MCategory->get_category_by_id($id);
-      foreach($query as $row)
-      {
-        $title = __("CF_cate").' '.$row['Name'].' - confor.tv';
-      }  
+      
+      $meta = $this->Mmetadata->out_meta('category',$id);
+        if ($meta!=FALSE)
+        {
+          $title = $meta->title.' - confor.tv';
+          $this->_data['meta'] = $meta;
+        }
+        else
+        {
+          foreach($query as $row)
+          {
+            $title = __("CF_cate").' '.$row['Name'].' - confor.tv';
+          }
+        }
+        
       $this->_data['page_title'] = $title;
       $this->_load_view('home/get_video_by_category');
     }
