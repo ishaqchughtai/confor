@@ -717,3 +717,6 @@ $lang['CF_seconds']="f_Seconds";
 $lang['CF_editxml_success']="f_Edit Success";
 $lang['CF_check_numbers']="f_You must enter numbers only.";
 $lang['CF_hidden_logo']="f_Hidden Logo";
+
+//Key added on 07/09/2010
+$lang['CF_edit_category_meta']="f_Edit Category Metadata Information";

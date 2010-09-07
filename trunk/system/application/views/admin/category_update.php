@@ -1,14 +1,19 @@
-<div id="content">
-
-    <div class="x2">
-        <h3><?php echo __("CF_cate_update")?></h3>
-        <p>&nbsp;</p>
-        <?php 
+ <?php 
             foreach($query as $row)
             {
                 $id = $row['ID'];
                 $category_name=$row['Name'];
         }?>
+<div id="content">
+<ul class="link_conttrol">
+        <li><a class="icon_profile" href="<?php echo site_url('metadata/get_metadata/category/'.$id)?>"><?php echo __("CF_edit_category_meta")?></a></li>
+    </ul>
+    <br />
+    <br />
+    <div class="x2">
+        <h3><?php echo __("CF_cate_update")?></h3>
+        <p>&nbsp;</p>
+       
         <?php echo form_open('admin/modify_category/'.$id); ?>
 
         <label for="name"><?php echo __("CF_name")?>:</label>
