@@ -230,13 +230,31 @@ class Video extends Frontend_controller
     $this->db->select('videos.*, users.*');
     $this->db->where('lang',$this->_data['lang']);
     $this->db->where('MONTH(FROM_UNIXTIME(date))',$month);
-    $this->db->where('YEAR(FROM_UNIXTIME(date))',$year);	
+    $this->db->where('YEAR(FROM_UNIXTIME(date))',$year);
     $this->db->limit($config['per_page'], $page_offset);
     $this->db->from('videos');		
     $this->db->join('users','users.id=videos.mem_id');
     set_order_from_setting('videos','order_video_field','order_video_sort','date');
     $query = $this->db->get();
-    $this->_data['archives'] = $query->result_array();				
+    $this->_data['archives'] = $query->result_array();			
+
+	$month_name_fr = array(
+		'Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'
+	);	
+	$month_name_en = array(
+		'January','February','March','April','May','June','July','August','September','October','November','December'
+	);	
+	
+	
+	if ($this->_data['lang']=='fr')
+	{
+		$title = $month_name_fr[intval($month)-1].' '.$year;
+	}
+	else
+	{
+		$title = $month_name_en[intval($month)-1].' '.$year;				
+	}	
+	$this->_data['page_title'] = __("CF_arch").' - '.$title. ' - Confor.tv';
     $this->_load_view('home/archive_list');		
   }		
   function xmlvid($id)
