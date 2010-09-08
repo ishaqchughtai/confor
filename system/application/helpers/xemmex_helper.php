@@ -896,7 +896,7 @@ function out_static_page($code, $isMenu=TRUE)
      $out['code'] = $row->Code;
      if ($isMenu)
      {
-        return '<a href="'.$out['link'].'" >'.$out['name'].'</a>';
+        return '<a alt="Confor.tv - '.$out['name'].'" title="Confor.tv - '.$out['name'].'" href="'.$out['link'].'" >'.$out['name'].'</a>';
      }
      return $out;
 }
