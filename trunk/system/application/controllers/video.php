@@ -33,6 +33,17 @@ class Video extends Frontend_controller
     $this->_data['video_speaker'] = $this->Mvconference->get_video_by_speaker($id,$per_page,$offset); 
     $this->pagination->initialize($config);
     $this->_data['pagination'] = $this->pagination->create_links();
+	
+	$speaker_query = $this->db->get_where('users',array('id'=>$id));
+	$speaker_name = '';	
+	if ($speaker_query->num_rows()==1)
+	{
+		$row = $speaker_query->row();
+		$speaker_name = $row->first_name.' '.$row->name;
+	}
+	
+	$this->_data['page_title'] = __("CF_show").' : '.$speaker_name. ' - Confor.tv';	
+	
     $this->_load_view('home/get_video_by_speaker'); 
   }
 

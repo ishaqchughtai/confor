@@ -268,7 +268,7 @@ $lang['CF_yr_name'] = 'YOUR NAME';
 //HOME FRONTEND
 //------------------------------------------------------------------
 $lang['CF_top_video'] = 'Top Video';
-$lang['CF_search_video'] = 'Search result for';
+$lang['CF_search_video'] = 'Search results for keyword';
 
 
 //------------------------------------------------------------------
@@ -345,7 +345,7 @@ $lang['CF_admin_vid_list'] = 'Video Conference List';
 $lang['CF_admin_new_vid'] = 'New Video Conference';
 	$lang['CF_add_vid'] = 'Add video conference ';
 	$lang['CF_cate_man'] = 'Category Management';
-	$lang['CF_search_video'] = 'Search Results found for';
+	//$lang['CF_search_video'] = 'Search results for keyword';
 
 //event
 $lang['CF_event_search'] = 'Search through all post';
