@@ -501,7 +501,7 @@ $lang['CF_old_pass_incorrect'] = 'Votre ancien mot de passe est incorrect';
 
 //new key 09-07
 $lang['CF_Blog_Title'] = 'Blogue confor';
-$lang['CF_Blog_search'] = 'Recherche Blogue';
+$lang['CF_Blog_search_title'] = 'Recherche Blogue';
 $lang['CF_next'] = 'Suivant >';
 $lang['CF_previous'] = '< Pr&eacute;c&egrave;dent';
 $lang['CF_last'] = 'Dernier >>';
@@ -720,3 +720,5 @@ $lang['CF_hidden_logo']="f_Hidden Logo";
 
 //Key added on 07/09/2010
 $lang['CF_edit_category_meta']="f_Edit Category Metadata Information";
+//Key added on 08/09/2010
+$lang['CF_Search_results']="f_Search results for : ";

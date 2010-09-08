@@ -550,7 +550,7 @@ $lang['CF_expired'] = 'Expired';
 $lang['CF_old_pass_incorrect'] = 'Your Old Password was incorrect';
 //new key 09-07
 $lang['CF_Blog_Title'] = 'Blog confor';
-$lang['CF_Blog_search'] = 'Blog search';
+$lang['CF_Blog_search_title'] = 'Blog search';
 
 $lang['CF_next'] = 'Next >';
 $lang['CF_previous'] = '< Previous';
@@ -774,4 +774,6 @@ $lang['CF_hidden_logo']="Hidden Logo";
 
 //Key added on 07/09/2010
 $lang['CF_edit_category_meta']="Edit Category Metadata Information";
+//Key added on 08/09/2010
+$lang['CF_Search_results']="Search results for : ";
 

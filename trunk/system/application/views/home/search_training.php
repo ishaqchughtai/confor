@@ -1,4 +1,7 @@
-<?php if($training):?>
+<?php if($training_search):?>
+<div class="content_item">
+            <h3><?php echo __("CF_Search_results").'"'.$keywords.'"'?></h3>
+        </div>
 <?php
     foreach ($training as $row)
     {
