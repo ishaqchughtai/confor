@@ -164,14 +164,23 @@ class Blog_frontend extends Frontend_controller {
     //Search
     function search()
     {
-        $this->_data['page_title'] = __("CF_Blog_search");
-        $Title = $this->input->post('search_field_blog');
+        //$this->_data['page_title'] = __("CF_Blog_search");
+        $Title = $this->input->post('search_field_blog');        
         $Title = $this->uri->segment(3);
+        $this->_data['page_title'] =__("CF_Search_results").'"'.$Title.'"'.' - '. __("CF_Blog_search_title").' - '.'Confor.tv';
+        if($Title=='5')
+        {
+            $this->_data['page_title'] = __("CF_mess_no_search").' - '. __("CF_Blog_search_title").' - '.'Confor.tv';
+            $this->_data['error']=__("CF_mess_no_search");
+            $this->_data['query_most_blog_post'] = $this->Mblog->get_most_blog_post($this->_data['lang']);
+            $this->_load_view('blog/search_blog');
+            return;
+        }   
         $per_page = $this->uri->segment(4);
         $offset = $this->uri->segment(5);
 
         $this->_data['path'][] = array(
-        'name' => __("CF_Blog_search"),
+        'name' => __("CF_blog_search"),
         'link' => '#'
         );
         $config['uri_segment'] = 5; 
@@ -181,12 +190,12 @@ class Blog_frontend extends Frontend_controller {
         $config += config_pagination_style();
         $this->pagination->initialize($config);
         $query_search = $this->Mblog->search_blog($this->_data['lang'],$offset,$per_page,$Title);
+        $this->_data['Title_search'] = $Title;
         if($query_search->num_rows()>0)
         {
-            $this->_data['pagination'] = $this->pagination->create_links(); 
+            $this->_data['pagination'] = $this->pagination->create_links();  
             $this->_data['query'] =  $query_search->result_array();
             $this->_load_view('blog/search_blog');                             
-
         }
         else
         {
@@ -203,7 +212,7 @@ class Blog_frontend extends Frontend_controller {
         $offset = $this->uri->segment(5);
 
         $this->_data['path'][] = array(
-        'name' => __("CF_Blog_search"),
+        'name' => __("CF_blog_search"),
         'link' => '#'
         );
         $config['uri_segment'] = 5;
@@ -216,13 +225,13 @@ class Blog_frontend extends Frontend_controller {
 
         $this->pagination->initialize($config);
         $query_search = $this->Mblog->search_blog_keyword($this->_data['lang'],$offset,$per_page,$Keywords);
-        $this->_data['page_title'] = __("CF_Blog_search");
+        $this->_data['page_title'] = __("CF_Search_results").'"'.$Keywords.'"'.' - '. __("CF_Blog_search_title").' - '.'Confor.tv';
+        $this->_data['Title_search'] = $Keywords;
         if($query_search->num_rows()>0)
         {
             $this->_data['pagination'] = $this->pagination->create_links(); 
             $this->_data['query'] =  $query_search->result_array();
             $this->_load_view('blog/search_blog');                             
-
         }
         else
         {
@@ -234,7 +243,7 @@ class Blog_frontend extends Frontend_controller {
     function search_blog_by_date()
     {
         $this->_data['path'][] = array(
-        'name' => __("CF_Blog_search"),
+        'name' => __("CF_blog_search"),
         'link' => '#'
         );
         $Date = $this->uri->segment(3);
@@ -247,7 +256,8 @@ class Blog_frontend extends Frontend_controller {
         $config += config_pagination_style();
         $this->pagination->initialize($config);
         $query_search = $this->Mblog->search_blog_by_date($this->_data['lang'],$offset,$per_page,$Date);
-        $this->_data['page_title'] = __("CF_Blog_search");
+        $this->_data['page_title'] = __("CF_Search_results").'"'.$Date.'"'.' - '. __("CF_Blog_search_title").' - '.'Confor.tv';
+        $this->_data['Title_search'] = $Date;
         if($query_search->num_rows()>0)
         {
             $this->_data['pagination'] = $this->pagination->create_links(); 
