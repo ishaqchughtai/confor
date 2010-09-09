@@ -27,7 +27,7 @@
 
         <p><?php echo word_limiter(strip_tags($text), 100); ?></p>
 
-        <a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title);?>" class = "read_more">
+        <a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title);?>" class = "read_more" title="<?php echo __("CF_continue")." : ".$title?>" >
             <?php echo __("CF_continue"); ?>
         </a>
     <?php else:?>
@@ -36,12 +36,12 @@
         <a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title)?>#comments" class = "comments_balloon"><?php echo $countcomment; ?></a>
 
         <p>
-            <img alt="<?php echo $title?>" title="<?php echo $title?>" src = "<?php echo base_url().'assets/uploads/image/'.$link ?>" width = "610" height = "169" alt = "Confor.ca"/>
+            <img alt="<?php echo $title?>" title="<?php echo $title?>" src = "<?php echo base_url().'assets/uploads/image/'.$link ?>" width = "610" height = "169"   />
         </p>
 
         <p><?php echo word_limiter(strip_tags($text), 100); ?></p>
 
-        <a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title);?>" class = "read_more">
+        <a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title);?>" class = "read_more" title="<?php echo __("CF_continue")." : ".$title?>">
             <?php echo __("CF_continue"); ?>
         </a>    
     <?php endif;?> 
@@ -95,16 +95,16 @@
             <a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title)?>#comments" class = "comments_balloon"><?php echo $countcomment ?></a>
         <?php endif;?>
         <p>
-            <img alt="<?php echo $title?>" title="<?php echo $title?>" src = "<?php echo base_url().'assets/uploads/image/'.$link ?>" width = "202" height = "90" alt = "Confor.ca" class = "alignleft"/>
+            <img alt="<?php echo $title?>" title="<?php echo $title?>" src = "<?php echo base_url().'assets/uploads/image/'.$link ?>" width = "202" height = "90"  class = "alignleft"/>
         </p>
 
         <p>
             <?php echo word_limiter(strip_tags($text), 100); ?>
         </p>    
         <?php if($is_admin):?> 
-            <a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title); ?>" class = "read_more"><?php echo __("CF_continue") ?></a>
+            <a href = "<?php echo site_url('blog_frontend/blog_content_admin/'.$author.'/'.$id.'/'.$title); ?>" title="<?php echo __("CF_continue").' : '.$title?>" class = "read_more"><?php echo __("CF_continue") ?></a>
         <?php else:?>
-            <a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title); ?>" class = "read_more"><?php echo __("CF_continue") ?></a>
+            <a href = "<?php echo site_url('blog_frontend/blog_content/'.$author.'/'.$id.'/'.$title); ?>" title="<?php echo __("CF_continue").' : '.$title?>" class = "read_more"><?php echo __("CF_continue") ?></a>
         <?php endif;?>
     </div>
 
