@@ -2,6 +2,9 @@
 	  <?php if(!$events):?>
       <p class="not_warning "><span class="img"></span><?php echo __("CF_mess_no_search")?><span class="close"></span></p>
       <?php else:?>
+       <div class="content_item">
+            <h3><?php echo __("CF_Search_results").'"'.$Title_search.'"'?></h3>
+        </div>
       <div class="content_item">
         <?php foreach($events as $row)
    				{
@@ -16,7 +19,7 @@
 					?>
                     <?php if($status==1):?>
         <div class="content_item">
-          <h3><a href="<?php echo site_url('event_frontend/event_content/'.$id)?>"><?php echo $title?></a></h3>
+          <h3><a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('event_frontend/event_content/'.$id)?>"><?php echo $title?></a></h3>
           <h5><?php echo $subject ?></h5>
           <h5><?php echo __("CF_by")?> <?php echo $speaker?> <?php echo __("CF_in")?> : 
           <?php for($i=0;$i<count($keyword);$i++){?>
@@ -26,7 +29,7 @@
           
            // <?php echo $date;?></h5>
           <p> <?php echo _substr($description,200)?></p>
-          <a href="<?php echo site_url('event_frontend/event_content/'.$id)?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
+          <a alt="<?php echo __("CF_continue").' - confor.tv'?>" title="<?php echo __("CF_continue").' - confor.tv'?>" href="<?php echo site_url('event_frontend/event_content/'.$id)?>" class="read_more"><?php echo __("CF_continue")?></a> </div>
           <?php else:?>
 					<?php endif;?>
         <?php
