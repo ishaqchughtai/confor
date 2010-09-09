@@ -13,7 +13,7 @@
         <h5><?php echo __("CF_by")?> <a href="<?php echo site_url('video/speaker').'/'.$rows['mem_id'].'/'.$page?>"><b><?php echo $rows['first_name'].' '.$rows['name']?></b></a> <?php echo __("CF_in")?> : 
 
             <?php for($i=0;$i<count($keyword);$i++){?>
-            <a href="<?php echo site_url('video/search_tag/'.$keyword[$i].'/')?>"><?php echo $keyword[$i]?></a>
+            <a title="<?php echo $keyword[$i]?>" alt="<?php echo $keyword[$i]?>" href="<?php echo site_url('video/search_tag/'.$keyword[$i].'/')?>"><?php echo $keyword[$i]?></a>
                 <?php if ($i<count($keyword)-1) echo ','?>
                 <?php ;}?>
 
@@ -26,7 +26,7 @@
             <?php echo $rows['description'];?>
         </p>
 
-        <a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>" class="read_more"><?php echo __("CF_view")?></a>
+        <a alt="<?php echo $rows['title'].' - '.$rows['first_name'].' '.$rows['name']?>" title="<?php echo $rows['title'].' - '.$rows['first_name'].' '.$rows['name']?>" href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>" class="read_more"><?php echo __("CF_view")?></a>
 
     </div>		  
 
