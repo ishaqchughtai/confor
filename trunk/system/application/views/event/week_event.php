@@ -12,7 +12,7 @@
 					
 					<?php if($status==1):?>
 					
-						<li><h5><a href="<?php echo site_url('event_frontend/event_content/'.$id)?>"><?php echo $title?>(<?php echo $date?>)</a></h5></li>
+						<li><h5><a alt="<?php echo __("CF_week_events").' - '.$title.'('.$date.')'?>" title="<?php echo __("CF_week_events").' - '.$title.'('.$date.')'?>" href="<?php echo site_url('event_frontend/event_content/'.$id)?>"><?php echo $title?>(<?php echo $date?>)</a></h5></li>
 					
 					<?php else:?>
 					<?php endif;?>

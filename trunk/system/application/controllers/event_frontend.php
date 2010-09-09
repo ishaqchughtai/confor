@@ -113,6 +113,7 @@
       $keywords = $this->uri->segment(3);
       $per_page = $this->uri->segment(4);
       $offset = $this->uri->segment(5);
+      $this->_data['Title_search'] = $keywords;
 
 
       $config['uri_segment'] = 5;
@@ -124,7 +125,7 @@
       $this->_data['events'] = $this->MEvent->search_event($keywords,$lg,$per_page,$offset); 
       $this->pagination->initialize($config);
       $this->_data['pagination'] = $this->pagination->create_links();
-      $title = __("CF_search_event").' - confor.tv';
+      $title = __("CF_Search_results").'"'.$keywords.'"'.' - '.__("CF_search_event").' - confor.tv';
       $this->_data['page_title'] = $title;
       $this->_load_view('event/search_event');    
     }
@@ -146,7 +147,7 @@
       $keywords = $this->uri->segment(3);
       $per_page = $this->uri->segment(4);
       $offset = $this->uri->segment(5);
-
+      $this->_data['Title_search'] = $keywords;
 
       $config['uri_segment'] = 5;
       $config['base_url'] = base_url().'index.php/event_frontend/search_keyword/'.$keywords.'/'.$per_page;
@@ -157,7 +158,7 @@
       $this->_data['events'] = $this->MEvent->search_event_by_keyword($keywords,$lg,$per_page,$offset); 
       $this->pagination->initialize($config);
       $this->_data['pagination'] = $this->pagination->create_links();
-      $title = __("CF_search_event").' - confor.tv';
+      $title = __("CF_Search_results").'"'.$keywords.'"'.' - '.__("CF_search_event").' - confor.tv';
       $this->_data['page_title'] = $title;
       $this->_load_view('event/search_event');    
     }

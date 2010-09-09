@@ -16,7 +16,7 @@
 					
 					<?php if($status==1):?>
 					<div class="content_item">
-						<h3><a href="<?php echo site_url('event_frontend/event_content/'.$id)?>"><?php echo $title?></a></h3>
+						<h3><a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('event_frontend/event_content/'.$id)?>"><?php echo $title?></a></h3>
                         <h5><?php echo $subject ?></h5>
 
 					<h5><?php echo __("CF_by")?> <?php echo $speaker?> <?php echo __("CF_in")?> : 
@@ -27,7 +27,7 @@
 		  			<?php echo $date;?></h5>
 					<p> <?php echo word_limiter(strip_tags($description),200)?></p>
 					
-					<a href="<?php echo site_url('event_frontend/event_content/'.$id)?>" class="read_more"><?php echo __("CF_continue")?></a>
+					<a alt="<?php echo __("CF_continue").' - confor.tv'?>" title="<?php echo __("CF_continue").' - confor.tv'?>" href="<?php echo site_url('event_frontend/event_content/'.$id)?>" class="read_more"><?php echo __("CF_continue")?></a>
 					</div>	
 					<?php else:?>
 					<?php endif;?>
