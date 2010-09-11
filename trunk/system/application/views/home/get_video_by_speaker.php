@@ -8,7 +8,7 @@
         <h5><?php echo __("CF_by")?> <?php echo $rows['first_name'].' '.$rows['name']?> <?php echo __("CF_in")?> : 
 
             <?php for($i=0;$i<count($keyword);$i++){?>
-                <a href="<?php echo site_url('video/search_tag/'.$keyword[$i])?>"><?php echo $keyword[$i]?></a>
+                <a alt="<?php echo $keyword[$i]?>" title="<?php echo $keyword[$i]?>" href="<?php echo site_url('video/search_tag/'.$keyword[$i])?>"><?php echo $keyword[$i]?></a>
                 <?php if ($i<count($keyword)-1) echo ','?>
                 <?php ;}?>
 
@@ -21,7 +21,7 @@
             <?php echo _substr($rows['description'],200);?>
         </p>
 
-        <a href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>" class="read_more"><?php echo __("CF_view")?></a>
+        <a alt="<?php echo $rows['title'].' - '.$rows['first_name'].' '.$rows['name']?>" title="<?php echo $rows['title'].' - '.$rows['first_name'].' '.$rows['name']?>" href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>" class="read_more"><?php echo __("CF_view")?></a>
 
     </div>		  
 

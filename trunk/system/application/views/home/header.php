@@ -2,7 +2,7 @@
 
 <div id="header">
 <div id="logo">                   
-	<a href="<?php echo base_url();?>">	
+	<a alt="Confor.tv" title="Confor.tv" href="<?php echo base_url();?>">	
 	<?php echo img('logo.png',array('alt' => 'Confor.ca'));?>
 	</a>	
 </div>
@@ -16,9 +16,9 @@
 
 	<div class="left">
 		<?php echo __("CF_you_here");?> :		
-		<b><a href="<?php echo $path[0]['link']?>"><?php echo $path[0]['name']?></a></b>
+		<b><a alt="<?php echo $path[0]['name']?>" title="<?php echo $path[0]['name']?>" href="<?php echo $path[0]['link']?>"><?php echo $path[0]['name']?></a></b>
 		<?php for ($i=1; $i<count($path); $i++):?>
-			/ <a href="<?php echo $path[$i]['link']?>"><?php echo $path[$i]['name']?></a>
+			/ <a alt="<?php echo $path[$i]['name']?>" title="<?php echo $path[$i]['name']?>" href="<?php echo $path[$i]['link']?>"><?php echo $path[$i]['name']?></a>
 		<?php endfor;?>			
 	</div>
 	

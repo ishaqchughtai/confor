@@ -66,15 +66,15 @@
         <h5>
             <?php echo __("CF_by")?>
 
-            <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $first_name.' '.$name_name?></b></a> 
+            <a alt="<?php echo $first_name.' '.$name_name?>" title="<?php echo $first_name.' '.$name_name?>" href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/5'?>"><b><?php echo $first_name.' '.$name_name?></b></a> 
             <?php echo __("CF_in")?> 
             <?php for($i=0;$i<count($tags);$i++){?>
-                <a href="<?php echo site_url('video/search_tag/'.$tags[$i])?>"><?php echo $tags[$i]?></a>
+                <a alt="<?php echo $tags[$i]?>" title="<?php echo $tags[$i]?>" href="<?php echo site_url('video/search_tag/'.$tags[$i])?>"><?php echo $tags[$i]?></a>
                 <?php if ($i<count($tags)-1) echo ','?>
                 <?php ;}?>
             //
         <?php echo mdate("%d-%m-%Y", $date)?></h5>              
-        <h5><b><?php echo __("CF_cate_name")?>: <a href="<?php echo site_url('category/get_category/').'/'.$category_id.'/5'?>"><?php echo $category_name?></a></b></h5>
+        <h5><b><?php echo __("CF_cate_name")?>: <a alt="<?php echo $category_name?>" title="<?php echo $category_name?>" href="<?php echo site_url('category/get_category/').'/'.$category_id.'/5'?>"><?php echo $category_name?></a></b></h5>
         <?php }?>
 
 
@@ -91,7 +91,7 @@
         <?php for($i=0; $i<count($advs); $i++):?>
 
             <div class="x3<?php if(($i+1)%2==0) echo ' no_margin_r';?>" style="border-color:#FFF; border:thick;">
-                <a href="<?php echo site_url('advertisement/go_to/'.$advs[$i]['ID'])?>" target="<?php 
+                <a alt="<?php echo $advs[$i]['TextTips']?>" title="<?php echo $advs[$i]['TextTips']?>" href="<?php echo site_url('advertisement/go_to/'.$advs[$i]['ID'])?>" target="<?php 
                         if($advs[$i]['Target'] ==1)  echo '_blank';
                         else echo '_parent'?>"><img src="<?php echo base_url().'assets/uploads/image/'.$advs[$i]['ImageLink']?>" width="285" height="285" class="icon" alt="<?php echo $advs[$i]['TextTips']?>"></a>
 
