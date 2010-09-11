@@ -54,6 +54,12 @@
             <option value="true" <?php if($fullscreen_resizable=='true') echo 'selected="selected"';?>><?php echo __("CF_yes")?></option>
             <option value="false" <?php if($fullscreen_resizable=='false') echo 'selected="selected"';?>><?php echo __("CF_No")?></option>
         </select>
+    </div>                    
+</div>
+
+<div class="x2 frame no_margin">    
+    <h3><?php echo __("CF_player_vid_set")?></h3>
+    <div class="frame_content">
         <label><?php echo __("CF_hide_cur")?>:(<?php echo __("CF_seconds")?>)</label>
         <input name="fullscreen_hideCursor" type="text" align="left" value="<?php echo $fullscreen_hideCursor?>" class="medium">
         <?php echo form_error("fullscreen_hideCursor"); ?>
@@ -66,28 +72,6 @@
         <select name="embed" class="medium">
             <option value="true" <?php if($embed=='true') echo 'selected="selected"';?>><?php echo __("CF_yes")?></option>
             <option value="false" <?php if($embed=='false') echo 'selected="selected"';?>><?php echo __("CF_No")?></option>
-        </select>
-    </div>                    
-</div>
-
-<div class="x2 frame no_margin">    
-    <h3><?php echo __("CF_player_vid_set")?></h3>
-    <div class="frame_content">
-        <label><?php echo __("CF_logo")?>:</label>
-        <table width="202" height="130" border="0" bgcolor="#0000FF">
-            <tr>
-                <td width="101" height="65"><input type="radio" name="radio" id="radio2" value="11" <?php if($vt==11)echo 'checked="checked"'?> style="background: white; border: hidden;"  /></td>
-                <td width="101" height="65"><input type="radio" name="radio" id="radio" value="12" <?php if($vt==12)echo 'checked="checked"'?> style="background: white; border: hidden;"/></td> 
-            </tr>
-            <tr>
-                <td width="101" height="65"><input type="radio" name="radio" id="radio3" value="21" <?php if($vt==21)echo 'checked="checked"'?> style="background: white; border: hidden;" /></td>
-                <td width="101" height="65"><input type="radio" name="radio" id="radio" value="22" <?php if($vt==22)echo 'checked="checked"'?> style="background: white; border: hidden;" /></td>
-            </tr>
-        </table>
-        <label>Hidden <?php echo __("CF_logo")?>:</label>
-        <select name="watermark_hidden" class="medium">
-            <option value="true" <?php if($watermark_hidden=='true') echo 'selected="selected"';?>><?php echo __("CF_yes")?></option>
-            <option value="false" <?php if($watermark_hidden=='false') echo 'selected="selected"';?>><?php echo __("CF_No")?></option>
         </select>        
     </div>
 </div>

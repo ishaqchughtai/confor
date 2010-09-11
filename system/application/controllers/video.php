@@ -282,8 +282,6 @@ class Video extends Frontend_controller
     {
         $id_setting=$row['id'];
         $data['watermark_resource']=$row['watermark_resource'];
-        $data['watermark_align_top']=$row['watermark_align_top'];
-        $data['watermark_align_rl']=$row['watermark_align_rl'];
         $data['controls_show']=$row['controls_show'];
         $data['controls_hd']=$row['controls_hd'];
         $data['fullscreen_resizable']=$row['fullscreen_resizable'];
@@ -301,6 +299,8 @@ class Video extends Frontend_controller
                 $data['video_image']=$row->shash;
                 $data['video_title']=$row->title;
                 $data['description']=$row->description;
+                $data['watermark_align_top']=$row->watermark_align_top;
+                $data['watermark_align_rl']=$row->watermark_align_rl;
             } 
     $this->load->view('home/xmlvid',$data);
   }

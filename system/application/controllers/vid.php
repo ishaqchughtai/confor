@@ -190,7 +190,25 @@ class Vid extends Admin_controller {
                 $this->_load_view('vid/edit_video_conference');
             }
             else
-            {                                                
+            {
+                $vt_temp=$this->input->post('radio');
+                if($vt_temp==11)
+                {
+                    $watermark_align_top='top';
+                    $watermark_align_rl='left';    
+                }elseif($vt_temp==12)
+                {
+                    $watermark_align_top='top';
+                    $watermark_align_rl='right';   
+                }elseif($vt_temp==21)
+                {
+                    $watermark_align_top='bottom';
+                    $watermark_align_rl='left';    
+                }elseif($vt_temp==22)
+                {
+                    $watermark_align_top='bottom';
+                    $watermark_align_rl='right';   
+                }                                                
                 $data = array(
                 'mem_id'=>$this->input->post('speaker'),
                 'title'=>$this->input->post('title'),                    
@@ -198,7 +216,9 @@ class Vid extends Admin_controller {
                 'category'=>$this->input->post('video_cate'),
                 'tags'=>$this->input->post('keywords'),            
                 'approved'=>$this->input->post('approved'),
-                'lang'=>$this->input->post('lg')
+                'lang'=>$this->input->post('lg'),
+                'watermark_align_top'=>$watermark_align_top,
+                'watermark_align_rl'=>$watermark_align_rl,
                 );
                 $query_users=$this->Mvid->get_user_by_id($id);
                 foreach($query_users as $row)
