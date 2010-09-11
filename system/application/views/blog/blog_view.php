@@ -81,7 +81,7 @@
                 for ($i=0; $i < count($key); $i++)
                 {
                 ?>
-                <a href = "<?php echo site_url('blog_frontend/search_keyword').'/'.$key[$i].'/'.$page?>"><?php echo $key[$i] ?></a>
+                <a alt="<?php echo $key[$i]?>" title="<?php echo $key[$i]?>" href = "<?php echo site_url('blog_frontend/search_keyword').'/'.$key[$i].'/'.$page?>"><?php echo $key[$i] ?></a>
                 <?php
                     if ($i < count($key) - 1)
                         echo ',';

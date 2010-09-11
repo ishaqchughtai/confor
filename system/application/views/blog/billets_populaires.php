@@ -23,12 +23,12 @@
                         <img alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
                         <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
+                        <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php else:?>
                         <img alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
                         <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
+                        <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php endif;?>
                 </li>
                 <?php }?>
@@ -55,15 +55,15 @@
                 ?>
                 <li>
                     <?php if($is_admin):?>                                
-                        <img src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
+                        <img alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
-                        <a href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
+                        <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
+                        <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php else:?>
-                        <img src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
+                        <img alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
-                        <a href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
+                        <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
+                        <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php endif;?>
                 </li>
                 <?php }?>
@@ -88,15 +88,15 @@
                 ?>
                 <li>
                     <?php if($is_admin):?>                                
-                        <img src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
+                        <img alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
-                        <a href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
+                        <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
+                        <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php else:?>
-                        <img src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
+                        <img alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
-                        <a href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
+                        <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
+                        <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php endif;?>
                 </li>
                 <?php }?>
@@ -123,15 +123,15 @@
                 ?>
                 <li>
                     <?php if($is_admin):?>                                
-                        <img src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
+                        <img alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
-                        <a href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
+                        <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
+                        <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content_admin'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php else:?>
-                        <img src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
+                        <img alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" src="<?php echo base_url().'assets/uploads/image/thumb_'.$link?>" width="60" height="60" alt="Popular Post" class="alignleft" />
 
-                        <a href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
-                        <a href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
+                        <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>" class="title"><?php echo $title?></a>
+                        <a alt="<?php echo $title.' - confor.tv'?>" title="<?php echo $title.' - confor.tv'?>" href="<?php echo site_url('blog_frontend/blog_content'.'/'.$author.'/'.$id.'/'.$title); ?>#comments"><?php echo $countcomment?> <?php echo __("CF_cm")?></a>
                         <?php endif;?>
                 </li>
                 <?php }?>
