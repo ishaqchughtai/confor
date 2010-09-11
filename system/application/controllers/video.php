@@ -21,7 +21,7 @@ class Video extends Frontend_controller
   function speaker()
   {
     $id = $this->uri->segment(3);
-    $per_page = $this->uri->segment(4);
+    $per_page = $this->_setting['num_per_page_video'];
     $offset = $this->uri->segment(5);
 
     $config['uri_segment'] = 5;
@@ -95,7 +95,7 @@ class Video extends Frontend_controller
         $page_offset=$this->uri->segment(5);
         $config['base_url'] = base_url().'index.php/video/play/'.$id.'/4/';
         $config['total_rows'] = $this->Mhome->count_video_record($catid);
-        $config['per_page']='4';
+        $config['per_page']=$this->_setting['num_per_page_video'];
         $config['uri_segment'] = 5;
 
         $config += config_pagination_style();
