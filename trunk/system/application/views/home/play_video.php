@@ -60,15 +60,15 @@
 
 <h5><?php echo __("CF_by")?>
 
-    <a href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/'.$page?>"><b><?php echo $first_name.' '.$name_name?></b></a> 
+    <a alt="<?php echo $first_name.' '.$name_name?>" title="<?php echo $first_name.' '.$name_name?>" href="<?php echo site_url('video/speaker').'/'.$speaker_id.'/5'?>"><b><?php echo $first_name.' '.$name_name?></b></a> 
     <?php echo __("CF_in")?> 
     <?php for($i=0;$i<count($tags);$i++){?>
-        <a href="<?php echo site_url('video/search_tag/'.$tags[$i])?>"><?php echo $tags[$i]?></a>
+        <a alt="<?php echo $tags[$i]?>" title="<?php echo $tags[$i]?>" href="<?php echo site_url('video/search_tag/'.$tags[$i])?>"><?php echo $tags[$i]?></a>
         <?php if ($i<count($tags)-1) echo ','?>
         <?php ;}?>
     //
 <?php echo mdate("%d-%m-%Y", $date)?></h5>              
-<h5><b><?php echo __("CF_cate_name")?>: <a href="<?php echo site_url('category/get_category/').'/'.$category.'/5'?>"><?php echo $category_name?></a></b></h5>               
+<h5><b><?php echo __("CF_cate_name")?>: <a alt="<?php echo $category_name?>" title="<?php echo $category_name?>" href="<?php echo site_url('category/get_category/').'/'.$category.'/5'?>"><?php echo $category_name?></a></b></h5>               
              
 <p><?php echo $description?></p>
 <a class="prev browse left"></a>
