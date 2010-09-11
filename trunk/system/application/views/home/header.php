@@ -12,8 +12,6 @@
 
 <div id="header_info">
 
-
-
 	<div class="left">
 		<?php echo __("CF_you_here");?> :		
 		<b><a alt="<?php echo $path[0]['name']?>" title="<?php echo $path[0]['name']?>" href="<?php echo $path[0]['link']?>"><?php echo $path[0]['name']?></a></b>
@@ -25,7 +23,7 @@
 	<div class="right">
 		<?php $feed = isset($feed_link)?$feed_link:'blog.rss';?>
 		<a alt="Confor.tv - <?php echo __("CF_subscribe")?>" title="Confor.tv - <?php echo __("CF_subscribe")?>" href="<?php echo site_url('feed').'/'.$feed?>" class="rss"><?php echo __("CF_subscribe")?></a>
-	</div>	
+	</div>
 
 </div>
 </div>
