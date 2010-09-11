@@ -23,7 +23,7 @@
           <h5><?php echo $subject ?></h5>
           <h5><?php echo __("CF_by")?> <?php echo $speaker?> <?php echo __("CF_in")?> : 
           <?php for($i=0;$i<count($keyword);$i++){?>
-          <a href="<?php echo site_url('event_frontend/search_keyword').'/'.$keyword[$i].'/'.$page?>"><?php echo $keyword[$i]?></a>
+          <a alt="<?php echo $keyword[$i]?>" title="<?php echo $keyword[$i]?>" href="<?php echo site_url('event_frontend/search_keyword').'/'.$keyword[$i].'/'.$page?>"><?php echo $keyword[$i]?></a>
           <?php if ($i<count($keyword)-1) echo ','?>
           <?php ;}?>
           

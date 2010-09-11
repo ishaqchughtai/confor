@@ -9,7 +9,7 @@
 
         <h3><a alt="<?php echo $rows['title'].' - '.$rows['first_name'].' '.$rows['name']?>" title="<?php echo $rows['title'].' - '.$rows['first_name'].' '.$rows['name']?>" href="<?php echo site_url('video/play').'/'.$rows['vid_id']?>"><?php echo $rows['title'];?></a></h3>
 
-        <h5><?php echo __("CF_by")?> <a href="<?php echo site_url('video/speaker').'/'.$rows['mem_id'].'/5'?>"><b><?php echo $rows['first_name'].' '.$rows['name']?></b></a> <?php echo __("CF_in")?> : 
+        <h5><?php echo __("CF_by")?> <a alt="<?php echo $rows['first_name'].' '.$rows['name']?>" title="<?php echo $rows['first_name'].' '.$rows['name']?>" href="<?php echo site_url('video/speaker').'/'.$rows['mem_id'].'/5'?>"><b><?php echo $rows['first_name'].' '.$rows['name']?></b></a> <?php echo __("CF_in")?> : 
 
             <?php for($i=0;$i<count($keyword);$i++){?>
             <a title="<?php echo $keyword[$i]?>" alt="<?php echo $keyword[$i]?>" href="<?php echo site_url('video/search_tag/'.$keyword[$i].'/')?>"><?php echo $keyword[$i]?></a>
