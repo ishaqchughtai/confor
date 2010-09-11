@@ -24,10 +24,10 @@
             $about = $row['About'];
             $countcommenttemp = $countcomment;     
         ?>
-        <h3><a href="#"><?php echo stripcslashes($title) ?></a></h3>
+        <h3><a href="#" alt="<?php echo $title?>" title="<?php echo $title?>"><?php echo stripcslashes($title) ?></a></h3>
         <h5><?php echo $subject ?></h5>
         <a href="#comments" class="comments_balloon"><?php echo $countcommenttemp?></a>
-        <p><img src="<?php echo base_url().'assets/uploads/image/'.$linktemp ?>" width="610" height="169" alt="Confor.ca" /></p>
+        <p><img alt="<?php echo $title?>" title="<?php echo $title?>" src="<?php echo base_url().'assets/uploads/image/'.$linktemp ?>" width="610" height="169"  /></p>
         <p><?php echo $text ?></p>
     </div>
     <!-- /.content_item -->
@@ -40,7 +40,7 @@
                     $written = $row['written'];
 
                 ?>
-                <p><a href="#" class="author_link"><?php echo $author_name?></a> <?php echo __("CF_has_written")?> <?php echo $written?> <?php echo __("CF_articles_for")?> Confor.ca.</p>
+                <p><a href="#" class="author_link"><?php echo $author_name?></a> <?php echo __("CF_has_written")?> <?php echo $written?> <?php echo __("CF_articles_for")?> <?php echo base_url()?>.</p>
             <?php echo $about?> </div>
             <?php }?>
     </div>

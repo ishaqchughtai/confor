@@ -63,7 +63,7 @@
         }
 
         //Content's office of user
-        function office_content($id='') 
+        function office_content($id='',$title='') 
         {
 
             $this->_data['path'][] = array(
@@ -72,7 +72,7 @@
             );
 
             $this->_data['path'][] = array(
-            'name' => __("CF_conference_office_content"),
+            'name' => $title,
             'link' => '#'
             ); 
             $id = (double)$id;
@@ -146,6 +146,7 @@
         {
             $lg = $this->_data['lang'];
             $this->_data['lg'] = $lg;
+
             $this->_data['path'][] = array(
             'name' => __("CF_conference_office"),
             'link' => site_url("office_frontend/office/".$this->office_per_page)

@@ -100,7 +100,7 @@ class Training_frontend extends Frontend_controller {
         $this->_data['path'][] = array(
         'name' => __("CF_training"),
         'link' => site_url('training_frontend/index').'/'.$this->_data['lang']
-        ); 
+        );
         $this->_data['path'][] = array(
         'name' => __("CF_result_search_training"),
         'link' => '#'
@@ -139,7 +139,7 @@ class Training_frontend extends Frontend_controller {
         $this->_data['path'][] = array(
         'name' => __("CF_training"),
         'link' => site_url('training_frontend/index').'/'.$this->_data['lang']
-        ); 
+        );
         $this->_data['path'][] = array(
         'name' => __("CF_result_search_training"),
         'link' => '#'

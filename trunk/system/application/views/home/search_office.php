@@ -14,16 +14,16 @@
     ?>
 
     <div class = "content_item">
-        <h3><a href = "<?php echo site_url('office_frontend/office_content/'.$id)?>"><?php echo $title ?></a></h3>
+        <h3><a title="<?php echo $title?>" alt="<?php echo $title?>" href = "<?php echo site_url('office_frontend/office_content/'.$id.'/'.$title)?>"><?php echo $title ?></a></h3>
         <h5> <?php echo $final_date ?></h5> 
                 <div>
-            <img src="<?php echo base_url().'assets/uploads/image/thumb_'.$image?>" alt="XemmeX" width="130" height="130" class="alignleft" />  
+            <img title="<?php echo $title?>" alt="<?php echo $title?>" src="<?php echo base_url().'assets/uploads/image/thumb_'.$image?>" alt="XemmeX" width="130" height="130" class="alignleft" />  
         </div>
         <br/>
         <p>
             <?php echo word_limiter(strip_tags($content), 100); ?>
         </p>    
-        <a href = "<?php echo site_url('office_frontend/office_content/'.$id)?>" class = "read_more"><?php echo __("CF_continue") ?></a>
+        <a title="<?php echo __("CF_continue").' : '.$title?>" alt="<?php echo $title?>" href = "<?php echo site_url('office_frontend/office_content/'.$id.'/'.$title)?>" class = "read_more"><?php echo __("CF_continue") ?></a>
     </div>
 
     <?php
