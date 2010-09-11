@@ -28,39 +28,15 @@ class Xmlvideo extends Admin_controller{
         }else
         {
             $watermark_resource='watermark.png';
-            $vt_temp=$this->input->post('radio');
             $controls_show=$this->input->post('controls_show');
             $controls_hd=$this->input->post('controls_hd');
             $fullscreen_resizable=$this->input->post('fullscreen_resizable');
             $fullscreen_hideCursor=$this->input->post('fullscreen_hideCursor');
             $style_global=$this->input->post('style_global');
             $embed=$this->input->post('embed');
-            $watermark_hidden=$this->input->post('watermark_hidden');
-            if($vt_temp==11)
-            {
-                $watermark_align_top='top';
-                $watermark_align_rl='left';    
-            }elseif($vt_temp==12)
-            {
-                $watermark_align_top='top';
-                $watermark_align_rl='right';   
-            }elseif($vt_temp==21)
-            {
-                $watermark_align_top='bottom';
-                $watermark_align_rl='left';    
-            }elseif($vt_temp==22)
-            {
-                $watermark_align_top='bottom';
-                $watermark_align_rl='right';   
-            }
-            if($watermark_hidden=='true')
-            {
-                $watermark_resource='watermarktemp.png';    
-            }    
+            $watermark_hidden=$this->input->post('watermark_hidden');             
             $data = array(
             'watermark_resource'=>$watermark_resource,
-            'watermark_align_top'=>$watermark_align_top,
-            'watermark_align_rl'=>$watermark_align_rl,
             'controls_show'=>$controls_show,
             'controls_hd'=>$controls_hd,
             'fullscreen_resizable'=>$fullscreen_resizable,
