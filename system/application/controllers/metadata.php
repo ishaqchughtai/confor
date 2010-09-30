@@ -67,9 +67,8 @@
 
       is_admin();
       $type_resource = $this->uri->segment(3);
-      $id_resource = $this->uri->segment(4);
       $this->_data['type_sources'] = $type_resource;
-      $lg = $this->_data['lang'];
+      $lg = $this->uri->segment(4);
       $this->_data['lg'] = $lg;
       if($this->input->post('btnsubmit'))
       {
@@ -94,9 +93,9 @@
 
       is_admin();
       $lg = $this->_data['lang'];
-      $this->_data['lg'] = $lg; 
       $type_resource = $this->uri->segment(3);
       $lg = $this->uri->segment(4);
+      $this->_data['lg'] = $lg;
       $this->_data['type_sources'] = $type_resource;
       $this->_data['meta'] = $this->MMetadata->get_static_to_form($type_resource,$lg);
       $this->_load_view('admin/get_static_metadata');    
