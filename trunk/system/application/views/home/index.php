@@ -83,17 +83,18 @@
     <!-- /.content_item -->
 
     <?php 
-        $advs = get_random_top_adv($category,4);
+        $advs = get_random_top_adv();
         //print_r($ar);
         $attr = array('width'=>'89', 'height'=>'75', 'class'=>'icon');
     ?>
     <div class="x3_2">            
-        <?php for($i=0; $i<count($advs); $i++):?>
+        <?php for($i=1; $i<=count($advs); $i++):?>
 
             <div class="x3<?php if(($i+1)%2==0) echo ' no_margin_r';?>" style="border-color:#FFF; border:thick;">
                 <a alt="<?php echo $advs[$i]['TextTips']?>" title="<?php echo $advs[$i]['TextTips']?>" href="<?php echo site_url('advertisement/go_to/'.$advs[$i]['ID'])?>" target="<?php 
                         if($advs[$i]['Target'] ==1)  echo '_blank';
-                        else echo '_parent'?>"><img src="<?php echo base_url().'assets/uploads/image/'.$advs[$i]['ImageLink']?>" width="285" height="285" class="icon" alt="<?php echo $advs[$i]['TextTips']?>"></a>
+                        else echo '_parent'?>">
+                        <img src="<?php echo base_url().'assets/uploads/image/'.$advs[$i]['ImageLink']?>" width="285" height="285" class="icon" alt="<?php echo $advs[$i]['TextTips']?>"></a>
 
                 <br /> <br /> <br />
 

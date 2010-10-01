@@ -68,6 +68,20 @@
 								<option value="0"><?php echo __("CF_same_win")?></option>
 							</select>
 				        </p>
+                        
+                        <p>
+						
+							<label for="position"><?php echo __("CF_position")?>:</label>
+							<select class="short" name="position">
+                            <option value="0"><?php echo __("CF_none")?></option>
+								<option value="1"><?php echo __("CF_top_left")?></option>
+								<option value="2"><?php echo __("CF_top_right")?></option>
+
+								<option value="3"><?php echo __("CF_bottom_left")?></option>
+
+								<option value="4"><?php echo __("CF_bottom_right")?></option>
+							</select>
+						</p>
 				  <p>
 						
 							<input name="btnsubmit" type="submit" class="submit" value="<?php echo __("CF_post")?>" />

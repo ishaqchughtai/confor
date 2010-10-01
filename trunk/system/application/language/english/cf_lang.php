@@ -777,3 +777,11 @@ $lang['CF_edit_category_meta']="Edit Category Metadata Information";
 //Key added on 08/09/2010
 $lang['CF_Search_results']="Search results for : ";
 
+//Key added on 30/09/2010
+$lang['CF_position']="Position";
+$lang['CF_top_left']="Top-left";
+$lang['CF_top_right']="Top-right";
+$lang['CF_bottom_left']="Bottom-left";
+$lang['CF_bottom_right']="Bottom-right";
+$lang['CF_none']="None";
+
