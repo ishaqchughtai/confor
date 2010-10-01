@@ -141,6 +141,7 @@
                         <li><a alt="<?php echo __("CF_month_events").' - confor.tv'?>" title="<?php echo __("CF_month_events").' - confor.tv'?>" href="<?php echo site_url('event_frontend/month_event/'.date("m").'/'.$statistic_event)?>"><?php echo __("CF_month_events")?></a></li>
                     </ul>
 				</div>
+				<iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2FConfortv%2F119683998081283&amp;width=292&amp;connections=10&amp;stream=false&amp;header=true&amp;height=287" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:287px;" allowTransparency="true"></iframe>
 			</div>
 			<!-- /#content #right - right side of main content or sidebar -->
 

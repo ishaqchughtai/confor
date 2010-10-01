@@ -41,7 +41,7 @@
     }
 ?>
 <script type="text/javascript">
-            swfobject.embedSWF("<?php echo base_url().$playlistPlayer?>", "showItem", "620", "380", "9.0.0","",{
+            swfobject.embedSWF("<?php echo base_url().$playlistPlayer?>", "showItem", "620", "349", "9.0.0","",{
                 // flash vars
                 "player.xml":"<?php echo site_url('video/xmlvid/'.$vid_id)?>.xml"
             },{
@@ -69,7 +69,8 @@
     //
 <?php echo mdate("%d-%m-%Y", $date)?></h5>              
 <h5><b><?php echo __("CF_cate_name")?>: <a alt="<?php echo $category_name?>" title="<?php echo $category_name?>" href="<?php echo site_url('category/get_category/').'/'.$category.'/5'?>"><?php echo $category_name?></a></b></h5>               
-             
+<a name="fb_share" type="button" share_url="<?php echo site_url('video/play/'.$vid_id)?>"></a> 
+<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>                          
 <p><?php echo $description?></p>
 <a class="prev browse left"></a>
 
@@ -126,4 +127,3 @@ $.easing.custom = function (x, t, b, c, d) {
 $("div.scrollable").scrollable({easing: 'custom', speed: 700, circular: true});
 </script>         
 </body> 
-
