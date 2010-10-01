@@ -12,7 +12,21 @@
 	$target = $row['Target'];
 	$viewed = $row['Viewed'];
 	}?>
-					
+	<?php
+		$position[1] = $system_setting['adv_position1'];
+		$position[2] = $system_setting['adv_position2'];
+		$position[3] = $system_setting['adv_position3'];
+		$position[4] = $system_setting['adv_position4'];
+		function getPos($position, $value)
+		{
+			for ($i=1;$i<=4;$i++)
+			{
+				if ($position[$i]==$value) return $i;
+			}
+			return 0;
+		}
+		$current_pos = getPos($position,$id);
+    ?>
 				<div class="content_item">
 				<ul class="link_conttrol">
         <li><a class="icon_list" href="<?php echo site_url('advertisement/advertisement_list')?>"><?php echo __("CF_adv_list")?></a></li>
@@ -60,12 +74,24 @@
 						
 						</p>
                         
+                        
                         <p>
 						
 							<label for="target"><?php echo __("CF_target")?>:</label>
 							
 								<?php if($target==1) echo __("CF_new_win")?>
 								<?php if($target==0) echo __("CF_same_win")?>
+						</p>
+                        
+                        <p>
+						
+							<label for="position"><?php echo __("CF_position")?>:</label>
+								<?php if($current_pos==0) echo __("CF_none")?>
+								<?php if($current_pos==1) echo __("CF_top_left")?>
+								<?php if($current_pos==2) echo __("CF_top_right")?>
+                                <?php if($current_pos==3) echo __("CF_bottom_left")?>
+                                <?php if($current_pos==4) echo __("CF_bottom_right")?>
+                                                                
 						</p>
                         
                         <p>

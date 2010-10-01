@@ -342,12 +342,40 @@ if (! function_exists('_substr'))
 
 if ( ! function_exists('get_random_top_adv'))
 {
-	function get_random_top_adv($category=FALSE, $limit=3)
+	function get_random_top_adv()
 	{
 		$CI =& get_instance();
+		$element = $CI->_data['system_setting'];
+		$value1 = $element['adv_position1'];
+		$value2 = $element['adv_position2'];
+		$value3 = $element['adv_position3'];
+		$value4 = $element['adv_position4'];
 		$CI->load->model('Madvertisement');
-		$items = $CI->Madvertisement->get_random_by_category($category, $limit);
-		return $items->result_array();
+		$items = $CI->Madvertisement->get_pos($value1, $value2,$value3, $value4);
+		//print_r($items);
+		//return;
+		$a2 = array();
+		foreach($items as $item)
+		{
+				if ($item['ID'] == $value1) 
+				{
+					$a2[1] = $item;
+				}
+				if ($item['ID'] == $value2) 
+				{
+					$a2[2] = $item;
+				}
+				if ($item['ID'] == $value3) 
+				{
+					$a2[3] = $item;
+				}
+				if ($item['ID'] == $value4) 
+				{
+					$a2[4] = $item;
+				}
+
+		}
+		return $a2;
 		//....
 	}
 }
@@ -896,7 +924,7 @@ function out_static_page($code, $isMenu=TRUE)
      $out['code'] = $row->Code;
      if ($isMenu)
      {
-        return '<a alt="Confor.tv - '.$out['name'].'" title="Confor.tv - '.$out['name'].'" href="'.$out['link'].'" >'.$out['name'].'</a>';
+        return '<a href="'.$out['link'].'" >'.$out['name'].'</a>';
      }
      return $out;
 }

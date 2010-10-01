@@ -26,6 +26,25 @@
 	$imageLink = $row['ImageLink'];
 	$target = $row['Target'];
 	}?>
+    
+<?php 
+		$position[1] = $system_setting['adv_position1'];
+		$position[2] = $system_setting['adv_position2'];
+		$position[3] = $system_setting['adv_position3'];
+		$position[4] = $system_setting['adv_position4'];
+//		print_r($position);die;
+		function getPos($position, $value)
+		{
+			for ($i=1;$i<=4;$i++)
+			{
+				if ($position[$i]==$value) return $i;
+			}
+			return 0;
+		}
+		//return;
+		$current_pos = getPos($position,$id);
+		//echo $current_pos;
+?>
 					
 				<div class="content_item">
 				<ul class="link_conttrol">
@@ -91,11 +110,26 @@
 								<option value="0" <?php if($target==0) echo 'selected="selected"';?>><?php echo __("CF_same_win")?></option>
 							</select>
 						</p>
+                        
+                         <p>
+						
+							<label for="position"><?php echo __("CF_position")?>:</label>
+							<select class="short" name="position">
+                            <option value="0" <?php if($current_pos==0) echo 'selected="selected"';?>><?php echo __("CF_none")?></option>
+								<option value="1" <?php if($current_pos==1) echo 'selected="selected"';?>><?php echo __("CF_top_left")?></option>
+								<option value="2" <?php if($current_pos==2) echo 'selected="selected"';?>><?php echo __("CF_top_right")?></option>
+
+								<option value="3" <?php if($current_pos==3) echo 'selected="selected"';?>><?php echo __("CF_bottom_left")?></option>
+
+								<option value="4" <?php if($current_pos==4) echo 'selected="selected"';?>><?php echo __("CF_bottom_right")?></option>
+							</select>
+						</p>
 						
 							<input name="btnedit" type="submit" class="submit" id="btnedit" value="<?php echo __("CF_save")?>" onclick="return confirm('<?php echo __("CF_mess_update")?>');" />
 							<input name="btnreset" type="reset" class="reset" value="<?php echo __("CF_reset")?>" />
 						
 				  </p>
+                  
 					<?php echo form_close();?>
 					
 				</div>
