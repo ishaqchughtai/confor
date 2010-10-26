@@ -395,6 +395,7 @@
                 );				
                 $this->_data['error'] = ""; 
                 $this->form_validation->set_rules('txtName',strtolower(__("CF_name")),'required');
+                $this->form_validation->set_rules('txtFirstName',strtolower(__("CF_first_name")),'required');
                 $this->form_validation->set_rules('txtCompanyName',strtolower(__("CF_Company_name")),'required');
                 $this->form_validation->set_rules('txtEmail',strtolower(__("CF_email")),'required|valid_email');
                 $this->form_validation->set_rules('txtDescription',strtolower(__("CF_des")),'trim|required');
@@ -416,6 +417,7 @@
 //                        }
                         $data = array(
                         'name'=>$this->input->post('txtName'),
+                        'first_name'=>$this->input->post('txtFirstName'),
                         'company_name'=>$this->input->post('txtCompanyName'),
                         'email' =>$this->input->post('txtEmail'),
                         'country' =>$this->input->post('country'),   

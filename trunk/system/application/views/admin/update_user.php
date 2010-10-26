@@ -13,19 +13,22 @@
             {
                 $id = $query->id;
                 $name=$query->name;
+                $firstname=$query->first_name; 
                 $company=$query->company_name;
                 $email=$query->email;
                 $password=$query->password;
                 $description=$query->description;
                 $subscription=$query->userlevel;     
                 $suspend=$query->status;
-                $selected_country = $query->country;  
+                $selected_country = $query->country;     //
             }                     
         ?>           
-        <h3><?php echo __("CF_modify_speaker")?></h3> 
+        <h3><?php echo __("CF_modify_speaker")?></h3>                              
         <?php echo form_open('admin/modify_user/'.$id); ?>
         <label for="name"><?php echo __("CF_name")?>:</label>
         <input class="medium" name="txtName" id="name" value="<?php echo $name?>" onblur="alert('<?php echo __("CF_check_update_user")?>');" /><?php echo form_error("txtName"); ?>
+        <label for="firstname"><?php echo __("CF_first_name")?>:</label>
+        <input class="medium" name="txtFirstName" id="firstname" value="<?php echo $firstname?>"  /><?php echo form_error("txtFirstName"); ?>
         <label for="CompanyName"><?php echo __("CF_Company_name")?>:</label>
         <input class="medium" name="txtCompanyName" id="companyName" value="<?php echo $company?>" /><?php echo form_error("txtCompanyName"); ?>
         <label for="email"><?php echo __("CF_admin_email")?>:</label>
