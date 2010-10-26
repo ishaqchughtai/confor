@@ -19,7 +19,7 @@ class Send_mail extends Model
 		$name_from: name of sender
 		$to: string or single array example $to = array('email1','email2');
 	*/
-	function send($mail_type='text', $from, $name_from='', $to, $subject, $content)
+	function send($mail_type='html', $from, $name_from='', $to, $subject, $content)
 	{
 		$this->email->clear();
 		$config['charset'] = $this->config->item('charset');

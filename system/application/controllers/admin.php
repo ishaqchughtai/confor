@@ -340,7 +340,7 @@
                         $save_data['membership_id'] = 1;
                         $save_data['register_date'] = 'NOW()';                
                         $save_data['last_ip'] = ''; 
-                        $save_data['language'] = $this->_data['lang'];
+						$save_data['language'] = $this->_data['lang'];
                         $save_data['password'] = $this->user_lib->_encode($this->input->post('password'));                                                                                
                         $this->MUser->add($save_data);
 
@@ -409,11 +409,11 @@
                     }
                     else
                     {
-                        //                        $suspension=0;
-                        //                        if((int)$this->input->post('radiobutton')=='1')
-                        //                        {
-                        //                            $suspension=1;
-                        //                        }
+//                        $suspension=0;
+//                        if((int)$this->input->post('radiobutton')=='1')
+//                        {
+//                            $suspension=1;
+//                        }
                         $data = array(
                         'name'=>$this->input->post('txtName'),
                         'company_name'=>$this->input->post('txtCompanyName'),
@@ -767,7 +767,6 @@
                 }
             }        
         }
-
 
         function keyword_check($Keywords)
         {

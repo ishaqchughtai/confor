@@ -44,5 +44,7 @@ $route['default_controller'] = "home";
 $route['scaffolding_trigger'] = "";
 
 $route['feed/blog.rss'] = "feed/blog";
+$route['fr'] = "home/fr";
+$route['en'] = "home/en";
 /* End of file routes.php */
 /* Location: ./system/application/config/routes.php */

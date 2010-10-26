@@ -77,7 +77,8 @@
                     redirect(site_url("ticket/send_ticket_speaker_succ"));
                 }   
             }            
-        }function send_ticket_by_speaker_ask()
+        }
+        function send_ticket_by_speaker_ask()
         {
             $this->_data['path'][] = array(
             'name' => __("CF_list_tic"),

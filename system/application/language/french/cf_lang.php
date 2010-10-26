@@ -148,7 +148,7 @@ $lang['CF_cate'] = 'Cat&eacute;gories';
 $lang['CF_arch'] = 'Archives';
 $lang['CF_view'] = 'APER&Ccedil;U';
 $lang['CF_pop_vid'] = 'Vid&eacute;os Populaires';
-$lang['CF_recent_vid'] = 'Vid&eacute;os r&eacute;&ccedil;ents';
+$lang['CF_recent_vid'] = 'Vid&eacute;os r&eacute;&ccedil;entes';
 $lang['CF_event'] = '&Eacute;v&eacute;nements';
 
 
@@ -390,7 +390,7 @@ $lang['CF_image_link'] = 'IMAGE LIEN';
 //OK
 $lang['CF_Company_name'] = 'Nom d\'entreprise';
 $lang['CF_one_speaker'] = 'Conf&eacute;rencier';
-$lang['CF_approved'] = 'Approv&eacute;';
+$lang['CF_approved'] = 'Approuv&eacute;';
 $lang['CF_vid_update'] = 'Vid&eacute;o conf&eacute;rence mise &agrave; jour';
 $lang['CF_yes'] = 'Oui';
 $lang['CF_No'] = 'Non';
@@ -657,7 +657,7 @@ $lang['CF_spamemail_add']='Ajouter &agrave; la liste de pourriels';
 $lang['CF_spamemail_add_confirm']='D&eacute;sirez-vous vraiment ajouter cette adresse &agrave; la liste de pourriels?';  
 $lang['CF_addspamemail_success']='Pourriel ajout&eacute; avec succ&egrave;s'; 
 $lang['CF_checkspamemail_success']='Votre adresse courriel &agrave; &eacute;t&eacute; identifi&eacute; comme &eacute;tant un pourriel! S.V.P., contactez l\'administrateur! Courriel : %s'; 
-$lang['CF_spamemail_con']='Contr&ocirc;le des'; 
+$lang['CF_spamemail_con']='Contr&ocirc;le des pourriels'; 
 $lang['CF_spamemail_added']='Le courriel %s &agrave; &eacute;t&eacute; ajout&eacute; &agrave; la blacklist';
 $lang['CF_remove_spamemail']='Suppression du pourriel';
 $lang['CF_cm_entry'] = 'Commentaire'; 
@@ -692,33 +692,41 @@ $lang['CF_body_email_tem'] = 'Corps de texte du courriel';
 $lang['CF_save_info_email_tem'] = 'Les informations du mod&egrave;le de courriel ont &eacute;t&eacute; sauvegard&eacute;!';
 
 //Key added on 25/08/2010
-$lang['CF_update_sitemap'] = 'f_Update Video Sitemap';
-$lang['CF_update_sitemap_suc'] = 'f_File video sitemap has been updated';
-$lang['CF_down'] = 'f_download';
+$lang['CF_update_sitemap'] = 'Mise &agrave; jour du sitemap vid&eacute;o';
+$lang['CF_update_sitemap_suc'] = 'Le vid&eacute;o sitemap a &eacute;t&eacute; mis &agrave; jour';
+$lang['CF_down'] = 'T&eacute;l&eacute;charger';
 //Key added on 27/08/2010
-$lang['CF_element_name']="f_Element Name";
+$lang['CF_element_name']="Titre de la page";
 
 //Key added on 01/09/2010
 
-$lang['CF_player_vid_set']="f_Player Video Setting";
-$lang['CF_show_control']="f_Show Control";
-$lang['CF_show_control_hd']="f_Control HD";
-$lang['CF_full_res']="f_Fullscreen Resizable";
-$lang['CF_hide_cur']="f_Hide Cursor";
-$lang['CF_sty_glo']="f_Style Global";
-$lang['CF_embed_show']="f_Embed Show";
-$lang['CF_logo']="f_Logo";
-$lang['CF_always']="f_Always";
-$lang['CF_never']="f_Never";
-$lang['CF_over']="f_Over";
-$lang['CF_light']="f_Light";
-$lang['CF_dark']="f_Dark";
-$lang['CF_seconds']="f_Seconds";
-$lang['CF_editxml_success']="f_Edit Success";
-$lang['CF_check_numbers']="f_You must enter numbers only.";
-$lang['CF_hidden_logo']="f_Hidden Logo";
+$lang['CF_player_vid_set']="R&eacute;glages du lecteur vid&eacute;o";
+$lang['CF_show_control']="Affichage des ontr&ocirc;les";
+$lang['CF_show_control_hd']="Contr&ocirc;le HD";
+$lang['CF_full_res']="Plein &eacute;cran redimensionnable";
+$lang['CF_hide_cur']="Masquer le curseur";
+$lang['CF_sty_glo']="Style globale";
+$lang['CF_embed_show']="Afficher l'int&eacute;grateur";
+$lang['CF_logo']="Logo";
+$lang['CF_always']="Toujours";
+$lang['CF_never']="Jamais";
+$lang['CF_over']="Dessus";
+$lang['CF_light']="Claire";
+$lang['CF_dark']="Fonc&eacute;";
+$lang['CF_seconds']="Secondes";
+$lang['CF_editxml_success']="Modification r&eacute;ussite";
+$lang['CF_check_numbers']="Vous devez saisir uniquement des chiffres.";
+$lang['CF_hidden_logo']="Logo cach&eacute;";
 
 //Key added on 07/09/2010
-$lang['CF_edit_category_meta']="f_Edit Category Metadata Information";
+$lang['CF_edit_category_meta']="Modifier les informations (Metadata) des cat&eacute;gories";
 //Key added on 08/09/2010
-$lang['CF_Search_results']="f_Search results for : ";
+$lang['CF_Search_results']="R&eacute;sultats de recherche pour : ";
+
+//Key added on 30/09/2010
+$lang['CF_position']="f_Position";
+$lang['CF_top_left']="f_Top-left";
+$lang['CF_top_right']="f_Top-right";
+$lang['CF_bottom_left']="f_Bottom-left";
+$lang['CF_bottom_right']="f_Bottom-right";
+$lang['CF_none']="f_None";

@@ -122,7 +122,7 @@ $lang['CON_user_list'] = 'Liste d\'usagers';
 $lang['CON_user_add'] = 'Ajouter un usager';
 $lang['CON_user_edit'] = 'Modifier l\'usager';
 $lang['CON_control_panel'] = 'Panneau de contr&ocirc;le';
-$lang['CON_list_view'] = 'Apper&ccedil;u de la liste';
+$lang['CON_list_view'] = 'Aper&ccedil;u de la liste';
 //------------------------------------------------------------------
 //SPEAKER
 //------------------------------------------------------------------

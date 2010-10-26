@@ -71,7 +71,16 @@
 						
 							<label for="description"><?php echo __("CF_des")?>:</label>
                             <p>
-							<?php                       
+							<?php 
+									
+                                    if ( ! isset($_POST['description']))
+                                    {
+                                        $something = FALSE;
+                                    }
+                                    else
+                                    {
+                                        $something = $_POST['description'];
+                                    }
                                     $data = array('name' => 'description',
                                     'id' => 'description',
                                     'width' => '600',

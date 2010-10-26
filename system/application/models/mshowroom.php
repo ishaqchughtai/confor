@@ -21,7 +21,7 @@
         $this->db->join('users','users.id = videos.mem_id');
         $this->db->where('tblshowroom.Show',1);
         $this->db->order_by("videos.viewed", "desc");
-        $this->db->limit(3);
+        $this->db->limit(8);
         $query = $this->db->get();
         return $query->result_array();
     }

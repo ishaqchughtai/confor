@@ -46,7 +46,7 @@
       </div>
       <?php }?>
       <!-- /.content_item -->
-      
+	  
       <div id="comments" class="content_item">
         <h3><?php echo $countcommenttemp?> <?php echo __("CF_for_comments")?> "<a href="#"><?php echo $titletemp?></a>"</h3>
         <!-- Content -->
@@ -57,12 +57,12 @@
                                 $date = $row['Date'];
                                 $final_date=date("d-m-Y", strtotime($date));
                                 $final_time=date("h:i a",strtotime($date));      
-        ?>        
+        ?>		
         <ol>
           <li> <img src="<?php echo base_url().'assets/img/about_author.png'?>" alt="XemmeX" width="80" height="80"  class="comment_image" />
             <!-- Author Image -->
             <p class="content" style="width:500px"> 
-              <a href="#comments" class="author"><?php echo $author?></a>
+			  <a href="#comments" class="author"><?php echo $author?></a>
               <!-- Author -->
               <span class="date"><?php echo $final_date?></span>
               <!-- Date -->
@@ -82,7 +82,7 @@
         <!-- /#comments ol -->
         <?php }?>
       </div>
-      
+	  
       <!-- /#comments -->
       <div class="content_item" id="comment">
         <h3> <?php echo __("CF_leave_cm")?></h3>

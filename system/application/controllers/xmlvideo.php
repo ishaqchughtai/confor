@@ -33,8 +33,7 @@ class Xmlvideo extends Admin_controller{
             $fullscreen_resizable=$this->input->post('fullscreen_resizable');
             $fullscreen_hideCursor=$this->input->post('fullscreen_hideCursor');
             $style_global=$this->input->post('style_global');
-            $embed=$this->input->post('embed');
-            $watermark_hidden=$this->input->post('watermark_hidden');             
+            $embed=$this->input->post('embed');  
             $data = array(
             'watermark_resource'=>$watermark_resource,
             'controls_show'=>$controls_show,
@@ -42,8 +41,7 @@ class Xmlvideo extends Admin_controller{
             'fullscreen_resizable'=>$fullscreen_resizable,
             'fullscreen_hideCursor'=>$fullscreen_hideCursor,
             'style_global'=>$style_global,
-            'embed'=>$embed,       
-            'watermark_hidden'=>$watermark_hidden       
+            'embed'=>$embed                   
             );
             $this->Mxmlvideo->update_xmlvid($id,$data);
             $this->_message('xmlvideo', __("CF_editxml_success"), 'success', site_url("xmlvideo/index"));

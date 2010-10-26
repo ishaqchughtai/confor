@@ -2,9 +2,9 @@
 	<div id="right_bg"></div>			
 	<ul id="nav">
 		<li><a href="<?php echo site_url("") ?>"><?php echo ucfirst(__("CF_home"))?></a>
-			<ul >
-				<li>    
-                <?php echo out_static_page('About')?>
+			<ul >				
+				<li>
+					<?php echo out_static_page('About')?>
 					<ul id="showIE7error">
 						<li><?php echo out_static_page('How')?></li>
 						<li><?php echo out_static_page('Rules')?></li>

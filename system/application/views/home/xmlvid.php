@@ -3,8 +3,8 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
 ?>
 <config>
     <watermark resource="<?php echo base_url()?>resources/images/<?php echo $watermark_resource?>" align="<?php echo $watermark_align_top;echo ',';echo $watermark_align_rl?>" alpha="0.9"/>
-    <external font="<?php echo base_url()?>resources/fonts/Arial.swf"
-        buttonFont="<?php echo base_url()?>resources/fonts/ArialBold.swf"
+    <external font="<?php echo base_url()?>resources/fonts/TempestaSevenCondensedBold.swf"
+        buttonFont="<?php echo base_url()?>resources/fonts/TempestaSevenCondensedBold.swf"
         />
     <controls 
     hd="<?php echo $controls_hd?>"
@@ -45,7 +45,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
         }
         ]]></text>
     </style>
-
+    
     <share>
         <!-- hide embed code -->
         <embed show="<?php echo $embed?>" />
@@ -75,7 +75,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
                     
         </settings>
             <!-- for each item, you can set custom sharing options -->
-            <item type="email"/>
+            <item type="email"/>            
             <item type="facebook" embedSwf="true" title="Playlist player" description="here comes a customizable description text" screenshot="<?php echo base_url()?>resources/images/watermark.png" width="320" height="240"/>
             <item type="twitter"/>
             <item type="digg"/>
@@ -93,7 +93,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>' . "\n";
             <item type="more"/>
     </share>
     <playlist>
-                   <item
+            <item
                         thumb="<?php echo base_url()?>thumbs/<?php echo $video_image?>"
                         cover="<?php echo base_url()?>thumbs/<?php echo $video_image?>"
                         resource="<?php echo base_url()?>videos/<?php echo $top_view_video?>"

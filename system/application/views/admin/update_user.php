@@ -25,7 +25,7 @@
         <h3><?php echo __("CF_modify_speaker")?></h3> 
         <?php echo form_open('admin/modify_user/'.$id); ?>
         <label for="name"><?php echo __("CF_name")?>:</label>
-        <input class="medium" name="txtName" id="name" value="<?php echo $name?>" onblur="alert('<?php echo __("CF_check_update_user")?>');"/><?php echo form_error("txtName"); ?>
+        <input class="medium" name="txtName" id="name" value="<?php echo $name?>" onblur="alert('<?php echo __("CF_check_update_user")?>');" /><?php echo form_error("txtName"); ?>
         <label for="CompanyName"><?php echo __("CF_Company_name")?>:</label>
         <input class="medium" name="txtCompanyName" id="companyName" value="<?php echo $company?>" /><?php echo form_error("txtCompanyName"); ?>
         <label for="email"><?php echo __("CF_admin_email")?>:</label>
@@ -36,13 +36,14 @@
         <label for="Description"><?php echo __("CF_des")?>:</label>
         <textarea name="txtDescription" id="txtDescription" rows="4" cols=""><?php echo $description ?></textarea>
         <?php echo form_error("txtDescription"); ?>
-        <label>(<?php echo __("CF_active")?> , <?php echo __("CF_suspended")?>)</label>                   
+
+            <label>(<?php echo __("CF_active")?> , <?php echo __("CF_suspended")?>)</label>                   
             <select name="approved" class="short">
-                <option value="1" <?php if($suspend==1) echo 'selected="selected"';?>><?php echo __("CF_yes")?></option>
-                <option value="0" <?php if($suspend==0) echo 'selected="selected"';?>><?php echo __("CF_No")?></option>
+                <option value="1" <?php if($suspend==1) echo 'selected="selected"';?>><?php echo __("CF_active")?></option>
+                <option value="0" <?php if($suspend==0) echo 'selected="selected"';?>><?php echo __("CF_suspended")?></option>
             </select>
 
-        <p><input name="submit" type="submit" class="submit" value="<?php echo __("CF_save")?>"></p>
+        <p><input name="submit" type="submit" class="submit" value="<?php echo __("CF_save")?>"/></p>
         <?php form_close();?>
     </div>
     <!-- /.x2 - represents a half windows size div -->

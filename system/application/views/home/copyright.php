@@ -19,7 +19,7 @@
 			</ul>
 			<!-- /.left content-->
 			
-			<span class="right">&copy; 2010 Confor.ca | Designed and Developed by <a href="#">XemmeX</a></span>
+			<span class="right">&copy; 2010 Confor.tv | Designed and Developed by <a href="#">XemmeX</a></span>
 			<!-- /.right content-->
 		
 		</div>
