@@ -130,7 +130,6 @@ class Payvideo extends Frontend_controller {
 			// $this->_message('payvid', "You must login to download this file", 'success',site_url("home/login"));						
 		// }
 		//$fullPath = $_SERVER['DOCUMENT_ROOT'].'/confor/payvids/'.$fname;	
-		
 		$fullPath ='./payvids/'.$fname;	
 		if ($fd = fopen ($fullPath, "r")) {
 			//$fname = basename($fullPath);

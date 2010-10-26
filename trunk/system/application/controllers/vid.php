@@ -15,7 +15,6 @@ class Vid extends Admin_controller {
         parent::Admin_controller();		
         $this->load->library('video_upload_lib');
         $this->load->model('Mvid'); 
-        $this->load->model('Mvconference'); 
         $this->load->helper('date');		
         $this->video_upload_lib->ajax_link = site_url('vid/do_upload_ajax');
         $this->load->model('send_mail');
@@ -164,19 +163,19 @@ class Vid extends Admin_controller {
     {
         is_admin();
 
-        $this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');        
-        $this->form_validation->set_rules('description',strtolower(__("CF_des")),'required');         
+        $this->form_validation->set_rules('title',strtolower(__("CF_title")),'required');		
+        $this->form_validation->set_rules('description',strtolower(__("CF_des")),'required'); 		
         $this->form_validation->set_rules('keywords',strtolower(__("CF_key")),'trim|required|callback_keyword_check');
-        $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');    
+        $this->form_validation->set_error_delimiters('<p class="not_error"><span class="img"></span>','<span class="close"></span></p>');	
 
-        $query=$this->Mvid->get_info_by_id($id);        
+        $query=$this->Mvid->get_info_by_id($id);		
         if($query->num_rows()>0)
         {
             $this->_data['row'] = $query->row(); 
             $this->_data['path'][] = array(
             'name' => __("CF_list_vid"),
             'link' => site_url("vid/list_video_conference/".$this->_data['row']->lang)
-            );      
+            );  	
         }
 
         $this->_data['path'][] = array(
@@ -186,7 +185,7 @@ class Vid extends Admin_controller {
 
         if($this->input->post('submit')){
             if($this->form_validation->run()==FALSE)
-            {                
+            {				
                 $this->_load_view('vid/edit_video_conference');
             }
             else
@@ -208,13 +207,13 @@ class Vid extends Admin_controller {
                 {
                     $watermark_align_top='bottom';
                     $watermark_align_rl='right';   
-                }                                                
+                }												
                 $data = array(
                 'mem_id'=>$this->input->post('speaker'),
-                'title'=>$this->input->post('title'),                    
-                'description'=>$this->input->post('description'),                
+                'title'=>$this->input->post('title'),					
+                'description'=>$this->input->post('description'),				
                 'category'=>$this->input->post('video_cate'),
-                'tags'=>$this->input->post('keywords'),            
+                'tags'=>$this->input->post('keywords'),			
                 'approved'=>$this->input->post('approved'),
                 'lang'=>$this->input->post('lg'),
                 'watermark_align_top'=>$watermark_align_top,
@@ -245,15 +244,15 @@ class Vid extends Admin_controller {
                     {
                         $this->Mvid->update_conference($data,$id);
                     }
-                }                                    
+                }									
                 $this->_message('admin', __("CF_save_info"), 'success',site_url("vid/list_video_conference").'/'.$this->input->post('lg'));
             }
         }
         else
         {
             $this->_load_view('vid/edit_video_conference');
-        }         
-    }    
+        }		 
+    }	
 
     function delete_video_conference($id){
         is_admin();    

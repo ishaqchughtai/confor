@@ -9,7 +9,7 @@
         {
             $query = $this->db->get_where('tblaccessories',array('ElementName'=>$ElementName));
             return $query;
-        }
+        }        
         function get_all_element()
         {
             $query = $this->db->get('tblaccessories');

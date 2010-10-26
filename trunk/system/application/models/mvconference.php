@@ -75,9 +75,7 @@
             users.username,
             users.first_name,
             users.name,
-            users.email,
-            videos.*,
-            videos.mem_id
+            videos.*
             ');
             $this->db->from('videos');
             $this->db->join('users','videos.mem_id = users.id');

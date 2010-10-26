@@ -19,7 +19,6 @@
 			/ <a href="<?php echo $path[$i]['link']?>"><?php echo $path[$i]['name']?></a>
 		<?php endfor;?>			
 	</div>
-
 </div>
 </div>
 <!-- /#header_info -->			

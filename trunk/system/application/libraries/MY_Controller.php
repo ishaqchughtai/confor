@@ -26,7 +26,8 @@ class MY_controller extends Controller {
 	}
 
 	function _load_view($path) {
-		if ($this->_setting['site_off']==1) redirect('home/siteoff');
+		$is_admin = is_admin(FALSE);
+		if (($this->_setting['site_off']==1)&&($is_admin==FALSE)) redirect('home/siteoff');
 		$this->_before_render();
 		$this->_data['load_page'] = $path;
 		$this->load->view($this->_container, $this->_data);

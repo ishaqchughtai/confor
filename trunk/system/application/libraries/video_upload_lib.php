@@ -9,10 +9,10 @@ require_once "phpuploader/include_phpuploader.php";
 * @author		Nguyen Hai Dang - XEMMEX developer
 */
 
-// define('FFMPEG_BINARY', '/usr/local/bin/ffmpeg');
-// define('FFMPEG_FLVTOOLS_BINARY', '/usr/bin/flvtool2');
-define('FFMPEG_BINARY', 'c:/ffmpeg/ffmpeg.exe');
-define('FFMPEG_FLVTOOLS_BINARY', 'c:/ffmpeg/flvtool2.exe');
+define('FFMPEG_BINARY', '/usr/local/bin/ffmpeg');
+define('FFMPEG_FLVTOOLS_BINARY', '/usr/bin/flvtool2');
+//define('FFMPEG_BINARY', 'c:/ffmpeg/ffmpeg.exe');
+//define('FFMPEG_FLVTOOLS_BINARY', 'c:/ffmpeg/flvtool2.exe');
 define('FFMPEG_TYPE', 'static');
 
 // define('VBRATE', 500000);

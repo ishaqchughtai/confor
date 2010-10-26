@@ -35,8 +35,8 @@
 							<?php $this->load->view('vid/vid_uploader');?>
 							<?php if(isset($error)):?>
         					<p class="not_warning"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
-        					<?php endif?>
-                    <p><label><a href="<?php echo base_url().'index.php/ticket/send_ticket_by_speaker_ask'?>"><img src="<?php echo base_url().'assets/img/CAMERA.ICO'?>" alt="<?php echo __("CF_ticket_ask")?>" title="<?php echo __("CF_ticket_ask")?>"><?php echo __("CF_ticket_ask")?></a></label></p>                    
+        					<?php endif?> 
+                    <p><label><a href="<?php echo base_url().'index.php/ticket/send_ticket_by_speaker_ask'?>"><img src="<?php echo base_url().'assets/img/CAMERA.ICO'?>" alt="<?php echo __("CF_ticket_ask")?>" title="<?php echo __("CF_ticket_ask")?>"><?php echo __("CF_ticket_ask")?></a></label></p>                                       
                     <p>
                         <input name="submit" type="submit" class="submit" value="<?php echo __("CF_add")?>" />
                     </p>

@@ -8,7 +8,6 @@
         {	
             $this->db->select('
             videos.*,
-            videos.mem_id,
             users.username,           
             users.name,           
             users.first_name,           
@@ -61,8 +60,7 @@
         function get_video_by_id($id)
         { 
             $this->db->select('
-            videos.*,            
-            videos.mem_id,			
+            videos.*,			
             users.username,           
             users.name,           
             users.first_name,

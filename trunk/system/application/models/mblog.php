@@ -267,7 +267,7 @@ class Mblog extends Model{
         {
             return 0;
         }
-    }
+    } 
     function search_blog_keyword($lg,$offset,$num,$Keywords)
     {
         try
@@ -301,7 +301,7 @@ class Mblog extends Model{
         {
             return 0;
         }
-    }    
+    }   
     function search_blog_by_title($lg,$offset,$num,$Title)
     {
         try

@@ -20,7 +20,6 @@
 		<?php endfor;?>			
 	</div>
 
-
 </div>
 </div>
 <!-- /#header_info -->

@@ -2,7 +2,7 @@
 
 <div id="header">
 <div id="logo">                   
-	<a alt="Confor.tv" title="Confor.tv" href="<?php echo base_url();?>">	
+	<a alt="Confor.tv" title="Confor.tv" href="<?php echo site_url("") ?>">	
 	<?php echo img('logo.png',array('alt' => 'Confor.tv'));?>
 	</a>	
 </div>
@@ -11,6 +11,8 @@
 <!-- /#menu -->
 
 <div id="header_info">
+
+
 
 	<div class="left">
 		<?php echo __("CF_you_here");?> :		
@@ -23,7 +25,7 @@
 	<div class="right">
 		<?php $feed = isset($feed_link)?$feed_link:'blog.rss';?>
 		<a alt="Confor.tv - <?php echo __("CF_subscribe")?>" title="Confor.tv - <?php echo __("CF_subscribe")?>" href="<?php echo site_url('feed').'/'.$feed?>" class="rss"><?php echo __("CF_subscribe")?></a>
-	</div>
+	</div>	
 
 </div>
 </div>

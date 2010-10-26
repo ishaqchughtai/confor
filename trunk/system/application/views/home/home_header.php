@@ -14,7 +14,7 @@
 		
 			<div id="logo">
 			
-				<a alt="Confor.tv" title="Confor.tv" href="<?php echo base_url();?>">				
+				<a alt="Confor.tv" title="Confor.tv" href="<?php echo site_url("") ?>">				
 				<?php echo img('logo.png',array('alt' => 'Confor.tv'));?>
 				</a>				
 			</div>

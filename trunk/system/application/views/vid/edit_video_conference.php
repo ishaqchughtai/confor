@@ -10,7 +10,7 @@
         $appr = $row->approved;	
         $speaker_id = $row->mem_id;
         $speaker_name = $row->username . '('.$row->name.')';
-        $lg = $row->lang;
+        $lg = $row->lang;	
         $watermark_align_top=$row->watermark_align_top;
         $watermark_align_rl=$row->watermark_align_rl;
         $vt=0;    
@@ -32,7 +32,7 @@
             {
                 $vt=22;   
             }    
-        }		
+        }	
     ?>   
     <div class="x2">
         <h3><?php echo __("CF_vid_conf")?></h3>

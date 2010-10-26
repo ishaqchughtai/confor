@@ -3,35 +3,12 @@
     {
         $id=$row['id'];
         $watermark_resource=$row['watermark_resource'];
-        $watermark_align_top=$row['watermark_align_top'];
-        $watermark_align_rl=$row['watermark_align_rl'];
         $controls_show=$row['controls_show'];
         $controls_hd=$row['controls_hd'];
         $fullscreen_resizable=$row['fullscreen_resizable'];
         $fullscreen_hideCursor=$row['fullscreen_hideCursor'];
         $style_global=$row['style_global'];
         $embed=$row['embed'];
-        $watermark_hidden=$row['watermark_hidden'];
-        $vt=0;
-        if($watermark_align_top=='top')
-        {
-            if($watermark_align_rl=='left')
-            {
-                $vt=11;    
-            }elseif($watermark_align_rl=='right')
-            {
-                $vt=12;   
-            }
-        }elseif($watermark_align_top=='bottom')
-        {
-            if($watermark_align_rl=='left')
-            {
-                $vt=21;    
-            }elseif($watermark_align_rl=='right')
-            {
-                $vt=22;   
-            }    
-        }
     }
 ?>
 <?php echo form_open('xmlvideo/update_setting/'.$id); ?>

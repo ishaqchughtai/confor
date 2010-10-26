@@ -15,11 +15,21 @@ class Home extends Frontend_controller {
         $this->load->model('Mxmlvideo');
     }
 
+	function en()
+	{
+		$this->_switch_lang('en');
+		redirect('home');
+	}
+	
+	function fr()
+	{
+		$this->_switch_lang('fr');
+		redirect('home');	
+	}
 
     function index()
     {
-        // home page has image banner
-
+        // home page has image banner		
         $this->_data['video_path'] = $this->Mhome->get_top_viewed_video($this->_data['lang']);
         $this->_data['header']['page'] = '/home/home_header';	
         $this->show_room_image();
@@ -38,7 +48,12 @@ class Home extends Frontend_controller {
         $this->_load_view('home/index');
     }
 
-
+	function _switch_lang($lang)
+	{
+		$this->session->set_userdata('lang',$lang);
+		// @session_start();
+		// $_SESSION['language'] = $lang;
+	}
 
     function login() 
     {
@@ -124,9 +139,7 @@ class Home extends Frontend_controller {
 
             $this->pagination->initialize($config);  
             $this->_data['link_html'] = $this->pagination->create_links();  
-            $this->_data['keyword'] = $keyword;
-            $title = __("CF_search_video").$keyword.' - confor.tv';
-            $this->_data['page_title'] = $title; 
+            $this->_data['keyword'] = $keyword; 
             $this->_load_view('home/search');                         
         }
         else
@@ -163,8 +176,6 @@ class Home extends Frontend_controller {
         $this->_data['search_results']=$this->Mhome->search_paging($keywords_to_search, $num_per_page, $offset,$istitle);     
         $this->_data['link_html'] = $this->pagination->create_links();
         $this->_data['keyword'] = $keywords_to_search;
-        $title = __("CF_search_video").$keywords_to_search.' - confor.tv';
-        $this->_data['page_title'] = $title;
         $this->_load_view('home/search'); 
     }	
 
@@ -254,8 +265,7 @@ class Home extends Frontend_controller {
         }
         $out .= ']';
         echo $out;
-    }
-
+    }  
     function xmlvid($id)
     {
         header('Content-Transfer-Encoding: binary');    
@@ -281,11 +291,10 @@ class Home extends Frontend_controller {
             $data['top_view_video'] = $row->vhash;
             $data['video_image']=$row->shash;
             $data['video_title']=$row->title;
-            $data['description']=$row->description;        
+            $data['description']=$row->description; 
             $data['watermark_align_top']=$row->watermark_align_top;
-            $data['watermark_align_rl']=$row->watermark_align_rl;    
+            $data['watermark_align_rl']=$row->watermark_align_rl;           
         } 
         $this->load->view('home/xmlvidmain',$data);
-    }  
-
+    }
 }

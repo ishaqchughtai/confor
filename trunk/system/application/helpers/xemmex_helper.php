@@ -42,46 +42,45 @@ if (! function_exists('xemmex_language'))
 		}
 		
 		
-		if (array_key_exists($lang, $lang_array)) 
-		{		
-			$CI->config->set_item('language', $lang_array[$lang]);
-			$CI->lang->load('confor', $lang_array[$lang]);
-			$CI->lang->load('cf', $lang_array[$lang]);
+		// if (array_key_exists($lang, $lang_array)) 
+		// {		
+			// $CI->config->set_item('language', $lang_array[$lang]);
+			// $CI->lang->load('confor', $lang_array[$lang]);
+			// $CI->lang->load('cf', $lang_array[$lang]);
+		// } 
+		// else 
+		// {
+			// return FALSE;		
+		// }
+		
+		if($CI->session->userdata('lang')) 
+		{
+			$lang = $CI->session->userdata('lang');
+			if (array_key_exists($lang, $lang_array)) 
+			{
+				$CI->config->set_item('language', $lang_array[$lang]);
+				$CI->lang->load('confor', $lang_array[$lang]);
+				$CI->lang->load('cf', $lang_array[$lang]);
+			} 
+			else 
+			{
+				return FALSE;		
+			}
 		} 
 		else 
 		{
-			return FALSE;		
+			if (array_key_exists($lang, $lang_array)) 
+			{
+				$CI->session->set_userdata('lang',$lang);
+				$CI->config->set_item('language', $lang_array[$lang]);
+				$CI->lang->load('confor', $lang_array[$lang]);
+				$CI->lang->load('cf', $lang_array[$lang]);
+			} 
+			else 
+			{
+				return FALSE;		
+			}
 		}
-		
-		//echo $lang;
-		// if($CI->session->userdata('lang')) 
-		// {
-		// $lang = $CI->session->userdata('lang');
-		// if (array_key_exists($lang, $lang_array)) 
-		// {
-		// $CI->config->set_item('language', $lang_array[$lang]);
-		// $CI->lang->load('confor', $lang_array[$lang]);
-		// $CI->lang->load('cf', $lang_array[$lang]);
-		// } 
-		// else 
-		// {
-		// return FALSE;		
-		// }
-		// } 
-		// else 
-		// {
-		// if (array_key_exists($lang, $lang_array)) 
-		// {
-		// $CI->session->set_userdata('lang',$lang);
-		// $CI->config->set_item('language', $lang_array[$lang]);
-		// $CI->lang->load('confor', $lang_array[$lang]);
-		// $CI->lang->load('cf', $lang_array[$lang]);
-		// } 
-		// else 
-		// {
-		// return FALSE;		
-		// }
-		// }
 		return $lang;
 	}
 }

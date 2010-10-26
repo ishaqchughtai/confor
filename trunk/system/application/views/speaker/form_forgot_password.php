@@ -9,7 +9,7 @@
         <?php if(isset($error)):?>
         <p class="not_warning medium"><span class="img"></span><?php echo $error;?><span class="close"></span></p>
         <?php endif;?>                  
-        <input type="submit" name="submit" style="width:80px" value="<?php echo __("CF_submit")?>" class="submit">    
+        <input type="submit" name="submit" style="width:auto; padding-left:10px; padding-right:10px;" value="<?php echo __("CF_submit")?>" class="submit">    
     </fieldset>    
         </form>
         <label><a href="javascript:history.go(-1);"><?php echo __('CF_forgot_pass_back')?></a></label>
