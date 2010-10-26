@@ -3,7 +3,7 @@
 //define('__PS_BASE_URI__', '/prestashop/');
 define('__PS_BASE_URI__', '/confor/prestashop/');
 define('_THEME_NAME_', 'confor');
-define('_DB_NAME_', 'conferen_conferen');
+define('_DB_NAME_', 'conforus_conforus');
 define('_DB_SERVER_', 'localhost');
 define('_DB_USER_', 'root');
 define('_DB_PREFIX_', 'presshop_');
