@@ -119,21 +119,27 @@ body {
 	font: 12px/18px "Lucida Grande", "Lucida Sans Unicode", Arial, Tahoma, sans-serif;
 }
 a {
-	color: #73984E;
+	color: #008EB0;
 	text-decoration: underline;
 }
 a:hover {
 	color: #2d6e89;
 }
 h1, h2, h3, h4, h6,  h1 a, h2 a, h3 a, h4 a, h6 a {
-	color: #191919;
+	color: #008EB0;
 	font-weight: normal;
 	text-decoration: none !important;
 }
-h5, h5 a {
+h5{
 	color: #827b74;
 	font-weight: normal;
 }
+
+h5 a {
+	color: #008EB0;
+	font-weight: normal;
+}
+
 blockquote {
 	background: url(../../img/blockquote.png) no-repeat top left;
 	font-style: italic;
@@ -517,7 +523,7 @@ blockquote {
 	width: 100%;
 }
 .content_item h5 {
-	width:460px;
+	width:auto;
 }
 #content h3, #content_blog h3 {
 	margin: 0 0 .35em 0;
@@ -611,9 +617,11 @@ blockquote {
 	-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
 	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+	line-height:26px;
 }
 #pagination li.selected a,  #pagination li a:hover {
 	background: url(../../img/pagination_bg_hover.png) repeat-x top left;
+	line-height:26px;
 }
 /*---------------------------------
 
@@ -773,7 +781,7 @@ ul#ctabs ul.ctabs_content li {
 }
 ul#ctabs ul.ctabs_content li a {
 	border-bottom: 1px solid #c3c3c3;
-	color: #505050;
+	color: #008EB0;
 	float: left;
 	padding: 7px 0;
 	text-decoration: none !important;
@@ -793,7 +801,7 @@ ul#ctabs ul.ctabs_content li a:hover {
 	#popular_posts {
 	float: left;
 	list-style: none;
-	height: 320px;
+	height:100%;	
 	position: relative;
 	width: 280px;
 }
@@ -809,9 +817,10 @@ ul#ctabs ul.ctabs_content li a:hover {
 	float: left;
 	left: 0;
 	margin: 0;
-	position: absolute;
+	position: relative;
 	top: 0;
 	width: 100%;
+	height:100%;
 }
 #pop_nav {
 	list-style: none;
@@ -935,7 +944,7 @@ ul#ctabs ul.ctabs_content li a:hover {
 	width: 100%;
 }
 #footer_content ul li a {
-	color: #676767;
+	color: #008EB0;
 	float: left;
 	font: normal 10px/18px Arial, Helvetica, sans-serif;
 	padding: .4em 0;
@@ -971,7 +980,7 @@ ul#ctabs ul.ctabs_content li a:hover {
 	width: 940px;
 }
 #copyright_wrapper a {
-	color: #676767;
+	color: #008EB0;
 	font-weight: bold;
 }
 #copyright_wrapper .right {
@@ -990,8 +999,8 @@ ul#ctabs ul.ctabs_content li a:hover {
 	margin: 0;
 }
 #copyright_wrapper ul li a {
-	border-right: 1px solid #676767;
-	color: #676767;
+	border-right: 1px solid #008EB0;
+	color: #008EB0;
 	font: normal 11px/18px Arial, Helvetica, sans-serif;
 	padding: 0 10px;
 	text-decoration: none !important;
