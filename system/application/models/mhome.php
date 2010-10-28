@@ -241,8 +241,7 @@ $this->db->where("(`title` LIKE '%".$keyword."%' OR `tags` LIKE '%".$keyword."%'
 
         function get_top_speaker()
         {
-            $query = $this->db->query("SELECT
-            Max(videos.date) AS max_viewed,
+            $query = $this->db->query("SELECT 
             videos.mem_id,
             users.username,           
             users.first_name,
@@ -252,10 +251,7 @@ $this->db->where("(`title` LIKE '%".$keyword."%' OR `tags` LIKE '%".$keyword."%'
             WHERE
             videos.mem_id =  users.ID
             GROUP BY
-            users.Name
-            ORDER BY
-            videos.date DESC
-            LIMIT 10
+            videos.mem_id
             ");
             return $query->result_array();
         }
