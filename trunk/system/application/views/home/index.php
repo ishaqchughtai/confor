@@ -108,10 +108,9 @@
     <div class="x3_2">
         <?php foreach($advs_text as $item_text){?>
         <div class="x3">
-            <label><?php echo $item_text['Title']?>:</label>  
+            <label><a href="<?php echo site_url('advertisement_text/go_to/'.$item_text['ID'])?>" target="_blank"><?php echo $item_text['Title']?>:</a></label>  
             <br/>          
-            <a href="<?php echo $item_text['URL']?>" target="_blank"><?php echo $item_text['Body']?></a>
-            <p></p>
+            <p><?php echo $item_text['Body']?></p>
         </div>
         <?php };?>
     </div>   

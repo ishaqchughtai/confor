@@ -142,31 +142,6 @@ class Advertisement_text extends Admin_controller {
 
     }    
 
-    //Search advertisement
-    //function search_advertisement()
-//    {
-//        $this->_data['path'][] = array(
-//        'name' => __("CF_search_adv"),
-//        'link' => '#'
-//        );
-//        $keywords = $this->input->post('search_field');
-
-//        $keywords = $this->uri->segment(3);
-//        $per_page = $this->uri->segment(4);
-//        $offset = $this->uri->segment(5);
-
-//        $config['uri_segment'] = 5;
-//        $config['base_url'] = base_url().'index.php/advertisement/search_advertisement/'.$keywords.'/'.$per_page;
-
-//        $config['total_rows'] = $this->MAdvertisement_text->count_record($keywords);
-//        $config['per_page']=$per_page;
-//        $config += config_pagination_style();
-//        $this->_data['adv'] = $this->MAdvertisement_text->search($keywords,$per_page,$offset); 
-//        $this->pagination->initialize($config);
-//        $this->_data['pagination'] = $this->pagination->create_links();
-//        $this->_load_view('admin/search_advertisement');
-//    }
-
     function check_date_expiry($dateExpiry) 
     { 
         if($dateExpiry < date('Y/m/d'))
@@ -193,10 +168,6 @@ class Advertisement_text extends Admin_controller {
         }
         redirect($url);
     }
-    //function get_random()
-//    {
-//        $query=$this->MAdvertisement_text->get_random_advertisement();
-//    }
 }
 
 
