@@ -2,10 +2,10 @@
     <div id="content">
            <ul class="link_conttrol">
         
-        <li><a class="icon_add" href="<?php echo site_url('advertisement_text/add')?>"><?php echo __("CF_add_new_adv")?></a></li>
+        <li><a class="icon_add" href="<?php echo site_url('advertisement_text/add')?>"><?php echo __("CF_add_new_adv_text")?></a></li>
     </ul>
     <br />
-        <h3><?php echo __("CF_adv_list")?></h3><br />
+        <h3><?php echo __("CF_adv_list_text")?></h3><br />
         <table border="1" width="100%">
             <tr align="left">
                 <th width="100"><?php echo __('CF_title')?></th>

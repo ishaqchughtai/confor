@@ -100,6 +100,8 @@
     <ul class="link_conttrol">
         <li><a class="icon_list" href="<?php echo site_url('advertisement/advertisement_list')?>"><?php echo __("CF_adv_list")?></a></li>
         <li><a class="icon_add" href="<?php echo site_url('advertisement/add')?>"><?php echo __("CF_new_adv")?></a></li>
+        <li><a class="icon_list" href="<?php echo site_url('advertisement_text/advertisement_list')?>"><?php echo __("CF_adv_list_text")?></a></li>
+        <li><a class="icon_add" href="<?php echo site_url('advertisement_text/add')?>"><?php echo __("CF_new_adv_text")?></a></li>
         <li><br /></li>
     </ul>    
     <div class="frame_bottom"></div>        

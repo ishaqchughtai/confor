@@ -730,3 +730,10 @@ $lang['CF_top_right']="f_Top-right";
 $lang['CF_bottom_left']="f_Bottom-left";
 $lang['CF_bottom_right']="f_Bottom-right";
 $lang['CF_none']="f_None";
+
+//key added on 28/10/2010
+$lang['CF_adv_list_text'] = 'Advertisement Text List';
+$lang['CF_new_adv_text'] = 'New Advertisement Text';
+$lang['CF_add_new_adv_text'] = 'Add New Advertisement Text';
+$lang['CF_avd_details_text'] = 'Advertisement Text Details';
+$lang['CF_edit_adv_text'] = 'Edit Advertisement Text';

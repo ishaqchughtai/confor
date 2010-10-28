@@ -28,10 +28,10 @@
 
 <div class="content_item">
     <ul class="link_conttrol">
-        <li><a class="icon_list" href="<?php echo site_url('advertisement_text/advertisement_list')?>"><?php echo __("CF_adv_list")?></a></li>
-        <li><a class="icon_add" href="<?php echo site_url('advertisement_text/add')?>"><?php echo __("CF_new_adv")?></a></li>
+        <li><a class="icon_list" href="<?php echo site_url('advertisement_text/advertisement_list')?>"><?php echo __("CF_adv_list_text")?></a></li>
+        <li><a class="icon_add" href="<?php echo site_url('advertisement_text/add')?>"><?php echo __("CF_new_adv_text")?></a></li>
     </ul><br />
-    <h3><?php echo __("CF_edit_adv")?> </h3>
+    <h3><?php echo __("CF_edit_adv_text")?> </h3>
     <?php
         $data=array('name' => 'advertisement_text','id' => 'advertisement-form'); 
         echo form_open('advertisement_text/edit/'.$id,$data);
