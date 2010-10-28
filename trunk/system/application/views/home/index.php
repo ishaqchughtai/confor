@@ -101,5 +101,18 @@
             </div>
             <!-- /.content .top_box_block -->
             <?php endfor;?>
+    </div>
+    <?php $advs_text=get_random_text_adv();
+        $attr=array('width'=>'89', 'height'=>'75', 'class'=>'icon');
+    ?>
+    <div class="x3_2">
+        <?php foreach($advs_text as $item_text){?>
+        <div class="x3">
+            <label><?php echo $item_text['Title']?>:</label>  
+            <br/>          
+            <a href="<?php echo $item_text['URL']?>" target="_blank"><?php echo $item_text['Body']?></a>
+            <p></p>
+        </div>
+        <?php };?>
     </div>   
         </body>           
