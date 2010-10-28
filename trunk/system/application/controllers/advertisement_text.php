@@ -13,7 +13,7 @@ class Advertisement_text extends Admin_controller {
     function advertisement_list()
     {
         $this->_data['path'][] = array(
-        'name' => __("CF_adv_list"),
+        'name' => __("CF_adv_list_text"),
         'link' => '#'
         );
         is_admin();                      
@@ -31,7 +31,7 @@ class Advertisement_text extends Admin_controller {
     function add()
     {
         $this->_data['path'][] = array(
-        'name' => __("CF_new_adv"),
+        'name' => __("CF_new_adv_text"),
         'link' => '#'
         );
         is_admin();        
@@ -73,12 +73,12 @@ class Advertisement_text extends Admin_controller {
     {
 
         $this->_data['path'][] = array(
-        'name' => __("CF_adv_list"),
+        'name' => __("CF_adv_list_text"),
         'link' => site_url('advertisement_text/advertisement_list')
         );
 
         $this->_data['path'][] = array(
-        'name' => __("CF_edit_adv"),
+        'name' => __("CF_edit_adv_text"),
         'link' => '#'
         );
         is_admin();
@@ -89,12 +89,12 @@ class Advertisement_text extends Admin_controller {
     {
 
         $this->_data['path'][] = array(
-        'name' => __("CF_adv_list"),
+        'name' => __("CF_adv_list_text"),
         'link' => site_url('advertisement_text/advertisement_list')
         );
 
         $this->_data['path'][] = array(
-        'name' => __("CF_avd_details"),
+        'name' => __("CF_avd_details_text"),
         'link' => '#'
         );
         is_admin();       
@@ -111,7 +111,7 @@ class Advertisement_text extends Admin_controller {
             $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
             $this->form_validation->set_rules('advertiser_email',strtolower(__("CF_advertiser_email")),'required|valid_email|callback_check_email');
             $this->form_validation->set_rules('url',strtolower(__("CF_url")),'prep_url|required');
-            $this->form_validation->set_rules('body',strtolower(__("CF_blog_body")),'trim|required|max_length[50]');
+            $this->form_validation->set_rules('body',strtolower(__("CF_blog_body")),'trim|required|max_length[200]');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
             if($this->form_validation->run()==FALSE)
             {

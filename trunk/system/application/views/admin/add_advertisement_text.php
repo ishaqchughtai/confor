@@ -16,10 +16,10 @@
                 <div class="content_item">
                 
                 <ul class="link_conttrol">
-        <li><a class="icon_list" href="<?php echo site_url('advertisement_text/advertisement_list')?>"><?php echo __("CF_adv_list")?></a></li>
+        <li><a class="icon_list" href="<?php echo site_url('advertisement_text/advertisement_list')?>"><?php echo __("CF_adv_list_text")?></a></li>
     </ul><br />
 
-                    <h3><?php echo __("CF_add_new_adv")?></h3>
+                    <h3><?php echo __("CF_add_new_adv_text")?></h3>
                     
                     <form action="<?php echo site_url('advertisement_text/add')?>" method="post" enctype="multipart/form-data" class="global" name="advertisement">
                         <p>                        
