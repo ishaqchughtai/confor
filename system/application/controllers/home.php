@@ -10,6 +10,7 @@ class Home extends Frontend_controller {
         $this->load->library('email');
         $this->load->model('Mshowroom');
         $this->load->model('Mmetadata');
+        $this->load->model('MAdvertisement_text');
         $this->load->model('Mshopproduct','mshopproduct');
         $this->load->helper('url');
         $this->load->model('Mxmlvideo');
