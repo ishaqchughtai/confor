@@ -105,9 +105,26 @@
     <?php $advs_text=get_random_text_adv();
         $attr=array('width'=>'89', 'height'=>'75', 'class'=>'icon');
     ?>
+	<style>
+	.block_text
+	{
+		width:280px;
+		float:left;
+		border: 5px solid #eee;
+		padding:5px;
+		margin-right:10px;
+		margin-bottom:10px;
+		background:#fafafa;
+		height:100px;
+	}
+	</style>
     <div class="x3_2">
-        <?php foreach($advs_text as $item_text){?>
-        <div class="x3">
+        <?php 
+		$i=1;
+		foreach($advs_text as $item_text){
+		$i++;
+		?>
+        <div class="block_text <?php if(($i+1)%2==0) echo ' no_margin_r';?>">
             <label><a href="<?php echo site_url('advertisement_text/go_to/'.$item_text['ID'])?>" target="_blank"><?php echo $item_text['Title']?>:</a></label>  
             <br/>          
             <p><?php echo $item_text['Body']?></p>
