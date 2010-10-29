@@ -8,7 +8,11 @@ class Advertisement_text extends Admin_controller {
         $this->load->helper('date');        
         $this->load->model('Mshopproduct','mshopproduct'); 
     }         
-
+    
+    function index()
+    {
+        $this->advertisement_list();
+    }
     //list advertisement
     function advertisement_list()
     {
@@ -41,7 +45,7 @@ class Advertisement_text extends Admin_controller {
             $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
             $this->form_validation->set_rules('advertiser_email',strtolower(__("CF_advertiser_email")),'required|valid_email|callback_check_email');
             $this->form_validation->set_rules('url',strtolower(__("CF_url")),'prep_url|required');
-            $this->form_validation->set_rules('body',strtolower(__("CF_blog_body")),'trim|required|max_length[200]');
+            $this->form_validation->set_rules('body',strtolower(__("CF_blog_body")),'trim|required|max_length[150]');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
             if($this->form_validation->run()==FALSE)
             {
@@ -111,7 +115,7 @@ class Advertisement_text extends Admin_controller {
             $this->form_validation->set_rules('title',strtolower(__("CF_title")),'trim|required|max_length[50]');
             $this->form_validation->set_rules('advertiser_email',strtolower(__("CF_advertiser_email")),'required|valid_email|callback_check_email');
             $this->form_validation->set_rules('url',strtolower(__("CF_url")),'prep_url|required');
-            $this->form_validation->set_rules('body',strtolower(__("CF_blog_body")),'trim|required|max_length[200]');
+            $this->form_validation->set_rules('body',strtolower(__("CF_blog_body")),'trim|required|max_length[150]');
             $this->form_validation->set_error_delimiters('<p class="not_error medium"><span class="img"></span>','<span class="close"></span></p>');
             if($this->form_validation->run()==FALSE)
             {
@@ -122,7 +126,8 @@ class Advertisement_text extends Admin_controller {
                 $dateExpiry = $this->input->post('date_expiry');                                          
                 $title = $this->input->post('title');               
                 $url = $this->input->post('url');
-                $body = $this->input->post('body');               
+                $body = $this->input->post('body');
+                           
                 $data = $this->MAdvertisement_text->edit_advertisement($id,$dateExpiry,$title,$url,$body);
                 $this->_message('advertisement_text', __("CF_adv_suc"), 'success', site_url("advertisement_text/advertisement_list/")); 
             }   
