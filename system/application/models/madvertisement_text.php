@@ -27,9 +27,9 @@
             return $query->result_array();
         }
         //get random advertisement
-        function get_random_advertisement()
+        function get_random_advertisement($dateNow)
         {            
-            $query = $this->db->query('SELECT * FROM tbladvertisement_text ORDER BY RAND() LIMIT 4 ');
+            $query = $this->db->query('SELECT * FROM tbladvertisement_text where tbladvertisement_text.DateExpiry > Now() ORDER BY RAND() LIMIT 4 ');
             return $query->result_array();
         }
 

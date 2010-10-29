@@ -383,14 +383,8 @@ if ( ! function_exists('get_random_text_adv'))
 	function get_random_text_adv()
 	{
 		$CI =& get_instance();		
-		$items = $CI->MAdvertisement_text->get_random_advertisement();
-		//print_r($items);
-//		return;
-//		$a2 = array();
-//		foreach($items as $item)
-//		{
-//            $a2[1]=$item;
-//		}
+        $dateNow=date('Y-m-d');
+		$items = $CI->MAdvertisement_text->get_random_advertisement($dateNow);
 		return $items;
 		//....
 	}

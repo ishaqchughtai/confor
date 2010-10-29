@@ -17,8 +17,8 @@
     foreach($query as $row)
     {
         $id = $row['ID'];
-        $date_beginning = date("d-m-Y", strtotime($row['DateBeginning']));
-        $date_expiry = date("d-m-Y", strtotime($row['DateExpiry']));
+        $date_beginning = date("Y/m/d", strtotime($row['DateBeginning']));
+        $date_expiry = date("Y/m/d", strtotime($row['DateExpiry']));
         $title = $row['Title'];
         $body = $row['Body'];
         $advertiser_email = $row['AdvertiserEmail'];
